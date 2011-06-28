@@ -93,7 +93,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		console.log('session = '+session);
 		//Let's take the Access Token
 		var accessToken = session.split('&')[0];
-		console.log('session split = '+session.split('|')[1];);
+		console.log('session split = '+session.split('|')[1]);
 		
 		//Let's finally return the SessionKey
 		return session.split('|')[1];
