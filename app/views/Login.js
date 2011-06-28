@@ -83,7 +83,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	facebookConnect: function(e){
 
- location.href="https://graph.facebook.com/oauth/authorize?client_id=185799971471968&redirect_uri=http://www.afrogjumps.com/xmpp/facebook/&scope=email,offline_access,publish_stream,xmpp_login&display=popup&response_type=token&display=touch";
+ location.href="https://graph.facebook.com/oauth/authorize?client_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/&scope=email,offline_access,publish_stream,xmpp_login&display=popup&response_type=token&display=touch";
 	},
 	
 	getFacebookSessionKey: function(){
