@@ -94,6 +94,21 @@ function getCookie(c_name)
 	}
 }
 
+function getFacebookTokenFromUrl{
+	queryObj = {};
+    var qs = window.location.href;
+	var fragments = qs.split('#');
+	console.log('fragments = ' +fragments);
+	//console.log('fragments  '+fragments);
+	if (fragments.length >= 2) {
+		var final = fragments[1].indexOf('|')
+        qs = fragments[1].substring(13, final);
+		return qs;
+    }else{
+		return "";
+	}
+}
+
 
 function delCookie(name) {
 	document.cookie = name + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
