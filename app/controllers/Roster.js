@@ -87,7 +87,7 @@ Ext.regController('Roster', {
 		var user = store.getById(user.jid);
 		
 		//Saving the active chat session
-		user.set('chatActive', true);
+	//	user.set('chatActive', true);
 		
 		
 	},
