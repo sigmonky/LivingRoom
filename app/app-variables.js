@@ -97,7 +97,7 @@ function getCookie(c_name)
 function getFacebookTokenFromUrl(){
 	queryObj = {};
     var qs = window.location.href;
-	var fragments = qs.split('#');
+	var fragments = qs.split('%7C');
 	console.log('fragments = ' +fragments[1]);
 	//console.log('fragments  '+fragments);
 	if (fragments.length >= 2) {
