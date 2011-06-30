@@ -1,6 +1,6 @@
 /* 
  * LivingRoomAPI
-x */
+ */
 /**
  * @class LivingRoomAPI.Viewport
  * @extends Ext.Panel
@@ -41,11 +41,20 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
+		
+		this.logoutBtn = {
+			ui: 'action',
+			text: 'Logout',
+			iconMask: true,
+			iconCls: 'reply',
+			scope: this,
+			handler: this.logout
+		}
 	
 		Ext.apply(this,{
 		
 			fullscreen: true,
-			dockedItems: [this.toolbar],
+		//	dockedItems: [this.toolbar],
 			tabBar: {
                 dock: 'top',
                 layout: {
@@ -54,7 +63,8 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
             },
 			items: [
 				this.pnlRoster,
-				this.pnlPublicChat
+				this.pnlPublicChat,
+				this.logoutBtn
 			]
 			
 		});
