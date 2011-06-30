@@ -51,11 +51,6 @@ Ext.regController('Roster', {
 		//Check if was requested to show the session panel
 		if(options.show){
 
-			//Let's show the chat session Panel
-			this.application.viewport.getComponent('pnlRoster').setActiveItem(pnlChatSession, {
-				type: 'slide', 
-				duration: 500
-			});
 
 		}
 
