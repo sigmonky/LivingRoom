@@ -6,7 +6,7 @@
  * @extends Ext.Panel
  * Main application Viewport
  */
-LivingRoomAPI.Viewport = Ext.extend(Ext.Panel, {
+LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	
 	///@private
 	application: undefined,
@@ -31,13 +31,13 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.Panel, {
 		//Definition of the roster panel
 		this.pnlRoster = new LivingRoomAPI.views.Roster({
 			itemId: 'pnlRoster',
-			title: 'Facebook Friends'
+			title: 'FB Friends'
         });
 
 		//Definition of the public chat panel
 		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlPublicChat',
-			title: 'Co-Viewers',
+			title: 'All Co-Viewers',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
@@ -54,8 +54,8 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.Panel, {
 		Ext.apply(this,{
 		
 			fullscreen: true,
-			dockedItems: [this.toolbar, this.pnlPublicChat, this.pnlRoster],
-		/*	tabBar: {
+		//	dockedItems: [this.toolbar],
+			tabBar: {
                 dock: 'top',
                 layout: {
                     pack: 'center'
@@ -65,7 +65,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.Panel, {
 				this.pnlRoster,
 				this.pnlPublicChat,
 				this.logoutBtn
-			] */
+			]
 			
 		});
 
