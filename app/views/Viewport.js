@@ -6,7 +6,7 @@
  * @extends Ext.Panel
  * Main application Viewport
  */
-LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
+LivingRoomAPI.Viewport = Ext.extend(Ext.ToolBar, {
 	
 	///@private
 	application: undefined,
@@ -31,13 +31,13 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		//Definition of the roster panel
 		this.pnlRoster = new LivingRoomAPI.views.Roster({
 			itemId: 'pnlRoster',
-			title: 'FB Friends'
+			title: 'Facebook Friends'
         });
 
 		//Definition of the public chat panel
 		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlPublicChat',
-			title: 'All Co-Viewers',
+			title: 'Co-Viewers',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});

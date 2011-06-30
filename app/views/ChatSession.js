@@ -97,7 +97,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 			
 		}else{
 			
-			//Send the message to all the room partecipants
+			//Send the message to all the room participants
 			this.jabberComponent.sendRoomMessage(message.getValue());
 		}
 		
