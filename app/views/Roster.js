@@ -41,7 +41,7 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.TabPanel, {
 					Ext.dispatch({
 					    controller: 'Roster',
 					    action: 'openChatSession',
-						show: true,
+						show: false,
 						user: user
 					});
 					
