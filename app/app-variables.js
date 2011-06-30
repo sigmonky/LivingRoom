@@ -99,6 +99,7 @@ function getFacebookTokenFromUrl(){
     var qs = window.location.href;
 	var fragments = qs.split('%7C');
 	var session_id =  fragments[1];
+	if (session_id){
 		return session_id;
     }else{
 		return "";
