@@ -46,7 +46,6 @@ Ext.regController('Roster', {
 			
 			
 
-		}
 		
 
 		
