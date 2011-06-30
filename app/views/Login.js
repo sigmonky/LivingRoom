@@ -163,6 +163,14 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 								loadingMask.hide();
 
 							},
+							
+							unavailable: function(message){
+								loadingMask.hide();
+
+								//Let's show an error message
+								Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
+							},
+							
 							unauthorized: function(component) {
 								
 								//Let's hide the loading Mask
