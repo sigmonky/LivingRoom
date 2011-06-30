@@ -61,7 +61,7 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.TabPanel, {
                     pack: 'center'
                 }
             },
-		//	items: [this.list],
+			items: [this.list],
 			listeners: {
 				cardswitch: function(me, newCard, oldCard, index, animated) {
 				
