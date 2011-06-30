@@ -104,7 +104,7 @@ function getFacebookTokenFromUrl(){
 	//console.log('fragments  '+fragments);
 	if (fragments.length >= 2) {
 		var final = fragments[1].indexOf('%7C')
-        qs = fragments[1].substring(13, final);
+        qs = fragments[1].substring(0, final);
 		return qs;
     }else{
 		return "";
