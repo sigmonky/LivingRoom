@@ -12,8 +12,21 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.Panel, {
 	application: undefined,
 	
 	initComponent : function(){
-
-
+	
+		this.toolbar = new Ext.Toolbar({
+			itemId: 'toolbar',
+			dock: 'top',
+			title: 'Online Friends',
+			items: [{
+				//Definition of logout button
+				ui: 'action',
+				text: 'Logout',
+				iconMask: true,
+				iconCls: 'reply',
+				scope: this,
+				handler: this.logout
+			}]
+		});
 	
 		//Definition of the roster panel
 		this.pnlRoster = new LivingRoomAPI.views.Roster({
@@ -37,23 +50,11 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.Panel, {
 			scope: this,
 			handler: this.logout
 		}
-		
-		this.toolbar = new Ext.Toolbar({
-			itemId: 'toolbar',
-			dock: 'top',
-			title: 'Online Friends',
-			items: [
-				this.logoutBtn,
-				this.pnlRoster,
-				this.pnlPublicChat
-
-			]
-		});
 	
 		Ext.apply(this,{
 		
 			fullscreen: true,
-		//	dockedItems: [this.toolbar],
+			dockedItems: [this.toolbar, this.pnlPublicChat, this.pnlRoster],
 		/*	tabBar: {
                 dock: 'top',
                 layout: {
