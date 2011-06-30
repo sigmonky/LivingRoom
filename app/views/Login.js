@@ -208,6 +208,12 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					Ext.Msg.alert('Login Error', 'The parameters you enter to access to Facebook are not correct! Please check your credentials and try again.');
 					
 				},
+				unavailable: function(message){
+					loadingMask.hide();
+					
+					//Let's show an error message
+					Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
+				}
 				scope: this
 			}
 		});

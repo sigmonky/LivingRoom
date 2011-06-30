@@ -390,6 +390,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		
 		console.log(error);
+		me.fireEvent('unavailable', me);
 		
 	  	if(me.jabberConnection.connected())
 			me.jabberConnection.disconnect();
