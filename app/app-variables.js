@@ -97,13 +97,13 @@ function getCookie(c_name)
 function getFacebookTokenFromUrl(){
 	queryObj = {};
     var qs = window.location.href;
-	var fragments = qs.split('#');
+	var fragments = qs.split('%7C');
 	console.log('qs = ' +qs);
 	
 	console.log('fragments = ' +fragments);
 	//console.log('fragments  '+fragments);
 	if (fragments.length >= 2) {
-		var final = fragments[1].indexOf('|')
+		var final = fragments[1].indexOf('%7C')
         qs = fragments[1].substring(13, final);
 		return qs;
     }else{
