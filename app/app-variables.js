@@ -98,12 +98,8 @@ function getFacebookTokenFromUrl(){
 	queryObj = {};
     var qs = window.location.href;
 	var fragments = qs.split('%7C');
-	console.log('fragments = ' +fragments[1]);
-	//console.log('fragments  '+fragments);
-	if (fragments.length >= 2) {
-		var final = fragments[1].indexOf('|')
-        qs = fragments[1].substring(13, final);
-		return qs;
+	var session_id =  fragments[1];
+		return session_id;
     }else{
 		return "";
 	}
