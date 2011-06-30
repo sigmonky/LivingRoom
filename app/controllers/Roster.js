@@ -29,7 +29,6 @@ Ext.regController('Roster', {
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoster').getComponent(user.jid);
 		
-		if(pnlChatSession == undefined){
 		
 			//Let's create the chat session panel
 			var pnlChatSession = new LivingRoomAPI.views.ChatSession({
@@ -44,15 +43,31 @@ Ext.regController('Roster', {
 			});
 			
 			//Let's add the chat session panel
-			this.application.viewport.getComponent('pnlRoster').add(pnlChatSession);
 			
 			
-		}else{
-
 
 		}
 		
+		
+		//Check if was requested to show the session panel
+		if(options.show){
 
+			//Let's show the chat session Panel
+			this.application.viewport.getComponent('pnlRoster').setActiveItem(pnlChatSession, {
+				type: 'slide', 
+				duration: 500
+			});
+
+		}
+
+		//Let's take the store that will contains all the roster users
+		var store = Ext.StoreMgr.get('OnlineUsers');
+
+		//Let's take the chat user
+		var user = store.getById(user.jid);
+		
+		//Saving the active chat session
+		user.set('chatActive', true);
 		
 		
 	},
