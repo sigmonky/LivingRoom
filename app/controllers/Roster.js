@@ -32,7 +32,7 @@ Ext.regController('Roster', {
 	if(pnlChatSession == undefined){
 		
 			//Let's create the chat session panel
-		/*		var pnlChatSession = new LivingRoomAPI.views.ChatSession({
+			var pnlChatSession = new LivingRoomAPI.views.ChatSession({
 				itemId: user.jid,
 				title: user.name,
 				iconCls: 'chat1',
@@ -41,7 +41,7 @@ Ext.regController('Roster', {
 				remoteJid: user.jid,
 				remoteUserName: user.name,
 				jabberComponent: facebookClient
-			}); */
+			});
 			
 			//Let's add the chat session panel
 		//	this.application.viewport.getComponent('pnlRoster').add(pnlChatSession);
