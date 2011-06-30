@@ -55,7 +55,7 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.TabPanel, {
 		
 			fullscreen: true,
 			tabBar: {
-                dock: 'bottom',
+                dock: 'top',
 				scroll: 'horizontal',
                 layout: {
                     pack: 'center'
