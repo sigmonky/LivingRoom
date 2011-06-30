@@ -144,9 +144,9 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 						httpbase		   : 'http://www.logoslogic.com/http-bind',
 						timerval		   : 2000,
 						authtype		   : 'saslanon',
-						domain			   : 'public', 
- 						/*username		 :'isaacueca',
-						password		: 'cigano',*/ 
+						domain			   : '', 
+ 						username		 :'isaacueca',
+						password		: 'cigano',
 						resource		   : '',
 						nickname		   : this.nickname,
 						register		   : false,
