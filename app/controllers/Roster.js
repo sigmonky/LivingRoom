@@ -44,7 +44,7 @@ Ext.regController('Roster', {
 			});
 			
 			//Let's add the chat session panel
-			this.application.viewport.getComponent('pnlRoster').add(pnlChatSession);
+		//	this.application.viewport.getComponent('pnlRoster').add(pnlChatSession);
 			
 			
 		}else{
@@ -79,13 +79,6 @@ Ext.regController('Roster', {
 
 		}
 
-
-		//Let's take the store that will contains all the roster users
-		var store = Ext.StoreMgr.get('OnlineUsers');
-
-		//Let's take the chat user
-		var user = store.getById(user.jid);
-		
 		//Saving the active chat session
 	//	user.set('chatActive', true);
 		
