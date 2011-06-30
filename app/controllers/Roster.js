@@ -78,18 +78,7 @@ Ext.regController('Roster', {
 			}
 
 		}
-		
-		
-		//Check if was requested to show the session panel
-		if(options.show){
 
-			//Let's show the chat session Panel
-			this.application.viewport.getComponent('pnlRoster').setActiveItem(pnlChatSession, {
-				type: 'slide', 
-				duration: 500
-			});
-
-		}
 
 		//Let's take the store that will contains all the roster users
 		var store = Ext.StoreMgr.get('OnlineUsers');
