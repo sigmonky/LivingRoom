@@ -21,63 +21,6 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
 
-		/* Definition of the template that will be used to show a direct 
-		 * message coming from Facebook chat */
-		this.tplFacebookMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-chat-message">',
-					'<table style="float: {align};">',
-						'<tr>',
-							'<td class="message">',
-								'<div class="message" style="background-color: {color};">',
-									'{time}<br/>',
-									'{message}',
-								'</div>',
-							'</td>',
-						'</tr>',
-					'</table>',		
-				'</div>',
-			'</tpl>'
-		);
-		
-		//Definition of the message coming from the public chat room
-		this.tplPublicMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
-				'</div>',
-			'</tpl>'
-		);
-
-		Ext.apply(this,{
-		
-			scroll: 'vertical',
-			dockedItems: [{
-				//Definition of the message panel
-				xtype: 'panel',
-				itemId: 'pnlMessage',
-				dock: 'bottom',
-				layout: 'hbox',
-				defaults: {
-					height: 80
-				},
-				items: [{
-					xtype: 'textareafield',
-					itemId: 'message',
-					width: '70%'
-				},{
-					xtype: 'button',
-					ui: 'action',
-					dock: 'right',
-					text: 'Send',
-					width: '30%',
-					handler: this.sendMessage,
-					scope: this
-				}]
-			}]
-		});
 
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
