@@ -157,8 +157,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	},
 	
 	onLoginSuccess: function(){
-	
-		//Viene scatenato l'evento di login avvento con successo
+		loadingMask.hide();
 		this.fireEvent('loginSuccess', this, true);    
 		
 	},
