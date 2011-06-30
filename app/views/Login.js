@@ -90,13 +90,13 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 		//Let's take the Facebook Cookie
 		var session = getFacebookTokenFromUrl();
-		console.log('session = '+session);
+		//console.log('session = '+session);
 		//Let's take the Access Token
-		var accessToken = session.split('&')[0];
+		//var accessToken = session.split('&')[0];
 		//console.log('session split = '+session.split('|')[1]);
-		
+		return session;
 		//Let's finally return the SessionKey
-		return session.split('|')[1];
+		//return session.split('|')[1];
 		
 	},
 	
