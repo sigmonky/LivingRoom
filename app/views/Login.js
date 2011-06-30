@@ -125,7 +125,11 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 			authtype: 'x-facebook-platform',
 			facebookApp: fbApp,
 			listeners	: {
+				connected: function(jid){
+					
+				me.onLoginSuccess();
 
+				}, 
 				unauthorized: function(component) {
 				
 					//Let's hide the loading Mask
