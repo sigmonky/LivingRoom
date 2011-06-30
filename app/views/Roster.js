@@ -15,7 +15,7 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.TabPanel, {
 	
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
-			title: 'Friends1',
+			title: 'Friends',
 			iconCls: 'user',
 			iconMask: true,
 			store: 'OnlineUsers',
@@ -61,7 +61,7 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.TabPanel, {
                     pack: 'center'
                 }
             },
-			items: [this.list],
+		//	items: [this.list],
 			listeners: {
 				cardswitch: function(me, newCard, oldCard, index, animated) {
 				
