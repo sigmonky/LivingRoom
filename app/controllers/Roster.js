@@ -29,6 +29,7 @@ Ext.regController('Roster', {
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoster').getComponent(user.jid);
 		
+		if(pnlChatSession == undefined){
 		
 			//Let's create the chat session panel
 			var pnlChatSession = new LivingRoomAPI.views.ChatSession({
@@ -43,14 +44,50 @@ Ext.regController('Roster', {
 			});
 			
 			//Let's add the chat session panel
+			this.application.viewport.getComponent('pnlRoster').add(pnlChatSession);
 			
 			
+		}else{
 
+			
+			//Let's take the roster panel
+			var pnlRoster = this.application.viewport.getComponent('pnlRoster');
+			
+			//Taking the TabBar component
+			var tabBar = pnlRoster.getTabBar();
+
+			//Let's check if we are currently on the chat panel with this user
+			if(pnlRoster.getActiveItem() != pnlChatSession){
+				
+				//Let's check every open chat to find the right one inside the TabBar
+				Ext.each(tabBar.items.items, function(chat){
+					
+					//If the current chat panel is the one we are looking for...
+					if(chat.getText() == user.name) {
+						
+						//Let's take the actual badge text
+						var badgeNumber = (chat.getBadgeText() != '' ? parseInt(chat.getBadgeText()) : 0);
+						
+						//Let's increment the badge text
+						chat.setBadge(badgeNumber + 1);
+
+					}
+
+				}, this);
+
+			}
+
+		}
 		
 		
 		//Check if was requested to show the session panel
 		if(options.show){
 
+			//Let's show the chat session Panel
+			this.application.viewport.getComponent('pnlRoster').setActiveItem(pnlChatSession, {
+				type: 'slide', 
+				duration: 500
+			});
 
 		}
 
