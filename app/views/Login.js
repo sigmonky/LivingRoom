@@ -1,35 +1,20 @@
 /* 
- * TouchChat
- * Copyright(c) 2011 SIMACS di Andea Cammarata
- * License: SIMACS di Andrea Cammarata
+ * LivingRoomAPI
  */
 /**
- * @class TouchChat.views.Login
+ * @class LivingRoomAPI.views.Login
  * @extends Ext.Panel
- * Vista addetta a contenere il pannello di login.
+ * Panel that shows the login screen
  */
 
-TouchChat.views.Login = Ext.extend(Ext.form.FormPanel, {
+LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	manualLogin: false,
 	
 	initComponent : function(){
 		
-		//Vengono aggiunti gli eventi pubblici scatenabili dal componente
 		this.addEvents(
-			
-			/**
-			 * @event loginSuccess
-		     * Viene scatenato non appena il login è avvenuto con successo.
-             * @param {TouchChat.views.Login} v Questo componente.
-             */
             'loginSuccess',
-
-			/**
-			 * @event loginFail
-		     * Viene scatenato nel caso in cui il login fallisca.
-             * @param {TouchChat.views.Login} v Questo componente.
-             */
             'loginFail'
         );
 
@@ -56,7 +41,7 @@ TouchChat.views.Login = Ext.extend(Ext.form.FormPanel, {
 					itemId: 'txtNickname',
 					name : 'nickname',
 					label: 'Nickname',
-					value: 'AndreaCammarata'
+					value: ''
 				}]
 			}],
             dockedItems: [{
@@ -72,24 +57,46 @@ TouchChat.views.Login = Ext.extend(Ext.form.FormPanel, {
 					iconCls: 'lock_open',
 					handler: this.doLogin,
 					scope: this
-				}]
+				},
+				{
+					dock: 'top',
+					title: 'Settings',
+					xtype: 'toolbar',
+					items: [
+						{
+							xtype: 'button',
+							text: 'Facebook Connect',
+							handler: this.facebookConnect,
+							scope: this
+						}
+					]
+				}
+				
+				
+				
+				]
 			}]
 		});
 		
-		//Viene richiamata la funzione di inizializzazione della superclasse
-		TouchChat.views.Login.superclass.initComponent.call(this);
+		LivingRoomAPI.views.Login.superclass.initComponent.call(this);
+	},
+	
+	facebookConnect: function(e){
+
+ location.href="https://graph.facebook.com/oauth/authorize?client_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/&scope=email,offline_access,publish_stream,xmpp_login&display=popup&response_type=token&display=touch";
 	},
 	
 	getFacebookSessionKey: function(){
 	
 		//Let's take the Facebook Cookie
-		var session = getCookie('fbs_' + facebook.appID);
-		
+		var session = getFacebookTokenFromUrl();
+		//console.log('session = '+session);
 		//Let's take the Access Token
-		var accessToken = session.split('&')[0];
-		
+		//var accessToken = session.split('&')[0];
+		//console.log('session split = '+session.split('|')[1]);
+		return session;
 		//Let's finally return the SessionKey
-		return session.split('|')[1];
+		//return session.split('|')[1];
 		
 	},
 	
@@ -112,120 +119,119 @@ TouchChat.views.Login = Ext.extend(Ext.form.FormPanel, {
 		
 		/* Let's create the component that will let the user to communicate in realtime with all
 		 * the firends inside the facebook chat */
-		facebookClient = new SIMACS.xmpp.Client({
-			httpbase: '/JHB/',
-			timerval: 2000,
-			authtype: 'x-facebook-platform',
-			facebookApp: fbApp,
-			listeners	: {
-				connected: function(jid){
-					
-					/* Let's create the component that will let the user to communicate in realtime with all
-					 * the firends inside the facebook chat */
-					jabberClient = new SIMACS.xmpp.Client({
+			facebookClient = new SIMACS.xmpp.Client({
+				httpbase: '/JHB/',
+				timerval: 2000,
+				authtype: 'x-facebook-platform',
+				facebookApp: fbApp,
+				listeners	: {
+					connected: function(jid){
 
-						/*
-						httpbase		   : 'http://www.logoslogic.com//http-bind',
-						timerval		   : 2000,
-						domain			   : 'logoslogic.com',
-						resource		   : '',
-						username		   : 'isaacueca',
-						pass			   : 'cigano',
-						register		   : false,
-						*/
+						/* Let's create the component that will let the user to communicate in realtime with all
+						 * the firends inside the facebook chat */
+						jabberClient = new SIMACS.xmpp.Client({
 
-						httpbase		   : 'http://www.logoslogic.com/http-bind',
-						timerval		   : 2000,
-						authtype		   : 'saslanon',
-						domain			   : 'public',
-						resource		   : '',
-						nickname		   : this.nickname,
-						register		   : false,
-						publicRoom  	   : true,
-						publicRoomName	   : publicRoomName,
-						conferenceSubdomain: 'conference',
-						listeners: {
-							connected: function(jid){
+							/*
+							httpbase		   : 'http://www.logoslogic.com//http-bind',
+							timerval		   : 2000,
+							domain			   : 'logoslogic.com',
+							resource		   : '',
+							username		   : 'isaacueca',
+							pass			   : 'cigano',
+							register		   : false,
+							*/
 
-								//Let's fire the login success event
-								me.onLoginSuccess();
+							httpbase		   : 'http://www.logoslogic.com/http-bind',
+							timerval		   : 2000,
+							authtype		   : 'saslanon',
+							domain			   : 'public',
+							resource		   : '',
+							nickname		   : this.nickname,
+							register		   : false,
+							publicRoom  	   : true,
+							publicRoomName	   : publicRoomName,
+							conferenceSubdomain: 'conference',
+							listeners: {
+								connected: function(jid){
 
-								//Let's hide the loading Mask
-								loadingMask.hide();
+									//Let's fire the login success event
+									me.onLoginSuccess();
 
-							},
-							unauthorized: function(component) {
-								
-								//Let's hide the loading Mask
-								loadingMask.hide();
+									//Let's hide the loading Mask
+									loadingMask.hide();
 
-								//Let's ask to the user if it wants to register inside the server
-								Ext.Msg.confirm('Registration', 'You are not authorized to login inside the public chat room because your user doesn\'t exists. Do you want to register?', function(answer){
+								},
+								unauthorized: function(component) {
 
-									//Yes I want to Register...
-									if(answer == 'yes') {
-										
-										//Let's show the loading mask
-										loadingMask.show();
+									//Let's hide the loading Mask
+									loadingMask.hide();
 
-										//Set the component in registration mode
-										Ext.apply(component, {
-											register: true
-										});
-										
-										//Ask to the server for a new user registration
-										component.connect();
+									//Let's ask to the user if it wants to register inside the server
+									Ext.Msg.confirm('Registration', 'You are not authorized to login inside the public chat room because your user doesn\'t exists. Do you want to register?', function(answer){
 
-									}
+										//Yes I want to Register...
+										if(answer == 'yes') {
 
-								});
-								
-								
-							},
-							
-							unavailable: function(message){
-								loadingMask.hide();
+											//Let's show the loading mask
+											loadingMask.show();
 
-								//Let's show an error message
-								Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
-							},
-							scope: this
-						}
-					});
+											//Set the component in registration mode
+											Ext.apply(component, {
+												register: true
+											});
 
-					//Let's finally connect to ejabberd server
-					jabberClient.connect();
+											//Ask to the server for a new user registration
+											component.connect();
 
-				},
-				unauthorized: function(component) {
-				
-					//Let's hide the loading Mask
-					loadingMask.hide();
-					
-					//Let's show an error message
-					Ext.Msg.alert('Login Error', 'The parameters you enter to access to Facebook are not correct! Please check your credentials and try again.');
-					
-				},
-				
-				unavailable: function(message){
-					loadingMask.hide();
-					
-					//Let's show an error message
-					Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
-				},
-				
-				scope: this
-			}
-		});
-		
-		//Let's finally connect to facebook chat
-		facebookClient.connect();
-		
-	},
+										}
+
+									});
+
+
+								},
+
+								unavailable: function(message){
+									loadingMask.hide();
+
+									//Let's show an error message
+									Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
+								},
+								scope: this
+							}
+						});
+
+						//Let's finally connect to ejabberd server
+						jabberClient.connect();
+
+					},
+					unauthorized: function(component) {
+
+						//Let's hide the loading Mask
+						loadingMask.hide();
+
+						//Let's show an error message
+						Ext.Msg.alert('Login Error', 'The parameters you enter to access to Facebook are not correct! Please check your credentials and try again.');
+
+					},
+
+					unavailable: function(message){
+						loadingMask.hide();
+
+						//Let's show an error message
+						Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
+					},
+
+					scope: this
+				}
+			});
+
+			//Let's finally connect to facebook chat
+			facebookClient.connect();
+
+		},
 	
 	onLoginSuccess: function(){
-	
-		//Viene scatenato l'evento di login avvento con successo
+		loadingMask.hide();
 		this.fireEvent('loginSuccess', this, true);    
 		
 	},
