@@ -1,20 +1,35 @@
 /* 
- * LivingRoomAPI
+ * TouchChat
+ * Copyright(c) 2011 SIMACS di Andea Cammarata
+ * License: SIMACS di Andrea Cammarata
  */
 /**
- * @class LivingRoomAPI.views.Login
+ * @class TouchChat.views.Login
  * @extends Ext.Panel
- * Panel that shows the login screen
+ * Vista addetta a contenere il pannello di login.
  */
 
-LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
+TouchChat.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	manualLogin: false,
 	
 	initComponent : function(){
 		
+		//Vengono aggiunti gli eventi pubblici scatenabili dal componente
 		this.addEvents(
+			
+			/**
+			 * @event loginSuccess
+		     * Viene scatenato non appena il login è avvenuto con successo.
+             * @param {TouchChat.views.Login} v Questo componente.
+             */
             'loginSuccess',
+
+			/**
+			 * @event loginFail
+		     * Viene scatenato nel caso in cui il login fallisca.
+             * @param {TouchChat.views.Login} v Questo componente.
+             */
             'loginFail'
         );
 
@@ -41,7 +56,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					itemId: 'txtNickname',
 					name : 'nickname',
 					label: 'Nickname',
-					value: ''
+					value: 'AndreaCammarata'
 				}]
 			}],
             dockedItems: [{
@@ -57,46 +72,24 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					iconCls: 'lock_open',
 					handler: this.doLogin,
 					scope: this
-				},
-				{
-					dock: 'top',
-					title: 'Settings',
-					xtype: 'toolbar',
-					items: [
-						{
-							xtype: 'button',
-							text: 'Facebook Connect',
-							handler: this.facebookConnect,
-							scope: this
-						}
-					]
-				}
-				
-				
-				
-				]
+				}]
 			}]
 		});
 		
-		LivingRoomAPI.views.Login.superclass.initComponent.call(this);
-	},
-	
-	facebookConnect: function(e){
-
- location.href="https://graph.facebook.com/oauth/authorize?client_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/&scope=email,offline_access,publish_stream,xmpp_login&display=popup&response_type=token&display=touch";
+		//Viene richiamata la funzione di inizializzazione della superclasse
+		TouchChat.views.Login.superclass.initComponent.call(this);
 	},
 	
 	getFacebookSessionKey: function(){
 	
 		//Let's take the Facebook Cookie
-		var session = getFacebookTokenFromUrl();
-		//console.log('session = '+session);
+		var session = getCookie('fbs_' + facebook.appID);
+		
 		//Let's take the Access Token
-		//var accessToken = session.split('&')[0];
-		//console.log('session split = '+session.split('|')[1]);
-		return session;
+		var accessToken = session.split('&')[0];
+		
 		//Let's finally return the SessionKey
-		//return session.split('|')[1];
+		return session.split('|')[1];
 		
 	},
 	
@@ -119,7 +112,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		
 		/* Let's create the component that will let the user to communicate in realtime with all
 		 * the firends inside the facebook chat */
-		facebookClient = new LIVINGROOM.xmpp.Client({
+		facebookClient = new SIMACS.xmpp.Client({
 			httpbase: '/JHB/',
 			timerval: 2000,
 			authtype: 'x-facebook-platform',
@@ -127,9 +120,83 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 			listeners	: {
 				connected: function(jid){
 					
-				me.onLoginSuccess();
+					/* Let's create the component that will let the user to communicate in realtime with all
+					 * the firends inside the facebook chat */
+					jabberClient = new SIMACS.xmpp.Client({
 
-				}, 
+						/*
+						httpbase		   : 'http://www.logoslogic.com//http-bind',
+						timerval		   : 2000,
+						domain			   : 'logoslogic.com',
+						resource		   : '',
+						username		   : 'isaacueca',
+						pass			   : 'cigano',
+						register		   : false,
+						*/
+
+						httpbase		   : 'http://www.logoslogic.com/http-bind',
+						timerval		   : 2000,
+						authtype		   : 'saslanon',
+						domain			   : 'public',
+						resource		   : '',
+						nickname		   : this.nickname,
+						register		   : false,
+						publicRoom  	   : true,
+						publicRoomName	   : publicRoomName,
+						conferenceSubdomain: 'conference',
+						listeners: {
+							connected: function(jid){
+
+								//Let's fire the login success event
+								me.onLoginSuccess();
+
+								//Let's hide the loading Mask
+								loadingMask.hide();
+
+							},
+							unauthorized: function(component) {
+								
+								//Let's hide the loading Mask
+								loadingMask.hide();
+
+								//Let's ask to the user if it wants to register inside the server
+								Ext.Msg.confirm('Registration', 'You are not authorized to login inside the public chat room because your user doesn\'t exists. Do you want to register?', function(answer){
+
+									//Yes I want to Register...
+									if(answer == 'yes') {
+										
+										//Let's show the loading mask
+										loadingMask.show();
+
+										//Set the component in registration mode
+										Ext.apply(component, {
+											register: true
+										});
+										
+										//Ask to the server for a new user registration
+										component.connect();
+
+									}
+
+								});
+								
+								
+							},
+							
+							unavailable: function(message){
+								loadingMask.hide();
+
+								//Let's show an error message
+								Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
+							},
+							scope: this
+						}
+					});
+
+					//Let's finally connect to ejabberd server
+					jabberClient.connect();
+
+				},
 				unauthorized: function(component) {
 				
 					//Let's hide the loading Mask
@@ -157,7 +224,8 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	},
 	
 	onLoginSuccess: function(){
-		loadingMask.hide();
+	
+		//Viene scatenato l'evento di login avvento con successo
 		this.fireEvent('loginSuccess', this, true);    
 		
 	},
