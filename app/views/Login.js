@@ -141,7 +141,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 							register		   : false,
 							*/
 
-							httpbase		   : 'http://www.logoslogic.com/http-bind',
+							httpbase		   : 'http://conference.logoslogic.com/http-bind',
 							timerval		   : 2000,
 							authtype		   : 'saslanon',
 							domain			   : 'public',
