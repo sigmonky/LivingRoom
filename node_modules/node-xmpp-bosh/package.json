@@ -1,0 +1,42 @@
+{ "name": "node-xmpp-bosh"
+,"version": "0.3.2"
+,"main": "./src/main"
+,"bin": { "bosh-server": "./run-server.js" }
+,"description": "An XMPP BOSH server written for node.js in javascript"
+,"author": "Dhruv Matani"
+,"dependencies": {"node-expat": ">=1.2.0"
+		 ,"ltx": ">= 0.0.4"
+		 ,"node-uuid": ">= 0.0.0"
+		 ,"tav": ">= 0.1.0"
+		 ,"jsdom": ">= 0.2.0"
+		 ,"underscore": ">= 1.1.5"
+		 ,"eventpipe": "= 0.0.3"
+		 ,"dns-srv": ">= 0.0.6"
+		 }
+,"repositories": [{"type": "svn"
+		  ,"path": "http://node-xmpp-bosh.googlecode.com/svn/trunk/"
+		  }]
+,"homepage": "http://code.google.com/p/node-xmpp-bosh/"
+,"bugs": "http://code.google.com/p/node-xmpp-bosh/issues/list"
+,"maintainers": [{"name": "Dhruv Matani"
+		 ,"email": "dhruvbird@gmail.com"
+		 ,"web": "http://dhruvbird.com/"
+		 }]
+,"contributors": [{"name":"Valérian Saliou"
+		  ,"email":"vanaryon@gmail.com"
+		  ,"url":"http://vanaryon.eu/"
+		  }
+		  ,{"name":"Emmanuel Gil Peyrot"
+		  ,"email":"linkmauve@linkmauve.fr"
+		  ,"url":"http://linkmauve.fr/"
+		  }
+		  ,{"name":"Satyam Shekhar"
+		  ,"email":"satyamshekhar@gmail.com"
+		  ,"url":"http://satyamshekhar.com/"
+		  }
+]
+,"licenses": [{"type": "MIT"}]
+,"engines": {
+	    "node": ">=0.4.1 <=0.4.7"
+	    }
+}

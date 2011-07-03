@@ -1,0 +1,39 @@
++--------------------------------------------------+
+| Embedding node-xmpp-bosh in your own application |
++--------------------------------------------------+
+
+var nxb    = require('node-xmpp-bosh');
+var server = nxb.start({
+  logging: "WARN", 
+  port: 5280, 
+  path: /^\/http-bind(\/+)?$/
+});
+
+server.on(EVENT, HANDLER);
+
+The 'server' variable is an object of type EventPipe. The 
+EventPipe API is similar to node.js' EventEmitter API except
+that it allows you to pipe (and hence mutate events or stop 
+event propagation altogether) events from one listener to 
+another.
+
+
+EVENT and HANDLER are defined as follows:
+
+Raised by the BOSH server
+-------------------------
+
+01. 'stream-add'            => function(stream_state)
+02. 'stream-restart'        => function(stream_state)
+03. 'stream-terminate'      => function(stream_state)
+04. 'response-acknowledged' => function(wrapped_response, state)
+05. 'error'                 => function(exception)
+06. 'no-client'             => function(response_object)
+07. 'nodes'                 => function([node], stream_state)
+
+Listened to by the BOSH server
+------------------------------
+
+08. 'terminate'             => function(stream_state, had_error)
+09. 'stream-added'          => function(stream_state)
+10. 'response'              => function(response, stream_state)
