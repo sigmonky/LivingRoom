@@ -2847,6 +2847,8 @@ JSJaCConnection.prototype.connect = function(oArg) {
     this._wait = oArg.wait;
 
   this.jid = this.username + '@' + this.domain;
+console.log('this.jid = '+this.jid);
+
   this.fulljid = this.jid + '/' + this.resource;
 
   this._rid  = Math.round( 100000.5 + ( ( (900000.49999) - (100000.5) ) * Math.random() ) );

@@ -469,7 +469,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		//Let's save tht full Room JID
 		this.roomJid = this.publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
-		
+		console.log('roomJid = ' +this.roomJid);
 		//Let's create the presence packet
 		var oPresence = new JSJaCPresence();
 		
