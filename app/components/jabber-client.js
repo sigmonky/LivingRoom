@@ -70,7 +70,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		this.initConnection(this.jabberConnection);
 
 		oArgs = new Object();
-		oArgs.domain = this.domain;;
+		oArgs.domain = this.domain;
 		oArgs.username = this.username;
 		oArgs.resource = this.resource;
 		oArgs.pass = this.pass;
@@ -80,6 +80,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		oArgs.facebookApp = this.facebookApp;
 
 		this.jabberConnection.connect(oArgs);
+		
+		console.log('this.domain = ' +this.domain);
+		console.log('this.register = ' +this.register);
 		
 	},
 	
