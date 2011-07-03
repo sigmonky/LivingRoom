@@ -129,7 +129,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 
 						/* Let's create the component that will let the user to communicate in realtime with all
 						 * the firends inside the facebook chat */
-						jabberClient = new SIMACS.xmpp.Client({
+						jabberClient = new LIVINGROOM.xmpp.Client({
 
 							/*
 							httpbase		   : 'http://www.logoslogic.com//http-bind',
