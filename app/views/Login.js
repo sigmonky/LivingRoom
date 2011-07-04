@@ -92,7 +92,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	},
 	
 	getFacebookProfile: function(){
-		console.log(getFacebookProfile);
 		var token = getFacebookTokenFromUrl();
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var data1 = "";
