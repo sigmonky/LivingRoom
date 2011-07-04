@@ -47,7 +47,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					'<table style="float: {align};">',
 						'<tr>',
 							'<td class="message">',
-							'<img class="odd" src="https://graph.facebook.com/{facebook_photo}/picture" width="32" height="32"/>',
+							'<img class="odd" src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
 								'<div class="message" style="background-color: {color};">',
 									'{time}<br/>',
 									'{message}',
@@ -198,7 +198,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		var obj = facebookStore.getAt(0);
 		var facebook_id = obj.get('id');
 		console.log('facebok id ' +facebook_id);
-		return obj.get('id'); 
+		return facebook_id; 
 	},
 	
 	getProfilePhoto: function(user){
