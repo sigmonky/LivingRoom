@@ -108,7 +108,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					var user = Ext.ModelMgr.create({id: data.id, name: data.name, first_name: data.first_name, middle_name: data.middle_name, last_name: data.last_name, link:data.link, gender: data.gender, email:data.email, timezone: data.timezone, locale: data.locale, verified: data.verified, updated_time: data.updated_time}, 'FacebookUser');
 					facebookStore.add(user);
 			    	facebookStore.sync();
-					facebookStore.load();
 			    	console.log("Loaded " + facebookStore.getCount() + " records");
 					var obj = facebookStore.getAt(0);
 
