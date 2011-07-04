@@ -164,7 +164,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		var store = Ext.StoreMgr.get('OnlineUsers');
 		var user = store.getById(from);
 		return user.get('photoBase64');
-	}
+	},
 	
 	/*
 	scrollDown: function(height){
