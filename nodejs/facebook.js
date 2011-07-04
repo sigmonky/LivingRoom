@@ -282,8 +282,8 @@ Strophe.Connection.prototype.facebookConnect = function (jid, callback, wait, ho
 
     this._requests.push(
         new Strophe.Request(body.tree(),
-                            this._onRequestStateChange.bind(
-                                this, this._connect_fb.bind(this)),
+                            this._onRequestStateChange.bind(this)
+                                .prependArg(this._connect_fb.bind(this)),
                             body.tree().getAttribute("rid")));
     this._throttledRequestHandler();
 };
