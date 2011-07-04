@@ -534,13 +534,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			}, 'RosterItem');
 			
 			//Adding the user to the store
-			//store.add(item);
+			store.add(item);
 			
 		});
 		
 		/* Send the presence packet that will allow me to retrive all
 		 * the users that are online */
-		me.sendPresence('available');
+	//	me.sendPresence('available');
 		
 		//Let's call the controller method able to show the user Roster
 		Ext.dispatch({
