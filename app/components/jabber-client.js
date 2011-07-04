@@ -252,7 +252,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			}else if(type == 'unavailable'){
 			
 				//Viene eliminato l'utente che ha effettuato la disconnessione
-				onlineUsers.remove(user);
+			//	onlineUsers.remove(user);
 			
 			}
 			
