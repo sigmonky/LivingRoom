@@ -71,8 +71,8 @@
 		connection = new Strophe.Connection('http://www.logoslogic.com/JHB/');
 
 		// Uncomment the following lines to spy on the wire traffic.
-		connection.rawInput = function (data) { log('RECV: ' + data); };
-		connection.rawOutput = function (data) { log('SEND: ' + data); };
+	//	connection.rawInput = function (data) { log('RECV: ' + data); };
+	//	connection.rawOutput = function (data) { log('SEND: ' + data); };
 
 		// Uncomment the following line to see all the debug output.
 		Strophe.log = function (level, msg) { log('LOG: ' + msg); };
