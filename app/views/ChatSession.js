@@ -29,6 +29,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					'<table style="float: {align};">',
 						'<tr>',
 							'<td class="message">',
+							'<img src="data:image/jpg;base64,{photoBase64}" width="32" height="32" />',
 								'<div class="message" style="background-color: {color};">',
 									'{time}<br/>',
 									'{message}',
