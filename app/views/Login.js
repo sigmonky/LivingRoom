@@ -93,12 +93,13 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	getFacebookProfile: function(){
 		console.log(getFacebookProfile);
+		var token = getFacebookTokenFromUrl();
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var data1 = "";
 		Ext.util.JSONP.request({
 	    		url: 'https://graph.facebook.com/me',
 				params: {
-					access_token: getFacebookSessionFromUrl();
+					access_token: token
 				},
 			    callbackKey: 'callback',
 			    // Callback
