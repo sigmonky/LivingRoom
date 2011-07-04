@@ -225,6 +225,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var type = presence.getType();
 			var show = presence.getShow();
 			var status = presence.getStatus();
+			console.log('user from = '+from);
 		
 			//Let's take all teh user informations from the Roster
 			var user = roster.getById(from);
@@ -247,7 +248,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				me.jabberConnection.send(bPresence);
 		
 				//Let's call the function that will take the user vCard
-				me.getVCard(from);
+			//	me.getVCard(from);
 		
 			}else if(type == 'unavailable'){
 			
@@ -540,7 +541,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		/* Send the presence packet that will allow me to retrive all
 		 * the users that are online */
-	//	me.sendPresence('available');
+		me.sendPresence('available');
 		
 		//Let's call the controller method able to show the user Roster
 		Ext.dispatch({
