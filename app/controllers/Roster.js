@@ -100,7 +100,6 @@ Ext.regController('Roster', {
 		//Saving the active chat session
 		user.set('chatActive', true);
 		
-		
 	},
 	
 	addMessageToChatSession: function(options){

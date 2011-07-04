@@ -149,7 +149,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
             message: message
         });
 
-		console.log('photo = '+ this.getProfilePhoto(from));
+		//console.log('photo = '+ this.getProfilePhoto(from));
 
 		var pnlMsg = new Ext.Panel({
 			html: html
@@ -162,7 +162,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	
 	getProfilePhoto: function(user){
 		var photo = user.get('photoBase64');
-		console.log('photo '+ photo);
+		//console.log('photo '+ photo);
 		return photo;
 	},
 	

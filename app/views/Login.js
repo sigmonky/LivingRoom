@@ -13,6 +13,11 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	initComponent : function(){
 		
+		var token = getFacebookTokenFromUrl();
+		if (token != ""){
+			this.getFacebookProfile();
+		}
+		
 		this.addEvents(
             'loginSuccess',
             'loginFail'
@@ -86,10 +91,36 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
  location.href="https://graph.facebook.com/oauth/authorize?client_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/&scope=email,offline_access,publish_stream,xmpp_login&display=popup&response_type=token&display=touch";
 	},
 	
+	getFacebookProfile: function(){
+		console.log(getFacebookProfile);
+		var facebookStore = Ext.StoreMgr.get('FacebookUser');
+		var data1 = "";
+		Ext.util.JSONP.request({
+	    		url: 'https://graph.facebook.com/me',
+				params: {
+					access_token: getFacebookSessionFromUrl();
+				},
+			    callbackKey: 'callback',
+			    // Callback
+			    callback: function (data) {
+					data1 = data.data;
+					console.log('data is' +data);
+					var user = Ext.ModelMgr.create({id: data.id, name: data.name, first_name: data.first_name, middle_name: data.middle_name, last_name: data.last_name, link:data.link, gender: data.gender, email:data.email, timezone: data.timezone, locale: data.locale, verified: data.verified, updated_time: data.updated_time}, 'FacebookUser');
+					facebookStore.add(user);
+			    	facebookStore.sync();
+			    	console.log("Loaded " + facebookStore.getCount() + " records");
+					var obj = facebookStore.getAt(0);
+					console.log('obj is ' + obj.name);
+					//	var user = categoryStore.getAt(0);
+					//	console.log ('user is ' + user.id);
+			  	}	
+		});
+	},
+	
 	getFacebookSessionKey: function(){
 	
 		//Let's take the Facebook Cookie
-		var session = getFacebookTokenFromUrl();
+		var session = getFacebookSessionFromUrl();
 		//console.log('session = '+session);
 		//Let's take the Access Token
 		//var accessToken = session.split('&')[0];

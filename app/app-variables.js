@@ -94,7 +94,7 @@ function getCookie(c_name)
 	}
 }
 
-function getFacebookTokenFromUrl(){
+function getFacebookSessionFromUrl(){
 	queryObj = {};
     var qs = window.location.href;
 	var fragments = qs.split('%7C');
@@ -105,6 +105,23 @@ function getFacebookTokenFromUrl(){
 		return "";
 	}
 }
+
+
+function getFacebookTokenFromUrl(){
+	queryObj = {};
+    var qs = window.location.href;
+	var fragments = qs.split('#');
+	//console.log('fragments  '+fragments);
+	if (fragments.length >= 2) {
+		var final = fragments[1].indexOf('&expires_in=')
+        qs = fragments[1].substring(13, final);
+		return qs;
+    }else{
+		return "";
+	}
+}
+
+
 
 
 function delCookie(name) {
