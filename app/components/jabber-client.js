@@ -228,7 +228,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 			//Let's take all teh user informations from the Roster
 			var user = roster.getById(from);
-		
+			console.log('user = '+user);
 			if(type == null) {
 		
 				//Adding the user to the Online Users store
