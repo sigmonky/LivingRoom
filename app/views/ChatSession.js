@@ -59,6 +59,24 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 			'</tpl>'
 		);
 		
+		this.tplEmptyFacebookMessage = new Ext.XTemplate(
+			'<tpl for=".">',
+				'<div class="x-chat-message">',
+					'<table style="float: {align};">',
+						'<tr>',
+							'<td class="message">',
+							'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
+								'<div class="message" style="background-color: {color};">',
+									'{time}<br/>',
+									'{message}',
+								'</div>',
+							'</td>',
+						'</tr>',
+					'</table>',		
+				'</div>',
+			'</tpl>'
+		);
+		
 		//Definition of the message coming from the public chat room
 		this.tplPublicMessage = new Ext.XTemplate(
 			'<tpl for=".">',
@@ -151,14 +169,24 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
             	message: message
         	});
 		}else{
-
-			html = this.tplFacebookMessage.apply({
-				photo: this.getProfilePhoto(from),
-				time: this.getTime(),
-				align: (mine ? 'right': 'left'),
-				color: (mine ? '#92d841': '#d3d3d3'),
-            	message: message
-        	});
+			var profilePhoto = this.getProfilePhoto(from);
+			if (profilePhoto = ""){
+				html = this.tplEmptyFacebookMessage.apply({
+					photo: '',
+					time: this.getTime(),
+					align: (mine ? 'right': 'left'),
+					color: (mine ? '#92d841': '#d3d3d3'),
+	            	message: message
+	        	});
+			}else{
+				html = this.tplFacebookMessage.apply({
+					photo: profilePhoto,
+					time: this.getTime(),
+					align: (mine ? 'right': 'left'),
+					color: (mine ? '#92d841': '#d3d3d3'),
+            		message: message
+        		});
+			}
 		}
 
 		var pnlMsg = new Ext.Panel({
