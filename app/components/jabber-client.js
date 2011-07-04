@@ -194,6 +194,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	 	var from = message.getFrom();
 		var message = message.getBody();
 		
+		console.log('handleMessageIn = '+ from);
+		
 		//Check if the message has some content inside
 		if(message != ''){
 
@@ -284,7 +286,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				
 				//Let's take the bind node
 				var bind = doc.getElementsByTagName('bind')[0];
-				console.log('handle packet in = result = '+bind);
+				console.log('result = message body = '+bind)
 				
 				if(bind != undefined){
 				
@@ -302,7 +304,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				doc = createXMLDoc(packet.xml());
 				console.log('handle packet in = '+doc);
 				//Let's take the message body
-				
+				body = doc.getElementsByTagName('body')[0].textContent;
+				console.log('groupchat = message body = '+body)
 				/* Let's call the controller method able to add the message
 				 * to the public chat room */
 				Ext.dispatch({
