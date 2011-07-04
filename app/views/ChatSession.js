@@ -29,7 +29,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					'<table style="float: {align};">',
 						'<tr>',
 							'<td class="message">',
-							'<img src="data:image/jpg;base64,{photoBase64}" width="32" height="32" />',
+							'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
 								'<div class="message" style="background-color: {color};">',
 									'{time}<br/>',
 									'{message}',
@@ -45,7 +45,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		this.tplPublicMessage = new Ext.XTemplate(
 			'<tpl for=".">',
 				'<div class="x-public-chat-message">',
-					'<img src="data:image/jpg;base64,{photoBase64}" width="32" height="32" />',
+					'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
 					'<p class="time">{time}</p>',
 					'<p class="nickname">{nickname}</p>',
 					'<p class="message">{message}</p>',
@@ -121,7 +121,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	addChatMessage: function(message, from, mine){
 
 		var html = this.tplFacebookMessage.apply({
-			photoBase64: this.getProfilePhoto(from),
+			photo: this.getProfilePhoto(from),
 			time: this.getTime(),
 			align: (mine ? 'right': 'left'),
 			color: (mine ? '#92d841': '#d3d3d3'),
@@ -143,7 +143,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		var nickname = from.split('/')[1];
 		
 		var html = this.tplPublicMessage.apply({
-			photoBase64: this.getProfilePhoto(from),
+			photo: this.getProfilePhoto(from),
 			time: this.getTime(),
 			nickname: nickname,
             message: message
@@ -160,12 +160,10 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 
 	},
 	
-	getProfilePhoto: function(jid){
-		var from = jid;
-		console.log('getProfilePhoto ' + jid);
-		var store = Ext.StoreMgr.get('OnlineUsers');
-		var user = store.getById(from);
-		return user.get('photoBase64');
+	getProfilePhoto: function(user){
+		var photo = user.get('photoBase64');
+		console.log('photo '+ photo);
+		return photo;
 	},
 	
 	/*
