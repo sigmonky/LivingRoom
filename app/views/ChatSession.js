@@ -176,7 +176,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		var nickname = from.split('/')[1];
 		
 		var html = this.tplPublicMessage.apply({
-			photo: this.getProfilePhoto(from),
+			photo: '',
 			time: this.getTime(),
 			nickname: nickname,
             message: message
