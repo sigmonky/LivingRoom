@@ -117,9 +117,10 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		
 	},
 	
-	addChatMessage: function(message, mine){
+	addChatMessage: function(message, from, mine){
 
 		var html = this.tplFacebookMessage.apply({
+			photoBase64: this.getProfilePhoto(from),
 			time: this.getTime(),
 			align: (mine ? 'right': 'left'),
 			color: (mine ? '#92d841': '#d3d3d3'),

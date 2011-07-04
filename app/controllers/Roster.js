@@ -123,7 +123,7 @@ Ext.regController('Roster', {
 		});
 
 		//Let's finally add the chat message
-		pnlChatSession.addChatMessage(options.message, false);
+		pnlChatSession.addChatMessage(options.message, user, false);
 		
 	},
 	
