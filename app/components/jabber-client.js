@@ -329,7 +329,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleIq: function(iq, me){
-		console.log('handleIQ = from '+iq.getFrom());
 		//Let's check if this component has been created to allow user to chat inside a public Room
 		if(!me.publicRoom){
 		
@@ -427,7 +426,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	    iq.setIQ(this.conferenceSubdomain + '.' + this.domain,'get','disco_info');
 	    iq.setQuery("http://jabber.org/protocol/disco#info");
 		this.jabberConnection.send(iq, this.getDiscoInfoComplete, this);
-		
 	},
 	
 	getDiscoInfoComplete: function(iq, me){

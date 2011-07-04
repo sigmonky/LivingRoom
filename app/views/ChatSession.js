@@ -44,6 +44,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		this.tplPublicMessage = new Ext.XTemplate(
 			'<tpl for=".">',
 				'<div class="x-public-chat-message">',
+					'<img src="data:image/jpg;base64,{photoBase64}" width="32" height="32" />',
 					'<p class="time">{time}</p>',
 					'<p class="nickname">{nickname}</p>',
 					'<p class="message">{message}</p>',
@@ -140,10 +141,13 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		var nickname = from.split('/')[1];
 		
 		var html = this.tplPublicMessage.apply({
+			photoBase64: this.getProfilePhoto(from)
 			time: this.getTime(),
 			nickname: nickname,
             message: message
         });
+
+		console.log('photo = '+ this.getProfilePhoto(from));
 
 		var pnlMsg = new Ext.Panel({
 			html: html
@@ -153,6 +157,14 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		this.doLayout();
 
 	},
+	
+	getProfilePhoto: function(jid){
+		var from = jid;
+		console.log('getProfilePhoto ' + jid);
+		var store = Ext.StoreMgr.get('OnlineUsers');
+		var user = store.getById(from);
+		return user.get('photoBase64');
+	}
 	
 	/*
 	scrollDown: function(height){
