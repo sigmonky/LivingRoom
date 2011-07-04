@@ -41,6 +41,24 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 			'</tpl>'
 		);
 		
+		this.tplMineFacebookMessage = new Ext.XTemplate(
+			'<tpl for=".">',
+				'<div class="x-chat-message">',
+					'<table style="float: {align};">',
+						'<tr>',
+							'<td class="message">',
+							'<img class="odd" src="https://graph.facebook.com/{facebook_photo}/picture" width="32" height="32"/>',
+								'<div class="message" style="background-color: {color};">',
+									'{time}<br/>',
+									'{message}',
+								'</div>',
+							'</td>',
+						'</tr>',
+					'</table>',		
+				'</div>',
+			'</tpl>'
+		);
+		
 		//Definition of the message coming from the public chat room
 		this.tplPublicMessage = new Ext.XTemplate(
 			'<tpl for=".">',
@@ -108,6 +126,9 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		 * because the server will send it back to us too */
 		if(!this.isChatRoom) {
 			
+			var facebookStore = Ext.StoreMgr.get('FacebookUser');
+			var obj = facebookStore.getAt(0);
+			
 			//Add the message panel component
 			this.addChatMessage(message.getValue(), true);
 		
@@ -119,14 +140,26 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatMessage: function(message, from, mine){
+		var html = '';
+		
+		if (from == null){
+			html = this.tplMineFacebookMessage.apply({
+				photo: this.getMyFacebooKProfilePhoto(),
+				time: this.getTime(),
+				align: (mine ? 'right': 'left'),
+				color: (mine ? '#92d841': '#d3d3d3'),
+            	message: message
+        	});
+		}else{
 
-		var html = this.tplFacebookMessage.apply({
-			photo: this.getProfilePhoto(from),
-			time: this.getTime(),
-			align: (mine ? 'right': 'left'),
-			color: (mine ? '#92d841': '#d3d3d3'),
-            message: message
-        });
+			html = this.tplFacebookMessage.apply({
+				photo: this.getProfilePhoto(from),
+				time: this.getTime(),
+				align: (mine ? 'right': 'left'),
+				color: (mine ? '#92d841': '#d3d3d3'),
+            	message: message
+        	});
+		}
 
 		var pnlMsg = new Ext.Panel({
 			html: html
@@ -159,6 +192,12 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		this.doLayout();
 
 	},
+	
+	getMyFacebooKProfilePhoto: function(){
+		var facebookStore = Ext.StoreMgr.get('FacebookUser');
+		var obj = facebookStore.getAt(0);
+		return obj.get('id'); 
+	}
 	
 	getProfilePhoto: function(user){
 		var photo = user.get('photoBase64');
