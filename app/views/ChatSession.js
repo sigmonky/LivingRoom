@@ -130,7 +130,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 			var obj = facebookStore.getAt(0);
 			
 			//Add the message panel component
-			this.addChatMessage(message.getValue(), true);
+			this.addChatMessage(message.getValue(), null, true);
 		
 		}
 		
@@ -140,7 +140,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatMessage: function(message, from, mine){
-		var html = '';
+		var html;
 		
 		if (from == null){
 			html = this.tplMineFacebookMessage.apply({
