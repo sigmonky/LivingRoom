@@ -299,7 +299,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 				//Let's create the xml document
 				doc = createXMLDoc(packet.xml());
-		
+				console.log('handle packet in = '+doc);
 				//Let's take the message body
 				body = doc.getElementsByTagName('body')[0].textContent;
 				
