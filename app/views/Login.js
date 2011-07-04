@@ -111,7 +111,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 			    	console.log("Loaded " + facebookStore.getCount() + " records");
 					var obj = facebookStore.getAt(0);
 
-					console.log('obj is ' + obj.name);
+					console.log('obj is ' + obj.get('name'));
 					//	var user = categoryStore.getAt(0);
 					//	console.log ('user is ' + user.id);
 			  	}	
