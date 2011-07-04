@@ -225,11 +225,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var type = presence.getType();
 			var show = presence.getShow();
 			var status = presence.getStatus();
-			console.log('user from = '+from);
 		
 			//Let's take all teh user informations from the Roster
 			var user = roster.getById(from);
-			console.log('user = '+user);
+		
 			if(type == null) {
 		
 				//Adding the user to the Online Users store
@@ -247,12 +246,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				bPresence.setType('subscribe');
 				me.jabberConnection.send(bPresence);
 		
-				//Let's call the function that will take the user vCard
-			//	me.getVCard(from);
+				me.getVCard(from);
 		
 			}else if(type == 'unavailable'){
 			
-				//Viene eliminato l'utente che ha effettuato la disconnessione
 				onlineUsers.remove(user);
 			
 			}
@@ -323,19 +320,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 	setStatus: function(status){
 	
-		//Viene creato l'oggetto presenza addetto a contenere il nuovo stato
 		var presence = new JSJaCPresence();
 
-		//Viene impostato il nuovo stato specificato
 		presence.setStatus(status);
 
-		//Viene inviato al server jabber notifica del nuovo stato
 		this.jabberConnection.send(presence);
 
 	},
 	
 	handleIq: function(iq, me){
-
+		console.log('handleIQ = from '+iq.getFrom());
 		//Let's check if this component has been created to allow user to chat inside a public Room
 		if(!me.publicRoom){
 		
