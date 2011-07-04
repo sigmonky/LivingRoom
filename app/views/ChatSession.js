@@ -197,7 +197,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		return obj.get('id'); 
-	}
+	},
 	
 	getProfilePhoto: function(user){
 		var photo = user.get('photoBase64');
