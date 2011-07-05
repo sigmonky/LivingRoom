@@ -188,7 +188,6 @@ $FirstName='Philip';
 $LastName='J.'; 
 $Patronymic='Ivanovich :)';
 
-$jab = new CommandJabber($display_debug_info);
 
 
 //$jab->set_handler("error",$addmsg,"handleError");
