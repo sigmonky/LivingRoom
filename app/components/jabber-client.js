@@ -312,10 +312,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				console.log('result = message body = '+bind)
 				
 				if(bind != undefined){
-				
 					//Let's take the jid value
 					me.myJID = doc.getElementsByTagName('jid')[0].textContent;
-					
 				}
 				
 				break;
@@ -329,6 +327,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				//Let's take the message body
 				body = doc.getElementsByTagName('body')[0].textContent;
 				console.log('groupchat = message body = '+body)
+				var nickname = from.split('/')[1];
+				 var jid = roster.getFullJIDByNick(nickname);
+				console.log('jid is '+ jid);
 				/* Let's call the controller method able to add the message
 				 * to the public chat room */
 				Ext.dispatch({
