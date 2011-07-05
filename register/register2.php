@@ -190,11 +190,7 @@ $Patronymic='Ivanovich :)';
 
 $jab = new CommandJabber($display_debug_info);
 
-$addmsg = new AddMessenger($jab,$UserLogin,$UserPass);
 
-// set handlers for the events we wish to be notified about
-$jab->set_handler("connected",$addmsg,"handleConnected");
-$jab->set_handler("authenticated",$addmsg,"handleAuthenticated");
 //$jab->set_handler("error",$addmsg,"handleError");
 
 
