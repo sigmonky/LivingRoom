@@ -5260,6 +5260,15 @@ JSJaCVcard.prototype.setVcard = function() {
 	return query;
 }
 
+
+JSJaCVcard.prototype.setType = function(type) {
+  if (!type || type == '')
+    this.getNode().removeAttribute('type');
+  else
+    this.getNode().setAttribute('type',type);
+  return this;
+};
+
 JSJaCVcard.prototype.setName = function(name) {
 	vcard = this.getChild('vCard');
 	nameelement = this.getDoc().createElement('FN');
