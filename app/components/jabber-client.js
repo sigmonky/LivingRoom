@@ -189,8 +189,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	setVCard: function(){
 		
-		console.log('setVcard')
-		
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		var facebook_id = obj.get('id');
@@ -204,13 +202,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.setType('set');
 		p.setTo(jid);
 		p.appendNode(
-			p.buildNode(vCardEl)
-		);
-		p.appendNode(
 			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
-		
-		console.log('setVcard =' +p);
 
 		//Let's send the packet able to retrive the user vCard
 	  	this.jabberConnection.send(p);
@@ -516,7 +509,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
-		me.setVcard();
 
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
@@ -528,6 +520,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			me.getRoster();
 			
 		}else{
+			
 			//Let's call the function able to get the Disco Info
 			me.getDiscoInfo();
 		}
