@@ -82,7 +82,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		this.jabberConnection.connect(oArgs);
 		
 		console.log('this.domain = ' +this.domain);
-		console.log('this.register = ' +this.register);
+		//console.log('this.register = ' +this.register);
 		
 	},
 	
@@ -187,7 +187,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 	},
 	
-	setVCard: function(jid){
+	setVCard: function(){
+		
+		console.log('setVcard')
 		
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
@@ -202,8 +204,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.setType('set');
 		p.setTo(jid);
 		p.appendNode(
+			p.buildNode(vCardEl)
+		);
+		p.appendNode(
 			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
+		
+		console.log('setVcard =' +p);
 
 		//Let's send the packet able to retrive the user vCard
 	  	this.jabberConnection.send(p);
@@ -446,13 +453,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 			//Let's take the current user
 			var user = store.getById(from);
-			console.log('user - ' + from);
 		
 			//Let's create the xml document
 			var doc = createXMLDoc(iq.xml());
 
 			//Let's take the vCard element
 			var vCard = doc.getElementsByTagName('vCard')[0];
+
+			console.log('user nickname - ' + vCard.getElementsByTagName('nickname')[0]);
 
 			//Let's take the PHOTO element
 			var photo = vCard.getElementsByTagName('PHOTO')[0];
@@ -508,6 +516,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
+		me.setVcard();
 
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
@@ -519,7 +528,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			me.getRoster();
 			
 		}else{
-			
 			//Let's call the function able to get the Disco Info
 			me.getDiscoInfo();
 		}

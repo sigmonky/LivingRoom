@@ -36,7 +36,7 @@ Ext.regApplication('LivingRoomAPI', {
 				/* Definition of the event that will be fired when the user will succesfull connect
 				 * to BonjourBonjour application */
 				loginSuccess: function(v, s){
-					
+					console.log('loginSuccess');
 					//Destroying the login component
 					v.destroy();
 				

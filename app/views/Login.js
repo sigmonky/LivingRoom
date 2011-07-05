@@ -288,6 +288,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	onLoginSuccess: function(){
 		loadingMask.hide();
+		
 		this.fireEvent('loginSuccess', this, true);    
 		
 	},
