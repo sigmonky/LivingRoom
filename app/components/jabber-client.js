@@ -537,7 +537,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var iq = new JSJaCIQ();
 	    iq.setIQ(this.conferenceSubdomain + '.' + this.domain,'get','disco_info');
 	    iq.setQuery("http://jabber.org/protocol/disco#info");
-	//	this.jabberConnection.send(iq, this.getDiscoInfoComplete, this);
+		this.jabberConnection.send(iq, this.getDiscoInfoComplete, this);
 	},
 	
 	getDiscoInfoComplete: function(iq, me){
