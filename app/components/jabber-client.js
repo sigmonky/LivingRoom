@@ -206,11 +206,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
 		
+		vcard = this.getChild('vCard');
+		vcard.appendChild(vCardEl);
 
-		p.addChild(vCardEl);
+		//p.addChild(vCardEl);
 		//console.log('setVCard - ' +p);
 		//Let's send the packet able to retrive the user vCard
-	  	this.jabberConnection.send(p);
+	  	this.jabberConnection.send(vcard);
 
 	},
 	

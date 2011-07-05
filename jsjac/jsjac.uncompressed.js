@@ -5108,3 +5108,213 @@ JSJaCFBApplication.prototype.getSessionKey = function(){ return this._sessionKey
  * SIMACS di Andrea Cammarata 28/05/2011 
  * END
  */
+/**
+ * Author Stefan @ Jiva Technology 2009/01/05
+ * A jabber/XMPP pubsub Publish packet
+ * @class Models the XMPP notion of an 'pubsub leaf' packet
+ * @extends JSJaCPacket
+ */
+function JSJaCLeaf() {
+  /**
+   * @ignore
+   */
+  this.base = JSJaCIQ;
+  this.base('leaf');
+}
+JSJaCLeaf.prototype = new JSJaCPacket;
+
+JSJaCLeaf.prototype.setPubsub = function(xmlns, node) {
+	  var query;
+	  try {
+	    query = this.getDoc().createElementNS(xmlns,'pubsub');
+	  } catch (e) {
+	    // fallback
+	    query = this.getDoc().createElement('pubsub');
+	  }
+	  if (query && query.getAttribute('xmlns') != xmlns) {
+	    query.setAttribute('xmlns',xmlns);
+	  			} // fix opera 8.5x
+
+	  this.getNode().appendChild(query);
+	  return query;
+}
+
+JSJaCLeaf.prototype.setPublish = function(node) {
+	pubsub = this.getChild('pubsub');
+	publish = this.getDoc().createElement('publish');
+	publish.setAttribute('node',node);
+	pubsub.appendChild(publish);
+	return pubsub;
+}
+
+JSJaCLeaf.prototype.createItem = function() {
+	publish = this.getChild('publish')
+	item = this.getDoc().createElement('item');
+	publish.appendChild(item);
+	entry = this.getDoc().createElementNS('http://www.w3.org/2005/Atom','entry')
+	item.appendChild(entry);
+	return publish;
+}
+
+JSJaCLeaf.prototype.setTitle = function(title) {
+	entry = this.getChild('entry');
+	titleelement = this.getDoc().createElement('title');
+	titletext = this.getDoc().createTextNode(title);
+	titleelement.appendChild(titletext);
+	entry.appendChild(titleelement);
+	return this;
+}
+
+JSJaCLeaf.prototype.setSummary = function(summary) {
+	entry = this.getChild('entry');
+	summaryel = this.getDoc().createElement('summary');
+	summarytext = this.getDoc().createTextNode(summary);
+	summaryel.appendChild(summarytext);
+	entry.appendChild(summaryel);
+	return this;
+}
+
+JSJaCLeaf.prototype.setPublished = function(date) {
+	entry = this.getChild('entry');
+	dateNode = this.getDoc().createElement('published');
+	date = this.getDoc().createTextNode(date);
+	dateNode.appendChild(date);
+	entry.appendChild(dateNode);
+	return this;
+}
+
+JSJaCLeaf.prototype.setItems = function(node, jid) {
+	pubsub = this.getChild('pubsub');
+	publish = this.getDoc().createElement('items');
+	publish.setAttribute('node',node);
+	publish.setAttribute('jid',jid);
+	pubsub.appendChild(publish);
+	return pubsub;
+
+}
+
+
+/**
+ * Author Stefan @ Jiva Technology 2009/01/05
+ * Creates a 'pubsub' child node with given XMLNS
+ * @param {String} xmlns The namespace for the 'query' node
+ * @return The query node
+ */
+// JSJaCIQ.prototype.setPublish = function(xmlns, node, payload) {
+//   var query;
+//   try {
+//     query = this.getDoc().createElementNS(xmlns,'pubsub');
+//   } catch (e) {
+//     // fallback
+//     query = this.getDoc().createElement('pubsub');
+//   }
+//   if (query && query.getAttribute('xmlns') != xmlns) {
+//     query.setAttribute('xmlns',xmlns);
+// 		} // fix opera 8.5x
+// 		
+// 	publish = this.getDoc().createElement('publish');
+// 	publish.setAttribute('node',node);
+// 	
+// 	item = this.getDoc().createElement('item');
+// 	entry = this.getDoc().createElement('entry');
+// 	item.appendChild(entry);
+// 	title = this.getDoc().createElement('title');
+// 	summary = this.getDoc().createElement('summary');
+// 	published = this.getDoc().createElement('published');
+// 
+// 	entry.appendChild(title);
+// 	entry.appendChild(summary);
+// 	entry.appendChild(published);
+// 	
+// 	query.appendChild(publish);
+// 	query.appendChild(item);
+// 		
+//   this.getNode().appendChild(query);
+//   return query;
+// };
+
+
+/**
+ * Author Stefan @ Jiva Technology 2009/01/05
+ * A jabber/XMPP pubsub Publish packet
+ * @class Models the XMPP notion of an 'pubsub leaf' packet
+ * @extends JSJaCPacket
+ */
+function JSJaCVcard() {
+  /**
+   * @ignore
+   */
+  this.base = JSJaCIQ;
+  this.base('vCard');
+}
+JSJaCVcard.prototype = new JSJaCPacket;
+
+JSJaCVcard.prototype.setVcard = function() {
+	// <vCard xmlns="vcard-temp" version="2.0" prodid="-//HandGen//NONSGML vGen v1.0//EN" >
+	var query;
+	query = this.getDoc().createElementNS(NS_VCARD,'vCard');
+	query.setAttribute('xmlns',NS_VCARD);
+	query.setAttribute('version','2.0');
+	query.setAttribute('prodid','-//HandGen//NONSGML vGen v1.0//EN');
+	this.getNode().appendChild(query);
+	return query;
+}
+
+JSJaCVcard.prototype.setName = function(name) {
+	vcard = this.getChild('vCard');
+	nameelement = this.getDoc().createElement('FN');
+	nametext = this.getDoc().createTextNode(name);
+	nameelement.appendChild(nametext);
+	vcard.appendChild(nameelement);
+	return this;
+}
+
+JSJaCVcard.prototype.setDesc = function(desc) {
+	vcard = this.getChild('vCard');
+	descelement = this.getDoc().createElement('DESC');
+	desctext = this.getDoc().createTextNode(desc);
+	descelement.appendChild(desctext);
+	vcard.appendChild(descelement);
+	return this;
+}
+
+JSJaCVcard.prototype.setEmail = function(email) {
+	/*
+		<EMAIL>
+			<USERID>email@address.com</USERID>
+		</EMAIL>
+	*/
+	vcard = this.getChild('vCard');
+	emailelement = this.getDoc().createElement('EMAIL');
+	useridelement = this.getDoc().createElement('USERID');
+	emailtext = this.getDoc().createTextNode(email);
+	useridelement.appendChild(emailtext);
+	emailelement.appendChild(useridelement);
+	vcard.appendChild(emailelement);
+	return this;
+}
+
+JSJaCVcard.prototype.setPhoto = function(photo, type) {
+	/*
+		<PHOTO>
+			<TYPE>image/jpeg</TYPE>
+			<BINVAL>[base64 binary image]</BINVAL>
+		</PHOTO>
+	*/
+	vcard = this.getChild('vCard');
+	photoelement = this.getDoc().createElement('PHOTO');
+	typeelement = this.getDoc().createElement('TYPE');
+	binvalelement = this.getDoc().createElement('BINVAL');
+	typetext = this.getDoc().createTextNode(type);
+	binvaltext = this.getDoc().createTextNode(photo);
+	typeelement.appendChild(typetext);
+	binvalelement.appendChild(binvaltext);
+	photoelement.appendChild(typeelement);
+	photoelement.appendChild(binvalelement);
+	vcard.appendChild(photoelement);
+	return this;
+}
+
+
+
+
