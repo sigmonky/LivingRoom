@@ -259,8 +259,8 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 						//Let's finally connect to ejabberd server
 						jabberClient.connect();
 
-					},
-				/*	unauthorized: function(component) {
+					/*	},
+				unauthorized: function(component) {
 
 						//Let's hide the loading Mask
 						loadingMask.hide();
