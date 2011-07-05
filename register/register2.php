@@ -77,7 +77,7 @@ $this->jab->addvcard_request($this->GivenName, $this->FamilyName, $this->MiddleN
 /******************************************************************************************************/
 
 // Including original "Jabber Client Library" - class
-require_once('class_Jabber.php');
+require_once('http://www.logoslogic.com/chat/LivingRoom/register/class_Jabber.php');
 
 /******************************************************************************************************/
 
