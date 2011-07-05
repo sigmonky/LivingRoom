@@ -193,8 +193,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var facebook_id = obj.get('id');
 			
 			
-		console.log('facebook_id = '+facebook_id);
-			
+		console.log('facebook_id = '+facebook_id);	
 		var vCardEl = document.createElement('NICKNAME');
 		var text = document.createTextNode(facebook_id);
 		vCardEl.appendChild(text);
@@ -204,9 +203,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.setType('set');
 		p.setTo(this.myJID);
 		p.appendNode(
-			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'}).appendChild(vCardEl);
+			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
-	//	p.appendNode((vCardEl);
+		p.appendNode(vCardEl);
 		//console.log('setVCard - ' +p);
 		//Let's send the packet able to retrive the user vCard
 	  	this.jabberConnection.send(p);
@@ -597,7 +596,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//console.log(oPresence.xml());
 		
 		//Let's finally send the packet
-		
 	//	this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
 		
 	},
