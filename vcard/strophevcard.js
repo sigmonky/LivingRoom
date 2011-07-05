@@ -14,6 +14,8 @@ var StropheVcard = function(window, $) {
         },
         get: function(handler, jid) {
             conn.vcard.get(handler, jid);
+			console.log('get')
+
         },
         disconnect: function() {
             conn.disconnect();
@@ -21,6 +23,7 @@ var StropheVcard = function(window, $) {
         connect: function(handler) {
             conn.connect(DOMAIN, null, function (status) {
                 if (status === Strophe.Status.CONNECTED) {
+					console.log('connected')
                     _connected = true;
                     handler();
                 }
