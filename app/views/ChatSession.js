@@ -171,7 +171,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		}else{
 			var profilePhoto = this.getProfilePhoto(from);
 			console.log('profilePhoto = '+profilePhoto);
-			if (profilePhoto = ""){
+			if (profilePhoto == ""){
 				html = this.tplEmptyFacebookMessage.apply({
 					photo: '',
 					time: this.getTime(),
