@@ -9,7 +9,6 @@ define('RUN_TIME',5); // set a maximum run time of 5 seconds
 define('CBK_FREQ',1); // fire a callback event every second
 
 // This class handles events fired by the first call of CommandJabber client class (to create a user);
-echo '2' ;
 
 class AddMessenger
 {
@@ -43,7 +42,6 @@ $this->jab->adduser_init();
 // End of AddMessenger class
 
 /******************************************************************************************************/
-echo '3' ;
 
 // Here is class to handle second call to CommandJabber clase - to fill out vcard
 
@@ -55,7 +53,7 @@ function AddVcard(&$jab,$name,$pass,$firstn,$lastn,$patro,$sex,$role)
 $this->jab = &$jab;
 $this->jab->NewUserName = $name;
 $this->jab->NewUserPass = $pass;
-$this->GivenName = $firstn; // conversion from russian charset :)
+$this->GivenName = $firstn;
 $this->FamilyName = $lastn;
 $this->MiddleName = $patro;
 }
@@ -84,7 +82,6 @@ require_once('class_Jabber.php');
 /******************************************************************************************************/
 
 // This is extension to basic Jabber class
-echo '4' ;
 
 class CommandJabber extends Jabber
 {
@@ -185,7 +182,7 @@ $this->terminated = true;
 // create an instance of the Jabber class
 $display_debug_info = false;
 $AddUserErrorCode = 12000;
-$UserLogin='isaacueca2'; 
+$UserLogin='isaacueca'; 
 $UserPass='cigano';
 $FirstName='Philip'; 
 $LastName='J.'; 
@@ -233,6 +230,5 @@ $jab->disconnect();
 unset($jab,$avcard);
 
 echo '<P>******** Exit of Add Vcard! ErrorCode='.$AddVcardErrorCode.' ********</P>';
-
 
 ?>
