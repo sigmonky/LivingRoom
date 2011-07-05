@@ -255,12 +255,12 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 								scope: this
 							}
 						});
-/*
+
 						//Let's finally connect to ejabberd server
 						jabberClient.connect();
 
 					},
-					unauthorized: function(component) {
+				/*	unauthorized: function(component) {
 
 						//Let's hide the loading Mask
 						loadingMask.hide();
