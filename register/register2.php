@@ -197,7 +197,7 @@ $salt = '';
 // create an instance of the Jabber class
 $display_debug_info = false;
 $AddUserErrorCode = 12000;
-$UserLogin='isaacueca3'; 
+$UserLogin='isaacueca4'; 
 $UserPass='cigano';
 $FirstName='Philip'; 
 $LastName='J.'; 
