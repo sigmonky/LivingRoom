@@ -192,20 +192,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var obj = facebookStore.getAt(0);
 		var facebook_id = obj.get('id');
 			
-			
-		console.log('facebook_id = '+facebook_id);	
-		var vCardEl = document.createElement('NICKNAME');
-		var text = document.createTextNode(facebook_id);
-		vCardEl.appendChild(text);
-			
-		var p = new JSJaCPacket('iq');
-		p.setID('vc2');
-		p.setType('set');
-		p.setTo(this.myJID);
-		p.appendNode(
-			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
-		);
 
+		
+		
+		var v = new JSJaCVcard();
+		v.setVcard();
+		v.setNickName(facebook_id);
+
+		
+		//Let's send the packet able to retrive the user vCard
+	  	this.jabberConnection.send(v);
 
 	},
 	
