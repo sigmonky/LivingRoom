@@ -33,7 +33,8 @@ var StropheVcard = function(window, $) {
     return obj;
 }(window, jQuery);
 
-$(function() {
+$(document).ready(function(){
+	console.log('ready');
     StropheVcard.init();
     StropheVcard.connect(function() {
         StropheVcard.get(function(stanza) {
