@@ -173,6 +173,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	getVCard: function(jid){
 		
+		console.log('getVCard '+jid);
+		
 		var p = new JSJaCPacket('iq');
 		p.setID('vc2');
 		p.setType('get');
