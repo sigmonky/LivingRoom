@@ -240,8 +240,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var show = presence.getShow();
 		var status = presence.getStatus();
 		
-		console.log(' handlePresence presense = ' +from);
-		me.getVCard(from);
+	//	console.log(' handlePresence presense = ' +from);
+	//	me.getVCard(from);
 		
 		if(!this.publicRoom) {
 
@@ -457,8 +457,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 
 			console.log('vcard - ' + vCard);
-
-			console.log('user nickname - ' + vCard.getElementsByTagName('nickname')[0]);
+//
+		//	console.log('user nickname - ' + vCard.getElementsByTagName('nickname')[0]);
 
 			//Let's take the PHOTO element
 			var photo = vCard.getElementsByTagName('PHOTO')[0];
@@ -514,7 +514,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
-		me.setVCard();
+	//	me.setVCard();
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
 		
