@@ -170,6 +170,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
         	});
 		}else{
 			var profilePhoto = this.getProfilePhoto(from);
+			console.log('profilePhoto = '+profilePhoto);
 			if (profilePhoto = ""){
 				html = this.tplEmptyFacebookMessage.apply({
 					photo: '',
@@ -231,7 +232,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	
 	getProfilePhoto: function(user){
 		var photo = user.get('photoBase64');
-		//console.log('photo '+ photo);
+		console.log('photo '+ photo);
 		return photo;
 	},
 	
