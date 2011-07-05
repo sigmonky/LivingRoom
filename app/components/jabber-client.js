@@ -289,7 +289,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}else{
 			/* CHAT ROOM */
 			var roster = Ext.StoreMgr.get('RoomRoster');
-			console.log('room handlePresence presense = ' +presence);
+			//console.log('room handlePresence presense = ' +presence);
 		
 			console.log('room handlePresence' +from);
 
