@@ -50,7 +50,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 				},
 				{
 					xtype: 'textfield',
-					itemId: 'txtUserName',
+					itemId: 'txtUsername',
 					name : 'username',
 					label: 'Username',
 					value: ''
