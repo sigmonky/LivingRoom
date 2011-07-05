@@ -427,7 +427,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			user.set('photoBase64', binval);
 		
 		}else{
-			console.log('Room - handleIq')
+			console.log('Room - handleIq = ' +iq)
 			var iqID = iq.getID();
 			console.log('Room - iqID =' +iqID)
 			
