@@ -234,7 +234,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handlePresence: function(presence, me) {
-		console.log(' handlePresence presense = ' +presence);
+		
+		var from = presence.getFrom();
+		var type = presence.getType();
+		var show = presence.getShow();
+		var status = presence.getStatus();
+		
+		console.log(' handlePresence presense = ' +from);
 
 		if(!this.publicRoom) {
 
