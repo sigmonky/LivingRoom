@@ -241,9 +241,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var status = presence.getStatus();
 		
 		console.log(' handlePresence presense = ' +from);
-		me.getVCard(from);
+		//me.getVCard(from);
 		
-		if(!this.publicRoom) {
+		if(this.publicRoom == false) {
 
 			console.log('!this.publicRoom');
 			//Let's take the store that will contains all the roster users
@@ -457,8 +457,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//Let's take the vCard element
 			var vCard = doc.getElementsByTagName('vCard')[0];
 
-			console.log('user nickname - ' + vCard.getElementsByTagName('NICKNAME')[0]);
-			console.log('user nickname 2- ' + vCard.getElementsByTagName('NICKNAME')[1]);
 			console.log('user nickname 3- ' + vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue);
 
 			//Let's take the PHOTO element
