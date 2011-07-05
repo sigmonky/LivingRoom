@@ -1,6 +1,6 @@
 var StropheVcard = function(window, $) {
     var BOSH_URL = "/http-bind";
-    var DOMAIN = "logoslogic.com";
+    var DOMAIN = "http://www.logoslogic.com";
     var con = null;
     var _connected = false;
     var onResult = function(stanza) {
@@ -20,6 +20,7 @@ var StropheVcard = function(window, $) {
         disconnect: function() {
             conn.disconnect();
         },
+
         connect: function(handler) {
             conn.connect(DOMAIN, null, function (status) {
                 if (status === Strophe.Status.CONNECTED) {
