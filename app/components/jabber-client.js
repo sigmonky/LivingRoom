@@ -203,7 +203,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.appendNode(
 			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
-		p.appendNode(vCardEl);
+	//	p.appendNode(vCardEl);
 		console.log('setVCard - ' +p);
 		//Let's send the packet able to retrive the user vCard
 	  	this.jabberConnection.send(p);
@@ -509,7 +509,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
-	//	me.setVCard();
+		me.setVCard();
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
 		
