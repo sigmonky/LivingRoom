@@ -230,9 +230,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				from: from,
 				message: message
 			});
-
 		}
-	
 	},
 	
 	handlePresence: function(presence, me) {
@@ -280,12 +278,30 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			}
 			
 		}else{
-			
 			console.log(presence);
-			
 		}
 	 
 	},
+	
+	getRoomRoster: function(room_jid){
+		console.log('getRoomRoster = '+node)
+		var roster = new JSJaCIQ();
+	    roster.setIQ(this.jabberConnection.domain, 'get', 'roster_1');
+	    roster.setQuery(NS_ROSTER);
+		this.jabberConnection.send(roster, this.getRoomRosterComplete, this);
+	},
+	
+	getRoomRosterComplete: function(aIq, arg){
+		    var node = aIq.getQuery();
+			console.log('getRoomRosterComplete node = '+node)
+	}
+	
+	
+	con.sendIQ(roster, {result_handler: function(aIq, arg) {
+	    var node = aIq.getQuery()
+	    // do something with roster
+	  });
+	
 	
 	handlePacketIn: function(packet, me){
 		

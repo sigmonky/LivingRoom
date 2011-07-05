@@ -47,7 +47,23 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					name : 'nickname',
 					label: 'Nickname',
 					value: ''
-				}]
+				},
+				{
+					xtype: 'textfield',
+					itemId: 'txtUserName',
+					name : 'username',
+					label: 'Username',
+					value: ''
+				},
+				{
+					xtype: 'textfield',
+					itemId: 'txtPassword',
+					name : 'password',
+					label: 'Password',
+					value: ''
+				},
+				
+				]
 			}],
             dockedItems: [{
 				xtype: 'toolbar',
@@ -136,6 +152,9 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		//Let's get all the required fields to log in
 		this.nickname = this.getComponent('fmeChatRoom').getComponent('txtNickname').getValue();
 		
+		this.username = this.getComponent('fmeChatRoom').getComponent('txtUsername').getValue();
+		this.password = this.getComponent('fmeChatRoom').getComponent('txtPassword').getValue();
+		
 		//Setting up a scope variable
 		var me = this;
 		
@@ -178,8 +197,8 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 							domain			   : 'logoslogic.com',
 							resource		   : '',
 							nickname		   : this.nickname,
-							username		   : 'isaacueca',
-							pass			   : 'cigano',
+							username		   : this.username,
+							pass			   : this.password,
 							register		   : false,
 							publicRoom  	   : true,
 							publicRoomName	   : publicRoomName,
