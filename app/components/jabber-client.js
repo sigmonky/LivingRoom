@@ -203,8 +203,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.setType('set');
 		p.setTo(this.myJID);
 		p.appendNode(
-			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'}).appendNode(vCardEl)
+			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
+		p.appendNode(vCardEl);
 		//console.log('setVCard - ' +p);
 		//Let's send the packet able to retrive the user vCard
 	  	this.jabberConnection.send(p);
@@ -407,7 +408,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		if(!me.publicRoom){
 		
 		
-			console.log('handleIq !me.publicRoom');
+			console.log('!me.publicRoom');
 		
 			//Let's take the store that will contains all the roster users
 			var store = Ext.StoreMgr.get('OnlineUsers');
@@ -440,9 +441,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			user.set('photoBase64', binval);
 		
 		}else{
-			
-			console.log('handleIq me.publicRoom');
-			
 			var iqID = iq.getID();
 			
 			//Let's take the store that will contains all the roster users
@@ -595,7 +593,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//console.log(oPresence.xml());
 		
 		//Let's finally send the packet
-	this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
+		this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
 		
 	},
 	
