@@ -179,14 +179,7 @@ $this->terminated = true;
 /******************************************************************************************************/
 // NOW WE START TO USE ALL CLASSES ABOVE :)
 
-// create an instance of the Jabber class
-$display_debug_info = false;
-$AddUserErrorCode = 12000;
-$UserLogin='isaacueca'; 
-$UserPass='cigano';
-$FirstName='Philip'; 
-$LastName='J.'; 
-$Patronymic='Ivanovich :)';
+
 
 
 
