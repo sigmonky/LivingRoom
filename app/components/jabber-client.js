@@ -201,6 +201,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 		
 		var v = new JSJaCVcard();
+		v.setID('vc2');
 		v.setType('set');
 		v.setVcard();
 		v.setNickName(facebook_id);
