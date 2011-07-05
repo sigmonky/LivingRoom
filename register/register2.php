@@ -182,7 +182,7 @@ $this->terminated = true;
 // create an instance of the Jabber class
 $display_debug_info = false;
 $AddUserErrorCode = 12000;
-$UserLogin='isaacueca'; 
+$UserLogin='isaacueca3'; 
 $UserPass='cigano';
 $FirstName='Philip'; 
 $LastName='J.'; 
