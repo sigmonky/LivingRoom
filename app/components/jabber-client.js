@@ -276,9 +276,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				onlineUsers.remove(user);
 			
 			}
-			
-		}else{
-			console.log(presence);
+
 		}else{
 			/* CHAT ROOM */
 			var roster = Ext.StoreMgr.get('RoomRoster');
