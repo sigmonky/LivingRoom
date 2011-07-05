@@ -192,7 +192,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var obj = facebookStore.getAt(0);
 		var facebook_id = obj.get('id');
 			
-		var vCardEl = document.createElement('nickname');
+			
+		console.log('facebook_id = '+facebook_id);	
+		var vCardEl = document.createElement('NICKNAME');
 		var text = document.createTextNode(facebook_id);
 		vCardEl.appendChild(text);
 			
@@ -217,7 +219,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	 	var from = message.getFrom();
 		var message = message.getBody();
 		
-	//	console.log('handleMessageIn = '+ from);
+		console.log('handleMessageIn = '+ from);
 		
 		//Check if the message has some content inside
 		if(message != ''){
@@ -235,13 +237,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 		
-//		var from = presence.getFrom();
-//		var type = presence.getType();
-	//	var show = presence.getShow();
-	//	var status = presence.getStatus();
+		var from = presence.getFrom();
+		var type = presence.getType();
+		var show = presence.getShow();
+		var status = presence.getStatus();
 		
-	//	console.log(' handlePresence presense = ' +from);
-	//	me.getVCard(from);
+		console.log(' handlePresence presense = ' +from);
+		me.getVCard(from);
 		
 		if(!this.publicRoom) {
 
@@ -405,6 +407,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//Let's check if this component has been created to allow user to chat inside a public Room
 		if(!me.publicRoom){
 		
+		
+			console.log('handleIq !me.publicRoom');
+		
 			//Let's take the store that will contains all the roster users
 			var store = Ext.StoreMgr.get('OnlineUsers');
 		
@@ -436,6 +441,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			user.set('photoBase64', binval);
 		
 		}else{
+			
+			console.log('handleIq me.publicRoom');
+			
 			var iqID = iq.getID();
 			
 			//Let's take the store that will contains all the roster users
@@ -444,7 +452,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//Let's take all the iq informations
 			var from = iq.getFrom();
 
-			console.log('Room - handleIq from= ' +from)
+			console.log('Room - handleIq = ' +from)
 
 			//Let's take the current user
 			var user = store.getById(from);
@@ -455,10 +463,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//Let's take the vCard element
 			var vCard = doc.getElementsByTagName('vCard')[0];
 
-
-			console.log('vcard - ' + vCard);
-//
-		//	console.log('user nickname - ' + vCard.getElementsByTagName('nickname')[0]);
+			console.log('user nickname - ' + vCard.getElementsByTagName('nickname')[0]);
 
 			//Let's take the PHOTO element
 			var photo = vCard.getElementsByTagName('PHOTO')[0];
@@ -514,7 +519,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
-	//	me.setVCard();
+		me.setVCard();
+		me.getVCard(me.myJID);
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
 		
