@@ -187,6 +187,29 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 	},
 	
+	setVCard: function(jid){
+		
+		var facebookStore = Ext.StoreMgr.get('FacebookUser');
+		var obj = facebookStore.getAt(0);
+		var facebook_id = obj.get('id');
+			
+		var vCardEl = document.createElement('nickname');
+		var text = document.createTextNode(facebook_id);
+		vCardEl.appendChild(text);
+			
+		var p = new JSJaCPacket('iq');
+		p.setID('vc2');
+		p.setType('set');
+		p.setTo(jid);
+		p.appendNode(
+			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
+		);
+
+		//Let's send the packet able to retrive the user vCard
+	  	this.jabberConnection.send(p);
+
+	},
+	
 	
 	handleMessageIn: function(message, me) {
 
@@ -302,7 +325,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 				//Let's create the xml document
 				doc = createXMLDoc(packet.xml());
-				console.log('handle packet in = '+doc);
+				console.log('handle packet in group chat from = '+from);
 				//Let's take the message body
 				body = doc.getElementsByTagName('body')[0].textContent;
 				console.log('groupchat = message body = '+body)

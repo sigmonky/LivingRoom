@@ -51,7 +51,7 @@ $(document).ready(function(){
     StropheVcard.init();
     StropheVcard.connect(function() {
         StropheVcard.get(function(stanza) {
-		console.log('handler');
+			console.log('handler');
             var $vCard = $(stanza).find("vCard");
             var img = $vCard.find('BINVAL').text();
             var type = $vCard.find('TYPE').text();
