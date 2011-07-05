@@ -580,7 +580,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	joinRoomComplete: function(iq, me){
 		
-		console.log(iq.xml());
+		console.log('joinRoomComplete = '+iq.xml());
 		
 	},
 	
