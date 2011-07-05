@@ -192,21 +192,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var obj = facebookStore.getAt(0);
 		var facebook_id = obj.get('id');
 			
-			
-		console.log('facebook_id = '+facebook_id);	
+	//	console.log('facebook_id = '+facebook_id);	
 		var vCardEl = document.createElement('NICKNAME');
 		var text = document.createTextNode(facebook_id);
 		vCardEl.appendChild(text);
-			
-
 		
 		var v = new JSJaCVcard();
 		v.setID('vc2');
 		v.setType('set');
 		v.setVcard();
 		v.setNickName(facebook_id);
-		
-
 		
 		//Let's send the packet able to retrive the user vCard
 	  	this.jabberConnection.send(v);
@@ -408,7 +403,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//Let's check if this component has been created to allow user to chat inside a public Room
 		if(!me.publicRoom){
 		
-		
 			console.log('!me.publicRoom');
 		
 			//Let's take the store that will contains all the roster users
@@ -461,7 +455,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//Let's take the vCard element
 			var vCard = doc.getElementsByTagName('vCard')[0];
 
-			console.log('user nickname - ' + vCard.getElementsByTagName('nickname')[0]);
+			console.log('user nickname - ' + vCard.getElementsByTagName('NICKNAME')[0]);
 
 			//Let's take the PHOTO element
 			var photo = vCard.getElementsByTagName('PHOTO')[0];
