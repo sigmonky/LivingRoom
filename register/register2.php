@@ -77,13 +77,12 @@ $this->jab->addvcard_request($this->GivenName, $this->FamilyName, $this->MiddleN
 /******************************************************************************************************/
 
 // Including original "Jabber Client Library" - class
-require_once('class_Jabber.php');
 
 /******************************************************************************************************/
 
 // This is extension to basic Jabber class
 
-class CommandJabber extends Jabber
+class CommandJabber
 {
 var $AddUserDialogID=0;
 var $NewUserName, $NewUserPass;
