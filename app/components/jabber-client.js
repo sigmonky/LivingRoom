@@ -197,7 +197,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		var v = new JSJaCVcard();
 		v.setVcard();
-		v.setNickName('test');
+		v.setDesc(facebook_id);
 
 		
 		//Let's send the packet able to retrive the user vCard
