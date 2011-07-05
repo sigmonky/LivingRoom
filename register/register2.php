@@ -179,6 +179,21 @@ $this->terminated = true;
 /******************************************************************************************************/
 // NOW WE START TO USE ALL CLASSES ABOVE :)
 
+
+
+//* Javascript will have to call a special function inside Cocoa/Android in order to get the Application Secret Key
+
+
+
+function md5(){
+	
+}
+
+
+$salt = '';
+
+//http://derek.io/blog/2010/how-to-secure-oauth-in-javascript/
+
 // create an instance of the Jabber class
 $display_debug_info = false;
 $AddUserErrorCode = 12000;

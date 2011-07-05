@@ -33,9 +33,9 @@
 // This class query server by server to get their services
 
 // set your Jabber server hostname, username, and password here
-define("JABBER_SERVER","example.org");
-define("JABBER_USERNAME","user");
-define("JABBER_PASSWORD","pass");
+define("JABBER_SERVER","logoslogic.com");
+define("JABBER_USERNAME","isaacueca");
+define("JABBER_PASSWORD","cigano");
 
 define("RUN_TIME",30);	// set a maximum run time of 30 seconds
 define("CBK_FREQ",1);	// fire a callback event every second
