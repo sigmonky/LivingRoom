@@ -205,22 +205,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.appendNode(
 			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
-		
-		
-		var v = new JSJaCVcard();
-		v.setVcard();
-		v.setNickName(facebook_id);
-		
-		
-		
-		
-		vcard = this.getChild('vCard');
-		vcard.appendChild(vCardEl);
 
-
-		
-		//Let's send the packet able to retrive the user vCard
-	  	this.jabberConnection.send(v);
 
 	},
 	
