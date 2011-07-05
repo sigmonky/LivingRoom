@@ -182,7 +182,57 @@ $this->terminated = true;
 /******************************************************************************************************/
 // NOW WE START TO USE ALL CLASSES ABOVE :)
 
+// create an instance of the Jabber class
+$display_debug_info = false;
+$AddUserErrorCode = 12000;
+$UserLogin='isaacueca2'; 
+$UserPass='cigano';
+$FirstName='Philip'; 
+$LastName='J.'; 
+$Patronymic='Ivanovich :)';
 
+$jab = new CommandJabber($display_debug_info);
+
+$addmsg = new AddMessenger($jab,$UserLogin,$UserPass);
+
+// set handlers for the events we wish to be notified about
+$jab->set_handler("connected",$addmsg,"handleConnected");
+$jab->set_handler("authenticated",$addmsg,"handleAuthenticated");
+//$jab->set_handler("error",$addmsg,"handleError");
+
+// connect to the Jabber server
+if ($jab->connect(JABBER_SERVER))
+{
+	$AddUserErrorCode=12001;
+	$jab->execute(CBK_FREQ,RUN_TIME);
+}
+
+$jab->disconnect();
+
+unset($jab,$addmsg);
+
+echo '<P>******** Exit of User Creation! ErrorCode='.$AddUserErrorCode.' ********</P>';
+
+// If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
+
+$AddVcardErrorCode = 14000;
+$jab = new CommandJabber($display_debug_info);
+$avcard = new AddVcard($jab,$UserLogin,$UserPass,$FirstName,$LastName,$Patronymic);
+
+$jab->set_handler("connected",$avcard,"handleConnected");
+$jab->set_handler("authenticated",$avcard,"handleAuthenticated");
+
+if ($jab->connect(JABBER_SERVER))
+{
+$AddVcardErrorCode=14001;
+$jab->execute(CBK_FREQ,RUN_TIME);
+}
+
+$jab->disconnect();
+
+unset($jab,$avcard);
+
+echo '<P>******** Exit of Add Vcard! ErrorCode='.$AddVcardErrorCode.' ********</P>';
 
 
 ?>
