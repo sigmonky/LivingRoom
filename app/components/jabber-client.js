@@ -217,7 +217,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	 	var from = message.getFrom();
 		var message = message.getBody();
 		
-		console.log('handleMessageIn = '+ from);
+	//	console.log('handleMessageIn = '+ from);
 		
 		//Check if the message has some content inside
 		if(message != ''){
@@ -235,10 +235,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 		
-		var from = presence.getFrom();
-		var type = presence.getType();
-		var show = presence.getShow();
-		var status = presence.getStatus();
+//		var from = presence.getFrom();
+//		var type = presence.getType();
+	//	var show = presence.getShow();
+	//	var status = presence.getStatus();
 		
 	//	console.log(' handlePresence presense = ' +from);
 	//	me.getVCard(from);
