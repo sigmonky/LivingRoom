@@ -206,7 +206,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	//	p.appendNode(vCardEl);
 		console.log('setVCard - ' +p);
 		//Let's send the packet able to retrive the user vCard
-	  	this.jabberConnection.send(p);
+	  //	this.jabberConnection.send(p);
 
 	},
 	
