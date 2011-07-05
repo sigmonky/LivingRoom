@@ -5269,6 +5269,17 @@ JSJaCVcard.prototype.setName = function(name) {
 	return this;
 }
 
+JSJaCVcard.prototype.setNickName = function(name) {
+	vcard = this.getChild('vCard');
+	nameelement = this.getDoc().createElement('NICKNAME');
+	nametext = this.getDoc().createTextNode(name);
+	nameelement.appendChild(nametext);
+	vcard.appendChild(nameelement);
+	return this;
+}
+
+
+
 JSJaCVcard.prototype.setDesc = function(desc) {
 	vcard = this.getChild('vCard');
 	descelement = this.getDoc().createElement('DESC');
