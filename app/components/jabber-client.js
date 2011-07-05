@@ -436,6 +436,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 			//Let's take the current user
 			var user = store.getById(from);
+			console.log('user - ' + from);
 		
 			//Let's create the xml document
 			var doc = createXMLDoc(iq.xml());
