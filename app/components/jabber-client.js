@@ -204,7 +204,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'})
 		);
 		p.appendNode(vCardEl);
-		console.log('setVCard - ' +p);
+		//console.log('setVCard - ' +p);
 		//Let's send the packet able to retrive the user vCard
 	  	this.jabberConnection.send(p);
 
@@ -241,9 +241,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var status = presence.getStatus();
 		
 		console.log(' handlePresence presense = ' +from);
-
+		me.getVCard(from);
+		
 		if(!this.publicRoom) {
 
+			console.log('!this.publicRoom');
 			//Let's take the store that will contains all the roster users
 			var roster = Ext.StoreMgr.get('Roster');
 		
