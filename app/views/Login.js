@@ -176,7 +176,9 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 				facebookApp: fbApp,
 				listeners	: {
 					connected: function(jid){
-
+						
+						/* Session Attachment = http://codingcromulence.blogspot.com/2009/01/chat-hacking-part-ii.html*/
+						
 						/* Let's create the component that will let the user to communicate in realtime with all
 						 * the firends inside the facebook chat */
 						jabberClient = new LIVINGROOM.xmpp.Client({

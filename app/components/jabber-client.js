@@ -279,6 +279,47 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			
 		}else{
 			console.log(presence);
+		}else{
+			/* CHAT ROOM */
+			var roster = Ext.StoreMgr.get('RoomRoster');
+		
+			console.log('room handlePresence' +from);
+
+			//Let's take all the presence informations
+			var from = presence.getFrom();
+			var type = presence.getType();
+			var show = presence.getShow();
+			var status = presence.getStatus();
+		
+			//Let's take all teh user informations from the Roster
+			var user = roster.getById(from);
+		
+			if(type == null) {
+		
+				//Adding the user to the Online Users store
+				roster.add(user);
+		
+				//Approve Subscription Request
+				var aPresence = new JSJaCPresence();
+				aPresence.setTo(from);
+				aPresence.setType('subscribed');
+				me.jabberConnection.send(aPresence);
+
+				//Subscribe to gateway contact's presence
+				var bPresence = new JSJaCPresence();
+				bPresence.setTo(from);
+				bPresence.setType('subscribe');
+				me.jabberConnection.send(bPresence);
+		
+				me.getVCard(from);
+		
+			}else if(type == 'unavailable'){
+			
+				roster.remove(user);
+			
+			}
+			
+			
 		}
 	 
 	},
@@ -323,9 +364,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				//Let's take the message body
 				body = doc.getElementsByTagName('body')[0].textContent;
 				console.log('groupchat = message body = '+body)
+				
 				var nickname = from.split('/')[1];
-				 var jid = roster.getFullJIDByNick(nickname);
-				console.log('jid is '+ jid);
+				 //var jid = roster.getFullJIDByNick(nickname);
+				//console.log('jid is '+ jid);
+				
 				/* Let's call the controller method able to add the message
 				 * to the public chat room */
 				Ext.dispatch({
@@ -336,7 +379,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				});
 			
 				break;
-			
 		}
 		
 	},
@@ -385,6 +427,38 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//Saving the photo base64 data
 			user.set('photoBase64', binval);
 		
+		}else{
+			console.log('Room - handleIq')
+			
+			//Let's take the store that will contains all the roster users
+			var store = Ext.StoreMgr.get('RoomRoster');
+		
+			//Let's take all the iq informations
+			var from = iq.getFrom();
+
+			//Let's take the current user
+			var user = store.getById(from);
+		
+			//Let's create the xml document
+			var doc = createXMLDoc(iq.xml());
+
+			//Let's take the vCard element
+			var vCard = doc.getElementsByTagName('vCard')[0];
+
+			//Let's take the PHOTO element
+			var photo = vCard.getElementsByTagName('PHOTO')[0];
+
+			//Let's take the image mime type element
+			var type = photo.getElementsByTagName('TYPE')[0].textContent;
+
+			//Let's take the binval element containing the photo in base64 format
+			var binval = photo.getElementsByTagName('BINVAL')[0].textContent;
+
+			//Saving the photo mime type
+			user.set('photoType', type);
+		
+			//Saving the photo base64 data
+			user.set('photoBase64', binval);
 		}
 
 	},
@@ -512,7 +586,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	getRoster: function(){
-		
+		console.log('getRoster');
 		//Let's make a request to get the roaster back
 		var iq = new JSJaCIQ();
 		iq.setIQ(null,'get','roster_1');
@@ -522,6 +596,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	getRoasterComplete: function(iq, me){
+		console.log('getRoasterComplete');
 		
 		if (!iq || iq.getType() != 'result') {
 			if (iq)
