@@ -294,7 +294,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	getRoomRosterComplete: function(aIq, arg){
 		    var node = aIq.getQuery();
 			console.log('getRoomRosterComplete node = '+node)
-	}
+	},
 	
 	
 	con.sendIQ(roster, {result_handler: function(aIq, arg) {
