@@ -191,13 +191,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		var facebook_id = obj.get('id');
-			
 
 		
 		
 		var v = new JSJaCVcard();
 		v.setVcard();
-		v.setDesc(facebook_id);
+		v.setNickName(facebook_id);
+
 
 		
 		//Let's send the packet able to retrive the user vCard
@@ -510,7 +510,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handleConnected: function(me) {
 		me.setVCard();
-		//me.getVCard(me.myJID);
+		me.getVCard(me.myJID);
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
 		
