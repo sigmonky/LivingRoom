@@ -5255,7 +5255,7 @@ JSJaCVcard.prototype.setVcard = function() {
 	query = this.getDoc().createElementNS(NS_VCARD,'vCard');
 	query.setAttribute('xmlns',NS_VCARD);
 	query.setAttribute('version','2.0');
-	query.setAttribute('prodid','-//HandGen//NONSGML vGen v1.0//EN');
+	query.setAttribute('prodid','');
 	this.getNode().appendChild(query);
 	return query;
 }
