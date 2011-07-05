@@ -595,7 +595,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//console.log(oPresence.xml());
 		
 		//Let's finally send the packet
-	//	this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
+	this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
 		
 	},
 	
