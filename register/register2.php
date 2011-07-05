@@ -185,13 +185,6 @@ $this->terminated = true;
 
 
 
-function md5(){
-	
-}
-
-
-$salt = '';
-
 //http://derek.io/blog/2010/how-to-secure-oauth-in-javascript/
 
 // create an instance of the Jabber class
