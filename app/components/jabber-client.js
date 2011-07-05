@@ -203,7 +203,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.setType('set');
 		p.setTo(this.myJID);
 		p.appendNode(
-			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'}).buildNode('NICKNAME', facebook_id)
+			p.buildNode('vCard', {'xmlns': 'vcard-temp', 'version': '2.0'}).appendNode(p.buildNode('NICKNAME', facebook_id))
 		);
 		
 
