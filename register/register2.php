@@ -77,7 +77,7 @@ $this->jab->addvcard_request($this->GivenName, $this->FamilyName, $this->MiddleN
 /******************************************************************************************************/
 
 // Including original "Jabber Client Library" - class
-require_once(dirname(__FILE__).'class_Jabber.php');
+require_once(dirname(__FILE__).'jabber.php');
 
 /******************************************************************************************************/
 
