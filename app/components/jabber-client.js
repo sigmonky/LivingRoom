@@ -436,15 +436,15 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			user.set('photoBase64', binval);
 		
 		}else{
-			console.log('Room - handleIq = ' +iq)
 			var iqID = iq.getID();
-			console.log('Room - iqID =' +iqID)
 			
 			//Let's take the store that will contains all the roster users
 			var store = Ext.StoreMgr.get('RoomRoster');
 		
 			//Let's take all the iq informations
 			var from = iq.getFrom();
+
+			console.log('Room - handleIq from= ' +from)
 
 			//Let's take the current user
 			var user = store.getById(from);
@@ -454,6 +454,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 			//Let's take the vCard element
 			var vCard = doc.getElementsByTagName('vCard')[0];
+
+
+			console.log('vcard - ' + vCard);
 
 			console.log('user nickname - ' + vCard.getElementsByTagName('nickname')[0]);
 
@@ -534,7 +537,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var iq = new JSJaCIQ();
 	    iq.setIQ(this.conferenceSubdomain + '.' + this.domain,'get','disco_info');
 	    iq.setQuery("http://jabber.org/protocol/disco#info");
-		this.jabberConnection.send(iq, this.getDiscoInfoComplete, this);
+	//	this.jabberConnection.send(iq, this.getDiscoInfoComplete, this);
 	},
 	
 	getDiscoInfoComplete: function(iq, me){
