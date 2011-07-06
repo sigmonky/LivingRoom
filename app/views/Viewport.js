@@ -31,7 +31,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		//Definition of the roster panel
 		this.pnlRoster = new LivingRoomAPI.views.Roster({
 			itemId: 'pnlRoster',
-			title: 'Facebook Friends'
+			title: 'Friends'
         });
 
 		//Definition of the public chat panel
@@ -45,7 +45,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		//Definition of the public chat panel
 		this.pnlOneToOne = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlOneToOne',
-			title: 'One-To-One',
+			title: 'Active Chat',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
