@@ -58,7 +58,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			title: 'Roster'
         });
 
-console.log('pnlPublicChat =' +this.application.viewport.getComponent('pnlPublicChat'))
+		//console.log('pnlPublicChat =' +this.application.viewport.getComponent('pnlPublicChat'))
 
 		Ext.apply(this,{
 			layout:'card',//* could be card/fit as well?*///
