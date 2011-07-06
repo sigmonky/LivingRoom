@@ -18,7 +18,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			title: 'All Friends',
 			iconCls: 'user',
 			iconMask: true,
-			store: 'ChatRoomStore',
+			store: 'RoomRoster',
             itemTpl: '<div class="x-roster-user">' +
 					    '<div class="x-user-picture">' +
 						'<img class="odd" src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>' +
