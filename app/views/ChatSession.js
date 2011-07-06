@@ -200,10 +200,13 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	openRoomRoster: function(){
-		Ext.dispatch({
+	/*	Ext.dispatch({
 			controller: 'Main',
 			action    : 'showRoomRoster'
-		});
+		}); */
+		
+	  LivingRoomAPI.views.ChatSession.setActiveItem('RoomRosterView', {type: 'slide', direction: 'left'});
+		
 	},
 	
 	addChatRoomMessage: function(message, from){
