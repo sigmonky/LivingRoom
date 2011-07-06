@@ -59,7 +59,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		});
 		
 		//Definition of the public chat panel
-		this.pnlPublicChat = new LivingRoomAPI.views.ChatSessionWrapper({
+		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlPublicChat',
 			title: 'Rooms',
 			isChatRoom: true,
