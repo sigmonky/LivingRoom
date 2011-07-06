@@ -69,7 +69,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	switchBack: function(){
 		    Ext.getCmp('ChatSessionWrapper').layout.setActiveItem(0);
-	}
+	},
 	
 	showRoster: function(){
 		console.log('show roster');
