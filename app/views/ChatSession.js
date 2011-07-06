@@ -205,8 +205,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 			action    : 'showRoomRoster'
 		}); */
 		
-	  ChatSession.setActiveItem('RoomRosterView', {type: 'slide', direction: 'left'});
-		
+	 this.application.viewport.getComponent('ChatSession').setActiveItem('RoomRosterView', {type: 'slide', direction: 'left'});
 	},
 	
 	addChatRoomMessage: function(message, from){
