@@ -283,6 +283,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 		}else{
 			/* CHAT ROOM */
+
 			var roster = Ext.StoreMgr.get('RoomRoster');
 			//console.log('room handlePresence presense = ' +presence);
 		
@@ -294,14 +295,20 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var show = presence.getShow();
 			var status = presence.getStatus();
 		
-			//Let's take all teh user informations from the Roster
-			var user = roster.getById(from);
-		
+			var nickname = from.split('/')[1];
+			
 			if(type == null) {
 		
 				//Adding the user to the Online Users store
-				roster.add(user);
-		
+				var item = Ext.ModelMgr.create({
+				    jid: from,
+					nickname: nickname,
+					facebook_id: '',
+				}, 'RosterItem');
+				
+				//Adding the user to the store
+				roster.add(item);
+			
 				//Approve Subscription Request
 				var aPresence = new JSJaCPresence();
 				aPresence.setTo(from);
@@ -317,7 +324,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				me.getVCard(from);
 		
 			}else if(type == 'unavailable'){
-			
+				
+				user = roster.getById(from);
 				roster.remove(user);
 			
 			}
@@ -458,9 +466,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			
 			var facebook_id  = vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue;
 		
-			user.set('jid', from);
+			//user.set('jid', from);
 			user.set('facebook_id', facebook_id);
-			user.set('nickname', nickname);
+		//	user.set('nickname', nickname);
 
 		}
 
@@ -482,7 +490,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				me.fireEvent('unauthorized', me);
 
 				break;
-			
 		}
 		
 		
