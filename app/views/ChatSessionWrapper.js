@@ -38,7 +38,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		});
 
 		pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlTalent',
+			itemId: 'pnlPublicChat2',
 			title: 'Talent',
 			id: 'test1',
 			isChatRoom: true,
@@ -76,7 +76,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	showRoster: function(){
 		console.log('show roster');
-		this.setActiveItem('test1', {type:'slide', direction:'down'})
+		this.setActiveItem('pnlPublicChat2', {type:'slide', direction:'down'})
 	},
 	
 	addChatRoomMessage: function(message, from){
