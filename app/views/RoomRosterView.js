@@ -24,7 +24,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 						'<img class="odd" src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
-						 	'<b>{name}</b>' +
+						 	'<b>{nickname}</b>' +
 					     '</div>' +
 					  '</div>',
 			listeners: {

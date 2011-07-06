@@ -79,7 +79,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		
 		var store = Ext.StoreMgr.get('RoomRoster');
 		store.each(function (record) {
-		    console.log('record.name = '+record.name);
+		    console.log('record.nickname = '+record.nickname);
 		});
 	   // this.setActiveItem(1);
 	},
