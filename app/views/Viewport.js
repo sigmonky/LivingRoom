@@ -35,17 +35,18 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
         });
 
 		//Definition of the public chat panel
-		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlPublicChat',
-			title: 'Rooms',
+		this.pnlOneToOne = new LivingRoomAPI.views.ChatSession({
+			itemId: 'pnlOneToOne',
+			title: 'Active Chats',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
 		
+		
 		//Definition of the public chat panel
-		this.pnlOneToOne = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlOneToOne',
-			title: 'Active Chat',
+		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
+			itemId: 'pnlPublicChat',
+			title: 'Rooms',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
