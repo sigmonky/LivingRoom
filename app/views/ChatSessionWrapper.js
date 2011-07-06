@@ -8,8 +8,7 @@
  */
 LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
-	///@private
-	id: 'ChatSessionWrap',
+
 	
 	application: undefined,
 	
