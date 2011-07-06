@@ -79,7 +79,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatRoomMessage: function(message, from){
-		//this.pnlPublicChat.addChatRoomMessage(message, from);
+		this.pnlPublicChat.addChatRoomMessage(message, from);
 	}
 	
 });
