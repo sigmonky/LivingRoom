@@ -235,11 +235,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 		
-		var from = presence.getFrom();
-		var type = presence.getType();
-		var show = presence.getShow();
-		var status = presence.getStatus();
-		
 		console.log(' handlePresence presense = ' +from);
 		//me.getVCard(from);
 		
@@ -291,7 +286,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var roster = Ext.StoreMgr.get('RoomRoster');
 			//console.log('room handlePresence presense = ' +presence);
 		
-			console.log('room handlePresence' +from);
+			console.log('room handlePresence from' +from);
 
 			//Let's take all the presence informations
 			var from = presence.getFrom();
@@ -449,7 +444,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('Room - handleIq = ' +from)
 
 			//Let's take the current user
-			var user = store.getById(from);
+			
+			var nickname = from.split('/')[1];
+			var user = store.getById(nickname);
 		
 			//Let's create the xml document
 			var doc = createXMLDoc(iq.xml());
@@ -458,21 +455,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var vCard = doc.getElementsByTagName('vCard')[0];
 
 			console.log('user nickname 3- ' + vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue);
-
-			//Let's take the PHOTO element
-			var photo = vCard.getElementsByTagName('PHOTO')[0];
-
-			//Let's take the image mime type element
-			var type = photo.getElementsByTagName('TYPE')[0].textContent;
-
-			//Let's take the binval element containing the photo in base64 format
-			var binval = photo.getElementsByTagName('BINVAL')[0].textContent;
-
-			//Saving the photo mime type
-			user.set('photoType', type);
+			
+			var facebook_id  = vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue;
 		
-			//Saving the photo base64 data
-			user.set('photoBase64', binval);
+			user.set('jid', from);
+			user.set('facebook_id', facebook_id);
+			user.set('nickname', nickname);
+
 		}
 
 	},
@@ -612,6 +601,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	getRoasterComplete: function(iq, me){
 		console.log('getRoasterComplete');
+		cueca = new Debugger(4,’HelloWorld’);
+		cueca.start();
 		
 		if (!iq || iq.getType() != 'result') {
 			if (iq)

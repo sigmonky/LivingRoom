@@ -15,4 +15,4 @@ Ext.regModel('ChatRoom', {
 	]	
 });
 
-/* currentUser.friends().load().getAt(0);*/
+/* currentChatRoom.occupants().load().getAt(0);*/
