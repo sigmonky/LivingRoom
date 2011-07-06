@@ -37,7 +37,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		this.pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
+		pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
 			id: 'test1',
 			isChatRoom: true,
 			jabberComponent: jabberClient
@@ -79,7 +79,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	addChatRoomMessage: function(message, from){
 		console.log('addChatRoomMessage 1')
-		this.pnlPublicChat2.addChatRoomMessage(message, from);
+		pnlPublicChat2.addChatRoomMessage(message, from);
 	}
 	
 });
