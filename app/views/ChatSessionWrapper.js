@@ -38,7 +38,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		pnlPublicChat = new LivingRoomAPI.views.ChatSession({
+		pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlTalent',
 			title: 'Talent',
 			id: 'test1',
@@ -63,7 +63,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [pnlPublicChat, roomRoster]
+			items: [pnlPublicChat2, roomRoster]
 		});
 
 		//Superclass inizialization
@@ -81,7 +81,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatRoomMessage: function(message, from){
-		pnlPublicChat.addChatRoomMessage(message, from);
+		console.log('addChatRoomMessage 1')
+		pnlPublicChat2.addChatRoomMessage(message, from);
 	}
 	
 });
