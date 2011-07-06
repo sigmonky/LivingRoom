@@ -38,7 +38,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
+		pnlPublicChat = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlTalent',
 			title: 'Talent',
 			id: 'test1',
@@ -81,7 +81,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatRoomMessage: function(message, from){
-		this.pnlPublicChat.addChatRoomMessage(message, from);
+		pnlPublicChat.addChatRoomMessage(message, from);
 	}
 	
 });
