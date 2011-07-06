@@ -52,14 +52,19 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			id: 'test2',
 			layout: 'auto',
 			padding: 115,
-		})
+		});
+		
+		var roomRoster = new LivingRoomAPI.views.RoomRosterView({
+			itemId: 'pnlRoster',
+			title: 'Friends'
+        });
 
 		Ext.apply(this,{
 			layout:'card',//* could be card/fit as well?*///
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [chatRoom, blockTwo]
+			items: [chatRoom, roomRoster]
 		});
 
 		//Superclass inizialization
