@@ -59,8 +59,8 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		});
 		
 		//Definition of the public chat panel
-		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlPublicChat',
+		this.pnlSessionWrapper = new LivingRoomAPI.views.ChatSessionWrapper({
+			itemId: 'pnlSessionWrapper',
 			title: 'Rooms',
 			isChatRoom: true,
 			jabberComponent: jabberClient
@@ -111,11 +111,11 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	
 	getRoomRoster: function(){
 			//this.pnlPublicChat.openRoomRoster();
-					this.application.viewport.setActiveItem('pnlPublicChat', {
-						type: 'slide', 
-						duration: 500,
-						reverse: true
-					});
+			this.application.viewport.setActiveItem('pnlPublicChat', {
+					type: 'slide', 
+					duration: 500,
+					reverse: true
+			});
 		//	this.showRoomRoster();
 			//this.fireEvent('getRoomRosterOpen', this);
 	},
