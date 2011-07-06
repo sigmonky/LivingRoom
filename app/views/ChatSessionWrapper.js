@@ -55,8 +55,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		});
 		
 		var roomRoster = new LivingRoomAPI.views.RoomRosterView({
-			itemId: 'pnlRoster',
-			title: 'Friends'
+			itemId: 'roomRoster',
+			title: 'Roster'
         });
 
 		Ext.apply(this,{
