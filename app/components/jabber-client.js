@@ -382,8 +382,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				var nickname = from.split('/')[1];
 				
 				var roster = Ext.StoreMgr.get('RoomRoster');
-				user = roster.getById(from);
-				console.log('handle packet in group chat = '+user);
+				var user = roster.getById(from);
+				console.log('handle packet in group chat user = '+user);
+				
+				
+				var user2 = roster.getById(nickname);
+				console.log('handle packet in group chat user 2= '+user2);
+				
+				
+				var user3 = roster.getAt(0);
+				console.log('handle packet in group chat user 3= '+user3);
 				
 				var total = roster.getCount();
 				console.log('roster total = '+total);
