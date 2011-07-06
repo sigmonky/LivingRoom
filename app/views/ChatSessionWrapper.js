@@ -31,11 +31,11 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		var blockTwo = new Ext.Panel({
 			style:"background-color:#ae2323",
 			layout: 'auto',
-			padding: 15
+			padding: 115,
 		})
 
 		Ext.apply(this,{
-			layout:'card',
+			layout:'fit',
 			flex: 1,
 			fullscreen:'true',
 			items: [chatRoom, blockTwo]
