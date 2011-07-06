@@ -21,12 +21,12 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
 
-
-		var blockOne = new Ext.Panel({
-			style:"background-color:#0000",
-			layout: 'auto',
-			padding: 15
-		})
+		var chatRoom = new LivingRoomAPI.views.ChatSession({
+			itemId: 'pnlTalent',
+			title: 'Talent',
+			isChatRoom: true,
+			jabberComponent: jabberClient
+		});
 		
 		var blockTwo = new Ext.Panel({
 			style:"background-color:#ae2323",
@@ -38,7 +38,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			layout:'vbox',
 			flex: 1,
 			fullscreen:'true',
-			items: [blockOne, blockTwo]
+			items: [chatRoom, blockTwo]
 		});
 
 		//Superclass inizialization
