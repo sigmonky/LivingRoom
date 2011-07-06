@@ -15,8 +15,6 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	remoteJid: undefined,
 	
-	chatRoom: undefined,
-	
 	remoteUserName: undefined,
 	
 	jabberComponent: undefined,
@@ -40,8 +38,10 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		this.chatRoom = new LivingRoomAPI.views.ChatSession({
-			itemId: 'chatRoom',
+		var pnlPublicChat = new LivingRoomAPI.views.ChatSession({
+			itemId: 'pnlTalent',
+			title: 'Talent',
+			id: 'test1',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
@@ -63,7 +63,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [chatRoom, roomRoster]
+			items: [pnlPublicChat, roomRoster]
 		});
 
 		//Superclass inizialization
@@ -78,11 +78,6 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	showRoster: function(){
 		console.log('show roster');
 		this.setActiveItem('roomRoster', {type:'slide', direction:'down'})
-	},
-	
-	addChatRoomMessage: function(message, from){
-		this.pnlPublicChat.addChatRoomMessage(message, from);
-		
 	}
 	
 });
