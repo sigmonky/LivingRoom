@@ -383,10 +383,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				
 				var roster = Ext.StoreMgr.get('RoomRoster');
 				user = roster.getById(from);
+				console.log('handle packet in group chat user = '+user);
 				console.log('handle packet in group chat from facebook id= '+user.get('facebook_id'));
 				
-			//	console.log('handle packet in group chat from facebook id= '+user.facebook_id);
-			console.log('handle packet in group chat from facebook id= '+user.facebook_id);
+				//	console.log('handle packet in group chat from facebook id= '+user.facebook_id);
 				
 				
 				 //var jid = roster.getFullJIDByNick(nickname);
