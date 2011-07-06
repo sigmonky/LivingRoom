@@ -97,7 +97,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			items: [
 				this.pnlRoster,
 				this.pnlOneToOne,
-				this.pnlSessionWrapper,
 				this.pnlTalent
 				
 			]
