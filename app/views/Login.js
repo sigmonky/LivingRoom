@@ -156,7 +156,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	//	this.password = this.getComponent('fmeChatRoom').getComponent('txtPassword').getValue();
 		
 		
-		this.nickname = "asdasdasd";
+		this.nickname = "asdasdasd"+Math.floor(Math.random()*101));
 		this.username = 'isaacueca';
 		this.password = 'cigano';
 		
