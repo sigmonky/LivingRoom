@@ -36,7 +36,6 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 
 		Ext.apply(this,{
 			layout:'vbox',
-			flex: 1,
 			items: [blockOne, blockTwo]
 		});
 
