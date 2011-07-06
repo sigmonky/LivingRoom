@@ -78,13 +78,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	showRoster: function(){
 		console.log('show roster');
 		this.setActiveItem('roomRoster', {type:'slide', direction:'down'})
-	},
-	
-	addChatRoomMessage: function(message, from){
-		this.pnlPublicChat.addChatRoomMessage(message, from);
-		
 	}
-	
 });
 
 //Component type registration
