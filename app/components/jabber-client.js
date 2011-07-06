@@ -601,7 +601,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	getRoasterComplete: function(iq, me){
 		console.log('getRoasterComplete');
-
+		cueca = new Debugger(4,’HelloWorld’);
+		cueca.start();
 		
 		if (!iq || iq.getType() != 'result') {
 			if (iq)
