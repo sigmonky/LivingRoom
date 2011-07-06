@@ -140,7 +140,10 @@ Ext.regController('Roster', {
 	addMessageToChatRoom: function(options){
 		
 		//Let's take the public chat room panel
+	//	var pnlChatRoom = this.application.viewport.getComponent('pnlPublicChat');
+	
 		var pnlChatRoom = this.application.viewport.getComponent('pnlPublicChat');
+	
 		console.log('addMessageToChatRoom' + pnlChatRoom);
 		//Let's finally add the chat message
 		pnlChatRoom.addChatRoomMessage(options.message, options.from);

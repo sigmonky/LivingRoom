@@ -15,6 +15,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	remoteJid: undefined,
 	
+	chatRoom: undefined,
+	
 	remoteUserName: undefined,
 	
 	jabberComponent: undefined,
@@ -38,7 +40,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
+		var pnlPublicChat = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlTalent',
 			title: 'Talent',
 			id: 'test1',
@@ -58,14 +60,12 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			title: 'Roster'
         });
 
-		//console.log('pnlPublicChat =' +this.application.viewport.getComponent('pnlPublicChat'))
-
 		Ext.apply(this,{
 			layout:'card',//* could be card/fit as well?*///
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [roomRoster]
+			items: [this.chatRoom, roomRoster]
 		});
 
 		//Superclass inizialization
