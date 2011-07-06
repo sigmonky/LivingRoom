@@ -40,8 +40,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlPublicChat',
+		this.chatRoom = new LivingRoomAPI.views.ChatSession({
+			itemId: 'chatRoom',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
@@ -63,7 +63,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [pnlPublicChat, roomRoster]
+			items: [chatRoom, roomRoster]
 		});
 
 		//Superclass inizialization
