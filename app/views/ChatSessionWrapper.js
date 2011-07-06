@@ -40,12 +40,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		this.chatRoom = new LivingRoomAPI.views.ChatSession({
-			itemId: 'chatRoom',
-			isChatRoom: true,
-			jabberComponent: jabberClient
-		});
-		
+
 		var blockTwo = new Ext.Panel({
 			style:"background-color:#ae2323",
 			id: 'test2',
@@ -63,7 +58,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [chatRoom, roomRoster]
+			items: [roomRoster]
 		});
 
 		//Superclass inizialization
@@ -78,7 +73,13 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	showRoster: function(){
 		console.log('show roster');
 		this.setActiveItem('roomRoster', {type:'slide', direction:'down'})
+	},
+	
+	addChatRoomMessage: function(message, from){
+		this.pnlPublicChat.addChatRoomMessage(message, from);
+		
 	}
+	
 });
 
 //Component type registration
