@@ -204,8 +204,12 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		//Taking the remote user nickname
 		var nickname = from.split('/')[1];
 		
+		var roster = Ext.StoreMgr.get('RoomRoster');
+		user = roster.getById(from);
+		
+		
 		var html = this.tplPublicMessage.apply({
-			photo: '',
+			photo: user.facebook_id,
 			time: this.getTime(),
 			nickname: nickname,
             message: message

@@ -374,12 +374,19 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 				//Let's create the xml document
 				doc = createXMLDoc(packet.xml());
-				//console.log('handle packet in group chat from = '+from);
+				console.log('handle packet in group chat from = '+from);
 				//Let's take the message body
 				body = doc.getElementsByTagName('body')[0].textContent;
 				//console.log('groupchat = message body = '+body)
 				
 				var nickname = from.split('/')[1];
+				
+				var roster = Ext.StoreMgr.get('RoomRoster');
+				user = roster.getById(from);
+				
+				console.log('handle packet in group chat from facebook id= '+user.facebook_id);
+				
+				
 				 //var jid = roster.getFullJIDByNick(nickname);
 				//console.log('jid is '+ jid);
 				
