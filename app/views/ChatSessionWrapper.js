@@ -35,7 +35,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		})
 
 		Ext.apply(this,{
-			layout:'fit',
+			layout:'fit',//* could be card as well?*///
 			flex: 1,
 			fullscreen:'true',
 			items: [chatRoom, blockTwo]
@@ -44,7 +44,14 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
 	
+	},
+	
+	showRoster: function(){
+		console.log('show roster');
+		Ext.getCmp('ChatSessionWrapper').setActiveItem(1);
 	}
+	
+	
 	
 });
 
