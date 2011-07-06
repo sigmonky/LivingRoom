@@ -382,13 +382,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				var nickname = from.split('/')[1];
 				
 				var roster = Ext.StoreMgr.get('RoomRoster');
-				var nickname = from.split('/')[1];
-				var user = roster.getById(nickname);
+				user = roster.getById(from);
+				console.log('handle packet in group chat = '+user);
 				
-				console.log('handle packet in group chat user = '+user);
-				console.log('handle packet in group chat from facebook id= '+user.get('jid'));
+				var total = roster.getCount();
+				console.log('roster total = '+total);
+				//console.log('handle packet in group chat from facebook id= '+user.get('facebook_id'));
 				
-				//	console.log('handle packet in group chat from facebook id= '+user.facebook_id);
+			//	console.log('handle packet in group chat from facebook id= '+user.facebook_id);
 				
 				
 				 //var jid = roster.getFullJIDByNick(nickname);
