@@ -150,15 +150,15 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	doLogin: function(){
 	
 		//Let's get all the required fields to log in
-	//	this.nickname = this.getComponent('fmeChatRoom').getComponent('txtNickname').getValue();
+		this.nickname = this.getComponent('fmeChatRoom').getComponent('txtNickname').getValue();
 		
-	//	this.username = this.getComponent('fmeChatRoom').getComponent('txtUsername').getValue();
-	//	this.password = this.getComponent('fmeChatRoom').getComponent('txtPassword').getValue();
+		this.username = this.getComponent('fmeChatRoom').getComponent('txtUsername').getValue();
+		this.password = this.getComponent('fmeChatRoom').getComponent('txtPassword').getValue();
 		
 		
-		this.nickname = "asdasdasd"+Math.floor(Math.random()*101);
-		this.username = 'isaacueca';
-		this.password = 'cigano';
+	//	this.nickname = "asdasdasd"+Math.floor(Math.random()*101);
+	//	this.username = 'isaacueca';
+	//	this.password = 'cigano';
 		
 		
 		//Setting up a scope variable
