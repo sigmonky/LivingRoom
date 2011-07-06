@@ -36,13 +36,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 				handler: this.getRoomRoster
 			}]
 		});
-		
-		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlPublicChat',
-			isChatRoom: true,
-			jabberComponent: jabberClient
-		});
-		
+
 
 
 		//Definition of the roster panel
@@ -70,7 +64,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			itemId: 'pnlSessionWrapper',
 			title: 'Rooms',
 			isChatRoom: true,
-			chatRoom: this.pnlPublicChat,
 			jabberComponent: jabberClient
 		});
 		
