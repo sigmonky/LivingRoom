@@ -11,6 +11,27 @@ Ext.regController('Main', {
 
 	index: function(options) {
 
+	},
+	
+	showRoomRoster: function(){
+		
+		this.viewRoster = this.render({
+				xtype: 'LivingRoomAPI.views.RoomRosterView'
+			});
+
+		/*	this.viewConfig.query('#backButton')[0].on(
+				'tap',
+				this.showChat,
+				this
+			);
+		*/
+		this.application.viewport.setActiveItem(
+			this.viewRoster,
+			{
+				type: 'flip',
+				duration: '400'
+			}
+		);
 	}
 
 });
