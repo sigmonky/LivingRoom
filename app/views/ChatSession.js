@@ -200,7 +200,6 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatRoomMessage: function(message, from){
-		console.log('addChatRoomMessage 2')
 		
 		//Taking the remote user nickname
 		var nickname = from.split('/')[1];
