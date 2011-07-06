@@ -38,9 +38,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		});
 		
 		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlTalent',
-			title: 'Talent',
-			id: 'test1',
+			itemId: 'pnlPublicChat',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
