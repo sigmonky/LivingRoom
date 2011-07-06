@@ -23,6 +23,22 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
 
+		var toolbar = new Ext.Toolbar({
+			itemId: 'toolbar',
+			dock: 'top',
+			title: 'Room Topic',
+			items: [{
+				//Definition of logout button
+				ui: 'action',
+				text: 'Back',
+				iconMask: true,
+				iconCls: 'back',
+				scope: this,
+				handler: this.switchBack
+			}]
+		});
+
+
 		var chatRoom = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlTalent',
 			title: 'Talent',
@@ -42,6 +58,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			layout:'card',//* could be card/fit as well?*///
 			flex: 1,
 			fullscreen:'true',
+			dockedItems: [toolbar],
 			items: [chatRoom, blockTwo]
 		});
 
