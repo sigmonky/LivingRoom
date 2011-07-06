@@ -26,14 +26,14 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		var chatRoom = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlTalent',
 			title: 'Talent',
-			id = 'test1',
+			id: 'test1',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
 		
 		var blockTwo = new Ext.Panel({
 			style:"background-color:#ae2323",
-			id = 'test2',
+			id: 'test2',
 			layout: 'auto',
 			padding: 115,
 		})
