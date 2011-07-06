@@ -25,8 +25,18 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 				iconCls: 'reply',
 				scope: this,
 				handler: this.logout
+			},
+			{
+				//Definition of logout button
+				ui: 'action',
+				text: 'Roster',
+				iconMask: true,
+				iconCls: 'reply',
+				scope: this,
+				handler: this.getRoomRoster
 			}]
 		});
+
 	
 		//Definition of the roster panel
 		this.pnlRoster = new LivingRoomAPI.views.Roster({
@@ -41,7 +51,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
-		
 		
 		//Definition of the public chat panel
 		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
@@ -72,7 +81,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		Ext.apply(this,{
 		
 			fullscreen: true,
-		//	dockedItems: [this.toolbar],
+			dockedItems: [this.toolbar],
 			tabBar: {
                 dock: 'top',
                 layout: {
@@ -81,8 +90,8 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
             },
 			items: [
 				this.pnlRoster,
-				this.pnlPublicChat,
 				this.pnlOneToOne,
+				this.pnlPublicChat,
 				this.pnlTalent
 				
 			]
@@ -93,6 +102,12 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		LivingRoomAPI.Viewport.superclass.initComponent.call(this);
 	
 	},
+	
+	getRoomRoster: function(){
+			this.pnlPublicChat.openRoomRoster();
+			//this.fireEvent('getRoomRosterOpen', this);
+	},
+	
 	
 	logout: function(){
 		

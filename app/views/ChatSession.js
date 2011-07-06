@@ -199,6 +199,16 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 
 	},
 	
+	openRoomRoster: function(){
+		console.log('openRoomRoster');
+		
+		
+		this.render({
+			xtype: 'LivingRoomAPI.views.RoomRosterView'
+		});
+		
+	},
+	
 	addChatRoomMessage: function(message, from){
 		
 		//Taking the remote user nickname
