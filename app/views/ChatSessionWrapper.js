@@ -37,9 +37,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
-			itemId: 'pnlPublicChat2',
-			title: 'Talent',
+		this.pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
 			id: 'test1',
 			isChatRoom: true,
 			jabberComponent: jabberClient
@@ -76,12 +74,12 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	showRoster: function(){
 		console.log('show roster');
-		this.setActiveItem('pnlPublicChat2', {type:'slide', direction:'down'})
+		this.setActiveItem('test1', {type:'slide', direction:'down'})
 	},
 	
 	addChatRoomMessage: function(message, from){
 		console.log('addChatRoomMessage 1')
-		pnlPublicChat2.addChatRoomMessage(message, from);
+		this.pnlPublicChat2.addChatRoomMessage(message, from);
 	}
 	
 });
