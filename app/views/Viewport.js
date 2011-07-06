@@ -111,13 +111,11 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	
 	getRoomRoster: function(){
 			//this.pnlPublicChat.openRoomRoster();
-		/*	this.application.viewport.setActiveItem('pnlPublicChat', {
+			this.application.viewport.setActiveItem('pnlPublicChat', {
 					type: 'slide', 
 					duration: 500,
 					reverse: true
-			}); */
-			
-			this.pnlSessionWrapper.showRoster();
+			});
 		//	this.showRoomRoster();
 			//this.fireEvent('getRoomRosterOpen', this);
 	},
