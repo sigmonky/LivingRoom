@@ -32,7 +32,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 				ui: 'action',
 				text: 'Back',
 				iconMask: true,
-				iconCls: 'back',
+				iconCls: 'arrow_left',
 				scope: this,
 				handler: this.switchBack
 			}]
@@ -73,9 +73,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	showRoster: function(){
 		console.log('show roster');
-	//	Ext.getCmp('ChatSessionWrap').setActiveItem('test2');
 		this.setActiveItem('test2', {type:'slide', direction:'down'})
-		//this.StartCard.setActiveItem; 
 	}
 	
 	
