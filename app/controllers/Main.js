@@ -16,7 +16,7 @@ Ext.regController('Main', {
 	showRoomRoster: function(){
 		
 		this.viewRoster = this.render({
-				xtype: 'LivingRoomAPI.views.RoomRosterView'
+				xtype: 'RoomRosterView'
 			});
 
 		/*	this.viewConfig.query('#backButton')[0].on(
