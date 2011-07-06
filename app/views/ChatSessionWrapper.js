@@ -38,7 +38,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-		var pnlPublicChat = new LivingRoomAPI.views.ChatSession({
+		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
 			itemId: 'pnlTalent',
 			title: 'Talent',
 			id: 'test1',
@@ -63,7 +63,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [pnlPublicChat, roomRoster]
+			items: [this.application.viewport.getComponent('pnlPublicChat'), roomRoster]
 		});
 
 		//Superclass inizialization
