@@ -15,6 +15,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	remoteJid: undefined,
 	
+	chatRoom: undefined,
+	
 	remoteUserName: undefined,
 	
 	jabberComponent: undefined,
@@ -39,7 +41,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		});
 
 		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
-			id: 'pnlPublicChat',
+			itemId: 'pnlPublicChat',
 			isChatRoom: true,
 			jabberComponent: jabberClient
 		});
