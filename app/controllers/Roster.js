@@ -21,6 +21,17 @@ Ext.regController('Roster', {
 		
 	},
 	
+	showRoomRoster: function(){
+
+			//Let's show the attenders Panel
+			this.application.viewport.setActiveItem('pnlRoomRoster', {
+				type: 'slide', 
+				duration: 500,
+				reverse: true
+			});
+
+	},
+	
 	openChatSession: function(options){
 		
 		//Let's take all the user data

@@ -37,6 +37,12 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			}]
 		});
 
+
+		//Definition of the roster panel
+		this.pnlRoomRoster = new LivingRoomAPI.views.RoomRosterView({
+			itemId: 'RoomRosterView',
+			title: 'Room Roster'
+        });
 	
 		//Definition of the roster panel
 		this.pnlRoster = new LivingRoomAPI.views.Roster({
@@ -104,7 +110,13 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	},
 	
 	getRoomRoster: function(){
-			this.pnlPublicChat.openRoomRoster();
+			//this.pnlPublicChat.openRoomRoster();
+					this.application.viewport.setActiveItem('pnlRoomRoster', {
+						type: 'slide', 
+						duration: 500,
+						reverse: true
+					});
+		//	this.showRoomRoster();
 			//this.fireEvent('getRoomRosterOpen', this);
 	},
 	
