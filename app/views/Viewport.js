@@ -38,7 +38,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		});
 
 
-
 		//Definition of the roster panel
 		this.pnlRoomRoster = new LivingRoomAPI.views.RoomRosterView({
 			itemId: 'RoomRosterView',
