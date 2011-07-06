@@ -78,7 +78,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	showRoster: function(){
 		console.log('show roster');
-		this.setActiveItem('test2', {type:'slide', direction:'down'})
+		this.setActiveItem('roomRoster', {type:'slide', direction:'down'})
 	}
 	
 	
