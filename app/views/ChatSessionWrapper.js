@@ -40,7 +40,12 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			}]
 		});
 
-
+		this.pnlPublicChat = new LivingRoomAPI.views.ChatSession({
+			id: 'pnlPublicChat',
+			isChatRoom: true,
+			jabberComponent: jabberClient
+		});
+		
 		var blockTwo = new Ext.Panel({
 			style:"background-color:#ae2323",
 			id: 'test2',
@@ -58,7 +63,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			flex: 1,
 			fullscreen:'true',
 			dockedItems: [toolbar],
-			items: [this.chatRoom, roomRoster]
+			items: [pnlPublicChat, roomRoster]
 		});
 
 		//Superclass inizialization
