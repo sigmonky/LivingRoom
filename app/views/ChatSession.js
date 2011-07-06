@@ -205,7 +205,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 			action    : 'showRoomRoster'
 		}); */
 		
-	  LivingRoomAPI.views.ChatSession.setActiveItem('RoomRosterView', {type: 'slide', direction: 'left'});
+	  ChatSession.setActiveItem('RoomRosterView', {type: 'slide', direction: 'left'});
 		
 	},
 	
