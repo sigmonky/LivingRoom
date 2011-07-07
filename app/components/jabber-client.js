@@ -391,7 +391,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				
 				console.log('handle packet in group chat from facebook id= '+user.get('facebook_id'));
 				console.log('handle packet in group chat from nickname= '+user.get('nickname'));
-				console.log('handle packet in group chat from facebook_id= '+user.get('facebook_id'));
+				console.log('handle packet in group chat from jid= '+user.get('jid'));
 				
 				
 				var total = roster.getCount();
