@@ -382,6 +382,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				var roster = Ext.StoreMgr.get('RoomRoster');
 				var user = roster.getById(from);
 
+
+				console.log('handlePacketIn user from = '+from);
+
 				console.log('handlePacketIn user = '+user);
 				
 			//	var total = roster.getCount();
