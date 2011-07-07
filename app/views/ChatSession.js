@@ -81,7 +81,8 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		this.tplPublicMessage = new Ext.XTemplate(
 			'<tpl for=".">',
 				'<div class="x-public-chat-message">',
-					'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
+				//	'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
+					'<img src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
 					'<p class="time">{time}</p>',
 					'<p class="nickname">{nickname}</p>',
 					'<p class="message">{message}</p>',
@@ -209,7 +210,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		
 		
 		var html = this.tplPublicMessage.apply({
-			photo: user.facebook_id,
+			photo: user.get('facebook_id'),
 			time: this.getTime(),
 			nickname: nickname,
             message: message
