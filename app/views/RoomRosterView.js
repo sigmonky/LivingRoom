@@ -51,18 +51,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			}
         });
 	
-	
-		/*	this.viewConfig = this.render({
-			xtype: 'App.View.Config'
-			});
-
-			this.viewConfig.query('#backButton')[0].on(
-				'tap',
-				this.showChat,
-				this
-			); */
-	
-	
 		Ext.apply(this,{
             layout: 'card',
             cardSwitchAnimation: {type: 'flip', duration: 500},

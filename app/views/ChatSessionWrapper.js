@@ -8,8 +8,6 @@
  */
 LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
-
-	
 	application: undefined,
 	
 	remoteJid: undefined,
@@ -74,13 +72,16 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	showRoster: function(){
 		console.log('show roster');
-		this.setActiveItem('roomRoster', {type:'slide', direction:'down'});
-		
 		
 		var store = Ext.StoreMgr.get('RoomRoster');
 		store.each(function (record) {
-		    console.log('record.nickname = '+record.nickname);
+		    console.log('record.nickname = '+record.get('nickname'));
 		});
+		
+		this.setActiveItem('roomRoster', {type:'slide', direction:'down'});
+		
+		
+
 	   // this.setActiveItem(1);
 	},
 	
