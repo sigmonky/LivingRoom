@@ -89,6 +89,18 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 				'</div>',
 			'</tpl>'
 		);
+		
+		
+		this.tplPublicMessageNoPhoto = new Ext.XTemplate(
+			'<tpl for=".">',
+				'<div class="x-public-chat-message">',
+					'<img src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
+					'<p class="time">{time}</p>',
+					'<p class="nickname">{nickname}</p>',
+					'<p class="message">{message}</p>',
+				'</div>',
+			'</tpl>'
+		);
 
 		Ext.apply(this,{
 		
@@ -205,16 +217,26 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		//Taking the remote user nickname
 		var nickname = from.split('/')[1];
 		
+		console.log('addChatRoomMessage from= '+from);
+		
 		var roster = Ext.StoreMgr.get('RoomRoster');
 		user = roster.getById(from);
-		
-		
-		var html = this.tplPublicMessage.apply({
-			photo: user.get('facebook_id'),
-			time: this.getTime(),
-			nickname: nickname,
-            message: message
-        });
+		var photo = user.get('facebook_id');
+		var html;
+		if (photo == null){
+		 	html = this.tplPublicMessageNoPhoto.apply({
+				time: this.getTime(),
+				nickname: nickname,
+            	message: message
+        	});
+		}else{
+		 	html = this.tplPublicMessage.apply({
+				photo: photo,
+				time: this.getTime(),
+				nickname: nickname,
+            	message: message
+        	});
+		}
 
 		//console.log('photo = '+ this.getProfilePhoto(from));
 

@@ -382,7 +382,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				var roster = Ext.StoreMgr.get('RoomRoster');
 				var user = roster.getById(from);
 
+				console.log('handlePacketIn user = '+user);
+				
 			//	var total = roster.getCount();
+			//	console.log('roster total = '+total);
+
 				
 				/* Let's call the controller method able to add the message
 				 * to the public chat room */
