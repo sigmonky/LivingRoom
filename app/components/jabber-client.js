@@ -312,6 +312,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				//Adding the user to the store
 				roster.add(item);
 			
+				roster.sync();
+				
 				//Approve Subscription Request
 				var aPresence = new JSJaCPresence();
 				aPresence.setTo(from);
@@ -383,9 +385,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//	var user = roster.getById(from);
 
 
-			//	console.log('handlePacketIn user from = '+from);
+				console.log('handlePacketIn user from = '+from);
 
-			//	console.log('handlePacketIn user = '+user);
+				console.log('handlePacketIn user = '+user);
 				
 			//	var total = roster.getCount();
 			//	console.log('roster total = '+total);
