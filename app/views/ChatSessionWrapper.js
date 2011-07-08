@@ -32,7 +32,20 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 				iconCls: 'arrow_left',
 				scope: this,
 				handler: this.switchBack
-			}]
+			},
+			{
+				//Definition of Show Rost button
+				ui: 'action',
+				text: '',
+				iconMask: true,
+				iconCls: 'arrow_right',
+				scope: this,
+				handler: this.showRoster
+			}
+			
+			
+			
+			]
 		});
 
 		pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
@@ -78,10 +91,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		    console.log('record.nickname = '+record.get('nickname'));
 		});
 		
-		this.setActiveItem('roomRoster', {type:'slide', direction:'down'});
+		this.setActiveItem('roomRoster', {type:'slide', direction:'right'});
 		
-		
-
 	   // this.setActiveItem(1);
 	},
 	
