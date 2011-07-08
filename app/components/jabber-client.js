@@ -605,11 +605,25 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	joinRoomComplete: function(iq, me){
 		
 		console.log('joinRoomComplete = '+iq.xml());
+		var store = Ext.StoreMgr.get('RoomRoster');
+		var facebookStore = Ext.StoreMgr.get('FacebookUser');
+		var obj = facebookStore.getAt(0);
+		console.log('obj is ' + obj.get('id'));
+		var fb_id = obj.get('id');
 		
+		var item = Ext.ModelMgr.create({
+		    jid: this.myJID,
+			nickname: this.nickname,
+			facebook_id: fb_id,
+		}, 'RosterItem');
+		
+		console.log('room handlePresence roster add = ' +from);
+		//Adding the user to the store
+		roster.add(item);
 	},
 	
 	getRoster: function(){
-		console.log('getRoster');
+		//console.log('getRoster');
 		//Let's make a request to get the roaster back
 		var iq = new JSJaCIQ();
 		iq.setIQ(null,'get','roster_1');
@@ -619,7 +633,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	getRoasterComplete: function(iq, me){
-		console.log('getRoasterComplete');
+		//console.log('getRoasterComplete');
 		
 		if (!iq || iq.getType() != 'result') {
 			if (iq)
