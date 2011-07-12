@@ -82,12 +82,12 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	},
 	
-/*	switchBack: function(){
+	switchBack: function(){
 		Ext.dispatch({
 		    controller: 'Roster',
 		    action: 'showRoom'
 		});
-	}, */
+	},
 	
 });
 
