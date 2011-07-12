@@ -181,7 +181,7 @@ Ext.regController('Roster', {
 				duration: 500
 			});
 			
-			this.application.viewport.getComponent('pnlPublicChat').toolbar = "Test";
+			this.application.viewport.getComponent('pnlPublicChat').toolbar.title = "Test";
 
 		}
 
