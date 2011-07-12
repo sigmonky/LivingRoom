@@ -61,16 +61,7 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.Panel, {
                     pack: 'center'
                 }
             }, */
-			items: [this.list],
-			listeners: {
-			/*	cardswitch: function(me, newCard, oldCard, index, animated) {
-				
-					//Let's clear the badge text
-					me.getTabBar().getComponent(index).setBadge('');
-					
-				},
-				scope: this */
-			}
+			items: [this.list]
 			
 		});
 
