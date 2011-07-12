@@ -36,7 +36,7 @@ Ext.regController('Roster', {
 	showFriends: function(){
 
 			//Let's show the attenders Panel
-			this.application.viewport.setActiveItem('friendsList', {
+			this.application.viewport.setActiveItem('pnlRoster', {
 				type: 'slide', 
 				duration: 500,
 				reverse: true
