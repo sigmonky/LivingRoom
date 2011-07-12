@@ -19,10 +19,27 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	
 	toolbar: '',
 	
+	barTitle: '',
+	
 	isChatRoom: false,
 	
 	initComponent: function(){
 		
+		this.toolbar = new Ext.Toolbar({
+			itemId: 'toolbar',
+			dock: 'top',
+			title: this.barTitle,
+			layout: 'hbox',
+			items: [{
+				//Definition of logout button
+				ui: 'back',
+				text: 'Back',
+				iconMask: true,
+				scope: this,
+				handler: this.switchBack
+			},
+			]
+		});
 		
 		/* Definition of the template that will be used to show a direct 
 		 * message coming from Facebook chat */
@@ -122,6 +139,15 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
 	
 	},
+	
+	
+	switchBack: function(){
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'showFriends'
+		});
+	},
+	
 	
 	sendMessage: function(message){
 		

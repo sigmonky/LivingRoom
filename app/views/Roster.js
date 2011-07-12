@@ -16,6 +16,7 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.Panel, {
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			title: 'All Friends',
+			id: 'friendsList',
 			iconCls: 'user',
 			iconMask: true,
 			store: 'OnlineUsers',

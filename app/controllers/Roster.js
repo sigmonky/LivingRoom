@@ -32,6 +32,18 @@ Ext.regController('Roster', {
 
 	},
 	
+	
+	showFriends: function(){
+
+			//Let's show the attenders Panel
+			this.application.viewport.setActiveItem('friendsList', {
+				type: 'slide', 
+				duration: 500,
+				reverse: true
+			});
+
+	},
+	
 	openChatSession: function(options){
 		
 		//Let's take all the user data
@@ -46,6 +58,7 @@ Ext.regController('Roster', {
 			var pnlChatSession = new LivingRoomAPI.views.ChatSession({
 				itemId: user.jid,
 				title: user.name,
+				barTitle: user.name,
 				iconCls: 'chat1',
 				iconMask: true,
 				badgeText: (options.show ? '' : '1'),
