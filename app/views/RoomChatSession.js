@@ -6,7 +6,7 @@
  * @extends Ext.Panel
  * ChatSession Screen
  */
-LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
+LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	///@private
 	application: undefined,
@@ -331,6 +331,6 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 });
 
 //Component type registration
-Ext.reg('ChatSession', LivingRoomAPI.views.ChatSession);
+Ext.reg('RoomChatSession', LivingRoomAPI.views.RoomChatSession);
 
 var a;
