@@ -245,6 +245,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var show = presence.getShow();
 			var status = presence.getStatus();
 		
+			console.log('handlePresence getStatus ' +status)
+		
 			var nickname = from.split('/')[1];
 			
 			if(type == null) {
