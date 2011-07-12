@@ -248,11 +248,17 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			// 
 			var doc = createXMLDoc(presence.xml());
 		
-			/* If user has been kicked / banned */
-			var status = doc.getElementsByTagName('status')[0].getAttribute('code');
-			var reason = doc.getElementsByTagName('reason')[0].textContent;
+		
+			var status = '';
+			var reason = '';
 			
-			console.log('handlePresence reason = '+reason);
+			/* If user has been kicked / banned */
+			if (doc.getElementsByTagName('status')){
+				status = doc.getElementsByTagName('status')[0].getAttribute('code');
+				reason = doc.getElementsByTagName('reason')[0].textContent;
+			
+				console.log('handlePresence reason = '+reason);
+			}
 		
 		
 			var nickname = from.split('/')[1];
@@ -300,7 +306,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				var message = '';
 				if (status == '307'){
 					if (reason != ''){
-						message = nickname+ ' has been kicked from the room.('+reason+')';
+						message = nickname+ ' has been kicked from the room. ('+reason+')';
 					}
 					else{
 						message: nickname+ ' has been kicked from the room.'
