@@ -43,7 +43,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					//Let's call the controller method able to show the user Roster
 					Ext.dispatch({
 					    controller: 'Roster',
-					    action: 'openChatSession',
+					    action: 'openChatSessionForRoomRoster',
 						show: true,
 						user: user
 					});
