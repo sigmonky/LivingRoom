@@ -6,7 +6,7 @@
  * @extends Ext.Panel
  * ChatSession Screen
  */
-LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
+LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	///@private
 	application: undefined,
@@ -28,13 +28,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 			dock: 'top',
 			title: 'Room Topic',
 			layout: 'hbox',
-			items: [{
-				//Definition of logout button
-				ui: 'back',
-				iconMask: true,
-				scope: this,
-				handler: this.switchBack
-			},
+			items: [
 			{xtype: 'spacer'},
 			{
 				//Definition of Show Rost button
@@ -156,7 +150,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					scope: this
 				}]
 			},
-			//	this.toolbar
+				this.toolbar
 
 			]
 		});
@@ -165,6 +159,22 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
 	
 	},
+	
+	showRoster: function(){
+		console.log('show roster');
+		
+		var store = Ext.StoreMgr.get('RoomRoster');
+		store.each(function (record) {
+		    console.log('record.nickname = '+record.get('nickname'));
+		});
+		
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'showRoomParticipants'
+		});
+	},
+
+	
 	
 	sendMessage: function(message){
 		
@@ -337,6 +347,6 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 });
 
 //Component type registration
-Ext.reg('ChatSession', LivingRoomAPI.views.ChatSession);
+Ext.reg('RoomChatSession', LivingRoomAPI.views.RoomChatSession);
 
 var a;
