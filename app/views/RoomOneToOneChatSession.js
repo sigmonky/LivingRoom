@@ -124,6 +124,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		
 			scroll: 'vertical',
 			dockedItems: [
+				this.toolbar,
 			{
 				//Definition of the message panel
 				xtype: 'panel',
@@ -146,8 +147,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 					handler: this.sendMessage,
 					scope: this
 				}]
-			},
-				this.toolbar
+			}
 
 			]
 		});
