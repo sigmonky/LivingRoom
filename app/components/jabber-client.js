@@ -243,19 +243,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var from = presence.getFrom();
 			var type = presence.getType();
 			var show = presence.getShow();
-			var status = presence.getStatus();
 		
 			//console.log('handlePresence getStatus ' +status)
 			// 
 			var doc = createXMLDoc(presence.xml());
 		
-			console.log('handlePresence status doc= '+doc);
+			/* If user has been kicked / banned */
+			var status= doc.getElementsByTagName('status')[0].getAttribute('code');
 		
-			var status = doc.getElementsByTagName('status')[0].getAttribute('code').value;
-			var status2= doc.getElementsByTagName('status')[0].getAttribute('code');
-		
-			console.log('handlePresence status = '+status);
-			console.log('handlePresence status 2= '+status2);
 		
 		
 			var nickname = from.split('/')[1];
@@ -301,11 +296,27 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				user = roster.getById(from);
 				roster.remove(user);
 				
-				Ext.dispatch({
-				    controller: 'Roster',
-				    action: 'addRoomAnnouncement',
-					message: nickname+ ' has left the room.'
-				});
+				if (status == '307'){
+					Ext.dispatch({
+				    	controller: 'Roster',
+				    	action: 'addRoomAnnouncement',
+						message: nickname+ ' has been kicked from the room.'
+					});
+				}else if(status == "403"){
+					Ext.dispatch({
+				    	controller: 'Roster',
+				    	action: 'addRoomAnnouncement',
+						message: nickname+ ' has been banned from the room.'
+					});
+				}else{
+					Ext.dispatch({
+				    	controller: 'Roster',
+				    	action: 'addRoomAnnouncement',
+						message: nickname+ ' has left the room.'
+					});
+				
+				}
+				
 			}
 			
 			
