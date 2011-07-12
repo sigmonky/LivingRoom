@@ -157,7 +157,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					scope: this
 				}]
 			},
-			{this.toolBar}
+			{this.toolBar},
 			]
 		});
 
