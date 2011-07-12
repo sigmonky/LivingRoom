@@ -21,7 +21,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
 		
-		var toolbar = new Ext.Toolbar({
+		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
 			title: 'Room Topic',
@@ -156,7 +156,8 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					handler: this.sendMessage,
 					scope: this
 				}]
-			},{toolbar},
+			},
+			{this.toolBar}
 			]
 		});
 
