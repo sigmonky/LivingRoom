@@ -35,12 +35,10 @@ Ext.regController('Roster', {
 	
 	showFriends: function(){
 
-			//Let's show the attenders Panel
-			this.application.viewport.setActiveItem('pnlRoster', {
-				type: 'slide', 
-				duration: 500,
-				reverse: true
-			});
+		this.application.viewport.getComponent('pnlRoster').setActiveItem(friendsList, {
+			type: 'slide', 
+			duration: 500
+		});
 
 	},
 	
