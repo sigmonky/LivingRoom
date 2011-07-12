@@ -43,7 +43,7 @@ Ext.regController('Roster', {
 		if(pnlChatSession == undefined){
 		
 			//Let's create the chat session panel
-			var pnlChatSession = new LivingRoomAPI.views.RoomChatSession({
+			var pnlChatSession = new LivingRoomAPI.views.ChatSession({
 				itemId: user.jid,
 				title: user.name,
 				iconCls: 'chat1',
