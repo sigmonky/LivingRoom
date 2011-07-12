@@ -180,6 +180,8 @@ Ext.regController('Roster', {
 				type: 'slide', 
 				duration: 500
 			});
+			
+			this.application.viewport.getComponent('pnlPublicChat').toolbar = "Test";
 
 		}
 

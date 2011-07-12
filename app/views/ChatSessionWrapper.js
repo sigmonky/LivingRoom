@@ -18,9 +18,11 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	isChatRoom: false,
 	
+	toolbar: "",
+	
 	initComponent: function(){
 
-		var toolbar = new Ext.Toolbar({
+		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
 			title: 'Room Topic',
@@ -70,7 +72,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			layout:'card',//* could be card/fit as well?*///
 			flex: 1,
 			fullscreen:'true',
-			dockedItems: [toolbar],
+			dockedItems: [this.toolbar],
 			items: [pnlPublicChat2, roomRoster]
 		});
 
