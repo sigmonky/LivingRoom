@@ -45,9 +45,6 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 				scope: this,
 				handler: this.showRoster
 			}
-			
-			
-			
 			]
 		});
 		
@@ -159,7 +156,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					scope: this
 				}]
 			},
-				this.toolbar
+			//	this.toolbar
 
 			]
 		});

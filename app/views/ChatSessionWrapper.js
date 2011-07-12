@@ -50,7 +50,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			]
 		});
 
-		pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
+		pnlPublicChat2 = new LivingRoomAPI.views.RoomChatSession({
 			id: 'test1',
 			isChatRoom: true,
 			jabberComponent: jabberClient
@@ -71,7 +71,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		Ext.apply(this,{
 			layout:'card',//* could be card/fit as well?*///
 			fullscreen:'true',
-			dockedItems: [this.toolbar],
+		//	dockedItems: [this.toolbar],
 			items: [pnlPublicChat2, roomRoster]
 		});
 
