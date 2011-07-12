@@ -106,7 +106,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 		Ext.apply(this,{
 		
 			scroll: 'vertical',
-			dockedItems: [
+			dockedItems: [this.toolbar,
 			{
 				//Definition of the message panel
 				xtype: 'panel',
