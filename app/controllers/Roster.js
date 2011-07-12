@@ -151,7 +151,7 @@ Ext.regController('Roster', {
 			});
 			
 			//Let's add the chat session panel
-		//	this.application.viewport.getComponent('pnlRoster').add(pnlChatSession);
+			this.application.viewport.getComponent('pnlPublicChat').add(pnlChatSession);
 			
 			
 		}else{
@@ -211,19 +211,49 @@ Ext.regController('Roster', {
 	},
 	
 	
+	addMessageToOneToOneChatSession: function(options){
+		
+		//Let's take the store that will contains all the roster users
+		var store = Ext.StoreMgr.get('RoomRoster');
+
+		//Let's take the chat user
+		var user = store.getById(options.from);
+		
+		//Let's try to take an already active chat session panel
+		var pnlChatSession = this.application.viewport.getComponent('pnlPublicChat').getComponent(user.get('jid'));
+		
+		console.log('addMessageToOneToOneChatSession from= '+options.from);
 	
+		console.log('addMessageToOneToOneChatSession user= '+user);
+	
+	
+		//Let's call the controller method able to show the user Roster
+	/*	Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'openChatSession',
+			show: false,
+			user: user
+		});
+*/
+		//Let's finally add the chat message
+		pnlChatSession.addChatMessage(options.message, user, false);
+		
+	},
 	
 	
 	addMessageToChatSession: function(options){
 		
 		//Let's take the store that will contains all the roster users
-		var store = Ext.StoreMgr.get('OnlineUsers');
+		var store = Ext.StoreMgr.get('RoomRoster');
 
 		//Let's take the chat user
 		var user = store.getById(options.from);
 		
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoster').getComponent(user.get('jid'));
+	
+		console.log('addMessageToChatSession user= '+user);
+	
 	
 		//Let's call the controller method able to show the user Roster
 		Ext.dispatch({
