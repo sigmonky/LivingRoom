@@ -160,6 +160,25 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	},
 	
+	showRoster: function(){
+		console.log('show roster');
+		
+		var store = Ext.StoreMgr.get('RoomRoster');
+		store.each(function (record) {
+		    console.log('record.nickname = '+record.get('nickname'));
+		});
+		
+		this.application.viewport.getComponent('pnlPublicChat').setActiveItem('roomRoster', {
+			type: 'slide', 
+			duration: 500
+		});
+		
+	//	this.setActiveItem('roomRoster', {type:'slide', direction:'left'});
+//		this.dockedItems.items[0].setTitle("Participants");
+		
+	   // this.setActiveItem(1);
+	},
+	
 	sendMessage: function(message){
 		
 		//Let's take the written message
