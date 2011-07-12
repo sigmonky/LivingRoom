@@ -39,7 +39,7 @@ Ext.regController('Roster', {
 			
 			var original = 	this.application.viewport.getComponent('pnlRoomRoster').dockedItems.items[0];
 			
-			this.application.viewport.setActiveItem(original, {
+			this.application.viewport.getComponent('pnlRoster').setActiveItem(original, {
 				type: 'slide', 
 				duration: 500,
 				reverse: true
