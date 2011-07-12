@@ -13,7 +13,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	initComponent : function(){
 	
-	
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
@@ -22,6 +21,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			items: [{
 				//Definition of logout button
 				ui: 'back',
+				text: 'Participants',
 				iconMask: true,
 				scope: this,
 				handler: this.switchBack
