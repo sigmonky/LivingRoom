@@ -6,7 +6,7 @@
  * @extends Ext.Panel
  * Main application Viewport
  */
-LivingRoomAPI.views.Roster = Ext.extend(Ext.TabPanel, {
+LivingRoomAPI.views.Roster = Ext.extend(Ext.Panel, {
 	
 	///@private
 	application: undefined,
@@ -54,22 +54,22 @@ LivingRoomAPI.views.Roster = Ext.extend(Ext.TabPanel, {
 		Ext.apply(this,{
 		
 			fullscreen: true,
-			tabBar: {
+		/*	tabBar: {
                 dock: 'top',
 				scroll: 'horizontal',
                 layout: {
                     pack: 'center'
                 }
-            },
+            }, */
 			items: [this.list],
 			listeners: {
-				cardswitch: function(me, newCard, oldCard, index, animated) {
+			/*	cardswitch: function(me, newCard, oldCard, index, animated) {
 				
 					//Let's clear the badge text
 					me.getTabBar().getComponent(index).setBadge('');
 					
 				},
-				scope: this
+				scope: this */
 			}
 			
 		});

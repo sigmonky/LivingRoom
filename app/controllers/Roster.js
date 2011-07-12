@@ -65,10 +65,10 @@ Ext.regController('Roster', {
 			var pnlRoster = this.application.viewport.getComponent('pnlRoster');
 			
 			//Taking the TabBar component
-			var tabBar = pnlRoster.getTabBar();
+	//		var tabBar = pnlRoster.getTabBar();
 
 			//Let's check if we are currently on the chat panel with this user
-			if(pnlRoster.getActiveItem() != pnlChatSession){
+	/*		if(pnlRoster.getActiveItem() != pnlChatSession){
 				
 				//Let's check every open chat to find the right one inside the TabBar
 				Ext.each(tabBar.items.items, function(chat){
@@ -86,7 +86,7 @@ Ext.regController('Roster', {
 
 				}, this);
 
-			}
+			}*/
 
 		}
 		
