@@ -87,7 +87,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		Ext.apply(this,{
 		
 			fullscreen: true,
-			dockedItems: [this.toolbar],
+		//	dockedItems: [this.toolbar],
 			tabBar: {
                 dock: 'top',
                 layout: {
