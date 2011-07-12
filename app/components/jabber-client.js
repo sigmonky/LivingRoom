@@ -252,14 +252,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var status = '';
 			var reason = '';
 			
-			/* If user has been kicked / banned */
-			if (doc.getElementsByTagName('status')){
-				status = doc.getElementsByTagName('status')[0].getAttribute('code');
-				reason = doc.getElementsByTagName('reason')[0].textContent;
-			
-				console.log('handlePresence reason = '+reason);
-			}
-		
+
 		
 			var nickname = from.split('/')[1];
 			
