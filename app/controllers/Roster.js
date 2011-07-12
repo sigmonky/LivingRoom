@@ -240,6 +240,14 @@ Ext.regController('Roster', {
 		
 	},
 	
+	addRoomAnnouncement: function(options){
+		var pnlChatRoom = this.application.viewport.getComponent('pnlPublicChat');
+		console.log('addRoomAnnouncement')
+		//Let's finally add the chat message
+		pnlChatRoom.addRoomAnnouncement(options.message);
+
+	},
+	
 	
 	addMessageToChatSession: function(options){
 		

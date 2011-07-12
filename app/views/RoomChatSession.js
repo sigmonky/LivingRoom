@@ -112,6 +112,15 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		);
 		
 		
+		this.tplPublicAnnouncement = new Ext.XTemplate(
+			'<tpl for=".">',
+				'<div class="x-public-chat-message">',
+					'<p class="message">*****{message}*******</p>',
+				'</div>',
+			'</tpl>'
+		);
+		
+		
 		this.tplPublicMessageNoPhoto = new Ext.XTemplate(
 			'<tpl for=".">',
 				'<div class="x-public-chat-message">',
@@ -209,6 +218,18 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//Clear the message field
 		message.setValue('');
 		
+	},
+	
+	addRoomAnnouncement: function(message){
+		var html;
+		html = this.tplPublicAnnouncement.apply({
+        	message: message
+    	});
+		var pnlMsg = new Ext.Panel({
+			html: html
+		});
+		this.add(pnlMsg);
+		this.doLayout();
 	},
 	
 	addChatMessage: function(message, from, mine){

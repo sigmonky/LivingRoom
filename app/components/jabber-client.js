@@ -257,6 +257,12 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}, 'RosterItem');
 				
 				
+				Ext.dispatch({
+				    controller: 'Roster',
+				    action: 'addRoomAnnouncement',
+					message: nickname+ ' entered the room'
+				});
+				
 				console.log('room handlePresence roster add = ' +from);
 				
 				//Adding the user to the store
