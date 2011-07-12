@@ -297,12 +297,18 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				
 				user = roster.getById(from);
 				roster.remove(user);
-				
+				var message = '';
 				if (status == '307'){
+					if (reason != ''){
+						message = nickname+ ' has been kicked from the room.('+reason+')';
+					}
+					else{
+						message: nickname+ ' has been kicked from the room.'
+					}
 					Ext.dispatch({
 				    	controller: 'Roster',
 				    	action: 'addRoomAnnouncement',
-						message: nickname+ ' has been kicked from the room.'
+						message: message
 					});
 				}else if(status == "403"){
 					Ext.dispatch({
