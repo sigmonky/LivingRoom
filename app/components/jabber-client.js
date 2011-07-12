@@ -238,8 +238,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log(' handlePresence presense = ' +from);
 		//me.getVCard(from);
 		
-		if(this.publicRoom != true) {
-
+		if(this.publicRoom){
 			console.log('!this.publicRoom');
 			//Let's take the store that will contains all the roster users
 			var roster = Ext.StoreMgr.get('Roster');
