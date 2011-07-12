@@ -14,7 +14,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	initComponent : function(){
 	
 	
-		var toolbar = new Ext.Toolbar({
+		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
 			title: 'Participants',
@@ -82,12 +82,12 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	},
 	
-	switchBack: function(){
+/*	switchBack: function(){
 		Ext.dispatch({
 		    controller: 'Roster',
 		    action: 'showRoom'
 		});
-	},
+	}, */
 	
 });
 
