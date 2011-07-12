@@ -17,6 +17,8 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	
 	jabberComponent: undefined,
 	
+	toolbar: '',
+	
 	isChatRoom: false,
 	
 	initComponent: function(){
@@ -157,9 +159,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					scope: this
 				}]
 			},
-			{
-				this.toolBar
-			}
+				this.toolbar
 
 			]
 		});
