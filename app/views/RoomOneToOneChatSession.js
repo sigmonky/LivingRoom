@@ -147,7 +147,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 					scope: this
 				}]
 			},
-			//	this.toolbar
+				this.toolbar
 
 			]
 		});

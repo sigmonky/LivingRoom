@@ -23,30 +23,6 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
 		
-		this.toolbar = new Ext.Toolbar({
-			itemId: 'toolbar',
-			dock: 'top',
-			title: 'Room Topic',
-			layout: 'hbox',
-			items: [{
-				//Definition of logout button
-				ui: 'back',
-				iconMask: true,
-				scope: this,
-				handler: this.switchBack
-			},
-			{xtype: 'spacer'},
-			{
-				//Definition of Show Rost button
-				ui: 'action',
-				text: 'Participants',
-				iconMask: true,
-				iconCls: 'arrow_right',
-				scope: this,
-				handler: this.showRoster
-			}
-			]
-		});
 		
 		/* Definition of the template that will be used to show a direct 
 		 * message coming from Facebook chat */
