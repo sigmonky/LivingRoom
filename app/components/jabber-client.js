@@ -235,53 +235,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 		
-		console.log(' handlePresence presense = ' +from);
-		//me.getVCard(from);
-		
-		if(this.publicRoom){
-			console.log('!this.publicRoom');
-			//Let's take the store that will contains all the roster users
-			var roster = Ext.StoreMgr.get('Roster');
-		
-			//Let's take the store that will contains all the online users
-			var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
 
-			//Let's take all the presence informations
-			var from = presence.getFrom();
-			var type = presence.getType();
-			var show = presence.getShow();
-			var status = presence.getStatus();
-		
-			//Let's take all teh user informations from the Roster
-			var user = roster.getById(from);
-		
-			if(type == null) {
-		
-				//Adding the user to the Online Users store
-				onlineUsers.add(user);
-		
-				//Approve Subscription Request
-				var aPresence = new JSJaCPresence();
-				aPresence.setTo(from);
-				aPresence.setType('subscribed');
-				me.jabberConnection.send(aPresence);
-
-				//Subscribe to gateway contact's presence
-				var bPresence = new JSJaCPresence();
-				bPresence.setTo(from);
-				bPresence.setType('subscribe');
-				me.jabberConnection.send(bPresence);
-		
-				me.getVCard(from);
-		
-			}else if(type == 'unavailable'){
-			
-				onlineUsers.remove(user);
-			
-			}
-
-		}else{
-			/* CHAT ROOM */
 
 			var roster = Ext.StoreMgr.get('RoomRoster');
 			//console.log('room handlePresence presense = ' +presence);
@@ -334,7 +288,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			}
 			
 			
-		}
 	 
 	},
 
@@ -415,42 +368,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleIq: function(iq, me){
-		//Let's check if this component has been created to allow user to chat inside a public Room
-		if(!me.publicRoom){
-		
-			console.log('!me.publicRoom');
-		
-			//Let's take the store that will contains all the roster users
-			var store = Ext.StoreMgr.get('OnlineUsers');
-		
-			//Let's take all the iq informations
-			var from = iq.getFrom();
 
-			//Let's take the current user
-			var user = store.getById(from);
-		
-			//Let's create the xml document
-			var doc = createXMLDoc(iq.xml());
-
-			//Let's take the vCard element
-			var vCard = doc.getElementsByTagName('vCard')[0];
-
-			//Let's take the PHOTO element
-			var photo = vCard.getElementsByTagName('PHOTO')[0];
-
-			//Let's take the image mime type element
-			var type = photo.getElementsByTagName('TYPE')[0].textContent;
-
-			//Let's take the binval element containing the photo in base64 format
-			var binval = photo.getElementsByTagName('BINVAL')[0].textContent;
-
-			//Saving the photo mime type
-			user.set('photoType', type);
-		
-			//Saving the photo base64 data
-			user.set('photoBase64', binval);
-		
-		}else{
 			var iqID = iq.getID();
 			
 			//Let's take the store that will contains all the roster users
@@ -480,7 +398,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			user.set('facebook_id', facebook_id);
 		//	user.set('nickname', nickname);
 
-		}
 
 	},
 	
