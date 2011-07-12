@@ -147,7 +147,7 @@ Ext.regController('Roster', {
 				badgeText: (options.show ? '' : '1'),
 				remoteJid: user.jid,
 				remoteUserName: user.nickname,
-				jabberComponent: facebookClient
+				jabberComponent: jabberClient
 			});
 			
 			//Let's add the chat session panel
