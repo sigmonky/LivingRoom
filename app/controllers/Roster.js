@@ -113,6 +113,13 @@ Ext.regController('Roster', {
 		
 	},
 	
+	showRoomParticipants:function(){
+		this.application.viewport.getComponent('pnlPublicChat').setActiveItem('roomRoster', {
+			type: 'slide', 
+			duration: 500
+		});	
+	},
+	
 	openChatSessionForRoomRoster: function(options){
 		
 		//Let's take all the user data

@@ -168,9 +168,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		    console.log('record.nickname = '+record.get('nickname'));
 		});
 		
-		this.application.viewport.getComponent('pnlPublicChat').setActiveItem('roomRoster', {
-			type: 'slide', 
-			duration: 500
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'showRoomParticipants'
 		});
 		
 	//	this.setActiveItem('roomRoster', {type:'slide', direction:'left'});
