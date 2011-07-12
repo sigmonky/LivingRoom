@@ -181,7 +181,7 @@ Ext.regController('Roster', {
 				duration: 500
 			});
 			
-			this.application.viewport.getComponent('pnlPublicChat').items[0].setTitle('Item selected');
+			this.application.viewport.getComponent('pnlPublicChat').dockedItems.items[0].setTitle('Item selected');
 		}
 
 		//Let's take the store that will contains all the roster users
