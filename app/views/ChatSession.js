@@ -156,25 +156,7 @@ LivingRoomAPI.views.ChatSession = Ext.extend(Ext.Panel, {
 					handler: this.sendMessage,
 					scope: this
 				}]
-			},
-			
-			{
-				//Definition of logout button
-				ui: 'back',
-				iconMask: true,
-				scope: this,
-				handler: this.switchBack
-			},
-			{xtype: 'spacer'},
-			{
-				//Definition of Show Rost button
-				ui: 'action',
-				text: 'Participants',
-				iconMask: true,
-				iconCls: 'arrow_right',
-				scope: this,
-				handler: this.showRoster
-			}
+			},{toolbar},
 			]
 		});
 
