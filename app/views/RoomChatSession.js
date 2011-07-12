@@ -115,7 +115,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.tplPublicAnnouncement = new Ext.XTemplate(
 			'<tpl for=".">',
 				'<div class="x-public-chat-message">',
-					'<p class="message">*****{message}*******</p>',
+					'<p class="message">{message}</p>',
 				'</div>',
 			'</tpl>'
 		);

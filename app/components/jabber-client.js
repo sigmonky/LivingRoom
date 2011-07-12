@@ -260,7 +260,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				Ext.dispatch({
 				    controller: 'Roster',
 				    action: 'addRoomAnnouncement',
-					message: nickname+ ' entered the room'
+					message: nickname+ ' has joined the room.'
 				});
 				
 				console.log('room handlePresence roster add = ' +from);
@@ -287,6 +287,12 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				
 				user = roster.getById(from);
 				roster.remove(user);
+				
+				Ext.dispatch({
+				    controller: 'Roster',
+				    action: 'addRoomAnnouncement',
+					message: nickname+ ' has left the room.'
+				});
 			}
 			
 			
