@@ -27,7 +27,13 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			dock: 'top',
 			title: 'Room Topic',
 			layout: 'hbox',
-			items: [
+			items: [{
+				//Definition of logout button
+				ui: 'back',
+				iconMask: true,
+				scope: this,
+				handler: this.switchBack
+			},
 			{xtype: 'spacer'},
 			{
 				//Definition of Show Rost button
@@ -47,6 +53,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		pnlPublicChat2 = new LivingRoomAPI.views.ChatSession({
 			id: 'test1',
 			isChatRoom: true,
+			dockedItems: [this.toolbar],
 			jabberComponent: jabberClient
 		});
 		
@@ -65,7 +72,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		Ext.apply(this,{
 			layout:'card',//* could be card/fit as well?*///
 			fullscreen:'true',
-			dockedItems: [this.toolbar],
+
 			items: [pnlPublicChat2, roomRoster]
 		});
 
