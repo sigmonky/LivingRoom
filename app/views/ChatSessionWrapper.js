@@ -104,6 +104,11 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	addChatRoomMessage: function(message, from){
 		console.log('addChatRoomMessage 1')
 		pnlPublicChat2.addChatRoomMessage(message, from);
+	},
+	
+	addRoomAnnouncement: function(message){
+		console.log('addChatRoomMessage 1')
+		pnlPublicChat2.addRoomAnnouncement(message);
 	}
 	
 });
