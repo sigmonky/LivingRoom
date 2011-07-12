@@ -195,7 +195,7 @@ Ext.regController('Roster', {
 				duration: 500
 			});
 			
-			this.application.viewport.getComponent('pnlPublicChat').dockedItems.items[0].setTitle(user.nickname);
+			this.application.viewport.getComponent('pnlChatSession').dockedItems.items[0].setTitle(user.nickname);
 		}
 
 		//Let's take the store that will contains all the roster users
