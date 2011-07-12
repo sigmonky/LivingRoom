@@ -21,7 +21,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			items: [{
 				//Definition of logout button
 				ui: 'back',
-				text: 'Participants',
+				text: 'Room',
 				iconMask: true,
 				scope: this,
 				handler: this.switchBack
