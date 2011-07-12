@@ -34,6 +34,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					//Let's take the online users store
 					var store = list.getStore();
 					
+					store.sync();
 					//Let's take the selected user
 					var user = store.getAt(index);
 					
