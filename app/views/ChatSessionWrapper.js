@@ -26,15 +26,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			itemId: 'toolbar',
 			dock: 'top',
 			title: 'Room Topic',
-			items: [{
-				//Definition of logout button
-				ui: 'action',
-				text: 'Back',
-				iconMask: true,
-				iconCls: 'arrow_left',
-				scope: this,
-				handler: this.switchBack
-			},
+			layout: 'hbox',
+			items: [
 			{xtype: 'spacer'},
 			{
 				//Definition of Show Rost button
@@ -71,7 +64,6 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 
 		Ext.apply(this,{
 			layout:'card',//* could be card/fit as well?*///
-			flex: 1,
 			fullscreen:'true',
 			dockedItems: [this.toolbar],
 			items: [pnlPublicChat2, roomRoster]
@@ -84,6 +76,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	switchBack: function(){
 		    this.setActiveItem(0);
+			this.setActiveItem('test1', {type:'slide', direction:'right'});
+		
 			this.dockedItems.items[0].setTitle("Room Topic");
 	},
 	
@@ -95,7 +89,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		    console.log('record.nickname = '+record.get('nickname'));
 		});
 		
-		this.setActiveItem('roomRoster', {type:'slide', direction:'right'});
+		this.setActiveItem('roomRoster', {type:'slide', direction:'left'});
 		this.dockedItems.items[0].setTitle("Participants");
 		
 	   // this.setActiveItem(1);
