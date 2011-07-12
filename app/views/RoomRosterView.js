@@ -34,9 +34,11 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					//Let's take the online users store
 					var store = list.getStore();
 					
+					console.log('itemtap at index =' +index);
 					store.sync();
 					//Let's take the selected user
 					var user = store.getAt(index);
+					console.log('itemtap user =' +user);
 					
 					//Let's call the controller method able to show the user Roster
 					Ext.dispatch({
