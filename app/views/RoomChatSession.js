@@ -221,6 +221,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	addRoomAnnouncement: function(message){
+		console.log('roomChatSession - addRoomAnnouncement message = '+message);
 		var html;
 		html = this.tplPublicAnnouncement.apply({
         	message: message
