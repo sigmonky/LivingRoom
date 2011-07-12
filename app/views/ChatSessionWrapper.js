@@ -83,7 +83,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	switchBack: function(){
 		    this.setActiveItem(0);
-			this.application.viewport.getComponent('pnlPublicChat').dockedItems.items[0].setTitle("Room Topic");
+			this.dockedItems.items[0].setTitle("Room Topic");
 		
 	},
 	
@@ -96,7 +96,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		});
 		
 		this.setActiveItem('roomRoster', {type:'slide', direction:'right'});
-		this.application.viewport.getComponent('pnlPublicChat').dockedItems.items[0].setTitle("Participants");
+		this.dockedItems.items[0].setTitle("Participants");
 		
 	   // this.setActiveItem(1);
 	},
