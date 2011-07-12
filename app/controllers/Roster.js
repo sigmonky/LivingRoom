@@ -37,7 +37,7 @@ Ext.regController('Roster', {
 
 			//Let's show the attenders Panel
 			
-			var original = 	this.application.viewport.getComponent('pnlRoomRoster').items[0];
+			var original = 	this.application.viewport.getComponent('pnlRoomRoster').getComponent('friendsList');
 			console.log('original = '+original);
 			this.application.viewport.getComponent('pnlRoster').setActiveItem(original, {
 				type: 'slide', 
