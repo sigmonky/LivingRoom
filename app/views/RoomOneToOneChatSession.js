@@ -19,6 +19,8 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 	
 	toolbar: '',
 	
+	barTitle: '',
+	
 	isChatRoom: false,
 	
 	initComponent: function(){
@@ -26,7 +28,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
-			title: 'User',
+			title: this.barTitle,
 			layout: 'hbox',
 			items: [{
 				//Definition of logout button
