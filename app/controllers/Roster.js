@@ -113,7 +113,7 @@ Ext.regController('Roster', {
 		
 	},
 	
-		: function(options){
+	openChatSessionForRoomRoster: function(options){
 		
 		//Let's take all the user data
 		var user = options.user.data;
