@@ -113,7 +113,7 @@ Ext.regController('Roster', {
 		
 	},
 	
-	openChatSession: function(options){
+		: function(options){
 		
 		//Let's take all the user data
 		var user = options.user.data;
@@ -143,7 +143,7 @@ Ext.regController('Roster', {
 
 			
 			//Let's take the roster panel
-			var pnlRoster = this.application.viewport.getComponent('pnlRoster');
+			var pnlRoster = this.application.viewport.getComponent('pnlPublicChat');
 			
 			//Taking the TabBar component
 			var tabBar = pnlRoster.getTabBar();
@@ -176,7 +176,7 @@ Ext.regController('Roster', {
 		if(options.show){
 
 			//Let's show the chat session Panel
-			this.application.viewport.getComponent('pnlRoster').setActiveItem(pnlChatSession, {
+			this.application.viewport.getComponent('pnlPublicChat').setActiveItem(pnlChatSession, {
 				type: 'slide', 
 				duration: 500
 			});
@@ -184,13 +184,13 @@ Ext.regController('Roster', {
 		}
 
 		//Let's take the store that will contains all the roster users
-		var store = Ext.StoreMgr.get('OnlineUsers');
+	//	var store = Ext.StoreMgr.get('OnlineUsers');
 
 		//Let's take the chat user
-		var user = store.getById(user.jid);
+	//	var user = store.getById(user.jid);
 		
 		//Saving the active chat session
-		user.set('chatActive', true);
+	//	user.set('chatActive', true);
 		
 	},
 	
