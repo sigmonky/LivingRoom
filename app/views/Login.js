@@ -288,9 +288,9 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 			});
 
 			//Let's finally connect to facebook chat
-			facebookClient.connect(); 
+			facebookClient.connect(); */
 
-		}, */
+		}, 
 	
 	onLoginSuccess: function(){
 		loadingMask.hide();
