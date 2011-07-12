@@ -13,6 +13,21 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	initComponent : function(){
 	
+	
+		var toolbar = new Ext.Toolbar({
+			itemId: 'toolbar',
+			dock: 'top',
+			title: 'Participants',
+			layout: 'hbox',
+			items: [{
+				//Definition of logout button
+				ui: 'back',
+				iconMask: true,
+				scope: this,
+				handler: this.switchBack
+			}
+			]
+		});
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			title: 'All Friends',
@@ -56,6 +71,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 		Ext.apply(this,{
             layout: 'card',
+			dockedItems: [this.toolbar],
             cardSwitchAnimation: {type: 'flip', duration: 500},
 			fullscreen: true,
 			items: [this.list]
@@ -64,7 +80,14 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		//Superclass inizialization
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
-	}
+	},
+	
+	switchBack: function(){
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'showRoom'
+		});
+	},
 	
 });
 

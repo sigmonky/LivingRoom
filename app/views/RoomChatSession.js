@@ -172,12 +172,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		    controller: 'Roster',
 		    action: 'showRoomParticipants'
 		});
-		
-	//	this.setActiveItem('roomRoster', {type:'slide', direction:'left'});
-//		this.dockedItems.items[0].setTitle("Participants");
-		
-	   // this.setActiveItem(1);
 	},
+
+	
 	
 	sendMessage: function(message){
 		

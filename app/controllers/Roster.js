@@ -120,6 +120,13 @@ Ext.regController('Roster', {
 		});	
 	},
 	
+	showRoom: function(){
+		this.application.viewport.getComponent('pnlPublicChat').setActiveItem('test1', {
+			type: 'slide', 
+			duration: 500
+		});
+	},
+	
 	openChatSessionForRoomRoster: function(options){
 		
 		//Let's take all the user data
