@@ -35,10 +35,11 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 				scope: this,
 				handler: this.switchBack
 			},
+			{xtype: 'spacer'},
 			{
 				//Definition of Show Rost button
 				ui: 'action',
-				text: '',
+				text: 'Participants',
 				iconMask: true,
 				iconCls: 'arrow_right',
 				scope: this,
@@ -84,7 +85,6 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	switchBack: function(){
 		    this.setActiveItem(0);
 			this.dockedItems.items[0].setTitle("Room Topic");
-		
 	},
 	
 	showRoster: function(){
