@@ -176,7 +176,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		/* Let's create the component that will let the user to communicate in realtime with all
 		 * the firends inside the facebook chat */
 	
-		facebookClient = new LIVINGROOM.xmpp.Client({
+		facebookClient = new LIVINGROOM.xmpp.FacebookClient({
 				httpbase: '/JHB/',
 				timerval: 2000,
 				authtype: 'x-facebook-platform',
