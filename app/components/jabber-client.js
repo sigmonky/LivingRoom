@@ -580,7 +580,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		console.log('room handlePresence roster add = ' +from);
 		//Adding the user to the store
-		storeaasd.add(item);
+		store.add(item);
 	},
 	
 	getRoster: function(){
