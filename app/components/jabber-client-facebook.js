@@ -228,7 +228,7 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 			var user = roster.getById(from);
 		
 			if(type == null) {
-		
+	
 				//Adding the user to the Online Users store
 				onlineUsers.add(user);
 		
@@ -405,13 +405,8 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
-		console.log('handleConnected');
-
-		
 			//Let's call the function able to get the Roaster
-			me.getRoster();
-			
-
+		me.getRoster();
 		
 	},
 	
