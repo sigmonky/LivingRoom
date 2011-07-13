@@ -329,7 +329,6 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 	handleIq: function(iq, me){
 
 		//Let's check if this component has been created to allow user to chat inside a public Room
-		if(!me.publicRoom){
 		
 			//Let's take the store that will contains all the roster users
 			var store = Ext.StoreMgr.get('OnlineUsers');
@@ -364,7 +363,6 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 			//Saving the photo base64 data
 			user.set('photoBase64', binval);
 		
-		}
 
 	},
 	
