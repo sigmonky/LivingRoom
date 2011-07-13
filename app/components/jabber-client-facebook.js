@@ -354,7 +354,10 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 
 			//Let's take the binval element containing the photo in base64 format
 			var binval = photo.getElementsByTagName('BINVAL')[0].textContent;
-
+			
+			console.log('photo is '+binval);
+			
+			
 			//Saving the photo mime type
 			user.set('photoType', type);
 		
