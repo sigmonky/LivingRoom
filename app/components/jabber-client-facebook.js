@@ -405,18 +405,13 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
-		
-		//Let's check if this component has been created to allow user to chat inside a public Room
-		if(!me.publicRoom) {
+		console.log('handleConnected');
+
 		
 			//Let's call the function able to get the Roaster
 			me.getRoster();
 			
-		}else{
-			
-			//Let's call the function able to get the Disco Info
-			me.getDiscoInfo();
-		}
+
 		
 	},
 	
