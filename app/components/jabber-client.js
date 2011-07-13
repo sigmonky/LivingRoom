@@ -572,10 +572,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var obj = facebookStore.getAt(0);
 		console.log('obj is ' + obj.get('id'));
 		var fb_id = obj.get('id');
+		console.log('fb_id is ' + fb_id);
 		
 		var item = Ext.ModelMgr.create({
-		    jid: this.myJID,
-			nickname: this.nickname,
+		    jid: me.myJID,
+			nickname: me.nickname,
 			facebook_id: fb_id,
 		}, 'RoomRosterItem');
 		
