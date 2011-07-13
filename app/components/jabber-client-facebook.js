@@ -212,8 +212,6 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 
-		if(!this.publicRoom) {
-
 			//Let's take the store that will contains all the roster users
 			var roster = Ext.StoreMgr.get('Roster');
 		
@@ -255,12 +253,7 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 				onlineUsers.remove(user);
 			
 			}
-			
-		}else{
-			
-			console.log(presence);
-			
-		}
+
 	 
 	},
 	
