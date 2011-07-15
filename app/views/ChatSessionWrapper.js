@@ -88,7 +88,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	},
 	
 	showRoster: function(){
-		console.log('show roster');
+		console.log('show roster 1');
 		
 		var store = Ext.StoreMgr.get('RoomRoster');
 		store.each(function (record) {

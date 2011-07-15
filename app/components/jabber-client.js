@@ -566,12 +566,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	joinRoomComplete: function(iq, me){
 		
-		console.log('joinRoomComplete = '+iq.xml());
-		var store = Ext.StoreMgr.get('RoomRoster');
+	//	console.log('joinRoomComplete = '+iq.xml());
+	
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
-		console.log('joinRoomComplete obj is ' + obj.get('id'));
 		var fb_id = obj.get('id');
+		
+		console.log('joinRoomComplete obj is ' + obj.get('id'));
 		console.log('joinRoomComplete fb_id is ' + fb_id);
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
 		
@@ -582,6 +583,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}, 'RoomRosterItem');
 		
 		console.log('joinRoomComplete room handlePresence roster add = ' +from);
+		
+		var store = Ext.StoreMgr.get('RoomRoster');
 		//Adding the user to the store
 		store.add(item);
 		store.sync();
