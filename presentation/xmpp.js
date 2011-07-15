@@ -97,9 +97,7 @@ $(document).ready(function () {
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
 
-    connection.connect(XMPP_SERVER,
-		       null,
-		       onConnect);
+    connection.connect('isaacueca2@logoslogic.com', 'cigano', onConnect);
   
 
 });
