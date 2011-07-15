@@ -67,6 +67,7 @@ function onConnect(status)
   // the presentation node. 
     if (status == Strophe.Status.CONNECTING) {
 	log('Strophe is connecting.');
+	alert('Strophe is connecting.')
     } else if (status == Strophe.Status.CONNFAIL) {
 	log('Strophe failed to connect.');
 	$('#connect').get(0).value = 'connect';
@@ -77,6 +78,8 @@ function onConnect(status)
 	$('#connect').get(0).value = 'connect';
     } else if (status == Strophe.Status.CONNECTED) {
 	log('Strophe is connected.');
+	alert('Strophe is connected.')
+	
 	connection.send($pres());
 	connection.pubsub.subscribe(connection.jid,
 				    PUBSUB_SERVER,
@@ -93,8 +96,6 @@ $(document).ready(function () {
     connection = new Strophe.Connection(BOSH_SERVICE);
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
-
-    
 
     connection.connect(XMPP_SERVER,
 		       null,
