@@ -35,7 +35,7 @@ function rawOutput(data)
 function onConnect(status)
 {
     if (status == Strophe.Status.CONNECTING) {
-	log('Strophe is connecting.');
+	log('Strophe is connecting 1.');
     } else if (status == Strophe.Status.CONNFAIL) {
 	log('Strophe failed to connect.');
 	$('#connect').get(0).value = 'connect';
@@ -48,6 +48,7 @@ function onConnect(status)
 	$('#debug').empty();
     } else if (status == Strophe.Status.CONNECTED) {
 	log('Strophe is connected.');
+	alert('connected.');
 	connection.send($pres());
     }
 }
