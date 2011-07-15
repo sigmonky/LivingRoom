@@ -634,7 +634,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			}, 'RosterItem');
 			
 			
-			
 			//Adding the user to the store
 			store.add(item);
 			
