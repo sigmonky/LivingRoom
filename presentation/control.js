@@ -55,7 +55,7 @@ function onConnect(status)
 
 
 $(document).ready(function () {
-    connection = new Strophe.Connection('http://www.logoslogic.com/http-bind');
+    connection = new Strophe.Connection('http://www.logoslogic.com/JHB');
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
 
