@@ -437,7 +437,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//Let's take the vCard element
 			var vCard = doc.getElementsByTagName('vCard')[0];
 
-			console.log('user nickname 3- ' + vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue);
+			//console.log('user nickname 3- ' + vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue);
 			
 			var facebook_id  = vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue;
 		
