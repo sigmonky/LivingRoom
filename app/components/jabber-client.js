@@ -570,9 +570,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var store = Ext.StoreMgr.get('RoomRoster');
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
-		console.log('obj is ' + obj.get('id'));
+		console.log('joinRoomComplete obj is ' + obj.get('id'));
 		var fb_id = obj.get('id');
-		console.log('fb_id is ' + fb_id);
+		console.log('joinRoomComplete fb_id is ' + fb_id);
+		console.log('joinRoomComplete me.nickname ' + me.nickname);
 		
 		var item = Ext.ModelMgr.create({
 		    jid: me.myJID,
@@ -580,9 +581,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			facebook_id: fb_id,
 		}, 'RoomRosterItem');
 		
-		console.log('room handlePresence roster add = ' +from);
+		console.log('joinRoomComplete room handlePresence roster add = ' +from);
 		//Adding the user to the store
 		store.add(item);
+		store.sync();
 	},
 	
 	getRoster: function(){
