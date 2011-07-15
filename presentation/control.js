@@ -55,7 +55,7 @@ function onConnect(status)
 
 
 $(document).ready(function () {
-    connection = new Strophe.Connection(BOSH_SERVICE);
+    connection = new Strophe.Connection('http://www.logoslogic.com/http-bind');
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
 
@@ -64,8 +64,8 @@ $(document).ready(function () {
 	if (button.value == 'connect') {
 	    button.value = 'disconnect';
 
-	    connection.connect($('#jid').get(0).value,
-			       $('#pass').get(0).value,
+	    connection.connect('isaacueca@logoslogic.com',
+			       'cigano',
 			       onConnect);
 	} else {
 	    button.value = 'connect';
