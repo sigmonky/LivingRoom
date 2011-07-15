@@ -53,7 +53,7 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
         );
 
 		//Let's call the superclass constructor
-		LIVINGROOM.xmpp.Client.superclass.constructor.call(this);
+		LIVINGROOM.xmpp.FacebookClient.superclass.constructor.call(this);
 		
 	},
 
