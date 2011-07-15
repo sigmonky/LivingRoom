@@ -47,7 +47,7 @@ function onConnect(status)
 	$('#log').empty();
 	$('#debug').empty();
     } else if (status == Strophe.Status.CONNECTED) {
-	alert('Strophe is connected.');
+	log('Strophe is connected.');
 	connection.send($pres());
     }
 }
@@ -55,7 +55,7 @@ function onConnect(status)
 
 
 $(document).ready(function () {
-    connection = new Strophe.Connection('http://www.logoslogic.com/	');
+    connection = new Strophe.Connection('http://www.logoslogic.com/http-bind');
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
 
