@@ -20,9 +20,15 @@ $(document).ready(function () {
 			scope: this
 		};
 		
-		this.jabberConnection = new JSJaCHttpBindingConnection(oArgs);
+		jabberConnection = new JSJaCHttpBindingConnection(oArgs);
 
-		this.initConnection(this.jabberConnection);
+		jabberConnection.registerHandler('iq', handleIq);
+		jabberConnection.registerHandler('message_in', handleMessageIn);
+		jabberConnection.registerHandler('presence', handlePresence);
+		jabberConnection.registerHandler('onConnect', handleConnected);
+		jabberConnection.registerHandler('packet_in', handlePacketIn);
+		jabberConnection.registerHandler('status_changed', handleStatusChanged);
+
 
 		oArgs = new Object();
 		oArgs.domain = 'logoslogic.com';
@@ -33,49 +39,43 @@ $(document).ready(function () {
 		oArgs.port = 5222;
 		oArgs.authtype = 'sasl';
 
-		this.jabberConnection.connect(oArgs);
-
-		jabberConnection.registerHandler('iq', this.handleIq);
-		jabberConnection.registerHandler('message_in', this.handleMessageIn);
-		jabberConnection.registerHandler('presence', this.handlePresence);
-		jabberConnection.registerHandler('onConnect', this.handleConnected);
-		jabberConnection.registerHandler('packet_in', this.handlePacketIn);
-		jabberConnection.registerHandler('status_changed', this.handleStatusChanged);
-
-		handleMessageIn: function(message, me) {
+		jabberConnection.connect(oArgs);
+		
+		
+		function handleMessageIn(message, me) {
 			console.log('handleMessageIn');
 		}
 		
 		
-		handlePresence: function(presence, me) {
+		function handlePresence(presence, me) {
 			console.log('handlePresence');
 			
 		}
 		
-		handlePacketIn: function(packet, me){
+		function handlePacketIn(packet, me){
 			console.log('handlePacketIn');
 			
 		}
 		
-		handleIq: function(iq, me){
+		function handleIq(iq, me){
 			console.log('handleIq');
 			
 		}
 		
 		
-		handleStatusChanged: function(status, me) {
+		function handleStatusChanged(status, me) {
 			console.log('handleStatusChanged');
 			
 		}
 		
 		
-		handleConnected: function(me) {
+		function handleConnected(me) {
 			console.log('handleConnected');
 
 
 		},
 		
-		handleStatusChanged: function(status, me) {
+		function handleStatusChanged(status, me) {
 			console.log('handleStatusChanged');
 			
 		},
