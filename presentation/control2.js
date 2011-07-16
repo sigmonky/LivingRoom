@@ -1,3 +1,5 @@
+var current_page = 0;
+
 $(document).ready(function () {
 
 
@@ -29,7 +31,6 @@ $(document).ready(function () {
 		jabberConnection.registerHandler('packet_in', handlePacketIn);
 		jabberConnection.registerHandler('status_changed', handleStatusChanged);
 
-
 		oArgs = new Object();
 		oArgs.domain = 'logoslogic.com';
 		oArgs.username = 'isaacueca';
@@ -40,7 +41,6 @@ $(document).ready(function () {
 		oArgs.authtype = 'sasl';
 
 		jabberConnection.connect(oArgs);
-		
 		
 		function handleMessageIn(message, me) {
 			console.log('handleMessageIn');
@@ -79,6 +79,38 @@ $(document).ready(function () {
 			console.log('handleStatusChanged');
 			
 		}
+		
+		function publish(page) {
+		//	page.toString();
+			connection.pubsub.publish(connection.jid,PUBSUB_SERVER,PUBSUB_NODE,[page.toString()],log);
+		
+	//	new JSJaCLeaf();
+	//	JSJaCLeaf.prototype.setPublish = function(node) {
+	//	JSJaCLeaf.prototype.setPubsub = function(xmlns, node) {
+	//	JSJaCLeaf.prototype.createItem = function() {
+	//	JSJaCLeaf.prototype.setPublished = function(date) {
+	///	JSJaCLeaf.prototype.setItems = function(node, jid) {
+
+			var v = new JSJaCLeaf();
+			v.setType('set');
+			v.setID('publishnode');
+			v.setTo('pubsub.logoslogic.com');
+			v.setFrom('isaacueca@logoslogic.com');
+			
+			v.setPubsub('set','presentation');
+			v.setPublish('presentation');
+			v.createItem();
+			v.setTitle(current_page);
+			
+			v.setPublished(facebook_id);
+		
+		//Let's send the packet able to retrive the user vCard
+	  		this.jabberConnection.send(v);
+
+
+
+		}
+		
 
 
 });
