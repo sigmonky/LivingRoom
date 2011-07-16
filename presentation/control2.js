@@ -73,12 +73,12 @@ $(document).ready(function () {
 			console.log('handleConnected');
 
 
-		},
+		}
 		
 		function handleStatusChanged(status, me) {
 			console.log('handleStatusChanged');
 			
-		},
+		}
 
 
 });
