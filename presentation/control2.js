@@ -102,7 +102,7 @@ $(document).ready(function () {
 	
 			
 			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
-			v.setPublish('http://jabber.org/protocol/pubsub');
+			v.setPublish('presentation');
 			v.createItem();
 			v.setTitle(current_page);
 			
