@@ -82,7 +82,7 @@ $(document).ready(function () {
 		
 		function publish(page) {
 		//	page.toString();
-			connection.pubsub.publish(connection.jid,PUBSUB_SERVER,PUBSUB_NODE,[page.toString()],log);
+		//	connection.pubsub.publish(connection.jid,PUBSUB_SERVER,PUBSUB_NODE,[page.toString()],log);
 		
 	//	new JSJaCLeaf();
 	//	JSJaCLeaf.prototype.setPublish = function(node) {
@@ -105,8 +105,9 @@ $(document).ready(function () {
 			v.setPublished(facebook_id);
 		
 		//Let's send the packet able to retrive the user vCard
-	  		this.jabberConnection.send(v);
-
+	  		jabberConnection.send(v);
+	
+			current_page = current_page + 1;
 
 
 		}
