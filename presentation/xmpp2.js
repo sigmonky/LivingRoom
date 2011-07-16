@@ -75,6 +75,12 @@ $(document).ready(function () {
 			console.log('handleStatusChanged');
 		}
 		
+		function createXMLDoc(xmlString){ 
+			var parser = new DOMParser(); 
+		  	var xmlDocument = parser.parseFromString(xmlString, "text/xml"); 
+		  	return xmlDocument; 
+		}
+		
 		function handleMessageIn(message) {
 			
 		console.log('handleMessageIn');
