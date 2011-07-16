@@ -5158,10 +5158,12 @@ JSJaCLeaf.prototype.createItem = function() {
 
 JSJaCLeaf.prototype.setTitle = function(title) {
 	entry = this.getChild('entry');
-	titleelement = this.getDoc().createElement('title');
+//	titleelement = this.getDoc().createElement('title');
 	titletext = this.getDoc().createTextNode(title);
-	titleelement.appendChild(titletext);
-	entry.appendChild(titleelement);
+//	titleelement.appendChild(titletext);
+//	entry.appendChild(titleelement);
+	entry.appendChild(titletext);
+	
 	return this;
 }
 

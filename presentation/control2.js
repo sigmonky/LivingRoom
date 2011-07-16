@@ -101,7 +101,7 @@ $(document).ready(function () {
 			v.setID('2840:publishnode');
 	
 			
-			v.setPubsub('pubsub.logoslogic.com','presentation');
+			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
 			v.setPublish('http://jabber.org/protocol/pubsub');
 			v.createItem();
 			v.setTitle(current_page);
