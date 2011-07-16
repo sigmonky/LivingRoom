@@ -97,10 +97,13 @@ $(document).ready(function () {
 			console.log('// Grab pubsub entry page number');
 			
 		    // Grab pubsub entry page number
-		    var event = $(message).children('event')
+		 /*   var event = $(message).children('event')
 		      .children('items')
 		      .children('item')
-		      .children('entry').text();
+		      .children('entry').text(); */
+		
+			var event  = message.getElementsByTagName('entry')[0].nodeValue;
+		
 
 			console.log('event =' +event);
 
