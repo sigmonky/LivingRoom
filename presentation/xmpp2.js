@@ -58,7 +58,19 @@ $(document).ready(function () {
 			var aPresence = new JSJaCPresence();
 			aPresence.setTo(from);
 			aPresence.setType('subscribe');
-			me.jabberConnection.send(aPresence);
+		//	me.jabberConnection.send(aPresence);
+			
+			var v = new JSJaCLeaf();
+			
+			v.setFrom('isaacueca@logoslogic.com');
+			v.setTo('pubsub.logoslogic.com');
+			v.setType('set');
+			v.setID('2840:subscribenode');
+		
+			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
+			v.subscribeNode('presentation','isaacueca@logoslogic.com');
+
+			jabberConnection.send(v);
 			
 		}
 		
