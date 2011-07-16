@@ -103,12 +103,12 @@ $(document).ready(function () {
 		      .children('entry').text(); */
 			var doc = createXMLDoc(message.xml());
 		
-			var event  = doc.getElementsByTagName('entry')[0].nodeValue;
+			//var event  = doc.getElementsByTagName('entry')[0].nodeValue;
 		
 
-			console.log('event =' +event);
+			//console.log('event =' +event);
 
-			var event = $(message).children('event')
+			var event = $(doc).children('event')
 			      .children('items')
 			      .children('item')
 			      .children('entry').text(); 
