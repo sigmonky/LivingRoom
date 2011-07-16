@@ -28,7 +28,7 @@ $(document).ready(function () {
 
 		jabberConnection.connect(oArgs);
 		
-		function handleMessageIn(message, me) {
+		function handleMessageIn2(message, me) {
 			console.log('handleMessageIn');
 		}
 		
@@ -75,7 +75,10 @@ $(document).ready(function () {
 			console.log('handleStatusChanged');
 		}
 		
-		function onEvent(message) {
+		function handleMessageIn(message) {
+			
+		console.log('handleMessageIn');
+			
 		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
 		  var re = new RegExp(server);
 		  // Only handle messages from the PubSub Server. 
