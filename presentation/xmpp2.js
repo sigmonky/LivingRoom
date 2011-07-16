@@ -87,6 +87,10 @@ $(document).ready(function () {
 		
 		  console.log('handleMessageIn message attribute from ' +$(message).attr('from'));
 		
+			var from = message.getFrom();
+
+			console.log('handleMessageIn - getFrom = ' +from)
+			
 		  // Only handle messages from the PubSub Server. 
 		  if ($(message).attr('from').match(re)) {
 			
