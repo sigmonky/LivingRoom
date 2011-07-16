@@ -109,10 +109,17 @@ $(document).ready(function () {
 		      .children('entry').text(); */
 			var doc = createXMLDoc(message.xml());
 		
-			var event  = doc.getElementsByTagName('entry')[0].nodeValue;
 		
-
+		//	var event  = doc.getElementsByTagName('entry')[0].nodeValue;
+		var event  = doc.getElementsByTagName('entry')[0];
 			console.log('event =' +event);
+
+
+			var event2 = doc.getElementsByTagName('event')[0];
+
+			var event3  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
+
+			console.log('event 3 =' +event3);
 
 		
 
