@@ -102,7 +102,6 @@ $(document).ready(function () {
 			v.createItem();
 			v.setTitle(current_page);
 			
-			v.setPublished(facebook_id);
 		
 		//Let's send the packet able to retrive the user vCard
 	  		jabberConnection.send(v);
