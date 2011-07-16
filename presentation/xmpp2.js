@@ -54,10 +54,7 @@ $(document).ready(function () {
 			
 			var presence = new JSJaCPresence();
 			jabberConnection.send(presence);
-			
-			var aPresence = new JSJaCPresence();
-			aPresence.setTo(from);
-			aPresence.setType('subscribe');
+
 		//	me.jabberConnection.send(aPresence);
 			
 			var v = new JSJaCLeaf();
