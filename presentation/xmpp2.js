@@ -83,6 +83,9 @@ $(document).ready(function () {
 		  var re = new RegExp(server);
 		
 		  console.log('handleMessageIn re ' +re);
+	
+		
+		  console.log('handleMessageIn message attribute from ' +$(message).attr('from'));
 		
 		  // Only handle messages from the PubSub Server. 
 		  if ($(message).attr('from').match(re)) {
