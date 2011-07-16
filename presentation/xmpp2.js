@@ -117,7 +117,7 @@ $(document).ready(function () {
 
 			var event  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
 
-			console.log('event 3 =' +event3);
+			console.log('event 3 =' +event);
 
 		
 
