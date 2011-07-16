@@ -78,7 +78,7 @@ function onConnect(status)
 	$('#connect').get(0).value = 'connect';
     } else if (status == Strophe.Status.CONNECTED) {
 	log('Strophe is connected.');
-	alert('Strophe is connected.')
+//	alert('Strophe is connected.')
 	
 	connection.send($pres());
 	connection.pubsub.subscribe(connection.jid,
