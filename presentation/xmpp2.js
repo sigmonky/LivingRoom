@@ -92,7 +92,7 @@ $(document).ready(function () {
 			console.log('handleMessageIn - getFrom = ' +from)
 			
 		  // Only handle messages from the PubSub Server. 
-		  if ($(message).attr('from').match(re)) {
+		  if (from.match(re)) {
 			
 			console.log('// Grab pubsub entry page number');
 			
