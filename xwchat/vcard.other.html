@@ -1,0 +1,13 @@
+<form name="othervCard">
+ <div style="padding: 5px;">
+   <label for="jid" id="jid_lbl" class="xcLabel">Contact: </label>
+   <input type="text" id="jid" value="" size="30" />
+ </div>
+ <div align="center" style="padding: 5px;">
+  <input type="button" id="search_button" name="search_button" value="Search" class="xcButton" onClick="xcVCardSearchForm();" />
+  <input type="button" id="submit_button" name="submit_button" value="Submit" class="xcButton" onClick="if (JQ('#jid').val()) xcVCardRequest(); else JQ('#msg').addClass('xcError').html('You must enter a Contact');" />
+  <input type="button" id="close_button" name="close_button" value="Close" class="xcButton" onClick="self.close();" />
+ </div>
+</form>
+<br/>
+<div id="otherVCard" class="xcVCardOther"></div>

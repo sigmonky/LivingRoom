@@ -1,0 +1,48 @@
+<form name="destroy_room">
+<div align="center">
+<div id="title" align="center" class="xcTitle">Remove Room</div>
+ <table class="xcMUCTable">
+  <tr>
+   <td align="left"><label for="server" id="server_lbl" class="xcLabel" title="Server you wish to remove the room from">Server: </label></td>
+   <td align="left"><input type="text" id="server" value="" class="xcInput" /></td>
+   <td align="left"><input type="button" id="list_button" name="list_button" value="Get Rooms" class="xcButton" onClick="xcGetRooms(this.form.server.value);" /></td>
+  </tr>
+  <tr>
+   <td align="left"><label for="reason" id="reason_lbl" class="xcLabel" title="Why you are removing the room.">Reason: </label></td>
+   <td align="left"><input type="text" id="reason" value="" class="xcInput" /></td>
+   <td align="left">&nbsp;</td>
+  </tr>
+ </table>
+ <br />
+ <table id="roomlist" class="xcRoomList">
+  <tr>
+   <td class="xcRoomListHeader" width="30%">Room</td>
+   <td class="xcRoomListHeader" width="70%">Description</td>
+  </tr>
+ </table>
+ <br />
+ <div align="center">
+  <input type="button" id="destroy_button" name="destroy_button" value="Remove" class="xcButton" onClick="xcDestroyRoom(this.form.room.value, this.form.reason.value);" />
+ </div>
+ <input type="hidden" id="room" value="" />
+</div>
+</form>
+<script type="text/javascript">
+ JQ('#server').val(pWin.XC.MUC);
+ JQ('#title').text(pWin.xcT('Remove Room'));
+ JQ('#server_lbl').text(pWin.xcT('Server') + ': ');
+ JQ('#list_button').val(pWin.xcT('Get Rooms'));
+ JQ('#reason_lbl').text(pWin.xcT('Reason') + ': ');
+ JQ('#destroy_button').val(pWin.xcT('Remove'));
+ JQ('.xcRoomListHeader').each(function() {
+   JQ(this).text(pWin.xcT(JQ(this).text()));
+ });
+ JQ('#server').keydown(function(e) {
+   var keycode = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+   if (keycode == 13) {
+    xcGetRooms(this.value);
+    return false;
+   };
+   return true;
+ });
+</script>

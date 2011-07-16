@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Person to Person Messaging</title>
+  <script type="text/javascript" src="jquery.pack.js"></script>
+  <script type="text/javascript" src="window_manager.js"></script>
+  <script type="text/javascript" src="src/xmlextras.js"></script>
+  <script type="text/javascript" src="src/jsextras.js"></script>
+  <script type="text/javascript" src="src/JSJaCBuilder.js"></script>
+  <script type="text/javascript" src="src/JSJaCPacket.js"></script>
+  <script type="text/javascript" src="message.js"></script>
+  <link rel="stylesheet" type="text/css" href="client.css" />
+</head>
+<body id="xcMessage">
+  <div id="xcChat">
+
+    <div id="xcHeaderWrapper">
+      <div id="xcHeader" class="clearfix">
+        <ul class="xcLinks xcMessageMenu">
+          <li id="xcSaveChatLogLink">
+            <a href="#" id="post_button" onclick="xcPostChat();">Save Chat Log</a>
+          </li>
+          <li id="xcMUCLink">
+            <a href="javascript:xcMUCChatInitiate();">Group Chat</a>
+          </li>
+          <li id="xcCloseLink">
+            <a href="#" onclick="window.close()" class="close">Close</a>
+          </li>
+        </ul>
+
+        <div id="title">
+          <div id="xcContactTitle" class="clearfix">
+            <div id="alias" class="xcTitle presence" oncontextmenu="return false;"></div>
+            <a href="#" id="xcContactMenuTrigger"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="xcWrapper" onscroll="xcScrollSave(this.scrollTop);">
+      <div id="xcContent">
+        <div id="msg_pane" class="xcMsgPane"></div>
+      </div>
+      <div id="msg" class="xcMessage"></div>
+    </div>
+
+    <div id="xcFooterWrapper">
+      <div id="xcFooter">
+        <div id="xcMsgContainer" class="clearfix">
+          <form name="msgForm" onSubmit="xcMsgSend();" action="javascript:;">
+           <textarea name="body" id="body" class="xcMsgBody"></textarea>
+           <input type="hidden" name="jid" id="jid" />
+           <script type="text/javascript">
+             if (pWin.XC.xc_sendbutton == 1) {
+               document.write('<input type="submit" name="send_button" id="send_button" value="' + pWin.xcT('Send') + '" class="xcMsgSendButton xcButton" />');
+             };
+           </script>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="xcContextMenu" id="xcRightMenu" oncontextmenu="return false;">
+    <ul oncontextmenu="return false;">
+      <script type="text/javascript">
+        str = '';
+        str += '<li id="archive" oncontextmenu="return false;">' + pWin.xcT('Chat Log') + '</li>';
+        str += '<li id="info" oncontextmenu="return false;">' + pWin.xcT('Info') + '</li>';
+        str += '<li id="getpresence" oncontextmenu="return false;">' + pWin.xcT('Get Presence') + '</li>';
+        str += '<li id="setpresence" oncontextmenu="return false;">' + pWin.xcT('Set Presence') + '</li>';
+        str += '<li id="remove" oncontextmenu="return false;">' + pWin.xcT('Remove') + '</li>';
+        str += '<li id="resubscribe" oncontextmenu="return false;">' + pWin.xcT('Resubscribe') + '</li>';
+        str += '<li id="update" oncontextmenu="return false;">' + pWin.xcT('Update') + '</li>';
+        document.write(str);
+      </script>
+    </ul>
+  </div>
+</body>
+</html>

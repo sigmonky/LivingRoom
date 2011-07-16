@@ -1,0 +1,45 @@
+<form name="vcard_form">
+  <table cellpadding="2" width="100%">
+   <tr>
+    <td><label for="FN" id="FN_lbl" class="xcLabel">Full Name:</label></td>
+    <td><input type="text" name="FN" id="FN" /></td>
+   </tr>
+   <tr>
+    <td><label for="FAMILY" id="FAMILY_lbl" class="xcLabel">Family Name:</label></td>
+    <td><input type="text" name="NDOTDOTFAMILY" id="NDOTDOTFAMILY" /></td>
+   </tr>
+   <tr>
+    <td><label for="GIVEN" id="GIVEN_lbl" class="xcLabel">Given Name:</label></td>
+    <td><input type="text" name="NDOTDOTGIVEN" id="NDOTDOTGIVEN" /></td>
+   </tr>
+   <tr>
+    <td><label for="MIDDLE" id="MIDDLE_lbl" class="xcLabel">Middle Name:</label></td>
+    <td><input type="text" name="NDOTDOTMIDDLE" id="NDOTDOTMIDDLE" /></td>
+   </tr>
+   <tr>
+    <td><label for="NICKNAME" id="NICKNAME_lbl" class="xcLabel">Nick Name:</label></td>
+    <td><input type="text" name="NICKNAME" id="NICKNAME" /></td>
+   </tr>
+   <tr>
+    <td><label for="URL" id="URL_lbl" class="xcLabel">Home Page:</label></td>
+    <td><input type="text" name="URL" id="URL" /></td>
+   </tr>
+   <tr>
+    <td><label for="BDAY" id="BDAY_lbl" class="xcLabel">Birthday:</label></td>
+    <td><input type="text" name="BDAY" id="BDAY" /></td>
+   </tr>
+   <tr>
+    <td><label for="JABBERID" id="JABBERID_lbl" class="xcLabel">Jabber ID:</label></td>
+    <td><input type="text" name="JABBERID" id="JABBERID" /></td>
+   </tr>
+   <tr>
+    <td colspan="2" align="center">
+     <input type="button" name="submit_button" value="Submit" class="xcButton" onClick="xcVCardSend();" />
+     <input type="button" name="close_button" value="Close" class="xcButton" onClick="self.close();" />
+    </td>
+   </tr>
+  </table>
+</form>
+<script type="text/javascript">
+ xcVCardRequest();
+</script>

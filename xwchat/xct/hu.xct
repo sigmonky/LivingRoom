@@ -1,0 +1,20 @@
+/**
+ * Translation for XMPP Thin Client
+ * English to Hungarian
+ */
+
+XC.localizedString = {
+  "About" : "",
+  "Help" : "",
+  "Away" : "",
+  "Chat" : "",
+  "Do Not Disturb" : "",
+  "Extended Away" : "",
+  "Search" : "",
+  "XMPP Chat Client" : "",
+  "Chat Client is written completely in Javascript to allow deployment using any web server." : "",
+  "Chat Client utilizes the <a href='http://zeank.in-berlin.de/jsjac/' target='_new'>JSJaC</a> client library written by Stefan Striger." : "",
+  "Chat Client utilizes the <a href='http://jquery.com' target='_new'>JQuery</a> Javascript library to make client side coding much easier." : "",
+  "Author: Darren Ferguson darren.ferguson@openband.net" : "",
+  "Close" : ""
+};

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Group Chat</title>
+  <link rel="stylesheet" type="text/css" href="client.css" />
+  <script type="text/javascript" src="jquery.pack.js"></script>
+  <script type="text/javascript" src="window_manager.js"></script>
+  <script type="text/javascript" src="src/xmlextras.js"></script>
+  <script type="text/javascript" src="src/jsextras.js"></script>
+  <script type="text/javascript" src="src/JSJaCBuilder.js"></script>
+  <script type="text/javascript" src="src/JSJaCPacket.js"></script>
+  <script type="text/javascript" src="muc.js"></script>
+</head>
+<body id="xcMUC">
+  <div id="xcChat">
+    <div id="xcHeaderWrapper">
+      <div id="xcHeader" class="clearfix">
+      </div>
+    </div>
+
+    <div id="xcWrapper">
+      <div id="xcContent">
+        <div id="header">
+          <ul>
+          <script type="text/javascript">
+            document.write('' +
+              '<li id="list" class="xcTabs">' + pWin.xcT('List') + '</li>' +
+              '<li id="create" class="xcTabs">' + pWin.xcT('Create') + '</li>' +
+              '<li id="config" class="xcTabs">' + pWin.xcT('Config') + '</li>' +
+              '<li id="destroy" class="xcTabs">' + pWin.xcT('Remove') + '</li>');
+          </script>
+          </ul>
+        </div>
+        <div id="workspace" class="xcWorkspace"></div>
+      </div>
+
+      <div id="msg" class="xcMessage"></div>
+    </div>
+
+    <div id="xcFooterWrapper">
+      <div id="xcFooter">
+      </div>
+    </div>
+  </div>
+ </body>
+</html>

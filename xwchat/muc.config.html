@@ -1,0 +1,33 @@
+<form name="create_room">
+ <div align="center">
+  <div id="title" align="center" class="xcTitle">Configure Room</div>
+  <table class="xcMUCTable">
+   <tr>
+    <td><label for="server" id="server_lbl" class="xcLabel" title="Server you wish too configure the room on">Server: </label></td>
+    <td><input type="text" id="server" value="" size="40" class="xcInput" /></td>
+   </tr>
+   <tr>
+    <td><label for="nickname" id="nickname_lbl" class="xcLabel" title="Handle / Nickname you wish to enter the room with">NickName: </label></td>
+    <td><input type="text" id="nickname" value="" size="40" class="xcInput" /></td>
+   </tr>
+   <tr>
+    <td><label for="roomname" id="roomname_lbl" class="xcLabel" title="Name you wish to associate with the new room">Room Name: </label></td>
+    <td><input type="text" id="roomname" value="" size="40" class="xcInput" /></td>
+   </tr>
+  </table>
+  <br />
+  <div align="center">
+   <input type="button" id="config_button" name="config_button" value="Configure" class="xcButton" onClick="xcCreateRoom();" />
+  </div>
+  <input type="hidden" id="room" value="" />
+  <input type="hidden" id="configure" value="1" />
+ </div>
+</form>
+<script type="text/javascript">
+  JQ('#server').val(pWin.XC.MUC);
+  JQ('#title').text(pWin.xcT('Configure Room'));
+  JQ('#server_lbl').text(pWin.xcT('Server') + ': ');
+  JQ('#nickname_lbl').text(pWin.xcT('NickName') + ': ');
+  JQ('#roomname_lbl').text(pWin.xcT('Room Name') + ': ');
+  JQ('#config_button').val(pWin.xcT('Configure'));
+</script>

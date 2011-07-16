@@ -1,0 +1,134 @@
+<div id="xcContentForBody">
+  <div class="xcContextMenu" id="xcRightMenu" oncontextmenu="return false;">
+    <ul oncontextmenu="return false;">
+      <li id="ban" oncontextmenu="return false;">Ban</li>
+      <li id="chat" oncontextmenu="return false;">Chat</li>
+      <li id="info" oncontextmenu="return false;">Info</li>
+      <li id="kick" oncontextmenu="return false;">Kick</li>
+      <li id="subscribe" oncontentmenu="return false;">Subscribe</li>
+    </ul>
+  </div>
+</div>
+
+<div id="xcContentForHeader">
+  <div id="xcMUCRoomInfo">
+    <div class="xcMUCRoomName" id="roomname"></div>
+
+    <span id="xcMUCRoomSubject"><em>No Subject</em></span>
+    <span class="xcMUCRoomSubjectToggle">
+      <a href="#" onclick="xcToggleRoomSubjectEditor()" id="xcMUCRoomSubjectToggle">Change</a>
+    </span>
+  </div>
+
+  <ul class="xcLinks">
+    <li id="xcSaveChatLogLink">
+      <a href="#" id="post_button" onclick="xcPostMUCChat();">Save Chat Log</a>
+    </li>
+    <li id="xcCloseLink">
+      <a href="#" onclick="window.close()" class="close">Close</a>
+    </li>
+  </ul>
+</div>
+
+<div id="xcContentForWrapper">
+  <div id="xcMUCRoomSubjectEditor" class="xcDrawer" style="display:none">
+    <input type="text" id="subject" size="20" class="xcInput" />
+  </div>
+
+  <div id="xcMUCInviteForm" class="xcDrawer" style="display:none">
+    <form id="userinvite" name="userinvite">
+      <div class="xcTitle">Invite user to join this chat:</div>
+      <div class="xcFieldWrapper text_field">
+        <label for="searchjid" id="searchjid_lbl" class="xcLabel" title="Users Chat ID you wish to invite">Chat ID: </label>
+        <input type="text" id="searchjid" size="50" value="" class="xcInput" />
+      </div>
+
+      <div class="xcFieldWrapper text_field">
+        <label for="imessage" id="imessage_lbl" class="xcLabel" title="Invite text to be displayed to the user when they receive the invite">Message: </label>
+        <input type="text" id="imessage" size="50" value="" class="xcInput" />
+      </div>
+
+      <div class="xcFieldWrapper button">
+        <input type="button" id="invite_button" name="invite_button" value="Send Invite" class="xcButton" onClick="xcInviteUser();" />
+        <span class="xcFormCancel">or <a href="#" id="cancel_button" onClick="JQ('#xcMUCInviteForm').slideToggle('fast');">Cancel</a></span>
+      </div>
+
+      <a href="#" id="search_button" onClick="xcMUCSearchForm();">Search for users</a>
+    </form>
+    <div id="xcUserSearchDiv"></div>
+  </div>
+</div>
+
+<div id="xcContentForFooter">
+  <div id="xcMsgContainer" class="clearfix">
+    <form name="msgForm" onSubmit="xcMsgSend();" action="javascript:;">
+      <textarea name="mbody" id="mbody" class="xcMsgBody xcMUCMsgBody"></textarea>
+      <div id="xcMUCSendButton">
+        <input type="submit" id="submit_button" name="submit_button" value="Send" class="xcButton xcMsgSendButton" />
+      </div>
+      <input type="hidden" name="jid" id="jid" />
+    </form>
+  </div>
+</div>
+
+<div id="xcMUCMessages" class="xcAutoResize" onscroll="xcScrollSave(this.scrollTop);">
+  <div class="xcInnerPadding">
+    <div id="msg_pane" class="xcMUCMsgPane"></div>
+  </div>
+</div>
+
+<div id="xcMUCOccupants" class="xcAutoResize">
+  <div class="xcInnerPadding">
+    <h3 class="clearfix">
+      <span>Participants</span>
+      <a href="#" id="invite_button" onClick="JQ('#xcMUCInviteForm').slideToggle('fast');">Invite</a>
+    </h3>
+
+    <div id="muc_occupants" class="xcMUCOccupants"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  JQ(document.body).addClass('chat');
+
+  JQ(document.body).append(JQ('#xcContentForBody').html());
+  JQ('#xcContentForBody').remove();
+
+  JQ('#xcHeader').html(JQ('#xcContentForHeader').html());
+  JQ('#xcContentForHeader').remove();
+
+  JQ('#xcWrapper').prepend(JQ('#xcContentForWrapper').html());
+  JQ('#xcContentForWrapper').remove();
+
+  JQ('#xcFooter').html(JQ('#xcContentForFooter').html());
+  JQ('#xcContentForFooter').remove();
+
+  JQ('#header').hide();
+
+  setTimeout(function() { WindowManager.resize() }, 0);
+
+  JQ('#msg').html('');
+  JQ('#roomname').html(pWin.xcDec(window.name));
+  // send the message if the enter key is pressed on the message body portion
+  JQ('#mbody').keypress(function(e) {
+    var keycode = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+    if (keycode == 13) {
+     xcMsgSend();
+     return false;
+    };
+    return true;
+  });
+  JQ('#mbody')[0].focus(); // set focus on the message body
+  // change the subject of the group chat if the enter button is pressed on the subject line
+  JQ('#subject').keypress(function(e) {
+    var keycode = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+    if (keycode == 13) {
+      xcToggleRoomSubjectEditor();
+      xcSubjectChange(this.value);
+      return false;
+    };
+    return true;
+  });
+  if (!(pWin.XC.srvUrl)) { JQ('#xcSaveChatLogLink').hide(); }; // do not show link if there is no server url
+  if (pWin.XC.xc_sendbutton == 0) { JQ('#xcMUCSendButton').hide(); }; // do not show send button if client settings say hidden
+</script>

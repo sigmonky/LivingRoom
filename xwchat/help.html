@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8">
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="client.css" />
+   <script type="text/javascript" src="jquery.pack.js"></script>
+   <script type="text/javascript">
+     var pWin = window.opener || window;
+     document.title = pWin.xcT('XMPP Chat Client');
+     JQ(document).ready(function() {
+       JQ('.xcTabs').click(function() {
+         JQ('.xcSelected').removeClass('xcSelected');
+         JQ(this).addClass('xcSelected');
+         var id = this.id + '_div';
+         JQ('.xcHelpInfo').hide();
+         JQ('#' + id).show();
+       });
+       JQ('#help').click();
+     });
+     /**
+      * Setting default action for the screen when a user is on it
+      */
+     JQ(document).keydown(function(e) {
+       var keycode = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+       if (keycode == 13) {
+         window.close(); // enter key pressed
+         return false;
+       };
+       return true;
+     });
+
+     JQ(window).unload(function(){
+       try { pWin.xcWinClose(pWin.xcDec(self.name)); } catch (e) {}
+     });
+   </script>
+  </head>
+  <body>
+   <script type="text/javascript">
+    var str = '<br />' +
+              '<div id="header">' +
+              '<ul>' +
+              '<li id="help" class="xcTabs">' + pWin.xcT('Help') + '</li>' +
+              '<li id="about" class="xcTabs">' + pWin.xcT('About') + '</li>' +
+              '</ul>' +
+              '</div>' +
+              '<div id="help_div" class="xcHelpInfo">' +
+              '<p>' + pWin.xcT('XMPP Chat Client Help') + '</p>' +
+              '<ul>' +
+              '<li>' + pWin.xcT('How to chat') + '</li>' +
+              '<li>' + pWin.xcT('How to Add Associates') + '</li>' +
+              '<li>' + pWin.xcT('Group Chat') + '</li>' +
+              '<li>' + pWin.xcT('How to configure the chat client') + '</li>' +
+              '<li>' + pWin.xcT('How to use bookmarks') + '</li>' +
+              '<li>' + pWin.xcT('How to post a chat transcript') + '</li>' +
+              '<li>' + pWin.xcT('How to update your VCard information') + '</li>' +
+              '</ul>' +
+              '</div>' +
+              '<div id="about_div" class="xcHelpInfo">' +
+              '<p>' + pWin.xcT('Chat Client is written completely in Javascript to allow deployment using any web server.') + '</p>' +
+              '<p>' + pWin.xcT("Chat Client utilizes the <a href='http://zeank.in-berlin.de/jsjac/' target='_new'>JSJaC</a> client library written by Stefan Striger.") + '</p>' +
+              '<p>' + pWin.xcT("Chat Client utilizes the <a href='http://jquery.com' target='_new'>JQuery</a> Javascript library to make client side coding much easier.") + '</p>' +
+              '<p>' + pWin.xcT('Author: Darren Ferguson darren.ferguson@openband.net') + '</p>' +
+              '</div>' +
+              '<br />' +
+              '<div align="center">' +
+              '<form name="close_window">' +
+              '<input type="button" id="close_button" name="close_button" value="' + pWin.xcT('Close') + '" class="xcButton" onClick="self.close();">' +
+              '</form>' +
+              '</div>';
+    document.write(str);
+   </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+XWChat - XMPP Web Chat
+
+Installation Guide
+------------------
+
+Unpack the xwchat software into a directory that is accessible by your web server.
+
+Apache
+------
+
+Find your httpd.conf file and make sure of the following:
+
+Make sure the lines below are there and do not have a # infront of them
+
+LoadModule proxy_module            modules/mod_proxy.so
+LoadModule rewrite_module          modules/mod_rewrite.so
+
+<Directory "<root of your web server>">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</Directory>
+
+<VirtualHost *>
+  ServerName <name of server> i.e. www.openband.net
+  DocumentRoot <root of your web server> i.e. /home/httpd/html
+  AddDefaultCharset UTF-8
+  RewriteEngine On
+  RewriteRule ^/http-bind/ http://www.openband.net:5280/http-bind/ [P]
+  RewriteLog "/var/log/httpd/rewrite.log"
+  RewriteLogLevel 5
+</VirtualHost>
+
+XWChat
+------
+
+In the xwchat client you should edit the config.js at least the following parameters:
+
+MUC : the default conference server for your Multi-User Chats
+SEARCH : the default search service for JUD
+authtype : if using openfire make sure this is nonsasl, you can use sasl or nonsasl for ejabberd
+
