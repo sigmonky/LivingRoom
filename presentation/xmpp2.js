@@ -101,13 +101,19 @@ $(document).ready(function () {
 		      .children('items')
 		      .children('item')
 		      .children('entry').text(); */
+			var doc = createXMLDoc(message.xml());
 		
-			var event  = message.getElementsByTagName('entry')[0].nodeValue;
+			var event  = doc.getElementsByTagName('entry')[0].nodeValue;
 		
 
 			console.log('event =' +event);
 
+			var event = $(message).children('event')
+			      .children('items')
+			      .children('item')
+			      .children('entry').text(); 
 
+				console.log('event 2 =' +event);
 
 		    if (ignore) {
 		      //short circuit first event
