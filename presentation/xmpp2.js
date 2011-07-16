@@ -95,6 +95,10 @@ $(document).ready(function () {
 		      .children('item')
 		      .children('entry').text();
 
+			console.log('event =' +event);
+
+
+
 		    if (ignore) {
 		      //short circuit first event
 		      ignore = false;
