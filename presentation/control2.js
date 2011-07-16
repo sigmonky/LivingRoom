@@ -8,7 +8,8 @@ $(document).ready(function () {
       });
 
     	$('#home').bind('click', function () {
-			publish(0);
+			current_page = 0
+			publish(current_page);
       });
 
     	$('#forward').bind('click', function () {
@@ -59,25 +60,20 @@ $(document).ready(function () {
 		
 		function handleIq(iq, me){
 			console.log('handleIq');
-			
 		}
 		
 		
 		function handleStatusChanged(status, me) {
 			console.log('handleStatusChanged');
-			
 		}
 		
 		
 		function handleConnected(me) {
 			console.log('handleConnected');
-
-
 		}
 		
 		function handleStatusChanged(status, me) {
 			console.log('handleStatusChanged');
-			
 		}
 		
 		function publish(page) {
@@ -99,7 +95,6 @@ $(document).ready(function () {
 			v.setTo('pubsub.logoslogic.com');
 			v.setType('set');
 			v.setID('2840:publishnode');
-	
 			
 			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
 			v.setPublish('presentation');
