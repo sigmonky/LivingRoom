@@ -81,6 +81,8 @@ $(document).ready(function () {
 		}
 		
 		function publish(page) {
+			
+			console.log('publish');
 		//	page.toString();
 		//	connection.pubsub.publish(connection.jid,PUBSUB_SERVER,PUBSUB_NODE,[page.toString()],log);
 		
@@ -92,15 +94,18 @@ $(document).ready(function () {
 	///	JSJaCLeaf.prototype.setItems = function(node, jid) {
 
 			var v = new JSJaCLeaf();
-			v.setType('set');
-			v.setID('publishnode');
+			
 			v.setTo('pubsub.logoslogic.com');
 			v.setFrom('isaacueca@logoslogic.com');
+			v.setType('http://jabber.org/protocol/pubsub');
+			v.setID('2840:publishnode');
+	
 			
 			v.setPubsub('set','presentation');
 			v.setPublish('presentation');
 			v.createItem();
 			v.setTitle(current_page);
+			
 			
 		
 		//Let's send the packet able to retrive the user vCard
