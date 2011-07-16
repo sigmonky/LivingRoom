@@ -81,8 +81,14 @@ $(document).ready(function () {
 			
 		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
 		  var re = new RegExp(server);
+		
+		  console.log('handleMessageIn re ' +re);
+		
 		  // Only handle messages from the PubSub Server. 
 		  if ($(message).attr('from').match(re)) {
+			
+			console.log('// Grab pubsub entry page number');
+			
 		    // Grab pubsub entry page number
 		    var event = $(message).children('event')
 		      .children('items')
