@@ -95,13 +95,13 @@ $(document).ready(function () {
 
 			var v = new JSJaCLeaf();
 			
-			v.setTo('pubsub.logoslogic.com');
 			v.setFrom('isaacueca@logoslogic.com');
-			v.setType('http://jabber.org/protocol/pubsub');
+			v.setTo('pubsub.logoslogic.com');
+			v.setType('set');
 			v.setID('2840:publishnode');
 	
 			
-			v.setPubsub('set','presentation');
+			v.setPubsub('pubsub.logoslogic.com','presentation');
 			v.setPublish('presentation');
 			v.createItem();
 			v.setTitle(current_page);
