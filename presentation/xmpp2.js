@@ -83,14 +83,13 @@ $(document).ready(function () {
 		
 		function handleMessageIn(message) {
 			
-		console.log('handleMessageIn');
+		  console.log('handleMessageIn');
 			
 		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
 		  var re = new RegExp(server);
 		
 		  console.log('handleMessageIn re ' +re);
 	
-		
 		  console.log('handleMessageIn message attribute from ' +$(message).attr('from'));
 		
 			var from = message.getFrom();
@@ -101,33 +100,25 @@ $(document).ready(function () {
 		  if (from.match(re)) {
 			
 			console.log('// Grab pubsub entry page number');
-			
-		    // Grab pubsub entry page number
-		 /*   var event = $(message).children('event')
-		      .children('items')
-		      .children('item')
-		      .children('entry').text(); */
 			var doc = createXMLDoc(message.xml());
-		
-		
-
-
-
 			var event2 = doc.getElementsByTagName('event')[0];
 
 			var event  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
 
-			console.log('event 3 =' +event);
+			console.log('event =' +event);
 
-		
 
-		    if (ignore) {
+		//    if (ignore) {
 		      //short circuit first event
-		      ignore = false;
-		      return true;
-		    }
+		   //   ignore = false;
+		   //   return true;
+		  //  }
 
 		    go_page = parseInt(event); // The event should be the current page #
+		    // 
+		    // 
+		    console.log('go_page =' +go_page);
+			
 		    if (go_page >= 0) { // Only handle page # events
 		      // I would have liked to use goTo but the function would cause and odd
 		      // jump to the home page then the correct page. So I added a bit off 
