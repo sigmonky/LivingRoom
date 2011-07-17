@@ -53,10 +53,9 @@ $(document).ready(function () {
 		function handleConnected(me) {
 			console.log('handleConnected');
 			
-		//	var presence = new JSJaCPresence();
-		//	jabberConnection.send(presence);
+			var presence = new JSJaCPresence();
+			jabberConnection.send(presence);
 
-		//	me.jabberConnection.send(aPresence);
 		
 			var v = new JSJaCLeaf();
 			
