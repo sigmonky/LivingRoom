@@ -151,7 +151,7 @@ $(document).ready(function () {
 		      Client.pubsub_server,
 		      Config.PUBSUB_APPROVED_NODE,
 		      [_d],
-		      Client.on_send
+		      Client.on_send);
 		});
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
