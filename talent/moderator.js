@@ -137,6 +137,17 @@ $(document).ready(function () {
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('delete itemId = '+itemId);
+			
+			
+			v.setFrom('isaacueca@logoslogic.com');
+			v.setTo('pubsub.logoslogic.com');
+			v.setType('set');
+			v.setID('retract1');
+		
+			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
+			v.retractNode('moderator', itemId);
+			jabberConnection.send(v);
+			
 		});
 		
 		$('.approve').live('click', function(event) {

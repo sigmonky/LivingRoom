@@ -5166,6 +5166,21 @@ JSJaCLeaf.prototype.unSubscribeNode = function(node, who) {
 	return pubsub;
 }
 
+JSJaCLeaf.prototype.retractNode = function(node, item) {
+	pubsub = this.getChild('pubsub');
+	
+	publish = this.getDoc().createElement('retract');
+	publish.setAttribute('node',node);
+
+	itemObj = this.getDoc().createElement('item');
+	itemObj.setAttribute('id',item);
+	publish.appendChild(itemObj);
+	
+	pubsub.appendChild(publish);
+	return pubsub;
+}
+
+
 
 
 JSJaCLeaf.prototype.createItem = function() {
