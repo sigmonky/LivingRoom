@@ -54,7 +54,7 @@ $(document).ready(function () {
 			console.log('handleConnected');
 			
 			var presence = new JSJaCPresence();
-			jabberConnection.send(presence);
+			//jabberConnection.send(presence);
 
 		
 			var v = new JSJaCLeaf();
@@ -83,13 +83,14 @@ $(document).ready(function () {
 		function handleMessageIn(message) {
 			
 		  console.log('handleMessageIn');
+		
+		
 		  var PUBSUB_SERVER = 'pubsub.logoslogic.com';
 		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
 		  var re = new RegExp(server);
 		
 		  console.log('handleMessageIn re ' +re);
 	
-		  console.log('handleMessageIn message attribute from ' +$(message).attr('from'));
 		
 			var from = message.getFrom();
 
