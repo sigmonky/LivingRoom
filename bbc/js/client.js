@@ -67,7 +67,7 @@ var Client = {
 		
       var _item = $(message).children('event')
         .children('items')
-        .children('item').getAttribute('id');
+        .children('item').attr('id');
 
 		console.log('_item=' +_item );
 
