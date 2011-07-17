@@ -5,10 +5,10 @@ body {
 #message-list {position:relative; width:100%}
 
 .message-item {
-width:100%;
-	margin:20px
-	font-size:1.4em
-	position:relative
+	width:100%;
+	margin:20px;
+	font-size:1.4em;
+	position:relative;
 }
 
 .controls {
