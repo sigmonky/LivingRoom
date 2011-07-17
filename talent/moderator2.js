@@ -13,6 +13,37 @@ function publish(page) {
   
 }
 
+
+function onEvent(message) {
+	console.log('onEvent.')
+	
+ PUBSUB_SERVER = 'pubsub.logoslogic.com'
+  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
+  var re = new RegExp(server);
+  // Only handle messages from the PubSub Server. 
+  if ($(message).attr('from').match(re)) {
+    // Grab pubsub entry page number
+    var event = $(message).children('event')
+      .children('items')
+      .children('item')
+      .children('entry').text();
+
+    if (ignore) {
+      //short circuit first event
+      ignore = false;
+      return true;
+    }
+
+	   var itemId = $(message).children('event')
+	      .children('items')
+	      .children('item').getAttribute('id');
+
+	 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
+  }
+  // Return true or we loose this callback.
+  return true;
+}
+
 function log(msg) 
 {
     $('#log').prepend('<div></div>').prepend(document.createTextNode(msg));
@@ -51,6 +82,14 @@ function onConnect(status)
 	log('Strophe is connected.');
 	alert('connected.');
 	connection.send($pres());
+	
+	connection.pubsub.subscribe(connection.jid,
+				    'pubsub.logoslogic.com',
+				    'moderator',
+				    [],
+				    onEvent,
+				    onSubscribe
+				    );
     }
 }
 
@@ -61,7 +100,18 @@ $(document).ready(function () {
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
 
-	    connection.connect('isaacueca@logoslogic.com','cigano', onConnect);
+    connection.connect('isaacueca@logoslogic.com','cigano', onConnect);
 
+		
+		$('.delete').live('click', function() {
+			var itemId = $(this).parent().parent().attr("id");
+			console.log('delete itemId = '+itemId);
+			
+		});
+		
+		$('.approve').live('click', function(event) {
+			var itemId = $(this).parent().parent().attr("id");
+			console.log('approve itemId = '+itemId);
+		});
 
 });
