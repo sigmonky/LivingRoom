@@ -84,7 +84,7 @@ $(document).ready(function () {
 		function handleMessageIn(message) {
 			
 		  console.log('handleMessageIn');
-			
+		  var PUBSUB_SERVER = 'pubsub.logoslogic.com';
 		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
 		  var re = new RegExp(server);
 		
