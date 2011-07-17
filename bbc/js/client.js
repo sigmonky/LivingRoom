@@ -59,8 +59,8 @@ console.log('message=' +_message );
     var server = "^" + Client.pubsub_server.replace(/\./g, "\\.");
     var re = new RegExp(server);
 
-    if ($(message).attr('from').match(re) && $(message).attr('type') == 'headline')
-    { 
+//    if ($(message).attr('from').match(re) && $(message).attr('type') == 'headline')
+  //  { 
       var _data = $(message).children('event')
         .children('items')
         .children('item')
@@ -70,7 +70,7 @@ console.log('message=' +_message );
       if (_data) {
         Client.handle_update(_data);
       }
-    }
+   // }
 
     return true;
   },
