@@ -116,7 +116,7 @@ var Client = {
       Client.connection.pubsub.subscribe(
         Client.connection.jid,
 	'pubsub.' + Config.XMPP_SERVER,
-        PUBSUB_APPROVED_NODE,
+        Config.PUBSUB_APPROVED_NODE,
         [],
         Client.on_event,
         Client.on_subscribe
