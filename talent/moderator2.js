@@ -1,6 +1,45 @@
 var current_page = 0;
 var ignore = true;
 
+
+
+function onEvent(message) {
+	console.log('onEvent.')
+	
+ PUBSUB_SERVER = 'pubsub.logoslogic.com'
+  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
+  var re = new RegExp(server);
+  // Only handle messages from the PubSub Server. 
+  if ($(message).attr('from').match(re)) {
+    // Grab pubsub entry page number
+    var event = $(message).children('event')
+      .children('items')
+      .children('item')
+      .children('entry').text();
+
+    if (ignore) {
+      //short circuit first event
+      ignore = false;
+      return true;
+    }
+
+	   var itemId = $(message).children('event')
+	      .children('items')
+	      .children('item').getAttribute('id');
+
+	 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
+  }
+  // Return true or we loose this callback.
+  return true;
+}
+
+
+function onSubscribe(sub) {
+  // Log when we are subscribed.
+  log("Subscribed");
+  return true;
+}
+
 $(document).ready(function () {
 	
     connection = new Strophe.Connection('http://www.logoslogic.com/http-bind');
@@ -42,51 +81,7 @@ $(document).ready(function () {
 	}
 
 
-		
-		function onEvent(message) {
-			console.log('onEvent.')
-			
-		 PUBSUB_SERVER = 'pubsub.logoslogic.com'
-		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
-		  var re = new RegExp(server);
-		  // Only handle messages from the PubSub Server. 
-		  if ($(message).attr('from').match(re)) {
-		    // Grab pubsub entry page number
-		    var event = $(message).children('event')
-		      .children('items')
-		      .children('item')
-		      .children('entry').text();
 
-		    if (ignore) {
-		      //short circuit first event
-		      ignore = false;
-		      return true;
-		    }
-		
-			   var itemId = $(message).children('event')
-			      .children('items')
-			      .children('item').getAttribute('id');
-
-			 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
-		  }
-		  // Return true or we loose this callback.
-		  return true;
-		}
-
-
-		function onSubscribe(sub) {
-		  // Log when we are subscribed.
-		  log("Subscribed");
-		  return true;
-		}
-		
-		function onEvent(message) {
-
-				
- 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
-				console.log('event =' +event);
-
-		}
 		
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
