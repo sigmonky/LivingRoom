@@ -122,7 +122,7 @@ $(document).ready(function () {
 		  return true;
 		}
 		
-		$('.delete').click(function(){
+		$('.delete').live('click', function(){
 			console.log('deletex id '+this.id);
 		})
 		
