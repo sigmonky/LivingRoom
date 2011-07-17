@@ -54,7 +54,7 @@ $(document).ready(function () {
 			console.log('handleConnected');
 			
 			var presence = new JSJaCPresence();
-			//jabberConnection.send(presence);
+			jabberConnection.send(presence);
 
 		
 			var v = new JSJaCLeaf();
