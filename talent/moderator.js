@@ -57,19 +57,7 @@ $(document).ready(function () {
 			jabberConnection.send(presence);
 
 		//	me.jabberConnection.send(aPresence);
-			
-			var v = new JSJaCLeaf();
-			
-			v.setFrom('isaacueca2@logoslogic.com');
-			v.setTo('pubsub.logoslogic.com');
-			v.setType('set');
-			v.setID('unsub1');
 		
-			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
-			v.unSubscribeNode('presentation','isaacueca2@logoslogic.com');
-			jabberConnection.send(v);
-			
-			
 			var v = new JSJaCLeaf();
 			
 			v.setFrom('isaacueca2@logoslogic.com');
