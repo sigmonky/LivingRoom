@@ -107,7 +107,6 @@ $(document).ready(function () {
 				var itemId = event2.getElementsByTagName('item')[0];
 				console.log('item id is = '+itemId.getAttribute('id'));
 				
-				
  				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a href="#" onclick="delete('+itemId+')">Delete</a> | <a onclick="approve('+itemId+')" href="#">Aprove</a></div></div>');
 				console.log('event =' +event);
 
@@ -121,13 +120,7 @@ $(document).ready(function () {
 		  return true;
 		}
 		
-		function approve(id){
-			console.log('aprove id ' +id);
-		}
-		
-		function delete(id){
-			console.log('delete id ' +id);
-		}
+
 
 		
 });
