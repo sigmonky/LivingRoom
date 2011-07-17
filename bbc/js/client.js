@@ -34,15 +34,15 @@ var Client = {
     var _d = $(data);
     var _message = _d.html();
     var _type = _d.attr('type'); 
-console.log('message=' +_message );
+	console.log('message=' +_message );
     Client.show_text(_message);
     
   },
 
   // inject text
-  show_text: function (m) {
+  show_text: function (m, i) {
  //   $('#message').text(m);
-var itemId = '';
+	var itemId = i;
 
 	$('#message').append('<div class="message-item" id='+itemId+'>' + m + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div><br/><br/>');
   },
@@ -64,9 +64,16 @@ var itemId = '';
         .children('item')
         .children('entry').text();
 		console.log('match _data '+_data);
+		
+      var _item = $(message).children('event')
+        .children('items')
+        .children('item').getAttribute('id');
+
+		console.log('_item=' +_item );
+
 
       if (_data) {
-        Client.show_text(_data);
+        Client.show_text(_data, _item);
       }
    // }
 
