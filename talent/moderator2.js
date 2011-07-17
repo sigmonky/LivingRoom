@@ -5,7 +5,6 @@ $(document).ready(function () {
 	
     connection = new Strophe.Connection('http://www.logoslogic.com/http-bind');
 
-
     connection.connect('isaacueca2@logoslogic.com', 'cigano', onConnect);
 
 	function onConnect(status)
@@ -14,7 +13,9 @@ $(document).ready(function () {
 	  // when we are connected we send presence and subscribe to
 	  // the presentation node. 
 	    if (status == Strophe.Status.CONNECTING) {
-		log('Strophe is connecting.');
+		
+		console.log('Strophe is connecting.');
+		
 		alert('Strophe is connecting.')
 	    } else if (status == Strophe.Status.CONNFAIL) {
 		log('Strophe failed to connect.');
