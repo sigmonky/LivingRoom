@@ -26,7 +26,7 @@ $(document).ready(function () {
 		$('#connect').get(0).value = 'connect';
 	    } else if (status == Strophe.Status.CONNECTED) {
 		log('Strophe is connected.');
-	//	alert('Strophe is connected.')
+		console.log('Strophe is connected.')
 
 		connection.send($pres());
 		connection.pubsub.subscribe(connection.jid,
@@ -43,6 +43,8 @@ $(document).ready(function () {
 
 		
 		function onEvent(message) {
+			console.log('onEvent.')
+			
 		 PUBSUB_SERVER = 'pubsub.logoslogic.com'
 		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
 		  var re = new RegExp(server);
