@@ -6,13 +6,13 @@ var ignore = true;
 
 function onSubscribe(sub) {
   // Log when we are subscribed.
-  alert("Subscribed");
+  console.log("Subscribed");
   return true;
 }
 
 
 function onEvent(message) {
-	alert('onEvent.')
+	console.log('onEvent.')
 	
   var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
   var re = new RegExp(server);
@@ -23,7 +23,7 @@ function onEvent(message) {
       .children('items')
       .children('item')
       .children('entry').text();
-	alert('event  ='+event);
+	console.log('event  ='+event);
     if (ignore) {
       //short circuit first event
       ignore = false;
@@ -76,7 +76,7 @@ function onConnect(status)
 	
 	connection.pubsub.subscribe(connection.jid,
 				    'pubsub.logoslogic.com',
-				    'moderator2',
+				    'test',
 				    [],
 				    onEvent,
 				    onSubscribe
@@ -96,13 +96,13 @@ $(document).ready(function () {
 		
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
-			//alert('delete itemId = '+itemId);
+			//console.log('delete itemId = '+itemId);
 			
 		});
 		
 		$('.approve').live('click', function(event) {
 			var itemId = $(this).parent().parent().attr("id");
-		//	alert('approve itemId = '+itemId);
+			console.log('approve itemId = '+itemId);
 		});
 
 });
