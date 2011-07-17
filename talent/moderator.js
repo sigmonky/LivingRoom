@@ -120,7 +120,13 @@ $(document).ready(function () {
 		  return true;
 		}
 		
-
+		function approve(itemid){
+			console.log('aprove id '+id);
+		}
+		
+		function delete(itemid){
+			console.log('delete id '+id);
+		}
 
 		
 });
