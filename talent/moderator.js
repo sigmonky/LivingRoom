@@ -96,42 +96,22 @@ $(document).ready(function () {
 			console.log('handleMessageIn - getFrom = ' +from)
 			
 		  // Only handle messages from the PubSub Server. 
-		  if (from.match(re)) {
+		  	if (from.match(re)) {
 			
-			console.log('// Grab pubsub entry page number');
-			var doc = createXMLDoc(message.xml());
-			var event2 = doc.getElementsByTagName('event')[0];
+				console.log('// Grab pubsub entry page number');
+				var doc = createXMLDoc(message.xml());
+				var event2 = doc.getElementsByTagName('event')[0];
 
-			var event  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
+				var event  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
+ 				$('#message-list').append('<div>' + event + '</div>');
+				console.log('event =' +event);
 
-			console.log('event =' +event);
-
-
-		//    if (ignore) {
-		      //short circuit first event
-		   //   ignore = false;
-		   //   return true;
-		  //  }
-
-		    go_page = parseInt(event); // The event should be the current page #
-		    // 
-		    // 
-		    console.log('go_page =' +go_page);
-			
-		    if (go_page >= 0) { // Only handle page # events
-		      // I would have liked to use goTo but the function would cause and odd
-		      // jump to the home page then the correct page. So I added a bit off 
-		      // logic to make it look good when transitioning pages.
-		      if (current_page+1 == go_page) {
-			go(1);
-		      } else if (current_page-1 == go_page) {
-			go(-1);
-		      } else {
-			goTo(go_page);
-		      }
-		      current_page = go_page;
-		    }
-		  }
+		    		if (ignore) {
+		      			//short circuit first event
+		     			ignore = false;
+		      			return true;
+		    		}
+		   	}
 		  // Return true or we loose this callback.
 		  return true;
 		}
