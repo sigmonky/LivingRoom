@@ -38,10 +38,8 @@ function onEvent(message) {
       ignore = false;
       return true;
     }
-
-	   var itemId = $(message).children('event')
-	      .children('items')
-	      .children('item').getAttribute('id');
+var itemId = '';
+	 //  var itemId = $(message).children('event').children('items').children('item').getAttribute('id');
 
 	 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
   }
@@ -63,7 +61,7 @@ function rawInput(data)
 
 function rawOutput(data)
 {
-}
+ }
 
 function onConnect(status)
 {
