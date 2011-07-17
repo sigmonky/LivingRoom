@@ -41,7 +41,7 @@ console.log('message=' +_message );
 
   // inject text
   show_text: function (m) {
-    $('#message').text(m);
+ //   $('#message').text(m);
 var itemId = '';
 
 	$('#message').append('<div class="message-item" id='+itemId+'>' + m + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div><br/><br/>');
