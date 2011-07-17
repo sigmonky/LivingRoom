@@ -1,5 +1,6 @@
 var connection = null;
 var current_page = 0;
+var ignore = true;
 
 function publish(page) {
   connection.pubsub.publish(connection.jid,

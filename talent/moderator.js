@@ -1,4 +1,5 @@
 var current_page = 0;
+var ignore = true;
 
 $(document).ready(function () {
 
@@ -120,15 +121,15 @@ $(document).ready(function () {
 				console.log('item id is = '+itemIdS.getAttribute('id'));
 				
 				var itemId = itemIdS.getAttribute('id');
-				
+				    		if (ignore) {
+				      			//short circuit first event
+				     			ignore = false;
+				      			return true;
+				    		}
  				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
 				console.log('event =' +event);
 
-		    		if (ignore) {
-		      			//short circuit first event
-		     			ignore = false;
-		      			return true;
-		    		}
+		
 		   	}
 		  // Return true or we loose this callback.
 		  return true;
