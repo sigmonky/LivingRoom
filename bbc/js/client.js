@@ -122,7 +122,7 @@ $(document).ready(function () {
 		
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
-			//console.log('delete itemId = '+itemId);
+			console.log('delete itemId = '+itemId);
 			
 		});
 		
