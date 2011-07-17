@@ -123,15 +123,13 @@ $(document).ready(function () {
 		}
 		
 		$('.delete').live('click', function() {
-			var parent = $(this).parent().parent().parent().attr("id")
-			console.log('deletex id = '+parent);
-			
-			var parent2 = $(this).parent().parent().attr("id");
-			console.log('deletex2 id = '+parent2);
+			var itemId = $(this).parent().parent().attr("id");
+			console.log('delete itemId = '+itemId);
 		});
 		
 		$('.approve').live('click', function(event) {
-			console.log('deletex id ');
+			var itemId = $(this).parent().parent().attr("id");
+			console.log('approve itemId = '+itemId);
 		});	
 		
 	
