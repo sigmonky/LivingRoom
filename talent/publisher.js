@@ -83,8 +83,8 @@ $(document).ready(function () {
 			v.setType('set');
 			v.setID('');
 			
-			v.setPubsub('http://jabber.org/protocol/pubsub','moderated');
-			v.setPublish('moderated');
+			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
+			v.setPublish('moderator');
 			v.createItem();
 			v.setTitle(message);
 		

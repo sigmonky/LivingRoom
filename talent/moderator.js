@@ -64,8 +64,8 @@ $(document).ready(function () {
 			v.setType('set');
 			v.setID('');
 		
-			v.setPubsub('http://jabber.org/protocol/pubsub','moderated');
-			v.subscribeNode('moderated','isaacueca@logoslogic.com');
+			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
+			v.subscribeNode('moderator','isaacueca@logoslogic.com');
 			jabberConnection.send(v);
 			
 		}
