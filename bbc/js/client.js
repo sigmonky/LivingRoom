@@ -44,12 +44,6 @@ console.log('message=' +_message );
     $('#message').text(m);
   },
 
-  // inject html
-  show_html: function (m) {
-    var e = document.createElement('div');
-    e.innerHTML = m;
-    $('#message').html(e.childNodes[0].nodeValue);
-  },
 
   on_event: function (message) {
     if (!Client.subscribed) {
@@ -68,7 +62,7 @@ console.log('message=' +_message );
 		console.log('match _data '+_data);
 
       if (_data) {
-        Client.handle_update(_data);
+        Client.show_text(_data);
       }
    // }
 
