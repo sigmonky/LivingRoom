@@ -64,8 +64,8 @@ $(document).ready(function () {
 			v.setType('set');
 			v.setID('unsub1');
 		
-			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
-			v.unSubscribeNode('moderator','isaacueca@logoslogic.com');
+			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
+			v.unSubscribeNode('presentation','isaacueca@logoslogic.com');
 			jabberConnection.send(v);
 			
 			
