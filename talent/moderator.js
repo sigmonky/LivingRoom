@@ -138,6 +138,7 @@ $(document).ready(function () {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('delete itemId = '+itemId);
 			
+			var v = new JSJaCLeaf();
 			
 			v.setFrom('isaacueca@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
