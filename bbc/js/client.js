@@ -144,7 +144,7 @@ $(document).ready(function () {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('approve itemId = '+itemId);
 			
-			var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
+			var _d = $build('data', { 'type' : data.type }).t('test').toString(); 
 
 		    Client.connection.pubsub.publish(
 		      'isaacueca@logoslogic.com',
@@ -152,8 +152,6 @@ $(document).ready(function () {
 		      Config.PUBSUB_APPROVED_NODE,
 		      [_d],
 		      Client.on_send
-			
-			
 		});
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
