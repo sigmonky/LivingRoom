@@ -108,7 +108,7 @@ $(document).ready(function () {
 				console.log('item id is = '+itemId.getAttribute('id'));
 				
 				
- 				$('#message-list').append('<div>' + event + '</div>');
+ 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a href="#">Delete</a> | <div class="controls"><a href="#">Aprove</a></div></div>');
 				console.log('event =' +event);
 
 		    		if (ignore) {
