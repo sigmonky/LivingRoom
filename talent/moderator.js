@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 		oArgs = new Object();
 		oArgs.domain = 'logoslogic.com';
-		oArgs.username = 'isaacueca';
+		oArgs.username = 'isaacueca2';
 		oArgs.resource = '';
 		oArgs.pass = 'cigano';
 		oArgs.register = false;
@@ -60,25 +60,25 @@ $(document).ready(function () {
 			
 			var v = new JSJaCLeaf();
 			
-			v.setFrom('isaacueca@logoslogic.com');
+			v.setFrom('isaacueca2@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
 			v.setType('set');
 			v.setID('unsub1');
 		
 			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
-			v.unSubscribeNode('presentation','isaacueca@logoslogic.com');
+			v.unSubscribeNode('presentation','isaacueca2@logoslogic.com');
 			jabberConnection.send(v);
 			
 			
 			var v = new JSJaCLeaf();
 			
-			v.setFrom('isaacueca@logoslogic.com');
+			v.setFrom('isaacueca2@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
 			v.setType('set');
 			v.setID('');
 		
 			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
-			v.subscribeNode('moderator','isaacueca@logoslogic.com');
+			v.subscribeNode('moderator','isaacueca2@logoslogic.com');
 			jabberConnection.send(v);
 			
 		}
@@ -121,11 +121,13 @@ $(document).ready(function () {
 				console.log('item id is = '+itemIdS.getAttribute('id'));
 				
 				var itemId = itemIdS.getAttribute('id');
-				    		if (ignore) {
+				
+				   if (ignore) {
 				      			//short circuit first event
-				     			ignore = false;
-				      			return true;
-				    		}
+				     		ignore = false;
+				      		return true;
+				    }
+				
  				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
 				console.log('event =' +event);
 
@@ -141,7 +143,7 @@ $(document).ready(function () {
 			
 			var v = new JSJaCLeaf();
 			
-			v.setFrom('isaacueca@logoslogic.com');
+			v.setFrom('isaacueca2@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
 			v.setType('set');
 			v.setID('retract1');
