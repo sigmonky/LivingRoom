@@ -13,11 +13,16 @@ function publish(page) {
   
 }
 
+function onSubscribe(sub) {
+  // Log when we are subscribed.
+  console.log("Subscribed");
+  return true;
+}
+
 
 function onEvent(message) {
 	console.log('onEvent.')
 	
- PUBSUB_SERVER = 'pubsub.logoslogic.com'
   var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
   var re = new RegExp(server);
   // Only handle messages from the PubSub Server. 
@@ -46,22 +51,18 @@ function onEvent(message) {
 
 function log(msg) 
 {
-    $('#log').prepend('<div></div>').prepend(document.createTextNode(msg));
 }
 
 function debug(msg) 
 {
-    $('#debug').append('<div></div>').append(document.createTextNode(msg));
 }
 
 function rawInput(data)
 {
-    debug('RECV: ' + data);
 }
 
 function rawOutput(data)
 {
-    debug('SENT: ' + data);
 }
 
 function onConnect(status)
