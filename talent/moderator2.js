@@ -2,16 +2,7 @@ var connection = null;
 var current_page = 0;
 var ignore = true;
 
-function publish(page) {
-  connection.pubsub.publish(connection.jid,
-			    PUBSUB_SERVER,
-			    PUBSUB_NODE,
-			    [page.toString()],
-			    log
-			    );
-  current_page = page;
-  
-}
+
 
 function onSubscribe(sub) {
   // Log when we are subscribed.
