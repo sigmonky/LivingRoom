@@ -73,7 +73,7 @@ $(document).ready(function () {
 		
 		function publish(page) {
 			console.log('publish');
-			var message = $('#message').text();
+			var message = $('#message').val();
 			console.log('message = '+message);
 			
 			
