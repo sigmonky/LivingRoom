@@ -66,7 +66,6 @@ $(document).ready(function () {
 		
 			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
 			v.subscribeNode('presentation','isaacueca@logoslogic.com');
-
 			jabberConnection.send(v);
 			
 		}

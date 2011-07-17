@@ -73,6 +73,10 @@ $(document).ready(function () {
 		
 		function publish(page) {
 			console.log('publish');
+			var message = $('message').text();
+			console.log('message = '+message);
+			
+			
 			var v = new JSJaCLeaf();
 			v.setFrom('isaacueca@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
