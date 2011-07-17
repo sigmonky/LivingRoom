@@ -5157,6 +5157,16 @@ JSJaCLeaf.prototype.subscribeNode = function(node, who) {
 }
 
 
+JSJaCLeaf.prototype.unSubscribeNode = function(node, who) {
+	pubsub = this.getChild('pubsub');
+	publish = this.getDoc().createElement('unsubscribe');
+	publish.setAttribute('node',node);
+	publish.setAttribute('jid',who);
+	pubsub.appendChild(publish);
+	return pubsub;
+}
+
+
 
 JSJaCLeaf.prototype.createItem = function() {
 	publish = this.getChild('publish')
