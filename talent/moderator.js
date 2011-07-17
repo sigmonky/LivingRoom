@@ -124,8 +124,8 @@ $(document).ready(function () {
 			console.log('aprove id '+id);
 		}
 		
-		function delete(itemid){
-			console.log('delete id '+id);
+		function deletex(itemid){
+		//	console.log('delete id '+id);
 		}
 
 		
