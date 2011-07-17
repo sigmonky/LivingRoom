@@ -125,6 +125,9 @@ $(document).ready(function () {
 		$('.delete').live('click', function() {
 			var parent = $(this).parent().parent().parent().id
 			console.log('deletex id = '+parent);
+			
+			var parent2 = $(this).parent().parent().id
+			console.log('deletex2 id = '+parent2);
 		});
 		
 		$('.approve').live('click', function(event) {
