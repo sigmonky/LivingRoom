@@ -104,8 +104,8 @@ $(document).ready(function () {
 
 				var event  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
 				
-				var itemId = event2.getElementsByTagName('item')[0].attr('id');
-				console.log('item id is = '+itemId);
+				var itemId = event2.getElementsByTagName('item')[0];
+				console.log('item id is = '+itemId.getAttribute('id'));
 				
 				
  				$('#message-list').append('<div>' + event + '</div>');
