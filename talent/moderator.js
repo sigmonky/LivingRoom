@@ -145,7 +145,7 @@ $(document).ready(function () {
 			v.setType('set');
 			v.setID('retract1');
 		
-			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
+			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
 			v.retractNode('moderator', itemId);
 			jabberConnection.send(v);
 			
