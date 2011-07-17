@@ -4,8 +4,7 @@ var ignore = true;
 $(document).ready(function () {
 	
     connection = new Strophe.Connection('http://www.logoslogic.com/http-bind');
-    connection.rawInput = rawInput;
-    connection.rawOutput = rawOutput;
+
 
     connection.connect('isaacueca2@logoslogic.com', 'cigano', onConnect);
 
