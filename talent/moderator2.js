@@ -3,7 +3,7 @@ var ignore = true;
 
 $(document).ready(function () {
 	
-    connection = new Strophe.Connection(BOSH_SERVICE);
+    connection = new Strophe.Connection('http://www.logoslogic.com/http-bind');
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
 
@@ -44,6 +44,7 @@ $(document).ready(function () {
 
 		
 		function onEvent(message) {
+		 PUBSUB_SERVER = 'pubsub.logoslogic.com'
 		  var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
 		  var re = new RegExp(server);
 		  // Only handle messages from the PubSub Server. 
@@ -59,21 +60,12 @@ $(document).ready(function () {
 		      ignore = false;
 		      return true;
 		    }
+		
+			   var itemId = $(message).children('event')
+			      .children('items')
+			      .children('item').getAttribute('id');
 
-		    go_page = parseInt(event); // The event should be the current page #
-		    if (go_page >= 0) { // Only handle page # events
-		      // I would have liked to use goTo but the function would cause and odd
-		      // jump to the home page then the correct page. So I added a bit off 
-		      // logic to make it look good when transitioning pages.
-		      if (current_page+1 == go_page) {
-			go(1);
-		      } else if (current_page-1 == go_page) {
-			go(-1);
-		      } else {
-			goTo(go_page);
-		      }
-		      current_page = go_page;
-		    }
+			 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
 		  }
 		  // Return true or we loose this callback.
 		  return true;
