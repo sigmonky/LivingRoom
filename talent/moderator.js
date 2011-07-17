@@ -107,7 +107,7 @@ $(document).ready(function () {
 				var itemId = event2.getElementsByTagName('item')[0];
 				console.log('item id is = '+itemId.getAttribute('id'));
 				
- 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a href="#" onclick="delete('+itemId+')">Delete</a> | <a onclick="approve('+itemId+')" href="#">Aprove</a></div></div>');
+ 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a href="#" onclick="deleteItem('+itemId+')">Delete</a> | <a onclick="approve('+itemId+')" href="#">Aprove</a></div></div>');
 				console.log('event =' +event);
 
 		    		if (ignore) {
@@ -124,7 +124,9 @@ $(document).ready(function () {
 			console.log('aprove id '+id);
 		}
 		
-		function deletex(itemid){
+		function deleteItem(itemid){
+			console.log('deletex id '+id);
+			
 		//	console.log('delete id '+id);
 		}
 
