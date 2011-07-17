@@ -119,5 +119,16 @@ $(document).ready(function () {
 
   Client.connection.connect('isaacueca@logoslogic.com','cigano', Client.on_connect);
 
+		
+		$('.delete').live('click', function() {
+			var itemId = $(this).parent().parent().attr("id");
+			//console.log('delete itemId = '+itemId);
+			
+		});
+		
+		$('.approve').live('click', function(event) {
+			var itemId = $(this).parent().parent().attr("id");
+			console.log('approve itemId = '+itemId);
+		});
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
