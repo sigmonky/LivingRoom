@@ -34,17 +34,8 @@ var Client = {
     var _d = $(data);
     var _message = _d.html();
     var _type = _d.attr('type'); 
-
-    switch (_type) {
-      case MessageType.MSG_TEXT:
-        Client.show_text(_message);
-        break;
-      case MessageType.MSG_HTML:
-        Client.show_html(_message);
-        break;
-      default:
-        Client.log("Oh dear! I don't understand");
-    }
+    Client.show_text(_message);
+    
   },
 
   // inject text
@@ -67,8 +58,9 @@ var Client = {
     var server = "^" + Client.pubsub_server.replace(/\./g, "\\.");
     var re = new RegExp(server);
 
- //   if ($(message).attr('from').match(re) && $(message).attr('type') == 'headline')
-  //  { 
+    if ($(message).attr('from').match(re) && $(message).attr('type') == 'headline')
+    { 
+	console.log('match');
       var _data = $(message).children('event')
         .children('items')
         .children('item')
@@ -77,7 +69,7 @@ var Client = {
       if (_data) {
         Client.handle_update(_data);
       }
-   // }
+    }
 
     return true;
   },
