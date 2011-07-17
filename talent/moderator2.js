@@ -6,13 +6,13 @@ var ignore = true;
 
 function onSubscribe(sub) {
   // Log when we are subscribed.
-  console.log("Subscribed");
+  alert("Subscribed");
   return true;
 }
 
 
 function onEvent(message) {
-	console.log('onEvent.')
+	alert('onEvent.')
 	
   var server = "^"+PUBSUB_SERVER.replace(/\./g, "\\.");
   var re = new RegExp(server);
@@ -23,7 +23,7 @@ function onEvent(message) {
       .children('items')
       .children('item')
       .children('entry').text();
-	console.log('event  ='+event);
+	alert('event  ='+event);
     if (ignore) {
       //short circuit first event
       ignore = false;
@@ -58,20 +58,20 @@ function rawOutput(data)
 function onConnect(status)
 {
     if (status == Strophe.Status.CONNECTING) {
-	log('Strophe is connecting 1.');
-    } else if (status == Strophe.Status.CONNFAIL) {
+//	log('Strophe is connecting 1.');
+ //   } else if (status == Strophe.Status.CONNFAIL) {
 	log('Strophe failed to connect.');
 	$('#connect').get(0).value = 'connect';
     } else if (status == Strophe.Status.DISCONNECTING) {
 	log('Strophe is disconnecting.');
     } else if (status == Strophe.Status.DISCONNECTED) {
-	log('Strophe is disconnected.');
+//	log('Strophe is disconnected.');
 	$('#connect').get(0).value = 'connect';
 	$('#log').empty();
 	$('#debug').empty();
     } else if (status == Strophe.Status.CONNECTED) {
-	log('Strophe is connected.');
-	alert('connected.');
+//	log('Strophe is connected.');
+	//alert('connected.');
 	connection.send($pres());
 	
 	connection.pubsub.subscribe(connection.jid,
@@ -96,13 +96,13 @@ $(document).ready(function () {
 		
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
-			console.log('delete itemId = '+itemId);
+			//alert('delete itemId = '+itemId);
 			
 		});
 		
 		$('.approve').live('click', function(event) {
 			var itemId = $(this).parent().parent().attr("id");
-			console.log('approve itemId = '+itemId);
+		//	alert('approve itemId = '+itemId);
 		});
 
 });
