@@ -46,6 +46,7 @@ console.log('message=' +_message );
 
 
   on_event: function (message) {
+	console.log('onevent');
     if (!Client.subscribed) {
       return true;
     }
