@@ -62,11 +62,23 @@ $(document).ready(function () {
 			v.setFrom('isaacueca@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
 			v.setType('set');
+			v.setID('unsub1');
+		
+			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
+			v.unSubscribeNode('moderator','isaacueca@logoslogic.com');
+			jabberConnection.send(v);
+			
+			
+			var v = new JSJaCLeaf();
+			
+			v.setFrom('isaacueca@logoslogic.com');
+			v.setTo('pubsub.logoslogic.com');
+			v.setType('set');
 			v.setID('');
 		
 			v.setPubsub('http://jabber.org/protocol/pubsub','moderator');
 			v.subscribeNode('moderator','isaacueca@logoslogic.com');
-			//jabberConnection.send(v);
+			jabberConnection.send(v);
 			
 		}
 		
