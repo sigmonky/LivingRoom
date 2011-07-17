@@ -38,7 +38,8 @@ function onEvent(message) {
       ignore = false;
       return true;
     }
-var itemId = '';
+
+	var itemId = '';
 	 //  var itemId = $(message).children('event').children('items').children('item').getAttribute('id');
 
 	 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
@@ -84,7 +85,7 @@ function onConnect(status)
 	
 	connection.pubsub.subscribe(connection.jid,
 				    'pubsub.logoslogic.com',
-				    'moderator',
+				    'moderator2',
 				    [],
 				    onEvent,
 				    onSubscribe
