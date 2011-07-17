@@ -103,6 +103,11 @@ $(document).ready(function () {
 				var event2 = doc.getElementsByTagName('event')[0];
 
 				var event  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
+				
+				var itemId = event2.getElementsByTagName('item')[0].attr('id');
+				console.log('item id is = '+itemId);
+				
+				
  				$('#message-list').append('<div>' + event + '</div>');
 				console.log('event =' +event);
 
