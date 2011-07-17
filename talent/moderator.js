@@ -109,7 +109,7 @@ $(document).ready(function () {
 				
 				var itemId = itemIdS.getAttribute('id');
 				
- 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#" onclick="deleteItem('+itemId+')">Delete</a> | <a class="approve" onclick="approve('+itemId+')" href="#">Aprove</a></div></div>');
+ 				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div>');
 				console.log('event =' +event);
 
 		    		if (ignore) {
@@ -121,21 +121,17 @@ $(document).ready(function () {
 		  // Return true or we loose this callback.
 		  return true;
 		}
-
 		
 		$('.delete').live('click', function(event) {
-			console.log('deletex id ');
+			var parent = event.parent().parent().parent().id
+			console.log('deletex id = '+parent);
 		});
 		
-		function approve(itemid){
-			console.log('aprove id '+id);
-		}
+		$('.approve').live('click', function(event) {
+			console.log('deletex id ');
+		});	
 		
-		function deleteItem(itemid){
-			console.log('deletex id '+id);
-			
-		//	console.log('delete id '+id);
-		}
+	
 
 		
 });
