@@ -86,7 +86,7 @@ $(document).ready(function () {
 			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
 			v.setPublish('presentation');
 			v.createItem();
-			v.setTitle(current_page);
+			v.setTitle(message);
 		
 		//Let's send the packet able to retrive the user vCard
 	  		jabberConnection.send(v);
