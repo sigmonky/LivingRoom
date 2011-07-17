@@ -116,7 +116,7 @@ var Client = {
       Client.connection.pubsub.subscribe(
         Client.connection.jid,
 	'pubsub.' + Config.XMPP_SERVER,
-        'moderator',
+        PUBSUB_APPROVED_NODE,
         [],
         Client.on_event,
         Client.on_subscribe
@@ -134,26 +134,5 @@ $(document).ready(function () {
 
   Client.connection.connect('isaacueca@logoslogic.com','cigano', Client.on_connect);
 
-		$('.delete').live('click', function() {
-			var itemId = $(this).parent().parent().attr("id");
-			console.log('delete itemId = '+itemId);
-			
-		});
-		
-		$('.approve').live('click', function(event) {
-			var itemId = $(this).parent().parent().attr("id");
-			console.log('approve itemId = '+itemId);
-			
-			var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
-
-		    Client.connection.pubsub.publish(
-		      'isaacueca@logoslogic.com',
-		      Client.pubsub_server,
-		      Config.PUBSUB_APPROVED_NODE,
-		      [_d],
-		      Client.on_send
-			
-			
-		});
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
