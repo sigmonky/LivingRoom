@@ -81,7 +81,7 @@ $(document).ready(function () {
 			v.setFrom('isaacueca@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
 			v.setType('set');
-			v.setID('2840:publishnode');
+			v.setID('');
 			
 			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
 			v.setPublish('presentation');
