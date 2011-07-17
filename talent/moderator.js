@@ -121,10 +121,11 @@ $(document).ready(function () {
 		  // Return true or we loose this callback.
 		  return true;
 		}
+
 		
-		$('.delete').live('click', function(){
-			console.log('deletex id '+this.id);
-		})
+		$('.delete').live('click', function() {
+			console.log('deletex id ');
+		});
 		
 		function approve(itemid){
 			console.log('aprove id '+id);
