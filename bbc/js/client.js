@@ -147,12 +147,12 @@ $(document).ready(function () {
 			var message = $(item).children(':first').text();
 			console.log('approve message = '+message);
 
-		    Client.connection.pubsub.publish(
+		 /*   Client.connection.pubsub.publish(
 		      'isaacueca@logoslogic.com',
 		      Client.pubsub_server,
 		      Config.PUBSUB_APPROVED_NODE,
 		      [message],
-		      Client.on_send);
+		      Client.on_send); */
 		});
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
