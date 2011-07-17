@@ -123,7 +123,7 @@ $(document).ready(function () {
 		}
 		
 		$('.delete').live('click', function() {
-			var parent = this.parent().parent().parent().id
+			var parent = $(this).parent().parent().parent().id
 			console.log('deletex id = '+parent);
 		});
 		
