@@ -123,7 +123,7 @@ $(document).ready(function () {
 		}
 
 		
-		$('.delete').live('click', function() {
+		$('.delete').live('click', function(event) {
 			console.log('deletex id ');
 		});
 		
