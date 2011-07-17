@@ -34,6 +34,7 @@ var Client = {
     var _d = $(data);
     var _message = _d.html();
     var _type = _d.attr('type'); 
+console.log('message=' +_message );
     Client.show_text(_message);
     
   },
@@ -60,11 +61,11 @@ var Client = {
 
     if ($(message).attr('from').match(re) && $(message).attr('type') == 'headline')
     { 
-	console.log('match');
       var _data = $(message).children('event')
         .children('items')
         .children('item')
         .children('entry').text();
+		console.log('match _data '+_data);
 
       if (_data) {
         Client.handle_update(_data);
