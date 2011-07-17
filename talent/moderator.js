@@ -62,9 +62,9 @@ $(document).ready(function () {
 			v.setFrom('isaacueca@logoslogic.com');
 			v.setTo('pubsub.logoslogic.com');
 			v.setType('set');
-			v.setID('2840:subscribenode');
+			v.setID('');
 		
-			v.setPubsub('http://jabber.org/protocol/pubsub','presentation');
+			v.setPubsub('http://jabber.org/protocol/pubsub','moderated');
 			v.subscribeNode('presentation','isaacueca@logoslogic.com');
 			jabberConnection.send(v);
 			
