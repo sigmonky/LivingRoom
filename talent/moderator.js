@@ -122,8 +122,8 @@ $(document).ready(function () {
 		  return true;
 		}
 		
-		$('.delete').onclick(function(elem){
-			console.log('deletex id '+elem.id);
+		$('.delete').onclick(function(e){
+			console.log('deletex id ');
 		})
 		
 		function approve(itemid){
