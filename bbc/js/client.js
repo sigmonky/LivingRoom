@@ -116,7 +116,7 @@ var Client = {
       Client.connection.pubsub.subscribe(
         Client.connection.jid,
 	'pubsub.' + Config.XMPP_SERVER,
-        'moderator',
+    	Config.PUBSUB_NODE,
         [],
         Client.on_event,
         Client.on_subscribe
@@ -145,6 +145,7 @@ $(document).ready(function () {
 			console.log('approve itemId = '+itemId);
 			var item = $(this).parent().parent();
 			var message = $(item).children(':first').text();
+			
 			console.log('approve message = '+message);
 
 		 /*   Client.connection.pubsub.publish(
