@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 				var event  = event2.getElementsByTagName('entry')[0].childNodes[0].nodeValue;
 				
-				var itemId = event2.getElementsByTagName('item')[0];
+				var itemId = event2.getElementsByTagName('item')[0].toString();
 				console.log('item id is = '+itemId.getAttribute('id'));
 				
  				$('#message-list').append('<div class="message-item" id='+itemId+'>' + event + '<div class="controls"><a href="#" onclick="deleteItem('+itemId+')">Delete</a> | <a onclick="approve('+itemId+')" href="#">Aprove</a></div></div>');
