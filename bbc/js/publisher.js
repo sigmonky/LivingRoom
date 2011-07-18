@@ -48,8 +48,10 @@ var Control = {
   // push the data to the clients
   publish: function (data) {
     if (data.message == '') return;
-    var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
 
+   // var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
+	var _d = data.message.toString();
+	
     Control.connection.pubsub.publish(
       Control.admin_jid,
       Control.pubsub_server,
