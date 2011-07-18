@@ -50,7 +50,7 @@ var Control = {
     if (data.message == '') return;
 
    // var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
-	var _d = data.message.toString();
+	var _d = data.message;
 	
     Control.connection.pubsub.publish(
       Control.admin_jid,
