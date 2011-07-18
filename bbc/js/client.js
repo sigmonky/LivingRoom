@@ -7,7 +7,7 @@ var Client = {
 
   // log to console if available
   log: function (msg) { 
-    if (Client.show_log && window.console) { console.log(msg); }
+    if (Client.show_log && window.console) { alert(msg); }
   },
 
   // show the raw XMPP information coming in
@@ -34,7 +34,7 @@ var Client = {
     var _d = $(data);
     var _message = _d.html();
     var _type = _d.attr('type'); 
-	console.log('message=' +_message );
+	alert('message=' +_message );
     Client.show_text(_message);
     
   },
@@ -49,7 +49,7 @@ var Client = {
 
   // called when data is deemed as sent
   on_send: function (data) {
-    console.log("Data Sent");
+    alert("Data Sent");
    // $('#message').val('');
    // $('#progress').text('message sent').fadeIn().fadeOut(5000);
     return true;
@@ -57,7 +57,7 @@ var Client = {
 
 
   on_event: function (message) {
-	console.log('onevent');
+	alert('onevent');
     if (!Client.subscribed) {
       return true;
     }
@@ -71,13 +71,13 @@ var Client = {
         .children('items')
         .children('item')
         .children('entry').text();
-		console.log('match _data '+_data);
+		alert('match _data '+_data);
 		
       var _item = $(message).children('event')
         .children('items')
         .children('item').attr('id');
 
-		console.log('_item=' +_item );
+		alert('_item=' +_item );
 
 
       if (_data) {
@@ -136,17 +136,17 @@ $(document).ready(function () {
 
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
-			console.log('delete itemId = '+itemId);
+			alert('delete itemId = '+itemId);
 			
 		});
 		
 		$('.approve').live('click', function(event) {
 			var itemId = $(this).parent().parent().attr("id");
-			console.log('approve itemId = '+itemId);
+			alert('approve itemId = '+itemId);
 			var item = $(this).parent().parent();
 			var message = $(item).children(':first').text();
 			
-			console.log('approve message = '+message);
+			alert('approve message = '+message);
 
 		   Client.connection.pubsub.publish(
 		      'isaacueca@logoslogic.com',
