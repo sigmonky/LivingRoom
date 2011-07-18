@@ -144,7 +144,7 @@ $(document).ready(function () {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('approve itemId = '+itemId);
 			var item = $(this).parent().parent();
-			var message = $(item).children(':first').text();
+			var message = $(item).find(">:first-child").text();
 			
 			console.log('approve message = '+message);
 
