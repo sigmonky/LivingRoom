@@ -143,7 +143,7 @@ $(document).ready(function () {
 		$('.approve').live('click', function(event) {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('approve itemId = '+itemId);
-			var item = $(this).parent().parent();
+			var item = $(this).parent().parent().parent();
 			var message = $(item).children(':first').text();
 			
 			console.log('approve message = '+message);
