@@ -59,6 +59,8 @@ var Client = {
   on_event: function (message) {
 	console.log('onevent');
     if (!Client.subscribed) {
+		console.log('!Client.subscribed');
+	
       return true;
     }
 
