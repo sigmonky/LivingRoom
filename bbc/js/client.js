@@ -137,7 +137,8 @@ $(document).ready(function () {
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('delete itemId = '+itemId);
-			$(this).parent().parent().hide('slow').remove();
+			var that = $(this);
+			$(this).parent().parent().fadeOut('500', function(){that.hide(); that.remove();})
 			
 		});
 		
