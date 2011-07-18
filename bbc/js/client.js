@@ -141,6 +141,7 @@ $(document).ready(function () {
 		});
 		
 		$('.approve').live('click', function(event) {
+			$(this).text = 'Approved';
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('approve itemId = '+itemId);
 			var item = $(this).parent().parent();
