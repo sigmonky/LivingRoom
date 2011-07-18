@@ -44,7 +44,7 @@ var Client = {
  //   $('#message').text(m);
 	var itemId = i;
 
-	$('#message').append('<div class="message-item" id='+itemId+'>message<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div><br/><br/>');
+	$('#message').append('<div class="message-item" id='+itemId+'>' + m + '<div class="controls"><a class="delete" href="#">Delete</a> | <a class="approve" href="#">Aprove</a></div></div><br/><br/>');
   },
 
   // called when data is deemed as sent
@@ -143,8 +143,8 @@ $(document).ready(function () {
 		$('.approve').live('click', function(event) {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('approve itemId = '+itemId);
-			var item = $(this).parent().parent().parent();
-			var message = $(this).parent().parent().find(">:first-child").text();
+			var item = $(this).parent().parent();
+			var message = $(item).children(':first').text();
 			
 			console.log('approve message = '+message);
 
