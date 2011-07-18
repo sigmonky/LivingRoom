@@ -137,11 +137,12 @@ $(document).ready(function () {
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('delete itemId = '+itemId);
+			$(this).parent().parent().fadeOut(1000).hide();
 			
 		});
 		
 		$('.approve').live('click', function(event) {
-			if ($(this).text() == "Approved"){alert('Already Approved');}
+			if ($(this).text() == "Approved"){alert('Message Already Approved');}
 			$(this).text('Approved');
 			var itemId = $(this).parent().parent().attr("id");
 			console.log('approve itemId = '+itemId);
