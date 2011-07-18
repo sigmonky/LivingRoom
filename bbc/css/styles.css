@@ -128,15 +128,17 @@ form #progress {
 .blue { color:blue; }
 .green { color:green; }
 
+a.approve{color:#028211}
+a.delete{color:#a60000}
 
 #message {position:relative; width:100%}
 
 .message-item {
 	width:95%;
-	margin:20px;
+	margin:10px;
 	padding:20px;
 	background:#ededed;
-	font-size:1.4em;
+	font-size:1.2em;
 	position:relative;
 }
 
