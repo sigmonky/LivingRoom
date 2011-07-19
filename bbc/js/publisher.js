@@ -129,7 +129,7 @@ $(document).bind('connected', function () {
   Control.connection.pubsub.createNode(
     Control.admin_jid,
     Control.pubsub_server,
-    Config.PUBSUB_APPROVED_NODE,
+    Config.PUBSUB_NODE,
     {},
     Control.on_create_node
   );
