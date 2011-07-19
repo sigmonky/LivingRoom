@@ -135,10 +135,10 @@ a.delete{color:#a60000}
 
 .message-item {
 	width:95%;
-	margin:10px;
+	margin:10px 0 10px 0;
 	padding:20px;
 	background:#ededed;
-	font-size:1.2em;
+	font-size:0.9em;
 	position:relative;
 }
 

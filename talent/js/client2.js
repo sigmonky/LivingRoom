@@ -44,7 +44,7 @@ var Client = {
  //   $('#message').text(m);
 	var itemId = i;
 
-	$('#message').append('<div class="message-item" id='+itemId+'>' + m + '</div></div><br/><br/>');
+	$('#message').append('<div class="message-item" id='+itemId+'>' + m + '</div></div>');
   },
 
   // called when data is deemed as sent
