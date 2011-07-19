@@ -66,7 +66,7 @@ var Client = {
     var re = new RegExp(server);
 
     if ($(message).attr('from').match(re))
-  //  { 
+    { 
       var _data = $(message).children('event')
         .children('items')
         .children('item')
