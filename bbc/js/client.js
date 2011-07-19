@@ -117,7 +117,7 @@ var Client = {
     } else if (status == Strophe.Status.CONNECTED) {
       Client.log("Almost done...");
       Client.feedback('Connecting... (2 of 2)', '#009900');
-      Client.connection.send($pres().c('priority').t('-1'));
+      //Client.connection.send($pres().c('priority').t('-1'));
       Client.connection.pubsub.subscribe(
         Client.connection.jid,
 	'pubsub.' + Config.XMPP_SERVER,
