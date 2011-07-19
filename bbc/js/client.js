@@ -126,6 +126,13 @@ var Client = {
         Client.on_event,
         Client.on_subscribe
       );
+
+      Client.connection.sendIQ(
+          $iq({to: pubsub.logoslogic.com,
+               type: "set"})
+              .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
+              .c('items', {node: Config.PUBSUB_NODE}),
+                                 jid: 'zack@logoslogic.com'}));
     }
     return true;
   }
