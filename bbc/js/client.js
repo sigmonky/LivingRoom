@@ -70,7 +70,7 @@ var Client = {
 	 var _node = $(message).children('event')
         .children('items').attr('node');
 	console.log("node is "+ _node);
- 	if(_node == PUBSUB_NODE){
+ 	if(_node == Config.PUBSUB_NODE){
 
       var _data = $(message).children('event')
         .children('items')
