@@ -137,7 +137,7 @@ $(document).ready(function () {
   Client.connection.rawInput = Client.raw_input;
   Client.connection.rawOutput = Client.raw_output;
 
-  Client.connection.connect('isaacueca@logoslogic.com','cigano', Client.on_connect);
+  Client.connection.connect('zack@logoslogic.com','zack', Client.on_connect);
 
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
