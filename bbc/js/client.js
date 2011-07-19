@@ -138,9 +138,9 @@ var Client = {
     Client.feedback('Connected', '#00FF00');
      Client.connection.sendIQ(
        $iq({to: 'pubsub.logoslogic.com',
-             type: "set"})
-            .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
-            .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}),Client.on_old_items); 
+             type: "get"})
+            .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub"})
+            .c('items', {node: Config.PUBSUB_NODE,max_items: '10'}),Client.on_old_items); 
     return true;
   },
 
