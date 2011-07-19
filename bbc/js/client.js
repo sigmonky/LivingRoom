@@ -4,7 +4,7 @@ var Client = {
   subscribed: false,
   show_raw: true,
   show_log: true,
-  message: '',
+
   // log to console if available
   log: function (msg) { 
     if (Client.show_log && window.console) { console.log(msg); }
@@ -34,8 +34,7 @@ var Client = {
   publish: function (data) {
     if (data.message == '') return;
     var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
-	console.log('message is '+_d);
-	console.log('message from client is '+Client.message);
+
     Control.connection.pubsub.publish(
       Control.admin_jid,
       Control.pubsub_server,
@@ -59,7 +58,6 @@ var Client = {
   // called when we have either created a node
   // or the one we're creating is available
   on_create_node: function (data) {
-	console.log('oncreatenode = '+data);
     //Control.feedback('Connected', '#00FF00');
     Client.init();
   },
@@ -210,21 +208,13 @@ $(document).ready(function () {
 			var message = $(item).children(':first').text();
 			
 			console.log('approve message = '+message);
-			Client.message = message;
-		  Client.connection.pubsub.createNode(
-		    "zack@logoslogic.com",
-		    Client.pubsub_server,
-		    Config.PUBSUB_APPROVED_NODE,
-		    [message],
-		    Client.on_create_node
-		  );
 
-	/*	   Client.connection.pubsub.publish(
+		   Client.connection.pubsub.publish(
 		      'zack@logoslogic.com',
 		      Client.pubsub_server,
 		      Config.PUBSUB_APPROVED_NODE,
 		      [message],
-		      Client.on_send); */
-		}); 
+		      Client.on_send); 
+		});
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
