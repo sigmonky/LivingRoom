@@ -99,7 +99,7 @@ var Client = {
     if (!Client.subscribed) {
       return true;
     }
-
+	console.log('message = '+message);
     var server = "^" + Client.pubsub_server.replace(/\./g, "\\.");
     var re = new RegExp(server);
 
