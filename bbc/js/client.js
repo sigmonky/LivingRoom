@@ -94,13 +94,14 @@ var Client = {
   },
   configured: function (iq) {
       console.log('configured');
-	  Client.connection.pubsub.createNode(
-	    Client.connection.jid,
-	    'pubsub.' + Config.XMPP_SERVER,
-	    Config.PUBSUB_APPROVED_NODE,
-	    {},
-	    Client.on_create_node
-	  );
+
+     Client.connection.sendIQ(
+       $iq({to: 'pubsub.logoslogic.com',
+             type: "set"})
+            .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
+            .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}),Client.on_old_items);
+
+
   },
 
   configure_error: function (iq) {
@@ -181,11 +182,7 @@ var Client = {
     Client.subscribed = true;
     Client.log("Now awaiting messages...");
     Client.feedback('Connected', '#00FF00');
-     Client.connection.sendIQ(
-       $iq({to: 'pubsub.logoslogic.com',
-             type: "set"})
-            .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
-            .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}),Client.on_old_items); 
+
     return true;
   },
 
@@ -225,7 +222,13 @@ var Client = {
         Client.on_event,
         Client.on_subscribe
       );
-
+	  Client.connection.pubsub.createNode(
+	    Client.connection.jid,
+	    'pubsub.' + Config.XMPP_SERVER,
+	    Config.PUBSUB_APPROVED_NODE,
+	    {},
+	    Client.on_create_node
+	  );
 
 
 
