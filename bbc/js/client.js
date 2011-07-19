@@ -131,8 +131,7 @@ var Client = {
           $iq({to: pubsub.logoslogic.com,
                type: "set"})
               .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
-              .c('items', {node: Config.PUBSUB_NODE}),
-                                 jid: 'zack@logoslogic.com'}));
+              .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}));
     }
     return true;
   }
