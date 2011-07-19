@@ -88,8 +88,8 @@ var Client = {
       if (_data) {
         Client.show_text(_data, _item);
       }
-   // }
-}
+    }
+	}
     return true;
   },
 
