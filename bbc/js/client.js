@@ -94,7 +94,13 @@ var Client = {
   },
   configured: function (iq) {
       console.log('configured');
-	
+	  Client.connection.pubsub.createNode(
+	    Client.connection.jid,
+	    'pubsub.' + Config.XMPP_SERVER,
+	    Config.PUBSUB_APPROVED_NODE,
+	    {},
+	    Client.on_create_node
+	  );
   },
 
   configure_error: function (iq) {
@@ -220,13 +226,7 @@ var Client = {
         Client.on_subscribe
       );
 
-	  Client.connection.pubsub.createNode(
-	    Client.connection.jid,
-	    'pubsub.' + Config.XMPP_SERVER,
-	    Config.PUBSUB_APPROVED_NODE,
-	    {},
-	    Client.on_create_node
-	  );
+
 
 
     }
