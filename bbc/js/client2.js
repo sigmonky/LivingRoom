@@ -66,8 +66,13 @@ var Client = {
     var re = new RegExp(server);
 
 //    if ($(message).attr('from').match(re) && $(message).attr('type') == 'headline')
-  //  { 
-      var _data = $(message).children('event')
+	if ($(message).attr('from').match(re))
+	{ 
+ 		var _node = $(message).children('event')
+    	.children('items').attr('node');
+		console.log("node is "+ _node);
+		if(_node == Config.PUBSUB_NODE){      
+		var _data = $(message).children('event')
         .children('items')
         .children('item')
         .children('entry').text();
@@ -84,7 +89,7 @@ var Client = {
         Client.show_text(_data, _item);
       }
    // }
-
+}
     return true;
   },
 
