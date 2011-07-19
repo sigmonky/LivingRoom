@@ -101,6 +101,13 @@ var Client = {
     return true;
   },
 
+  on_old_items: function (iq) {
+	console.log('on_old_items');
+      $(iq).find('item').each(function () {
+          Client.on_event(this);
+      });
+  },
+
   on_connect: function (status) {
     if (status == Strophe.Status.CONNECTING) {
       Client.log('Connecting...');
@@ -131,7 +138,8 @@ var Client = {
           $iq({to: pubsub.logoslogic.com,
                type: "set"})
               .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
-              .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}));
+              .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}),
+Client.on_old_items);
     }
     return true;
   }
