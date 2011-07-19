@@ -4,6 +4,11 @@ var Client = {
   subscribed: false,
   show_raw: true,
   show_log: true,
+  NS_DATA_FORMS: "jabber:x:data",
+  NS_PUBSUB: "http://jabber.org/protocol/pubsub",
+  NS_PUBSUB_OWNER: "http://jabber.org/protocol/pubsub#owner",
+  NS_PUBSUB_ERRORS: "http://jabber.org/protocol/pubsub#errors",
+  NS_PUBSUB_NODE_CONFIG: "http://jabber.org/protocol/pubsub#node_config",
 
   // log to console if available
   log: function (msg) { 
@@ -74,7 +79,6 @@ var Client = {
     var _type = _d.attr('type'); 
 	console.log('message=' +_message );
     Client.show_text(_message);
-    
   },
 
   // inject text
@@ -92,7 +96,6 @@ var Client = {
    // $('#progress').text('message sent').fadeIn().fadeOut(5000);
     return true;
   },
-
 
   on_event: function (message) {
 	console.log('onevent');
@@ -122,12 +125,11 @@ var Client = {
 
 		console.log('_item=' +_item );
 
-
       if (_data) {
         Client.show_text(_data, _item);
       }
     }
-}
+  }
     return true;
   },
 
@@ -203,7 +205,6 @@ var Client = {
 	    Client.on_create_node
 	  );
 
-
     }
     return true;
   }
@@ -222,6 +223,16 @@ $(document).ready(function () {
 			console.log('delete itemId = '+itemId);
 			var that = $(this);
 			$(this).parent().parent().fadeOut('1000', function(){that.hide(); that.remove();})
+			
+			var configiq = $iq({to: Client.pubsub_server,
+		                        type: "set"})
+		        .c('pubsub', {xmlns: Client.NS_PUBSUB})
+		        .c('retract', {node: Client.PUBSUB_NODE})
+		        .c('item', {id: itemId});
+		    Client.connection.sendIQ(configiq,
+		                                 Client.configured,
+		                                 Client.configure_error);
+			
 			
 		});
 		
