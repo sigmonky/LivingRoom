@@ -57,7 +57,6 @@ var Client = {
 
 
   on_event: function (message) {
-	if (Client.subscribed == true){
 	console.log('onevent');
     if (!Client.subscribed) {
       return true;
@@ -91,7 +90,7 @@ var Client = {
       }
     }
 }
-    return true; }
+    return true;
   },
 
   on_subscribe: function (sub) {
