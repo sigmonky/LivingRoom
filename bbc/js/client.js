@@ -172,7 +172,7 @@ $(document).ready(function () {
 			console.log('approve message = '+message);
 
 		   Client.connection.pubsub.publish(
-		      'isaacueca@logoslogic.com',
+		      'zack@logoslogic.com',
 		      Client.pubsub_server,
 		      Config.PUBSUB_APPROVED_NODE,
 		      [message],
