@@ -59,6 +59,7 @@ var Client = {
   // called when we have either created a node
   // or the one we're creating is available
   on_create_node: function (data) {
+	console.log('oncreatenode = '+data);
     //Control.feedback('Connected', '#00FF00');
     Client.init();
   },
@@ -215,7 +216,7 @@ $(document).ready(function () {
 		    Client.pubsub_server,
 		    Config.PUBSUB_APPROVED_NODE,
 		    [message],
-		    Control.on_create_node
+		    Client.on_create_node
 		  );
 
 	/*	   Client.connection.pubsub.publish(
