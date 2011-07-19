@@ -68,7 +68,7 @@ var Client = {
     if ($(message).attr('from').match(re))
     { 
 	 var _node = $(message).children('event')
-        .children('items').getAttribute('node');
+        .children('items').attr('node');
 	console.log("node is "+ _node);
  	if(_node == PUBSUB_NODE){
 
