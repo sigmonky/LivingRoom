@@ -151,6 +151,10 @@ var Client = {
       });
   },
 
+  on_create_node: function(){
+	console.log('node created');
+  },
+
   on_connect: function (status) {
     if (status == Strophe.Status.CONNECTING) {
       Client.log('Connecting...');
@@ -176,6 +180,14 @@ var Client = {
         Client.on_event,
         Client.on_subscribe
       );
+
+	  Client.connection.pubsub.createNode(
+	    Client.connection.jid,
+	    'pubsub.' + Config.XMPP_SERVER,
+	    Config.PUBSUB_APPROVED_NODE,
+	    {},
+	    Client.on_create_node
+	  );
 
 
     }
