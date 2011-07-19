@@ -99,12 +99,12 @@ var Client = {
     if (!Client.subscribed) {
       return true;
     }
-//	console.log('message = '+message);
+	console.log('message = '+message);
     var server = "^" + Client.pubsub_server.replace(/\./g, "\\.");
     var re = new RegExp(server);
 
-   // if ($(message).attr('from').match(re))
-   // { 
+    if ($(message).attr('from').match(re))
+    { 
 	 var _node = $(message).children('event')
         .children('items').attr('node');
 	console.log("node is "+ _node);
@@ -126,7 +126,7 @@ var Client = {
       if (_data) {
         Client.show_text(_data, _item);
       }
-   // }
+    }
 }
     return true;
   },
@@ -147,8 +147,22 @@ var Client = {
   on_old_items: function (iq) {
 	console.log('on_old_items');
       $(iq).find('item').each(function () {
-          Client.on_event(this);
+          Client.on_event2(this);
       });
+  },
+
+  on_event2: function (msg) {
+	  var _data = $(msg).children('entry').text();
+	 console.log('match _data '+_data);
+
+      var _item = $(msg).attr('id');
+
+	 console.log('_item=' +_item );
+
+
+      if (_data) {
+        Client.show_text(_data, _item);
+      }
   },
 
   on_create_node: function(){
