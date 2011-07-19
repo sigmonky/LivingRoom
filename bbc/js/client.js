@@ -4,11 +4,6 @@ var Client = {
   subscribed: false,
   show_raw: true,
   show_log: true,
-  NS_DATA_FORMS: "jabber:x:data",
-  NS_PUBSUB: "http://jabber.org/protocol/pubsub",
-  NS_PUBSUB_OWNER: "http://jabber.org/protocol/pubsub#owner",
-  NS_PUBSUB_ERRORS: "http://jabber.org/protocol/pubsub#errors",
-  NS_PUBSUB_NODE_CONFIG: "http://jabber.org/protocol/pubsub#node_config",
 
   // log to console if available
   log: function (msg) { 
@@ -64,27 +59,9 @@ var Client = {
   // or the one we're creating is available
   on_create_node: function (data) {
     //Control.feedback('Connected', '#00FF00');
-
-	console.log('oncreate_node');
     Client.init();
-
-  },
-  configured: function (iq) {
-      console.log('configured');
-
-     Client.connection.sendIQ(
-       $iq({to: 'pubsub.logoslogic.com',
-             type: "set"})
-            .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
-            .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}),Client.on_old_items);
-
-
   },
 
-  configure_error: function (iq) {
-      console.log('configure_error');
-	
-  },
   // simplify connection status messages
   feedback: function(msg, col) {
     $('#connection_status').html(msg).css('color', col);
@@ -159,30 +136,11 @@ var Client = {
     Client.subscribed = true;
     Client.log("Now awaiting messages...");
     Client.feedback('Connected', '#00FF00');
-
-    var configiq = $iq({to: Client.pubsub_server,
-                        type: "set"})
-        .c('pubsub', {xmlns: Client.NS_PUBSUB_OWNER})
-        .c('configure', {node: Config.PUBSUB_NODE})
-        .c('x', {xmlns: Client.NS_DATA_FORMS,
-                 type: "submit"})
-        .c('field', {"var": "FORM_TYPE", type: "hidden"})
-        .c('value').t(Client.NS_PUBSUB_NODE_CONFIG)
-        .up().up()
-        .c('field', {"var": "pubsub#deliver_payloads"})
-        .c('value').t("1")
-        .up().up()
-        .c('field', {"var": "pubsub#send_last_published_item"})
-        .c('value').t("never")
-        .up().up()
-        .c('field', {"var": "pubsub#persist_items"})
-        .c('value').t("true")
-        .up().up()
-        .c('field', {"var": "pubsub#max_items"})
-        .c('value').t("20");
-    Client.connection.sendIQ(configiq,
-                                 Client.configured,
-                                 Client.configure_error);
+     Client.connection.sendIQ(
+       $iq({to: 'pubsub.logoslogic.com',
+             type: "set"})
+            .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub#owner"})
+            .c('items', {node: Config.PUBSUB_NODE,jid: 'zack@logoslogic.com'}),Client.on_old_items); 
     return true;
   },
 
@@ -222,14 +180,14 @@ var Client = {
         Client.on_event,
         Client.on_subscribe
       );
+
 	  Client.connection.pubsub.createNode(
 	    Client.connection.jid,
 	    'pubsub.' + Config.XMPP_SERVER,
 	    Config.PUBSUB_APPROVED_NODE,
 	    {},
 	    Client.on_create_node
-	  ); 
-
+	  );
 
 
     }

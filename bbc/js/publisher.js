@@ -10,6 +10,13 @@ var Control = {
   show_raw: true,
   show_log: true,
 
+  NS_DATA_FORMS: "jabber:x:data",
+  NS_PUBSUB: "http://jabber.org/protocol/pubsub",
+  NS_PUBSUB_OWNER: "http://jabber.org/protocol/pubsub#owner",
+  NS_PUBSUB_ERRORS: "http://jabber.org/protocol/pubsub#errors",
+  NS_PUBSUB_NODE_CONFIG: "http://jabber.org/protocol/pubsub#node_config",
+
+
   // log to console if available
   log: function (msg) { 
     if (Control.show_log && window.console) {
@@ -45,7 +52,7 @@ var Control = {
     return true;
   },
 
-  // push the data to the clients
+  // push the data to the Controls
   publish: function (data) {
     if (data.message == '') return;
     var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
@@ -79,11 +86,43 @@ var Control = {
     return false;
   },
 
+  configured: function(){
+	console.log('configured');
+  },
+
+  configured_error: function(){
+	console.log('configured error');
+  },
+
+
   // called when we have either created a node
   // or the one we're creating is available
   on_create_node: function (data) {
     Control.feedback('Connected', '#00FF00');
     Control.init();
+   var configiq = $iq({to: Control.pubsub_server,
+                        type: "set"})
+        .c('pubsub', {xmlns: Control.NS_PUBSUB_OWNER})
+        .c('configure', {node: Config.PUBSUB_NODE})
+        .c('x', {xmlns: Control.NS_DATA_FORMS,
+                 type: "submit"})
+        .c('field', {"var": "FORM_TYPE", type: "hidden"})
+        .c('value').t(Control.NS_PUBSUB_NODE_CONFIG)
+        .up().up()
+        .c('field', {"var": "pubsub#deliver_payloads"})
+        .c('value').t("1")
+        .up().up()
+        .c('field', {"var": "pubsub#send_last_published_item"})
+        .c('value').t("never")
+        .up().up()
+        .c('field', {"var": "pubsub#persist_items"})
+        .c('value').t("true")
+        .up().up()
+        .c('field', {"var": "pubsub#max_items"})
+        .c('value').t("20");
+    Control.connection.sendIQ(configiq,
+                                 Control.configured,
+                                 Control.configure_error);
   },
 }
 

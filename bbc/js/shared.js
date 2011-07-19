@@ -4,7 +4,7 @@
 var Config = {
   BOSH_SERVICE: 'http://www.logoslogic.com/http-bind',
   XMPP_SERVER:  'logoslogic.com',
-  PUBSUB_NODE:  'publisher_node',
+  PUBSUB_NODE:  'publisher_node2',
   PUBSUB_APPROVED_NODE:'approved_node'
 }
 
