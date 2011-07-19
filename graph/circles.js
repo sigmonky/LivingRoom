@@ -241,7 +241,7 @@ $(document).ready(function() {
 		
 		setInterval(function() {
 			console.log('aa');
-			$.ajax({ type: "GET", url: "http://www.logoslogic.com/chat/LivingRoom/coview_remote/poll.json", dataType: 'json',
+			$.ajax({ type: "GET", url: "http://www.logoslogic.com/chat/LivingRoom/graph/poll.json", dataType: 'json',
 				success: function(data) {
 
 					for (var i = 0; i < data['entity'].options.length; i++) {
