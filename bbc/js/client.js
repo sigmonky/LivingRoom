@@ -99,12 +99,12 @@ var Client = {
     if (!Client.subscribed) {
       return true;
     }
-	console.log('message = '+message);
+//	console.log('message = '+message);
     var server = "^" + Client.pubsub_server.replace(/\./g, "\\.");
     var re = new RegExp(server);
 
-    if ($(message).attr('from').match(re))
-    { 
+   // if ($(message).attr('from').match(re))
+   // { 
 	 var _node = $(message).children('event')
         .children('items').attr('node');
 	console.log("node is "+ _node);
@@ -126,7 +126,7 @@ var Client = {
       if (_data) {
         Client.show_text(_data, _item);
       }
-    }
+   // }
 }
     return true;
   },
