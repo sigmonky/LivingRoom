@@ -41,7 +41,7 @@ function getFromCMS(){
 	$feed = $_GET['show_id'];
 
 	/* Once we know the show ID we can get the feed for that show ID */
-	$cms_service_url = "http://localhost/popularity/popularity_cms.json";
+	$cms_service_url = "http://www.logoslogic.com/chat/LivingRoom/graph/popularity_cms.json";
 	
 	$entities = array();
 	

@@ -143,7 +143,7 @@ $(document).ready(function() {
 
 	function fetchData() {
         $.ajax({
-			url: "http://166.77.206.226:8888/poll.json",
+			url: "http://www.logoslogic.com/chat/LivingRoom/graph/poll.json",
             method: 'GET',
             dataType: 'json',
             success: onDataReceived
