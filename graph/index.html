@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+        <meta name="viewport" content="width=368"/>  
+		<title>Popularity</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="highcharts.src.js"></script>
+		<script type="text/javascript" src="NativeBridge.js"></script>
+		<style>
+			body {
+		  		font-family: sans-serif;
+		  		font-size: 16px;
+		  		max-width: 708px;
+				background-color:none;
+				}
+		</style>
+	</head>
+	
+	<body style="background-color:transparent; color:white;">
+		
+		<div id="container" style="width:740px; height:200px;"></div>
+		
+		<script type="text/javascript">
+		
+		$(document).ready(function() {
+			
+			/* Array to keep all the Tweet Record Objects */
+			var TweetRecords = [];
+			
+			/* A Tweet River Record*/
+			var TweetRecord = function(display_name, total_tweets, twitter_hash, tweet_river_analytics_url, tweet_river_feed_url, tweet_phrase_value){
+				this.display_name=display_name 
+				this.total_tweets=total_tweets,
+				this.twitter_hash=twitter_hash,
+				this.tweet_river_analytics_url=display_name,
+				this.tweet_river_feed_url=tweet_river_feed_url,
+				this.tweet_phrase_value=tweet_phrase_value
+			}	
+			
+			/* Method that receives the twitter_hash and returns an object that matchs the hash*/
+			
+			var getObjPropertiesTwitterFeedUrl = function getObjPropertiesTwitterFeedUrl(category){
+				for (var i=0; i < TweetRecords.length; i++){
+					if (TweetRecords[i].twitter_hash == category){
+						//console.log(TweetRecords[i].tweet_river_feed_url)
+						return TweetRecords[i].tweet_river_feed_url;
+					}
+				}
+			}
+			
+			/* Method that receives the twitter_hash and returns an object that matchs the hash*/
+			
+			var getObjPropertiesTweetPhrase = function getObjPropertiesTweetPhrase(category){
+				for (var i=0; i < TweetRecords.length; i++){
+					if (TweetRecords[i].twitter_hash == category){
+						//console.log(TweetRecords[i].tweet_river_feed_url)
+						return TweetRecords[i].tweet_phrase_value;
+					}
+				}
+			}
+			
+			/* Options for the HighCharts */
+			var options = {
+			    chart: {
+			        renderTo: 'container',
+					defaultSeriesType: 'column',
+					margin: [ 40, 0, 10, 0],
+					backgroundColor: 'rgba(0,0,0,0)'
+					
+			    },
+				title: {
+					text: ''
+				},
+			
+				yAxis: {
+					min: 0,
+					title: {
+						text: 'Tweets (thousands)'
+					}
+				},
+				credits:{
+					enabled:false
+				},
+				
+				legend: {
+					enabled: false
+				},
+				tooltip: {
+					enabled: false
+				},
+
+			    xAxis: {
+			        categories: [],
+					labels: {
+						rotation: -45,
+						align: 'right',
+						style: {
+							display:'none',
+						}
+					}
+			    },
+
+				series: [{
+					
+				cursor: 'pointer',
+				point: {
+	                events: {
+	                    click: function() {
+							var category = this.category.substr(this.category.indexOf('#'),this.category.length)
+							NativeBridge.call("prompt", [category, getObjPropertiesTwitterFeedUrl(category), getObjPropertiesTweetPhrase(category)],function (response){});
+	                    }
+	                }
+	            },
+				name: 'Entities',
+				data: [],
+				dataLabels: {
+					enabled: true,
+					rotation: 0,
+					color: '#000',
+					align: 'center',
+					x: 0,
+					y: -30,
+					formatter: function() {
+						return this.category;
+					}, 
+					style: {
+						font: 'normal 16px Verdana, sans-serif'
+					}
+				}
+				}]
+			}
+			
+			function onDataReceived(response) {
+				for (var i = 0; i < response.length; i++) {
+				    var object = response[i];
+					aTweetRecord = new TweetRecord();
+					aTweetRecord.display_name = object['display_name'];
+					aTweetRecord.total_tweets = object['total_tweets'];
+					aTweetRecord.twitter_hash = object['twitter_hash'];
+					aTweetRecord.tweet_river_analytics_url = object['tweet_river_analytics_url'];
+					aTweetRecord.tweet_river_feed_url = object['tweet_river_feed_url'];
+					aTweetRecord.tweet_phrase_value = object['tweet_phrase_value'];
+					TweetRecords.push(aTweetRecord);
+					options.series[0].data.push(object['total_tweets']);
+					options.xAxis.categories.push('<b><span style="font-size:0.8em; font-weight:bold">'+object['total_tweets']+'<span></b><br/>'+object['twitter_hash']);
+				}
+				
+				var chart = new Highcharts.Chart(options);
+
+				$('.highcharts-highcharts-data-labels tspan').each(function(){
+				    var label = $(this);
+					label.css('zIndex', '999');
+					var value = null;
+				    value = label.text();
+					//if(categoryLinks[value]) {
+				        label.click(function(){
+							if (value.indexOf('#') != -1){
+								NativeBridge.call("tweet", [value, getObjPropertiesTwitterFeedUrl(value), getObjPropertiesTweetPhrase(value)],function (response){});
+				        	}
+						});
+				    //}
+				});
+
+				$('.highcharts-tracker').css('zIndex', '-10');
+				$('.highcharts-highcharts-data-labels').css('zIndex', '999');
+
+				$('.highcharts-highcharts-data-labels text').each(function(){
+				    var labelText = $(this);
+					labelText.css('zIndex', '9999')
+				});
+	         }
+
+			function fetchData() {
+
+	            $.ajax({
+	                url: "http://www.logoslogic.com/chat/LivingRoom/coview_remote/parse.php",
+	                method: 'GET',
+	                dataType: 'json',
+	                success: onDataReceived
+	            });
+
+	        }
+			
+			fetchData();
+
+		});
+	
+	</script>	
+	
+	</body>
+</html>
