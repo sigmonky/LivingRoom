@@ -227,7 +227,7 @@ $(document).ready(function () {
 			var configiq = $iq({to: Client.pubsub_server,
 		                        type: "set"})
 		        .c('pubsub', {xmlns: Client.NS_PUBSUB})
-		        .c('retract', {node: Client.PUBSUB_NODE})
+		        .c('retract', {node: Config.PUBSUB_NODE})
 		        .c('item', {id: itemId});
 		    Client.connection.sendIQ(configiq,
 		                                 Client.configured,
