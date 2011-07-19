@@ -68,29 +68,6 @@ var Client = {
 	console.log('oncreate_node');
     Client.init();
 
-    var configiq = $iq({to: Client.pubsub_server,
-                        type: "set"})
-        .c('pubsub', {xmlns: Client.NS_PUBSUB_OWNER})
-        .c('configure', {node: Config.PUBSUB_NODE})
-        .c('x', {xmlns: Client.NS_DATA_FORMS,
-                 type: "submit"})
-        .c('field', {"var": "FORM_TYPE", type: "hidden"})
-        .c('value').t(Client.NS_PUBSUB_NODE_CONFIG)
-        .up().up()
-        .c('field', {"var": "pubsub#deliver_payloads"})
-        .c('value').t("1")
-        .up().up()
-        .c('field', {"var": "pubsub#send_last_published_item"})
-        .c('value').t("never")
-        .up().up()
-        .c('field', {"var": "pubsub#persist_items"})
-        .c('value').t("true")
-        .up().up()
-        .c('field', {"var": "pubsub#max_items"})
-        .c('value').t("20");
-    Client.connection.sendIQ(configiq,
-                                 Client.configured,
-                                 Client.configure_error);
   },
   configured: function (iq) {
       console.log('configured');
@@ -183,6 +160,29 @@ var Client = {
     Client.log("Now awaiting messages...");
     Client.feedback('Connected', '#00FF00');
 
+    var configiq = $iq({to: Client.pubsub_server,
+                        type: "set"})
+        .c('pubsub', {xmlns: Client.NS_PUBSUB_OWNER})
+        .c('configure', {node: Config.PUBSUB_NODE})
+        .c('x', {xmlns: Client.NS_DATA_FORMS,
+                 type: "submit"})
+        .c('field', {"var": "FORM_TYPE", type: "hidden"})
+        .c('value').t(Client.NS_PUBSUB_NODE_CONFIG)
+        .up().up()
+        .c('field', {"var": "pubsub#deliver_payloads"})
+        .c('value').t("1")
+        .up().up()
+        .c('field', {"var": "pubsub#send_last_published_item"})
+        .c('value').t("never")
+        .up().up()
+        .c('field', {"var": "pubsub#persist_items"})
+        .c('value').t("true")
+        .up().up()
+        .c('field', {"var": "pubsub#max_items"})
+        .c('value').t("20");
+    Client.connection.sendIQ(configiq,
+                                 Client.configured,
+                                 Client.configure_error);
     return true;
   },
 
@@ -228,7 +228,7 @@ var Client = {
 	    Config.PUBSUB_APPROVED_NODE,
 	    {},
 	    Client.on_create_node
-	  );
+	  ); 
 
 
 
