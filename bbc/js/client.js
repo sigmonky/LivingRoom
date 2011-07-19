@@ -67,6 +67,11 @@ var Client = {
 
     if ($(message).attr('from').match(re))
     { 
+	 var _node = $(message).children('event')
+        .children('items').getAttribute('node');
+
+ 	if(_node == PUBSUB_NODE){
+
       var _data = $(message).children('event')
         .children('items')
         .children('item')
@@ -84,7 +89,7 @@ var Client = {
         Client.show_text(_data, _item);
       }
     }
-
+}
     return true;
   },
 
