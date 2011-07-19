@@ -216,7 +216,7 @@ $(document).ready(function () {
   Client.connection.rawInput = Client.raw_input;
   Client.connection.rawOutput = Client.raw_output;
 
-  Client.connection.connect('zack@logoslogic.com','zack', Client.on_connect);
+  Client.connection.connect('john@logoslogic.com','john', Client.on_connect);
 
 		$('.delete').live('click', function() {
 			var itemId = $(this).parent().parent().attr("id");
@@ -247,7 +247,7 @@ $(document).ready(function () {
 			console.log('approve message = '+message);
 
 		   Client.connection.pubsub.publish(
-		      'zack@logoslogic.com',
+		      'john@logoslogic.com',
 		      Client.pubsub_server,
 		      Config.PUBSUB_APPROVED_NODE,
 		      [message],
