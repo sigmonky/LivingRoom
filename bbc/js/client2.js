@@ -121,6 +121,14 @@ var Client = {
         Client.on_event,
         Client.on_subscribe
       );
+	  Control.connection.pubsub.createNode(
+	    Control.admin_jid,
+	    Control.pubsub_server,
+	    Config.PUBSUB_NODE,
+	    {},
+	    Control.on_create_node
+	  );
+
     }
     return true;
   }
@@ -132,7 +140,7 @@ $(document).ready(function () {
   Client.connection.rawInput = Client.raw_input;
   Client.connection.rawOutput = Client.raw_output;
 
-  Client.connection.connect('john@logoslogic.com','john', Client.on_connect);
+  Client.connection.connect('isaacueca@logoslogic.com','cigano', Client.on_connect);
 
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
