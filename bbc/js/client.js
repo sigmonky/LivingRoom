@@ -65,7 +65,7 @@ var Client = {
     var server = "^" + Client.pubsub_server.replace(/\./g, "\\.");
     var re = new RegExp(server);
 
-//    if ($(message).attr('from').match(re) && $(message).attr('type') == 'headline')
+    if ($(message).attr('from').match(re))
   //  { 
       var _data = $(message).children('event')
         .children('items')
@@ -83,7 +83,7 @@ var Client = {
       if (_data) {
         Client.show_text(_data, _item);
       }
-   // }
+    }
 
     return true;
   },
