@@ -121,6 +121,7 @@ var Client = {
         Client.on_event,
         Client.on_subscribe
       );
+
     }
     return true;
   }

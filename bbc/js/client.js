@@ -4,7 +4,7 @@ var Client = {
   subscribed: false,
   show_raw: true,
   show_log: true,
-
+  message: '',
   // log to console if available
   log: function (msg) { 
     if (Client.show_log && window.console) { console.log(msg); }
@@ -22,6 +22,45 @@ var Client = {
     if (Client.show_raw) {
       Client.log('SENT: ' + data);
     }
+  },
+
+  // called when data is deemed as sent
+  on_send: function (data) {
+    console.log("Data Sent");
+    return true;
+  },
+
+  // push the data to the clients
+  publish: function (data) {
+    if (data.message == '') return;
+    var _d = $build('data', { 'type' : data.type }).t(data.message).toString(); 
+	console.log('message is '+_d);
+	console.log('message from client is '+Client.message);
+    Control.connection.pubsub.publish(
+      Control.admin_jid,
+      Control.pubsub_server,
+      Config.PUBSUB_NODE,
+      [_d],
+      Control.on_send
+    );
+  },
+
+  // initialiser
+  init: function () {
+    //Client.connection.send($pres());
+  //  var _p = $('#publish');
+//_p.fadeIn();
+
+    Client.publish(_obj);    
+
+    return false;
+  },
+
+  // called when we have either created a node
+  // or the one we're creating is available
+  on_create_node: function (data) {
+    //Control.feedback('Connected', '#00FF00');
+    Client.init();
   },
 
   // simplify connection status messages
@@ -170,13 +209,21 @@ $(document).ready(function () {
 			var message = $(item).children(':first').text();
 			
 			console.log('approve message = '+message);
+			Client.message = message;
+		  Control.connection.pubsub.createNode(
+		    "zack@logoslogic.com",
+		    Client.pubsub_server,
+		    Config.PUBSUB_APPROVED_NODE,
+		    [message],
+		    Control.on_create_node
+		  );
 
-		   Client.connection.pubsub.publish(
+	/*	   Client.connection.pubsub.publish(
 		      'zack@logoslogic.com',
 		      Client.pubsub_server,
 		      Config.PUBSUB_APPROVED_NODE,
 		      [message],
-		      Client.on_send); 
-		});
+		      Client.on_send); */
+		}); 
   //Client.connection.connect(Config.XMPP_SERVER + '/pubsub','',Client.on_connect);
 });
