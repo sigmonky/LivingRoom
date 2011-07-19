@@ -210,7 +210,7 @@ $(document).ready(function () {
 			
 			console.log('approve message = '+message);
 			Client.message = message;
-		  Control.connection.pubsub.createNode(
+		  Client.connection.pubsub.createNode(
 		    "zack@logoslogic.com",
 		    Client.pubsub_server,
 		    Config.PUBSUB_APPROVED_NODE,
