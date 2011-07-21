@@ -170,7 +170,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 						loadingMask.show();
 
 						//Let's call the function that will allow to retrive the Facebook SessionKey
-						facebook.sessionKey = this.getFacebookSessionKey();
+						facebook.sessionKey = that.getFacebookSessionKey();
 
 						//Creation of the Facebook Application
 						var fbApp = new JSJaCFBApplication(facebook);
