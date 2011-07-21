@@ -178,13 +178,13 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 						/* Let's create the component that will let the user to communicate in realtime with all
 						 * the firends inside the facebook chat */
 
-						facebookClient = new LIVINGROOM.xmpp.FacebookClient({
+					/*	facebookClient = new LIVINGROOM.xmpp.FacebookClient({
 								httpbase: '/JHB/',
 								timerval: 2000,
 								authtype: 'x-facebook-platform',
 								facebookApp: fbApp,
 								listeners	: {
-									connected: function(jid){ 
+									connected: function(jid){ 	*/
 
 
 										/* Session Attachment = http://codingcromulence.blogspot.com/2009/01/chat-hacking-part-ii.html*/
@@ -267,7 +267,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 										//Let's finally connect to ejabberd server
 										jabberClient.connect();
 
-									},
+								/*	},
 								unauthorized: function(component) {
 
 										//Let's hide the loading Mask
@@ -299,8 +299,8 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					},
 					failure: function ( result, request) { 
 						Ext.Msg.alert('Failed', result.responseText); 
-					} 
-		});
+					}  
+		}); */
 	},
 	
 	doLogin: function(){
