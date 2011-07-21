@@ -13,7 +13,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	initComponent : function(){
 		
-		
 		//* If Cookie Is Set, get User Profile from Local or from Facebook */
 		var token = getFacebookTokenFromUrl();
 		if (token != ""){
@@ -28,59 +27,10 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		Ext.apply(this, {
             fullscreen: true,
 			scroll: 'vertical',
-			dockedItems: [{
-				xtype: 'toolbar',
-				dock: 'top',
-				title: 'Login'
-			}],
-            items: [{
-				xtype: 'fieldset',
-				itemId: 'fmeChatRoom',
-				title: 'ChatRoom Configuration',
-				instructions: 'In order to allow you to login inside the public chat room, you have to insert your nickname ' +
-							  'that will be used inside the room to identify you',
-				defaults: {
-					required: true,
-					labelAlign: 'left'
-				},
-				items:[{
-					xtype: 'textfield',
-					itemId: 'txtNickname',
-					name : 'nickname',
-					label: 'Nickname',
-					value: ''
-				},
-				{
-					xtype: 'textfield',
-					itemId: 'txtUsername',
-					name : 'username',
-					label: 'Username',
-					value: ''
-				},
-				{
-					xtype: 'textfield',
-					itemId: 'txtPassword',
-					name : 'password',
-					label: 'Password',
-					value: ''
-				},
-				
-				]
-			}],
             dockedItems: [{
 				xtype: 'toolbar',
 				dock: 'bottom',
-				items: [{
-					xtype: 'spacer'
-				},{
-					text: 'Login',
-					ui: 'action',
-					iconMask: true, 
-					iconAlign: 'left', 
-					iconCls: 'lock_open',
-					handler: this.doLogin,
-					scope: this
-				},
+				items: [
 				{
 					dock: 'top',
 					title: 'Settings',
@@ -89,7 +39,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 						{
 							xtype: 'button',
 							text: 'Facebook Connect',
-							handler: this.facebookConnect,
+							handler: this.doLogin,
 							scope: this
 						}
 					]
@@ -292,10 +242,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 							//Let's finally connect to facebook chat
 							facebookClient.connect();
 						
-						
-						
-						
-						
 					},*/
 					failure: function ( result, request) { 
 						Ext.Msg.alert('Failed', result.responseText); 
@@ -309,12 +255,8 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		var obj = facebookStore.getAt(0);
 		console.log('doLogin obj is ' + obj.get('name'));
 		this.nickname = obj.get('name');
-		///// Call Cocoa Function to return the user name \\\\\\\\
 		this.username = obj.get('id');
-		///// Call Cocoa Function to return the user pass or Call PHP Script that creates the pass\\\\\\\\
-	//	this.password = getPassword(this.username);
-		/////
-		this.callUserVerify(this.username)
+		this.callUserVerify(this.username);
 	//	this.nickname = this.getComponent('fmeChatRoom').getComponent('txtNickname').getValue();
 	//	this.username = this.getComponent('fmeChatRoom').getComponent('txtUsername').getValue();
 	//	this.password = this.getComponent('fmeChatRoom').getComponent('txtPassword').getValue();

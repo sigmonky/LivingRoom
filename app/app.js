@@ -78,7 +78,7 @@ window.onbeforeunload = function() {
 		jabberClient.disconnect();
 	
 		//Let's disconnect from the Facebbo chat
-		facebookClient.disconnect();
+		//facebookClient.disconnect();
 	
 	}
 	
