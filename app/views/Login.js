@@ -27,10 +27,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		Ext.apply(this, {
             fullscreen: true,
 			scroll: 'vertical',
-            dockedItems: [{
-				xtype: 'toolbar',
-				dock: 'top',
-				items: [
+			items: [
 				{
 					title: 'Settings',
 					xtype: 'toolbar',
@@ -43,12 +40,9 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 						}
 					]
 				}
-				
-				
-				
-				]
-			}]
-		});
+			   ]
+
+		}); 
 		
 		LivingRoomAPI.views.Login.superclass.initComponent.call(this);
 	},
