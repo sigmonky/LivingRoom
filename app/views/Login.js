@@ -51,7 +51,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	},
 	
 	invite: function(){
-		 location.href="http://www.facebook.com/dialog/friends/?id=brent&app_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/&display=touch";
+		 location.href="http://www.facebook.com/dialog/friends/?id=brent&app_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/";
 	},
 	
 	facebookConnect: function(e){
