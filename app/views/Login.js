@@ -29,10 +29,9 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 			scroll: 'vertical',
             dockedItems: [{
 				xtype: 'toolbar',
-				dock: 'bottom',
+				dock: 'top',
 				items: [
 				{
-					dock: 'top',
 					title: 'Settings',
 					xtype: 'toolbar',
 					items: [
