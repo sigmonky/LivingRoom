@@ -157,7 +157,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		var that = this;
 		Ext.Ajax.request({
 					url : 'http://www.logoslogic.com/chat/LivingRoom/register/register2.php' , 
-					params : { username : username},
+					params : { username : that.username},
 					method: 'POST',
 					success: function ( result, request ) {
 						console.log('callUserVerify finished data is' +result.responseText);
@@ -312,7 +312,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		///// Call Cocoa Function to return the user name \\\\\\\\
 		this.username = obj.get('id');
 		///// Call Cocoa Function to return the user pass or Call PHP Script that creates the pass\\\\\\\\
-		this.password = getPassword(this.username);
+	//	this.password = getPassword(this.username);
 		/////
 		this.callUserVerify(this.username)
 	//	this.nickname = this.getComponent('fmeChatRoom').getComponent('txtNickname').getValue();
