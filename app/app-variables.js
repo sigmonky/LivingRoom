@@ -121,6 +121,12 @@ function getFacebookTokenFromUrl(){
 	}
 }
 
+function getPassword(id){
+	/// Call Cocoa \\\\
+	var pass = id;
+	
+	return pass;
+}
 
 
 
