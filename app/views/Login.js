@@ -34,12 +34,24 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 							text: 'Facebook Connect',
 							handler: this.doLogin,
 							scope: this
-						}
+						},
+						
+						{
+
+									xtype: 'button',
+									text: 'Invite',
+									handler: this.invite,
+									scope: this
+								}
 			   ]
 
 		}); 
 		
 		LivingRoomAPI.views.Login.superclass.initComponent.call(this);
+	},
+	
+	invite: function(){
+		 location.href="http://www.facebook.com/dialog/friends/?id=brent&app_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/";
 	},
 	
 	facebookConnect: function(e){
