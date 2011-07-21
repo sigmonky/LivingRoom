@@ -154,7 +154,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					console.log('callUserVerify finished data is' +data.password);
 			  	}	
 		}); */
-		
+		var that = this;
 		Ext.Ajax.request({
 					url : 'http://www.logoslogic.com/chat/LivingRoom/register/register2.php' , 
 					params : { username : username},
@@ -208,8 +208,8 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 											authtype		   : '',
 											domain			   : 'logoslogic.com',
 											resource		   : '',
-											nickname		   : this.nickname,
-											username		   : this.username,
+											nickname		   : that.nickname,
+											username		   : that.username,
 											pass			   : this.password,
 											register		   : false,
 											publicRoom  	   : true,
