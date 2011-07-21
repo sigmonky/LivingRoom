@@ -172,6 +172,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	doLogin: function(){
 		//Let's get all the required fields to log in
+		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		console.log('doLogin obj is ' + obj.get('name'));
 		this.nickname = obj.get('name');
