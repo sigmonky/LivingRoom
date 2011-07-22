@@ -31,7 +31,7 @@ LivingRoomAPI.views.Settings = new Ext.form.FormPanel({
 	                  autoCapitalize : true,
 	                  required: true,
 	                  useClearIcon: true
-	               }{
+	               },{
 	                   xtype: 'passwordfield',
 	                   name: 'password',
 	                   label: 'Password',
