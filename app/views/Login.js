@@ -16,7 +16,8 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		//* If Cookie Is Set, get User Profile from Local or from Facebook */
 		var token = getFacebookTokenFromUrl();
 		if (token != ""){
-			this.getFacebookProfile();
+				this.getFacebookProfile();
+			}
 		}
 		
 		this.addEvents(
@@ -71,9 +72,10 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					  console.log('obj is ' + obj.get('name'));
 					//	var user = categoryStore.getAt(0);
 					//	console.log ('user is ' + user.id);
+					this.doLogin();
 			  	}	
 		});
-		this.doLogin();
+
 	},
 	
 	getFacebookSessionKey: function(){
