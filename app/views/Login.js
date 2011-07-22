@@ -73,6 +73,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					//	console.log ('user is ' + user.id);
 			  	}	
 		});
+		this.doLogin();
 	},
 	
 	getFacebookSessionKey: function(){
@@ -107,7 +108,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 						var me = this;
 
 						//Let's show the loading mask
-						loadingMask.show();
+
 
 						//Let's call the function that will allow to retrive the Facebook SessionKey
 						facebook.sessionKey = that.getFacebookSessionKey();
@@ -241,6 +242,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	
 	doLogin: function(){
 		//Let's get all the required fields to log in
+		loadingMask.show();
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		console.log('doLogin obj is ' + obj.get('name'));
