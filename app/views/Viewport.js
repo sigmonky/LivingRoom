@@ -67,11 +67,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		});
 		
 		
-		//Definition of the public chat panel
-		this.settingsPanel = new LivingRoomAPI.views.Settings({
-			title: 'Settings',
-			itemId: 'pnlSettings'
-		});
+
 		
 		this.logoutBtn = {
 			ui: 'action',
@@ -96,7 +92,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			//	this.pnlRoster,
 			//	this.pnlOneToOne,
 				this.pnlPublicChat,
-				this.settingsPanel,
 				
 			]
 			
