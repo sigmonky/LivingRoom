@@ -49,7 +49,7 @@ LivingRoomAPI.views.Settings = new Ext.form.FormPanel({
 		});
 
 		//Superclass inizialization
-		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
+		LivingRoomAPI.views.Settings.superclass.initComponent.call(this);
 	
 	}
 	
