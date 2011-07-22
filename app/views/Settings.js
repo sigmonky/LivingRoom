@@ -27,23 +27,27 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 	                  xtype: 'textfield',
 	                  name: 'name',
 	                  label: 'Name',
-	                  placeHolder: 'Tom Roy',
+	                  placeHolder: 'My display name',
 	                  autoCapitalize : true,
 	                  required: true,
 	                  useClearIcon: true
 	               },
-				   {
-	                   xtype: 'passwordfield',
-	                   name: 'password',
-	                   label: 'Password',
-	                   placeHolder: 'Select each time',
-	                   useClearIcon: true
-	               }, 
-	
+				{
+	                   xtype: 'selectfield',
+	                   name: 'mystatus',
+	                   label: 'My Status',
+	                   options: [{
+	                       text: 'Available',
+	                       value: 'available'
+	                   }, {
+	                       text: 'Away',
+	                       value: 'away'
+	                   }]
+	               },
 					{
 		                  xtype: 'togglefield',
 		                  name: 'enable',
-		                  label: 'Auto Login'
+		                  label: 'Auto-Login at Launch'
 		            }
 	            ]
 	         }
