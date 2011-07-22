@@ -40,7 +40,7 @@ LivingRoomAPI.views.Settings = new Ext.form.FormPanel({
 		                  xtype: 'togglefield',
 		                  name: 'enable',
 		                  label: 'Auto Login'
-		            },
+		            }
 	            ]
 	         }
 	      ]
