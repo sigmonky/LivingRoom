@@ -53,6 +53,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		var token = getFacebookTokenFromUrl();
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var data1 = "";
+		var parent = this;
 		Ext.util.JSONP.request({
 	    		url: 'https://graph.facebook.com/me',
 				params: {
@@ -71,7 +72,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 					  console.log('obj is ' + obj.get('name'));
 					//	var user = categoryStore.getAt(0);
 					//	console.log ('user is ' + user.id);
-					this.doLogin();
+					parent.doLogin();
 			  	}	
 		});
 
