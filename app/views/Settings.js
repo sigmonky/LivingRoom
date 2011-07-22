@@ -22,7 +22,6 @@ LivingRoomAPI.views.Settings = new Ext.form.FormPanel({
 	            title: 'Settings',
 	            instructions: '',
 	            items: [
-	               menu,
 	               {
 	                  xtype: 'textfield',
 	                  name: 'name',
