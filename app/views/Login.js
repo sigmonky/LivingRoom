@@ -17,7 +17,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		var token = getFacebookTokenFromUrl();
 		if (token != ""){
 				this.getFacebookProfile();
-			}
 		}
 		
 		this.addEvents(
