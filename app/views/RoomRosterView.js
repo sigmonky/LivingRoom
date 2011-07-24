@@ -79,7 +79,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			listeners: {
 				
 				itemtap: function(list, index, item, e) {
-					overlay.html = nil;
+					overlay.html = null;
 					
 					//Let's take the online users store
 				var store = list.getStore();
