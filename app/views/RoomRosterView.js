@@ -35,7 +35,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             modal: true,
             centered: true,
             width: 300,
-            height: 300,
+            height: 400,
             styleHtmlContent: true,
             scroll: 'vertical',
             contentEl: 'lipsum',
@@ -56,6 +56,22 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
                 hideOnMaskTap: false,
                 layout: 'fit',
 				dockedItems:[
+				{
+							xtype: 'button', 
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Block this User',
+							handler: this.facebookConnect,
+							scope: this,
+				},
+				{
+							xtype: 'button',
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Report this User',
+							handler: this.facebookConnect,
+							scope: this,
+				},
 					{
 								xtype: 'button', 
 								margin: '10, 0, 0,0',
@@ -72,22 +88,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 								handler: this.facebookConnect,
 								scope: this,
 					},
-					{
-								xtype: 'button', 
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Block this User',
-								handler: this.facebookConnect,
-								scope: this,
-					},
-					{
-								xtype: 'button',
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Report this User',
-								handler: this.facebookConnect,
-								scope: this,
-					},
+
 				],
                 html: panelContent,
 				showAnimation: {
