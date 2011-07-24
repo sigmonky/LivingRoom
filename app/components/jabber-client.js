@@ -274,7 +274,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				    jid: from,
 					nickname: nickname,
 					facebook_id: '',
-				}, 'RosterItem');
+				}, 'RoomRosterItem');
 				
 				
 				Ext.dispatch({
