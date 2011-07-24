@@ -30,17 +30,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		});
 		
 
-        overlay = new Ext.Panel({
-            floating: true,
-            modal: true,
-            centered: true,
-            width: 300,
-            height: 300,
-            styleHtmlContent: true,
-            scroll: 'vertical',
-            contentEl: 'lipsum',
-            cls: 'htmlcontent'
-        });
+        overlay = '';
 		
 		panelLaunch = function(pluginConfig, panelContent){
             var pnl = new Ext.Panel({
@@ -116,7 +106,17 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		        	});
 		
 
-			
+					  overlay = new Ext.Panel({
+				            floating: true,
+				            modal: true,
+				            centered: true,
+				            width: 300,
+				            height: 300,
+				            styleHtmlContent: true,
+				            scroll: 'vertical',
+				            contentEl: 'lipsum',
+				            cls: 'htmlcontent'
+				        });
 		           overlay.show();
 					
 				/*	panelLaunch({
