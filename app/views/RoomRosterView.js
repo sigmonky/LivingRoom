@@ -119,8 +119,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			            contentEl: 'lipsum',
 			            cls: 'htmlcontent'
 			        });
-		            overlay.setCentered(true);
-		            overlayTb.setTitle('Centered Overlay');
 		            overlay.show();
 					
 				/*	panelLaunch({
