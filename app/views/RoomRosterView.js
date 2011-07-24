@@ -48,7 +48,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             var pnl = new Ext.Panel({
                 floating: true,
                 width: 350,
-                height: 370,
+                height: 270,
                 centered: true,
                 modal: true,
 	            scroll: 'vertical',
@@ -59,10 +59,17 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					{
 								xtype: 'button',
 								dock: 'bottom',
-								text: 'Chat',
+								text: 'Chat with this User',
 								handler: this.facebookConnect,
 								scope: this,
-					}
+					},
+					{
+								xtype: 'button',
+								dock: 'bottom',
+								text: 'Report this User',
+								handler: this.facebookConnect,
+								scope: this,
+					},
 				],
                 html: panelContent,
 				showAnimation: {
