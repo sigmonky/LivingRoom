@@ -62,7 +62,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 		LivingRoomAPI.views.Settings.superclass.initComponent.call(this);
 	},
 	
-	this.changeSettings(){
+	changeSettings: function(){
 		console.log('change settings');
 	}
 	
