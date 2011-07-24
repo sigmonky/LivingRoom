@@ -91,7 +91,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			store: 'RoomRoster',
             itemTpl: '<div class="x-roster-user">' +
 					    '<div class="x-user-picture">' +
-						'<img class="odd" src="https://graph.facebook.com/{facebook_id}/picture" width="52" height="52"/>' +
+						'<img class="odd" src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{nickname}</b>' +
@@ -123,7 +123,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					var tplUser = new Ext.XTemplate(
 						'<tpl for=".">',
 							'<div style="padding:20px"><div class="x-user-picture">' +
-								'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>'+
+								'<img src="https://graph.facebook.com/{facebook_id}/picture" width="52" height="52"/>'+
 							'</div>' +
 						     '<div class="x-user-name">' +
 								'<p class="nickname">{nickname}</p>' +
