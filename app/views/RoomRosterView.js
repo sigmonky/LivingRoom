@@ -49,6 +49,19 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             
             pnl.show();
         };
+
+        this.overlay = new Ext.Panel({
+            floating: true,
+            modal: true,
+            centered: true,
+            width: 300,
+            height: 300,
+            styleHtmlContent: true,
+            scroll: 'vertical',
+            contentEl: 'lipsum',
+            cls: 'htmlcontent'
+        });
+		that = this;
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			title: 'All Friends',
@@ -118,7 +131,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			            cls: 'htmlcontent'
 			        });
 			
-		           // overlay.show();
+		           that.overlay.show();
 					
 				/*	panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
