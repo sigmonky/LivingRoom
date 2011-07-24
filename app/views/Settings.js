@@ -49,7 +49,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 					{
 
 								xtype: 'button',
-								padding: '20px 0 0 0',
+								margin: '20px 0 0 0',
 								text: 'Submit',
 								handler: this.changeSettings,
 								scope: this
