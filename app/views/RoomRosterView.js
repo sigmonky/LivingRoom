@@ -102,14 +102,27 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 						nickname: user.get('nickname'),
 		            	facebook_id: user.get('facebook_id')
 		        	});
-					
+					var panel = new Ext.Panel({
+					            fullscreen : true,
+					            layout : {
+					                type : 'vbox',
+					                align : 'stretch'
+					            },
+					            items : [{
+					                flex : 1,
+					                html : '1st'
+					            }, {
+					                height : 50,
+					                html : '2nd'
+					            }]
+					        });
 					
 					
 					panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
-                    }, this.list);
+                    }, panel);
 					
 				},
 				scope: this
