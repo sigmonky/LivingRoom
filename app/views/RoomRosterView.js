@@ -47,7 +47,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 				itemtap: function(list, index, item, e) {
 					
 					//Let's take the online users store
-					var store = list.getStore();
+		/*			var store = list.getStore();
 					
 					console.log('itemtap at index =' +index);
 					store.sync();
@@ -61,7 +61,12 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					    action: 'openChatSessionForRoomRoster',
 						show: true,
 						user: user
-					});
+					}); */
+					panelLaunch({
+                        iconClass: 'x-panel-action-icon-tick',
+                        position: 'br',
+                        actionMethod: ['hide']
+                    }, 'Tick Icon in Bottom Right.');
 					
 				},
 				scope: this

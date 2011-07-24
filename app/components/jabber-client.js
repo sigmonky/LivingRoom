@@ -219,6 +219,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		console.log('handleMessageIn = '+ from);
 		
+		//* Fetch Store with User Active Conversation. If empty show popup asking what the user should do */
+		
+		
 		//Check if the message has some content inside
 		if(message != ''){
 
@@ -547,7 +550,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}
 
 	},
-	
 
 	joinPublicRoom: function(){
 		
@@ -586,13 +588,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('joinRoomComplete fb_id is ' + fb_id);
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
 
-		
 		var item = Ext.ModelMgr.create({
 		    jid: me.myJID,
 			nickname: me.nickname,
 			facebook_id: fb_id,
 		}, 'RosterItem');
-		
 
 		console.log('joinRoomComplete room handlePresence roster add user item '+item );
 		
@@ -610,7 +610,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		iq.setIQ(null,'get','roster_1');
 		iq.setQuery('jabber:iq:roster');
 		this.jabberConnection.send(iq, this.getRoasterComplete, this); // cascading information retrieval
-		
 	},
 	
 	getRoasterComplete: function(iq, me){

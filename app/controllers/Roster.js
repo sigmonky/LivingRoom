@@ -149,7 +149,7 @@ Ext.regController('Roster', {
 		var user = options.user.data;
 
 		//Let's try to take an already active chat session panel
-	//	var pnlChatSession = this.application.viewport.getComponent('pnlRoster').getComponent(user.jid);
+		var pnlChatSession = this.application.viewport.getComponent('pnlPublicChat').getComponent(user.jid);
 		
 		if(pnlChatSession == undefined){
 		
@@ -241,7 +241,6 @@ Ext.regController('Roster', {
 	//	console.log('addMessageToOneToOneChatSession from= '+options.from);
 	
 	//	console.log('addMessageToOneToOneChatSession user= '+user);
-	
 	
 		//Let's call the controller method able to show the user Roster
 	/*	Ext.dispatch({
