@@ -592,7 +592,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		    jid: me.myJID,
 			nickname: me.nickname,
 			facebook_id: fb_id,
-		}, 'RosterItem');
+		}, 'RoomRosterItem');
 
 		console.log('joinRoomComplete room handlePresence roster add user item '+item );
 		
