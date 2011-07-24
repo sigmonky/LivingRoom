@@ -68,7 +68,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 				itemtap: function(list, index, item, e) {
 					
 					//Let's take the online users store
-		/*			var store = list.getStore();
+				var store = list.getStore();
 					
 					console.log('itemtap at index =' +index);
 					store.sync();
@@ -77,17 +77,38 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					console.log('itemtap user =' +user);
 					
 					//Let's call the controller method able to show the user Roster
-					Ext.dispatch({
+					/*	Ext.dispatch({
 					    controller: 'Roster',
 					    action: 'openChatSessionForRoomRoster',
 						show: true,
 						user: user
 					}); */
+					
+					
+					var tplUser = new Ext.XTemplate(
+						'<tpl for=".">',
+							'<div class="x-user-picture">' +
+								'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>'+
+							'</div>' +
+						     '<div class="x-user-name">' +
+								'<p class="nickname">{nickname}</p>' +
+							  '</div>' +
+						'</tpl>'
+					);
+					
+					
+					var html = tplUserapply({
+						nickname: user.nickname,
+		            	facebook_id: user.facebook_id
+		        	});
+					
+					
+					
 					panelLaunch({
-                        iconClass: 'x-panel-action-icon-tick',
-                        position: 'br',
+                        iconClass: 'x-panel-action-icon-close',
+                        position: 'tr',
                         actionMethod: ['hide']
-                    }, 'Tick Icon in Bottom Right.');
+                    }, html);
 					
 				},
 				scope: this
