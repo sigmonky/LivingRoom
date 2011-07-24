@@ -98,8 +98,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					
 					
 					var html = tplUser.apply({
-						nickname: user.nickname,
-		            	facebook_id: user.facebook_id
+						nickname: user.get('nickname'),
+		            	facebook_id: user.get('facebook_id')
 		        	});
 					
 					
