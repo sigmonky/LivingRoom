@@ -29,6 +29,19 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			]
 		});
 		
+
+        overlay = new Ext.Panel({
+            floating: true,
+            modal: true,
+            centered: true,
+            width: 300,
+            height: 300,
+            styleHtmlContent: true,
+            scroll: 'vertical',
+            contentEl: 'lipsum',
+            cls: 'htmlcontent'
+        });
+		
 		panelLaunch = function(pluginConfig, panelContent){
             var pnl = new Ext.Panel({
                 floating: true,
@@ -102,23 +115,9 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		            	facebook_id: user.get('facebook_id')
 		        	});
 		
-			        var overlayTb = new Ext.Toolbar({
-			            dock: 'top'
-			        });
 
-			        this.overlay = new Ext.Panel({
-			            floating: true,
-			            modal: true,
-			            centered: true,
-			            width: 300,
-			            height: 300,
-			            styleHtmlContent: true,
-			            scroll: 'vertical',
-			            contentEl: 'lipsum',
-			            cls: 'htmlcontent'
-			        });
 			
-		           this.overlay.show();
+		           overlay.show();
 					
 				/*	panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
