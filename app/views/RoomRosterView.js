@@ -92,8 +92,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 							'</div>' +
 						     '<div class="x-user-name">' +
 								'<p class="nickname">{nickname}</p>' +
-							  '</div> +
-							</div>' +
+							  '</div></div>' +
 						'</tpl>'
 					);
 					
