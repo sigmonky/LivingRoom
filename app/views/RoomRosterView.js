@@ -101,22 +101,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 						nickname: user.get('nickname'),
 		            	facebook_id: user.get('facebook_id')
 		        	});
-		
-			        var overlay = new Ext.Panel({
-			            floating: true,
-			            modal: true,
-			            centered: false,
-			            width: 260,
-			            height: 400,
-			            styleHtmlContent: true,
-			            scroll: 'vertical',
-			            contentEl: 'aaa',
-			            cls: 'htmlcontent'
-			        });
-					
-					overlay.setCentered(true);
-		            overlay.show();
-					
+
 				/*	panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
