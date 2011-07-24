@@ -409,7 +409,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var presence = new JSJaCPresence();
 
 		presence.setStatus(status);
-
+		
+		presence.setShow('away');
+		
+		/** 
+		* away -- The entity or resource is temporarily away.
+	    * chat -- The entity or resource is actively interested in chatting.
+	    * dnd -- The entity or resource is busy (dnd = "Do Not Disturb").
+	    * xa -- The entity or resource is away for an extended period (xa = "eXtended Away").
+	    */
+	
 		this.jabberConnection.send(presence);
 
 	},

@@ -7,14 +7,11 @@
  * Main application Viewport
  */
 LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
-
 	fullscreen: true,
 	scroll: 'vertical',
 	title: 'Setttings',
 	
 	initComponent : function(){
-		
-
 		Ext.apply(this,{
 
 	      	items: [
@@ -48,19 +45,26 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 		                  xtype: 'togglefield',
 		                  name: 'enable',
 		                  label: 'Auto-Login at Launch'
-		            }
+		            },
+					{
+
+								xtype: 'button',
+								text: 'Submit',
+								handler: this.changeSettings,
+								scope: this
+							}
 	            ]
 	         }
 	      ]
 			
 		});
-
 		//Superclass inizialization
 		LivingRoomAPI.views.Settings.superclass.initComponent.call(this);
+	},
 	
+	this.changeSettings(){
+		console.log('change settings');
 	}
-	
-
 	
 });
 
