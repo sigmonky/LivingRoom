@@ -49,6 +49,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
                 height: 370,
                 centered: true,
                 modal: true,
+	            scroll: 'vertical',
 				hideMode: 'close',
                 hideOnMaskTap: false,
                 layout: 'fit',
@@ -116,15 +117,15 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		            	facebook_id: user.get('facebook_id')
 		        	});
 		
-					overlay.html = html;
+				//	overlay.html = html;
 					
-		           overlay.show();
+		          // overlay.show();
 					
-				/*	panelLaunch({
+					panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
-                    }, html); */
+                    }, html); 
 					
 				},
 				scope: this
