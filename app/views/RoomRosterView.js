@@ -112,7 +112,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			            centered: false,
 			            width: 300,
 			            height: 300,
-			  layout: fit,
+			  layout: 'fit',
 			            styleHtmlContent: true,
 			            dockedItems: overlayTb,
 			            scroll: 'vertical',
