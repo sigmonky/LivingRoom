@@ -109,16 +109,15 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			        var overlay = new Ext.Panel({
 			            floating: true,
 			            modal: true,
-			            centered: false,
+			            centered: true,
 			            width: 300,
 			            height: 300,
-			  layout: 'fit',
 			            styleHtmlContent: true,
-			            dockedItems: overlayTb,
 			            scroll: 'vertical',
 			            contentEl: 'lipsum',
 			            cls: 'htmlcontent'
 			        });
+			
 		            overlay.show();
 					
 				/*	panelLaunch({
