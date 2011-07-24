@@ -584,7 +584,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var obj = facebookStore.getAt(0);
 		var fb_id = obj.get('id');
 		
-		console.log('joinRoomComplete obj is ' + obj.get('id'));
+		console.log('joinRoomComplete myJID is ' + me.myJID);
 		console.log('joinRoomComplete fb_id is ' + fb_id);
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
 

@@ -286,6 +286,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		user = roster.getById(from);
 		var photo = user.get('facebook_id');
 		console.log('photo ='+photo);
+		
+		
 		var html;
 		if (photo == null){
 		 	html = this.tplPublicMessageNoPhoto.apply({
