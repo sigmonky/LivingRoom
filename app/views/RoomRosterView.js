@@ -110,7 +110,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			            height: 400,
 			            styleHtmlContent: true,
 			            scroll: 'vertical',
-			            contentEl: tplUser,
+			            contentEl: 'aaa',
 			            cls: 'htmlcontent'
 			        });
 					
