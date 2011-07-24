@@ -101,7 +101,28 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 						nickname: user.get('nickname'),
 		            	facebook_id: user.get('facebook_id')
 		        	});
+		
+			        var overlayTb = new Ext.Toolbar({
+			            dock: 'top'
+			        });
 
+			        var overlay = new Ext.Panel({
+			            floating: true,
+			            modal: true,
+			            centered: false,
+			            width: Ext.is.Phone ? 260 : 400,
+			            height: Ext.is.Phone ? 220 : 400,
+			            styleHtmlContent: true,
+			            dockedItems: overlayTb,
+			            scroll: 'vertical',
+			            contentEl: 'lipsum',
+			            cls: 'htmlcontent'
+			        });
+
+			            overlay.setCentered(false);
+			            overlayTb.setTitle('Attached Overlay');
+			            overlay.showBy(btn);
+					
 				/*	panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
