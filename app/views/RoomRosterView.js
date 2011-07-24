@@ -92,7 +92,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 							'</div>' +
 						     '<div class="x-user-name">' +
 								'<p class="nickname">{nickname}</p>' +
-							  '</div></div>' +
+							  '</div>
+							</div>' +
 						'</tpl>'
 					);
 					
@@ -108,7 +109,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
-                    }, html);
+                    }, this.list);
 					
 				},
 				scope: this
