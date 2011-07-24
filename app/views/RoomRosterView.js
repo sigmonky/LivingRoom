@@ -29,7 +29,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			]
 		});
 		
-		var panelLaunch = function(pluginConfig, panelContent){
+		panelLaunch = function(pluginConfig, panelContent){
             var pnl = new Ext.Panel({
                 floating: true,
                 width: 350,
@@ -49,7 +49,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             
             pnl.show();
         };
-
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			title: 'All Friends',
