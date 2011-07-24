@@ -115,6 +115,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			        });
 					
 					overlay.setCentered(true);
+					overlay.setTitle('Attached Overlay');
 		            overlay.show();
 					
 				/*	panelLaunch({
