@@ -43,6 +43,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
         });
 		
 		panelLaunch = function(pluginConfig, panelContent){
+
+	
             var pnl = new Ext.Panel({
                 floating: true,
                 width: 350,
@@ -53,6 +55,13 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 				hideMode: 'close',
                 hideOnMaskTap: false,
                 layout: 'fit',
+				dockedItems:[{
+							dock: 'bottom'
+								xtype: 'button',
+								text: 'Chat',
+								handler: this.facebookConnect,
+								scope: this
+				}]
                 html: panelContent,
 				showAnimation: {
 					type: 'pop',
