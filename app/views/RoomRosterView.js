@@ -115,8 +115,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		            	facebook_id: user.get('facebook_id')
 		        	});
 		
-					overlay({
-	                    }, html);
+					overlay.html = html;
 					
 		           overlay.show();
 					
