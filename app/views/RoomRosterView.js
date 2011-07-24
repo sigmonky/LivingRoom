@@ -61,7 +61,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 								text: 'Chat',
 								handler: this.facebookConnect,
 								scope: this
-				}]
+				}],
                 html: panelContent,
 				showAnimation: {
 					type: 'pop',
