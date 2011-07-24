@@ -97,30 +97,31 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					);
 					
 					
-					var html2 = tplUser.apply({
+					var html = tplUser.apply({
 						nickname: user.get('nickname'),
 		            	facebook_id: user.get('facebook_id')
 		        	});
-					var panel = new Ext.Panel({
-					            layout : {
-					                type : 'vbox',
-					                align : 'stretch'
-					            },
-					            items : [{
-					                flex : 1,
-					                html : html2
-					            }, {
-					                height : 50,
-					                html : '2nd'
-					            }]
-					        });
+		
+			        var overlay = new Ext.Panel({
+			            floating: true,
+			            modal: true,
+			            centered: false,
+			            width: Ext.platform.isPhone ? 260 : 400,
+			            height: Ext.platform.isPhone ? 220 : 400,
+			            styleHtmlContent: true,
+			            scroll: 'vertical',
+			            contentEl: 'tplUser',
+			            cls: 'htmlcontent'
+			        });
 					
+					overlay.setCentered(true);
+		            overlay.show();
 					
-					panelLaunch({
+				/*	panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
-                    }, panel);
+                    }, html); */
 					
 				},
 				scope: this
