@@ -28,6 +28,28 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			}
 			]
 		});
+		
+		var panelLaunch = function(pluginConfig, panelContent){
+            var pnl = new Ext.Panel({
+                floating: true,
+                width: 350,
+                height: 370,
+                centered: true,
+                modal: true,
+				hideMode: 'close',
+                hideOnMaskTap: false,
+                layout: 'fit',
+                html: panelContent,
+				showAnimation: {
+					type: 'pop',
+					duration: 250
+				},
+                plugins: [new Ext.ux.PanelAction(pluginConfig)]
+            });
+            
+            pnl.show();
+        };
+
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			title: 'All Friends',
