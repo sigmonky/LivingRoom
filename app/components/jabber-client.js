@@ -589,7 +589,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
 
 		var item = Ext.ModelMgr.create({
-		    jid: this.roomJid+'/'+me.nickname,
+		    jid: me.roomJid+'/'+me.nickname,
 			nickname: me.nickname,
 			facebook_id: fb_id,
 		}, 'RoomRosterItem');
