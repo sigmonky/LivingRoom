@@ -149,7 +149,7 @@ Ext.regController('Roster', {
 		var user = options.user.data;
 
 		//Let's try to take an already active chat session panel
-		var pnlChatSession = this.application.viewport.getComponent('pnlRoster').getComponent(user.jid);
+	//	var pnlChatSession = this.application.viewport.getComponent('pnlRoster').getComponent(user.jid);
 		
 		if(pnlChatSession == undefined){
 		
