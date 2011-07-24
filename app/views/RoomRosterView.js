@@ -57,7 +57,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
                 layout: 'fit',
 				dockedItems:[
 					{
-								xtype: 'button',
+								xtype: 'button', 
+								margin: '10, 0, 0,0',
 								dock: 'bottom',
 								text: 'Chat with this User',
 								handler: this.facebookConnect,
@@ -65,6 +66,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					},
 					{
 								xtype: 'button',
+								margin: '10, 0, 0,0',
 								dock: 'bottom',
 								text: 'Report this User',
 								handler: this.facebookConnect,
