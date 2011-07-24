@@ -87,12 +87,12 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					
 					var tplUser = new Ext.XTemplate(
 						'<tpl for=".">',
-							'<div class="x-user-picture">' +
+							'<div style="padding:20px"><div class="x-user-picture">' +
 								'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>'+
 							'</div>' +
 						     '<div class="x-user-name">' +
 								'<p class="nickname">{nickname}</p>' +
-							  '</div>' +
+							  '</div></div>' +
 						'</tpl>'
 					);
 					
