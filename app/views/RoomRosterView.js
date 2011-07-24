@@ -97,19 +97,18 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					);
 					
 					
-					var html = tplUser.apply({
+					var html2 = tplUser.apply({
 						nickname: user.get('nickname'),
 		            	facebook_id: user.get('facebook_id')
 		        	});
 					var panel = new Ext.Panel({
-					            fullscreen : true,
 					            layout : {
 					                type : 'vbox',
 					                align : 'stretch'
 					            },
 					            items : [{
 					                flex : 1,
-					                html : '1st'
+					                html : html2
 					            }, {
 					                height : 50,
 					                html : '2nd'
