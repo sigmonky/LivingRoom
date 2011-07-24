@@ -97,7 +97,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					);
 					
 					
-					var html = tplUserapply({
+					var html = tplUser.apply({
 						nickname: user.nickname,
 		            	facebook_id: user.facebook_id
 		        	});
