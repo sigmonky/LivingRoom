@@ -110,12 +110,11 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			            height: 400,
 			            styleHtmlContent: true,
 			            scroll: 'vertical',
-			            contentEl: 'tplUser',
+			            contentEl: tplUser,
 			            cls: 'htmlcontent'
 			        });
 					
 					overlay.setCentered(true);
-					overlay.setTitle('Attached Overlay');
 		            overlay.show();
 					
 				/*	panelLaunch({
