@@ -302,7 +302,7 @@ Ext.regController('Roster', {
 			jabberComponent: jabberClient
 		});
 		
-	//	jabberClient.joinPublicRoom(room.get('jid'));
+		jabberClient.joinPublicRoom(room.get('jid'));
 		
 		//Let's add the chat session panel
 		this.application.viewport.getComponent('pnlRoomList').add(pnlRoom);

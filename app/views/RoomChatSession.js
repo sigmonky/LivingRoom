@@ -46,7 +46,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				ui: 'action',
 				text: 'Co-Viewers',
 				iconMask: true,
-				iconCls: 'arrow_right',
+		//		iconCls: 'arrow_right',
 				scope: this,
 				handler: this.showRoster
 			}

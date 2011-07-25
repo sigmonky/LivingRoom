@@ -16,7 +16,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
-			title: 'Participants',
+			title: 'Co-Viewers',
 			layout: 'hbox',
 			items: [{
 				//Definition of logout button
