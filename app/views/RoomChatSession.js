@@ -248,30 +248,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//Let's take the written message
 		var message = this.getDockedComponent('pnlMessage').getComponent('message');
 
-		//Let's check if the message has to be send to a direct user
-		if(!this.isChatRoom){
 			
-			//Send the written message
-			this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
-			
-		}else{
-			
-			//Send the message to all the room participants
-			this.jabberComponent.sendRoomMessage(message.getValue());
-		}
+		//Send the message to all the room participants
+	    this.jabberComponent.sendRoomMessage(message.getValue());
 		
-		/* If we are not sending a message to a chat room, must be added our sended message
-		 * to the panel. If the message is send to a chat room we don't need to add it
-		 * because the server will send it back to us too */
-		if(!this.isChatRoom) {
-			
-			var facebookStore = Ext.StoreMgr.get('FacebookUser');
-			var obj = facebookStore.getAt(0);
-			
-			//Add the message panel component
-			this.addChatMessage(message.getValue(), null, true);
-		
-		}
 		
 		//Clear the message field
 		message.setValue('');

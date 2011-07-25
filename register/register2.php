@@ -203,10 +203,21 @@ function md5_salt($string) {
 /* API Secret Key */
 $apiSalt = '12345';
 
+
+
+
 $display_debug_info = false;
 $AddUserErrorCode = 12000;
 
+
+
+
+
 $UserLogin=$_POST['username']; 
+
+
+
+
 
 /******************************* TO DO *///
 /* Connect to Ziltoid and generate USER */
