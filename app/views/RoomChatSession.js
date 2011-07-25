@@ -13,6 +13,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	remoteJid: undefined,
 	
+	jid: undefined, 
+	
+	topic: undefined, 
+	
 	remoteUserName: undefined,
 	
 	jabberComponent: undefined,
@@ -26,7 +30,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
-			title: 'Room Topic',
+			title: this.topic,
 			layout: 'hbox',
 			items: [
 			{xtype: 'spacer'},
@@ -41,6 +45,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			}
 			]
 		});
+		
+		console.log('room jid -' +this.jid)
+		
 		
 		/* Definition of the template that will be used to show a direct 
 		 * message coming from Facebook chat */

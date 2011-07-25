@@ -45,8 +45,6 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 				handler: this.showRoster
 			}
 			
-			
-			
 			]
 		});
 

@@ -291,6 +291,25 @@ Ext.regController('Roster', {
 		
 	},
 	
+	openRoom: function(options){
+		var room = options.room
+		var pnlRoom = new LivingRoomAPI.views.RoomOneToOneChatSession({
+			jid: room.jid,
+			topic: room.topic,
+			jabberComponent: jabberClient
+		});
+		
+		//Let's add the chat session panel
+		this.application.viewport.getComponent('pnlRoomList').add(pnlRoom);
+		
+			//Let's show the chat session Panel
+		this.application.viewport.getComponent('pnlPublicChat').setActiveItem(pnlRoom, {
+				type: 'slide', 
+				duration: 500
+		});
+			
+	},
+	
 	addMessageToChatRoom: function(options){
 		
 		//Let's take the public chat room panel

@@ -32,14 +32,14 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 					var store = list.getStore();
 					
 					//Let's take the selected user
-					var user = store.getAt(index);
+					var room = store.getAt(index);
 					
 					//Let's call the controller method able to show the user Roster
 					Ext.dispatch({
 					    controller: 'Roster',
-					    action: 'openChatSession',
+					    action: 'openRoom',
 						show: true,
-						user: user
+						room: room
 					});
 					
 				},
@@ -47,7 +47,8 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 				
 			}
         });
-	
+
+
 		Ext.apply(this,{
 		
 			fullscreen: true,
