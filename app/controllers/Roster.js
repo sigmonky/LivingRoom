@@ -129,19 +129,7 @@ Ext.regController('Roster', {
 		
 	},
 	
-	showRoomParticipants:function(){
-		this.application.viewport.getComponent('pnlRoomList').setActiveItem('roomRoster', {
-			type: 'slide', 
-			duration: 500
-		});	
-	},
-	
-	showRoom: function(){
-		this.application.viewport.getComponent('pnlRoomList').setActiveItem('test1', {
-			type: 'slide', direction:'right',
-			duration: 500
-		});
-	},
+
 	
 	openChatSessionForRoomRoster: function(options){
 		
@@ -289,6 +277,20 @@ Ext.regController('Roster', {
 		//Let's finally add the chat message
 		pnlChatSession.addChatMessage(options.message, user, false);
 		
+	},
+	
+	showRoomParticipants:function(){
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem('roomRoster', {
+			type: 'slide', 
+			duration: 500
+		});	
+	},
+	
+	showRoom: function(){
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem('test1', {
+			type: 'slide', direction:'right',
+			duration: 500
+		});
 	},
 	
 	openRoom: function(options){

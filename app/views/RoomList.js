@@ -64,7 +64,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 		
 			fullscreen: true,
 			layout:'card',
-			items: [this.list, pnlPublicChatRoom, roomRoster]
+			items: [this.list]
 			
 		});
 
