@@ -303,7 +303,7 @@ Ext.regController('Roster', {
 	
 	openRoom: function(options){
 		var room = options.room
-		console.log('openRoom jid = ' +room.get('jid'));
+/*		console.log('openRoom jid = ' +room.get('jid'));
 		console.log('openRoom topic = ' +room.get('topic'));
 		
 		var pnlRoom = new LivingRoomAPI.views.RoomChatSession({
@@ -322,7 +322,30 @@ Ext.regController('Roster', {
 		this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom, {
 				type: 'slide', 
 				duration: 500
-		});
+		}); */
+		
+		if (!pnlRoom) {
+			//console.log("browse productDetailPanel this.render()")
+			 pnlRoom = this.pnlRoom = this.render({
+				xtype: 'RoomChatSession',
+                jid: room.get('jid'),
+				id: room.get('jid'),
+				topic: room.get('topic'),
+				jabberComponent: jabberClient
+			});
+        }
+        else {
+			//console.log("browse productDetailPanel Ext.apply()")
+            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
+        }
+
+        pnlRoom.doUpdate();
+
+        Ext.getCmp('pnlRoomList').setActiveItem(pnlRoom);
+		
+		
+		
+		
 			
 	},
 	

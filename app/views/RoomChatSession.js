@@ -185,6 +185,29 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	},
 	
+	/**
+     * Wraps all updates of children into one easy call
+     */
+    doUpdate: function() {
+		console.log("productGalleryPanel doUpdate()");
+        this.updateToolbar();
+      //  this.updateStore();
+    },
+
+    /**
+     * When a new category is defined for the product list panel
+     * the toolbar needs to be updated with a new title
+     * @private
+     */
+    updateToolbar: function() {
+		////console.log('state.listType ='+Marika.util.state.listType);
+        // update toolbar's title
+        var toolbar = this.down('toolbar');
+        if (toolbar) {
+			toolbar.setTitle("test");
+        }
+    },
+	
 	showRoster: function(){
 		console.log('show roster 2');
 		
