@@ -284,8 +284,10 @@ Ext.regController('Roster', {
 		});	
 	},
 	
-	showRoom: function(){
-		this.application.viewport.getComponent('pnlRoomList').setActiveItem('test1', {
+	backToRoom: function(){
+		var pnlRoom = this.pnlRoom;
+		
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom, {
 			type: 'slide', direction:'right',
 			duration: 500
 		});
