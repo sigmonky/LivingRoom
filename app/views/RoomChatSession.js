@@ -190,6 +190,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
      */
     doUpdate: function() {
 		console.log("productGalleryPanel doUpdate()");
+		console.log('room jid -' +this.jid)
+		
         this.updateToolbar();
       //  this.updateStore();
     },
@@ -207,6 +209,15 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			toolbar.setTitle(this.topic);
         }
     },
+
+    /**
+     * When a new Room is defined
+     * the store for the item list needs to be updated
+     * @private
+     */
+	updateStore: function(){
+		
+	},
 	
 	showRoster: function(){
 		console.log('show roster 2');

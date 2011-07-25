@@ -299,9 +299,7 @@ Ext.regController('Roster', {
 	},
 	
 	showRoomParticipants:function(id){
-		
-
-		
+			
 		var roomRoster = this.roomRoster;
 
 		if (!roomRoster) {
@@ -312,10 +310,10 @@ Ext.regController('Roster', {
 	     }
 	    else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	           // Ext.apply(roomRoster);
+	           Ext.apply(roomRoster);
 	    }
 
-	       // pnlRoom.doUpdate();
+	    roomRoster.doUpdate();
 
 	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
 

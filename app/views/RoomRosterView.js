@@ -170,6 +170,23 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	},
 	
+	/**
+     * Wraps all updates of children into one easy call
+     */
+    doUpdate: function() {
+		//console.log("productGalleryPanel doUpdate()");
+        this.updateStore();
+    },
+
+    /**
+     * When a new room is defined for the Room Roster list panel
+     * the store needs to be updated 
+     * @private
+     */
+	updateStore: function(){
+		
+	},
+
 	switchBack: function(){
 		Ext.dispatch({
 		    controller: 'Roster',
