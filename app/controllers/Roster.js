@@ -361,7 +361,7 @@ Ext.regController('Roster', {
 
 	       // pnlRoom.doUpdate();
 
-	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster{type: 'slide', duration: 500});
+	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
 
 	},
 	
