@@ -293,6 +293,7 @@ Ext.regController('Roster', {
 	
 	openRoom: function(options){
 		var room = options.room
+		console.log('openRoom = ' +room);
 		var pnlRoom = new LivingRoomAPI.views.RoomOneToOneChatSession({
 			jid: room.jid,
 			topic: room.topic,
