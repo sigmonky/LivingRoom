@@ -313,6 +313,13 @@ Ext.regController('Roster', {
 			
 	},
 	
+	backToRoomList: function(){
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem(0, {
+			type: 'slide', 
+			duration: 500
+		});
+	}
+	
 	addMessageToChatRoom: function(options){
 		
 		//Let's take the public chat room panel

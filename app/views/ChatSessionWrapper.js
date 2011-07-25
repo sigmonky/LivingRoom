@@ -83,10 +83,11 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	},
 	
 	switchBack: function(){
-		    this.setActiveItem(0);
-			this.setActiveItem('test1', {type:'slide', direction:'right'});
-		
-			//this.dockedItems.items[0].setTitle("Room Topic");
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'backToRoomList'
+		});
+		//this.setActiveItem(0, {type:'slide', direction:'right'});
 	},
 	
 	showRoster: function(){
