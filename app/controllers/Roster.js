@@ -303,7 +303,7 @@ Ext.regController('Roster', {
 		this.application.viewport.getComponent('pnlRoomList').add(pnlRoom);
 		
 			//Let's show the chat session Panel
-		this.application.viewport.getComponent('pnlPublicChat').setActiveItem(pnlRoom, {
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom, {
 				type: 'slide', 
 				duration: 500
 		});
