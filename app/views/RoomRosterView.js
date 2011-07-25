@@ -2,14 +2,11 @@
  * LivingRoomAPI
  */
 /**
- * @class LivingRoomAPI.views.Roster
+ * @class LivingRoomAPI.views.RoomRosterView
  * @extends Ext.Panel
  * Main application Viewport
  */
 LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
-	
-	///@private
-	application: undefined,
 	
 	id: undefined, 
 	
@@ -32,17 +29,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		});
 		
 
-        overlay = new Ext.Panel({
-            floating: true,
-            modal: true,
-            centered: true,
-            width: 300,
-            height: 450,
-            styleHtmlContent: true,
-            scroll: 'vertical',
-            contentEl: 'lipsum',
-            cls: 'htmlcontent'
-        });
 		
 		panelLaunch = function(pluginConfig, panelContent){
 
@@ -119,7 +105,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			listeners: {
 				
 				itemtap: function(list, index, item, e) {
-					overlay.html = null;
 					
 					//Let's take the online users store
 				var store = list.getStore();
@@ -173,7 +158,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
         });
 	
 		Ext.apply(this,{
-            layout: 'card',
+         //   layout: 'card',
 			dockedItems: [this.toolbar],
             cardSwitchAnimation: {type: 'flip', duration: 500},
 			fullscreen: true,
