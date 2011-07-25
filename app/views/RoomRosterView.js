@@ -174,7 +174,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 		Ext.apply(this,{
             layout: 'card',
-			dockedItems: [this.toolbar],
+			//dockedItems: [this.toolbar],
             cardSwitchAnimation: {type: 'flip', duration: 500},
 			fullscreen: true,
 			items: [this.list]
