@@ -283,15 +283,7 @@ Ext.regController('Roster', {
 			duration: 500
 		});	
 	},
-	
-	backToRoom: function(){
-		var pnlRoom = this.pnlRoom;
-		
-		this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom, {
-			type: 'slide', direction:'right',
-			duration: 500
-		});
-	},
+
 	
 	openRoom: function(options){
 		var room = options.room
@@ -346,6 +338,16 @@ Ext.regController('Roster', {
 
 	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
 
+	},
+	
+	backToRoom: function(){
+		console.log('backToRoom')
+		var pnlRoom = this.pnlRoom;
+		
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom, {
+			type: 'slide', direction:'right',
+			duration: 500
+		});
 	},
 	
 	backToRoomList: function(){
