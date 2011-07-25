@@ -342,7 +342,7 @@ Ext.regController('Roster', {
 
         pnlRoom.doUpdate();
 
-        Ext.getCmp('pnlRoomList').setActiveItem(pnlRoom);
+        this.application.viewport.getCmp('pnlRoomList').setActiveItem(pnlRoom);
 		
 		
 		
