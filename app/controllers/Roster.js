@@ -292,47 +292,22 @@ Ext.regController('Roster', {
 	},
 	
 	openRoom: function(options){
-		var room = options.room
-/*		console.log('openRoom jid = ' +room.get('jid'));
-		console.log('openRoom topic = ' +room.get('topic'));
-		
-		var pnlRoom = new LivingRoomAPI.views.RoomChatSession({
-			jid: room.get('jid'),
-			id: room.get('jid'),
-			topic: room.get('topic'),
-			jabberComponent: jabberClient
-		});
-		
-		jabberClient.joinPublicRoom(room.get('jid'));
-		
-		//Let's add the chat session panel
-		this.application.viewport.getComponent('pnlRoomList').add(pnlRoom);
-		
-			//Let's show the chat session Panel
-		this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom, {
-				type: 'slide', 
-				duration: 500
-		}); */
-		var pnlRoom = this.pnlRoom;
-		
-		if (!pnlRoom) {
-			//console.log("browse productDetailPanel this.render()")
-			 pnlRoom = this.pnlRoom = this.render({
-				xtype: 'RoomChatSession',
-                jid: room.get('jid'),
-				id: room.get('jid'),
-				topic: room.get('topic'),
-				jabberComponent: jabberClient
-			});
-        }
-        else {
-			//console.log("browse productDetailPanel Ext.apply()")
-            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
-        }
+			var roomRoster = this.roomRoster;
 
-        pnlRoom.doUpdate();
+			if (!pnlRoom) {
+				//console.log("browse productDetailPanel this.render()")
+				 roomRoster = this.roomRoster = this.render({
+					xtype: 'RoomRosterView',
+				});
+	        }
+	        else {
+				//console.log("browse productDetailPanel Ext.apply()")
+	            Ext.apply(roomRoster);
+	        }
 
-        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom,{type: 'slide', duration: 500});
+	       // pnlRoom.doUpdate();
+
+	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
 		
 	},
 	
