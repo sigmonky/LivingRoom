@@ -296,7 +296,7 @@ Ext.regController('Roster', {
 		console.log('openRoom jid = ' +room.get('jid'));
 		console.log('openRoom topic = ' +room.get('topic'));
 		
-		var pnlRoom = new LivingRoomAPI.views.ChatSessionWrapper({
+		var pnlRoom = new LivingRoomAPI.views.RoomChatSession({
 			jid: room.get('jid'),
 			topic: room.get('topic'),
 			jabberComponent: jabberClient

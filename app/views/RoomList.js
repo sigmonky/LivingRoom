@@ -48,12 +48,23 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			}
         });
 
+		pnlPublicChatRoom = new LivingRoomAPI.views.RoomChatSession({
+			id: 'test1',
+			isChatRoom: true,
+			jabberComponent: jabberClient
+		});
+
+		var roomRoster = new LivingRoomAPI.views.RoomRosterView({
+			id: 'roomRoster',
+			title: 'Roster'
+        });
+
 
 		Ext.apply(this,{
 		
 			fullscreen: true,
 			layout:'card',
-			items: [this.list]
+			items: [this.list, pnlPublicChatRoom, roomRoster]
 			
 		});
 
