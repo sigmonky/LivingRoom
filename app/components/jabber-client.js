@@ -500,17 +500,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
 		
-		//Let's check if this component has been created to allow user to chat inside a public Room
-		if(!me.publicRoom) {
-		
-			//Let's call the function able to get the Roaster
-			me.getRoster();
-			
-		}else{
 			
 			//Let's call the function able to get the Disco Info
-			me.getDiscoInfo();
-		}
+		me.getDiscoInfo();
 		
 	},
 	
@@ -554,6 +546,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	joinPublicRoom: function(publicRoomName){
 		
 		//Let's save tht full Room JID
+		this.publicRoom = publicRoomName;
 		this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
 		console.log('roomJid = ' +this.roomJid);
 		//Let's create the presence packet
