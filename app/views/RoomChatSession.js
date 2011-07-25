@@ -32,7 +32,14 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			dock: 'top',
 			title: this.topic,
 			layout: 'hbox',
-			items: [
+			items: [{
+				//Definition of logout button
+				ui: 'back',
+				text: 'Back',
+				iconMask: true,
+				scope: this,
+				handler: this.switchBack
+			},
 			{xtype: 'spacer'},
 			{
 				//Definition of Show Rost button
@@ -189,7 +196,14 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		    action: 'showRoomParticipants'
 		});
 	},
-
+	
+	switchBack: function(){
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'backToRoomList'
+		});
+		//this.setActiveItem(0, {type:'slide', direction:'right'});
+	},
 	
 	
 	sendMessage: function(message){
