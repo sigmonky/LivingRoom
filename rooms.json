@@ -1,5 +1,5 @@
 [
-{"jid":"southpark", "name":"South Park", "topic":"South Park topic", "type": "pubsub", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"},
+{"jid":"mariah", "name":"Chat with Mariah Carey", "topic":"South Park topic", "type": "pubsub", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"},
 {"jid":"southpark", "name":"South Park", "topic":"South Park topic", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"},
 {"jid":"mtv", "name":"MTV", "topic":"MTV topic", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"},
 {"jid":"spongebob", "name":"Sponge Bob", "topic":"Sponge topic", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"}
