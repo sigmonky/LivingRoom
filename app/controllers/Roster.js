@@ -293,14 +293,16 @@ Ext.regController('Roster', {
 	
 	openRoom: function(options){
 		var room = options.room
-		console.log('openRoom = ' +room);
+		console.log('openRoom jid = ' +room.get('jid'));
+		console.log('openRoom topic = ' +room.get('topic'));
+		
 		var pnlRoom = new LivingRoomAPI.views.ChatSessionWrapper({
 			jid: room.get('jid'),
 			topic: room.get('topic'),
 			jabberComponent: jabberClient
 		});
 		
-		jabberClient.joinPublicRoom(room.get('jid'));
+	//	jabberClient.joinPublicRoom(room.get('jid'));
 		
 		//Let's add the chat session panel
 		this.application.viewport.getComponent('pnlRoomList').add(pnlRoom);
