@@ -292,28 +292,29 @@ Ext.regController('Roster', {
 	},
 	
 	openRoom: function(options){
-		var room = options.room
+		/*		//Let's show the attenders Panel
+				this.application.viewport.setActiveItem(roomRoster, {
+					type: 'slide', 
+					duration: 500,
+					reverse: true
+				}); */
 
-		var pnlRoom = this.pnlRoom;
-		
-		if (!pnlRoom) {
-			//console.log("browse productDetailPanel this.render()")
-			 pnlRoom = this.pnlRoom = this.render({
-				xtype: 'RoomChatSession',
-                jid: room.get('jid'),
-				id: room.get('jid'),
-				topic: room.get('topic'),
-				jabberComponent: jabberClient
-			});
-        }
-        else {
-			//console.log("browse productDetailPanel Ext.apply()")
-            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
-        }
+				var roomRoster = this.roomRoster;
 
-        pnlRoom.doUpdate();
+				if (!roomRoster) {
+					//console.log("browse productDetailPanel this.render()")
+					 roomRoster = this.roomRoster = this.render({
+						xtype: 'RoomRosterView',
+					});
+		        }
+		        else {
+					//console.log("browse productDetailPanel Ext.apply()")
+		            Ext.apply(roomRoster);
+		        }
 
-        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom,{type: 'slide', duration: 500});
+		       // pnlRoom.doUpdate();
+
+		        this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
 		
 	},
 	
