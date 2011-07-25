@@ -27,7 +27,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	initComponent: function(){
 
 		this.toolbar = new Ext.Toolbar({
-			itemId: 'toolbar',
+			itemId: 'toolbar2',
 			dock: 'top',
 			title: this.topic,
 			layout: 'hbox',
@@ -43,7 +43,7 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 			{
 				//Definition of Show Rost button
 				ui: 'action',
-				text: 'Participants',
+				text: 'Participants2',
 				iconMask: true,
 				iconCls: 'arrow_right',
 				scope: this,
