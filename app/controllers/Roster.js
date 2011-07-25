@@ -269,8 +269,6 @@ Ext.regController('Roster', {
 		
 	},
 	
-
-
 	
 	openRoom: function(options){
 		var room = options.room
@@ -291,6 +289,9 @@ Ext.regController('Roster', {
 			//console.log("browse productDetailPanel Ext.apply()")
             Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
         }
+
+		jabberClient.joinPublicRoom(room.get('jid'));
+
 
         pnlRoom.doUpdate();
 
