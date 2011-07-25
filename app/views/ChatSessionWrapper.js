@@ -77,10 +77,8 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		//	dockedItems: [this.toolbar],
 			items: [pnlPublicChat2, roomRoster]
 		});
-
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
-	
 	},
 	
 	switchBack: function(){
