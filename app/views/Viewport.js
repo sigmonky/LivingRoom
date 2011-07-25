@@ -37,7 +37,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			}]
 		});
 
-
 		//Definition of the roster panel
 		this.pnlRoomRoster = new LivingRoomAPI.views.RoomRosterView({
 			itemId: 'RoomRosterView',
@@ -66,6 +65,12 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			jabberComponent: jabberClient
 		});
 		
+		//Definition of Room List
+		
+		this.pnlRoomList= new LivingRoomAPI.views.RoomList({
+			itemId: 'pnlRoomList',
+			title: 'Rooms'
+		});
 		
 		//Definition of the public chat panel
 		this.settingsPanel = new LivingRoomAPI.views.Settings({
@@ -95,7 +100,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			items: [
 			//	this.pnlRoster,
 			//	this.pnlOneToOne,
-				this.pnlPublicChat,
+				this.pnlRoomList,
 				this.settingsPanel
 			]
 			
