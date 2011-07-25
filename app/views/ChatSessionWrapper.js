@@ -12,6 +12,10 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 	
 	remoteJid: undefined,
 	
+	jid: undefined, 
+	
+	topic: undefined,
+	
 	remoteUserName: undefined,
 	
 	jabberComponent: undefined,

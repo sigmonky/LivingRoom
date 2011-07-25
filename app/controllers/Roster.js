@@ -294,7 +294,7 @@ Ext.regController('Roster', {
 	openRoom: function(options){
 		var room = options.room
 		console.log('openRoom = ' +room);
-		var pnlRoom = new LivingRoomAPI.views.RoomOneToOneChatSession({
+		var pnlRoom = new LivingRoomAPI.views.ChatSessionWrapper({
 			jid: room.get('jid'),
 			topic: room.get('topic'),
 			jabberComponent: jabberClient
