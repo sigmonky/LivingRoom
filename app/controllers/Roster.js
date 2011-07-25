@@ -130,14 +130,14 @@ Ext.regController('Roster', {
 	},
 	
 	showRoomParticipants:function(){
-		this.application.viewport.getComponent('pnlPublicChat').setActiveItem('roomRoster', {
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem('roomRoster', {
 			type: 'slide', 
 			duration: 500
 		});	
 	},
 	
 	showRoom: function(){
-		this.application.viewport.getComponent('pnlPublicChat').setActiveItem('test1', {
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem('test1', {
 			type: 'slide', 
 			duration: 500
 		});
@@ -149,7 +149,7 @@ Ext.regController('Roster', {
 		var user = options.user.data;
 
 		//Let's try to take an already active chat session panel
-		var pnlChatSession = this.application.viewport.getComponent('pnlPublicChat').getComponent(user.jid);
+		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
 		
 		if(pnlChatSession == undefined){
 		
@@ -167,14 +167,14 @@ Ext.regController('Roster', {
 			});
 			
 			//Let's add the chat session panel
-			this.application.viewport.getComponent('pnlPublicChat').add(pnlChatSession);
+			this.application.viewport.getComponent('pnlRoomList').add(pnlChatSession);
 			
 			
 		}else{
 
 			
 			//Let's take the roster panel
-			var pnlRoster = this.application.viewport.getComponent('pnlPublicChat');
+			var pnlRoster = this.application.viewport.getComponent('pnlRoomList');
 			
 			//Taking the TabBar component
 			var tabBar = pnlRoster.getTabBar();
@@ -207,7 +207,7 @@ Ext.regController('Roster', {
 		if(options.show){
 
 			//Let's show the chat session Panel
-			this.application.viewport.getComponent('pnlPublicChat').setActiveItem(pnlChatSession, {
+			this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession, {
 				type: 'slide', 
 				duration: 500
 			});
@@ -236,7 +236,7 @@ Ext.regController('Roster', {
 		var user = store.getById(options.from);
 		
 		//Let's try to take an already active chat session panel
-		var pnlChatSession = this.application.viewport.getComponent('pnlPublicChat').getComponent(user.get('jid'));
+		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.get('jid'));
 		
 	//	console.log('addMessageToOneToOneChatSession from= '+options.from);
 	
@@ -256,7 +256,7 @@ Ext.regController('Roster', {
 	},
 	
 	addRoomAnnouncement: function(options){
-		var pnlChatRoom = this.application.viewport.getComponent('pnlPublicChat');
+		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList');
 		console.log('addRoomAnnouncement options.message = '+options.message)
 		//Let's finally add the chat message
 		pnlChatRoom.addRoomAnnouncement(options.message);
@@ -316,7 +316,7 @@ Ext.regController('Roster', {
 	addMessageToChatRoom: function(options){
 		
 		//Let's take the public chat room panel
-		var pnlChatRoom = this.application.viewport.getComponent('pnlPublicChat');
+		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList');
 		console.log('addMessageToChatRoom')
 		//Let's finally add the chat message
 		pnlChatRoom.addChatRoomMessage(options.message, options.from);

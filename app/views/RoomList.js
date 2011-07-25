@@ -60,6 +60,36 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 		//Superclass inizialization
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
+	},
+	switchBack: function(){
+		    this.setActiveItem(0);
+			this.setActiveItem('test1', {type:'slide', direction:'right'});
+		
+			//this.dockedItems.items[0].setTitle("Room Topic");
+	},
+	
+	showRoster: function(){
+		console.log('show roster 1');
+		
+		var store = Ext.StoreMgr.get('RoomRoster');
+		store.each(function (record) {
+		    console.log('record.nickname = '+record.get('nickname'));
+		});
+		
+		this.setActiveItem('roomRoster', {type:'slide', direction:'left'});
+		this.dockedItems.items[0].setTitle("Participants");
+		
+	   // this.setActiveItem(1);
+	},
+	
+	addChatRoomMessage: function(message, from){
+		console.log('addChatRoomMessage 1')
+		pnlPublicChat2.addChatRoomMessage(message, from);
+	},
+	
+	addRoomAnnouncement: function(message){
+		console.log('addChatRoomMessage 1')
+		pnlPublicChat2.addRoomAnnouncement(message);
 	}
 	
 });
