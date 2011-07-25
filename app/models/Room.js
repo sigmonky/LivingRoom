@@ -8,7 +8,7 @@ Ext.regModel('Room', {
         {name: 'jid', type: 'string'},
 		{name: 'name', type: 'string'},
         {name: 'topic', type: 'string'},
-        {name: 'type', type: 'string'}
+        {name: 'type', type: 'string'},
         {name: 'thumb', type: 'string'}
     ]
 });
