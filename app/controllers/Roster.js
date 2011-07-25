@@ -323,6 +323,7 @@ Ext.regController('Roster', {
 				type: 'slide', 
 				duration: 500
 		}); */
+		var pnlRoom = this.pnlRoom;
 		
 		if (!pnlRoom) {
 			//console.log("browse productDetailPanel this.render()")
