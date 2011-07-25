@@ -21,10 +21,10 @@ Ext.regController('Roster', {
 		
 	},
 	
-	showRoomRoster: function(){
+	showRoomRoster: function(id){
 
 			//Let's show the attenders Panel
-			this.application.viewport.setActiveItem('pnlRoomRoster', {
+			this.application.viewport.setActiveItem(roomRoster, {
 				type: 'slide', 
 				duration: 500,
 				reverse: true
@@ -279,8 +279,16 @@ Ext.regController('Roster', {
 		
 	},
 	
-	showRoomParticipants:function(){
-		this.application.viewport.getComponent('pnlRoomList').setActiveItem('roomRoster', {
+	showRoomParticipants:function(id){
+		
+		var roomRoster = new LivingRoomAPI.views.RoomRosterView({
+			id: id,
+			title: 'Roster'
+        });
+
+		this.application.viewport.getComponent('pnlRoomList').add(roomRoster);
+
+		this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {
 			type: 'slide', 
 			duration: 500
 		});	
@@ -300,6 +308,7 @@ Ext.regController('Roster', {
 		
 		var pnlRoom = new LivingRoomAPI.views.RoomChatSession({
 			jid: room.get('jid'),
+			id: room.get('jid'),
 			topic: room.get('topic'),
 			jabberComponent: jabberClient
 		});

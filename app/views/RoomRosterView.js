@@ -11,6 +11,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	///@private
 	application: undefined,
 	
+	id: undefined, 
+	
 	initComponent : function(){
 	
 		this.toolbar = new Ext.Toolbar({

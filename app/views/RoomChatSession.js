@@ -15,6 +15,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	jid: undefined, 
 	
+	id: undefined, 
+	
 	topic: undefined, 
 	
 	remoteUserName: undefined,
@@ -193,7 +195,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		Ext.dispatch({
 		    controller: 'Roster',
-		    action: 'showRoomParticipants'
+		    action: 'showRoomParticipants', 
+			jid: 'cueca'
 		});
 	},
 	
