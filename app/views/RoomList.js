@@ -8,9 +8,6 @@
  */
 LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 	
-	///@private
-	application: undefined,
-	
 	initComponent : function(){
 	
 		//Definition of the list that will contains all the users in the Roster
@@ -18,7 +15,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			id: 'roomList',
 			iconCls: 'user',
 			iconMask: true,
-			store: 'roomList',
+			store: 'RoomListStore',
             itemTpl: '<div class="x-roster-user">' +
 					    //'<div class="x-user-picture">' +
 						// 	'<img src="data:image/jpg;base64,{photoBase64}" width="32" height="32" />' +
