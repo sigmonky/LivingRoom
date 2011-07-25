@@ -20,17 +20,7 @@ Ext.regController('Roster', {
 		});
 		
 	},
-	
-	showRoomRoster: function(id){
 
-			//Let's show the attenders Panel
-			this.application.viewport.setActiveItem(roomRoster, {
-				type: 'slide', 
-				duration: 500,
-				reverse: true
-			});
-
-	},
 	
 	
 	showFriends: function(){
@@ -342,12 +332,37 @@ Ext.regController('Roster', {
 
         pnlRoom.doUpdate();
 
-        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom);
+        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom{type: 'slide', duration: 500});
 		
+	},
+	
+	
+	showRoomRoster: function(options){
 		
-		
-		
+	/*		//Let's show the attenders Panel
+			this.application.viewport.setActiveItem(roomRoster, {
+				type: 'slide', 
+				duration: 500,
+				reverse: true
+			}); */
 			
+			var roomRoster = this.roomRoster;
+
+			if (!pnlRoom) {
+				//console.log("browse productDetailPanel this.render()")
+				 roomRoster = this.roomRoster = this.render({
+					xtype: 'RoomRosterView',
+				});
+	        }
+	        else {
+				//console.log("browse productDetailPanel Ext.apply()")
+	            Ext.apply(roomRoster);
+	        }
+
+	       // pnlRoom.doUpdate();
+
+	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster{type: 'slide', duration: 500});
+
 	},
 	
 	backToRoomList: function(){
