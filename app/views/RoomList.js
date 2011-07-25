@@ -17,9 +17,9 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			iconMask: true,
 			store: 'RoomListStore',
             itemTpl: '<div class="x-roster-user">' +
-					    //'<div class="x-user-picture">' +
-						// 	'<img src="data:image/jpg;base64,{photoBase64}" width="32" height="32" />' +
-					    // '</div>' +
+					    '<div class="x-user-picture">' +
+						 	'<img src="{thumb}" width="32" height="32" />' +
+					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{name}</b>' +
 					     '</div>' +
