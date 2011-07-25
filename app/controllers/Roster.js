@@ -295,12 +295,12 @@ Ext.regController('Roster', {
 		var room = options.room
 		console.log('openRoom = ' +room);
 		var pnlRoom = new LivingRoomAPI.views.RoomOneToOneChatSession({
-			jid: room.jid,
-			topic: room.topic,
+			jid: room.get('jid'),
+			topic: room.get('topic'),
 			jabberComponent: jabberClient
 		});
 		
-		jabberClient.joinPublicRoom(room);
+		jabberClient.joinPublicRoom(room.get('jid'));
 		
 		//Let's add the chat session panel
 		this.application.viewport.getComponent('pnlRoomList').add(pnlRoom);
