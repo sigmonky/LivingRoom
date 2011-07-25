@@ -323,7 +323,7 @@ Ext.regController('Roster', {
 			
 			var roomRoster = this.roomRoster;
 
-			if (!pnlRoom) {
+			if (!roomRoster) {
 				//console.log("browse productDetailPanel this.render()")
 				 roomRoster = this.roomRoster = this.render({
 					xtype: 'RoomRosterView',
