@@ -292,22 +292,28 @@ Ext.regController('Roster', {
 	},
 	
 	openRoom: function(options){
-			var roomRoster = this.roomRoster;
+		var room = options.room
 
-			if (!pnlRoom) {
-				//console.log("browse productDetailPanel this.render()")
-				 roomRoster = this.roomRoster = this.render({
-					xtype: 'RoomRosterView',
-				});
-	        }
-	        else {
-				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(roomRoster);
-	        }
+		var pnlRoom = this.pnlRoom;
+		
+		if (!pnlRoom) {
+			//console.log("browse productDetailPanel this.render()")
+			 pnlRoom = this.pnlRoom = this.render({
+				xtype: 'RoomChatSession',
+                jid: room.get('jid'),
+				id: room.get('jid'),
+				topic: room.get('topic'),
+				jabberComponent: jabberClient
+			});
+        }
+        else {
+			//console.log("browse productDetailPanel Ext.apply()")
+            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
+        }
 
-	       // pnlRoom.doUpdate();
+        pnlRoom.doUpdate();
 
-	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
+        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom,{type: 'slide', duration: 500});
 		
 	},
 	
