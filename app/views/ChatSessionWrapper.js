@@ -29,11 +29,12 @@ LivingRoomAPI.views.ChatSessionWrapper = Ext.extend(Ext.Panel, {
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
-			title: 'Room Topic',
+			title: this.topic,
 			layout: 'hbox',
 			items: [{
 				//Definition of logout button
 				ui: 'back',
+				text: 'Back',
 				iconMask: true,
 				scope: this,
 				handler: this.switchBack
