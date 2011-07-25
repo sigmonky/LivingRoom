@@ -317,7 +317,7 @@ Ext.regController('Roster', {
 	
 	backToRoomList: function(){
 		this.application.viewport.getComponent('pnlRoomList').setActiveItem(0, {
-			type: 'slide', 
+			type: 'slide', direction:'right',
 			duration: 500
 		});
 	},
