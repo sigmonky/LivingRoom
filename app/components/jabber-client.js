@@ -594,7 +594,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			facebook_id: fb_id,
 		}, 'RoomRosterItem');
 
-		console.log('joinRoomComplete room handlePresence roster add user jid ='+this.roomJid+'/'+me.nickname );
+		console.log('joinRoomComplete room handlePresence roster add user jid ='+me.roomJid+'/'+me.nickname );
 		
 		var store = Ext.StoreMgr.get('RoomRoster');
 		
