@@ -269,20 +269,7 @@ Ext.regController('Roster', {
 		
 	},
 	
-	showRoomParticipants:function(id){
-		
-		var roomRoster = new LivingRoomAPI.views.RoomRosterView({
-			id: id,
-			title: 'Roster'
-        });
 
-		this.application.viewport.getComponent('pnlRoomList').add(roomRoster);
-
-		this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {
-			type: 'slide', 
-			duration: 500
-		});	
-	},
 
 	
 	openRoom: function(options){
@@ -311,6 +298,28 @@ Ext.regController('Roster', {
 		
 	},
 	
+	showRoomParticipants:function(id){
+		
+
+		
+		var roomRoster = this.roomRoster;
+
+		if (!roomRoster) {
+				//console.log("browse productDetailPanel this.render()")
+				 roomRoster = this.roomRoster = this.render({
+					xtype: 'RoomRosterView',
+			});
+	     }
+	    else {
+				//console.log("browse productDetailPanel Ext.apply()")
+	           // Ext.apply(roomRoster);
+	    }
+
+	       // pnlRoom.doUpdate();
+
+	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
+
+	},
 	
 	showRoomRoster: function(options){
 		
