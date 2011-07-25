@@ -540,7 +540,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		if(identity.getAttribute('category') == 'conference'){
 			
 			//Let's call the function able to join the public room
-			me.joinPublicRoom();
+	//		me.joinPublicRoom();
 			
 		}else{
 			
@@ -551,11 +551,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 	},
 
-	joinPublicRoom: function(){
+	joinPublicRoom: function(publicRoomName){
 		
 		//Let's save tht full Room JID
-		this.roomJid = this.publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
-		console.log('roomJid = ' +this.roomJid);
+		this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
+		console.log('roomJid = ' +publicRoomName);
 		//Let's create the presence packet
 		var oPresence = new JSJaCPresence();
 		

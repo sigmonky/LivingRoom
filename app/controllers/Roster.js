@@ -299,6 +299,8 @@ Ext.regController('Roster', {
 			jabberComponent: jabberClient
 		});
 		
+		jabberClient.joinPublicRoom(room);
+		
 		//Let's add the chat session panel
 		this.application.viewport.getComponent('pnlRoomList').add(pnlRoom);
 		

@@ -30,7 +30,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 			scroll: 'vertical',
 			items: [
 				{
-
 							xtype: 'button',
 							text: 'Facebook Connect',
 							handler: this.facebookConnect,
