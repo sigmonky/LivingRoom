@@ -318,7 +318,7 @@ Ext.regController('Roster', {
 			type: 'slide', 
 			duration: 500
 		});
-	}
+	},
 	
 	addMessageToChatRoom: function(options){
 		
