@@ -29,8 +29,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	publicRoomName: '',
 	
-	roomRoster: undefined,
-	
 	conferenceSubdomain: '',
 	
 	authtype: 'sasl',
@@ -241,7 +239,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handlePresence: function(presence, me) {
-			
+
+			var roster = Ext.StoreMgr.get('RoomRoster');
 			//console.log('room handlePresence presense = ' +presence);
 			console.log('room handlePresence from' +from);
 			
@@ -289,7 +288,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				console.log('room handlePresence roster add = ' +from);
 				
 				//Adding the user to the store
-				this.roomRoster.add(item);
+				roster.add(item);
 			
 			//	roster.sync();
 				//Approve Subscription Request
@@ -549,24 +548,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	joinPublicRoom: function(publicRoomName){
 		
 		//Let's save tht full Room JID
-		// 
-		this.publicRoom.removeAll();
 		this.publicRoom = publicRoomName;
-		
-		Ext.regStore(this.publicRoom, {
-			model: 'RoomRosterItem',
-			autoLoad: true,
-			proxy: {
-				type: 'memory',
-				  	reader: {
-				    	type: 'json'
-				   	}
-				}
-			});
-			
-		this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
-		
-		
 		this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
 		console.log('roomJid = ' +this.roomJid);
 		//Let's create the presence packet
@@ -609,7 +591,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 		console.log('joinRoomComplete room handlePresence roster add user jid ='+me.roomJid+'/'+me.nickname );
 		
-		var store = Ext.StoreMgr.get(this.publicRoom);
+		var store = Ext.StoreMgr.get('RoomRoster');
 		
 		//Adding the user to the store
 		store.add(item);
