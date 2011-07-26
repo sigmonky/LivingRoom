@@ -305,9 +305,9 @@ Ext.regController('Roster', {
 	
 	showRoomParticipants:function(options){
 			
-		var roomRosterView = this.roomRoster;
+		var roomRosterView = this.roomRosterView;
 		
-		var key = options.roomName
+		var key = "cueca"
 		
 		this.roomRoster = Ext.StoreMgr.get(key);
 		
@@ -329,27 +329,9 @@ Ext.regController('Roster', {
 	           Ext.apply(roomRosterView, {key: key});
 	    }
 
-	    roomRoster.doUpdate();
+	    this.roomRosterView.doUpdate();
 
-	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRosterView, {type: 'slide', duration: 500});
-
-
-		if (!pnlRoom) {
-			//console.log("browse productDetailPanel this.render()")
-			 pnlRoom = this.pnlRoom = this.render({
-				xtype: 'RoomChatSession',
-                jid: room.get('jid'),
-				id: room.get('jid'),
-				topic: room.get('topic'),
-				jabberComponent: jabberClient
-			});
-        }
-        else {
-			//console.log("browse productDetailPanel Ext.apply()")
-            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
-        }
-
-
+	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(this.roomRosterView, {type: 'slide', duration: 500});
 
 	},
 	
