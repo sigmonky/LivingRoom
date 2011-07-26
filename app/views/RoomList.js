@@ -54,10 +54,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			jabberComponent: jabberClient
 		});
 
-		var roomRoster = new LivingRoomAPI.views.RoomRosterView({
-			id: 'roomRoster',
-			title: 'Roster'
-        });
+
 
 
 		Ext.apply(this,{
