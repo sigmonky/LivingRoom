@@ -194,10 +194,10 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
      */
 	updateStore: function(){
 		
-		var itemListGallery = Ext.getCmp('itemListGallery');
-        var newStore = Ext.StoreMgr.get(this.key);
-        itemListGallery.update();
-        itemListGallery.bindStore(newStore);
+	//	var itemListGallery = Ext.getCmp('itemListGallery');
+      //  var newStore = Ext.StoreMgr.get(this.key);
+      //  itemListGallery.update();
+       // itemListGallery.bindStore(newStore);
 
 	},
 
