@@ -584,6 +584,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		//this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
 		
+		console.log('publicRoomName '+publicRoomName);
 		
 		//Let's save tht full Room JID
 		this.publicRoom = publicRoomName;
