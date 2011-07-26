@@ -15,9 +15,9 @@ Ext.regController('Main', {
 	
 	showRoomRoster: function(){
 		
-		this.viewRoster = this.render({
-				xtype: 'RoomRosterView'
-			});
+	//	this.viewRoster = this.render({
+		///		xtype: 'RoomRosterView'
+		///	});
 
 		/*	this.viewConfig.query('#backButton')[0].on(
 				'tap',
