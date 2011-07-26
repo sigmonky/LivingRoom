@@ -12,6 +12,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	roomRoster: undefined, 
 	
+	key: undefined, 
+	
 	initComponent : function(){
 	
 		this.toolbar = new Ext.Toolbar({
@@ -90,8 +92,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             pnl.show();
         };
 
-console.log('Room Roster View '+key);
-		this.roomRoster = Ext.StoreMgr.get(key);
+console.log('Room Roster View '+this.key);
+		this.roomRoster = Ext.StoreMgr.get(this.key);
 		
 		
 		//Definition of the list that will contains all the users in the Roster
