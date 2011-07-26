@@ -371,6 +371,11 @@ Ext.regController('Roster', {
 			type: 'slide', direction:'right',
 			duration: 500
 		});
+		
+		//* Leave Room *//
+		jabberClient.leaveRoom();
+		
+		
 	},
 	
 	addMessageToChatRoom: function(options){

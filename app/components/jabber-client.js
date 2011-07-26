@@ -245,6 +245,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}
 	},
 	
+	leaveRoom: function(){
+		var oPresence = new JSJaCPresence();
+		oPresence.setType('unavailable');
+		oPresence.from(this.Jid);
+		oPresence.setType(this.roomJid);
+		
+		//oPresence.setShow(presence);
+		this.jabberConnection.send(oPresence);
+	},
+	
 	handlePresence: function(presence, me) {
 
 			var roster = Ext.StoreMgr.get(me.publicRoom);
