@@ -620,7 +620,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('joinRoomComplete myJID is ' + me.myJID);
 		console.log('joinRoomComplete fb_id is ' + fb_id);
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
-		console.log('joinRoomComplete me.roomJid ' + me.roomJid);
+		console.log('joinRoomComplete me.roomJid ' + this.roomJid);
 
 		var item = Ext.ModelMgr.create({
 		    jid: me.roomJid+'/'+me.nickname,
