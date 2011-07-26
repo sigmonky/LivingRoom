@@ -245,7 +245,7 @@ Ext.regController('Roster', {
 	addMessageToChatSession: function(options){
 		
 		//Let's take the store that will contains all the roster users
-		var store = Ext.StoreMgr.get('RoomRoster');
+		var store = Ext.StoreMgr.get('isaacueca');
 
 		//Let's take the chat user
 		var user = store.getById(options.from);
@@ -383,7 +383,7 @@ Ext.regController('Roster', {
 	addMessageToChatRoom: function(options){
 		
 		//Let's take the public chat room panel
-		var pnlChatRoom = this.application.viewport.getComponent(this.pnlRoom);
+		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
 		console.log('addMessageToChatRoom ='+this.pnlRoom );
 		//Let's finally add the chat message
 		pnlChatRoom.addChatRoomMessage(options.message, options.from);
