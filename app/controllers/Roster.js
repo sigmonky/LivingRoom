@@ -376,7 +376,7 @@ Ext.regController('Roster', {
 	addMessageToChatRoom: function(options){
 		
 		console.log('addMessageToChatRoom options.from '+ options.from);
-		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnl.name);
+		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnl);
 		
 		//Let's take the public chat room panel
 		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
