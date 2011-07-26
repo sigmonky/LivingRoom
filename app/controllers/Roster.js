@@ -382,7 +382,7 @@ Ext.regController('Roster', {
 		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
 		console.log('addMessageToChatRoom ='+this.pnlRoom );
 		//Let's finally add the chat message
-		pnlChatRoom.addChatRoomMessage(options.message, options.from);
+		this.pnlRoom.addChatRoomMessage(options.message, options.from);
 		
 	},
 	
