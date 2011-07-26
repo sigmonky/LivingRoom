@@ -546,11 +546,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}
 
 	},
-
+	
 	joinPublicRoom: function(publicRoomName){
+			
 		
-		this.roomRoster.removeAll();
+		Ext.StoreMgr.get(this.publicRoom).removeAll();
+		
 		this.publicRoom = publicRoomName;
+		
 		
 		Ext.regStore(this.publicRoom, {
 			model: 'RoomRosterItem',

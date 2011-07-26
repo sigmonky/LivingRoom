@@ -291,6 +291,8 @@ Ext.regController('Roster', {
         }
 
 		jabberClient.joinPublicRoom(room.get('jid'));
+		
+	//	this.roomRoster.removeAll();
 
 
         pnlRoom.doUpdate();
