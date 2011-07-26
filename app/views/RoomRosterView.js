@@ -87,12 +87,15 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             
             pnl.show();
         };
+
+		this.roomRoster = Ext.StoreMgr.get(jabberClient.roomRoster);
+		
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			title: 'All Friends',
 			iconCls: 'user',
 			iconMask: true,
-			store: jabberClient.roomRoster,
+			store: this.roomRoster,
             itemTpl: '<div class="x-roster-user">' +
 					    '<div class="x-user-picture">' +
 						'<img class="odd" src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>' +
