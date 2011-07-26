@@ -10,8 +10,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	id: undefined, 
 	
-	roomRoster: undefined, 
-	
 	initComponent : function(){
 	
 		this.toolbar = new Ext.Toolbar({
@@ -94,7 +92,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			title: 'All Friends',
 			iconCls: 'user',
 			iconMask: true,
-			store: jabberClient.roomRoster,
+			store: 'RoomRoster',
             itemTpl: '<div class="x-roster-user">' +
 					    '<div class="x-user-picture">' +
 						'<img class="odd" src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>' +
