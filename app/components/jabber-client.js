@@ -549,8 +549,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	joinPublicRoom: function(publicRoomName){
 			
-		
-		Ext.StoreMgr.get(this.publicRoom).removeAll();
+		if (Ext.StoreMgr.get(this.publicRoom) != undefined){
+			Ext.StoreMgr.get(this.publicRoom).removeAll();
+		}
 		
 		this.publicRoom = publicRoomName;
 		
