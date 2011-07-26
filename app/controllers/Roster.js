@@ -284,7 +284,7 @@ Ext.regController('Roster', {
         }
         else {
 			//console.log("browse productDetailPanel Ext.apply()")
-            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), name: room.get('name'), jabberComponent: jabberClient });
+            Ext.apply(this.pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), name: room.get('name'), jabberComponent: jabberClient });
         }
 
 		jabberClient.joinPublicRoom(room.get('jid'));
@@ -292,9 +292,9 @@ Ext.regController('Roster', {
 	//	this.roomRoster.removeAll();
 
 
-        pnlRoom.doUpdate();
+        this.pnlRoom.doUpdate();
 
-        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlRoom,{type: 'slide', duration: 500});
+        this.application.viewport.getComponent('pnlRoomList').setActiveItem(this.pnlRoom,{type: 'slide', duration: 500});
 		
 	},
 	
