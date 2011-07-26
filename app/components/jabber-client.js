@@ -564,9 +564,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster).removeAll();
 		}
 		
-		console.log('this.publicRoom  =' +this.publicRoom );
 		
-	//	this.publicRoom = publicRoomName;
+		this.publicRoom = publicRoomName;
+		console.log('this.publicRoom  =' +this.publicRoom );
 		
 		Ext.regStore(this.publicRoom, {
 			model: 'RoomRosterItem',
