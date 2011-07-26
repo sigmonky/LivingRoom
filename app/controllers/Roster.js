@@ -305,7 +305,7 @@ Ext.regController('Roster', {
 	
 	showRoomParticipants:function(options){
 			
-		var roomRoster = this.roomRoster;
+		var roomRosterView = this.roomRoster;
 		
 		var key = options.roomName
 		
@@ -317,21 +317,21 @@ Ext.regController('Roster', {
 		var that = this;
 		
 
-		if (!roomRoster) {
+		if (!roomRosterView) {
 				//console.log("browse productDetailPanel this.render()")
-				 roomRoster = this.roomRoster = this.render({
+				 roomRosterView = this.roomRosterView = this.render({
 					xtype: 'RoomRosterView',
 					roomRoster: that.roomRoster
 			});
 	     }
 	    else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	           Ext.apply(roomRoster, {roomRoster: this.roomRoster});
+	           Ext.apply(roomRosterView, {roomRoster: this.roomRoster});
 	    }
 
 	    roomRoster.doUpdate();
 
-	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
+	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRosterView, {type: 'slide', duration: 500});
 
 
 		if (!pnlRoom) {
