@@ -92,7 +92,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             pnl.show();
         };
 
-console.log('Room Roster View '+this.key);
+		console.log('Room Roster View '+this.key);
 		this.roomRoster = Ext.StoreMgr.get(this.key);
 		
 		

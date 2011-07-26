@@ -329,9 +329,9 @@ Ext.regController('Roster', {
 	           Ext.apply(roomRosterView, {key: key});
 	    }
 
-	    this.roomRosterView.doUpdate();
+	    roomRosterView.doUpdate();
 
-	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(this.roomRosterView, {type: 'slide', duration: 500});
+	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRosterView, {type: 'slide', duration: 500});
 
 	},
 	
