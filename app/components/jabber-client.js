@@ -565,7 +565,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}
 		
 		
-		Ext.regStore(this.publicRoom, {
+		Ext.regStore('cueca', {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
