@@ -211,7 +211,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			toolbar.setTitle(this.topic);
         }
 
-		this.items.clear();
+		var f;
+		while(f = test.items.first()){
+		test.remove(f, true);
+		}
 		this.doLayout();
     },
 
