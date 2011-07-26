@@ -55,8 +55,6 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 		});
 
 
-
-
 		Ext.apply(this,{
 		
 			fullscreen: true,
