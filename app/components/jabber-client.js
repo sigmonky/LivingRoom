@@ -263,6 +263,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			// 
 			var doc = createXMLDoc(presence.xml());
 		
+			console.log('handlePresence this.publicRoom type = '+type );
 		
 			var status = '';
 			var reason = '';
