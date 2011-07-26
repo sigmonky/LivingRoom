@@ -211,15 +211,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			toolbar.setTitle(this.topic);
         }
 
-		var record = this.getAt(0);
-		//console.log("record = "+record.raw.image);
-		
-		
-		//var newBody = record.data.body.replace(/<\/?[^>]+(>|$)/g, "");
-		var newBody = record.data.body.replace(/<[\/]{0,1}(ul|U|div|img)[^><]*>/g, "");
-		//var newBody = record.data.body.replace(<li[^>]*>(.*?)</li>, "")
-		record.data.body = newBody;
-		this.update(record.data);
+		this.items.clear();
+		this.doLayout();
     },
 
     /**
