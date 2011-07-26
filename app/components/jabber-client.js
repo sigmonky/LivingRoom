@@ -29,6 +29,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	publicRoomName: '',
 	
+	roomRoster: undefined,
+	
 	conferenceSubdomain: '',
 	
 	authtype: 'sasl',
@@ -240,7 +242,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 
-			var roster = Ext.StoreMgr.get('RoomRoster');
+			var roster = Ext.StoreMgr.get(this.roomRoster);
 			//console.log('room handlePresence presense = ' +presence);
 			console.log('room handlePresence from' +from);
 			
@@ -546,6 +548,23 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 
 	joinPublicRoom: function(publicRoomName){
+		
+		this.roomRoster.removeAll();
+		this.publicRoom = publicRoomName;
+		
+		Ext.regStore(this.publicRoom, {
+			model: 'RoomRosterItem',
+			autoLoad: true,
+			proxy: {
+				type: 'memory',
+				  	reader: {
+				    	type: 'json'
+				   	}
+				}
+			});
+			
+		this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
+		
 		
 		//Let's save tht full Room JID
 		this.publicRoom = publicRoomName;
