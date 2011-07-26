@@ -328,7 +328,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		console.log('1');
 		
-		var roster = Ext.StoreMgr.get(jabberClient.publicRoom);
+	//	var roster = Ext.StoreMgr.get(jabberClient.publicRoom);
 		
 		console.log('2');
 		
