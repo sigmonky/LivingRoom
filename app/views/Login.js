@@ -152,6 +152,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 											resource		   : '',
 											nickname		   : that.nickname,
 											username		   : that.username,
+											roomJid: '',
 											pass			   : this.password,
 											register		   : false,
 											publicRoom  	   : true,
