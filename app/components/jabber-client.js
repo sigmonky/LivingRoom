@@ -248,8 +248,12 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	leaveRoom: function(){
 		var oPresence = new JSJaCPresence();
 		oPresence.setType('unavailable');
-		oPresence.from(this.Jid);
+		oPresence.from(this.myJID);
 		oPresence.setType(this.roomJid);
+		
+		console.log('leave room .this.Jid '+this.myJID);
+		
+		console.log('leave room this.roomJid '+this.roomJid);
 		
 		//oPresence.setShow(presence);
 		this.jabberConnection.send(oPresence);
