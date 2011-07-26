@@ -564,8 +564,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster).removeAll();
 		}
 		
+		this.publicRoom = publicRoomName.replace(/^\s*/, '').replace(/\s*$/, ''); 
 		
-		Ext.regStore('cueca', {
+		console.log('this.publicRoom  =' +this.publicRoom );
+		
+		
+	//	this.publicRoom = publicRoomName;
+		
+		Ext.regStore(this.publicRoom, {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
@@ -582,7 +588,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('publicRoomName '+publicRoomName);
 		
 		//Let's save tht full Room JID
-		this.publicRoom = publicRoomName;
 		this.roomJid = this.publicRoom + "@" + this.conferenceSubdomain + '.' + this.domain;
 		console.log('roomJid = ' +this.roomJid);
 		
