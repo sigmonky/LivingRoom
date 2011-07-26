@@ -278,7 +278,7 @@ Ext.regController('Roster', {
                 jid: room.get('jid'),
 				id: room.get('jid'),
 				topic: room.get('topic'),
-				name: room.get('name'),
+				name: room.get('jid'),
 				jabberComponent: jabberClient
 			});
         }
