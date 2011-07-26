@@ -226,7 +226,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		var store = Ext.StoreMgr.get(jabberClient.publicRoom);
 		
-		console.log('store show Roster = '+store);
+		console.log('store show Roster = '+jabberClient.publicRoom);
 		
 		store.each(function (record) {
 		    console.log('record.nickname = '+record.get('nickname'));
