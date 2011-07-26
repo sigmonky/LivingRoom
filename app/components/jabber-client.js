@@ -556,7 +556,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		this.publicRoom = publicRoomName;
 		
 		
-		Ext.regStore(this.roomRoster, {
+		this.roomRoster = Ext.regStore(publicRoomName, {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
@@ -566,7 +566,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				   	}
 				}
 			});
-			
+		
+		
+		
+		
 		//this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
 		
 		

@@ -322,7 +322,7 @@ Ext.regController('Roster', {
 	     }
 	    else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	           Ext.apply(roomRoster, {roomRoster: this.roomRoster });
+	           Ext.apply(roomRoster, {roomRoster: this.roomRoster});
 	    }
 
 	    roomRoster.doUpdate();
