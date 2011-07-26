@@ -248,6 +248,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	handlePresence: function(presence, me) {
 
 			var roster = Ext.StoreMgr.get(this.publicRoom);
+			
+			console.log('handlePresence this.publicRoom'+this.publicRoom)
+			
 			//console.log('room handlePresence presense = ' +presence);
 			//console.log('room handlePresence from' +from);
 			
