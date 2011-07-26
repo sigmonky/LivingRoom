@@ -93,7 +93,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
         };
 
 		//this.roomRoster = jabberClient.publicRoom;
-		var store = Ext.StoreMgr.get(this.key);
+		this.store = Ext.StoreMgr.get(this.key);
         
 		
 		//Definition of the list that will contains all the users in the Roster
@@ -102,7 +102,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			iconCls: 'user',
 			id: 'itemListGallery',
 			iconMask: true,
-		//	store: store,
+			store: this.store,
             itemTpl: '<div class="x-roster-user">' +
 					    '<div class="x-user-picture">' +
 						'<img class="odd" src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>' +
@@ -196,8 +196,9 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		
 		var itemListGallery = Ext.getCmp('itemListGallery');
         var newStore = Ext.StoreMgr.get(this.key);
+		this.store = newStore;
         itemListGallery.update();
-        itemListGallery.bindStore(newStore);
+        itemListGallery.bindStore(this.store);
 
 	},
 
