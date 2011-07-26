@@ -102,7 +102,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			iconCls: 'user',
 			id: 'itemListGallery',
 			iconMask: true,
-			store: store,
+		//	store: store,
             itemTpl: '<div class="x-roster-user">' +
 					    '<div class="x-user-picture">' +
 						'<img class="odd" src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32"/>' +
@@ -194,10 +194,10 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
      */
 	updateStore: function(){
 		
-	//	var itemListGallery = Ext.getCmp('itemListGallery');
-      //  var newStore = Ext.StoreMgr.get(this.key);
-      //  itemListGallery.update();
-       // itemListGallery.bindStore(newStore);
+		var itemListGallery = Ext.getCmp('itemListGallery');
+        var newStore = Ext.StoreMgr.get(this.key);
+        itemListGallery.update();
+        itemListGallery.bindStore(newStore);
 
 	},
 
