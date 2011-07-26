@@ -326,17 +326,17 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		console.log('addChatRoomMessage from= '+from);
 		
 		
-		console.log('1');
-		
+	//	console.log('1');
+	//	
 		var roster = Ext.StoreMgr.get(jabberClient.publicRoom);
 		
-		console.log('2');
+	//	console.log('2');
 		
-		//user = roster.getById(from);
-		//var photo = user.get('facebook_id');
+		user = roster.getById(from);
+		var photo = user.get('facebook_id');
 		var photo = null;
-	//	console.log('photo ='+photo);
-		console.log('3');
+		console.log('photo ='+photo);
+//		console.log('3');
 		
 		
 		var html;
