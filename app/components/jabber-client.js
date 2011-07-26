@@ -15,7 +15,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 	username: '',
 	
-	roomJid: undefined, 
+	roomJid: 'a', 
 	
 	nickname: '',
 	
