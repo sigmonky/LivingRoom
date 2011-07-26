@@ -25,13 +25,13 @@ Ext.regController('Main', {
 				this
 			);
 		*/
-		this.application.viewport.setActiveItem(
+	/*	this.application.viewport.setActiveItem(
 			this.viewRoster,
 			{
 				type: 'flip',
 				duration: '400'
 			}
-		);
+		); */
 	}
 
 });
