@@ -114,7 +114,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			p.setFrom(this.myJID);
 
 			//Set the room jid
-			p.setTo(this.roomJid + '/' + this.nickname);
+			p.setTo(roomJid + '/' + this.nickname);
 
 		}
 		
@@ -149,7 +149,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		console.log('sendRoomMessage this.myJID'+this.myJID);
 		
-		console.log('sendRoomMessage this.roomJid '+this.roomJid);
+		console.log('sendRoomMessage roomJid '+roomJid);
 		
 		//Create a new data packet
 		var p = new JSJaCPacket('message');
@@ -158,7 +158,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		p.setFrom(this.myJID);
 		
 		//Set the room jid
-		p.setTo(this.roomJid);
+		p.setTo(roomJid);
 		
 		//Set the message type
 		p.setType('groupchat');
@@ -584,8 +584,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//Let's save tht full Room JID
 		this.publicRoom = publicRoomName;
 		roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
-		this.roomJid = roomJid;
-		console.log('roomJid = ' +this.roomJid);
+
+		console.log('roomJid = ' +roomJid);
 		
 		//Let's create the presence packet
 		var oPresence = new JSJaCPresence();
@@ -594,7 +594,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		oPresence.setFrom(new JSJaCJID(this.myJID));
 		
 		//Set the packet recipient
-		oPresence.setTo(new JSJaCJID(this.roomJid  + '/' + this.nickname));
+		oPresence.setTo(new JSJaCJID(roomJid  + '/' + this.nickname));
 		
 		//Set the precence type
 		//oPresence.setShow('available');
