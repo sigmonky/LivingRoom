@@ -282,12 +282,13 @@ Ext.regController('Roster', {
                 jid: room.get('jid'),
 				id: room.get('jid'),
 				topic: room.get('topic'),
+				name: room.get('name'),
 				jabberComponent: jabberClient
 			});
         }
         else {
 			//console.log("browse productDetailPanel Ext.apply()")
-            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
+            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), name: room.get('name'), jabberComponent: jabberClient });
         }
 
 		jabberClient.joinPublicRoom(room.get('jid'));
@@ -302,15 +303,16 @@ Ext.regController('Roster', {
 		
 	},
 	
-	showRoomParticipants:function(){
+	showRoomParticipants:function(options){
 			
 		var roomRoster = this.roomRoster;
 		
-		console.log('Room Roster View =jabberClient.roomRoster '+jabberClient.roomRoster)
+		var key = options.roomName
 		
-		console.log('Room Roster View =jabberClient publicRoom '+jabberClient.getPublicRoomName)
+		this.roomRoster = Ext.StoreMgr.get(key);
 		
-		this.roomRoster = Ext.StoreMgr.get(jabberClient.roomRoster);
+		console.log('Room Roster View =key '+key)
+		
 		
 		var that = this;
 		

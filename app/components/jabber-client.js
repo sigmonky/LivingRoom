@@ -548,7 +548,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	getPublicRoomName: function(){
-		return eval(this.publicRoom);
+		return this.publicRoom;
 	},
 	
 	joinPublicRoom: function(publicRoomName){
