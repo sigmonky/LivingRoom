@@ -146,6 +146,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	
 		console.log('sendRoomMessage '+message);
+		
+		console.log('sendRoomMessage this.myJID'+this.myJID);
+		
+		console.log('sendRoomMessage this.roomJid '+this.roomJid);
+		
 		//Create a new data packet
 		var p = new JSJaCPacket('message');
 		
