@@ -247,7 +247,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 
-			var roster = Ext.StoreMgr.get("cueca");
+			var roster = Ext.StoreMgr.get(this.publicRoom);
 			//console.log('room handlePresence presense = ' +presence);
 			//console.log('room handlePresence from' +from);
 			
@@ -564,10 +564,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster).removeAll();
 		}
 		
-		this.publicRoom = publicRoomName.replace(/^\s*/, '').replace(/\s*$/, ''); 
-		
 		console.log('this.publicRoom  =' +this.publicRoom );
-		
 		
 	//	this.publicRoom = publicRoomName;
 		
@@ -632,7 +629,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 		console.log('joinRoomComplete room handlePresence roster add user jid ='+me.roomJid+'/'+me.nickname );
 		
-		var store = Ext.StoreMgr.get('cueca');
+		var store = Ext.StoreMgr.get(this.publicRoom);
 		
 		//Adding the user to the store
 		store.add(item);

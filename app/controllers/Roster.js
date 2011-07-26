@@ -302,7 +302,7 @@ Ext.regController('Roster', {
 			
 		var roomRosterView = this.roomRosterView;
 		
-		var key = "cueca"
+		var key = jabberClient.publicRoom;
 		
 		this.roomRoster = Ext.StoreMgr.get(key);
 		
