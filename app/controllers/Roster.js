@@ -22,7 +22,6 @@ Ext.regController('Roster', {
 	},
 
 	
-	
 	showFriends: function(){
 
 			//Let's show the attenders Panel
