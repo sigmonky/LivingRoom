@@ -89,8 +89,10 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
             
             pnl.show();
         };
-		
 
+console.log('Room Roster View '+key);
+		this.roomRoster = Ext.StoreMgr.get(key);
+		
 		
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({

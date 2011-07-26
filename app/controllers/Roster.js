@@ -321,12 +321,12 @@ Ext.regController('Roster', {
 				//console.log("browse productDetailPanel this.render()")
 				 roomRosterView = this.roomRosterView = this.render({
 					xtype: 'RoomRosterView',
-					roomRoster: that.roomRoster
+					roomRoster: key
 			});
 	     }
 	    else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	           Ext.apply(roomRosterView, {roomRoster: this.roomRoster});
+	           Ext.apply(roomRosterView, {roomRoster: key});
 	    }
 
 	    roomRoster.doUpdate();
