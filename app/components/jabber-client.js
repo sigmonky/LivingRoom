@@ -557,10 +557,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster).removeAll();
 		}
 		
-		this.publicRoom = publicRoomName;
+		this.publicRoom = "cueca";
 		
 		
-		this.roomRoster = Ext.regStore(publicRoomName, {
+		
+		Ext.regStore(publicRoomName, {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
