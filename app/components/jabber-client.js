@@ -622,7 +622,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 		console.log('joinRoomComplete room handlePresence roster add user jid ='+me.roomJid+'/'+me.nickname );
 		
-		var store = Ext.StoreMgr.get('RoomRoster');
+		var store = Ext.StoreMgr.get('cueca');
 		
 		//Adding the user to the store
 		store.add(item);
