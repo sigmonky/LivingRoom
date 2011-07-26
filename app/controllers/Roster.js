@@ -291,6 +291,7 @@ Ext.regController('Roster', {
         }
 
 		jabberClient.joinPublicRoom(room.get('jid'));
+		jabberClient.joinPublicRoom();
 		
 	//	this.roomRoster.removeAll();
 
@@ -301,24 +302,50 @@ Ext.regController('Roster', {
 		
 	},
 	
-	showRoomParticipants:function(id){
+	showRoomParticipants:function(){
 			
 		var roomRoster = this.roomRoster;
+
+		console.log('Room Roster View =jabberClient.roomRoster '+jabberClient.roomRoster)
+		
+		this.roomRoster = Ext.StoreMgr.get(jabberClient.roomRoster);
+		
+		var that = this;
+		
 
 		if (!roomRoster) {
 				//console.log("browse productDetailPanel this.render()")
 				 roomRoster = this.roomRoster = this.render({
 					xtype: 'RoomRosterView',
+					roomRoster: that.roomRoster
 			});
 	     }
 	    else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	           Ext.apply(roomRoster);
+	           Ext.apply(roomRoster, {roomRoster: this.roomRoster });
 	    }
 
 	    roomRoster.doUpdate();
 
 	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRoster, {type: 'slide', duration: 500});
+
+
+		if (!pnlRoom) {
+			//console.log("browse productDetailPanel this.render()")
+			 pnlRoom = this.pnlRoom = this.render({
+				xtype: 'RoomChatSession',
+                jid: room.get('jid'),
+				id: room.get('jid'),
+				topic: room.get('topic'),
+				jabberComponent: jabberClient
+			});
+        }
+        else {
+			//console.log("browse productDetailPanel Ext.apply()")
+            Ext.apply(pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), jabberComponent: jabberClient });
+        }
+
+
 
 	},
 	
