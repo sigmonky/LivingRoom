@@ -305,8 +305,10 @@ Ext.regController('Roster', {
 	showRoomParticipants:function(){
 			
 		var roomRoster = this.roomRoster;
-
+		
 		console.log('Room Roster View =jabberClient.roomRoster '+jabberClient.roomRoster)
+		
+		console.log('Room Roster View =jabberClient publicRoom '+jabberClient.publicRoom)
 		
 		this.roomRoster = Ext.StoreMgr.get(jabberClient.roomRoster);
 		
