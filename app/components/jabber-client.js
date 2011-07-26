@@ -580,7 +580,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				    	type: 'json'
 				   	}
 				}
-			});
+		});
 		
 		
 		//this.roomRoster = Ext.StoreMgr.get(this.publicRoom);

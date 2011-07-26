@@ -308,9 +308,7 @@ Ext.regController('Roster', {
 		
 		console.log('Room Roster View =key '+key)
 		
-		
 		var that = this;
-		
 
 		if (!roomRosterView) {
 				//console.log("browse productDetailPanel this.render()")
