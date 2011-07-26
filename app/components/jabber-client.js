@@ -246,17 +246,26 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	leaveRoom: function(){
-		var oPresence = new JSJaCPresence();
-		oPresence.setType('unavailable');
-		oPresence.from(this.myJID);
-		oPresence.setType(this.roomJid);
 		
-		console.log('leave room .this.Jid '+this.myJID);
+		var p = new JSJaCPresence();
 		
-		console.log('leave room this.roomJid '+this.roomJid);
+		//Let's set the presence type
+		p.setType("unavailable");
+
+		//Let's check if this component is talking with a blublic chat room
+		if(this.publicRoom){
+
+			//Set the message from with my JID
+			p.setFrom(this.myJID);
+
+			//Set the room jid
+			p.setTo(this.roomJid + '/' + this.nickname);
+
+		}
 		
-		//oPresence.setShow(presence);
-		this.jabberConnection.send(oPresence);
+		//Let's finally send the presence packety
+		this.jabberConnection.send(p);
+
 	},
 	
 	handlePresence: function(presence, me) {
