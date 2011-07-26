@@ -242,7 +242,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 
-			var roster = Ext.StoreMgr.get(this.roomRoster);
+			var roster = Ext.StoreMgr.get("cueca");
 			//console.log('room handlePresence presense = ' +presence);
 			console.log('room handlePresence from' +from);
 			
