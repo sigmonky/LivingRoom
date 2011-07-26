@@ -281,6 +281,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var nickname = from.split('/')[1];
 			
 			if(type == null) {
+				console.log('type is null');
 		
 				//Adding the user to the Online Users store
 				var item = Ext.ModelMgr.create({
@@ -296,7 +297,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					message: nickname+ ' has joined the room.'
 				}); */
 				
-				console.log('room handlePresence roster add = ' +from);
+				console.log('handlePresence roster add = ' +from);
 				
 				//Adding the user to the store
 				roster.add(item);
