@@ -549,14 +549,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	joinPublicRoom: function(publicRoomName){
 			
-		if (Ext.StoreMgr.get(this.publicRoom) != undefined){
-			Ext.StoreMgr.get(this.publicRoom).removeAll();
+		if (Ext.StoreMgr.get(this.roomRoster) != undefined){
+			Ext.StoreMgr.get(this.roomRoster).removeAll();
 		}
 		
 		this.publicRoom = publicRoomName;
 		
 		
-		Ext.regStore(this.publicRoom, {
+		Ext.regStore(this.roomRoster, {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
@@ -567,7 +567,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}
 			});
 			
-		this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
+		//this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
 		
 		
 		//Let's save tht full Room JID
