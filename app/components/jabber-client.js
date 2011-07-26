@@ -378,7 +378,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			
 			//We have got a groupchat message
 			case 'groupchat':
-
+				
+				console.log('handlePacketIn user from = '+from);
+				
 				//Let's create the xml document
 				doc = createXMLDoc(packet.xml());
 				//Let's take the message body

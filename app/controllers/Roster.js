@@ -233,14 +233,7 @@ Ext.regController('Roster', {
 		
 	},
 	
-	addRoomAnnouncement: function(options){
-		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
-		console.log('addRoomAnnouncement options.message = '+options.message)
-		//Let's finally add the chat message
-		pnlChatRoom.addRoomAnnouncement(options.message);
 
-	},
-	
 	
 	addMessageToChatSession: function(options){
 		
@@ -274,6 +267,9 @@ Ext.regController('Roster', {
 		var room = options.room
 
 		var pnlRoom = this.pnlRoom;
+		
+		
+		console.log('open room '+ room.get('jid'));
 		
 		if (!pnlRoom) {
 			//console.log("browse productDetailPanel this.render()")
@@ -382,13 +378,24 @@ Ext.regController('Roster', {
 	
 	addMessageToChatRoom: function(options){
 		
+		console.log('addMessageToChatRoom options.from '+ options.from);
+		
 		//Let's take the public chat room panel
 		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
 		console.log('addMessageToChatRoom ='+this.pnlRoom );
 		//Let's finally add the chat message
 		pnlChatRoom.addChatRoomMessage(options.message, options.from);
 		
+	},
+	
+	addRoomAnnouncement: function(options){
+		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
+		console.log('addRoomAnnouncement options.message = '+options.message)
+		//Let's finally add the chat message
+		pnlChatRoom.addRoomAnnouncement(options.message);
+
 	}
+	
 
 
 });
