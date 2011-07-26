@@ -384,7 +384,7 @@ Ext.regController('Roster', {
 		
 		//Let's take the public chat room panel
 		var pnlChatRoom = this.application.viewport.getComponent(this.pnlRoom);
-		console.log('addMessageToChatRoom')
+		console.log('addMessageToChatRoom ='+this.pnlRoom );
 		//Let's finally add the chat message
 		pnlChatRoom.addChatRoomMessage(options.message, options.from);
 		
