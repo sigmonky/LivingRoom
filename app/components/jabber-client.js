@@ -15,8 +15,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 	username: '',
 	
-	roomJid: 'a', 
-	
 	nickname: '',
 	
 	resource: '',
@@ -566,9 +564,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster).removeAll();
 		}
 		
-		this.publicRoom = "cueca";
-		
-		
 		
 		Ext.regStore(this.publicRoom, {
 			model: 'RoomRosterItem',
@@ -588,7 +583,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		//Let's save tht full Room JID
 		this.publicRoom = publicRoomName;
-		this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
+		roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
+		this.roomJid = roomJid;
 		console.log('roomJid = ' +this.roomJid);
 		
 		//Let's create the presence packet
