@@ -272,7 +272,7 @@ Ext.regController('Roster', {
 		var pnlRoom = this.pnlRoom;
 		
 		
-		var store = Ext.StoreMgr.get(options.room+'message');
+		var store = Ext.StoreMgr.get(room.get('jid')+'message');
 		
 		console.log('open room '+ room.get('jid'));
 		
