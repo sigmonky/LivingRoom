@@ -290,7 +290,7 @@ Ext.regController('Roster', {
 			nickname: '',
 			facebook_id: '',
 			time: '',
-			message:'',
+			message:'aaaaa',
 		}, 'ChatMessage');
 	
 	
