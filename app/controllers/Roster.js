@@ -268,9 +268,11 @@ Ext.regController('Roster', {
 
 		var pnlRoom = this.pnlRoom;
 		
-		console.log('open room = '+ room.get('jid'));
+		var roomStoreMessageName = room.get('jid')+'message';
 		
-		Ext.regStore(room.get('jid')+'message', {
+		console.log('open room roomStoreMessageName = '+ roomStoreMessageName);
+		
+		Ext.regStore(roomStoreMessageName, {
 			model: 'ChatMessage',
 			autoLoad: true,
 			proxy: {
@@ -281,7 +283,8 @@ Ext.regController('Roster', {
 			}
 		});
 		
-		var store = Ext.StoreMgr.get(room.get('jid')+'message');
+		
+		var store = Ext.StoreMgr.get(roomStoreMessageName);
 		
 		console.log('open room store = '+ store);
 		
@@ -409,7 +412,7 @@ Ext.regController('Roster', {
 	addMessageToChatRoom: function(options){
 		
 		console.log('addMessageToChatRoom options.from '+ options.from);
-		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnl);
+		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnlRoom);
 		
 		var key = jabberClient.publicRoom;
 		console.log('addMessageToChatRoom key '+ key);
