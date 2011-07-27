@@ -299,7 +299,7 @@ Ext.regController('Roster', {
 	
 		store.add(message);
 		
-		var roomStoreMsg = Ext.StoreMgr.get(this.name+'message');
+		var roomStoreMsg = Ext.StoreMgr.get(roomStoreMessageName);
 		console.log('Room Chat session store msg -' +this.store)
 		
 		if (!pnlRoom) {
