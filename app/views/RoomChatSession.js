@@ -109,7 +109,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			'<tpl for=".">',
 				'<div class="bubbledLeft">',
 							'<div class="bubbleimg" style="background:url(https://graph.facebook.com/{photo}/picture)" /></div>',
-									'{time}<br/>',
+								//	'{time}<br/>',
 									'{message}',
 				'</div>',
 			'</tpl>'
@@ -132,7 +132,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				//'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
 				
 				'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
-									'{time}<br/>',
+								//	'{time}<br/>',
 									'{message}',
 				'</div>',
 			'</tpl>'
