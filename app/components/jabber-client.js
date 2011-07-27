@@ -471,7 +471,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var iqID = iq.getID();
 			
 			//Let's take the store that will contains all the roster users
-			var store = Ext.StoreMgr.get('RoomRoster');
+			var store = Ext.StoreMgr.get(me.publicRoom);
 		
 			//Let's take all the iq informations
 			var from = iq.getFrom();
