@@ -122,6 +122,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
+		this.addEventListener();
 	
 	},
 	
