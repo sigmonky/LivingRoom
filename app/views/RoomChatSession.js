@@ -82,18 +82,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		this.tplMineFacebookMessage = new Ext.XTemplate(
 			'<tpl for=".">',
-				'<div class="x-chat-message">',
-					'<table style="float: {align};">',
-						'<tr>',
-							'<td class="message">',
+				'<div class="bubbledLeft">',
 							'<img class="odd" src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
 								'<div class="message" style="background-color: {color};">',
 									'{time}<br/>',
 									'{message}',
 								'</div>',
-							'</td>',
-						'</tr>',
-					'</table>',		
 				'</div>',
 			'</tpl>'
 		);
