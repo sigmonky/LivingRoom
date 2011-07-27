@@ -48,12 +48,6 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			}
         });
 
-		pnlPublicChatRoom = new LivingRoomAPI.views.RoomChatSession({
-			id: 'test1',
-			isChatRoom: true,
-			jabberComponent: jabberClient
-		});
-
 
 		Ext.apply(this,{
 		
