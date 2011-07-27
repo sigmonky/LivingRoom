@@ -119,10 +119,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.tplPublicAnnouncement = new Ext.XTemplate(
 			'<tpl for=".">',
 				'<div class="announcementLeft">',
-					'<img class="bubbleimg" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
-								'<div class="message" style="background-color: {color};">',
+				'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
 									'{message}',
-								'</div>',
 				'</div>',
 			'</tpl>'
 		);
