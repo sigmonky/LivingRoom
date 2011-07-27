@@ -329,7 +329,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		var photo = user.get('facebook_id');
 		
 	//	var photo = null;
-	//	console.log('photo ='+photo);
+		console.log('photo ='+photo);
 		console.log('3');
 		
 		
