@@ -171,7 +171,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				this.toolbar
 
 			],
-			
+		/*	
 			items: [
 				{
 					xtype: 'list',
@@ -195,7 +195,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					scroll: 'vertical'
 
 				}
-			]
+			] */
 		});
 
 		//Superclass inizialization
