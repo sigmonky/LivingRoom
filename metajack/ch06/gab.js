@@ -37,6 +37,7 @@ var Gab = {
         var ptype = $(presence).attr('type');
         var from = $(presence).attr('from');
         var jid_id = Gab.jid_to_id(from);
+		console.log('onpresence = '+from);
 
         if (ptype === 'subscribe') {
             // populate pending_subscriber, the approve-jid span, and
