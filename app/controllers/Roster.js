@@ -284,7 +284,7 @@ Ext.regController('Roster', {
 		});
 		
 		
-		var store = Ext.StoreMgr.get(roomStoreMessageName);
+		var store = Ext.StoreMgr.get('cueca');
 		
 		console.log('open room store = '+ store);
 		
