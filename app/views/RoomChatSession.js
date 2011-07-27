@@ -94,18 +94,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		this.tplEmptyFacebookMessage = new Ext.XTemplate(
 			'<tpl for=".">',
-				'<div class="x-chat-message">',
-					'<table style="float: {align};">',
-						'<tr>',
-							'<td class="message">',
-							'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
+				'<div class="bubbledLeft">',
+					'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
 								'<div class="message" style="background-color: {color};">',
 									'{time}<br/>',
 									'{message}',
 								'</div>',
-							'</td>',
-						'</tr>',
-					'</table>',		
 				'</div>',
 			'</tpl>'
 		);
@@ -113,12 +107,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//Definition of the message coming from the public chat room
 		this.tplPublicMessage = new Ext.XTemplate(
 			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-				//	'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
-					'<img src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
+				'<div class="bubbledLeft">',
+							'<img class="odd" src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
+								'<div class="message" style="background-color: {color};">',
+									'{time}<br/>',
+									'{message}',
+								'</div>',
 				'</div>',
 			'</tpl>'
 		);
@@ -135,11 +129,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		this.tplPublicMessageNoPhoto = new Ext.XTemplate(
 			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-					'<img src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
+				'<div class="bubbledLeft">',
+					'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
+								'<div class="message" style="background-color: {color};">',
+									'{time}<br/>',
+									'{message}',
+								'</div>',
 				'</div>',
 			'</tpl>'
 		);
