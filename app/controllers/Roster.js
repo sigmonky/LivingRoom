@@ -269,7 +269,22 @@ Ext.regController('Roster', {
 		var pnlRoom = this.pnlRoom;
 		
 		
+		var store = Ext.StoreMgr.get(options.room+'message');
+		
 		console.log('open room '+ room.get('jid'));
+		
+		var message = Ext.ModelMgr.create({
+	    	jid: '',
+			nickname: '',
+			facebook_id: '',
+			time: '',
+			message:'',
+		}, 'ChatMessage');
+	
+	
+		store.add(message);
+		
+		
 		
 		if (!pnlRoom) {
 			//console.log("browse productDetailPanel this.render()")

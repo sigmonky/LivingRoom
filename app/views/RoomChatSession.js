@@ -64,16 +64,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		
 
-		var message = Ext.ModelMgr.create({
-	    	jid: '',
-			nickname: '',
-			facebook_id: '',
-			time: '',
-			message:'',
-		}, 'ChatMessage');
-	
-	
-		this.store.add(message);
+
 
 		console.log('Room Chat session -' +this.name+'message')
 
