@@ -411,6 +411,7 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnl);
 		
 		var key = jabberClient.publicRoom;
+		console.log('addMessageToChatRoom key '+ key);
 		
 		//Let's take the public chat room panel
 		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
