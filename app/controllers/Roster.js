@@ -380,7 +380,7 @@ Ext.regController('Roster', {
 	
 	addMessageToChatRoom: function(options){
 		
-		console.log('addMessageToChatRoom options.from '+ options.from);
+	/*	console.log('addMessageToChatRoom options.from '+ options.from);
 		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnl);
 		
 		var key = jabberClient.publicRoom;
@@ -416,7 +416,7 @@ Ext.regController('Roster', {
 	
 	
 		var chatStore = Ext.StoreMgr.get(key+'message');
-		chatStore.add(message);
+		chatStore.add(message); */
 		
 	},
 	
