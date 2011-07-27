@@ -58,10 +58,22 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		});
 		
 		console.log('room jid -' +this.jid)
+
+		
+		this.store = Ext.StoreMgr.get(this.name+'message');
+		
 		
 
-
-		this.store = Ext.StoreMgr.get(this.name+'message');
+		var message = Ext.ModelMgr.create({
+	    	jid: '',
+			nickname: '',
+			facebook_id: '',
+			time: '',
+			message:'',
+		}, 'ChatMessage');
+	
+	
+		this.store.add(message);
 
 		console.log('Room Chat session -' +this.name+'message')
 
