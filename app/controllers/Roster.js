@@ -296,7 +296,8 @@ Ext.regController('Roster', {
 	
 		store.add(message);
 		
-		
+		var roomStoreMsg = Ext.StoreMgr.get(this.name+'message');
+		console.log('Room Chat session store msg -' +this.store)
 		
 		if (!pnlRoom) {
 			//console.log("browse productDetailPanel this.render()")
@@ -306,6 +307,7 @@ Ext.regController('Roster', {
 				id: room.get('jid'),
 				topic: room.get('topic'),
 				name: room.get('jid'),
+				store: roomStoreMsg,
 				jabberComponent: jabberClient
 			});
         }
