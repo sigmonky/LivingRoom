@@ -284,7 +284,7 @@ Ext.regController('Roster', {
         }
         else {
 			//console.log("browse productDetailPanel Ext.apply()")
-            Ext.apply(this.pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), name: room.get('name'), jabberComponent: jabberClient });
+            Ext.apply(this.pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), name: room.get('jid'), jabberComponent: jabberClient });
         }
 
 		jabberClient.joinPublicRoom(room.get('jid'));
