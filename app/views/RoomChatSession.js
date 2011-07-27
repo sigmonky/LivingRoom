@@ -326,11 +326,15 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		console.log('roster ='+roster);
 		
 		user = roster.getById(from);
+		
+		console.log('addChatRoomMessage from ='+from);
+		
+		console.log('addChatRoomMessage user ='+user);
+		
 		var photo = user.get('facebook_id');
 		
 	//	var photo = null;
-		console.log('photo ='+photo);
-		console.log('3');
+		console.log('addChatRoomMessage photo ='+photo);
 		
 		
 		var html;
