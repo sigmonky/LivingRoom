@@ -272,7 +272,7 @@ Ext.regController('Roster', {
 		
 		console.log('open room roomStoreMessageName = '+ roomStoreMessageName);
 		
-		Ext.regStore(roomStoreMessageName, {
+		Ext.regStore('cueca', {
 			model: 'ChatMessage',
 			autoLoad: true,
 			proxy: {
