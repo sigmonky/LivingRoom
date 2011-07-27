@@ -383,11 +383,40 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom options.from '+ options.from);
 		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnl);
 		
+		var key = jabberClient.publicRoom;
+		
 		//Let's take the public chat room panel
 		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
 		console.log('addMessageToChatRoom ='+this.pnlRoom );
 		//Let's finally add the chat message
-		this.pnlRoom.addChatRoomMessage(options.message, options.from);
+	//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
+	
+		var roster = Ext.StoreMgr.get(key);
+	
+		console.log('addMessageToChatRoom roster ='+roster);
+	
+		var user = roster.getById(options.from);
+	
+		console.log('addMessageToChatRoom from ='+from);
+	
+		console.log('addMessageToChatRoom user ='+user);
+	
+		var photo = user.get('facebook_id');
+		
+		console.log('addMessageToChatRoom facebook_id ='+photo);
+	
+	
+		var message = Ext.ModelMgr.create({
+	    	jid: options.from,
+			nickname: options.nickname,
+			facebook_id: photo,
+			time: '',
+			message:options.from,
+		}, 'ChatMessage');
+	
+	
+		var chatStore = Ext.StoreMgr.get(key+'message');
+		chatStore.add(message);
 		
 	},
 	

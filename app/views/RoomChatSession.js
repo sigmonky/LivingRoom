@@ -138,6 +138,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			'</tpl>'
 		);
 
+
+		this.store = Ext.StoreMgr.get(this.name+'message');
+
 		Ext.apply(this,{
 		
 			scroll: 'vertical',
@@ -167,12 +170,58 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			},
 				this.toolbar
 
+			],
+			
+			items: [
+				{
+					xtype: 'list',
+					itemId: 'chatList',
+					itemTpl : new Ext.XTemplate(
+						'<tpl if="xindex % 2 === 0">',
+						'<tpl for=".">',
+							'<div class="bubbledLeft">',
+										'<div class="bubbleimg" style="background:url(https://graph.facebook.com/{facebook_id}/picture)" /></div>',
+										'{message}',
+							'</div>',
+						'</tpl>'
+						'</tpl>',
+						'<tpl if="xindex % 2 === 1">',
+							'<div class="bubbledLeft">',
+									'<div class="bubbleimg" style="background:url(https://graph.facebook.com/{facebook_id}/picture)" /></div>',
+									'{message}',
+							'</div>',
+						'</tpl>'
+					),
+					store: this.store,
+					scroll: 'vertical'
+
+				}
 			]
 		});
 
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
 	
+	},
+	
+	/**
+	 * Add custom event listener
+	 */
+	addEventListener: function() {
+		this.store.on(
+			'datachanged',
+			this.scrollToBottom,
+			this
+		);
+	},
+
+	/**
+	 * Scroll to the button of the list
+	 */
+	scrollToBottom: function(){
+		var list = this.getComponent('chatList');
+		list.scroller.updateBoundary();
+		list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
 	},
 	
 	/**

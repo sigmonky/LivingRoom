@@ -439,7 +439,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				    controller: 'Roster',
 				    action: 'addMessageToChatRoom',
 					from: from,
-					message: body
+					message: body,
+					nickname: nickname
 				});
 			
 				break;
@@ -594,6 +595,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster).removeAll();
 		}
 		
+		if (Ext.StoreMgr.get(this.roomRoster+'message') != undefined){
+			Ext.StoreMgr.get(this.roomRoster+'message').removeAll();
+		}
 		
 		this.publicRoom = publicRoomName;
 		console.log('this.publicRoom  =' +this.publicRoom );
@@ -607,6 +611,17 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				    	type: 'json'
 				   	}
 				}
+		});
+
+		Ext.regStore(this.publicRoom+'message', {
+			model: 'ChatMessage',
+			autoLoad: true,
+			proxy: {
+				type: 'memory',
+			   	reader: {
+			    	type: 'json'
+			   	}
+			}
 		});
 		
 		
