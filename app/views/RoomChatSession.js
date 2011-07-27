@@ -182,19 +182,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		console.log("productGalleryPanel doUpdate()");
 		console.log('room jid -' +this.jid)
 		
-		var scroller = this.scroller;
-		
-		console.log(scroller);
-		
-		var offset = scroller.getOffset();
-		
-		console.log(offset);
-		
-		var newOffset = new Ext.util.Offset(offset.x, (offset.y - height));
-		
-		
-		this.scroller.setOffset(0, true);
-		
         this.updateToolbar();
       //  this.updateStore();
     },
