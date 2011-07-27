@@ -447,7 +447,7 @@ Ext.regController('Roster', {
 		}, 'ChatMessage');
 	
 	
-		var chatStore = Ext.StoreMgr.get(key+'message');
+		var chatStore = Ext.StoreMgr.get('cueca');
 		chatStore.add(message); 
 		
 	},
