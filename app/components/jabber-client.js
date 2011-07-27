@@ -314,12 +314,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}, 'RoomRosterItem');
 				
 				
-			/*	Ext.dispatch({
+				Ext.dispatch({
 				    controller: 'Roster',
 				    action: 'addRoomAnnouncement',
 					message: nickname+ ' has joined the room.'
-				}); */
+				}); 
 				
+				console.log('handlePresence roster add = ' +from);
 				console.log('handlePresence roster add = ' +from);
 				
 				//Adding the user to the store
@@ -491,6 +492,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//console.log('user nickname 3- ' + vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue);
 			
 			var facebook_id  = vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue;
+			console.log('Room - handleIq  facebook_id = ' +facebook_id)
 		
 			//user.set('jid', from);
 			user.set('facebook_id', facebook_id);
