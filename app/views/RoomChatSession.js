@@ -60,7 +60,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		console.log('room jid -' +this.jid)
 
 		
-		this.store = Ext.StoreMgr.get(this.name+'message');
+	
 		
 		
 
@@ -145,6 +145,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	 * Scroll to the button of the list
 	 */
 	scrollToBottom: function(){
+		console.log('scrollToBottom');
 		var list = this.getComponent('chatList');
 		list.scroller.updateBoundary();
 		list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
