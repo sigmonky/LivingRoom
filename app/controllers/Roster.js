@@ -443,7 +443,7 @@ Ext.regController('Roster', {
 			nickname: options.nickname,
 			facebook_id: photo,
 			time: '',
-			message:options.from,
+			message:options.message,
 		}, 'ChatMessage');
 	
 	
