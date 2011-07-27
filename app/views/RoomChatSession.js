@@ -129,6 +129,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			'<tpl for=".">',
 				'<div class="bubbledLeft">',
 				//'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
+				
 				'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
 									'{time}<br/>',
 									'{message}',
@@ -322,11 +323,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		var roster = Ext.StoreMgr.get(this.name);
 		
-		console.log('2');
+		console.log('roster ='+roster);
 		
-	//	user = roster.getById(from);
-	//	var photo = user.get('facebook_id');
-		var photo = null;
+		user = roster.getById(from);
+		var photo = user.get('facebook_id');
+		
+	//	var photo = null;
 	//	console.log('photo ='+photo);
 		console.log('3');
 		
