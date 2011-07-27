@@ -266,8 +266,23 @@ Ext.regController('Roster', {
 	openRoom: function(options){
 		
 		
-		var room = options.room
+		var room = options.room;
+		
 		jabberClient.joinPublicRoom(room.get('jid'));
+		
+		
+		
+		Ext.regStore(room.get('jid')+'message', {
+			model: 'ChatMessage',
+			autoLoad: true,
+			proxy: {
+				type: 'memory',
+			   	reader: {
+			    	type: 'json'
+			   	}
+			}
+		});
+		
 		
 		var pnlRoom = this.pnlRoom;
 		

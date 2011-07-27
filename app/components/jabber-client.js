@@ -613,16 +613,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}
 		});
 
-		Ext.regStore(this.publicRoom+'message', {
-			model: 'ChatMessage',
-			autoLoad: true,
-			proxy: {
-				type: 'memory',
-			   	reader: {
-			    	type: 'json'
-			   	}
-			}
-		});
 		
 		
 		//this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
