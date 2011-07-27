@@ -59,84 +59,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		console.log('room jid -' +this.jid)
 		
-		
-		/* Definition of the template that will be used to show a direct 
-		 * message coming from Facebook chat */
-		this.tplFacebookMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-chat-message">',
-					'<table style="float: {align};">',
-						'<tr>',
-							'<td class="message">',
-							'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
-								'<div class="message" style="background-color: {color};">',
-									'{time}<br/>',
-									'{message}',
-								'</div>',
-							'</td>',
-						'</tr>',
-					'</table>',		
-				'</div>',
-			'</tpl>'
-		);
-		
-		this.tplMineFacebookMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="bubbledLeft">',
-							'<img class="odd" src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
-								'<div class="message" style="background-color: {color};">',
-									'{time}<br/>',
-									'{message}',
-								'</div>',
-				'</div>',
-			'</tpl>'
-		);
-		
-		this.tplEmptyFacebookMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="bubbledLeft">',
-					'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
-								'<div class="message" style="background-color: {color};">',
-									'{time}<br/>',
-									'{message}',
-								'</div>',
-				'</div>',
-			'</tpl>'
-		);
-		
-		//Definition of the message coming from the public chat room
-		this.tplPublicMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="bubbledLeft">',
-							'<div class="bubbleimg" style="background:url(https://graph.facebook.com/{photo}/picture)" /></div>',
-								//	'{time}<br/>',
-									'{message}',
-				'</div>',
-			'</tpl>'
-		);
-		
-		
-		this.tplPublicAnnouncement = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="announcementLeft">',
-				'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
-									'{message}',
-				'</div>',
-			'</tpl>'
-		);
-		
-		
-		this.tplPublicMessageNoPhoto = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="bubbledLeft">',
-				//'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
-				
-				'<div class="bubbleimg" style="background:url(http://www.logoslogic.com/chat/LivingRoom/user_default.gif)" /></div>',
-								//	'{time}<br/>',
-									'{message}',
-				'</div>',
-			'</tpl>'
-		);
 
 
 		this.store = Ext.StoreMgr.get(this.name+'message');
@@ -171,11 +93,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				this.toolbar
 
 			],
-		/*	
+		
 			items: [
 				{
 					xtype: 'list',
-					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
 						'<tpl for=".">',
@@ -195,7 +116,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					scroll: 'vertical'
 
 				}
-			] */
+			] 
 		});
 
 		//Superclass inizialization
