@@ -1,7 +1,7 @@
 3.1.1 (Brainy Betty)
-d49a184908aa60ad94460ba4b9e27272ef89b590
+ee69e8e84aad96f2233ca6825417e405a37e6a9d
 o:Sass::Tree::RootNode
-:@template"Ö)// 1. Variable overrides, example:
+:@template"×)// 1. Variable overrides, example:
 $theme: 'LivingRoom';
 $base-color: #006898;
 
@@ -325,7 +325,7 @@ img.x-menupanel-icon-mask.check1
 
 }
 
-.bubbledLeft,.bubbledRight, announcementLeft{
+.bubbledLeft,.bubbledRight, .announcementLeft{
 	position: relative;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -579,7 +579,7 @@ right;@U;	i<;);*o;(	;"top;@U;	i<;);*;1;2;@U;	i<o;-
 ;.{ ;"	from;@U;	i<;/[o;	;{	;iÅ;i;iÌ;iÔ;0;@U;	i<o;-
 ;.{ ;"color-stop;@U;	i<;/[o:Sass::Script::Number:@original"71%:@denominator_units[ ;iL;@U;	i<:@numerator_units["%o;	;{	;iÅ;i;iÌ;iÔ;0;@U;	i<o;-
 ;.{ ;"color-stop;@U;	i<;/[o;3;4"72%;5[ ;iM;@U;	i<;6["%o;	;{	;iË;i;iÒ;iØ;0;@U;	i<o;-
-;.{ ;"to;@U;	i<;/[o;	;{	;iË;i;iÒ;iØ;0;@U;	i<;["background;@;	i<;[ ;+i ;,T;+i o;;["".x-form-fieldset-instructions;o;; " ;	i?;![o;";![o;#; @‰;	i?;![o;$; @‰;["!x-form-fieldset-instructions;	i?;@;	i?;[o;%;&;';o;(;"	bold;);*;["font-weight;@;	i@;[ ;+i ;,T;+i o;%;&["1.bubbledLeft,.bubbledRight, announcementLeft;'o;(;)" ;iE;*[o;+;*[o;,;)@ß;iE;*[o;-;)@ß;["bubbledLeft;iEo;+;*[o;,;)@ß;iE;*[o;-;)@ß;["bubbledRight;iEo;+;*[o;,;)@ß;iE;*[o;D	;)@ß;["announcementLeft;iE;E0;@;iE;[	o;.;/;0;o;;"relative;;$;["position;@;iF;[ ;1i o;.;/;0;o;;"5px;;$;["margin-top;@;iG;[ ;1i o;.;/;0;o;;"5px;;$;["margin-bottom;@;iH;[ ;1i o;.;/;0;o;;"80%;;$;["max-width;@;iI;[ ;1i ;2T;1i o;%;&[".bubbledLeft;'o;(;)" ;iL;*[o;+;*[o;,;)@;iL;*[o;-;)@;["bubbledLeft;iL;@;iL;[	o;.;/;0;o;;"	auto;;$;["margin-right;@;iM;[ ;1i o;.;/;0;o;;"	56px;;$;["margin-left;@;iN;[ ;1i o;.;/;0;o;;"4px 10px 4px 15px;;$;["padding;@;iO;[ ;1i o;;"#/*position within the border*/;@;iO;0;[ ;[ ;0;2T;1i o;%;&[".bubbledLeft:before;'o;(;)" ;iS;*[o;+;*[o;,;)@7;iS;*[o;-;)@7;["bubbledLeft;iSo;F
+;.{ ;"to;@U;	i<;/[o;	;{	;iË;i;iÒ;iØ;0;@U;	i<;["background;@;	i<;[ ;+i ;,T;+i o;;["".x-form-fieldset-instructions;o;; " ;	i?;![o;";![o;#; @‰;	i?;![o;$; @‰;["!x-form-fieldset-instructions;	i?;@;	i?;[o;%;&;';o;(;"	bold;);*;["font-weight;@;	i@;[ ;+i ;,T;+i o;%;&["2.bubbledLeft,.bubbledRight, .announcementLeft;'o;(;)" ;iE;*[o;+;*[o;,;)@ß;iE;*[o;-;)@ß;["bubbledLeft;iEo;+;*[o;,;)@ß;iE;*[o;-;)@ß;["bubbledRight;iEo;+;*[o;,;)@ß;iE;*[o;-;)@ß;["announcementLeft;iE;@;iE;[	o;.;/;0;o;;"relative;;$;["position;@;iF;[ ;1i o;.;/;0;o;;"5px;;$;["margin-top;@;iG;[ ;1i o;.;/;0;o;;"5px;;$;["margin-bottom;@;iH;[ ;1i o;.;/;0;o;;"80%;;$;["max-width;@;iI;[ ;1i ;2T;1i o;%;&[".bubbledLeft;'o;(;)" ;iL;*[o;+;*[o;,;)@;iL;*[o;-;)@;["bubbledLeft;iL;@;iL;[	o;.;/;0;o;;"	auto;;$;["margin-right;@;iM;[ ;1i o;.;/;0;o;;"	56px;;$;["margin-left;@;iN;[ ;1i o;.;/;0;o;;"4px 10px 4px 15px;;$;["padding;@;iO;[ ;1i o;;"#/*position within the border*/;@;iO;0;[ ;[ ;0;2T;1i o;%;&[".bubbledLeft:before;'o;(;)" ;iS;*[o;+;*[o;,;)@7;iS;*[o;-;)@7;["bubbledLeft;iSo;F
 ;)@7;["before;iS;G0;;H;@;iS;[o;.;/;0;o;>;?"-1;@@°;iú;{ ;iT;A[ ;["z-index;@;iT;[ ;1i o;.;/;0;o;;"absolute;;$;["position;@;iU;[ ;1i o;.;/;0;o;;"0px;;$;["top;@;iV;[ ;1i o;.;/;0;o;;"0px;;$;["
 right;@;iW;[ ;1i o;.;/;0;o;;"0px;;$;["bottom;@;iX;[ ;1i o;.;/;0;o;;"0px;;$;["	left;@;iY;[ ;1i o;.;/;0;o;;""";;$;["content;@;iZ;[ ;1i o;.;/;0;o;;"8px 10px 8px 17px;;$;["border-width;@;i[;[ ;1i o;.;/;0;o;I	;[o;8
 ;"{ ;"theme_image;{ ;i\;#[o;6	;7"theme_name;"theme-name;@|;i\o;	;"%bubbles/speech_bubble_left_2.png;@|;i\;;o;>;?"8;@@°;i;@|;i\;A[ o;>;?"10;@@°;i;@|;i\;A[ o;>;?"8;@@°;i;@|;i\;A[ o;>;?"17;@@°;i;@|;i\;A[ o;	;"stretch;@|;i\;;$o;	;"stretch;@|;i\;;$;J;K;@|;i\;["border-image;@;i\;[ ;1i o;.;/;0;o;I	;[o;8
