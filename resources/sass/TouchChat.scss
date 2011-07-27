@@ -336,6 +336,13 @@ img.x-menupanel-icon-mask.check1
 
 }
 
+.announcementLeft{
+	margin-right: auto;
+	margin-left: 56px;
+	padding: 4px 10px 4px 15px; /*position within the border*/
+
+}
+
 .bubbledLeft:before{
 	z-index: -1;
 	position: absolute;
