@@ -63,6 +63,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 		this.store = Ext.StoreMgr.get(this.name+'message');
 
+		console.log('Room Chat session -' +this.name+'message')
+
 		Ext.apply(this,{
 		
 			scroll: 'vertical',
@@ -97,6 +99,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			items: [
 				{
 					xtype: 'list',
+					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
 						'<tpl for=".">',
