@@ -354,7 +354,7 @@ img.x-menupanel-icon-mask.check1
 	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
 }
 
-.bubbledLeft:after{
+.bubbleimg{
 	z-index: -1;
 	position: absolute;
 	left: -36px;
@@ -363,7 +363,7 @@ img.x-menupanel-icon-mask.check1
 	height: 32px;
 	content:"";
 
-	background-image: url(left_chatter.png);
+	/*background-image: url(left_chatter.png); */
 	background-size: 32px 32px;
 	background-position: bottom left;
 
