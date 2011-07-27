@@ -322,7 +322,7 @@ img.x-menupanel-icon-mask.check1
 
 }
 
-.bubbledLeft,.bubbledRight{
+.bubbledLeft,.bubbledRight, announcementLeft{
 	position: relative;
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -344,13 +344,30 @@ img.x-menupanel-icon-mask.check1
 	bottom: 0px;
 	left: 0px;
 	content: "";
-
 	border-width: 8px 10px 8px 17px; 
 	border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
 	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
 	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
 	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
 }
+
+.announcementLeft:before{
+	z-index: -1;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	content: "";
+	border-width: 8px 10px 8px 17px; 
+	border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+}
+
+
+
 
 .bubbleimg{
 	z-index: -1;
