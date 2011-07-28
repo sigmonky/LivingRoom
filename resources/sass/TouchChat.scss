@@ -454,4 +454,20 @@ border-radius: 3px;
 	-webkit-border-radius: 3px;	
 }
 
+.messageList{
+border-top: 1px solid #FFF;
+color: black;
+display: -webkit-box;
+min-height: 2.6em;
+padding: 0.5em 0.8em;
+position: relative;
+}
 
+.x-list .x-list-item{
+border-top: 1px solid #FFF;
+color: black;
+display: -webkit-box;
+min-height: 2.6em;
+padding: 0.5em 0.8em;
+position: relative;
+}

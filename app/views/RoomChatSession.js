@@ -146,6 +146,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				{
 					xtype: 'list',
 					itemId: 'chatList',
+					cls: 'messageList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
 							'<div class="bubbledRight">',
