@@ -427,17 +427,17 @@ Ext.regController('Roster', {
 	
 		console.log('addMessageToChatRoom roster ='+roster);
 	
-	//	var user = roster.getById(options.from);
+		var user = roster.getById(options.from);
 	
-	//	console.log('addMessageToChatRoom from ='+from);
+		console.log('addMessageToChatRoom from ='+from);
 	
-	//	console.log('addMessageToChatRoom user ='+user);
+		console.log('addMessageToChatRoom user ='+user);
 	
-		if (user.get('facebook_id')){var photo = user.get('facebook_id') }else{var photo = ''}
-	//	var photo  = '';
+	//	if (user.get('facebook_id')){var photo = user.get('facebook_id') }else{var photo = ''}
+		var photo  = '';
 	//	console.log('addMessageToChatRoom facebook_id ='+photo);
 	
-	
+		
 		var message = Ext.ModelMgr.create({
 	    	jid: options.from,
 			nickname: options.nickname,
