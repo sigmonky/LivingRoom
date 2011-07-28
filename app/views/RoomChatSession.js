@@ -289,7 +289,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.store = newStore;
         chatList.update();
         chatList.bindStore(this.store);
-		this.scrollToBottom();
 	},
 	
 	showRoster: function(){
