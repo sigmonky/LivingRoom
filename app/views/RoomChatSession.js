@@ -63,31 +63,54 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.store = Ext.StoreMgr.get('cueca');
 		console.log('Room Chat session store msg -' +this.store)
 
+
+
 		Ext.apply(this,{
 		
 			dockedItems: [
 			{
-				//Definition of the message panel
-				xtype: 'panel',
-				itemId: 'pnlMessage',
+				xtype: 'toolbar',
 				dock: 'bottom',
-				layout: 'hbox',
-				defaults: {
-					height: 80
-				},
-				items: [{
-					xtype: 'textareafield',
-					itemId: 'message',
-					width: '70%'
-				},{
-					xtype: 'button',
-					ui: 'action',
-					dock: 'right',
-					text: 'Send',
-					width: '30%',
-					handler: this.sendMessage,
-					scope: this
-				}]
+				itemId: 'msgToolbar',
+				layout: 'fit',
+				items: [
+					{
+						xtype: 'textfield',
+						width: '96%',
+						listeners: {
+							blur: function(field){
+								Ext.Viewport.scrollToTop();
+								//Ext.Viewport.updateBodySize();
+								App.fireEvent('newMsg', field.getValue());
+								field.reset();
+
+								//field.focus();
+							}
+						}
+					},
+					{
+						//Definition of the message panel
+						xtype: 'panel',
+						itemId: 'pnlMessage',
+						dock: 'bottom',
+						layout: 'hbox',
+						defaults: {
+							height: 80
+						},
+						items: [{
+							xtype: 'textareafield',
+							itemId: 'message',
+							width: '70%'
+						},{
+							xtype: 'button',
+							ui: 'action',
+							dock: 'right',
+							text: 'Send',
+							width: '30%',
+							handler: this.sendMessage,
+							scope: this
+						},
+				]
 			},
 				this.toolbar
 
