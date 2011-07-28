@@ -428,7 +428,7 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom roster ='+roster);
 		console.log('addMessageToChatRoom from ='+from);
 	
-		if (roster.getById(options.from))!= undefined){
+		if (roster.getById(options.from)!= undefined){
 			var user = roster.getById(options.from);
 		};
 	
