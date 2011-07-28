@@ -133,7 +133,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 								ui: 'action',
 								dock: 'right',
 								text: 'Send',
-								width: '30%',
+								width: '25%',
 								handler: this.sendMessage,
 								scope: this
 							}
