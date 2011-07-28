@@ -153,7 +153,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		console.log('room jid -' +this.jid)
 		
         this.updateToolbar();
-      //  this.updateStore();
+       this.updateStore();
     },
 
     /**
