@@ -269,11 +269,11 @@ Ext.regController('Roster', {
 
 		var pnlRoom = this.pnlRoom;
 		
-		var roomStoreMessageName = room.get('jid')+'message';
+		var roomStoreMessageName = room.get('jid')+'_message';
 		
 		console.log('open room roomStoreMessageName = '+ roomStoreMessageName);
 		
-		Ext.regStore('cueca', {
+		Ext.regStore(roomStoreMessageName, {
 			model: 'ChatMessage',
 			autoLoad: true,
 			proxy: {
@@ -285,7 +285,7 @@ Ext.regController('Roster', {
 		});
 		
 		
-		var store = Ext.StoreMgr.get('cueca');
+		var storeRoomMsg = Ext.StoreMgr.get(roomStoreMessageName);
 		
 		console.log('open room store = '+ store);
 		
@@ -298,16 +298,16 @@ Ext.regController('Roster', {
 		}, 'ChatMessage');
 	
 	
-		store.add(message);
+		storeRoomMsg.add(message);
 		
-		var roomStoreMsg = Ext.StoreMgr.get(roomStoreMessageName);
-		console.log('Room Chat session store msg -' +this.store)
+		console.log('Room Chat session store msg -' +this.storeRoomMsg)
 		
 		if (!pnlRoom) {
 			//console.log("browse productDetailPanel this.render()")
 			 pnlRoom = this.pnlRoom = this.render({
 				xtype: 'RoomChatSession',
                 jid: room.get('jid'),
+				store: storeRoomMsg;
 				id: room.get('jid'),
 				topic: room.get('topic'),
 				name: room.get('jid'),
