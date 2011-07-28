@@ -208,7 +208,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	sendMessage: function(message){
 		
 		//Let's take the written message
-		var message = this.getDockedComponent('pnlMessage').getComponent('message');
+		var message = this.getDockedComponent('msgToolbar').getComponent('message');
 
 			
 		//Send the message to all the room participants
