@@ -99,7 +99,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
-							'<div class="bubbledLeft">',
+							'<div class="bubbledRight">',
 							'<div class="bubbleimg" style="background:url({photo_url})" /></div>',
 									'{message}',
 							'</div>',
