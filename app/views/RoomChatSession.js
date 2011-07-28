@@ -245,7 +245,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	addChatMessage: function(message, from, mine){
 		var html;
 		
-		if (from == null){
+	/*	if (from == null){
 			html = this.tplMineFacebookMessage.apply({
 				photo: this.getMyFacebooKProfilePhoto(),
 				time: this.getTime(),
@@ -280,7 +280,17 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		});
 		
 		this.add(pnlMsg);
-		this.doLayout();
+		this.doLayout(); */
+		
+		var message = Ext.ModelMgr.create({
+	    	jid: from,
+			nickname: jabberClient.nickname,
+			facebook_id: this.getMyFacebooKProfilePhoto(),
+			time: '',
+			message:message,
+		}, 'ChatMessage');
+	
+		this.store.add(message);
 
 	},
 	
