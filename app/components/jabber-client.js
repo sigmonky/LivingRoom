@@ -326,7 +326,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				//Adding the user to the store
 				roster.add(item);
 			
-			//	roster.sync();
+				roster.sync();
 				//Approve Subscription Request
 				var aPresence = new JSJaCPresence();
 				aPresence.setTo(from);
