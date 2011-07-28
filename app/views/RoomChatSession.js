@@ -69,26 +69,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 			dockedItems: [
 			{
-				xtype: 'toolbar',
-				dock: 'bottom',
-				itemId: 'msgToolbar',
-				layout: 'fit',
-				items: [
-					{
-						xtype: 'textfield',
-						width: '96%',
-						listeners: {
-							blur: function(field){
-								Ext.Viewport.scrollToTop();
-								//Ext.Viewport.updateBodySize();
-								App.fireEvent('newMsg', field.getValue());
-								field.reset();
-
-								//field.focus();
-							}
-						},
-					},
-					{
+				{
+					xtype: 'toolbar',
+					dock: 'bottom',
+					itemId: 'msgToolbar',
+					layout: 'fit',
+					items: [{
 						//Definition of the message panel
 						xtype: 'panel',
 						itemId: 'pnlMessage',
@@ -108,10 +94,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							text: 'Send',
 							width: '30%',
 							handler: this.sendMessage,
-							scope: this
-					},
-					
-				],
+								scope: this
+								}]
+						},
+					]},
 				this.toolbar
 
 			],
