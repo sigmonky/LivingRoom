@@ -434,8 +434,8 @@ Ext.regController('Roster', {
 	
 		console.log('addMessageToChatRoom user ='+user);
 	
-		var photo = user.get('facebook_id');
-	//	var photo  = '';
+	//	var photo = user.get('facebook_id');
+		var photo  = '';
 	//	console.log('addMessageToChatRoom facebook_id ='+photo);
 	
 	
