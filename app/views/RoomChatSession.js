@@ -100,12 +100,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
-						'	<img class="odd" src="http://www.gravatar.com/avatar/{facebookphoto}?s=28&d=mm" />',
-						'	<p class="triangle-right left"><span class="nickname">{username}:</span> {message}</p>',
+						'	<img class="odd" src="http://www.gravatar.com/avatar/facebookphoto?s=28&d=mm" />',
+						'	<p class="triangle-right left"><span class="nickname">username:</span> {message}</p>',
 						'</tpl>',
 						'<tpl if="xindex % 2 === 1">',
-						'	<p class="triangle-right right"><span class="nickname">{username}:</span> {message}</p>',
-						'	<img class="even" src="http://www.gravatar.com/avatar/{facebookphoto}?s=28&d=mm" />',
+						'	<p class="triangle-right right"><span class="nickname">username:</span> {message}</p>',
+						'	<img class="even" src="http://www.gravatar.com/avatar/facebookphoto?s=28&d=mm" />',
 						'</tpl>'
 					),
 					store: this.store,
