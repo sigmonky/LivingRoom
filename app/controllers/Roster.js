@@ -426,12 +426,14 @@ Ext.regController('Roster', {
 		var roster = Ext.StoreMgr.get(key);
 	
 		console.log('addMessageToChatRoom roster ='+roster);
-	
-		var user = roster.getById(options.from);
-	
 		console.log('addMessageToChatRoom from ='+from);
 	
-		console.log('addMessageToChatRoom user ='+user);
+		if (roster.getById(options.from))!= undefined{
+			var user = roster.getById(options.from);
+		};
+	
+	
+	//	console.log('addMessageToChatRoom user ='+user);
 	
 	//	if (user.get('facebook_id')){var photo = user.get('facebook_id') }else{var photo = ''}
 		var photo  = '';
