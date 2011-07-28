@@ -307,7 +307,7 @@ Ext.regController('Roster', {
 			 pnlRoom = this.pnlRoom = this.render({
 				xtype: 'RoomChatSession',
                 jid: room.get('jid'),
-				store: storeRoomMsg;
+				store: storeRoomMsg,
 				id: room.get('jid'),
 				topic: room.get('topic'),
 				name: room.get('jid'),
