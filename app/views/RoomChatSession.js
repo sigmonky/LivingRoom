@@ -64,57 +64,26 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.store = Ext.StoreMgr.get('cueca');
 		console.log('Room Chat session store msg -' +this.store)
 
-		Ext.apply(this,{
-		
-			scroll: 'vertical',
-			dockedItems: [
-			{
-				//Definition of the message panel
-				xtype: 'panel',
-				itemId: 'pnlMessage',
-				dock: 'bottom',
-				layout: 'hbox',
-				defaults: {
-					height: 80
-				},
-				items: [{
-					xtype: 'textareafield',
-					itemId: 'message',
-					width: '70%'
-				},{
-					xtype: 'button',
-					ui: 'action',
-					dock: 'right',
-					text: 'Send',
-					width: '30%',
-					handler: this.sendMessage,
-					scope: this
-				}]
-			},
-				this.toolbar
-
-			],
-		
+		var config = {
+			layout: 'fit',
 			items: [
 				{
 					xtype: 'list',
 					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
-						'	<img class="odd" src="http://www.gravatar.com/avatar/facebookphoto?s=28&d=mm" />',
 						'	<p class="triangle-right left"><span class="nickname">username:</span> {message}</p>',
 						'</tpl>',
 						'<tpl if="xindex % 2 === 1">',
 						'	<p class="triangle-right right"><span class="nickname">username:</span> {message}</p>',
-						'	<img class="even" src="http://www.gravatar.com/avatar/facebookphoto?s=28&d=mm" />',
 						'</tpl>'
 					),
 					store: this.store,
 					scroll: 'vertical'
-
 				}
-			] 
-		});
+			]
+		};
+		Ext.apply(this, config);
 
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
