@@ -311,8 +311,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				    jid: from,
 					nickname: nickname,
 					facebook_id: '',
+					profile_thumb_url: '',
 				}, 'RoomRosterItem');
-				
 				
 				roster.add(item);
 				
@@ -499,7 +499,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('Room - handleIq  facebook_id = ' +facebook_id)
 		
 			//user.set('jid', from);
-			user.set('facebook_id', facebook_id);
+			if (facebook_id != null){
+				var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+				user.set('facebook_id', facebook_id);
+				user.set('profile_thumb_url', photo_url);
+				
+			}else{
+				var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+				user.set('profile_thumb_url', photo_url);
+				
+			}
 		//	user.set('nickname', nickname);
 
 
@@ -659,10 +668,18 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
 		console.log('joinRoomComplete me.roomJid ' + me.roomJid);
 
+
+		if (fb_id != null){
+			var photo_url = "https://graph.facebook.com/"+fb_id+"/picture";
+		}else{
+			var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+		}
+
 		var item = Ext.ModelMgr.create({
 		    jid: me.roomJid+'/'+me.nickname,
 			nickname: me.nickname,
 			facebook_id: fb_id,
+			profile_thumb_url: photo_url,
 		}, 'RoomRosterItem');
 
 		console.log('joinRoomComplete room handlePresence roster add user jid ='+me.roomJid+'/'+me.nickname );
