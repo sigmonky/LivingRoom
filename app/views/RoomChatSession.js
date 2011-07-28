@@ -72,7 +72,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				xtype: 'panel',
 				itemId: 'pnlMessage',
 				dock: 'bottom',
-				layout: 'hbox',
+				layout: 'fit',
 				defaults: {
 					height: 80
 				},
