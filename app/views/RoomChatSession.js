@@ -31,8 +31,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
 		
-		this.toolbar2 = new Ext.Toolbar({
-			itemId: 'toolbar',
+		this.toolbar = new Ext.Toolbar({
+			itemId: 'toolbar2',
 			dock: 'top',
 			title: this.topic,
 			layout: 'hbox',
@@ -164,7 +164,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
     updateToolbar: function() {
 		////console.log('state.listType ='+Marika.util.state.listType);
         // update toolbar's title
-        var toolbar = this.down('toolbar2');
+        var toolbar = this.getComponent('toolbar2');
         if (toolbar) {
 			toolbar.setTitle(this.topic);
         }
