@@ -100,14 +100,14 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
 							'<div class="bubbledLeft">',
-							'<div class="bubbleimg" style="background:url(https://graph.facebook.com/{photo}/picture)" /></div>',
+							'<div class="bubbleimg" style="background:url({photo_url})" /></div>',
 									'{message}',
 							'</div>',
 						
 						'</tpl>',
 						'<tpl if="xindex % 2 === 1">',
 							'<div class="bubbledLeft">',
-							'<div class="bubbleimg" style="background:url(https://graph.facebook.com/{photo}/picture)" /></div>',
+							'<div class="bubbleimg" style="background:url({photo_url})" /></div>',
 											'{message}',
 							'</div>',
 						'</tpl>'

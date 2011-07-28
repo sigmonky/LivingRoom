@@ -435,16 +435,17 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom user ='+user);
 		if (user != null){
 			var photo = user.get('facebook_id');
+			var photo_url = "https://graph.facebook.com/"+photo+"/picture";
 		}else{
-			var photo  = '';
+			var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
 		}
-		console.log('addMessageToChatRoom facebook_id ='+photo);
+		console.log('addMessageToChatRoom facebook_id ='+photo_url);
 	
 	
 		var message = Ext.ModelMgr.create({
 	    	jid: options.from,
 			nickname: options.nickname,
-			facebook_id: photo,
+			photo_url: photo_url,
 			time: '',
 			message:options.message,
 		}, 'ChatMessage');
