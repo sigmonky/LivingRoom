@@ -317,11 +317,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				roster.add(item);
 				
 				
-				Ext.dispatch({
+		/*		Ext.dispatch({
 				    controller: 'Roster',
 				    action: 'addRoomAnnouncement',
 					message: nickname+ ' has joined the room.'
-				}); 
+				}); */
 				
 				console.log('handlePresence roster add = ' +nickname);
 				console.log('handlePresence roster add = ' +from);
