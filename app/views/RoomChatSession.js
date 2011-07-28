@@ -83,21 +83,24 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 						defaults: {
 							height: 80
 						},
-						items: [{
-							xtype: 'textareafield',
-							itemId: 'message',
-							width: '70%'
-						},{
-							xtype: 'button',
-							ui: 'action',
-							dock: 'right',
-							text: 'Send',
-							width: '30%',
-							handler: this.sendMessage,
+						items: [
+							{
+								xtype: 'textareafield',
+								itemId: 'message',
+								width: '70%'
+							},
+							{
+								xtype: 'button',
+								ui: 'action',
+								dock: 'right',
+								text: 'Send',
+								width: '30%',
+								handler: this.sendMessage,
 								scope: this
-						}
-					]
-				},
+							}
+						]
+				]}
+			},
 				this.toolbar
 
 			],
