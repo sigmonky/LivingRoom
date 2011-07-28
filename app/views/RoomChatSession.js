@@ -66,6 +66,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 
 		Ext.apply(this,{
+			layout: 'fit',
 		
 			dockedItems: [
 
