@@ -335,7 +335,7 @@ Ext.regController('Roster', {
 		
 		var key = jabberClient.publicRoom;
 		
-		this.roomRoster = Ext.StoreMgr.get(key);
+	//	this.roomRoster = Ext.StoreMgr.get(key);
 		
 		console.log('Room Roster View =key '+key)
 		
