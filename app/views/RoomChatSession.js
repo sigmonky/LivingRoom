@@ -7,8 +7,7 @@
  * ChatSession Screen
  */
 LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
-	fullscreen: false,
-    
+	
 	///@private
 	application: undefined,
 	
@@ -64,26 +63,61 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.store = Ext.StoreMgr.get('cueca');
 		console.log('Room Chat session store msg -' +this.store)
 
-		var config = {
-			layout: 'fit',
+		Ext.apply(this,{
+		
+			dockedItems: [
+			{
+				//Definition of the message panel
+				xtype: 'panel',
+				itemId: 'pnlMessage',
+				dock: 'bottom',
+				layout: 'hbox',
+				defaults: {
+					height: 80
+				},
+				items: [{
+					xtype: 'textareafield',
+					itemId: 'message',
+					width: '70%'
+				},{
+					xtype: 'button',
+					ui: 'action',
+					dock: 'right',
+					text: 'Send',
+					width: '30%',
+					handler: this.sendMessage,
+					scope: this
+				}]
+			},
+				this.toolbar
+
+			],
+		
 			items: [
 				{
 					xtype: 'list',
 					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
-						'	<p class="triangle-right left"><span class="nickname">username:</span> {message}</p>',
+						'<tpl for=".">',
+							'<div class="bubbledLeft2">',
+										'<div class="bubbleimg2" style="background:url(https://graph.facebook.com/{facebook_id}/picture)" /></div>',
+										'{message}',
+							'</div>',
 						'</tpl>',
 						'<tpl if="xindex % 2 === 1">',
-						'	<p class="triangle-right right"><span class="nickname">username:</span> {message}</p>',
+							'<div class="bubbledLeft2">',
+									'<div class="bubbleimg2" style="background:url(https://graph.facebook.com/{facebook_id}/picture)" /></div>',
+									'{message}',
+							'</div>',
 						'</tpl>'
 					),
 					store: this.store,
 					scroll: 'vertical'
+
 				}
-			]
-		};
-		Ext.apply(this, config);
+			] 
+		});
 
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
