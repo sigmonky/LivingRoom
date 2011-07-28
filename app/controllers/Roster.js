@@ -265,6 +265,7 @@ Ext.regController('Roster', {
 	
 	openRoom: function(options){
 		var room = options.room
+		jabberClient.joinPublicRoom(room.get('jid'));
 
 		var pnlRoom = this.pnlRoom;
 		
@@ -318,7 +319,6 @@ Ext.regController('Roster', {
             Ext.apply(this.pnlRoom, {jid: room.get('jid'), id: room.get('jid'), topic: room.get('topic'), name: room.get('jid'), jabberComponent: jabberClient });
         }
 
-		jabberClient.joinPublicRoom(room.get('jid'));
 		
 	//	this.roomRoster.removeAll();
 
