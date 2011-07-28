@@ -287,7 +287,7 @@ Ext.regController('Roster', {
 		
 		var storeRoomMsg = Ext.StoreMgr.get(roomStoreMessageName);
 		
-		console.log('open room store = '+ store);
+		console.log('open room store = '+ storeRoomMsg);
 		
 		var message = Ext.ModelMgr.create({
 	    	jid: '',
