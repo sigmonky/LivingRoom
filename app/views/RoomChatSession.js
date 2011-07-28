@@ -92,31 +92,22 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				this.toolbar
 
 			],
-		
 			items: [
 				{
 					xtype: 'list',
 					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
-						'<tpl for=".">',
-							'<div class="bubbledLeft2">',
-										'<div class="bubbleimg2" style="background:url(https://graph.facebook.com/{facebook_id}/picture)" /></div>',
-										'{message}',
-							'</div>',
+						'	<p class="triangle-right left"><span class="nickname">username:</span> {message}</p>',
 						'</tpl>',
 						'<tpl if="xindex % 2 === 1">',
-							'<div class="bubbledLeft2">',
-									'<div class="bubbleimg2" style="background:url(https://graph.facebook.com/{facebook_id}/picture)" /></div>',
-									'{message}',
-							'</div>',
+						'	<p class="triangle-right right"><span class="nickname">username:</span> {message}</p>',
 						'</tpl>'
 					),
 					store: this.store,
 					scroll: 'vertical'
-
 				}
-			] 
+			]
 		});
 
 		//Superclass inizialization
