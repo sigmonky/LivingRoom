@@ -113,7 +113,60 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 						'</tpl>'
 					),
 					store: this.store,
-					scroll: 'vertical'
+					scroll: 'vertical',
+					listeners: {
+
+						itemtap: function(list, index, item, e) {
+
+							//Let's take the online users store
+							var store = list.getStore();
+
+							console.log('itemtap at index =' +index);
+							store.sync();
+							//Let's take the selected user
+							var user = store.getAt(index);
+							console.log('itemtap user =' +user);
+
+							//Let's call the controller method able to show the user Roster
+							/*	Ext.dispatch({
+							    controller: 'Roster',
+							    action: 'openChatSessionForRoomRoster',
+								show: true,
+								user: user
+							}); */
+
+
+							var tplUser = new Ext.XTemplate(
+								'<tpl for=".">',
+									'<div style="padding:20px"><div class="x-user-picture">' +
+										'<img src="https://graph.facebook.com/{facebook_id}/picture" width="52" height="52"/>'+
+									'</div>' +
+								     '<div class="x-user-name">' +
+										'<p class="nickname">{nickname}</p>' +
+									  '</div></div>' +
+								'</tpl>'
+							);
+
+
+							var html = tplUser.apply({
+								nickname: user.get('nickname'),
+				            	facebook_id: user.get('facebook_id')
+				        	});
+
+						//	overlay.html = html;
+
+				          // overlay.show();
+
+							panelLaunch({
+		                        iconClass: 'x-panel-action-icon-close',
+		                        position: 'tr',
+		                        actionMethod: ['hide']
+		                    }, html); 
+
+						},
+						scope: this
+
+					}
 				}
 			]
 		});
