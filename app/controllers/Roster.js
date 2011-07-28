@@ -426,8 +426,9 @@ Ext.regController('Roster', {
 		var roster = Ext.StoreMgr.get(key);
 	
 		console.log('addMessageToChatRoom roster ='+roster);
+		console.log('addMessageToChatRoom key ='+key);
 	
-	//	var user = roster.getById(options.from);
+		var user = roster.getById(options.from);
 	
 	//	console.log('addMessageToChatRoom from ='+from);
 	
