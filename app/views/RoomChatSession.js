@@ -99,15 +99,18 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					itemId: 'chatList',
 					itemTpl : new Ext.XTemplate(
 						'<tpl if="xindex % 2 === 0">',
-						'<div class="bubbledLeft">',
-							'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
-											'{message}',
-						'</div>',						'</tpl>',
+							'<div class="bubbledLeft">',
+								'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
+									'{message}',
+							'</div>',
+						
+						'</tpl>',
 						'<tpl if="xindex % 2 === 1">',
-						'<div class="bubbledLeft">',
-							'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
+							'<div class="bubbledLeft">',
+								'<img class="odd" src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
 											'{message}',
-						'</div>',						'</tpl>'
+							'</div>',
+						'</tpl>'
 					),
 					store: this.store,
 					scroll: 'vertical'
