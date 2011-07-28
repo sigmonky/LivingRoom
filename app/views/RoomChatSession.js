@@ -86,7 +86,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 								//field.focus();
 							}
-						}
 					},
 					{
 						//Definition of the message panel
@@ -110,6 +109,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							handler: this.sendMessage,
 							scope: this
 						},
+					},
+					
 				]
 			},
 				this.toolbar
