@@ -70,16 +70,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 								text: 'Chat with this User',
 								handler: this.facebookConnect,
 								scope: this,
-					},
-					{
-								xtype: 'button', 
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Add as Facebook Friend',/*http://developers.facebook.com/docs/reference/api/FriendList/*/
-								handler: this.facebookConnect,
-								scope: this,
-					},
-
+					}
 				],
                 html: panelContent,
 				showAnimation: {
