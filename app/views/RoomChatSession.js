@@ -130,7 +130,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							},
 							{
 								xtype: 'button',
-								ui: 'action',
 								dock: 'right',
 								text: 'Send',
 								width: '30%',
