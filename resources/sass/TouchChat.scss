@@ -371,10 +371,10 @@ float: left;
 	left: 0px;
 	content: "";
 	border-width: 8px 10px 8px 17px; 
-	border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 10 8 17 stretch stretch;
-	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 10 8 17 stretch stretch;
-	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 10 8 17 stretch stretch;
-	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 10 8 17 stretch stretch;
+	border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 10 8 17 stretch stretch;
+	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 10 8 17 stretch stretch;
+	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 10 8 17 stretch stretch;
+	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 10 8 17 stretch stretch;
 }
 
 
@@ -433,10 +433,10 @@ border-radius: 3px;
 	content: "";
 
 	border-width: 8px 17px 8px 10px; 
-	border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 17 8 10 stretch stretch ;
-	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 17 8 10 stretch stretch ;
-	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 17 8 10 stretch stretch ;
-	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_3.png") 8 17 8 10 stretch stretch ;
+	border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 17 8 10 stretch stretch ;
+	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 17 8 10 stretch stretch ;
+	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 17 8 10 stretch stretch ;
+	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_4.png") 8 17 8 10 stretch stretch ;
 }
 
 .bubbledRight:after{
