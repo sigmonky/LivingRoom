@@ -307,7 +307,6 @@ Ext.regController('Roster', {
 			 pnlRoom = this.pnlRoom = this.render({
 				xtype: 'RoomChatSession',
                 jid: room.get('jid'),
-				store: storeRoomMsg,
 				id: room.get('jid'),
 				topic: room.get('topic'),
 				name: room.get('jid'),
@@ -451,7 +450,7 @@ Ext.regController('Roster', {
 		}, 'ChatMessage');
 	
 	
-		var chatStore = Ext.StoreMgr.get('cueca');
+		var chatStore = Ext.StoreMgr.get(key+'_message');
 		chatStore.add(message); 
 		
 	},
