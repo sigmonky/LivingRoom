@@ -397,6 +397,21 @@ float: left;
 	-webkit-border-radius: 3px;	
 }
 
+.bubbleimgRight{
+z-index: -1;
+position: absolute;
+right: -36px;
+width: 32px;
+bottom: 0px;
+height: 32px;
+content:"";
+background-size: 32px 32px;
+background-position: bottom left;
+
+border-radius: 3px;
+-webkit-border-radius: 3px;
+}
+
 .bubbledRight{
 	float: right;
 	margin-left: auto;
