@@ -229,7 +229,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	addRoomAnnouncement: function(message){
 		console.log('roomChatSession - addRoomAnnouncement message = '+message);
-		var html;
+/*		var html;
 		html = this.tplPublicAnnouncement.apply({
         	message: message
     	});
@@ -237,7 +237,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			html: html
 		});
 		this.add(pnlMsg);
-		this.doLayout();
+		this.doLayout(); */
 	},
 	
 	addChatMessage: function(message, from, mine){
