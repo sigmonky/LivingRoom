@@ -182,7 +182,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
      * @private
      */
 	updateStore: function(){
-		
+		var chatList = Ext.getCmp('chatList');
+        var newStore = Ext.StoreMgr.get(this.name+'_message');
+		this.store = newStore;
+        chatList.update();
+        chatList.bindStore(this.store);
 	},
 	
 	showRoster: function(){
