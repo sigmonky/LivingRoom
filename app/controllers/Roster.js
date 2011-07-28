@@ -438,7 +438,7 @@ Ext.regController('Roster', {
 		}else{
 			var photo  = '';
 		}
-	//	console.log('addMessageToChatRoom facebook_id ='+photo);
+		console.log('addMessageToChatRoom facebook_id ='+photo);
 	
 	
 		var message = Ext.ModelMgr.create({
