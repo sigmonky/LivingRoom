@@ -87,7 +87,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 								//field.focus();
 							}
 						},
-					}
+					},
 					{
 						//Definition of the message panel
 						xtype: 'panel',
