@@ -471,3 +471,10 @@ min-height: 2.6em;
 padding: 0.5em 0.8em;
 position: relative;
 }
+
+.messageList x-item-selected{
+background-image: none;
+border-bottom-color: none;
+border-top-color: none;
+color: white;
+}
