@@ -68,28 +68,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		Ext.apply(this,{
 		
 			dockedItems: [
-				{
-					xtype: 'toolbar',
-					dock: 'bottom',
-					itemId: 'msgToolbar',
-					layout: 'fit',
-					items: [
-							{
-								xtype: 'textareafield',
-								itemId: 'message',
-								width: '70%'
-							},
-							{
-								xtype: 'button',
-								ui: 'action',
-								dock: 'right',
-								text: 'Send',
-								width: '30%',
-								handler: this.sendMessage,
-								scope: this
-							}
-						]
-			},
+
 				this.toolbar
 
 			],
