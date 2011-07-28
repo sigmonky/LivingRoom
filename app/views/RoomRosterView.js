@@ -96,7 +96,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			store: this.store,
             itemTpl: '<div class="x-roster-user">' +
 					    '<div class="x-user-picture">' +
-						'<img class="odd" src="{photo_url}" width="32" height="32"/>' +
+						'<img class="odd" src="{profile_thumb_url}" width="32" height="32"/>' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{nickname}</b>' +
