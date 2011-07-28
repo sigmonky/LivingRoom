@@ -73,7 +73,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					dock: 'bottom',
 					itemId: 'msgToolbar',
 					layout: 'fit',
-					items: [{
+					items: [
+						{
 						//Definition of the message panel
 						xtype: 'panel',
 						itemId: 'pnlMessage',
@@ -94,8 +95,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							width: '30%',
 							handler: this.sendMessage,
 								scope: this
-						}]
-					]}
+						}
+					]
 				},
 				this.toolbar
 
