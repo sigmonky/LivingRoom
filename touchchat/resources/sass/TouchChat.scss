@@ -1,0 +1,95 @@
+// 1. Variable overrides, example:
+$theme: 'TouchChat';
+$base-gradient: 'glossy';
+
+// 2. Include Sencha Touch styles
+@import 'sencha-touch/default/all';
+
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-toolbar-forms;
+@include sencha-carousel;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-list-paging;
+@include sencha-list-pullrefresh;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-msgbox;
+@include sencha-loading-spinner;
+
+// 3. Including all the application Icons
+@include pictos-iconmask(lock_open);
+@include pictos-iconmask(user);
+@include pictos-iconmask(chat1);
+
+.x-roster-user, .x-roster-user-active {
+	
+	.x-user-picture {
+	
+		float: left;
+		
+	}
+	
+	.x-user-name {
+	
+		float: left;
+		margin: 5px 0 0 10px;
+		
+	}
+	
+}
+
+/* Definition of the chat message panel style */
+.x-chat-message {
+	
+	width: 100%; 
+	min-height: 60px; 
+	
+}
+
+.x-chat-message .message {
+	
+	padding: 10px;
+	min-height: 40px;
+    width: 600px;
+	max-width: 600px;
+	color: #000;
+	font-size: 14px;
+	-webkit-border-radius: 20px;
+	
+}
+
+/* Definition of the public chat room message styles */
+.x-public-chat-message {
+	
+	margin: 20px 0 0 20px;
+	width: 95%; 
+	min-height: 60px;
+	
+	.time {
+		
+		color: #787b85;
+		font-size: 12px;
+		
+	}
+	
+	.nickname {
+		
+		color: #0064c2;
+		font-size: 14px;
+		font-weight: bold;
+		
+	}
+	
+	.message {
+		
+		color: #000;
+		
+	}
+	
+}

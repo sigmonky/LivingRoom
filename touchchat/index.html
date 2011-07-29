@@ -1,0 +1,44 @@
+<html>
+    <head>
+      <title>Facebook Login/title>
+    </head>
+    <body>
+      <div id="fb-root"></div>
+      <script src="http://connect.facebook.net/en_US/all.js"></script>
+      <script>
+		
+		//Let's call the Facebook inizialization
+         FB.init({ 
+            appId:'173510262707108', 
+			cookie:true, 
+            status:true
+         });
+		 
+		 //Let's check for the Login status
+		 FB.getLoginStatus(function(response) {
+			if (response.session) {
+		    
+				//Let's change the window location
+				window.location.href = 'app.html';
+			}
+		});
+		
+		function login(){
+		
+			FB.login(function(response) {
+			  if (response.session) {
+				if (response.perms) {
+				  
+				  //Let's change the window location
+				  window.location.href = 'app.html';
+				  
+				} 
+			  } 
+			},{perms:'xmpp_login'});
+
+		}
+	  
+      </script>
+      <button id="btnLogin" onclick="login();">Login with Facebook</button>
+    </body>
+ </html>

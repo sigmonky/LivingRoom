@@ -1,0 +1,34 @@
+// 1. Variable overrides, example:
+$base-color: #696969;
+$active-color: #7cf386;
+$base-gradient: 'flat';
+$toolbar-text-color: #FFF;
+
+// 2. Include Sencha Touch styles
+@import 'sencha-touch/default/all';
+
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-toolbar-forms;
+@include sencha-carousel;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-list-paging;
+@include sencha-list-pullrefresh;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-msgbox;
+@include sencha-loading-spinner;
+
+@include sencha-button-ui('white', #FFFFFF, 'glossy');
+
+
+.x-panel .x-panel-body {
+	
+	background-color: #FFF;
+	
+}

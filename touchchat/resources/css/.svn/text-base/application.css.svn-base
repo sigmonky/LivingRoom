@@ -1,0 +1,110 @@
+/* Styles for Login panel */
+.x-login .x-help {
+	
+	padding: 50px 20px 20px 20px;
+	width: 320px;
+	height: 120px;
+	font-size: 17px;
+	font-weight: bold;
+	color: #595959;
+	text-align: center;
+	
+}
+
+.x-login .x-icon {
+	
+	padding: 40px;
+	width: 320px;
+	height: 170px;
+	text-align: center;
+	
+}
+
+.x-login .x-logo {
+	
+	padding: 30px;
+	width: 320px;
+	height: 140px;
+	text-align: center;
+	
+}
+
+.x-user {
+	
+	margin: 20px 0 0 -20px;
+	width: 320px;
+	height: 120px;
+	font-size: 17px;
+	font-weight: bold;
+	color: #595959;
+	text-align: center;
+	
+}
+
+/* Styles for users list */
+.x-list-user {
+	
+}
+
+.x-list-user .x-user-name {
+
+	font-size: 22px;
+	font-weight: bold;
+	
+}
+
+.x-list-user .x-user-details {
+	
+	margin-left: 30px;
+	color: #585858;
+	
+}
+
+.x-list-user .x-user-about {
+	
+	margin-left: 10px;
+	color: #585858;
+	
+}
+
+/* Styles for users details panel */
+.x-pnl-user-details {
+	
+	padding: 10px;
+	font-size: 12px;
+	
+}
+
+.x-pnl-user-picture {
+	
+	padding: 10px;
+}
+
+.x-pnl-user-picture img {
+	
+	width: 120px;
+	height: 120px;
+	border: solid 1px #000;
+	
+}
+
+.x-section-title {
+	
+	color: #585858;
+	font-weight: bold;
+	font-style: italic;
+	margin: 10px 0 0 10px;
+	
+}
+
+.x-section-desc {
+	
+	padding: 5px 0 0 5px;
+	
+}
+
+.x-pnl-user-common-connections {
+	
+	
+	
+}
