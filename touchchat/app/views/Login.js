@@ -86,7 +86,7 @@ TouchChat.views.Login = Ext.extend(Ext.form.FormPanel, {
 //		var session = getCookie('fbs_' + facebook.appID);
 		
 		//Let's take the Access Token
-		var accessToken = session.split('&')[0];
+	//	var accessToken = session.split('&')[0];
 //		
 		//Let's finally return the SessionKey
 	//	return session.split('|')[1];
