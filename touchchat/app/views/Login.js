@@ -128,7 +128,7 @@ TouchChat.views.Login = Ext.extend(Ext.form.FormPanel, {
 
 						httpbase		   : 'http://www.logoslogic.com/http-bind',
 						timerval		   : 2000,
-						authtype		   : '',
+						authtype		   : 'saslanon',
 						domain			   : 'logoslogic.com',
 						resource		   : '',
 						nickname		   : this.nickname,
