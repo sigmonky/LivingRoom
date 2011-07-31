@@ -409,6 +409,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				if(bind != undefined){
 					//Let's take the jid value
 					me.myJID = doc.getElementsByTagName('jid')[0].textContent;
+					console.log('me.myJID = '+me.myJID);
 				}
 				
 				break;
