@@ -182,6 +182,11 @@ Ext.regApplication('LivingRoomAPI', {
 		this.connectAsRegistered(this.username);
 	},
 	
+	getFacebookSessionKey: function(){
+		var session = getFacebookSessionFromUrl();
+		return session;
+	},
+	
 	connectAsRegistered: function(user){
 			this.username = user;
 			var that = this;
