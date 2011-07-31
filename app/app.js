@@ -86,7 +86,7 @@ Ext.regApplication('LivingRoomAPI', {
 						authtype		   : 'saslanon',
 						domain			   : 'logoslogic.com',
 						resource		   : '',
-						nickname		   : this.nickname,
+						nickname		   : 'cueca',
 						register		   : false,
 						publicRoom  	   : true,
 						publicRoomName	   : '',
