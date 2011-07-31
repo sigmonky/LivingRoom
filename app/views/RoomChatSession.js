@@ -390,7 +390,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		var message = Ext.ModelMgr.create({
 	    	jid: from,
 			nickname: jabberClient.nickname,
-			facebook_id: this.getMyFacebooKProfilePhoto(),
+			facebook_id: '',
 			time: '',
 			message:message,
 		}, 'ChatMessage');
@@ -453,11 +453,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	getMyFacebooKProfilePhoto: function(){
-/*		var facebookStore = Ext.StoreMgr.get('FacebookUser');
+		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		var facebook_id = obj.get('id');
 		console.log('facebok id ' +facebook_id);
-		return facebook_id; */
+		return facebook_id; 
 	},
 	
 	getProfilePhoto: function(user){
