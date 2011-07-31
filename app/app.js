@@ -79,7 +79,7 @@ Ext.regApplication('LivingRoomAPI', {
 	connectAsAnonymous: function(){
 		
 		loadingMask.show();
-		
+		console.log('connectAsAnonymous');
 		jabberClient = new LIVINGROOM.xmpp.Client({
 						httpbase		   : 'http://www.logoslogic.com/http-bind',
 						timerval		   : 2000,
@@ -93,6 +93,7 @@ Ext.regApplication('LivingRoomAPI', {
 						conferenceSubdomain: 'conference',
 							listeners: {
 								connected: function(jid){
+									console.log('connected');
 
 									//Let's fire the login success event
 
@@ -102,6 +103,7 @@ Ext.regApplication('LivingRoomAPI', {
 
 								},
 								unauthorized: function(component) {
+									console.log('unauthorized');
 
 									//Let's hide the loading Mask
 								//	loadingMask.hide();
