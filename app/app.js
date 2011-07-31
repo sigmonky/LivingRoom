@@ -62,11 +62,12 @@ Ext.regApplication('LivingRoomAPI', {
 		
 			var token = getFacebookTokenFromUrl();
 			if (token != ""){
-				this.connectAsAnonymous();
+				//	this.connectAsRegistered();
+				this.getFacebookUID();
 			}
 			else{
-			//	this.connectAsRegistered();
-				this.getFacebookUID();
+				this.connectAsAnonymous();
+
 			}
 			
 			this.viewport = new LivingRoomAPI.Viewport({
