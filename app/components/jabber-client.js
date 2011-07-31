@@ -550,8 +550,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
+		
+		
 	//	me.setVCard();
-	//	me.getVCard(me.myJID);
+		me.getVCard(me.myJID);
+	
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
 		
