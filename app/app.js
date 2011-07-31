@@ -220,7 +220,7 @@ Ext.regApplication('LivingRoomAPI', {
 													connected: function(jid){
 
 														//Let's fire the login success event
-														that.onLoginSuccess();
+													//	that.onLoginSuccess();
 
 														//Let's hide the loading Mask
 														loadingMask.hide();
