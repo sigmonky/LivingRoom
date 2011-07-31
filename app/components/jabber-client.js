@@ -203,7 +203,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			
 				var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		
-				if (facebookStore != null){
 					var obj = facebookStore.getAt(0);
 					var facebook_id = obj.get('id');
 			
@@ -220,7 +219,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					//Let's send the packet able to retrive the user vCard
 	  			this.jabberConnection.send(v);
 			}
-		}
 	},
 	
 	
