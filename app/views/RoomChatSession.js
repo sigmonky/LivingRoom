@@ -390,7 +390,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		var message = Ext.ModelMgr.create({
 	    	jid: from,
 			nickname: jabberClient.nickname,
-			facebook_id: '',
+			facebook_id: this.getMyFacebooKProfilePhoto(),
 			time: '',
 			message:message,
 		}, 'ChatMessage');
