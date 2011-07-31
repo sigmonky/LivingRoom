@@ -214,7 +214,7 @@ Ext.regApplication('LivingRoomAPI', {
 							//Let's show the loading mask
 
 							//Let's call the function that will allow to retrive the Facebook SessionKey
-							facebook.sessionKey = that.getFacebookSessionKey();
+				//			facebook.sessionKey = that.getFacebookSessionKey();
 
 							//Creation of the Facebook Application
 							var fbApp = new JSJaCFBApplication(facebook);
