@@ -27,14 +27,12 @@ Ext.regApplication('LivingRoomAPI', {
 	//Definition of the application entry point function
 	launch: function() {
 
-		this.vwLogin = new LivingRoomAPI.views.Login({
+	/*	this.vwLogin = new LivingRoomAPI.views.Login({
 		
 			listeners: {
 			
 				scope: this,
-			
-				/* Definition of the event that will be fired when the user will succesfull connect
-				 * to BonjourBonjour application */
+
 				loginSuccess: function(v, s){
 					console.log('loginSuccess');
 					//Destroying the login component
@@ -47,9 +45,9 @@ Ext.regApplication('LivingRoomAPI', {
 						loggedIn = true;
 						
 						//Definition of the application Viewport
-						this.viewport = new LivingRoomAPI.Viewport({
-				            application: this
-				        });
+					//	this.viewport = new LivingRoomAPI.Viewport({
+				    //        application: this
+				     //   });
 
 					}
 				
@@ -60,7 +58,12 @@ Ext.regApplication('LivingRoomAPI', {
 				}
 			
 			}
-		});
+		}); */
+		
+		
+			this.viewport = new LivingRoomAPI.Viewport({
+	           application: this
+	       });
 		
 	}
 

@@ -110,41 +110,13 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 
 						//Let's show the loading mask
 
-
 						//Let's call the function that will allow to retrive the Facebook SessionKey
 						facebook.sessionKey = that.getFacebookSessionKey();
 
 						//Creation of the Facebook Application
 						var fbApp = new JSJaCFBApplication(facebook);
 
-						/* Let's create the component that will let the user to communicate in realtime with all
-						 * the firends inside the facebook chat */
-
-					/*	facebookClient = new LIVINGROOM.xmpp.FacebookClient({
-								httpbase: '/JHB/',
-								timerval: 2000,
-								authtype: 'x-facebook-platform',
-								facebookApp: fbApp,
-								listeners	: {
-									connected: function(jid){ 	*/
-
-
-										/* Session Attachment = http://codingcromulence.blogspot.com/2009/01/chat-hacking-part-ii.html*/
-
-										/* Let's create the component that will let the user to communicate in realtime with all
-										 * the firends inside the facebook chat */
-										jabberClient = new LIVINGROOM.xmpp.Client({
-
-											/*
-											httpbase		   : 'http://www.logoslogic.com//http-bind',
-											timerval		   : 2000,
-											domain			   : 'logoslogic.com',
-											resource		   : '',
-											username		   : 'isaacueca',
-											pass			   : 'cigano',
-											register		   : false,
-											*/
-
+						jabberClient = new LIVINGROOM.xmpp.Client({
 											httpbase		   : 'http://www.logoslogic.com/http-bind',
 											timerval		   : 2000,
 											authtype		   : '',
@@ -198,43 +170,16 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 
 												unavailable: function(message){
 													loadingMask.hide();
-
-													//Let's show an error message
 													Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
 												},
 												scope: this
 											}
-										});
+								});
 
-										//Let's finally connect to ejabberd server
-										jabberClient.connect();
+								jabberClient.connect();
 
-									},
-							/*	unauthorized: function(component) {
+					},
 
-										//Let's hide the loading Mask
-										loadingMask.hide();
-
-										//Let's show an error message
-										Ext.Msg.alert('Login Error', 'The parameters you enter to access to Facebook are not correct! Please check your credentials and try again.');
-
-									},
-
-									unavailable: function(message){
-										loadingMask.hide();
-
-										//Let's show an error message
-										Ext.Msg.alert('Service unavailable', 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later..');
-									},
-
-									scope: this
-								}
-							});
-
-							//Let's finally connect to facebook chat
-							facebookClient.connect();
-						
-					},*/
 					failure: function ( result, request) { 
 						Ext.Msg.alert('Failed', result.responseText); 
 					}  
@@ -242,7 +187,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 	},
 	
 	doLogin: function(){
-		//Let's get all the required fields to log in
 		loadingMask.show();
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
@@ -250,11 +194,7 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		this.nickname = obj.get('name');
 		this.username = obj.get('id');
 		this.callUserVerify(this.username);
-	//	this.nickname = this.getComponent('fmeChatRoom').getComponent('txtNickname').getValue();
-	//	this.username = this.getComponent('fmeChatRoom').getComponent('txtUsername').getValue();
-	//	this.password = this.getComponent('fmeChatRoom').getComponent('txtPassword').getValue();
-	//	this.nickname = "asdasdasd"+Math.floor(Math.random()*101);
-		}, 
+	}, 
 	
 	onLoginSuccess: function(){
 		loadingMask.hide();
