@@ -144,6 +144,9 @@ Ext.regApplication('LivingRoomAPI', {
 	},
 	
 	getFacebookUID: function(){
+		
+		console.log('getFacebookUID');
+		
 		loadingMask.show();
 		
 		var token = getFacebookTokenFromUrl();
@@ -176,6 +179,9 @@ Ext.regApplication('LivingRoomAPI', {
 	},
 	
 	doLogin: function(){
+		
+		console.log('doLogin');
+		
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		console.log('doLogin obj is ' + obj.get('name'));
@@ -191,6 +197,8 @@ Ext.regApplication('LivingRoomAPI', {
 	
 	connectAsRegistered: function(user){
 			this.username = user;
+			console.log('connectAsRegistered user '+user);
+			
 			var that = this;
 			Ext.Ajax.request({
 						url : 'http://www.logoslogic.com/chat/LivingRoom/register/register2.php' , 
