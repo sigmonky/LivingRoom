@@ -126,8 +126,15 @@ Ext.regController('Roster', {
 		//Let's take all the user data
 		var user = options.user;
 
+		console.log('openChatSessionForRoomRoster talk to user = '+user);
+		console.log('openChatSessionForRoomRoster talk to user = '+user.get('jid'));
+
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.get('jid'));
+		
+		
+		
+		
 		
 		if(pnlChatSession == undefined){
 		
