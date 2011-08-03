@@ -31,7 +31,8 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 			}
 			]
 		});
-
+		
+		var that = this;
 		
 		panelLaunch = function(pluginConfig, panelContent){
 			
@@ -51,7 +52,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 							margin: '10, 0, 0,0',
 							dock: 'bottom',
 							text: 'Block this User',
-							handler: this.talkToUser,
+							handler: that.talkToUser,
 							scope: this,
 				},
 				{
@@ -59,7 +60,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 							margin: '10, 0, 0,0',
 							dock: 'bottom',
 							text: 'Report this User',
-							handler: this.talkToUser,
+							handler: that.talkToUser,
 							scope: this,
 				},
 					{
@@ -67,7 +68,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 								margin: '10, 0, 0,0',
 								dock: 'bottom',
 								text: 'Chat with this User',
-								handler: this.talkToUser,
+								handler: that.talkToUser,
 								scope: this,
 					}
 				],
