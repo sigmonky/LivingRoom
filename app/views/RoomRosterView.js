@@ -145,7 +145,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					
 		          // overlay.show();
 		
-					this.user = user;
+					that.user = user;
 					
 					panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
