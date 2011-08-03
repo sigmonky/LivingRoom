@@ -180,7 +180,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		    controller: 'Roster',
 		    action: 'openChatSessionForRoomRoster',
 			show: true,
-			user: user
+			user: this.user
 		});
 	},
 	
