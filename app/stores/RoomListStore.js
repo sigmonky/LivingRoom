@@ -17,6 +17,7 @@ Ext.regStore('RoomListStore', {
         }
     },
     getGroupString : function(record) {
+		var isPrivate = record.get('isPrivate');
 		if (isPrivate == false){
 			var str = 'Rooms';
 		}else{
