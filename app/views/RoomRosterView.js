@@ -174,6 +174,13 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	talkToUser: function(){
 		
 		console.log('talk to user = '+this.user);
+		
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'openChatSessionForRoomRoster',
+			show: true,
+			user: user
+		});
 	},
 	
 	/**
