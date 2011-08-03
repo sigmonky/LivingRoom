@@ -9,5 +9,6 @@ Ext.regModel('RoomRosterItem', {
 		{name: 'nickname', type: 'string'},
         {name: 'facebook_id', type: 'string'},
         {name: 'profile_thumb_url', type: 'string'},
+		{name: 'chatActive', type: 'bool'},
     ]
 });

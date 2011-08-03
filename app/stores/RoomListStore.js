@@ -16,6 +16,9 @@ Ext.regStore('RoomListStore', {
             type: 'json',
         }
     },
+    getGroupString : function(record) {
+        return  record.get('isPrivate').toString(); 
+    },
     autoLoad:true
 
 });

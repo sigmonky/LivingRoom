@@ -9,6 +9,8 @@ Ext.regModel('Room', {
 		{name: 'name', type: 'string'},
         {name: 'topic', type: 'string'},
         {name: 'type', type: 'string'},
-        {name: 'thumb', type: 'string'}
+        {name: 'thumb', type: 'string'},
+		{name: 'isPrivate', type: 'bool'},
+
     ]
 });
