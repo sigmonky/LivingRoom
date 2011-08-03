@@ -66,7 +66,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		
 		this.pnlRoomList= new LivingRoomAPI.views.RoomList({
 			itemId: 'pnlRoomList',
-			title: 'Rooms'
+			title: 'All Fans'
 		});
 		
 		//Definition of the public chat panel
