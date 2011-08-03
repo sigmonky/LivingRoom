@@ -33,9 +33,10 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		});
 
 		
-		panelLaunch = function(pluginConfig, panelContent){
-
-	
+		panelLaunch = function(pluginConfig, panelContent, user){
+			var this = that;
+			this.user = user;
+			
             var pnl = new Ext.Panel({
                 floating: true,
                 width: 270,
@@ -52,7 +53,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 							margin: '10, 0, 0,0',
 							dock: 'bottom',
 							text: 'Block this User',
-							handler: this.facebookConnect,
+							handler: that.talkToUser,
 							scope: this,
 				},
 				{
@@ -60,7 +61,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 							margin: '10, 0, 0,0',
 							dock: 'bottom',
 							text: 'Report this User',
-							handler: this.facebookConnect,
+							handler: that.talkToUser,
 							scope: this,
 				},
 					{
@@ -68,7 +69,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 								margin: '10, 0, 0,0',
 								dock: 'bottom',
 								text: 'Chat with this User',
-								handler: this.facebookConnect,
+								handler: that.talkToUser,
 								scope: this,
 					}
 				],
@@ -149,7 +150,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
-                    }, html); 
+                    }, html, user); 
 					
 				},
 				scope: this
@@ -168,6 +169,11 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		//Superclass inizialization
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
+	},
+	
+	talkToUser: function(){
+		
+		console.log('talk to user = '+this.user);
 	},
 	
 	/**
