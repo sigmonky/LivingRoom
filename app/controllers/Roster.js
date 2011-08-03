@@ -129,22 +129,7 @@ Ext.regController('Roster', {
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
 		
-		if(pnlChatSession == undefined){
-		
-			//Let's create the chat session panel
-			var pnlChatSession = new LivingRoomAPI.views.RoomOneToOneChatSession({
-				itemId: user.jid,
-				title: user.nickname,
-				barTitle: user.nickname,
-				iconCls: 'chat1',
-				iconMask: true,
-				badgeText: (options.show ? '' : '1'),
-				remoteJid: user.jid,
-				remoteUserName: user.nickname,
-				jabberComponent: jabberClient
-			});
-			
-		}
+
 		
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
@@ -162,7 +147,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(this.pnlChatSession, {jid: user.get('jid'), jabberComponent: jabberClient });
+	            Ext.apply(this.pnlChatSession, {jid: user.jid, jabberComponent: jabberClient });
 	      }
 
 
