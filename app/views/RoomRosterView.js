@@ -70,7 +70,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 								text: 'Chat with this User',
 								handler: that.talkToUser,
 								scope: this,
-								user: user;
+								user: user,
 					}
 				],
                 html: panelContent,
