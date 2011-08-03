@@ -70,6 +70,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 								text: 'Chat with this User',
 								handler: that.talkToUser,
 								scope: this,
+								user: user;
 					}
 				],
                 html: panelContent,
@@ -172,15 +173,15 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	},
 	
-	talkToUser: function(){
+	talkToUser: function(user){
 		
-		console.log('talk to user = '+this.user);
+		console.log('talk to user = '+user);
 		
 		Ext.dispatch({
 		    controller: 'Roster',
 		    action: 'openChatSessionForRoomRoster',
 			show: true,
-			user: this.user
+			user: user
 		});
 	},
 	
