@@ -124,7 +124,7 @@ Ext.regController('Roster', {
 	openChatSessionForRoomRoster: function(options){
 		
 		//Let's take all the user data
-		var user = options.user.data;
+		var user = options.user;
 
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
@@ -133,14 +133,14 @@ Ext.regController('Roster', {
 		
 			//Let's create the chat session panel
 			var pnlChatSession = new LivingRoomAPI.views.RoomOneToOneChatSession({
-				itemId: user.jid,
-				title: user.nickname,
-				barTitle: user.nickname,
+				itemId: user.get('jid'),
+				title: user.get('nickname'),
+				barTitle: user.get('nickname'),
 				iconCls: 'chat1',
 				iconMask: true,
-				badgeText: (options.show ? '' : '1'),
-				remoteJid: user.jid,
-				remoteUserName: user.nickname,
+				badgeText: '',
+				remoteJid: user.get('jid'),
+				remoteUserName: user.get('nickname'),
 				jabberComponent: jabberClient
 			});
 			
