@@ -34,7 +34,6 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 
 		
 		panelLaunch = function(pluginConfig, panelContent){
-			this.user = user;
 			
             var pnl = new Ext.Panel({
                 floating: true,
