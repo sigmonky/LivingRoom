@@ -144,63 +144,31 @@ Ext.regController('Roster', {
 				jabberComponent: jabberClient
 			});
 			
-			//Let's add the chat session panel
-			this.application.viewport.getComponent('pnlRoomList').add(pnlChatSession);
-			
-			
-		}else{
-
-			
-			//Let's take the roster panel
-			var pnlRoster = this.application.viewport.getComponent('pnlRoomList');
-			
-			//Taking the TabBar component
-			var tabBar = pnlRoster.getTabBar();
-
-			//Let's check if we are currently on the chat panel with this user
-			if(pnlRoster.getActiveItem() != pnlChatSession){
-				
-				//Let's check every open chat to find the right one inside the TabBar
-				Ext.each(tabBar.items.items, function(chat){
-					
-					//If the current chat panel is the one we are looking for...
-					if(chat.getText() == user.nickname) {
-						
-						//Let's take the actual badge text
-						var badgeNumber = (chat.getBadgeText() != '' ? parseInt(chat.getBadgeText()) : 0);
-						
-						//Let's increment the badge text
-						chat.setBadge(badgeNumber + 1);
-
-					}
-
-				}, this);
-
-			}
-
 		}
 		
-		
-		//Check if was requested to show the session panel
-		if(options.show){
+		if (!pnlChatSession) {
+				//console.log("browse productDetailPanel this.render()")
+				 pnlChatSession = this.pnlRoom = this.render({
+					itemId: user.jid,
+					title: user.nickname,
+					barTitle: user.nickname,
+					iconCls: 'chat1',
+					iconMask: true,
+					badgeText: (options.show ? '' : '1'),
+					remoteJid: user.jid,
+					remoteUserName: user.nickname,
+					jabberComponent: jabberClient
+				});
+	     }
+	     else {
+				//console.log("browse productDetailPanel Ext.apply()")
+	            Ext.apply(this.pnlChatSession, {jid: user.get('jid'), jabberComponent: jabberClient });
+	      }
 
-			//Let's show the chat session Panel
-			this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession, {
-				type: 'slide', 
-				duration: 500
-			});
-			
-		//	this.application.viewport.getComponent('pnlChatSession').dockedItems.items[0].setTitle(user.nickname);
-		}
 
-		//Let's take the store that will contains all the roster users
-	//	var store = Ext.StoreMgr.get('OnlineUsers');
+	        pnlChatSession.doUpdate();
 
-		//Let's take the chat user
-	//	var user = store.getById(user.jid);
-		
-		//Saving the active chat session
-	//	user.set('chatActive', true);
+	        this.application.viewport.getComponent(this.pnlRoom).setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
 		
 	},
 	
