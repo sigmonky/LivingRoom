@@ -33,7 +33,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		});
 
 		
-		panelLaunch = function(pluginConfig, panelContent, user){
+		panelLaunch = function(pluginConfig, panelContent){
 			var this = that;
 			this.user = user;
 			
@@ -145,12 +145,14 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 				//	overlay.html = html;
 					
 		          // overlay.show();
+		
+					this.user = user;
 					
 					panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
-                    }, html, user); 
+                    }, html); 
 					
 				},
 				scope: this
