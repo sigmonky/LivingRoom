@@ -133,7 +133,7 @@ Ext.regController('Roster', {
 		
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
-				 pnlChatSession = this.pnlRoom = this.render({
+				 pnlChatSession = this.render({
 					itemId: user.jid,
 					title: user.nickname,
 					barTitle: user.nickname,
@@ -147,11 +147,11 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(this.pnlChatSession, {jid: user.jid, jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: user.jid, jabberComponent: jabberClient });
 	      }
 
 
-	        pnlChatSession.doUpdate();
+	        //pnlChatSession.doUpdate();
 
 	        this.application.viewport.getComponent(this.pnlRoom).setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
 		
