@@ -17,7 +17,12 @@ Ext.regStore('RoomListStore', {
         }
     },
     getGroupString : function(record) {
-        return  record.get('isPrivate').toString(); 
+		if (isPrivate == false){
+			var str = 'Rooms';
+		}else{
+			var str = 'Active Chats';
+		}
+        return  "<span style='display:none'>"+record.get('isPrivate').toString() + "</span>"+str ; 
     },
     autoLoad:true
 
