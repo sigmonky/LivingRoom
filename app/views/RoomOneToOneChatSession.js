@@ -299,7 +299,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 
 			
 		//Send the message to all the room participants
-	    this.jabberComponent.sendRoomMessage(message.getValue());
+		this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
 		
 		
 		//Clear the message field
