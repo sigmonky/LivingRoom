@@ -130,7 +130,7 @@ Ext.regController('Roster', {
 	//	var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
 		
 
-		this.application.viewport.getComponent(this.pnlRoom).getComponent(user.jid);
+		this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
 		
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
