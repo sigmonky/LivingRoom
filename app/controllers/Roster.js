@@ -397,7 +397,6 @@ Ext.regController('Roster', {
 		var photo = user.get('facebook_id');
 		console.log('addMessageToChatRoom photo ='+photo);
 		
-		if (photo != ''){
 			var photo_url = "https://graph.facebook.com/"+photo+"/picture";
 		}else{
 			var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
@@ -430,8 +429,9 @@ Ext.regController('Roster', {
 			console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 			//Let's take the chat user
 			
-			if (user != null){
-				var photo = user.get('facebook_id');
+			var photo = user.get('facebook_id');
+			if (photo != ''){
+				
 				var photo_url = "https://graph.facebook.com/"+photo+"/picture";
 			}else{
 				var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
