@@ -125,12 +125,11 @@ Ext.regController('Roster', {
 		
 		//Let's take all the user data
 		var user = options.user;
-		console.log('openChatSessionForRoomRoster user = '+ user);
-		console.log('openChatSessionForRoomRoster nickname = '+ user.nickname);
-		console.log('openChatSessionForRoomRoster jid = '+ user.jid);
+		console.log('openChatSessionForRoomRoster nickname = '+ user.get('nickname'));
+		console.log('openChatSessionForRoomRoster jid = '+ user.get('jid'));
 
 		//Let's try to take an already active chat session panel
-		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
+		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.get('jid'));
 		
 		var userRemoteJidMsg = user.jid+'_message';
 		
@@ -168,14 +167,14 @@ Ext.regController('Roster', {
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
 					xtype:"RoomOneToOneChatSession",
-					itemId: user.jid,
-					title: user.nickname,
-					barTitle: user.nickname,
+					itemId: user.get('jid'),
+					title: user.get('nickname'),
+					barTitle: user.get('nickname'),
 					iconCls: 'chat1',
 					iconMask: true,
 					badgeText: (options.show ? '' : '1'),
-					remoteJid: user.jid,
-					remoteUserName: user.nickname,
+					remoteJid: user.get('jid'),
+					remoteUserName: user.get('nickname'),
 					jabberComponent: jabberClient
 				});
 	     }
