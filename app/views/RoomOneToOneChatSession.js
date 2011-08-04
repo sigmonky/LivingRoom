@@ -301,10 +301,24 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		//Send the message to all the room participants
 		this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
 		
+		this.addChatMessage(message.getValue(), null, true);
 		
 		//Clear the message field
 		message.setValue('');
 		
+	},
+	
+	addChatMessage: function(message, from, mine){
+		var message = Ext.ModelMgr.create({
+			jid: from,
+			nickname: jabberClient.nickname,
+			facebook_id: this.getMyFacebooKProfilePhoto(),
+			time: '',
+			message:message,
+			}, 'ChatMessage');
+
+			this.store.add(message);
+
 	},
 	
 	addRoomAnnouncement: function(message){

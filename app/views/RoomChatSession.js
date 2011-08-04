@@ -6,7 +6,7 @@
  * @extends Ext.Panel
  * ChatSession Screen
  */
-LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
+LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	///@private
 	application: undefined,
@@ -44,13 +44,23 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 				scope: this,
 				handler: this.switchBack
 			},
+			{xtype: 'spacer'},
+			{
+				//Definition of Show Rost button
+				ui: 'action',
+				text: 'Co-Viewers',
+				iconMask: true,
+		//		iconCls: 'arrow_right',
+				scope: this,
+				handler: this.showRoster
+			}
 			]
 		});
 		
-		console.log('room jid -' +this.remoteJid)
-		console.log('room store msg -' +this.remoteJid+'_message')
+		console.log('room jid -' +this.jid)
+		console.log('room store msg -' +this.name+'message')
 		
-		this.store = Ext.StoreMgr.get(this.remoteJid+'_message');
+		this.store = Ext.StoreMgr.get(this.name+'_message');
 		console.log('Room Chat session store msg -' +this.store)
 		panelLaunch = function(pluginConfig, panelContent){
 
@@ -282,13 +292,30 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
         chatList.bindStore(this.store);
 	},
 	
-
+	showRoster: function(){
+		console.log('show roster 3');
+		
+		var store = Ext.StoreMgr.get(jabberClient.publicRoom);
+		
+		console.log('store show Roster = '+store);
+		
+		store.each(function (record) {
+		    console.log('record.nickname = '+record.get('nickname'));
+		});
+		
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'showRoomParticipants', 
+			roomName: jabberClient.publicRoom
+		});
+	},
+	
 	switchBack: function(){
 		Ext.dispatch({
-	    	controller: 'Roster',
-	    	action: 'showRoomParticipants',
-			direction: 'right',
+		    controller: 'Roster',
+		    action: 'backToRoomList'
 		});
+		//this.setActiveItem(0, {type:'slide', direction:'right'});
 	},
 	
 	
@@ -299,26 +326,12 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 
 			
 		//Send the message to all the room participants
-		this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
+	    this.jabberComponent.sendRoomMessage(message.getValue());
 		
-		this.addChatMessage(message.getValue(), null, true);
 		
 		//Clear the message field
 		message.setValue('');
 		
-	},
-	
-	addChatMessage: function(message, from, mine){
-		var message = Ext.ModelMgr.create({
-			jid: from,
-			nickname: jabberClient.nickname,
-			facebook_id: this.getMyFacebooKProfilePhoto(),
-			time: '',
-			message:message,
-			}, 'ChatMessage');
-
-			this.store.add(message);
-
 	},
 	
 	addRoomAnnouncement: function(message){
@@ -336,6 +349,43 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 	
 	addChatMessage: function(message, from, mine){
 		var html;
+		
+	/*	if (from == null){
+			html = this.tplMineFacebookMessage.apply({
+				photo: this.getMyFacebooKProfilePhoto(),
+				time: this.getTime(),
+				align: (mine ? 'right': 'left'),
+				color: (mine ? '#92d841': '#d3d3d3'),
+            	message: message
+        	});
+		}else{
+			var profilePhoto = this.getProfilePhoto(from);
+			console.log('profilePhoto = '+profilePhoto);
+			if (profilePhoto == ""){
+				html = this.tplEmptyFacebookMessage.apply({
+					photo: '',
+					time: this.getTime(),
+					align: (mine ? 'right': 'left'),
+					color: (mine ? '#92d841': '#d3d3d3'),
+	            	message: message
+	        	});
+			}else{
+				html = this.tplFacebookMessage.apply({
+					photo: profilePhoto,
+					time: this.getTime(),
+					align: (mine ? 'right': 'left'),
+					color: (mine ? '#92d841': '#d3d3d3'),
+            		message: message
+        		});
+			}
+		}
+
+		var pnlMsg = new Ext.Panel({
+			html: html
+		});
+		
+		this.add(pnlMsg);
+		this.doLayout(); */
 		
 		var message = Ext.ModelMgr.create({
 	    	jid: from,
@@ -457,6 +507,6 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 });
 
 //Component type registration
-Ext.reg('RoomOneToOneChatSession', LivingRoomAPI.views.RoomOneToOneChatSession);
+Ext.reg('RoomChatSession', LivingRoomAPI.views.RoomChatSession);
 
 var a;
