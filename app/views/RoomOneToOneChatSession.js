@@ -110,7 +110,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		Ext.apply(this,{
 		
 			scroll: 'vertical',
-			fullscreen: true,
+			//fullscreen: true,
 			dockedItems: [
 				this.toolbar,
 			{
