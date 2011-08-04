@@ -33,56 +33,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		});
 		
 		var that = this;
-		
-		panelLaunch = function(pluginConfig, panelContent, user){
-			that.user = user;
-            var pnl = new Ext.Panel({
-                floating: true,
-                width: 270,
-                height: 370,
-                centered: true,
-                modal: true,
-	            scroll: 'vertical',
-				hideMode: 'close',
-                hideOnMaskTap: false,
-                layout: 'fit',
-				dockedItems:[
-				{
-							xtype: 'button', 
-							margin: '10, 0, 0,0',
-							dock: 'bottom',
-							text: 'Block this User',
-							handler: that.talkToUser,
-							scope: this,
-				},
-				{
-							xtype: 'button',
-							margin: '10, 0, 0,0',
-							dock: 'bottom',
-							text: 'Report this User',
-							handler: that.talkToUser,
-							scope: this,
-				},
-					{
-								xtype: 'button', 
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Chat with this User',
-								handler: that.talkToUser,
-								scope: this,
-								user: user,
-					}
-				],
-                html: panelContent,
-				showAnimation: {
-					type: 'pop',
-					duration: 250
-				},
-                plugins: [new Ext.ux.PanelAction(pluginConfig)]
-            });
-            
-            pnl.show();
-        };
+
 
 		//this.roomRoster = jabberClient.publicRoom;
 		this.store = Ext.StoreMgr.get(this.key);
@@ -148,7 +99,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		
 					that.user = user;
 					
-					panelLaunch({
+					this.panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
@@ -172,6 +123,58 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
 	},
+	
+	
+		
+	panelLaunch: function(pluginConfig, panelContent, user){
+			that.user = user;
+            var pnl = new Ext.Panel({
+                floating: true,
+                width: 270,
+                height: 370,
+                centered: true,
+                modal: true,
+	            scroll: 'vertical',
+				hideMode: 'close',
+                hideOnMaskTap: false,
+                layout: 'fit',
+				dockedItems:[
+				{
+							xtype: 'button', 
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Block this User',
+							handler: this.talkToUser,
+							scope: this,
+				},
+				{
+							xtype: 'button',
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Report this User',
+							handler: this.talkToUser,
+							scope: this,
+				},
+					{
+								xtype: 'button', 
+								margin: '10, 0, 0,0',
+								dock: 'bottom',
+								text: 'Chat with this User',
+								handler: this.talkToUser,
+								scope: this,
+								user: user,
+					}
+				],
+                html: panelContent,
+				showAnimation: {
+					type: 'pop',
+					duration: 250
+				},
+                plugins: [new Ext.ux.PanelAction(pluginConfig)]
+            });
+            
+            pnl.show();
+     },
 	
 	talkToUser: function(user){
 		
