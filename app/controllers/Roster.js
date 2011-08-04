@@ -320,6 +320,8 @@ Ext.regController('Roster', {
 			
 		var roomRosterView = this.roomRosterView;
 		
+		var direction = options.direction;
+		
 		var key = jabberClient.publicRoom;
 		
 		this.roomRoster = Ext.StoreMgr.get(key);
@@ -341,8 +343,10 @@ Ext.regController('Roster', {
 	    }
 
 	    roomRosterView.doUpdate();
+	
+		if (direction == ''){direction = 'left';}
 
-	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRosterView, {type: 'slide', duration: 500});
+	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRosterView, {type: 'slide', direction:direction duration: 500});
 
 	},
 	

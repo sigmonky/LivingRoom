@@ -287,6 +287,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		Ext.dispatch({
 	    	controller: 'Roster',
 	    	action: 'showRoomParticipants'
+			direction: 'right',
 		});
 	},
 	
