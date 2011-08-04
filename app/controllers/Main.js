@@ -15,9 +15,9 @@ Ext.regController('Main', {
 	
 	showRoomRoster: function(){
 		
-	//	this.viewRoster = this.render({
-		///		xtype: 'RoomRosterView'
-		///	});
+		this.viewRoster = this.render({
+			xtype: 'RoomRosterView'
+			});
 
 		/*	this.viewConfig.query('#backButton')[0].on(
 				'tap',
@@ -25,13 +25,13 @@ Ext.regController('Main', {
 				this
 			);
 		*/
-	/*	this.application.viewport.setActiveItem(
+		this.application.viewport.setActiveItem(
 			this.viewRoster,
 			{
 				type: 'flip',
 				duration: '400'
 			}
-		); */
+		); 
 	}
 
 });
