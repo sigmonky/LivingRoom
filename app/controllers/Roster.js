@@ -158,9 +158,7 @@ Ext.regController('Roster', {
 	
 		storeRoomMsg.add(message);
 
-
-
-
+		console.log('openChatSessionForRoomRoster remoteJid = '+ remoteJid);
 
 	//	this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
 		
@@ -183,8 +181,6 @@ Ext.regController('Roster', {
 				//console.log("browse productDetailPanel Ext.apply()")
 	            Ext.apply(pnlChatSession, {jid: user.jid, jabberComponent: jabberClient });
 	      }
-
-
 
 	      //  pnlChatSession.doUpdate();
 
