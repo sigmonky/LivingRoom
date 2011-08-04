@@ -158,7 +158,7 @@ Ext.regController('Roster', {
 	
 		storeRoomMsg.add(message);
 
-		console.log('openChatSessionForRoomRoster remoteJid = '+ user.get('jid'));
+		console.log('openChatSessionForRoomRoster remoteJid = '+ user.jid);
 
 	//	this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
 		
