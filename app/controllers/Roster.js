@@ -419,13 +419,14 @@ Ext.regController('Roster', {
 	
 	
 	addMessageToOneToOneChatSession: function(options){
+			var key = jabberClient.publicRoom;
+			var roster = Ext.StoreMgr.get(key);
+			var user = roster.getById(options.from);
 
 			var key = options.from;
 			
 			console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 			//Let's take the chat user
-			var user = store.getById(options.from);
-			
 			
 			if (user != null){
 				var photo = user.get('facebook_id');
