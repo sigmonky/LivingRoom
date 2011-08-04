@@ -177,13 +177,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							var user = store.getAt(index);
 							console.log('itemtap user =' +user);
 
-							//Let's call the controller method able to show the user Roster
-							/*	Ext.dispatch({
-							    controller: 'Roster',
-							    action: 'openChatSessionForRoomRoster',
-								show: true,
-								user: user
-							}); */
+	
 
 
 							var tplUser = new Ext.XTemplate(
@@ -350,47 +344,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	addChatMessage: function(message, from, mine){
 		var html;
 		
-	/*	if (from == null){
-			html = this.tplMineFacebookMessage.apply({
-				photo: this.getMyFacebooKProfilePhoto(),
-				time: this.getTime(),
-				align: (mine ? 'right': 'left'),
-				color: (mine ? '#92d841': '#d3d3d3'),
-            	message: message
-        	});
-		}else{
-			var profilePhoto = this.getProfilePhoto(from);
-			console.log('profilePhoto = '+profilePhoto);
-			if (profilePhoto == ""){
-				html = this.tplEmptyFacebookMessage.apply({
-					photo: '',
-					time: this.getTime(),
-					align: (mine ? 'right': 'left'),
-					color: (mine ? '#92d841': '#d3d3d3'),
-	            	message: message
-	        	});
-			}else{
-				html = this.tplFacebookMessage.apply({
-					photo: profilePhoto,
-					time: this.getTime(),
-					align: (mine ? 'right': 'left'),
-					color: (mine ? '#92d841': '#d3d3d3'),
-            		message: message
-        		});
-			}
-		}
-
-		var pnlMsg = new Ext.Panel({
-			html: html
-		});
-		
-		this.add(pnlMsg);
-		this.doLayout(); */
-		
 		var message = Ext.ModelMgr.create({
 	    	jid: from,
 			nickname: jabberClient.nickname,
-			facebook_id: this.getMyFacebooKProfilePhoto(),
+			photo_url: this.getMyFacebooKProfilePhoto(),
 			time: '',
 			message:message,
 		}, 'ChatMessage');

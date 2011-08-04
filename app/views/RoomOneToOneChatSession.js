@@ -309,38 +309,12 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatMessage: function(message, from, mine){
-		var message = Ext.ModelMgr.create({
-			jid: from,
-			nickname: jabberClient.nickname,
-			facebook_id: this.getMyFacebooKProfilePhoto(),
-			time: '',
-			message:message,
-			}, 'ChatMessage');
-
-			this.store.add(message);
-
-	},
-	
-	addRoomAnnouncement: function(message){
-		console.log('roomChatSession - addRoomAnnouncement message = '+message);
-/*		var html;
-		html = this.tplPublicAnnouncement.apply({
-        	message: message
-    	});
-		var pnlMsg = new Ext.Panel({
-			html: html
-		});
-		this.add(pnlMsg);
-		this.doLayout(); */
-	},
-	
-	addChatMessage: function(message, from, mine){
 		var html;
 		
 		var message = Ext.ModelMgr.create({
 	    	jid: from,
 			nickname: jabberClient.nickname,
-			facebook_id: this.getMyFacebooKProfilePhoto(),
+			photo_url: this.getMyFacebooKProfilePhoto(),
 			time: '',
 			message:message,
 		}, 'ChatMessage');
@@ -348,70 +322,22 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		this.store.add(message);
 
 	},
-	
-	addChatRoomMessage: function(message, from){
-		
-		//Taking the remote user nickname
-		var nickname = from.split('/')[1];
-		
-		console.log('addChatRoomMessage from= '+from);
-		
-		
-		console.log('addChatRoomMessage - store get' +this.name);
-		
-		var roster = Ext.StoreMgr.get(this.name);
-		
-		console.log('roster ='+roster);
-		
-		user = roster.getById(from);
-		
-		console.log('addChatRoomMessage from ='+from);
-		
-		console.log('addChatRoomMessage user ='+user);
-		
-		var photo = user.get('facebook_id');
-		
-	//	var photo = null;
-		console.log('addChatRoomMessage photo ='+photo);
-		
-		
-		var html;
-		if (photo == null){
-		 	html = this.tplPublicMessageNoPhoto.apply({
-				time: this.getTime(),
-				nickname: nickname,
-            	message: message
-        	});
-		}else{
-		 	html = this.tplPublicMessage.apply({
-				photo: photo,
-				time: this.getTime(),
-				nickname: nickname,
-            	message: message
-        	});
-		}
 
-		//console.log('photo = '+ this.getProfilePhoto(from));
-
-		var pnlMsg = new Ext.Panel({
-			html: html
-		});
-		
-		this.add(pnlMsg);
-		this.doLayout();
-
-	},
 	
 	getMyFacebooKProfilePhoto: function(){
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		if (obj != undefined){
 			console.log('obj = '+obj);
-
 			var facebook_id = obj.get('id');
 			console.log('facebok id ' +facebook_id);
-			return facebook_id; 
-		}else{return ''}
+			var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+		}
+		else{
+			var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+		}
+		return photo_url;
+		
 	},
 	
 	getProfilePhoto: function(user){
@@ -419,30 +345,6 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		console.log('photo '+ photo);
 		return photo;
 	},
-	
-	/*
-	scrollDown: function(height){
-	
-		a = this;
-	
-		//Let's take the panel scroller
-		var scroller = this.scroller;
-		
-		console.log(scroller);
-		
-		var offset = scroller.getOffset();
-		
-		console.log(offset);
-		
-		var newOffset = new Ext.util.Offset(offset.x, (offset.y - height));
-		
-		alert('e');
-		
-		this.scroller.setOffset(newOffset, true);
-
-		
-	},
-	*/
 
 	getTime: function(){
 	    var data = new Date();
