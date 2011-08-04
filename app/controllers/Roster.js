@@ -129,8 +129,9 @@ Ext.regController('Roster', {
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
 		
-		var userRemoteJid = user.jid+'_message';
-		Ext.regStore(userRemoteJid, {
+		var userRemoteJidMsg = user.jid+'_message';
+		
+		Ext.regStore(userRemoteJidMsg, {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
@@ -142,7 +143,7 @@ Ext.regController('Roster', {
 		});
 
 
-		var storeRoomMsg = Ext.StoreMgr.get(user.jid);
+		var storeRoomMsg = Ext.StoreMgr.get(userRemoteJidMsg);
 		
 		console.log('openChatSessionForRoomRoster store = '+ storeRoomMsg);
 		
