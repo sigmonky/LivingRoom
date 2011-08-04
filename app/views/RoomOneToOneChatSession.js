@@ -404,7 +404,8 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 	
 	getMyFacebooKProfilePhoto: function(){
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
-		if (facebookStore != undefined){
+		console.log('facebookStore = '+facebookStore);
+		if (facebookStore != ''){
 			var obj = facebookStore.getAt(0);
 			var facebook_id = obj.get('id');
 			console.log('facebok id ' +facebook_id);
