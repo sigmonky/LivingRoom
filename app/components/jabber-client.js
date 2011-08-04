@@ -499,16 +499,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 			//console.log('user nickname 3- ' + vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue);
 			console.log('Room - handleIq  vCard = ' +vCard);
-	
-			var facebook_id  = vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue;
-			console.log('Room - handleIq  facebook_id = ' +facebook_id)
-		
-			//user.set('jid', from);
-			if (facebook_id != ''){
-				var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
-				user.set('facebook_id', facebook_id);
-				user.set('profile_thumb_url', photo_url);
-				
+			if(vCard != undefined){
+				var facebook_id  = vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue;
+				console.log('Room - handleIq  facebook_id = ' +facebook_id)
+				if (facebook_id != ''){
+					var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+					user.set('facebook_id', facebook_id);
+					user.set('profile_thumb_url', photo_url);
+				}
 			}else{
 				var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
 				user.set('profile_thumb_url', photo_url);
