@@ -44,23 +44,13 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 				scope: this,
 				handler: this.switchBack
 			},
-			{xtype: 'spacer'},
-			{
-				//Definition of Show Rost button
-				ui: 'action',
-				text: 'Co-Viewers',
-				iconMask: true,
-		//		iconCls: 'arrow_right',
-				scope: this,
-				handler: this.showRoster
-			}
 			]
 		});
 		
-		console.log('room jid -' +this.jid)
-		console.log('room store msg -' +this.name+'message')
+		console.log('room jid -' +this.remoteJid)
+		console.log('room store msg -' +this.remoteJid+'message')
 		
-		this.store = Ext.StoreMgr.get(this.name+'_message');
+		this.store = Ext.StoreMgr.get(this.remoteJid+'_message');
 		console.log('Room Chat session store msg -' +this.store)
 		panelLaunch = function(pluginConfig, panelContent){
 
@@ -292,30 +282,12 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
         chatList.bindStore(this.store);
 	},
 	
-	showRoster: function(){
-		console.log('show roster 3');
-		
-		var store = Ext.StoreMgr.get(jabberClient.publicRoom);
-		
-		console.log('store show Roster = '+store);
-		
-		store.each(function (record) {
-		    console.log('record.nickname = '+record.get('nickname'));
-		});
-		
-		Ext.dispatch({
-		    controller: 'Roster',
-		    action: 'showRoomParticipants', 
-			roomName: jabberClient.publicRoom
-		});
-	},
-	
+
 	switchBack: function(){
 		Ext.dispatch({
-		    controller: 'Roster',
-		    action: 'backToRoomList'
+	    	controller: 'Roster',
+	    	action: 'showRoomParticipants'
 		});
-		//this.setActiveItem(0, {type:'slide', direction:'right'});
 	},
 	
 	
