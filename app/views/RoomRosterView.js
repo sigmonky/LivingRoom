@@ -177,7 +177,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	talkToUser: function(user){
 		
-		console.log('talk to user = '+user.get('nickname'));
+		console.log('talk to user = '+user.nickname);
 		
 		Ext.dispatch({
 		    controller: 'Roster',
