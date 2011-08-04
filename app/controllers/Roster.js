@@ -130,6 +130,37 @@ Ext.regController('Roster', {
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
 		
 
+		Ext.regStore(user.jid+'_message'+, {
+			model: 'RoomRosterItem',
+			autoLoad: true,
+			proxy: {
+				type: 'memory',
+				  	reader: {
+				    	type: 'json'
+				   	}
+				}
+		});
+
+
+		var storeRoomMsg = Ext.StoreMgr.get(user.jid);
+		
+		console.log('openChatSessionForRoomRoster store = '+ storeRoomMsg);
+		
+		var message = Ext.ModelMgr.create({
+	    	jid: '',
+			nickname: '',
+			facebook_id: '',
+			time: '',
+			message:'aaaaa',
+		}, 'ChatMessage');
+	
+	
+		storeRoomMsg.add(message);
+
+
+
+
+
 	//	this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
 		
 		if (!pnlChatSession) {
