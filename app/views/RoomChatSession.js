@@ -412,9 +412,16 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	getMyFacebooKProfilePhoto: function(){
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
-		var facebook_id = obj.get('id');
-		console.log('facebok id ' +facebook_id);
-		return facebook_id; 
+		if (obj != undefined){
+			console.log('obj = '+obj);
+			var facebook_id = obj.get('id');
+			console.log('facebok id ' +facebook_id);
+			var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+		}
+		else{
+			var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+		}
+		return photo_url;
 	},
 	
 	getProfilePhoto: function(user){
