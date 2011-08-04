@@ -394,8 +394,8 @@ Ext.regController('Roster', {
 	//	console.log('addMessageToChatRoom from ='+from);
 	
 		console.log('addMessageToChatRoom user ='+user);
-		if (user != null){
-			var photo = user.get('facebook_id');
+		var photo = user.get('facebook_id');
+		if (photo != null){
 			var photo_url = "https://graph.facebook.com/"+photo+"/picture";
 		}else{
 			var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
