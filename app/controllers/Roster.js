@@ -130,6 +130,7 @@ Ext.regController('Roster', {
 	//	var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.jid);
 		
 
+		this.application.viewport.getComponent(this.pnlRoom).getComponent(user.jid);
 		
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
@@ -152,9 +153,10 @@ Ext.regController('Roster', {
 	      }
 
 
-	        //pnlChatSession.doUpdate();
 
-	        this.application.viewport.getComponent(this.pnlRoom).setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+	      //  pnlChatSession.doUpdate();
+
+	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
 		
 	},
 	
