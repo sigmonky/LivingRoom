@@ -92,7 +92,11 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 						nickname: user.get('nickname'),
 		            	facebook_id: user.get('facebook_id')
 		        	});
-		
+			
+			
+				console.log('user nickname item tap' +user.get('nickname'))
+			
+			
 				//	overlay.html = html;
 					
 		          // overlay.show();
