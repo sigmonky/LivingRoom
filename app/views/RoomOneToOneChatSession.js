@@ -13,22 +13,28 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 	
 	remoteJid: undefined,
 	
+	jid: undefined, 
+	
+	id: undefined, 
+	
+	topic: undefined, 
+	
+	name: undefined,
+	
 	remoteUserName: undefined,
 	
 	jabberComponent: undefined,
 	
 	toolbar: '',
 	
-	barTitle: '',
-	
 	isChatRoom: false,
 	
 	initComponent: function(){
 		
 		this.toolbar = new Ext.Toolbar({
-			itemId: 'toolbar',
+			itemId: 'toolbar2',
 			dock: 'top',
-			title: this.barTitle,
+			title: this.topic,
 			layout: 'hbox',
 			items: [{
 				//Definition of logout button
@@ -38,134 +44,313 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 				scope: this,
 				handler: this.switchBack
 			},
+			{xtype: 'spacer'},
+			{
+				//Definition of Show Rost button
+				ui: 'action',
+				text: 'Co-Viewers',
+				iconMask: true,
+		//		iconCls: 'arrow_right',
+				scope: this,
+				handler: this.showRoster
+			}
 			]
 		});
 		
-		/* Definition of the template that will be used to show a direct 
-		 * message coming from Facebook chat */
-		this.tplFacebookMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-				//	'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
-					'<img src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
-				'</div>',
-			'</tpl>'
-		);
+		console.log('room jid -' +this.jid)
+		console.log('room store msg -' +this.name+'message')
 		
-		this.tplMineFacebookMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-				//	'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
-					'<img src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
-				'</div>',
-			'</tpl>'
-		);
-		
-		this.tplEmptyFacebookMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-				//	'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
-					'<img src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
-				'</div>',
-			'</tpl>'
-		);
-		
-		
+		this.store = Ext.StoreMgr.get(this.name+'_message');
+		console.log('Room Chat session store msg -' +this.store)
+		panelLaunch = function(pluginConfig, panelContent){
 
-		
-		//Definition of the message coming from the public chat room
-		this.tplPublicMessage = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-				//	'<img src="data:image/jpg;base64,{photo}" width="32" height="32" />',
-					'<img src="https://graph.facebook.com/{photo}/picture" width="32" height="32"/>',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
-				'</div>',
-			'</tpl>'
-		);
-		
-		
-		this.tplPublicMessageNoPhoto = new Ext.XTemplate(
-			'<tpl for=".">',
-				'<div class="x-public-chat-message">',
-					'<img src="http://www.logoslogic.com/chat/LivingRoom/user_default.gif" width="32" height="32"/>',
-					'<p class="time">{time}</p>',
-					'<p class="nickname">{nickname}</p>',
-					'<p class="message">{message}</p>',
-				'</div>',
-			'</tpl>'
-		);
+	
+        var pnl = new Ext.Panel({
+                floating: true,
+                width: 270,
+                height: 370,
+                centered: true,
+                modal: true,
+	            scroll: 'vertical',
+				hideMode: 'close',
+                hideOnMaskTap: false,
+                layout: 'fit',
+				dockedItems:[
+				{
+							xtype: 'button', 
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Block this User',
+							handler: this.facebookConnect,
+							scope: this,
+				},
+				{
+							xtype: 'button',
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Report this User',
+							handler: this.facebookConnect,
+							scope: this,
+				},
+					{
+								xtype: 'button', 
+								margin: '10, 0, 0,0',
+								dock: 'bottom',
+								text: 'Chat with this User',
+								handler: this.facebookConnect,
+								scope: this,
+					}
+
+				],
+                html: panelContent,
+				showAnimation: {
+					type: 'pop',
+					duration: 250
+				},
+                plugins: [new Ext.ux.PanelAction(pluginConfig)]
+            });
+            
+            pnl.show();
+        };
+
 
 		Ext.apply(this,{
-		
-			scroll: 'vertical',
-			//fullscreen: true,
-			layout:'fit',
+			layout: 'fit',
 			dockedItems: [
-				this.toolbar,
-			{
-				//Definition of the message panel
-				xtype: 'panel',
-				itemId: 'pnlMessage',
-				dock: 'bottom',
-				layout: 'hbox',
-				defaults: {
-					height: 80
-				},
-				items: [{
-					xtype: 'textareafield',
-					itemId: 'message',
-					width: '70%'
-				},{
-					xtype: 'button',
-					ui: 'action',
-					dock: 'right',
-					text: 'Send',
-					width: '30%',
-					handler: this.sendMessage,
-					scope: this
-				}]
-			}
+				{
+					xtype: 'toolbar',
+					dock: 'bottom',
+					itemId: 'msgToolbar',
+					layout: 'fit',
+					items: [
+							{
+								xtype: 'textareafield',
+								itemId: 'message',
+								width: '70%'
+							},
+							{
+								xtype: 'button',
+								ui: 'action',
+								dock: 'right',
+								text: 'Send',
+								width: '27%',
+								handler: this.sendMessage,
+								scope: this
+							}
+						]
+			},
+				this.toolbar
 
+			],
+			items: [
+				{
+					xtype: 'list',
+					itemId: 'chatList',
+					cls: 'messageList',
+					itemTpl : new Ext.XTemplate(
+						'<tpl if="xindex % 2 === 0">',
+							'<div class="bubbledRight">',
+							'<div class="bubbleimgRight" style="background:url({photo_url})" /></div>',
+									'{message}',
+							'</div>',
+						
+						'</tpl>',
+						'<tpl if="xindex % 2 === 1">',
+							'<div class="bubbledLeft">',
+							'<div class="bubbleimg" style="background:url({photo_url})" /></div>',
+											'{message}',
+							'</div>',
+						'</tpl>'
+					),
+					store: this.store,
+					scroll: 'vertical',
+					listeners: {
+
+						itemtap: function(list, index, item, e) {
+
+							//Let's take the online users store
+							var store = list.getStore();
+
+							console.log('itemtap at index =' +index);
+							store.sync();
+							//Let's take the selected user
+							var user = store.getAt(index);
+							console.log('itemtap user =' +user);
+
+							//Let's call the controller method able to show the user Roster
+							/*	Ext.dispatch({
+							    controller: 'Roster',
+							    action: 'openChatSessionForRoomRoster',
+								show: true,
+								user: user
+							}); */
+
+
+							var tplUser = new Ext.XTemplate(
+								'<tpl for=".">',
+									'<div style="padding:20px"><div class="x-user-picture">' +
+										'<img src="https://graph.facebook.com/{facebook_id}/picture" width="52" height="52"/>'+
+									'</div>' +
+								     '<div class="x-user-name">' +
+										'<p class="nickname">{nickname}</p>' +
+									  '</div></div>' +
+								'</tpl>'
+							);
+
+
+							var html = tplUser.apply({
+								nickname: user.get('nickname'),
+				            	facebook_id: user.get('facebook_id')
+				        	});
+
+						//	overlay.html = html;
+
+				          // overlay.show();
+
+							panelLaunch({
+		                        iconClass: 'x-panel-action-icon-close',
+		                        position: 'tr',
+		                        actionMethod: ['hide']
+		                    }, html); 
+
+						},
+						scope: this
+
+					}
+				}
 			]
 		});
 
 		//Superclass inizialization
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
+		this.addEventListener();
 	
 	},
+	
+	/**
+	 * Add custom event listener
+	 */
+	addEventListener: function() {
+		this.store.on(
+			'datachanged',
+			this.scrollToBottom,
+			this
+		);
+	},
+
+	/**
+	 * Scroll to the button of the list
+	 */
+	scrollToBottom: function(){
+		console.log('scrollToBottom');
+		var list = this.getComponent('chatList');
+		list.scroller.updateBoundary();
+		list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
+	},
+	
+	/**
+     * Wraps all updates of children into one easy call
+     */
+    doUpdate: function() {
+		console.log("productGalleryPanel doUpdate()");
+		console.log('room jid -' +this.jid)
+		
+        this.updateToolbar();
+        this.updateStore();
+    },
+
+    /**
+     * When a new category is defined for the product list panel
+     * the toolbar needs to be updated with a new title
+     * @private
+     */
+    updateToolbar: function() {
+		////console.log('state.listType ='+Marika.util.state.listType);
+        // update toolbar's title
+        var toolbar = this.getComponent('toolbar2');
+        if (toolbar) {
+			toolbar.setTitle(this.topic);
+        }
+
+		var f;
+	//	while(f = this.items.first()){
+	//		this.remove(f, true);
+	//	}
+		this.doLayout();
+    },
+
+    /**
+     * When a new Room is defined
+     * the store for the item list needs to be updated
+     * @private
+     */
+	updateStore: function(){
+		var chatList = this.getComponent('chatList');
+        var newStore = Ext.StoreMgr.get(this.name+'_message');
+		this.store = newStore;
+        chatList.update();
+        chatList.bindStore(this.store);
+	},
+	
+	showRoster: function(){
+		console.log('show roster 3');
+		
+		var store = Ext.StoreMgr.get(jabberClient.publicRoom);
+		
+		console.log('store show Roster = '+store);
+		
+		store.each(function (record) {
+		    console.log('record.nickname = '+record.get('nickname'));
+		});
+		
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'showRoomParticipants', 
+			roomName: jabberClient.publicRoom
+		});
+	},
+	
+	switchBack: function(){
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'backToRoomList'
+		});
+		//this.setActiveItem(0, {type:'slide', direction:'right'});
+	},
+	
 	
 	sendMessage: function(message){
 		
 		//Let's take the written message
-		var message = this.getDockedComponent('pnlMessage').getComponent('message');
+		var message = this.getDockedComponent('msgToolbar').getComponent('message');
 
-		//Send the written message
-		this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
-
-		//Add the message panel component
-		this.addChatMessage(message.getValue(), null, true);
+			
+		//Send the message to all the room participants
+	    this.jabberComponent.sendRoomMessage(message.getValue());
+		
 		
 		//Clear the message field
 		message.setValue('');
 		
 	},
 	
+	addRoomAnnouncement: function(message){
+		console.log('roomChatSession - addRoomAnnouncement message = '+message);
+/*		var html;
+		html = this.tplPublicAnnouncement.apply({
+        	message: message
+    	});
+		var pnlMsg = new Ext.Panel({
+			html: html
+		});
+		this.add(pnlMsg);
+		this.doLayout(); */
+	},
+	
 	addChatMessage: function(message, from, mine){
 		var html;
 		
-		if (from == null){
+	/*	if (from == null){
 			html = this.tplMineFacebookMessage.apply({
 				photo: this.getMyFacebooKProfilePhoto(),
 				time: this.getTime(),
@@ -200,18 +385,19 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		});
 		
 		this.add(pnlMsg);
-		this.doLayout();
+		this.doLayout(); */
+		
+		var message = Ext.ModelMgr.create({
+	    	jid: from,
+			nickname: jabberClient.nickname,
+			facebook_id: this.getMyFacebooKProfilePhoto(),
+			time: '',
+			message:message,
+		}, 'ChatMessage');
+	
+		this.store.add(message);
 
 	},
-	
-	
-	switchBack: function(){
-		Ext.dispatch({
-		    controller: 'Roster',
-		    action: 'showRoomParticipants'
-		});
-	},
-	
 	
 	addChatRoomMessage: function(message, from){
 		
@@ -220,11 +406,25 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 		
 		console.log('addChatRoomMessage from= '+from);
 		
-	//	var roster = Ext.StoreMgr.get('RoomRoster');
-	//	user = roster.getById(from);
-	//	var photo = user.get('facebook_id');
-		var photo = null;
-		console.log('photo ='+photo);
+		
+		console.log('addChatRoomMessage - store get' +this.name);
+		
+		var roster = Ext.StoreMgr.get(this.name);
+		
+		console.log('roster ='+roster);
+		
+		user = roster.getById(from);
+		
+		console.log('addChatRoomMessage from ='+from);
+		
+		console.log('addChatRoomMessage user ='+user);
+		
+		var photo = user.get('facebook_id');
+		
+	//	var photo = null;
+		console.log('addChatRoomMessage photo ='+photo);
+		
+		
 		var html;
 		if (photo == null){
 		 	html = this.tplPublicMessageNoPhoto.apply({
@@ -307,5 +507,6 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 });
 
 //Component type registration
-Ext.reg('RoomOneToOneChatSession', LivingRoomAPI.views.RoomOneToOneChatSession);
+Ext.reg('RoomOneToOneChatSession', RoomOneToOneChatSession.views.RoomChatSession);
 
+var a;
