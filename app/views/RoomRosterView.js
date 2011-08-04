@@ -90,7 +90,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					var facebook_id = user.get('facebook_id')
 	            	
 					if (facebook_id != ''){
-						var photo_url = "https://graph.facebook.com/"+photo+"/picture";
+						var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
 					}else{
 						var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
 					}
