@@ -79,7 +79,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 					var tplUser = new Ext.XTemplate(
 						'<tpl for=".">',
 							'<div style="padding:20px"><div class="x-user-picture">' +
-								'<img src="https://graph.facebook.com/{facebook_id}/picture" width="52" height="52"/>'+
+								'<img src="{photo_url}" width="52" height="52"/>'+
 							'</div>' +
 						     '<div class="x-user-name">' +
 								'<p class="nickname">{nickname}</p>' +
@@ -87,10 +87,17 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 						'</tpl>'
 					);
 					
+					var facebook_id = user.get('facebook_id')
+	            	
+					if (facebook_id != ''){
+						var photo_url = "https://graph.facebook.com/"+photo+"/picture";
+					}else{
+						var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+					}
 					
 					var html = tplUser.apply({
 						nickname: user.get('nickname'),
-		            	facebook_id: user.get('facebook_id')
+		            	photo_url: photo_url,
 		        	});
 			
 			
