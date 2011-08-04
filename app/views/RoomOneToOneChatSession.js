@@ -307,4 +307,3 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 //Component type registration
 Ext.reg('RoomOneToOneChatSession', LivingRoomAPI.views.RoomOneToOneChatSession);
 
-var a;
