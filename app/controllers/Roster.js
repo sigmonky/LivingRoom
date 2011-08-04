@@ -395,6 +395,8 @@ Ext.regController('Roster', {
 	
 		console.log('addMessageToChatRoom user ='+user);
 		var photo = user.get('facebook_id');
+		console.log('addMessageToChatRoom photo ='+photo);
+		
 		if (photo != undefined){
 			var photo_url = "https://graph.facebook.com/"+photo+"/picture";
 		}else{
