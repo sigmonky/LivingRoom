@@ -346,7 +346,7 @@ Ext.regController('Roster', {
 	
 		if (direction == ''){direction = 'left';}
 
-	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRosterView, {type: 'slide', direction:direction duration: 500});
+	    this.application.viewport.getComponent('pnlRoomList').setActiveItem(roomRosterView, {type: 'slide', direction:direction, duration: 500});
 
 	},
 	

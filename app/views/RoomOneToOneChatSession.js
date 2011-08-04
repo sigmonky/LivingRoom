@@ -286,7 +286,7 @@ LivingRoomAPI.views.RoomOneToOneChatSession = Ext.extend(Ext.Panel, {
 	switchBack: function(){
 		Ext.dispatch({
 	    	controller: 'Roster',
-	    	action: 'showRoomParticipants'
+	    	action: 'showRoomParticipants',
 			direction: 'right',
 		});
 	},
