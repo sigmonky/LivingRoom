@@ -503,7 +503,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('Room - handleIq  facebook_id = ' +facebook_id)
 		
 			//user.set('jid', from);
-			if (facebook_id != null){
+			if (facebook_id != ''){
 				var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
 				user.set('facebook_id', facebook_id);
 				user.set('profile_thumb_url', photo_url);
