@@ -498,7 +498,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var vCard = doc.getElementsByTagName('vCard')[0];
 
 			//console.log('user nickname 3- ' + vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue);
-			
+			console.log('Room - handleIq  vCard = ' +vCard);
+	
 			var facebook_id  = vCard.getElementsByTagName('NICKNAME')[0].childNodes[0].nodeValue;
 			console.log('Room - handleIq  facebook_id = ' +facebook_id)
 		
