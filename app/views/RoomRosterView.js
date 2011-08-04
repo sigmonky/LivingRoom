@@ -94,7 +94,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		        	});
 			
 			
-				console.log('user nickname item tap' +user.get('nickname'))
+	
 			
 			
 				//	overlay.html = html;
@@ -103,7 +103,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 		
 					that.user = user;
 					
-					this.panelLaunch({
+					that.panelLaunch({
                         iconClass: 'x-panel-action-icon-close',
                         position: 'tr',
                         actionMethod: ['hide']
