@@ -225,16 +225,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.addEventListener();
 	
 	},
-	
-	doUpdate: function(){
-		console.log('doUpdate');
-		if (this.isChatRoom == false){
-			Ext.getCmp('showRoster').setVisible(false);	
-		}else{
-			Ext.getCmp('showRoster').setVisible(true);	
-		}
-	},
-	
+
 	/**
 	 * Add custom event listener
 	 */
@@ -262,6 +253,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
     doUpdate: function() {
 		console.log("productGalleryPanel doUpdate()");
 		console.log('room jid -' +this.jid)
+		if (this.isChatRoom == false){
+			Ext.getCmp('showRoster').setVisible(false);	
+		}else{
+			Ext.getCmp('showRoster').setVisible(true);	
+		}
 		
         this.updateToolbar();
         this.updateStore();
