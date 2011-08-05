@@ -48,7 +48,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			{
 				//Definition of Show Rost button
 				ui: 'action',
-				id: jid+'_btn',
+				id: this.jid+'_btn',
 				text: 'Co-Viewers',
 				iconMask: true,
 		//		iconCls: 'arrow_right',
