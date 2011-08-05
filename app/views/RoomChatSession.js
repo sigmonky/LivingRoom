@@ -251,8 +251,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
      * Wraps all updates of children into one easy call
      */
     doUpdate: function() {
-		console.log("productGalleryPanel doUpdate()");
+		console.log("doUpdate()");
 		console.log('room jid -' +this.jid)
+		
+		console.log('doUpdate this.isChatRoom -' +this.isChatRoom)
+		
 		if (this.isChatRoom == false){
 			Ext.getCmp('showRoster').setVisible(false);	
 		}else{
