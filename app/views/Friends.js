@@ -82,7 +82,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			      //  url: 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl(),
 					url: 'https://graph.facebook.com/me/friends?access_token=185799971471968%7Ce83f2eff9c114736aac52c0b.3-527305423%7C_DlATFHB_CJa2hlpSxwDGbCaYEE',
 			        reader: {
-			            type: 'json',
+			            type: 'jsonp',
 			        }
 			    },
 			    getGroupString : function(record) {
