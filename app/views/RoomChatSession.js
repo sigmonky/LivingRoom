@@ -297,9 +297,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
      */
 	updateStore: function(){
 		var chatList = this.getComponent('chatList');
-        var newStore = Ext.StoreMgr.get(this.name+'_message');
+        var newStore = Ext.StoreMgr.get(this.jid+'_message');
 
-		console.log('updateStore ='+this.name+'_message');
+		console.log('updateStore ='+this.jid+'_message');
 
 
 		this.store = newStore;
@@ -375,9 +375,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		//this.store = Ext.StoreMgr.get(this.name+'_message');
 		
-		console.log('add chat message - '+this.name+'_message')
-		var chatStore = Ext.StoreMgr.get(this.name+'_message');
-		
 		var message = Ext.ModelMgr.create({
 	    	jid: from,
 			nickname: jabberClient.nickname,
@@ -386,7 +383,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			message:message,
 		}, 'ChatMessage');
 	
-		chatStore.add(message);
+		this.chatStore.add(message);
 
 	},
 	
