@@ -138,7 +138,7 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 		
 	panelLaunch: function(pluginConfig, panelContent, user){
-            var pnl = new Ext.Panel({
+            this.popupPnl = new Ext.Panel({
                 floating: true,
                 width: 270,
                 height: 370,
@@ -183,13 +183,13 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
                 plugins: [new Ext.ux.PanelAction(pluginConfig)]
             });
             
-            pnl.show();
+            this.popupPnl.show();
      },
 	
 	talkToUser: function(options){
 		
 		var user = options.user;
-		
+		this.popupPnl.hide();
 		//console.log('talk to user = '+user.get('nickname'));
 		
 		Ext.dispatch({
