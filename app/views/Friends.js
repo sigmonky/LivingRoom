@@ -35,61 +35,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			listeners: {
 				
 				itemtap: function(list, index, item, e) {
-					
-					
-					if (e.getTarget('.' + this.list.activeCls + ' div.delete')) {
-						
-			            var store    = list.getStore(),
-			                selModel = this.list.getSelectionModel(),
-			                instance = store.getAt(index),
-			                selected = selModel.isSelected(instance),
-			                nearest  = store.getAt(index + 1) || store.getAt(index - 1);
 
-			            //if the item we are removing is currently selected, select the nearest item instead
-			            if (selected && nearest) {
-			                selModel.select(nearest);
-			            }
-
-			            store.removeAt(index);
-			            //store.sync();
-
-	
-			        } else {
-			            this.deactivateAll();
-
-			            
-						//Let's take the online users store
-						var store = list.getStore();
-
-						//Let's take the selected user
-						var room = store.getAt(index);
-
-						var isPrivate = room.get('isPrivate');
-
-						console.log('is private' +isPrivate);
-
-						if (isPrivate == false){
-							Ext.dispatch({
-							    controller: 'Roster',
-							    action: 'openRoom',
-								show: true,
-								room: room
-							});
-
-						}else{
-
-							var nickname = room.get('name');
-							var jid = room.get('jid');
-
-							Ext.dispatch({
-							    controller: 'Roster',
-							    action: 'returnToChatOneOneSession',
-								show: true,
-								nickname: nickname,
-								jid: jid,
-							});
-						}
-			        }
 					
 				},
 				
@@ -152,21 +98,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			itemSubList.update();
             friendStore = Ext.getStore('FriendListStore');
             if (friendStore) {
-
-                // show loader if loading is taking too long
-                var loaderTimeout = setTimeout(function() {
-                    if (loader.isHidden()) {
-                        loader.show();
-                    }
-                }, 250);
-
                 friendStore.load(function(){
-                    if (loader.isHidden()) {
-                       clearTimeout(loaderTimeout);
-                    }
-                    else {
-                        loader.hide();
-                    }
                     itemSubList.store.loadData(friendStore.data.items);
                 });
             }
