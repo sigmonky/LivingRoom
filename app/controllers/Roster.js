@@ -217,7 +217,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(pnlChatSession, {jid: user.jid, name: room.get('jid'), jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: jid, name: nickname, jabberComponent: jabberClient });
 	      }
 
         this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
