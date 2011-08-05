@@ -624,11 +624,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster+'message').removeAll();
 		} */
 		
-		var publicRoom = publicRoomName+'_room';
+		var publicRoomStr = publicRoomName+'_room';
 		
-		console.log('this.publicRoom  =' +publicRoom );
+		console.log('publicRoom Store  =' +publicRoomStr );
 		
-		Ext.regStore(publicRoom, {
+		Ext.regStore(publicRoomStr, {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
@@ -701,9 +701,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		console.log('joinRoomComplete='+me.publicRoom)
 		
+		var roomStore = me.roomJid.substring(0,me.roomJid.indexOf('@'));
+		console.log('joinRoomComplete roomStore ='+roomStore)
 		
-		
-		var store = Ext.StoreMgr.get(me.publicRoom);
+		var store = Ext.StoreMgr.get(roomStore+'_room');
 		
 		//Adding the user to the store
 		store.add(item);
