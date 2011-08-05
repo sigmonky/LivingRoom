@@ -499,7 +499,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var from = iq.getFrom();
 
 
-			var whatRoom = from.substring(from.indexOf(0, '@'));
+			var whatRoom = from.substring(0, from.indexOf('@'));
 			var store = Ext.StoreMgr.get(whatRoom);
 
 			console.log('Room - handleIq store = ' +store)
