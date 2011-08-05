@@ -39,7 +39,6 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 					
 					if (e.getTarget('.' + this.list.activeCls + ' div.delete')) {
 						
-						console.log('delete row');
 			            var store    = list.getStore(),
 			                selModel = this.list.getSelectionModel(),
 			                instance = store.getAt(index),
@@ -153,6 +152,10 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
         
         this.deactivateAll();
         
+		console.log('onItemSwipe el '+el);
+		console.log('onItemSwipe index '+index);
+
+
         if (hasClass) {
             el.removeCls(activeCls);
         } else {
