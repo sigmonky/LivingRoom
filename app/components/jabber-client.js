@@ -288,6 +288,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('room handlePresence from' +from);
 			console.log('room handlePresence from' +type);
 		
+		
+			var roomJid = from.substring(0,from.indexOf('@'));
+			console.log('room handlePresence roomJid' +roomJid);
+		
 			//console.log('handlePresence getStatus ' +status)
 			// 
 			var doc = createXMLDoc(presence.xml());
