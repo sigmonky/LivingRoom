@@ -72,6 +72,13 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		    
 		});
 		
+		
+		this.pnlFriends= new LivingRoomAPI.views.Friends({
+			itemId: 'pnlFriends',
+			title: 'Friends',
+		    
+		});
+		
 		//Definition of the public chat panel
 		this.settingsPanel = new LivingRoomAPI.views.Settings({
 			title: 'Settings',
@@ -101,6 +108,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			//	this.pnlRoster,
 			//	this.pnlOneToOne,
 				this.pnlRoomList,
+				this.pnlFriends,
 				this.settingsPanel
 			]
 			
