@@ -39,7 +39,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 					
 					console.log('is private' +isPrivate);
 					
-					if (isPrivate == true){
+					if (isPrivate == false){
 						Ext.dispatch({
 						    controller: 'Roster',
 						    action: 'openRoom',
