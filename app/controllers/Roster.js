@@ -143,22 +143,23 @@ Ext.regController('Roster', {
 				   	}
 				}
 		});
-
-
-		var storeRoomMsg = Ext.StoreMgr.get(userRemoteJidMsg);
 		
-		console.log('openChatSessionForRoomRoster store = '+ storeRoomMsg);
 		
-		var message = Ext.ModelMgr.create({
-	    	jid: '',
-			nickname: '',
-			facebook_id: '',
-			time: '',
-			message:'aaaaa',
-		}, 'ChatMessage');
+		var roomList = Ext.StoreMgr.get('RoomListStore');
+		
+		console.log('RoomListStore store = '+ roomList);
+		
+		var room = Ext.ModelMgr.create({
+	    	jid: user.get('jid'),
+			name: user.get('nickname'),
+			topic: '',
+			type: '',
+			thumb:'http://www.logoslogic.com/chat/LivingRoom/user_default.gif',
+			isPrivate:true,
+		}, 'Room');
 	
 	
-		storeRoomMsg.add(message);
+		roomList.add(room);
 
 
 	//	this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
