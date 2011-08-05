@@ -294,7 +294,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		console.log('show roster 3');
 		
 		
-		var roomStore = name+'_room';
+		var roomStore = this.name+'_room';
 		console.log('show roster 3roomStore '+roomStore);
 		
 		var store = Ext.StoreMgr.get(roomStore);
