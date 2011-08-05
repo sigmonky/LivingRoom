@@ -107,7 +107,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				    // Callback
 				    callback: function (data) {
 						var data = data.results;
-						console.log('data =' +data.data);
+						console.log('data =' +data.length);
 						
 						var friendStore = Ext.StoreMgr.get('FriendListStore');
 						console.log('data.length ='+data.data.length);
