@@ -383,7 +383,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			message:message,
 		}, 'ChatMessage');
 	
-		this.chatStore.add(message);
+		this.store.add(message);
 
 	},
 	
