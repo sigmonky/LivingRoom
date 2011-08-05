@@ -268,7 +268,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}
 		
 		//Let's finally send the presence packety
-		this.jabberConnection.send(p);
+	//	this.jabberConnection.send(p);
 
 	},
 	
@@ -278,13 +278,15 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			
 			console.log('handlePresence this.publicRoom'+me.publicRoom)
 			
-			//console.log('room handlePresence presense = ' +presence);
-			//console.log('room handlePresence from' +from);
+			console.log('room handlePresence presense = ' +presence);
 			
 			//Let's take all the presence informations
 			var from = presence.getFrom();
 			var type = presence.getType();
 			var show = presence.getShow();
+		
+			console.log('room handlePresence from' +from);
+			console.log('room handlePresence from' +type);
 		
 			//console.log('handlePresence getStatus ' +status)
 			// 
