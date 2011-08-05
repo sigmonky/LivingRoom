@@ -625,8 +625,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		console.log('join public room  '+this.roomsArray.length);
 		
+		var publicRoomStr = publicRoomName+'_room';
+		
 		if (this.roomsArray.length == 0){
-			var publicRoomStr = publicRoomName+'_room';
 			this.roomsArray.push(publicRoomStr);
 			Ext.regStore(publicRoomStr, {
 				model: 'RoomRosterItem',
