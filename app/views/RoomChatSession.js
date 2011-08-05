@@ -263,8 +263,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			this.getComponent('toolbar2').getComponent(this.jid+'_btn').setVisible(false)
 		}else{
 			console.log("show Roster");
+			this.getComponent('toolbar2').getComponent(this.jid+'_btn').setVisible(true)
 			
-			Ext.getCmp('showRoster').setVisible(true);	
 		}
 		
 		
