@@ -227,6 +227,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	doUpdate: function(){
+		console.log('doUpdate');
 		if (this.isChatRoom == false){
 			Ext.getCmp('showRoster').setVisible(false);	
 		}else{
