@@ -625,6 +625,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		} */
 		
 		var publicRoom = publicRoomName+'_room';
+		
 		console.log('this.publicRoom  =' +publicRoom );
 		
 		Ext.regStore(publicRoom, {
@@ -645,7 +646,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('publicRoomName '+publicRoomName);
 		
 		//Let's save tht full Room JID
-		this.roomJid = publicRoom + "@" + this.conferenceSubdomain + '.' + this.domain;
+		this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
 		console.log('roomJid = ' +this.roomJid);
 		
 		//Let's create the presence packet
