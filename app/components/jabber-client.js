@@ -650,11 +650,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}else{
 			console.log('publicRoom Store  =' +publicRoomStr );
 		
+		var alreadyExists = false;
 		
 		for(var i=0; i< this.roomsArray.length; i++){
 			console.log('publicRoomStr');
-			if (publicRoomStr != this.roomsArray[i] ){
-				console.log('join public room  publicRoomStr != this.roomsArray[i] ');
+			if (publicRoomStr == this.roomsArray[i] ){
+				alreadyExists = true;
+			}
+		}
+		
+		if (alreadyExists == false){
 				
 				this.roomsArray.push(publicRoomStr);
 				Ext.regStore(publicRoomStr, {
@@ -674,8 +679,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				oPresence.setFrom(new JSJaCJID(this.myJID));
 				oPresence.setTo(new JSJaCJID(this.roomJid  + '/' + this.nickname));
 				this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
-			}
-			
 		}
 		
 	}
