@@ -669,7 +669,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	joinRoomComplete: function(iq, me){
 		
-	//	console.log('joinRoomComplete = '+iq.xml());
+		console.log('joinRoomComplete = '+iq.xml());
 	
 		/* Get my Facebook User ID */
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
