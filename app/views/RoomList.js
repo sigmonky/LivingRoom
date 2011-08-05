@@ -157,7 +157,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 
 		//Let's take the selected user
 		var room = store.getAt(index);
-		if (room.get('isPrivate') == true)
+		if (room.get('isPrivate') == true){
 			console.log('onItemSwipe index '+index);
 
         	if (hasClass) {
