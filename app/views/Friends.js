@@ -81,7 +81,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			
 			Ext.regStore('FriendListStore', {
 					model: 'Friend',
-					autoLoad: false,
 					proxy: {
 						type: 'memory',
 					   	reader: {
@@ -127,8 +126,10 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				  	}	
 			});
 			
+			
 			var itemSubList = Ext.getCmp('friendsList');
-	        
+	        itemSubList.update();
+			
 			itemSubList.store.loadData(friendStore.data.items)
 			
 			
