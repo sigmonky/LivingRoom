@@ -639,6 +639,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					   	}
 					}
 			});
+			console.log('publicRoomName '+publicRoomName);
+			this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
+			console.log('roomJid = ' +this.roomJid);
+			var oPresence = new JSJaCPresence();
+			oPresence.setFrom(new JSJaCJID(this.myJID));
+			oPresence.setTo(new JSJaCJID(this.roomJid  + '/' + this.nickname));
+			this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
+			
 		}else{
 			console.log('publicRoom Store  =' +publicRoomStr );
 		
@@ -659,38 +667,18 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 						   	}
 						}
 				});
+				console.log('publicRoomName '+publicRoomName);
+				this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
+				console.log('roomJid = ' +this.roomJid);
+				var oPresence = new JSJaCPresence();
+				oPresence.setFrom(new JSJaCJID(this.myJID));
+				oPresence.setTo(new JSJaCJID(this.roomJid  + '/' + this.nickname));
+				this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
 			}
 			
 		}
 		
 	}
-		
-
-		
-		//this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
-		
-		console.log('publicRoomName '+publicRoomName);
-		
-		//Let's save tht full Room JID
-		this.roomJid = publicRoomName + "@" + this.conferenceSubdomain + '.' + this.domain;
-		console.log('roomJid = ' +this.roomJid);
-		
-		//Let's create the presence packet
-		var oPresence = new JSJaCPresence();
-		
-		//Set the packet origin
-		oPresence.setFrom(new JSJaCJID(this.myJID));
-		
-		//Set the packet recipient
-		oPresence.setTo(new JSJaCJID(this.roomJid  + '/' + this.nickname));
-		
-		//Set the precence type
-		//oPresence.setShow('available');
-		
-		//console.log(oPresence.xml());
-		
-		//Let's finally send the packet
-		this.jabberConnection.send(oPresence, this.joinRoomComplete, this);
 		
 	},
 	
