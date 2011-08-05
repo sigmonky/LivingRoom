@@ -23,7 +23,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		    activeCls: 'search-item-active',
 		
 			grouped: true,
-			store: 'FriendListStore',
+			//store: 'FriendListStore',
+			
+			store: new Ext.data.Store({
+                model: 'Friend'
+            })
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
 					     '</div>' +
@@ -125,7 +129,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			
 			var itemSubList = Ext.getCmp('friendsList');
 	        
-			this.list.store.loadData(friendStore.data.items)
+			itemSubList.store.loadData(friendStore.data.items)
 			
 			
 			
