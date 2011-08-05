@@ -376,7 +376,7 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom options.from '+ options.from);
 		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnlRoom);
 		
-		var key = options.from.substring(0,options.from.indexOf('@'))+'_room';
+		var key = options.from.substring(0,options.from.indexOf('@'))+'_message';
 		
 		console.log('addMessageToChatRoom key '+ key);
 		
@@ -404,7 +404,7 @@ Ext.regController('Roster', {
 		}else{
 			var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
 		}
-		console.log('addMessageToChatRoom facebook_id ='+photo_url);
+		console.log('addMessageToChatRoom photo_url ='+photo_url);
 	
 	
 		var message = Ext.ModelMgr.create({
