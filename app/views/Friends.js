@@ -125,7 +125,54 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
 			console.log('beforeactivate');
+			Ext.regStore('FriendListStore', {
+				model: 'Friend',
+				autoLoad: true,
+			    proxy: {
+			        type: 'ajax',
+			        url: 'https://graph.facebook.com/me/friends?access_token=',
+			        reader: {
+			            type: 'json',
+			        }
+			    },
+			    getGroupString : function(record) {
+					var isLive = record.get('isLive');
+					if (isLive == false){
+						var str = 'My Facebook Friends';
+					}else{
+						var str = 'Active Chats';
+					}
+			        return  "<span style='display:none'>"+record.get('isLive').toString() + "</span>"+str ; 
+			    },
+			    autoLoad:false
+
+			});
+			
+			var itemSubList = Ext.getCmp('friendsList');
+			itemSubList.update();
+            friendStore = Ext.getStore('FriendListStore');
+            if (friendStore) {
+
+                // show loader if loading is taking too long
+                var loaderTimeout = setTimeout(function() {
+                    if (loader.isHidden()) {
+                        loader.show();
+                    }
+                }, 250);
+
+                friendStore.load(function(){
+                    if (loader.isHidden()) {
+                       clearTimeout(loaderTimeout);
+                    }
+                    else {
+                        loader.hide();
+                    }
+                    itemSubList.store.loadData(friendStore.data.items);
+                });
+            }
         },
+
+
         beforedeactivate: function() {
 
         }
