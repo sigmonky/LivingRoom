@@ -43,7 +43,8 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		//Definition of the roster panel
 		this.pnlRoster = new LivingRoomAPI.views.Roster({
 			itemId: 'pnlRoster',
-			title: 'Friends'
+			title: 'Friends',
+		    badgeText : '1',
         });
 
 		//Definition of the public chat panel

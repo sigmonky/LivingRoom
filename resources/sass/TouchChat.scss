@@ -480,3 +480,11 @@ border-bottom-color: none;
 border-top-color: none;
 color: #000;
 }
+
+.x-tabbar.x-docked-top .x-tab {
+    position: relative;
+}
+.x-tabbar.x-docked-top .x-tab .x-badge {
+    font-size: .5em;
+    right: -.5em;
+}
