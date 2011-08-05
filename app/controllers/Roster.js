@@ -293,7 +293,7 @@ Ext.regController('Roster', {
 		
 		var direction = options.direction;
 		
-		var key = jabberClient.publicRoom;
+		var key = options.roomName+'_room';
 		
 		this.roomRoster = Ext.StoreMgr.get(key);
 		
