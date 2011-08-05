@@ -274,7 +274,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 
-			var roster = Ext.StoreMgr.get(me.publicRoom);
 			
 			console.log('handlePresence this.publicRoom'+me.publicRoom)
 			
@@ -288,9 +287,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('room handlePresence from' +from);
 			console.log('room handlePresence from' +type);
 		
-		
 			var roomJid = from.substring(0,from.indexOf('@'));
+			var roomSt = roomJid+'_room';
+			
 			console.log('room handlePresence roomJid' +roomJid);
+		
+			var roster = Ext.StoreMgr.get(roomSt);
+			
+		
 		
 			//console.log('handlePresence getStatus ' +status)
 			// 
@@ -620,10 +624,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster+'message').removeAll();
 		} */
 		
-		this.publicRoom = publicRoomName;
-		console.log('this.publicRoom  =' +this.publicRoom );
+		var publicRoom = publicRoomName+'_room';
+		console.log('this.publicRoom  =' +publicRoom );
 		
-		Ext.regStore(this.publicRoom, {
+		Ext.regStore(publicRoom, {
 			model: 'RoomRosterItem',
 			autoLoad: true,
 			proxy: {
@@ -641,7 +645,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('publicRoomName '+publicRoomName);
 		
 		//Let's save tht full Room JID
-		this.roomJid = this.publicRoom + "@" + this.conferenceSubdomain + '.' + this.domain;
+		this.roomJid = publicRoom + "@" + this.conferenceSubdomain + '.' + this.domain;
 		console.log('roomJid = ' +this.roomJid);
 		
 		//Let's create the presence packet
@@ -670,8 +674,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		/* Get my Facebook User ID */
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
-		var fb_id = obj.get('id');
-		
+		if (obj != undefined){
+			var fb_id = obj.get('id');
+		}
 		console.log('joinRoomComplete myJID is ' + me.myJID);
 		console.log('joinRoomComplete fb_id is ' + fb_id);
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
@@ -694,6 +699,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('joinRoomComplete room handlePresence roster add user jid ='+me.roomJid+'/'+me.nickname );
 		
 		console.log('joinRoomComplete='+me.publicRoom)
+		
+		
 		
 		var store = Ext.StoreMgr.get(me.publicRoom);
 		
