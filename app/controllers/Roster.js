@@ -220,7 +220,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(pnlChatSession, {jid: jid, name: nickname, title:nickname, remoteJid: jid, isChatRoom:false, jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: jid, name: jid, title:nickname, remoteJid: jid, isChatRoom:false, jabberComponent: jabberClient });
 	      }
 	     
 		pnlChatSession.doUpdate();
