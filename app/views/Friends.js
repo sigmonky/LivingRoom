@@ -94,7 +94,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						}
 				        return  "<span style='display:none'>"+record.get('isLive').toString() + "</span>"+str ; 
 				    },
-				    autoLoad:true
+				    autoLoad:false
 
 				});
 			
@@ -123,8 +123,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				  	}	
 			});
 			
-		//	var itemSubList = Ext.getCmp('friendsList');
+			var itemSubList = Ext.getCmp('friendsList');
 	        
+			itemSubList.store.loadData(friendStore.data.items)
 			
 			
 			
