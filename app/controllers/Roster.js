@@ -184,7 +184,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(pnlChatSession, {jid: user.jid, name: room.get('jid'), jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: user.jid, name: room.get('jid'), title:user.get('nickname'),remoteJid: user.get('jid'), isChatRoom:false, jabberComponent: jabberClient });
 	      }
 
 	        pnlChatSession.doUpdate();
@@ -217,7 +217,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(pnlChatSession, {jid: jid, name: nickname, jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: jid, name: nickname, title:nickname, remoteJid: jid, isChatRoom:false, jabberComponent: jabberClient });
 	      }
 	     
 	pnlChatSession.doUpdate();
