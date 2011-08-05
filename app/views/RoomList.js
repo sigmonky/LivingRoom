@@ -51,12 +51,9 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			            }
 
 			            store.removeAt(index);
-			            store.sync();
+			            //store.sync();
 
-			            //there were no other searches left so tell the user about that
-			            if (!nearest) {
-			                Ext.redirect('searches/first');
-			            }
+	
 			        } else {
 			            this.deactivateAll();
 
