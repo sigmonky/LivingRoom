@@ -15,9 +15,16 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			id: 'roomList',
 			iconCls: 'user',
 			iconMask: true,
+			allowDeselect: false,
+		    singleSelect: true,
+		    /**
+		     * @cfg {String} activeCls The CSS class that is added to each item when swiped
+		     */
+		    activeCls: 'search-item-active',
+		
 			grouped: true,
 			store: 'RoomListStore',
-            itemTpl: '<div class="x-roster-user">' +
+            itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
 						 	'<img src="{thumb}" width="32" height="32" />' +
 					     '</div>' +
