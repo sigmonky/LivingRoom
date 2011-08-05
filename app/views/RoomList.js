@@ -37,7 +37,9 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 				itemtap: function(list, index, item, e) {
 					
 					
-					if (e.getTarget('.' + this.activeCls + ' div.delete')) {
+					if (e.getTarget('.' + this.list.activeCls + ' div.delete')) {
+						
+						console.log('delete row');
 			            var store    = list.getStore(),
 			                selModel = this.getSelectionModel(),
 			                instance = store.getAt(index),
