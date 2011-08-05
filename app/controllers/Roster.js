@@ -376,7 +376,7 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom options.from '+ options.from);
 		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnlRoom);
 		
-		var key = options.from.substring(0,options.from.indexOf('@'));
+		var key = options.from.substring(0,options.from.indexOf('@'))+'_room';
 		
 		console.log('addMessageToChatRoom key '+ key);
 		
