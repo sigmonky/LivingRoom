@@ -12,7 +12,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
-			id: 'roomList',
+			id: 'friendsList',
 			iconCls: 'user',
 			iconMask: true,
 			allowDeselect: false,
@@ -90,10 +90,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							});
 						}
 			        }
-			        
-					
-					
-
 					
 				},
 				
@@ -125,6 +121,16 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
 	},
+	
+	listeners: {
+        beforeactivate: function(ct, prevActiveCt) {
+			console.log('beforeactivate');
+        },
+        beforedeactivate: function() {
+
+        }
+    },
+
 	switchBack: function(){
 		    //this.setActiveItem(0);
 			//this.setActiveItem('test1', {type:'slide', direction:'left'});

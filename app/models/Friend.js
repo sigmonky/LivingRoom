@@ -7,10 +7,9 @@ Ext.regModel('Friend', {
     fields: [				
         {name: 'jid', type: 'string'},
 		{name: 'name', type: 'string'},
-        {name: 'topic', type: 'string'},
-        {name: 'type', type: 'string'},
+        {name: 'facebook_id', type: 'string'},
         {name: 'thumb', type: 'string'},
-		{name: 'isPrivate', type: 'bool'},
-
+		{name: 'isLive', type: 'bool'},
+		{name: 'didInstallApp', type: 'bool'},
     ]
 });
