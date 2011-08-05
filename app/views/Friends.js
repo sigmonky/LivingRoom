@@ -125,7 +125,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			
 		//	var itemSubList = Ext.getCmp('friendsList');
 	        
-		this.list.store.loadData(friendStore.data.items)
 			
 			
 			
