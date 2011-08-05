@@ -197,7 +197,10 @@ Ext.regController('Roster', {
 		var nickname = options.nickname;
 		var jid = options.jid
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(jid);
-
+		console.log('returnToChatOneOneSession jid = '+jid );
+		
+		console.log('returnToChatOneOneSession nickname = '+nickname );
+		
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
