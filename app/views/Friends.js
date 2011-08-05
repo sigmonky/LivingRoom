@@ -23,7 +23,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		    activeCls: 'search-item-active',
 		
 			grouped: true,
-			store: 'RoomListStore',
+			store: 'FriendListStore',
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
 						 	'<img src="{thumb}" width="32" height="32" />' +
