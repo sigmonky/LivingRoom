@@ -376,12 +376,13 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom options.from '+ options.from);
 		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnlRoom);
 		
-		var key = jabberClient.publicRoom;
+		var key = options.from.substring(0,options.from.indexOf('@'));
+		
 		console.log('addMessageToChatRoom key '+ key);
 		
 		//Let's take the public chat room panel
-		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
-		console.log('addMessageToChatRoom ='+this.pnlRoom );
+//		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
+//		console.log('addMessageToChatRoom ='+this.pnlRoom );
 		//Let's finally add the chat message
 	//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
 	
