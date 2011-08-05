@@ -258,7 +258,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		if (this.isChatRoom == false){
 			var docked = this.getDockedItems();
-			this.dockedItems.items[0][0].setVisible(false);
+			this.dockedItems.items[0].setVisible(false);
 	//		this.dockedItems.items[1][0].setVisible(false);
 			
 		//	this.toolBar.getCmp('showRoster').setVisible(false);	
