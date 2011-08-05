@@ -623,6 +623,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			Ext.StoreMgr.get(this.roomRoster+'message').removeAll();
 		} */
 		
+		console.log('join public room  '+this.roomsArray.length);
+		
 		if (this.roomsArray.length == 0){
 			var publicRoomStr = publicRoomName+'_room';
 			this.roomsArray.push(publicRoomStr);
