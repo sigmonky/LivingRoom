@@ -48,6 +48,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			{
 				//Definition of Show Rost button
 				ui: 'action',
+				id: 'showRoster',
 				text: 'Co-Viewers',
 				iconMask: true,
 		//		iconCls: 'arrow_right',
@@ -223,6 +224,14 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
 		this.addEventListener();
 	
+	},
+	
+	doUpdate: function(){
+		if (this.isChatRoom == false){
+			Ext.getCmp('showRoster').setVisible(false);	
+		}else{
+			Ext.getCmp('showRoster').setVisible(true);	
+		}
 	},
 	
 	/**
