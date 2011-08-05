@@ -144,6 +144,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
      * on any other items
      */
     onItemSwipe: function(list, index, node) {
+	console.log('onItemSwipe');
         var el        = Ext.get(node),
             activeCls = this.activeCls,
             hasClass  = el.hasCls(activeCls);
