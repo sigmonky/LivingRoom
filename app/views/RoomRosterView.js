@@ -215,6 +215,9 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
      */
 	updateStore: function(){
 		
+		console.log('update Swtore' +this.key);
+		
+		
 		var itemListGallery = Ext.getCmp('itemListGallery');
         var newStore = Ext.StoreMgr.get(this.key);
 		this.store = newStore;
