@@ -257,10 +257,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		console.log('doUpdate this.isChatRoom -' +this.isChatRoom)
 		
 		if (this.isChatRoom == false){
-			Ext.getCmp('showRoster').setVisible(false);	
+			this.getCmp('showRoster').setVisible(false);	
 		}else{
 			Ext.getCmp('showRoster').setVisible(true);	
 		}
+		
 		
         this.updateToolbar();
         this.updateStore();
