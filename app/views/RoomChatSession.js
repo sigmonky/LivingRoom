@@ -373,7 +373,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	addChatMessage: function(message, from, mine){
 		var html;
 		
-		this.store = Ext.StoreMgr.get(this.name+'_message');
+	//	var chatStore = Ext.StoreMgr.get(this.name+'_message');
 		
 		var message = Ext.ModelMgr.create({
 	    	jid: from,
