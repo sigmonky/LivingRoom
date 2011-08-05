@@ -74,7 +74,60 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
 			console.log('urll '+ url);
 			
+			
 			Ext.regStore('FriendListStore', {
+					model: 'Friend',
+					autoLoad: false,
+					proxy: {
+						type: 'memory',
+					   	reader: {
+					    	type: 'json'
+					   	}
+					},
+					
+				    getGroupString : function(record) {
+						var isLive = record.get('isLive');
+						if (isLive == false){
+							var str = 'My Facebook Friends';
+						}else{
+							var str = 'Active Chats';
+						}
+				        return  "<span style='display:none'>"+record.get('isLive').toString() + "</span>"+str ; 
+				    },
+				    autoLoad:false
+
+				});
+				
+			Ext.util.JSONP.request({
+		    		url: 'https://graph.facebook.com/me/friends?access_token=185799971471968%7Ce83f2eff9c114736aac52c0b.3-527305423%7C_DlATFHB_CJa2hlpSxwDGbCaYEE',
+					params: {
+					//	access_token: token
+					},
+				    callbackKey: 'callback',
+				    // Callback
+				    callback: function (data) {
+						var friendStore = Ext.StoreMgr.get('FriendListStore');
+					
+					    for (var i = 0, ln = data.length; i < ln; i++) {
+	                        var friend = data[i];
+							var friend = Ext.ModelMgr.create({id: data.id, name: data.name}, 'Friend');
+							friendStore.add(friend);
+					    	friendStore.sync();
+							var obj = friendStore.getAt(0);
+							console.log('obj is ' + obj.get('name'));
+	                    }
+	                
+
+				  	}	
+			});
+			
+			
+			
+			
+			
+			
+			
+		/*	Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				autoLoad: true,
 			    proxy: {
@@ -96,7 +149,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			    },
 			    autoLoad:true
 
-			});
+			}); */
 
         },
 
