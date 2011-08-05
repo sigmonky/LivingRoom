@@ -328,7 +328,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 			
 		//Send the message to all the room participants
-		if (isChatRoom == true){
+		if (this.isChatRoom == true){
 			this.jabberComponent.sendRoomMessage(message.getValue());
 		}else{
 			this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
