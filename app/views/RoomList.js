@@ -41,7 +41,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 						
 						console.log('delete row');
 			            var store    = list.getStore(),
-			                selModel = this.getSelectionModel(),
+			                selModel = this.list.getSelectionModel(),
 			                instance = store.getAt(index),
 			                selected = selModel.isSelected(instance),
 			                nearest  = store.getAt(index + 1) || store.getAt(index - 1);
