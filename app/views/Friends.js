@@ -72,6 +72,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
         beforeactivate: function(ct, prevActiveCt) {
 	
 			console.log('beforeactivate');
+			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
+			console.log('urll '+ url);
+			
 			Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				autoLoad: true,
