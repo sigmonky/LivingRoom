@@ -35,13 +35,29 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 					//Let's take the selected user
 					var room = store.getAt(index);
 					
-					//Let's call the controller method able to show the user Roster
-					Ext.dispatch({
-					    controller: 'Roster',
-					    action: 'openRoom',
-						show: true,
-						room: room
-					});
+					var isPrivate = room.get('isPrivate')
+					
+					if (isPrivate == true){
+						Ext.dispatch({
+						    controller: 'Roster',
+						    action: 'openRoom',
+							show: true,
+							room: room
+						});
+
+					}else{
+						
+						var nickname = room.get('name');
+						var jid = room.get('jid');
+						
+						Ext.dispatch({
+						    controller: 'Roster',
+						    action: 'returnToChatOneOneSession',
+							show: true,
+							nickname: nickname,
+							jid: jid,
+						});
+					}
 					
 				},
 				scope: this

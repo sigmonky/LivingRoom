@@ -193,7 +193,36 @@ Ext.regController('Roster', {
 		
 	},
 	
+	returnToChatOneOneSession: function(options){
+		var nickname = options.nickname;
+		var jid = options.jid
+		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.get('jid'));
 
+		if (!pnlChatSession) {
+				//console.log("browse productDetailPanel this.render()")
+				 pnlChatSession = this.render({
+					xtype:"RoomChatSession",
+					itemId: jid,
+					name: jid,
+					title: nickname,
+					barTitle: nickname,
+					iconCls: 'chat1',
+					iconMask: true,
+					badgeText: (options.show ? '' : '1'),
+					remoteJid: jid,
+					remoteUserName: nickname,
+					isChatRoom: false,
+					jabberComponent: jabberClient
+				});
+	     }
+	     else {
+				//console.log("browse productDetailPanel Ext.apply()")
+	            Ext.apply(pnlChatSession, {jid: user.jid, name: room.get('jid'), jabberComponent: jabberClient });
+	      }
+
+        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+        
+	},
 	
 
 	
