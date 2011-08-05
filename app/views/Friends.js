@@ -27,7 +27,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			
 			store: new Ext.data.Store({
                 model: 'Friend'
-            })
+            }),
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
 					     '</div>' +
