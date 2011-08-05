@@ -220,7 +220,7 @@ Ext.regController('Roster', {
 	            Ext.apply(pnlChatSession, {jid: jid, name: nickname, title:nickname, remoteJid: jid, isChatRoom:false, jabberComponent: jabberClient });
 	      }
 	     
-	pnlChatSession.doUpdate();
+		pnlChatSession.doUpdate();
 
         this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
         
