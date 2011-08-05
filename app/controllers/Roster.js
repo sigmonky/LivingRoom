@@ -165,12 +165,12 @@ Ext.regController('Roster', {
 	//	this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
 		
 
-
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
 					xtype:"RoomChatSession",
 					itemId: user.get('jid'),
+					name: room.get('jid'),
 					title: user.get('nickname'),
 					barTitle: user.get('nickname'),
 					iconCls: 'chat1',
@@ -184,7 +184,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(pnlChatSession, {jid: user.jid, jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: user.jid, name: room.get('jid'), jabberComponent: jabberClient });
 	      }
 
 	      //  pnlChatSession.doUpdate();
