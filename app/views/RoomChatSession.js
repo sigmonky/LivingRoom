@@ -272,7 +272,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		////console.log('state.listType ='+Marika.util.state.listType);
         // update toolbar's title
         var toolbar = this.getComponent('toolbar2');
-		if (isChatRoom){
+		if (this.isChatRoom){
         	if (toolbar) {
 				toolbar.setTitle(this.topic);
         	}
