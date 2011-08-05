@@ -29,39 +29,74 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 				
 				itemtap: function(list, index, item, e) {
 					
-					//Let's take the online users store
-					var store = list.getStore();
 					
-					//Let's take the selected user
-					var room = store.getAt(index);
-					
-					var isPrivate = room.get('isPrivate');
-					
-					console.log('is private' +isPrivate);
-					
-					if (isPrivate == false){
-						Ext.dispatch({
-						    controller: 'Roster',
-						    action: 'openRoom',
-							show: true,
-							room: room
-						});
+					if (e.getTarget('.' + this.activeCls + ' div.delete')) {
+			            var store    = list.getStore(),
+			                selModel = this.getSelectionModel(),
+			                instance = store.getAt(index),
+			                selected = selModel.isSelected(instance),
+			                nearest  = store.getAt(index + 1) || store.getAt(index - 1);
 
-					}else{
-						
-						var nickname = room.get('name');
-						var jid = room.get('jid');
-						
-						Ext.dispatch({
-						    controller: 'Roster',
-						    action: 'returnToChatOneOneSession',
-							show: true,
-							nickname: nickname,
-							jid: jid,
-						});
-					}
+			            //if the item we are removing is currently selected, select the nearest item instead
+			            if (selected && nearest) {
+			                selModel.select(nearest);
+			            }
+
+			            store.removeAt(index);
+			            store.sync();
+
+			            //there were no other searches left so tell the user about that
+			            if (!nearest) {
+			                Ext.redirect('searches/first');
+			            }
+			        } else {
+			            this.deactivateAll();
+
+			            
+						//Let's take the online users store
+						var store = list.getStore();
+
+						//Let's take the selected user
+						var room = store.getAt(index);
+
+						var isPrivate = room.get('isPrivate');
+
+						console.log('is private' +isPrivate);
+
+						if (isPrivate == false){
+							Ext.dispatch({
+							    controller: 'Roster',
+							    action: 'openRoom',
+								show: true,
+								room: room
+							});
+
+						}else{
+
+							var nickname = room.get('name');
+							var jid = room.get('jid');
+
+							Ext.dispatch({
+							    controller: 'Roster',
+							    action: 'returnToChatOneOneSession',
+								show: true,
+								nickname: nickname,
+								jid: jid,
+							});
+						}
+			        }
+			        
+					
+					
+
 					
 				},
+				
+				
+				itemswipe: this.onItemSwipe,
+	            containertap: this.deactivateAll,
+	            
+				
 				scope: this
 				
 			}
@@ -75,6 +110,11 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			items: [this.list]
 			
 		});
+        this.on({
+            scope: this,
+            itemswipe: this.onItemSwipe,
+            containertap: this.deactivateAll
+        });
 
 		//Superclass inizialization
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
@@ -86,7 +126,31 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			this.setActiveItem(0, {type:'slide', direction:'right'});
 		
 			//this.dockedItems.items[0].setTitle("Room Topic");
-	}
+	},
+	
+	deactivateAll: function() {
+        Ext.select('div.search-item', this.el.dom).removeCls(this.activeCls);
+    },
+    /**
+     * @private
+     * Handler for the itemswipe event - shows the Delete button for the swiped item, hiding the Delete button
+     * on any other items
+     */
+    onItemSwipe: function(list, index, node) {
+        var el        = Ext.get(node),
+            activeCls = this.activeCls,
+            hasClass  = el.hasCls(activeCls);
+        
+        this.deactivateAll();
+        
+        if (hasClass) {
+            el.removeCls(activeCls);
+        } else {
+            el.addCls(activeCls);
+        }
+    },
+
+    
 	
 });
 
