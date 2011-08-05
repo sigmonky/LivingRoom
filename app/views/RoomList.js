@@ -35,7 +35,9 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 					//Let's take the selected user
 					var room = store.getAt(index);
 					
-					var isPrivate = room.get('isPrivate')
+					var isPrivate = room.get('isPrivate');
+					
+					console.log('is private' +isPrivate);
 					
 					if (isPrivate == true){
 						Ext.dispatch({
