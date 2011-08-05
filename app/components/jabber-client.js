@@ -35,6 +35,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	authtype: 'sasl',
 	
+	roomsArray: [],
+	
 	facebookApp: undefined,
 
 	constructor: function(config){
@@ -625,16 +627,26 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		console.log('publicRoom Store  =' +publicRoomStr );
 		
-		Ext.regStore(publicRoomStr, {
-			model: 'RoomRosterItem',
-			autoLoad: true,
-			proxy: {
-				type: 'memory',
-				  	reader: {
-				    	type: 'json'
-				   	}
-				}
-		});
+		
+		for(var i=0; i<joinPublicRoom.length; i++){
+			console.log('publicRoomStr');
+			if (roomsArray[i] != publicRoomStr){
+				roomsArray.push(publicRoomStr);
+				Ext.regStore(publicRoomStr, {
+					model: 'RoomRosterItem',
+					autoLoad: true,
+					proxy: {
+						type: 'memory',
+						  	reader: {
+						    	type: 'json'
+						   	}
+						}
+				});
+			}
+			
+		}
+		
+
 		
 		//this.roomRoster = Ext.StoreMgr.get(this.publicRoom);
 		

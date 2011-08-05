@@ -366,7 +366,7 @@ Ext.regController('Roster', {
 		});
 		
 		//* Leave Room *//
-		jabberClient.leaveRoom();
+	//	jabberClient.leaveRoom();
 		
 		
 	},
