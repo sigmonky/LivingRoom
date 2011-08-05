@@ -203,7 +203,7 @@ Ext.regController('Roster', {
 				 pnlChatSession = this.render({
 					xtype:"RoomChatSession",
 					itemId: jid,
-					name: "laranja",
+					name: jid,
 					title: nickname,
 					barTitle: nickname,
 					iconCls: 'chat1',
