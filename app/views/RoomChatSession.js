@@ -48,7 +48,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			{
 				//Definition of Show Rost button
 				ui: 'action',
-				id: 'showRoster',
+				id: jid+'_btn',
 				text: 'Co-Viewers',
 				iconMask: true,
 		//		iconCls: 'arrow_right',
@@ -260,7 +260,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//	this.getCmp('showRoster').setVisible(true);	
 			console.log("hide Roster");
 			
-			this.getComponent('toolbar2').getComponent('showRoster').setVisible(false)
+			this.getComponent('toolbar2').getComponent(this.jid+'_btn').setVisible(false)
 		}else{
 			console.log("show Roster");
 			
