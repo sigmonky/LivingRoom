@@ -1,0 +1,738 @@
+3.1.1 (Brainy Betty)
+0ac9e23171dd3ef0166d5c1c0431c7890f73b585
+o:Sass::Tree::RootNode
+:@template"_/// 1. Variable overrides, example:
+$theme: 'LivingRoom';
+$base-color: #006898;
+
+$base-gradient: 'bevel';
+
+// 2. Include Sencha Touch styles
+@import 'sencha-touch/default/all';
+
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-toolbar-forms;
+@include sencha-carousel;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-list-paging;
+@include sencha-list-pullrefresh;
+@include sencha-layout;
+@include sencha-form;
+@include sencha-msgbox;
+@include sencha-loading-spinner;
+
+// 3. Including all the application Icons
+@include pictos-iconmask(lock_open);
+@include pictos-iconmask(user);
+@include pictos-iconmask(chat1);
+
+.x-roster-user, .x-roster-user-active {
+	
+	.x-user-picture {
+	
+		float: left;
+		
+	}
+	
+	.x-user-name {
+	
+		float: left;
+		margin: 5px 0 0 10px;
+		
+	}
+	
+}
+
+/* Definition of the chat message panel style */
+.x-chat-message {
+	
+	width: 100%; 
+	min-height: 60px; 
+	
+}
+
+.x-chat-message .message {
+	
+	padding: 10px;
+	min-height: 40px;
+    width: 600px;
+	max-width: 600px;
+	color: #000;
+	font-size: 14px;
+	-webkit-border-radius: 20px;
+	
+}
+
+/* Definition of the public chat room message styles */
+.x-public-chat-message {
+	
+	margin: 20px 0 0 20px;
+	width: 95%; 
+	min-height: 60px;
+	
+	.time {
+		
+		color: #787b85;
+		font-size: 12px;
+		
+	}
+	
+	.nickname {
+		
+		color: #0064c2;
+		font-size: 14px;
+		font-weight: bold;
+		
+	}
+	
+	.message {
+		
+		color: #000;
+		
+	}
+	
+}
+
+#ext-comp-1004 .x-fullscreen {
+	background:#00000;
+}
+
+.x-form .x-panel-body {}
+
+
+
+
+/** Common sass style settings for the MenuPanel usage. */
+
+/** Variables */
+
+/** If true, use styling for forms that will make them
+* look more like ios.
+*/
+$use-ios-style-forms:                 false !default;
+$vrs-menupanel-include-default-icons: false !default;
+
+/**
+ * @param {string} $name The name of the icon to be included. This is to match the name of the icon file (located at resources/themes/images/default/pictos) without its extention (.png).
+ *
+ * @example
+ * @include pictos-iconmask('attachment');
+ */
+@mixin pictos-menupanel-iconmask($name) {
+  .x-menupanel-row img.x-menupanel-icon-mask.#{$name} {
+    -webkit-mask-image: theme_image($theme-name, "pictos/" + $name + ".png");
+  }
+}
+
+
+/** Size of icon mask to use for the settings. */
+$menupanel-iconmask-size: 1em !default;
+
+/** Customizations for the field row.
+* note: remember that we also put a field class on the row
+* to get all the normal form field defaults. (see _form.scss file)
+*/
+.x-menupanel-row {
+   @include display-box;
+   @include box-orient(horizontal);
+   @include box-align(center);
+/*   @include box-pack(justify); */
+
+   min-height: $form-field-height;
+   width: 100%;
+   background-color: lighten($form-light, 10%); // .x-form-label bg color
+
+   &.x-menupanel-row-selected {
+      @include background-gradient($list-active-color, $list-active-gradient);
+      @include color-by-background($list-active-color);
+      @include bevel-by-background($list-active-color);
+
+      @if $include-list-highlights {
+        border-top-color: lighten($list-active-color, 10%);
+        border-bottom-color: darken($list-active-color, 15%);
+      }
+   }
+
+   /* The content should take up all the space available */
+   .x-menupanel-content
+   {
+      @include box-flex(1);
+   }
+
+   .x-menupanel-content {
+      @include label;
+      @include bevel-text('light');
+
+      /* Get spacing between the items */
+      margin-right: $form-spacing;
+      margin-left: $form-spacing;
+   }
+
+   /* Allow space between the items and the content */
+   .x-menupanel-leftitem
+   { margin-left: $form-spacing; }
+   .x-menupanel-rightitem
+   { margin-right: $form-spacing; }
+
+   /* Set a minimum size for all icons so we get good spacing
+   * when we have empty rows and varying icons
+   */
+   .x-menupanel-leftitem, .x-menupanel-rightitem
+   {
+      /* Use display box to center all the icons inside the div box. */
+      @include display-box;
+      @include box-orient(horizontal);
+      @include box-align(center);
+      @include box-pack(center);
+      min-width: $menupanel-iconmask-size;
+      min-height: $menupanel-iconmask-size;
+   }
+}
+
+/* Set the size and color of masked icons
+* customize the color by matching this class and the icon of interest.
+*/
+img.x-menupanel-icon-mask
+{
+   width: $menupanel-iconmask-size;
+   height: $menupanel-iconmask-size;
+   -webkit-mask-size: $menupanel-iconmask-size;
+   @include background-gradient(saturate($active-color, 10%));
+}
+
+/** Example of customizing color and size of an icon mask
+* Change the background-gradient to change the color
+* and change the width, height, mask-size to change the size.
+*
+* note: must include:
+*   @include pictos-menupanel-iconmask('arrow_right');
+*
+*/
+img.x-menupanel-icon-mask.arrow_right
+{
+   @include background-gradient(gray);
+}
+
+img.x-menupanel-icon-mask.check1
+{
+   width: 1em;
+   height: 1em;
+   -webkit-mask-size: 1em;
+   @include background-gradient(saturate(green, 30%));
+}
+
+/**
+* note: this rule still leaves rounded edges when we should
+* not have them.  disabled for now.
+* TODO: no border radius on fields in fieldset unless
+*       we are the first or last element.
+* see: .x-field style.
+*/
+/** We need to add a bottom border in the case where we
+* have another field that follows us in a fieldset.
+*
+* First rule gives last row in menu panel a bottom border.
+* Next rule removes this border if our menu panel is the last item
+* in the fieldset panel.
+*/
+.x-menupanel-row.x-field:last-child
+{
+   border-bottom: 1px solid $form-light;
+}
+.x-menu-panel:last-child .x-menupanel-row.x-field:last-child
+{
+   border-bottom: 0;
+}
+
+/** Override the default x-field rouding to cover the case
+* were we may not be the first or last item in a fieldset.
+*/
+.x-form-fieldset .x-menu-panel .x-menupanel-row.x-field {
+   @include border-radius(0);
+}
+
+/** If we are a field in the menu panel in a fieldset and the menu panel
+* is the first item or last item in the fieldset then we need to round
+* ourselves.
+*/
+.x-form-fieldset .x-menu-panel:first-child .x-menupanel-row.x-field {
+   &:first-child {
+      @if $include-border-radius {
+         @include border-top-left-radius($form-fieldset-radius);
+         @include border-top-right-radius($form-fieldset-radius);
+      }
+   }
+}
+
+.x-form-fieldset .x-menu-panel:last-child .x-menupanel-row.x-field {
+   &:last-child {
+      @if $include-border-radius {
+         @include border-bottom-left-radius($form-fieldset-radius);
+         @include border-bottom-right-radius($form-fieldset-radius);
+      }
+   }
+}
+
+
+
+/** Custom settings for the case that we are in a form panel that
+* has been configured to look iPhone-ish.
+*/
+
+/** Icons to include embedded. */
+/* Include the icons you may want to use on the menupanel */
+@if $vrs-menupanel-include-default-icons {
+   @include pictos-menupanel-iconmask('action');
+   @include pictos-menupanel-iconmask('add');
+   @include pictos-menupanel-iconmask('arrow_down');
+   @include pictos-menupanel-iconmask('arrow_left');
+   @include pictos-menupanel-iconmask('arrow_right');
+   @include pictos-menupanel-iconmask('arrow_up');
+   @include pictos-menupanel-iconmask('star');
+   @include pictos-menupanel-iconmask('check1');
+}
+
+
+/** IOS Form Settings.
+* - Make the rows/fields all white backgrounds.
+* - Add a pinstripe background to the page.
+*/
+@if $use-ios-style-forms {
+   /** Set all fields to white. */
+   $form-field-bg-color: white;
+
+   .x-form-label, .x-menupanel-row {
+      background-color: white;
+   }
+
+   /* Pinstripe background for form panels.
+   * Only do this with panels directly under a form.
+   */
+   .x-form > .x-panel-body {
+      -webkit-background-size: 0.438em 100%;
+      background: -webkit-gradient(linear,left top,right top,from(#C5CCD4),color-stop(71%, #C5CCD4),color-stop(72%, #CBD2D8),to(#CBD2D8));
+   }
+
+   .x-form-fieldset-instructions {
+      font-weight: bold;
+   }
+
+}
+
+.bubbledLeft,.bubbledRight, .announcementLeft{
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-width: 80%;
+	clear: left;
+}
+
+.bubbledLeft{
+    float: left;
+	margin-right: auto;
+	margin-left: 36px;
+	padding: 4px 10px 4px 15px; /*position within the border*/
+
+}
+
+.announcementLeft{
+float: left;
+
+	margin-right: auto;
+	margin-left: 36px;
+	padding: 4px 10px 4px 15px; /*position within the border*/
+
+}
+
+.bubbledLeft:before{
+	z-index: -1;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	content: "";
+	border-width: 8px 10px 8px 17px; 
+	border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
+	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
+	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
+	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_left_2.png") 8 10 8 17 stretch stretch;
+}
+
+.announcementLeft:before{
+	z-index: -1;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	content: "";
+	border-width: 8px 10px 8px 17px; 
+	border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 10 8 17 stretch stretch;
+}
+
+
+
+
+.bubbleimg{
+	z-index: -1;
+	position: absolute;
+	left: -36px;
+	width: 32px;
+	bottom: 0px;
+	height: 32px;
+	content:"";
+
+	/*background-image: url(left_chatter.png); */
+	background-size: 32px 32px;
+	background-position: bottom left;
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;	
+}
+
+.bubbleimgRight{
+z-index: -1;
+position: absolute;
+right: -36px;
+width: 32px;
+bottom: 0px;
+height: 32px;
+content:"";
+background-size: 32px 32px;
+background-position: bottom left;
+
+border-radius: 3px;
+-webkit-border-radius: 3px;
+}
+
+.bubbledRight{
+	float: right;
+	margin-left: auto;
+	text-align: right;
+
+	margin-right: 36px;
+	padding: 4px 15px 4px 10px; /*position within the border*/	
+	
+	clear: right;
+}
+
+.bubbledRight:before{
+	z-index: -1;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	content: "";
+
+	border-width: 8px 17px 8px 10px; 
+	border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 17 8 10 stretch stretch ;
+	-webkit-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 17 8 10 stretch stretch ;
+	-moz-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 17 8 10 stretch stretch ;
+	-o-border-image: theme_image($theme-name, "bubbles/speech_bubble_right_2.png") 8 17 8 10 stretch stretch ;
+}
+
+.bubbledRight:after{
+	z-index: -1;
+	position: absolute;
+	right: -36px;
+	width: 32px;
+	bottom: 0px;
+	height: 32px;
+	content:"";
+	background-size: 32px 32px;
+	background-position: bottom left;
+
+	border-radius: 3px;
+	-webkit-border-radius: 3px;	
+}
+
+.messageList{
+border-top: 1px solid #FFF;
+color: black;
+display: -webkit-box;
+min-height: 2.6em;
+padding: 0.5em 0.8em;
+position: relative;
+}
+
+.messageList .x-list-item{
+border-top: none;
+color: black;
+display: -webkit-box;
+min-height: 2.6em;
+padding: 0.5em 0.8em;
+position: relative;
+}
+
+.messageList .x-list-item.x-item-selected{
+background-color:#f7f7f7;
+background-image: none;
+background:none;
+border-bottom-color: none;
+border-top-color: none;
+color: #000;
+}
+
+.x-tabbar.x-docked-top .x-tab {
+    position: relative;
+}
+.x-tabbar.x-docked-top .x-tab .x-badge {
+    font-size: .5em;
+    right: -.5em;
+}
+
+
+.x-roster-user .action{opacity:0}
+
+.x-roster-user .delete{float:right;color:#fff;font-size:0.7em;padding:5px 8px;border-color:#555;background-color:red;background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff4d4d), color-stop(50%, #ff1a1a), color-stop(51%, #ff0000), color-stop(100%, #e60000));background-image:linear-gradient(#ff4d4d,#ff1a1a 50%,#ff0000 51%,#e60000)}
+
+.search-item-active .x-roster-user .action{opacity:1;-webkit-transition:opacity 0.3s linear}:@options{:importero: Sass::Importers::Filesystem:
+@root"=/Applications/MAMP/htdocs/chat/LivingRoom/resources/sass:
+@linei:@children[Xo:Sass::Tree::CommentNode:@value"*/* 1. Variable overrides, example: */;@;i:@silenti ;[ :@lines[ :
+@loud0o:Sass::Tree::VariableNode:
+@name"
+theme;@;i;[ :@guarded0:
+@expro:Sass::Script::String	;"LivingRoom;{ ;i:
+@type:stringo;;"base-color;@;i;[ ;0;o:Sass::Script::Color	:@attrs{	:redi :
+alphai:
+greenim:	bluei˜;0;{ ;io;;"base-gradient;@;i
+;[ ;0;o;	;"
+bevel;{ ;i
+;;o;;")/* 2. Include Sencha Touch styles */;@;i;i ;[ ;[ ;0o:Sass::Tree::ImportNode
+;0;@;i:@imported_filename"sencha-touch/default/all;[ o:Sass::Tree::MixinNode:@keywords{ ;"sencha-panel;@;i;[ :
+@args[ o;!;"{ ;"sencha-buttons;@;i;[ ;#[ o;!;"{ ;"sencha-sheet;@;i;[ ;#[ o;!;"{ ;"sencha-picker;@;i;[ ;#[ o;!;"{ ;"sencha-tabs;@;i;[ ;#[ o;!;"{ ;"sencha-toolbar;@;i;[ ;#[ o;!;"{ ;"sencha-toolbar-forms;@;i;[ ;#[ o;!;"{ ;"sencha-carousel;@;i;[ ;#[ o;!;"{ ;"sencha-indexbar;@;i;[ ;#[ o;!;"{ ;"sencha-list;@;i;[ ;#[ o;!;"{ ;"sencha-list-paging;@;i;[ ;#[ o;!;"{ ;"sencha-list-pullrefresh;@;i;[ ;#[ o;!;"{ ;"sencha-layout;@;i;[ ;#[ o;!;"{ ;"sencha-form;@;i;[ ;#[ o;!;"{ ;"sencha-msgbox;@;i;[ ;#[ o;!;"{ ;"sencha-loading-spinner;@;i;[ ;#[ o;;"1/* 3. Including all the application Icons */;@;i ;i ;[ ;[ ;0o;!;"{ ;"pictos-iconmask;@;i!;[ ;#[o;	;"lock_open;{ ;i!;:identifiero;!;"{ ;"pictos-iconmask;@;i";[ ;#[o;	;"	user;{ ;i";;$o;!;"{ ;"pictos-iconmask;@;i#;[ ;#[o;	;"
+chat1;{ ;i#;;$o:Sass::Tree::RuleNode:
+@rule["*.x-roster-user, .x-roster-user-active:@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;i%:@members[o:Sass::Selector::Sequence;*[o:#Sass::Selector::SimpleSequence;)@“;i%;*[o:Sass::Selector::Class;)@“;["x-roster-user;i%o;+;*[o;,;)@“;i%;*[o;-;)@“;["x-roster-user-active;i%;@;i%;[o;%;&[".x-user-picture;'o;(;)" ;i';*[o;+;*[o;,;)@¨;i';*[o;-;)@¨;["x-user-picture;i';@;i';[o:Sass::Tree::PropNode:@prop_syntax:new;o;;"	left;;$;["
+float;@;i);[ :
+@tabsi :@has_childrenT;1i o;%;&[".x-user-name;'o;(;)" ;i-;*[o;+;*[o;,;)@¼;i-;*[o;-;)@¼;["x-user-name;i-;@;i-;[o;.;/;0;o;;"	left;;$;["
+float;@;i/;[ ;1i o;.;/;0;o;;"5px 0 0 10px;;$;["margin;@;i0;[ ;1i ;2T;1i ;2T;1i o;;"5/* Definition of the chat message panel style */;@;i6;0;[ ;[ ;0o;%;&[".x-chat-message;'o;(;)" ;i7;*[o;+;*[o;,;)@Ú;i7;*[o;-;)@Ú;["x-chat-message;i7;@;i7;[o;.;/;0;o;;"	100%;;$;["
+width;@;i9;[ ;1i o;.;/;0;o;;"	60px;;$;["min-height;@;i:;[ ;1i ;2T;1i o;%;&[".x-chat-message .message;'o;(;)" ;i>;*[o;+;*[o;,;)@ô;i>;*[o;-;)@ô;["x-chat-message;i>o;,;)@ô;i>;*[o;-;)@ô;["message;i>;@;i>;[o;.;/;0;o;;"	10px;;$;["padding;@;i@;[ ;1i o;.;/;0;o;;"	40px;;$;["min-height;@;iA;[ ;1i o;.;/;0;o;;"
+600px;;$;["
+width;@;iB;[ ;1i o;.;/;0;o;;"
+600px;;$;["max-width;@;iC;[ ;1i o;.;/;0;o;;"	#000;;$;["
+color;@;iD;[ ;1i o;.;/;0;o;;"	14px;;$;["font-size;@;iE;[ ;1i o;.;/;0;o;;"	20px;;$;["-webkit-border-radius;@;iF;[ ;1i ;2T;1i o;;"</* Definition of the public chat room message styles */;@;iJ;0;[ ;[ ;0o;%;&[".x-public-chat-message;'o;(;)" ;iK;*[o;+;*[o;,;)@5;iK;*[o;-;)@5;["x-public-chat-message;iK;@;iK;[o;.;/;0;o;;"20px 0 0 20px;;$;["margin;@;iM;[ ;1i o;.;/;0;o;;"95%;;$;["
+width;@;iN;[ ;1i o;.;/;0;o;;"	60px;;$;["min-height;@;iO;[ ;1i o;%;&["
+.time;'o;(;)" ;iQ;*[o;+;*[o;,;)@U;iQ;*[o;-;)@U;["	time;iQ;@;iQ;[o;.;/;0;o;;"#787b85;;$;["
+color;@;iS;[ ;1i o;.;/;0;o;;"	12px;;$;["font-size;@;iT;[ ;1i ;2T;1i o;%;&[".nickname;'o;(;)" ;iX;*[o;+;*[o;,;)@o;iX;*[o;-;)@o;["nickname;iX;@;iX;[o;.;/;0;o;;"#0064c2;;$;["
+color;@;iZ;[ ;1i o;.;/;0;o;;"	14px;;$;["font-size;@;i[;[ ;1i o;.;/;0;o;;"	bold;;$;["font-weight;@;i\;[ ;1i ;2T;1i o;%;&[".message;'o;(;)" ;i`;*[o;+;*[o;,;)@;i`;*[o;-;)@;["message;i`;@;i`;[o;.;/;0;o;;"	#000;;$;["
+color;@;ib;[ ;1i ;2T;1i ;2T;1i o;%;&["!#ext-comp-1004 .x-fullscreen;'o;(;)" ;ih;*[o;+;*[o;,;)@£;ih;*[o:Sass::Selector::Id;)@£;["ext-comp-1004;iho;,;)@£;ih;*[o;-;)@£;["x-fullscreen;ih;@;ih;[o;.;/;0;o;;"#00000;;$;["background;@;ii;[ ;1i ;2T;1i o;%;&[".x-form .x-panel-body;'o;(;)" ;il;*[o;+;*[o;,;)@¼;il;*[o;-;)@¼;["x-form;ilo;,;)@¼;il;*[o;-;)@¼;["x-panel-body;il;@;il;[ ;2T;1i o;;"?/** Common sass style settings for the MenuPanel usage. */;@;iq;0;[ ;[ ;0o;;"/** Variables */;@;is;0;[ ;[ ;0o;;"T/** If true, use styling for forms that will make them
+* look more like ios.
+*/;@;iu;0;[ ;[ ;0o;;"use-ios-style-forms;@;ix;[ ;"!default;o:Sass::Script::Bool;F;{ ;ixo;;"(vrs-menupanel-include-default-icons;@;iy;[ ;"!default;o;4;F;{ ;iyo;;"ü/**
+ * @param {string} $name The name of the icon to be included. This is to match the name of the icon file (located at resources/themes/images/default/pictos) without its extention (.png).
+ *
+ * @example
+ * @include pictos-iconmask('attachment');
+ */;@;i{;0;[ ;[ ;0o:Sass::Tree::MixinDefNode;"pictos-menupanel-iconmask;@;i|;[o;%;&["0.x-menupanel-row img.x-menupanel-icon-mask.o:Sass::Script::Variable	:@underscored_name"	name;"	name;{ ;i};@;i};[o;.;/;0;o:Sass::Script::Funcall
+;"{ ;"theme_image;{ ;i~;#[o;6	;7"theme_name;"theme-name;@ö;i~o:Sass::Script::Operation
+:@operand2o;	;"	.png;@ö;i~;;:@operator:	plus;@ö;i~:@operand1o;9
+;:o;6	;7"	name;"	name;@ö;i~;;;<;@ö;i~;=o;	;"pictos/;@ö;i~;;;["-webkit-mask-image;@;i~;[ ;1i ;2T;1i ;#[[o;6;7"	name;"	name;{ 0;2To;;"6/** Size of icon mask to use for the settings. */;@;iƒ;0;[ ;[ ;0o;;"menupanel-iconmask-size;@;i„;[ ;"!default;o:Sass::Script::Number:@original"1em:@denominator_units[ ;i;{ ;i„:@numerator_units["emo;;"¦/** Customizations for the field row.
+* note: remember that we also put a field class on the row
+* to get all the normal form field defaults. (see _form.scss file)
+*/;@;i†;0;[ ;[ ;0o;%;&[".x-menupanel-row;'o;(;)" ;iŠ;*[o;+;*[o;,;)@#;iŠ;*[o;-;)@#;["x-menupanel-row;iŠ;@;iŠ;[o;!;"{ ;"display-box;@;i‹;[ ;#[ o;!;"{ ;"box-orient;@;iŒ;[ ;#[o;	;"horizontal;{ ;iŒ;;$o;!;"{ ;"box-align;@;i;[ ;#[o;	;"center;{ ;i;;$o;;"(/*   @include box-pack(justify); */;@;iŽ;0;[ ;[ ;0o;.;/;0;o;6	;7"form_field_height;"form-field-height;{ ;i;["min-height;@;i;[ ;1i o;.;/;0;o;;"	100%;;$;["
+width;@;i‘;[ ;1i o;.;/;0;o;8
+;"{ ;"lighten;{ ;i’;#[o;6	;7"form_light;"form-light;@X;i’o;>;?"10%;@[ ;i;@X;i’;A["%;["background-color;@;i’;[ ;1i o;;"!/* .x-form-label bg color */;@;i’;i ;[ ;[ ;0o;%;&["&.x-menupanel-row-selected;'o;(;)" ;i”;*[o;+;*[o;,;)@m;i”;*[o:Sass::Selector::Parent;)@m;i”o;-;)@m;["x-menupanel-row-selected;i”;@;i”;[	o;!;"{ ;"background-gradient;@;i•;[ ;#[o;6	;7"list_active_color;"list-active-color;{ ;i•o;6	;7"list_active_gradient;"list-active-gradient;@€;i•o;!;"{ ;"color-by-background;@;i–;[ ;#[o;6	;7"list_active_color;"list-active-color;{ ;i–o;!;"{ ;"bevel-by-background;@;i—;[ ;#[o;6	;7"list_active_color;"list-active-color;{ ;i—u:Sass::Tree::IfNodeÞ[o:Sass::Script::Variable	:@underscored_name"include_list_highlights:
+@name"include-list-highlights:@options{ :
+@linei™0[o:Sass::Tree::PropNode:@prop_syntax:new:@valueo:Sass::Script::Funcall
+:@keywords{ ;"lighten;{ ;	iš:
+@args[o; 	;"list_active_color;"list-active-color;@;	išo:Sass::Script::Number:@original"10%:@denominator_units[ ;i;@;	iš:@numerator_units["%;["border-top-color;{:importero: Sass::Importers::Filesystem:
+@root"=/Applications/MAMP/htdocs/chat/LivingRoom/resources/sass;	iš:@children[ :
+@tabsi o;
+;;;o;
+;{ ;"darken;{ ;	i›;[o; 	;"list_active_color;"list-active-color;@#;	i›o;;"15%;[ ;i;@#;	i›;["%;["border-bottom-color;@;	i›;[ ;i ;2T;1i o;;"=/* The content should take up all the space available */;@;iŸ;0;[ ;[ ;0o;%;&[".x-menupanel-content;'o;(;)" ;i¡;*[o;+;*[o;,;)@Ÿ;i¡;*[o;-;)@Ÿ;["x-menupanel-content;i¡;@;i¡;[o;!;"{ ;"box-flex;@;i¢;[ ;#[o;>;?"1;@[ ;i;{ ;i¢;A[ ;2T;1i o;%;&[".x-menupanel-content;'o;(;)" ;i¥;*[o;+;*[o;,;)@·;i¥;*[o;-;)@·;["x-menupanel-content;i¥;@;i¥;[
+o;!;"{ ;"
+label;@;i¦;[ ;#[ o;!;"{ ;"bevel-text;@;i§;[ ;#[o;	;"
+light;{ ;i§;;o;;"(/* Get spacing between the items */;@;i©;0;[ ;[ ;0o;.;/;0;o;6	;7"form_spacing;"form-spacing;{ ;iª;["margin-right;@;iª;[ ;1i o;.;/;0;o;6	;7"form_spacing;"form-spacing;{ ;i«;["margin-left;@;i«;[ ;1i ;2T;1i o;;"8/* Allow space between the items and the content */;@;i®;0;[ ;[ ;0o;%;&[".x-menupanel-leftitem;'o;(;)" ;i°;*[o;+;*[o;,;)@ê;i°;*[o;-;)@ê;["x-menupanel-leftitem;i°;@;i°;[o;.;/;0;o;6	;7"form_spacing;"form-spacing;{ ;i°;["margin-left;@;i°;[ ;1i ;2T;1i o;%;&[".x-menupanel-rightitem;'o;(;)" ;i²;*[o;+;*[o;,;)@ ;i²;*[o;-;)@ ;["x-menupanel-rightitem;i²;@;i²;[o;.;/;0;o;6	;7"form_spacing;"form-spacing;{ ;i²;["margin-right;@;i²;[ ;1i ;2T;1i o;;"n/* Set a minimum size for all icons so we get good spacing
+* when we have empty rows and varying icons
+*/;@;i´;0;[ ;[ ;0o;%;&["2.x-menupanel-leftitem, .x-menupanel-rightitem;'o;(;)" ;i¸;*[o;+;*[o;,;)@;i¸;*[o;-;)@;["x-menupanel-leftitem;i¸o;+;*[o;,;)@;i¸;*[o;-;)@;["x-menupanel-rightitem;i¸;@;i¸;[o;;"F/* Use display box to center all the icons inside the div box. */;@;i¹;0;[ ;[ ;0o;!;"{ ;"display-box;@;iº;[ ;#[ o;!;"{ ;"box-orient;@;i»;[ ;#[o;	;"horizontal;{ ;i»;;$o;!;"{ ;"box-align;@;i¼;[ ;#[o;	;"center;{ ;i¼;;$o;!;"{ ;"box-pack;@;i½;[ ;#[o;	;"center;{ ;i½;;$o;.;/;0;o;6	;7"menupanel_iconmask_size;"menupanel-iconmask-size;{ ;i¾;["min-width;@;i¾;[ ;1i o;.;/;0;o;6	;7"menupanel_iconmask_size;"menupanel-iconmask-size;{ ;i¿;["min-height;@;i¿;[ ;1i ;2T;1i ;2T;1i o;;"x/* Set the size and color of masked icons
+* customize the color by matching this class and the icon of interest.
+*/;@;iÃ;0;[ ;[ ;0o;%;&["img.x-menupanel-icon-mask;'o;(;)" ;iÇ;*[o;+;*[o;,;)@d;iÇ;*[o:Sass::Selector::Element	;)@d;["img;iÇ:@namespace0o;-;)@d;["x-menupanel-icon-mask;iÇ;@;iÇ;[	o;.;/;0;o;6	;7"menupanel_iconmask_size;"menupanel-iconmask-size;{ ;iÈ;["
+width;@;iÈ;[ ;1i o;.;/;0;o;6	;7"menupanel_iconmask_size;"menupanel-iconmask-size;{ ;iÉ;["height;@;iÉ;[ ;1i o;.;/;0;o;6	;7"menupanel_iconmask_size;"menupanel-iconmask-size;{ ;iÊ;["-webkit-mask-size;@;iÊ;[ ;1i o;!;"{ ;"background-gradient;@;iË;[ ;#[o;8
+;"{ ;"saturate;{ ;iË;#[o;6	;7"active_color;"active-color;@‘;iËo;>;?"10%;@[ ;i;@‘;iË;A["%;2T;1i o;;" /** Example of customizing color and size of an icon mask
+* Change the background-gradient to change the color
+* and change the width, height, mask-size to change the size.
+*
+* note: must include:
+*   @include pictos-menupanel-iconmask('arrow_right');
+*
+*/;@;iÎ;0;[ ;[ ;0o;%;&["*img.x-menupanel-icon-mask.arrow_right;'o;(;)" ;i×;*[o;+;*[o;,;)@£;i×;*[o;D	;)@£;["img;i×;E0o;-;)@£;["x-menupanel-icon-mask;i×o;-;)@£;["arrow_right;i×;@;i×;[o;!;"{ ;"background-gradient;@;iØ;[ ;#[o;	;{	;i€;i;i€;i€;0;{ ;iØ;2T;1i o;%;&["%img.x-menupanel-icon-mask.check1;'o;(;)" ;iÜ;*[o;+;*[o;,;)@¿;iÜ;*[o;D	;)@¿;["img;iÜ;E0o;-;)@¿;["x-menupanel-icon-mask;iÜo;-;)@¿;["check1;iÜ;@;iÜ;[	o;.;/;0;o;;"1em;;$;["
+width;@;iÝ;[ ;1i o;.;/;0;o;;"1em;;$;["height;@;iÞ;[ ;1i o;.;/;0;o;;"1em;;$;["-webkit-mask-size;@;iß;[ ;1i o;!;"{ ;"background-gradient;@;ià;[ ;#[o;8
+;"{ ;"saturate;{ ;ià;#[o;	;{	;i ;i;i€;i ;0;@é;iào;>;?"30%;@[ ;i#;@é;ià;A["%;2T;1i o;;"Ý/**
+* note: this rule still leaves rounded edges when we should
+* not have them.  disabled for now.
+* TODO: no border radius on fields in fieldset unless
+*       we are the first or last element.
+* see: .x-field style.
+*/;@;iã;0;[ ;[ ;0o;;"/** We need to add a bottom border in the case where we
+* have another field that follows us in a fieldset.
+*
+* First rule gives last row in menu panel a bottom border.
+* Next rule removes this border if our menu panel is the last item
+* in the fieldset panel.
+*/;@;iê;0;[ ;[ ;0o;%;&["(.x-menupanel-row.x-field:last-child;'o;(;)" ;iò;*[o;+;*[o;,;)@þ;iò;*[o;-;)@þ;["x-menupanel-row;iòo;-;)@þ;["x-field;iòo:Sass::Selector::Pseudo
+;)@þ;["last-child;iò:	@arg0;:
+class;@;iò;[o;.;/;0;o:Sass::Script::List	;[o;>;?"1px;@[ ;i;{ ;ió;A["pxo;	;"
+solid;@;ió;;$o;6	;7"form_light;"form-light;@;ió:@separator:
+space;@;ió;["border-bottom;@;ió;[ ;1i ;2T;1i o;%;&["A.x-menu-panel:last-child .x-menupanel-row.x-field:last-child;'o;(;)" ;iö;*[o;+;*[o;,;)@#;iö;*[o;-;)@#;["x-menu-panel;iöo;F
+;)@#;["last-child;iö;G0;;Ho;,;)@#;iö;*[o;-;)@#;["x-menupanel-row;iöo;-;)@#;["x-field;iöo;F
+;)@#;["last-child;iö;G0;;H;@;iö;[o;.;/;0;o;;"0;;$;["border-bottom;@;i÷;[ ;1i ;2T;1i o;;"}/** Override the default x-field rouding to cover the case
+* were we may not be the first or last item in a fieldset.
+*/;@;iú;0;[ ;[ ;0o;%;&["<.x-form-fieldset .x-menu-panel .x-menupanel-row.x-field;'o;(;)" ;iý;*[o;+;*[o;,;)@I;iý;*[o;-;)@I;["x-form-fieldset;iýo;,;)@I;iý;*[o;-;)@I;["x-menu-panel;iýo;,;)@I;iý;*[o;-;)@I;["x-menupanel-row;iýo;-;)@I;["x-field;iý;@;iý;[o;!;"{ ;"border-radius;@;iþ;[ ;#[o;>;?"0;@@°;i ;{ ;iþ;A[ ;2T;1i o;;"Ÿ/** If we are a field in the menu panel in a fieldset and the menu panel
+* is the first item or last item in the fieldset then we need to round
+* ourselves.
+*/;@;i;0;[ ;[ ;0o;%;&["H.x-form-fieldset .x-menu-panel:first-child .x-menupanel-row.x-field;'o;(;)" ;i;*[o;+;*[o;,;)@q;i;*[o;-;)@q;["x-form-fieldset;io;,;)@q;i;*[o;-;)@q;["x-menu-panel;io;F
+;)@q;["first-child;i;G0;;Ho;,;)@q;i;*[o;-;)@q;["x-menupanel-row;io;-;)@q;["x-field;i;@;i;[o;%;&["&:first-child;'o;(;)" ;i;*[o;+;*[o;,;)@;i;*[o;B;)@;io;F
+;)@;["first-child;i;G0;;H;@;i;[u;Cû[o:Sass::Script::Variable	:@underscored_name"include_border_radius:
+@name"include-border-radius:@options{ :
+@linei0[o:Sass::Tree::MixinNode:@keywords{ ;"border-top-left-radius;{:importero: Sass::Importers::Filesystem:
+@root"=/Applications/MAMP/htdocs/chat/LivingRoom/resources/sass;	i:@children[ :
+@args[o; 	;"form_fieldset_radius;"form-fieldset-radius;{ ;	io;
+;{ ;"border-top-right-radius;@;	i	;[ ;[o; 	;"form_fieldset_radius;"form-fieldset-radius;{ ;	i	;2T;1i ;2T;1i o;%;&["G.x-form-fieldset .x-menu-panel:last-child .x-menupanel-row.x-field;'o;(;)" ;i;*[o;+;*[o;,;)@Ÿ;i;*[o;-;)@Ÿ;["x-form-fieldset;io;,;)@Ÿ;i;*[o;-;)@Ÿ;["x-menu-panel;io;F
+;)@Ÿ;["last-child;i;G0;;Ho;,;)@Ÿ;i;*[o;-;)@Ÿ;["x-menupanel-row;io;-;)@Ÿ;["x-field;i;@;i;[o;%;&["&:last-child;'o;(;)" ;i;*[o;+;*[o;,;)@½;i;*[o;B;)@½;io;F
+;)@½;["last-child;i;G0;;H;@;i;[u;C[o:Sass::Script::Variable	:@underscored_name"include_border_radius:
+@name"include-border-radius:@options{ :
+@linei0[o:Sass::Tree::MixinNode:@keywords{ ;"border-bottom-left-radius;{:importero: Sass::Importers::Filesystem:
+@root"=/Applications/MAMP/htdocs/chat/LivingRoom/resources/sass;	i:@children[ :
+@args[o; 	;"form_fieldset_radius;"form-fieldset-radius;{ ;	io;
+;{ ;"border-bottom-right-radius;@;	i;[ ;[o; 	;"form_fieldset_radius;"form-fieldset-radius;{ ;	i;2T;1i ;2T;1i o;;"s/** Custom settings for the case that we are in a form panel that
+* has been configured to look iPhone-ish.
+*/;@;i;0;[ ;[ ;0o;;"&/** Icons to include embedded. */;@;i;0;[ ;[ ;0o;;"A/* Include the icons you may want to use on the menupanel */;@;i;0;[ ;[ ;0u;Cù[o:Sass::Script::Variable	:@underscored_name"(vrs_menupanel_include_default_icons:
+@name"(vrs-menupanel-include-default-icons:@options{ :
+@linei0[o:Sass::Tree::MixinNode:@keywords{ ;"pictos-menupanel-iconmask;{:importero: Sass::Importers::Filesystem:
+@root"=/Applications/MAMP/htdocs/chat/LivingRoom/resources/sass;	i :@children[ :
+@args[o:Sass::Script::String	:@value"action;{ ;	i :
+@type:stringo;
+;{ ;"pictos-menupanel-iconmask;@;	i!;[ ;[o;	;"add;{ ;	i!;;o;
+;{ ;"pictos-menupanel-iconmask;@;	i";[ ;[o;	;"arrow_down;{ ;	i";;o;
+;{ ;"pictos-menupanel-iconmask;@;	i#;[ ;[o;	;"arrow_left;{ ;	i#;;o;
+;{ ;"pictos-menupanel-iconmask;@;	i$;[ ;[o;	;"arrow_right;{ ;	i$;;o;
+;{ ;"pictos-menupanel-iconmask;@;	i%;[ ;[o;	;"arrow_up;{ ;	i%;;o;
+;{ ;"pictos-menupanel-iconmask;@;	i&;[ ;[o;	;"	star;{ ;	i&;;o;
+;{ ;"pictos-menupanel-iconmask;@;	i';[ ;[o;	;"check1;{ ;	i';;o;;"z/** IOS Form Settings.
+* - Make the rows/fields all white backgrounds.
+* - Add a pinstripe background to the page.
+*/;@;i+;0;[ ;[ ;0u;CQ	[o:Sass::Script::Variable	:@underscored_name"use_ios_style_forms:
+@name"use-ios-style-forms:@options{ :
+@linei/0[o:Sass::Tree::CommentNode:@value"$/** Set all fields to white. */;{:importero: Sass::Importers::Filesystem:
+@root"=/Applications/MAMP/htdocs/chat/LivingRoom/resources/sass;	i0:@silent0:@children[ :@lines[ :
+@loud0o:Sass::Tree::VariableNode;"form-field-bg-color;@;	i1;[ :@guarded0:
+@expro:Sass::Script::Color	:@attrs{	:rediÿ:
+alphai:
+greeniÿ:	blueiÿ;0;{ ;	i1o:Sass::Tree::RuleNode:
+@rule["$.x-form-label, .x-menupanel-row:@parsed_ruleso:"Sass::Selector::CommaSequence:@filename" ;	i3:@members[o:Sass::Selector::Sequence;![o:#Sass::Selector::SimpleSequence; @;	i3;![o:Sass::Selector::Class; @;["x-form-label;	i3o;";![o;#; @;	i3;![o;$; @;["x-menupanel-row;	i3;@;	i3;[o:Sass::Tree::PropNode:@prop_syntax:new;o:Sass::Script::String;"
+white:
+@type:identifier;["background-color;@;	i4;[ :
+@tabsi :@has_childrenT;+i o;
+;"b/* Pinstripe background for form panels.
+* Only do this with panels directly under a form.
+*/;@;	i7;0;[ ;[ ;0o;;[".x-form > .x-panel-body;o;; " ;	i:;![o;";![o;#; @;;	i:;![o;$; @;;["x-form;	i:">o;#; @;;	i:;![o;$; @;;["x-panel-body;	i:;@;	i:;[o;%;&;';o;(;"0.438em 100%;);*;["-webkit-background-size;@;	i;;[ ;+i o;%;&;';o:Sass::Script::Funcall
+:@keywords{ ;"-webkit-gradient;{ ;	i<:
+@args[o;(	;"linear;@U;	i<;);*o:Sass::Script::List	;[o;(	;"	left;@U;	i<;);*o;(	;"top;@U;	i<;);*:@separator:
+space;@U;	i<o;0	;[o;(	;"
+right;@U;	i<;);*o;(	;"top;@U;	i<;);*;1;2;@U;	i<o;-
+;.{ ;"	from;@U;	i<;/[o;	;{	;iÅ;i;iÌ;iÔ;0;@U;	i<o;-
+;.{ ;"color-stop;@U;	i<;/[o:Sass::Script::Number:@original"71%:@denominator_units[ ;iL;@U;	i<:@numerator_units["%o;	;{	;iÅ;i;iÌ;iÔ;0;@U;	i<o;-
+;.{ ;"color-stop;@U;	i<;/[o;3;4"72%;5[ ;iM;@U;	i<;6["%o;	;{	;iË;i;iÒ;iØ;0;@U;	i<o;-
+;.{ ;"to;@U;	i<;/[o;	;{	;iË;i;iÒ;iØ;0;@U;	i<;["background;@;	i<;[ ;+i ;,T;+i o;;["".x-form-fieldset-instructions;o;; " ;	i?;![o;";![o;#; @‰;	i?;![o;$; @‰;["!x-form-fieldset-instructions;	i?;@;	i?;[o;%;&;';o;(;"	bold;);*;["font-weight;@;	i@;[ ;+i ;,T;+i o;%;&["2.bubbledLeft,.bubbledRight, .announcementLeft;'o;(;)" ;iE;*[o;+;*[o;,;)@ß;iE;*[o;-;)@ß;["bubbledLeft;iEo;+;*[o;,;)@ß;iE;*[o;-;)@ß;["bubbledRight;iEo;+;*[o;,;)@ß;iE;*[o;-;)@ß;["announcementLeft;iE;@;iE;[
+o;.;/;0;o;;"relative;;$;["position;@;iF;[ ;1i o;.;/;0;o;;"	10px;;$;["margin-top;@;iG;[ ;1i o;.;/;0;o;;"	10px;;$;["margin-bottom;@;iH;[ ;1i o;.;/;0;o;;"80%;;$;["max-width;@;iI;[ ;1i o;.;/;0;o;;"	left;;$;["
+clear;@;iJ;[ ;1i ;2T;1i o;%;&[".bubbledLeft;'o;(;)" ;iM;*[o;+;*[o;,;)@;iM;*[o;-;)@;["bubbledLeft;iM;@;iM;[
+o;.;/;0;o;;"	left;;$;["
+float;@;iN;[ ;1i o;.;/;0;o;;"	auto;;$;["margin-right;@;iO;[ ;1i o;.;/;0;o;;"	36px;;$;["margin-left;@;iP;[ ;1i o;.;/;0;o;;"4px 10px 4px 15px;;$;["padding;@;iQ;[ ;1i o;;"#/*position within the border*/;@;iQ;0;[ ;[ ;0;2T;1i o;%;&[".announcementLeft;'o;(;)" ;iU;*[o;+;*[o;,;)@C;iU;*[o;-;)@C;["announcementLeft;iU;@;iU;[
+o;.;/;0;o;;"	left;;$;["
+float;@;iV;[ ;1i o;.;/;0;o;;"	auto;;$;["margin-right;@;iX;[ ;1i o;.;/;0;o;;"	36px;;$;["margin-left;@;iY;[ ;1i o;.;/;0;o;;"4px 10px 4px 15px;;$;["padding;@;iZ;[ ;1i o;;"#/*position within the border*/;@;iZ;0;[ ;[ ;0;2T;1i o;%;&[".bubbledLeft:before;'o;(;)" ;i^;*[o;+;*[o;,;)@m;i^;*[o;-;)@m;["bubbledLeft;i^o;F
+;)@m;["before;i^;G0;;H;@;i^;[o;.;/;0;o;>;?"-1;@@°;iú;{ ;i_;A[ ;["z-index;@;i_;[ ;1i o;.;/;0;o;;"absolute;;$;["position;@;i`;[ ;1i o;.;/;0;o;;"0px;;$;["top;@;ia;[ ;1i o;.;/;0;o;;"0px;;$;["
+right;@;ib;[ ;1i o;.;/;0;o;;"0px;;$;["bottom;@;ic;[ ;1i o;.;/;0;o;;"0px;;$;["	left;@;id;[ ;1i o;.;/;0;o;;""";;$;["content;@;ie;[ ;1i o;.;/;0;o;;"8px 10px 8px 17px;;$;["border-width;@;if;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;ig;#[o;6	;7"theme_name;"theme-name;@²;igo;	;"%bubbles/speech_bubble_left_2.png;@²;ig;;o;>;?"8;@@°;i;@²;ig;A[ o;>;?"10;@@°;i;@²;ig;A[ o;>;?"8;@@°;i;@²;ig;A[ o;>;?"17;@@°;i;@²;ig;A[ o;	;"stretch;@²;ig;;$o;	;"stretch;@²;ig;;$;J;K;@²;ig;["border-image;@;ig;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;ih;#[o;6	;7"theme_name;"theme-name;@Ò;iho;	;"%bubbles/speech_bubble_left_2.png;@Ò;ih;;o;>;?"8;@@°;i;@Ò;ih;A[ o;>;?"10;@@°;i;@Ò;ih;A[ o;>;?"8;@@°;i;@Ò;ih;A[ o;>;?"17;@@°;i;@Ò;ih;A[ o;	;"stretch;@Ò;ih;;$o;	;"stretch;@Ò;ih;;$;J;K;@Ò;ih;["-webkit-border-image;@;ih;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;ii;#[o;6	;7"theme_name;"theme-name;@ò;iio;	;"%bubbles/speech_bubble_left_2.png;@ò;ii;;o;>;?"8;@@°;i;@ò;ii;A[ o;>;?"10;@@°;i;@ò;ii;A[ o;>;?"8;@@°;i;@ò;ii;A[ o;>;?"17;@@°;i;@ò;ii;A[ o;	;"stretch;@ò;ii;;$o;	;"stretch;@ò;ii;;$;J;K;@ò;ii;["-moz-border-image;@;ii;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;ij;#[o;6	;7"theme_name;"theme-name;@;ijo;	;"%bubbles/speech_bubble_left_2.png;@;ij;;o;>;?"8;@@°;i;@;ij;A[ o;>;?"10;@@°;i;@;ij;A[ o;>;?"8;@@°;i;@;ij;A[ o;>;?"17;@@°;i;@;ij;A[ o;	;"stretch;@;ij;;$o;	;"stretch;@;ij;;$;J;K;@;ij;["-o-border-image;@;ij;[ ;1i ;2T;1i o;%;&[".announcementLeft:before;'o;(;)" ;im;*[o;+;*[o;,;)@0;im;*[o;-;)@0;["announcementLeft;imo;F
+;)@0;["before;im;G0;;H;@;im;[o;.;/;0;o;>;?"-1;@@°;iú;{ ;in;A[ ;["z-index;@;in;[ ;1i o;.;/;0;o;;"absolute;;$;["position;@;io;[ ;1i o;.;/;0;o;;"0px;;$;["top;@;ip;[ ;1i o;.;/;0;o;;"0px;;$;["
+right;@;iq;[ ;1i o;.;/;0;o;;"0px;;$;["bottom;@;ir;[ ;1i o;.;/;0;o;;"0px;;$;["	left;@;is;[ ;1i o;.;/;0;o;;""";;$;["content;@;it;[ ;1i o;.;/;0;o;;"8px 10px 8px 17px;;$;["border-width;@;iu;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;iv;#[o;6	;7"theme_name;"theme-name;@u;ivo;	;"&bubbles/speech_bubble_right_2.png;@u;iv;;o;>;?"8;@@°;i;@u;iv;A[ o;>;?"10;@@°;i;@u;iv;A[ o;>;?"8;@@°;i;@u;iv;A[ o;>;?"17;@@°;i;@u;iv;A[ o;	;"stretch;@u;iv;;$o;	;"stretch;@u;iv;;$;J;K;@u;iv;["border-image;@;iv;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;iw;#[o;6	;7"theme_name;"theme-name;@•;iwo;	;"&bubbles/speech_bubble_right_2.png;@•;iw;;o;>;?"8;@@°;i;@•;iw;A[ o;>;?"10;@@°;i;@•;iw;A[ o;>;?"8;@@°;i;@•;iw;A[ o;>;?"17;@@°;i;@•;iw;A[ o;	;"stretch;@•;iw;;$o;	;"stretch;@•;iw;;$;J;K;@•;iw;["-webkit-border-image;@;iw;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;ix;#[o;6	;7"theme_name;"theme-name;@µ;ixo;	;"&bubbles/speech_bubble_right_2.png;@µ;ix;;o;>;?"8;@@°;i;@µ;ix;A[ o;>;?"10;@@°;i;@µ;ix;A[ o;>;?"8;@@°;i;@µ;ix;A[ o;>;?"17;@@°;i;@µ;ix;A[ o;	;"stretch;@µ;ix;;$o;	;"stretch;@µ;ix;;$;J;K;@µ;ix;["-moz-border-image;@;ix;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;iy;#[o;6	;7"theme_name;"theme-name;@Õ;iyo;	;"&bubbles/speech_bubble_right_2.png;@Õ;iy;;o;>;?"8;@@°;i;@Õ;iy;A[ o;>;?"10;@@°;i;@Õ;iy;A[ o;>;?"8;@@°;i;@Õ;iy;A[ o;>;?"17;@@°;i;@Õ;iy;A[ o;	;"stretch;@Õ;iy;;$o;	;"stretch;@Õ;iy;;$;J;K;@Õ;iy;["-o-border-image;@;iy;[ ;1i ;2T;1i o;%;&[".bubbleimg;'o;(;)" ;i;*[o;+;*[o;,;)@ó;i;*[o;-;)@ó;["bubbleimg;i;@;i;[o;.;/;0;o;>;?"-1;@@°;iú;{ ;i€;A[ ;["z-index;@;i€;[ ;1i o;.;/;0;o;;"absolute;;$;["position;@;i;[ ;1i o;.;/;0;o;>;?"
+-36px;@[ ;i×;{ ;i‚;A["px;["	left;@;i‚;[ ;1i o;.;/;0;o;;"	32px;;$;["
+width;@;iƒ;[ ;1i o;.;/;0;o;;"0px;;$;["bottom;@;i„;[ ;1i o;.;/;0;o;;"	32px;;$;["height;@;i…;[ ;1i o;.;/;0;o;;""";;$;["content;@;i†;[ ;1i o;;"2/*background-image: url(left_chatter.png); */;@;iˆ;0;[ ;[ ;0o;.;/;0;o;;"32px 32px;;$;["background-size;@;i‰;[ ;1i o;.;/;0;o;;"bottom left;;$;["background-position;@;iŠ;[ ;1i o;.;/;0;o;;"3px;;$;["border-radius;@;iŒ;[ ;1i o;.;/;0;o;;"3px;;$;["-webkit-border-radius;@;i;[ ;1i ;2T;1i o;%;&[".bubbleimgRight;'o;(;)" ;i;*[o;+;*[o;,;)@M;i;*[o;-;)@M;["bubbleimgRight;i;@;i;[o;.;/;0;o;>;?"-1;@@°;iú;{ ;i‘;A[ ;["z-index;@;i‘;[ ;1i o;.;/;0;o;;"absolute;;$;["position;@;i’;[ ;1i o;.;/;0;o;>;?"
+-36px;@[ ;i×;{ ;i“;A["px;["
+right;@;i“;[ ;1i o;.;/;0;o;;"	32px;;$;["
+width;@;i”;[ ;1i o;.;/;0;o;;"0px;;$;["bottom;@;i•;[ ;1i o;.;/;0;o;;"	32px;;$;["height;@;i–;[ ;1i o;.;/;0;o;;""";;$;["content;@;i—;[ ;1i o;.;/;0;o;;"32px 32px;;$;["background-size;@;i˜;[ ;1i o;.;/;0;o;;"bottom left;;$;["background-position;@;i™;[ ;1i o;.;/;0;o;;"3px;;$;["border-radius;@;i›;[ ;1i o;.;/;0;o;;"3px;;$;["-webkit-border-radius;@;iœ;[ ;1i ;2T;1i o;%;&[".bubbledRight;'o;(;)" ;iŸ;*[o;+;*[o;,;)@£;iŸ;*[o;-;)@£;["bubbledRight;iŸ;@;iŸ;[o;.;/;0;o;;"
+right;;$;["
+float;@;i ;[ ;1i o;.;/;0;o;;"	auto;;$;["margin-left;@;i¡;[ ;1i o;.;/;0;o;;"
+right;;$;["text-align;@;i¢;[ ;1i o;.;/;0;o;;"	36px;;$;["margin-right;@;i¤;[ ;1i o;.;/;0;o;;"4px 15px 4px 10px;;$;["padding;@;i¥;[ ;1i o;;"#/*position within the border*/;@;i¥;0;[ ;[ ;0o;.;/;0;o;;"
+right;;$;["
+clear;@;i§;[ ;1i ;2T;1i o;%;&[".bubbledRight:before;'o;(;)" ;iª;*[o;+;*[o;,;)@Ù;iª;*[o;-;)@Ù;["bubbledRight;iªo;F
+;)@Ù;["before;iª;G0;;H;@;iª;[o;.;/;0;o;>;?"-1;@@°;iú;{ ;i«;A[ ;["z-index;@;i«;[ ;1i o;.;/;0;o;;"absolute;;$;["position;@;i¬;[ ;1i o;.;/;0;o;;"0px;;$;["top;@;i­;[ ;1i o;.;/;0;o;;"0px;;$;["
+right;@;i®;[ ;1i o;.;/;0;o;;"0px;;$;["bottom;@;i¯;[ ;1i o;.;/;0;o;;"0px;;$;["	left;@;i°;[ ;1i o;.;/;0;o;;""";;$;["content;@;i±;[ ;1i o;.;/;0;o;;"8px 17px 8px 10px;;$;["border-width;@;i³;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;i´;#[o;6	;7"theme_name;"theme-name;@;i´o;	;"&bubbles/speech_bubble_right_2.png;@;i´;;o;>;?"8;@@°;i;@;i´;A[ o;>;?"17;@@°;i;@;i´;A[ o;>;?"8;@@°;i;@;i´;A[ o;>;?"10;@@°;i;@;i´;A[ o;	;"stretch;@;i´;;$o;	;"stretch;@;i´;;$;J;K;@;i´;["border-image;@;i´;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;iµ;#[o;6	;7"theme_name;"theme-name;@>;iµo;	;"&bubbles/speech_bubble_right_2.png;@>;iµ;;o;>;?"8;@@°;i;@>;iµ;A[ o;>;?"17;@@°;i;@>;iµ;A[ o;>;?"8;@@°;i;@>;iµ;A[ o;>;?"10;@@°;i;@>;iµ;A[ o;	;"stretch;@>;iµ;;$o;	;"stretch;@>;iµ;;$;J;K;@>;iµ;["-webkit-border-image;@;iµ;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;i¶;#[o;6	;7"theme_name;"theme-name;@^;i¶o;	;"&bubbles/speech_bubble_right_2.png;@^;i¶;;o;>;?"8;@@°;i;@^;i¶;A[ o;>;?"17;@@°;i;@^;i¶;A[ o;>;?"8;@@°;i;@^;i¶;A[ o;>;?"10;@@°;i;@^;i¶;A[ o;	;"stretch;@^;i¶;;$o;	;"stretch;@^;i¶;;$;J;K;@^;i¶;["-moz-border-image;@;i¶;[ ;1i o;.;/;0;o;I	;[o;8
+;"{ ;"theme_image;{ ;i·;#[o;6	;7"theme_name;"theme-name;@~;i·o;	;"&bubbles/speech_bubble_right_2.png;@~;i·;;o;>;?"8;@@°;i;@~;i·;A[ o;>;?"17;@@°;i;@~;i·;A[ o;>;?"8;@@°;i;@~;i·;A[ o;>;?"10;@@°;i;@~;i·;A[ o;	;"stretch;@~;i·;;$o;	;"stretch;@~;i·;;$;J;K;@~;i·;["-o-border-image;@;i·;[ ;1i ;2T;1i o;%;&[".bubbledRight:after;'o;(;)" ;iº;*[o;+;*[o;,;)@œ;iº;*[o;-;)@œ;["bubbledRight;iºo;F
+;)@œ;["
+after;iº;G0;;H;@;iº;[o;.;/;0;o;>;?"-1;@@°;iú;{ ;i»;A[ ;["z-index;@;i»;[ ;1i o;.;/;0;o;;"absolute;;$;["position;@;i¼;[ ;1i o;.;/;0;o;>;?"
+-36px;@[ ;i×;{ ;i½;A["px;["
+right;@;i½;[ ;1i o;.;/;0;o;;"	32px;;$;["
+width;@;i¾;[ ;1i o;.;/;0;o;;"0px;;$;["bottom;@;i¿;[ ;1i o;.;/;0;o;;"	32px;;$;["height;@;iÀ;[ ;1i o;.;/;0;o;;""";;$;["content;@;iÁ;[ ;1i o;.;/;0;o;;"32px 32px;;$;["background-size;@;iÂ;[ ;1i o;.;/;0;o;;"bottom left;;$;["background-position;@;iÃ;[ ;1i o;.;/;0;o;;"3px;;$;["border-radius;@;iÅ;[ ;1i o;.;/;0;o;;"3px;;$;["-webkit-border-radius;@;iÆ;[ ;1i ;2T;1i o;%;&[".messageList;'o;(;)" ;iÉ;*[o;+;*[o;,;)@õ;iÉ;*[o;-;)@õ;["messageList;iÉ;@;iÉ;[o;.;/;0;o;;"1px solid #FFF;;$;["border-top;@;iÊ;[ ;1i o;.;/;0;o;;"
+black;;$;["
+color;@;iË;[ ;1i o;.;/;0;o;;"-webkit-box;;$;["display;@;iÌ;[ ;1i o;.;/;0;o;;"
+2.6em;;$;["min-height;@;iÍ;[ ;1i o;.;/;0;o;;"0.5em 0.8em;;$;["padding;@;iÎ;[ ;1i o;.;/;0;o;;"relative;;$;["position;@;iÏ;[ ;1i ;2T;1i o;%;&[".messageList .x-list-item;'o;(;)" ;iÒ;*[o;+;*[o;,;)@'	;iÒ;*[o;-;)@'	;["messageList;iÒo;,;)@'	;iÒ;*[o;-;)@'	;["x-list-item;iÒ;@;iÒ;[o;.;/;0;o;;"	none;;$;["border-top;@;iÓ;[ ;1i o;.;/;0;o;;"
+black;;$;["
+color;@;iÔ;[ ;1i o;.;/;0;o;;"-webkit-box;;$;["display;@;iÕ;[ ;1i o;.;/;0;o;;"
+2.6em;;$;["min-height;@;iÖ;[ ;1i o;.;/;0;o;;"0.5em 0.8em;;$;["padding;@;i×;[ ;1i o;.;/;0;o;;"relative;;$;["position;@;iØ;[ ;1i ;2T;1i o;%;&["..messageList .x-list-item.x-item-selected;'o;(;)" ;iÛ;*[o;+;*[o;,;)@^	;iÛ;*[o;-;)@^	;["messageList;iÛo;,;)@^	;iÛ;*[o;-;)@^	;["x-list-item;iÛo;-;)@^	;["x-item-selected;iÛ;@;iÛ;[o;.;/;0;o;;"#f7f7f7;;$;["background-color;@;iÜ;[ ;1i o;.;/;0;o;;"	none;;$;["background-image;@;iÝ;[ ;1i o;.;/;0;o;;"	none;;$;["background;@;iÞ;[ ;1i o;.;/;0;o;;"	none;;$;["border-bottom-color;@;iß;[ ;1i o;.;/;0;o;;"	none;;$;["border-top-color;@;ià;[ ;1i o;.;/;0;o;;"	#000;;$;["
+color;@;iá;[ ;1i ;2T;1i o;%;&["".x-tabbar.x-docked-top .x-tab;'o;(;)" ;iä;*[o;+;*[o;,;)@˜	;iä;*[o;-;)@˜	;["x-tabbar;iäo;-;)@˜	;["x-docked-top;iäo;,;)@˜	;iä;*[o;-;)@˜	;["
+x-tab;iä;@;iä;[o;.;/;0;o;;"relative;;$;["position;@;iå;[ ;1i ;2T;1i o;%;&["+.x-tabbar.x-docked-top .x-tab .x-badge;'o;(;)" ;iç;*[o;+;*[o;,;)@´	;iç;*[o;-;)@´	;["x-tabbar;iço;-;)@´	;["x-docked-top;iço;,;)@´	;iç;*[o;-;)@´	;["
+x-tab;iço;,;)@´	;iç;*[o;-;)@´	;["x-badge;iç;@;iç;[o;.;/;0;o;;"	.5em;;$;["font-size;@;iè;[ ;1i o;.;/;0;o;>;?"-0.5em;@[ ;f	-0.5;{ ;ié;A["em;["
+right;@;ié;[ ;1i ;2T;1i o;%;&[".x-roster-user .action;'o;(;)" ;ií;*[o;+;*[o;,;)@à	;ií;*[o;-;)@à	;["x-roster-user;iío;,;)@à	;ií;*[o;-;)@à	;["action;ií;@;ií;[o;.;/;0;o;;"0;;$;["opacity;@;ií;[ ;1i ;2T;1i o;%;&[".x-roster-user .delete;'o;(;)" ;iï;*[o;+;*[o;,;)@ù	;iï;*[o;-;)@ù	;["x-roster-user;iïo;,;)@ù	;iï;*[o;-;)@ù	;["delete;iï;@;iï;[o;.;/;0;o;;"
+right;;$;["
+float;@;iï;[ ;1i o;.;/;0;o;;"	#fff;;$;["
+color;@;iï;[ ;1i o;.;/;0;o;;"
+0.7em;;$;["font-size;@;iï;[ ;1i o;.;/;0;o;;"5px 8px;;$;["padding;@;iï;[ ;1i o;.;/;0;o;;"	#555;;$;["border-color;@;iï;[ ;1i o;.;/;0;o;;"red;;$;["background-color;@;iï;[ ;1i o;.;/;0;o;8
+;"{ ;"-webkit-gradient;{ ;iï;#[o;	;"linear;@0
+;iï;;$o;I	;[o;>;?"50%;@[ ;i7;@0
+;iï;A["%o;>;?"0%;@[ ;i ;@0
+;iï;A["%;J;K;@0
+;iïo;I	;[o;>;?"50%;@[ ;i7;@0
+;iï;A["%o;>;?"	100%;@[ ;ii;@0
+;iï;A["%;J;K;@0
+;iïo;8
+;"{ ;"color-stop;@0
+;iï;#[o;>;?"0%;@[ ;i ;@0
+;iï;A["%o;	;{	;iÿ;i;iR;iR;0;@0
+;iïo;8
+;"{ ;"color-stop;@0
+;iï;#[o;>;?"50%;@[ ;i7;@0
+;iï;A["%o;	;{	;iÿ;i;i;i;0;@0
+;iïo;8
+;"{ ;"color-stop;@0
+;iï;#[o;>;?"51%;@[ ;i8;@0
+;iï;A["%o;	;{	;iÿ;i;i ;i ;0;@0
+;iïo;8
+;"{ ;"color-stop;@0
+;iï;#[o;>;?"	100%;@[ ;ii;@0
+;iï;A["%o;	;{	;iæ;i;i ;i ;0;@0
+;iï;["background-image;@;iï;[ ;1i o;.;/;0;o;8
+;"{ ;"linear-gradient;{ ;iï;#[	o;	;{	;iÿ;i;iR;iR;0;@
+;iïo;I	;[o;	;{	;iÿ;i;i;i;0;@
+;iïo;>;?"50%;@[ ;i7;@
+;iï;A["%;J;K;@
+;iïo;I	;[o;	;{	;iÿ;i;i ;i ;0;@
+;iïo;>;?"51%;@[ ;i8;@
+;iï;A["%;J;K;@
+;iïo;	;{	;iæ;i;i ;i ;0;@
+;iï;["background-image;@;iï;[ ;1i ;2T;1i o;%;&["/.search-item-active .x-roster-user .action;'o;(;)" ;iñ;*[o;+;*[o;,;)@ž
+;iñ;*[o;-;)@ž
+;["search-item-active;iño;,;)@ž
+;iñ;*[o;-;)@ž
+;["x-roster-user;iño;,;)@ž
+;iñ;*[o;-;)@ž
+;["action;iñ;@;iñ;[o;.;/;0;o;;"1;;$;["opacity;@;iñ;[ ;1i o;.;/;0;o;;"opacity 0.3s linear;;$;["-webkit-transition;@;iñ;[ ;1i ;2T;1i ;2T
