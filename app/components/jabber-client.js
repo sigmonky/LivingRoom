@@ -628,6 +628,16 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		if (this.roomsArray.length == 0){
 			var publicRoomStr = publicRoomName+'_room';
 			this.roomsArray.push(publicRoomStr);
+			Ext.regStore(publicRoomStr, {
+				model: 'RoomRosterItem',
+				autoLoad: true,
+				proxy: {
+					type: 'memory',
+					  	reader: {
+					    	type: 'json'
+					   	}
+					}
+			});
 		}else{
 			console.log('publicRoom Store  =' +publicRoomStr );
 		
