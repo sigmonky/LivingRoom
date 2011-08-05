@@ -308,7 +308,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		Ext.dispatch({
 		    controller: 'Roster',
 		    action: 'showRoomParticipants', 
-			roomName: name
+			roomName: this.name
 		});
 	},
 	
