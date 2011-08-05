@@ -376,9 +376,10 @@ Ext.regController('Roster', {
 		console.log('addMessageToChatRoom options.from '+ options.from);
 		console.log('addMessageToChatRoom this.pnlRoom '+ this.pnlRoom);
 		
-		var key = options.from.substring(0,options.from.indexOf('@'))+'_message';
+		var keyMsg = options.from.substring(0,options.from.indexOf('@'))+'_message';
+		var keyRoom = options.from.substring(0,options.from.indexOf('@'))+'_room';
 		
-		console.log('addMessageToChatRoom key '+ key);
+		console.log('addMessageToChatRoom key '+ keyRoom);
 		
 		//Let's take the public chat room panel
 //		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
@@ -386,10 +387,10 @@ Ext.regController('Roster', {
 		//Let's finally add the chat message
 	//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
 	
-		var roster = Ext.StoreMgr.get(key);
+		var roster = Ext.StoreMgr.get(keyRoom);
 	
 		console.log('addMessageToChatRoom roster ='+roster);
-		console.log('addMessageToChatRoom key ='+key);
+		console.log('addMessageToChatRoom key ='+keyRoom);
 	
 		var user = roster.getById(options.from);
 	
@@ -416,7 +417,7 @@ Ext.regController('Roster', {
 		}, 'ChatMessage');
 	
 	
-		var chatStore = Ext.StoreMgr.get(key+'_message');
+		var chatStore = Ext.StoreMgr.get(keyMsg);
 		chatStore.add(message); 
 		
 	},
