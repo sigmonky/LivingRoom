@@ -293,7 +293,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	showRoster: function(){
 		console.log('show roster 3');
 		
-		var store = Ext.StoreMgr.get(jabberClient.publicRoom);
+		
+		var roomStore = name+'_room';
+		console.log('show roster 3roomStore '+roomStore);
+		
+		var store = Ext.StoreMgr.get(roomStore);
 		
 		console.log('store show Roster = '+store);
 		
@@ -304,7 +308,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		Ext.dispatch({
 		    controller: 'Roster',
 		    action: 'showRoomParticipants', 
-			roomName: jabberClient.publicRoom
+			roomName: name
 		});
 	},
 	
@@ -477,4 +481,3 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 //Component type registration
 Ext.reg('RoomChatSession', LivingRoomAPI.views.RoomChatSession);
 
-var a;
