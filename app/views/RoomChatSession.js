@@ -27,7 +27,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	toolbar: '',
 	
-	isChatRoom: false,
+	isChatRoom: true,
 	
 	initComponent: function(){
 		
@@ -328,8 +328,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 			
 		//Send the message to all the room participants
-	    this.jabberComponent.sendRoomMessage(message.getValue());
-		
+		if (isChatRoom == true){
+			this.jabberComponent.sendRoomMessage(message.getValue());
+		}else{
+			this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
+			this.addChatMessage(message.getValue(), null, true);
+		}
 		
 		//Clear the message field
 		message.setValue('');
@@ -365,55 +369,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	addChatRoomMessage: function(message, from){
-		
-		//Taking the remote user nickname
-		var nickname = from.split('/')[1];
-		
-		console.log('addChatRoomMessage from= '+from);
-		
-		
-		console.log('addChatRoomMessage - store get' +this.name);
-		
-		var roster = Ext.StoreMgr.get(this.name);
-		
-		console.log('roster ='+roster);
-		
-		user = roster.getById(from);
-		
-		console.log('addChatRoomMessage from ='+from);
-		
-		console.log('addChatRoomMessage user ='+user);
-		
-		var photo = user.get('facebook_id');
-		
-	//	var photo = null;
-		console.log('addChatRoomMessage photo ='+photo);
-		
-		
-		var html;
-		if (photo == null){
-		 	html = this.tplPublicMessageNoPhoto.apply({
-				time: this.getTime(),
-				nickname: nickname,
-            	message: message
-        	});
-		}else{
-		 	html = this.tplPublicMessage.apply({
-				photo: photo,
-				time: this.getTime(),
-				nickname: nickname,
-            	message: message
-        	});
-		}
 
-		//console.log('photo = '+ this.getProfilePhoto(from));
-
-		var pnlMsg = new Ext.Panel({
-			html: html
-		});
-		
-		this.add(pnlMsg);
-		this.doLayout();
 
 	},
 	
