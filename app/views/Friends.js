@@ -71,7 +71,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
 	
-			to
 			console.log('beforeactivate');
 			Ext.regStore('FriendListStore', {
 				model: 'Friend',
