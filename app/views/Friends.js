@@ -8,6 +8,8 @@
  */
 LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	
+	isLoaded : false,
+	
 	initComponent : function(){
 	
 		//Definition of the list that will contains all the users in the Roster
@@ -134,7 +136,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			this.store = friendStore;
 	        itemSubList.update();
 	        itemSubList.bindStore(this.store);
-			
+			isLoaded = true;
 		/*	Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				autoLoad: true,
