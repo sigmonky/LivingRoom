@@ -64,7 +64,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							'<tpl for=".">',
 								'<div style="padding:20px; background:#EEE">'+
 							     '<div class="x-user-name">' +
-									'<p class="message" style="font-size:0.7em">Invite {name} to get this app and join you in the chat</p>' +
+									'<p class="message" style="font-size:0.8em">Invite {name} to get this app and join you in the chat</p>' +
 								  '</div></div>' +
 							'</tpl>'
 						);
@@ -140,7 +140,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             this.popupPnl = new Ext.Panel({
                 floating: true,
 				bodyStyle: 'background: #EEE;',
-                width: 210,
+                width: 160,
                 height: 370,
                 centered: true,
                 modal: true,
