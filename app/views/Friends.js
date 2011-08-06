@@ -130,7 +130,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		    items: [
 		        {
 		            xtype: 'textareafield',
-		            name: 'narrative',
+		            name: '',
 		            label: 'Narrative'
 		        }
 		    ]
