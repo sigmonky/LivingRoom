@@ -34,6 +34,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             }),
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
+					 	'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{name}</b>' +
@@ -65,12 +66,12 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									'<img src="{photo_url}" width="52" height="52"/>'+
 								'</div>' +
 							     '<div class="x-user-name">' +
-									'<p class="nickname">{name}</p>' +
+									'<p class="nickname">Invite your friend {name} to get this app and join you in the chat</p>' +
 								  '</div></div>' +
 							'</tpl>'
 						);
 
-						var facebook_id = user.get('facebook_id');
+						var facebook_id = user.get('id');
 
 						if (facebook_id != ''){
 							var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
