@@ -66,7 +66,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									'<img src="{photo_url}" width="52" height="52"/>'+
 								'</div>' +
 							     '<div class="x-user-name">' +
-									'<p class="nickname">Invite {name} to get this app and join you in the chat</p>' +
+									'<p class="message">Invite {name} to get this app and join you in the chat</p>' +
 								  '</div></div>' +
 							'</tpl>'
 						);
@@ -149,7 +149,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
                 hideOnMaskTap: false,
                 layout: 'fit',
 				dockedItems:[
-				form,
+				
 				{
 							xtype: 'button',
 							margin: '10, 0, 0,0',
@@ -167,7 +167,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								handler: this.talkToUser,
 								scope: this,
 								user: user,
-					},
+					},form,
 				],
                 html: panelContent,
 				showAnimation: {
