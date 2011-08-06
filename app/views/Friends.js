@@ -62,9 +62,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 						var tplUser = new Ext.XTemplate(
 							'<tpl for=".">',
-								'<div style="padding:20px"><div class="x-user-picture">' +
-									'<img src="{photo_url}" width="52" height="52"/>'+
-								'</div>' +
+								'<div style="padding:20px">'+
 							     '<div class="x-user-name">' +
 									'<p class="message">Invite {name} to get this app and join you in the chat</p>' +
 								  '</div></div>' +
