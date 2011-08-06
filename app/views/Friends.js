@@ -75,7 +75,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
-	
+			if (isLoaded != true){
 			console.log('beforeactivate');
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
 			console.log('urll '+ url);
@@ -160,7 +160,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			    autoLoad:true
 
 			}); */
-
+			}
         },
 
 
