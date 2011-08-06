@@ -146,7 +146,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	            scroll: 'vertical',
 				hideMode: 'close',
                 hideOnMaskTap: false,
-                layout: 'fit',
+            //    layout: 'fit',
 				dockedItems:[
 				
 				{
