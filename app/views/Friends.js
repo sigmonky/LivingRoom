@@ -11,7 +11,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	isLoaded : false,
 	
 	initComponent : function(){
-	
+		
+		var that = this;
+		
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			id: 'friendsList',
@@ -41,6 +43,54 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				
 				itemtap: function(list, index, item, e) {
 
+						var store = list.getStore();
+
+						console.log('itemtap at index =' +index);
+						//Let's take the selected user
+						var user = store.getAt(index);
+						console.log('itemtap user =' +user);
+
+						//Let's call the controller method able to show the user Roster
+						/*	Ext.dispatch({
+						    controller: 'Roster',
+						    action: 'openChatSessionForRoomRoster',
+							show: true,
+							user: user
+						}); */
+
+
+						var tplUser = new Ext.XTemplate(
+							'<tpl for=".">',
+								'<div style="padding:20px"><div class="x-user-picture">' +
+									'<img src="{photo_url}" width="52" height="52"/>'+
+								'</div>' +
+							     '<div class="x-user-name">' +
+									'<p class="nickname">{name}</p>' +
+								  '</div></div>' +
+							'</tpl>'
+						);
+
+						var facebook_id = user.get('facebook_id');
+
+						if (facebook_id != ''){
+							var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+						}else{
+							var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+						}
+
+						var html = tplUser.apply({
+							name: user.get('name'),
+			            	photo_url: photo_url,
+			        	});
+
+
+						that.user = user;
+
+						that.panelLaunch({
+	                        iconClass: 'x-panel-action-icon-close',
+	                        position: 'tr',
+	                        actionMethod: ['hide']
+	                    }, html, user);
 					
 				},
 				
@@ -73,6 +123,47 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	
 	},
 	
+	panelLaunch: function(pluginConfig, panelContent, user){
+            this.popupPnl = new Ext.Panel({
+                floating: true,
+                width: 270,
+                height: 370,
+                centered: true,
+                modal: true,
+	            scroll: 'vertical',
+				hideMode: 'close',
+                hideOnMaskTap: false,
+                layout: 'fit',
+				dockedItems:[
+				{
+							xtype: 'button',
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Cancel',
+							handler: this.talkToUser,
+							scope: this,
+				},
+					{
+								xtype: 'button', 
+								margin: '10, 0, 0,0',
+								dock: 'bottom',
+								text: 'Send',
+								handler: this.talkToUser,
+								scope: this,
+								user: user,
+					}
+				],
+                html: panelContent,
+				showAnimation: {
+					type: 'pop',
+					duration: 250
+				},
+                plugins: [new Ext.ux.PanelAction(pluginConfig)]
+            });
+            
+            this.popupPnl.show();
+     },
+
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
 			if (this.isLoaded != true){
@@ -123,8 +214,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							var obj = friendStore.getAt(0);
 							console.log('obj is ' + obj.get('name'));
 	                    }
-	                
-
 				  	}	
 			});
 			
