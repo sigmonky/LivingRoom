@@ -64,7 +64,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							'<tpl for=".">',
 								'<div style="padding:20px; background:#EEE">'+
 							     '<div class="x-user-name">' +
-									'<p class="message" style="font-size:1.1em">Invite {name} to get this app and join you in the chat</p>' +
+									'<p class="message" style="font-size:0.7em">Invite {name} to get this app and join you in the chat</p>' +
 								  '</div></div>' +
 							'</tpl>'
 						);
