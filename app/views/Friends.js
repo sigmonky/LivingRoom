@@ -131,7 +131,8 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		        {
 		            xtype: 'textareafield',
 		            name: 'narrative',
-		            label: ''
+		            label: '',
+					value:'I\'m using the Second Screen App. Download it and join me',
 		        }
 		    ]
 		});
