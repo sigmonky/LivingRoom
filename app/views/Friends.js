@@ -66,7 +66,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									'<img src="{photo_url}" width="52" height="52"/>'+
 								'</div>' +
 							     '<div class="x-user-name">' +
-									'<p class="nickname">Invite your friend {name} to get this app and join you in the chat</p>' +
+									'<p class="nickname">Invite {name} to get this app and join you in the chat</p>' +
 								  '</div></div>' +
 							'</tpl>'
 						);
@@ -125,6 +125,18 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	},
 	
 	panelLaunch: function(pluginConfig, panelContent, user){
+		
+		var form = new Ext.form.FormPanel({
+		    id: 'noteEditor',
+		    items: [
+		        {
+		            xtype: 'textareafield',
+		            name: 'narrative',
+		            label: 'Narrative'
+		        }
+		    ]
+		});
+		
             this.popupPnl = new Ext.Panel({
                 floating: true,
                 width: 270,
@@ -152,8 +164,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								handler: this.talkToUser,
 								scope: this,
 								user: user,
-					}
+					},
 				],
+				items:[form],
                 html: panelContent,
 				showAnimation: {
 					type: 'pop',
