@@ -128,6 +128,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var form = new Ext.form.FormPanel({
 		    id: 'noteEditor',
+			dock: 'bottom',
 		    items: [
 		        {
 		            xtype: 'textareafield',
@@ -156,6 +157,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							handler: this.talkToUser,
 							scope: this,
 				},
+				form,
 					{
 								xtype: 'button', 
 								margin: '10, 0, 0,0',
