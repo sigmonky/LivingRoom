@@ -14,6 +14,32 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
+		
+		
+		Ext.regStore('FriendListStore', {
+				model: 'Friend',
+				proxy: {
+							type: 'memory',
+						   	reader: {
+						    	type: 'json'
+						   	}
+						},				    
+				getGroupString : function(record) {
+						/*	var didInstallApp = record.get('didInstallApp');
+							if (didInstallApp == 'yes'){
+								var str = 'Invite More Friends To Chat';
+							}else{
+								var str = 'My Facebook Friends';
+							} */
+					        return  record.get('name')[0];
+				},
+				autoLoad:false
+
+			});
+		
+		
+		
+		
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			id: 'friendsList',
@@ -205,26 +231,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 			
 			
-			Ext.regStore('FriendListStore', {
-					model: 'Friend',
-					proxy: {
-						type: 'memory',
-					   	reader: {
-					    	type: 'json'
-					   	}
-					},				    
-				    getGroupString : function(record) {
-					/*	var didInstallApp = record.get('didInstallApp');
-						if (didInstallApp == 'yes'){
-							var str = 'Invite More Friends To Chat';
-						}else{
-							var str = 'My Facebook Friends';
-						} */
-				        return  record.get('name')[0];
-				    },
-				    autoLoad:false
-
-				});
+	
 			
 			this.store = Ext.StoreMgr.get('FriendListStore');
 			var that = this;
