@@ -32,7 +32,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				}],
 				
 			    getGroupString : function(record) {
-					var didInstallApp = record.get('b');
+					var didInstallApp = record.get('thumb');
 					if (didInstallApp == false){
 						var str = 'Invite More Friends To Chat';
 					}else{
