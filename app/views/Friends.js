@@ -264,16 +264,21 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
 
 								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
-
+										var didInstall = false;
 				                        var friend = allFriends.data[i];
-										var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name}, 'Friend');
+				
 
 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
 											var friendWhoInstalled = friendsWhoInstalledApp[j];
 											if (friendWhoInstalled.uid == friend.id){
 												console.log('friendWhoInstalled.id == friend.id');
-												friendModel.didInstallApp = true;
+												didInstall = true;
 											}
+										}
+										if (didInstall == true){
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true}, 'Friend');
+										}else{
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false}, 'Friend');
 										}
 
 										friendStore.add(friendModel);
