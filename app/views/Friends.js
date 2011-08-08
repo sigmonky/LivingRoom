@@ -291,17 +291,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 										friendStore.add(friendModel);
 								    	friendStore.sync();
-
-										//didInstallApp
-
-										loadingMask.hide();
-
-
-										var obj = friendStore.getAt(0);
-										console.log('obj name is ' + obj.get('name'));
-										console.log('obj didInstallApp is ' + obj.get('didInstallApp'));
 										
 				                    }
+				
+									loadingMask.hide();
+				
 									var itemSubList = Ext.getCmp('friendsList');
 							        itemSubList.update();
 
