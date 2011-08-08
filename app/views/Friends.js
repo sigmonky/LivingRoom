@@ -25,6 +25,10 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				sorters: [{
 					property: 'thumb',
 					direction: 'ASC'
+				},
+				{
+					property: 'name',
+					direction: 'ASC'
 				}],
 				
 			    getGroupString : function(record) {
