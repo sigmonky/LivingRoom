@@ -156,7 +156,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					
 					{
 								xtype: 'button', 
-								margin: '0, 0, 0, 30px',
+								margin: '0, 0, 0, 40px',
 								text: 'Send',
 								handler: this.talkToUser,
 								scope: this,
@@ -164,7 +164,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					},
 					{
 								xtype: 'button',
-								margin: '0, 0, 0,10px',
+								margin: '0, 0, 0, 20px',
 								text: 'Cancel',
 								handler: this.talkToUser,
 								scope: this,
