@@ -231,6 +231,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						console.log('data.length ='+data.data.length);
 						
 						that.store.loadData(data.data)
+						that.store.sync();
 						
 		
 						
@@ -239,18 +240,13 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			});
 			
 			
-			var itemSubList = Ext.getCmp('friendsList');
-	        itemSubList.update();
-			this.store.sync();
-	        
-		//	itemSubList.store.loadData(this.store.data.items)
-			//this.store = friendStore;
-	        itemSubList.update();
-	
-	        itemSubList.bindStore(this.store);
-			itemSubList.refresh();
+
 	
 			this.isLoaded = true;
+			
+			
+			
+			
 		/*	Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				autoLoad: true,
