@@ -12,6 +12,8 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	
 	initComponent : function(){
 		
+	
+		
 		var that = this;
 		
 		Ext.regStore('FriendListStore', {
@@ -222,6 +224,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
+			var itemsTemp = []
 			if (this.isLoaded != true){
 			console.log('beforeactivate');
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
@@ -264,11 +267,12 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				                    }
 				
 									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
-
+									
+									
 								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
-				
+									
 
 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
 											var friendWhoInstalled = friendsWhoInstalledApp[j];
@@ -282,16 +286,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										}else{
 											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
 										}
-
-										that.store.add(friendModel);
+										itemsTemp.push(friendModel);
+									//	that.store.add(friendModel);
 								    //	that.store.sync();
-
 										//didInstallApp
-
 										loadingMask.hide();
-
-
-										
 				                    }
 							  	}	
 						});
@@ -305,8 +304,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	        itemSubList.update();
 			//this.store.sync();
 	        
-			itemSubList.store.loadData(this.store.data.items)
+		//	itemSubList.store.loadData(this.store.data.items)
 			//this.store = friendStore;
+			itemSubList.store.loadData(itemsTemp);
 	
 	        itemSubList.bindStore(this.store);
 			itemSubList.refresh();
