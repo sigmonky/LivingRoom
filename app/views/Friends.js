@@ -156,7 +156,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					
 					{
 								xtype: 'button', 
-								margin: '0, 0, 0, 20px',
+								margin: '0, 0, 0, 10px',
 								text: 'Send Invite',
 								handler: this.talkToUser,
 								scope: this,
