@@ -282,11 +282,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
 										}
 
-										that.store.add(friendModel);
+									//	that.store.add(friendModel);
 								    //	that.store.sync();
 
 										//didInstallApp
-
+that.store.loadData(Ext.util.JSON.decode(allFriends))
 										loadingMask.hide();
 
 
