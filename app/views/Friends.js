@@ -227,7 +227,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				});
 			
 			var friendStore = Ext.StoreMgr.get('FriendListStore');
-				
+			loadingMask.show();
 			Ext.util.JSONP.request({
 		    		url: 'https://graph.facebook.com/me/friends',
 					params: {
@@ -237,15 +237,61 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				    // Callback
 				    callback: function (data) {
 						console.log('data.length ='+data.data.length);
-					    for (var i = 0, ln = data.data.length; i < ln; i++) {
 						
-	                        var friend = data.data[i];
-							var friend = Ext.ModelMgr.create({id: friend.id, name: friend.name}, 'Friend');
-							friendStore.add(friend);
-					    	friendStore.sync();
-							var obj = friendStore.getAt(0);
-							console.log('obj is ' + obj.get('name'));
-	                    }
+						var allFriends = data;
+						
+						var friendsWhoInstalledApp = new Array();
+						
+						Ext.util.JSONP.request({
+					    		url: 'https://api.facebook.com/method/fql.query',
+								params: {
+									access_token: '185799971471968%7Ce83f2eff9c114736aac52c0b.3-527305423%7C_DlATFHB_CJa2hlpSxwDGbCaYEE',
+									query: 'SELECT uid,name,pic_square FROM user WHERE is_app_user AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
+									format: 'JSON',
+								},
+								
+							    callbackKey: 'callback',
+							    // Callback
+							    callback: function (data2) {
+									console.log('data2.length ='+data2.data.length);
+								    for (var i = 0, ln = data2.data.length; i < ln; i++) {
+				                        var friend = data2.data[i];
+										console.log('friendWhoInstalled.name '+friend.name);
+										friendsWhoInstalledApp.push(friend);
+				                    }
+				
+									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
+
+								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
+
+				                        var friend = allFriends.data[i];
+										var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name}, 'Friend');
+
+									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
+											var friendWhoInstalled = friendsWhoInstalledApp[j];
+											if (friendWhoInstalled.id == friend.id){
+												console.log('friendWhoInstalled.id == friend.id');
+												friendModel.didInstallApp = true;
+											}
+										}
+
+										friendStore.add(friendModel);
+								    	friendStore.sync();
+
+										//didInstallApp
+
+										loadingMask.hide();
+
+
+										var obj = friendStore.getAt(0);
+										console.log('obj name is ' + obj.get('name'));
+										console.log('obj didInstallApp is ' + obj.get('didInstallApp'));
+										
+				                    }
+							  	}	
+						});
+						
+
 				  	}	
 			});
 			
