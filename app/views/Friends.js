@@ -12,33 +12,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	
 	initComponent : function(){
 		
-	
-		
 		var that = this;
-		
-		Ext.regStore('FriendListStore', {
-				model: 'Friend',
-				proxy: {
-							type: 'memory',
-						   	reader: {
-						    	type: 'json'
-						   	}
-						},	
-				sorters: 'name', 			    
-				getGroupString : function(record) {
-						/*	var didInstallApp = record.get('didInstallApp');
-							if (didInstallApp == 'yes'){
-								var str = 'Invite More Friends To Chat';
-							}else{
-								var str = 'My Facebook Friends';
-							} */
-							
-					        return  record.get('name')[0];
-				},
-				autoLoad:false
-
-			});
-		
 		
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
@@ -53,7 +27,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		    activeCls: 'search-item-active',
 		
 			grouped: true,
-			store: this.store,
+			//store: 'FriendListStore',
 			
 			store: new Ext.data.Store({
                 model: 'Friend'
@@ -224,14 +198,40 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
-	
 			if (this.isLoaded != true){
 			console.log('beforeactivate');
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
 			console.log('urll '+ url);
+
 			
-			this.store = Ext.StoreMgr.get('FriendListStore');
-			var that = this;
+			
+			Ext.regStore('FriendListStore', {
+					model: 'Friend',
+					proxy: {
+						type: 'memory',
+					   	reader: {
+					    	type: 'json'
+					   	}
+					},
+					sorters: [{
+						property: 'didInstallApp',
+						direction: 'ASC'
+					}],
+					
+				    getGroupString : function(record) {
+						var didInstallApp = record.get('didInstallApp');
+						if (didInstallApp == false){
+							var str = 'Invite More Friends To Chat';
+						}else{
+							var str = 'My Facebook Friends';
+						}
+				        return  "<span style='display:none'>"+record.get('didInstallApp') + "</span>"+str ; 
+				    },
+				    autoLoad:false
+
+				});
+			
+			var friendStore = Ext.StoreMgr.get('FriendListStore');
 			loadingMask.show();
 			Ext.util.JSONP.request({
 		    		url: 'https://graph.facebook.com/me/friends',
@@ -242,7 +242,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				    // Callback
 				    callback: function (data) {
 						console.log('data.length ='+data.data.length);
-						
 						
 						var allFriends = data;
 						
@@ -267,12 +266,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				                    }
 				
 									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
-									
-									
+
 								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
-									
+				
 
 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
 											var friendWhoInstalled = friendsWhoInstalledApp[j];
@@ -282,28 +280,24 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											}
 										}
 										if (didInstall == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'a'}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'yes'}, 'Friend');
 										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'false'}, 'Friend');
 										}
-									//	itemsTemp.push(friendModel);
-										that.store.add(friendModel);
 
+										friendStore.add(friendModel);
+								    	friendStore.sync();
+
+										//didInstallApp
+
+										loadingMask.hide();
+
+
+										var obj = friendStore.getAt(0);
+										console.log('obj name is ' + obj.get('name'));
+										console.log('obj didInstallApp is ' + obj.get('didInstallApp'));
+										
 				                    }
-							    	that.store.sync();
-									//didInstallApp
-									loadingMask.hide();
-									var itemSubList = Ext.getCmp('friendsList');
-							        itemSubList.update();
-									that.store.sync();
-
-									itemSubList.store.loadData(that.store.data.items)
-									//this.store = friendStore;
-
-							        itemSubList.bindStore(that.store);
-									itemSubList.refresh();
-
-									that.isLoaded = true;
 							  	}	
 						});
 						
@@ -312,7 +306,14 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			});
 			
 			
-
+			var itemSubList = Ext.getCmp('friendsList');
+	        itemSubList.update();
+			
+			itemSubList.store.loadData(friendStore.data.items)
+			this.store = friendStore;
+	        itemSubList.update();
+	        itemSubList.bindStore(this.store);
+			this.isLoaded = true;
 		/*	Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				autoLoad: true,
