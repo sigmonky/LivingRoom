@@ -202,6 +202,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			console.log('beforeactivate');
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
 			console.log('urll '+ url);
+
 			
 			
 			Ext.regStore('FriendListStore', {
@@ -214,11 +215,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					},
 					
 				    getGroupString : function(record) {
-						var isLive = record.get('isLive');
-						if (isLive == false){
-							var str = 'My Facebook Friends';
+						var didInstallApp = record.get('didInstallApp');
+						if (didInstallApp == false){
+							var str = 'Invite More Friends To Chat';
 						}else{
-							var str = 'Active Chats';
+							var str = 'My Facebook Friends';
 						}
 				        return  "<span style='display:none'>"+record.get('isLive').toString() + "</span>"+str ; 
 				    },
