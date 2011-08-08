@@ -227,7 +227,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						}
 				        return  record.get('name')[0];
 				    },
-				    autoLoad:false
+				    autoLoad:true
 
 				});
 			
