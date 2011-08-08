@@ -221,7 +221,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						}else{
 							var str = 'My Facebook Friends';
 						}
-				        return  "<span style='display:none'>"+record.get('isLive').toString() + "</span>"+str ; 
+				        return  "<span style='display:none'>"+record.get('didInstallApp').toString() + "</span>"+str ; 
 				    },
 				    autoLoad:false
 
