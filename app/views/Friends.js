@@ -31,6 +31,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							}else{
 								var str = 'My Facebook Friends';
 							} */
+							sorters: [{property : 'name', direction: 'ASC'}], 
 					        return  record.get('name')[0];
 				},
 				autoLoad:false
