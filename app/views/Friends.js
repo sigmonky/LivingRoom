@@ -239,7 +239,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				    // Callback
 				    callback: function (data) {
 						console.log('data.length ='+data.data.length);
-						that.store.loadData(Ext.util.JSON.decode(data.data))
+						that.store.loadData(Ext.util.JSON.decode(data.results))
 						
 						var allFriends = data;
 						
