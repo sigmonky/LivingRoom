@@ -22,7 +22,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						    	type: 'json'
 						   	}
 						},	
-				sorters: [{property : 'name', direction: 'ASC'}], 			    
+				sorters: 'name', 			    
 				getGroupString : function(record) {
 						/*	var didInstallApp = record.get('didInstallApp');
 							if (didInstallApp == 'yes'){
