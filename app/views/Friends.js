@@ -240,7 +240,15 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			});
 			
 			
-
+			var itemSubList = Ext.getCmp('friendsList');
+	        itemSubList.update();
+	        
+		//	itemSubList.store.loadData(this.store.data.items)
+			//this.store = friendStore;
+	       // itemSubList.update();
+	
+	        itemSubList.bindStore(this.store);
+		//	itemSubList.refresh();
 	
 			this.isLoaded = true;
 			
