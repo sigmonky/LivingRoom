@@ -295,7 +295,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									loadingMask.hide();
 									var itemSubList = Ext.getCmp('friendsList');
 							        itemSubList.update();
-									//this.store.sync();
+									that.store.sync();
 
 									itemSubList.store.loadData(that.store.data.items)
 									//this.store = friendStore;
@@ -303,7 +303,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							        itemSubList.bindStore(that.store);
 									itemSubList.refresh();
 
-									this.isLoaded = true;
+									that.isLoaded = true;
 							  	}	
 						});
 						
