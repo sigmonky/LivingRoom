@@ -17,9 +17,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				proxy: {
-							type: 'memory',
+							type: 'ScriptTagProxy',
 						   	reader: {
-						    	type: 'ScriptTagProxy'
+						    	type: 'json'
 						   	}
 						},	
 				sorters: 'name', 			    
