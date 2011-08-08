@@ -214,18 +214,18 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					   	}
 					},
 					sorters: [{
-					property: 'didInstallApp',
-						        direction: 'DESC'
+						property: 'didInstallApp',
+						direction: 'ASC'
 					}],
 					
 				    getGroupString : function(record) {
 						var didInstallApp = record.get('didInstallApp');
-						if (didInstallApp == false){
+						if (didInstallApp == 'yes'){
 							var str = 'Invite More Friends To Chat';
 						}else{
 							var str = 'My Facebook Friends';
 						}
-				        return  "<span style='display:none'>"+record.get('didInstallApp') + "</span>"+str ; 
+				        return  "<span style='display:none'>"+record.get('thumb') + "</span>"+str ; 
 				    },
 				    autoLoad:false
 
@@ -280,9 +280,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											}
 										}
 										if (didInstall == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'yes'}, 'Friend');
 										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'false'}, 'Friend');
 										}
 
 										friendStore.add(friendModel);
