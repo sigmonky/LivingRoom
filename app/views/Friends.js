@@ -216,7 +216,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					sorters: [
 				             {property: 'name', direction: 'ASC'}
 				        ],
-				    
 					
 				    getGroupString : function(record) {
 						var didInstallApp = record.get('didInstallApp');
@@ -227,7 +226,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						}
 				        return  record.get('name')[0];
 				    },
-				    autoLoad:true
+				    autoLoad:false
 
 				});
 			
@@ -310,7 +309,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	        itemSubList.update();
 			
 			itemSubList.store.loadData(friendStore.data.items)
-			this.store = friendStore;
+		//	this.store = friendStore;
 	        itemSubList.update();
 	        itemSubList.bindStore(this.store);
 			this.isLoaded = true;
