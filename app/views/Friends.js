@@ -141,7 +141,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             this.popupPnl = new Ext.Panel({
                 floating: true,
 				bodyStyle: 'background: #EEE;',
-                width: 210,
+                width: 240,
                 height: 330,
                 centered: true,
                 modal: true,
