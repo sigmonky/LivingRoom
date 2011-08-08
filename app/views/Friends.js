@@ -14,7 +14,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
-		this.store = Ext.regStore('FriendListStore', {
+		Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				proxy: {
 					type: 'memory',
@@ -40,6 +40,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 			});
 			
+			this.store = Ext.StoreMgr.get('FriendListStore');
 			
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
