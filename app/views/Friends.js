@@ -226,7 +226,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						}else{
 							var str = 'My Facebook Friends';
 						}
-				        return  record.get('thumb')[0];
+				        return  record.get('name')[0];
 				    },
 				    autoLoad:false
 
