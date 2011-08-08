@@ -220,7 +220,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						}else{
 							var str = 'My Facebook Friends';
 						} */
-				        return  record.get('name');
+				        return  record.get('name')[0];
 				    },
 				    autoLoad:false
 
@@ -282,7 +282,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										}
 
 										that.store.add(friendModel);
-								    //	friendStore.sync();
+								    	that.store.sync();
 
 										//didInstallApp
 
@@ -301,7 +301,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			
 			var itemSubList = Ext.getCmp('friendsList');
 	        itemSubList.update();
-			
+			this.store.sync();
 			itemSubList.store.loadData(this.store.data.items)
 			//this.store = friendStore;
 	        itemSubList.update();
