@@ -14,6 +14,34 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
+		Ext.regStore('FriendListStore', {
+				model: 'Friend',
+				proxy: {
+					type: 'memory',
+				   	reader: {
+				    	type: 'json'
+				   	}
+				},
+				sorters: [{
+					property: 'didInstallApp',
+					direction: 'ASC'
+				}],
+				
+			    getGroupString : function(record) {
+					var didInstallApp = record.get('didInstallApp');
+					if (didInstallApp == false){
+						var str = 'Invite More Friends To Chat';
+					}else{
+						var str = 'My Facebook Friends';
+					}
+			        return  "<span style='display:none'>"+record.get('didInstallApp') + "</span>"+str ; 
+			    },
+			    autoLoad:false
+
+			});
+			
+			this.store = FriendListStore;
+			
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			id: 'friendsList',
@@ -29,9 +57,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			grouped: true,
 			//store: 'FriendListStore',
 			
-			store: new Ext.data.Store({
-                model: 'Friend'
-            }),
+			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
 					 	'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
@@ -205,31 +231,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 			
 			
-			Ext.regStore('FriendListStore', {
-					model: 'Friend',
-					proxy: {
-						type: 'memory',
-					   	reader: {
-					    	type: 'json'
-					   	}
-					},
-					sorters: [{
-						property: 'didInstallApp',
-						direction: 'ASC'
-					}],
-					
-				    getGroupString : function(record) {
-						var didInstallApp = record.get('didInstallApp');
-						if (didInstallApp == false){
-							var str = 'Invite More Friends To Chat';
-						}else{
-							var str = 'My Facebook Friends';
-						}
-				        return  "<span style='display:none'>"+record.get('didInstallApp') + "</span>"+str ; 
-				    },
-				    autoLoad:false
 
-				});
 			
 			var friendStore = Ext.StoreMgr.get('FriendListStore');
 			loadingMask.show();
@@ -303,7 +305,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									var itemSubList = Ext.getCmp('friendsList');
 							        itemSubList.update();
 
-									itemSubList.store.loadData(friendStore.data.items)
+									that.store.loadData(friendStore.data.items)
 									that.store = friendStore;
 							        itemSubList.update();
 							        itemSubList.bindStore(that.store);
