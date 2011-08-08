@@ -250,9 +250,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									format: 'JSON',
 								},
 								
-							    callbackKey: 'callback2',
+							    callbackKey: 'callback',
 							    // Callback
-							    callback2: function (data2) {
+							    callback: function (data2) {
 									console.log('data2.length ='+data2.data.length);
 								    for (var i = 0, ln = data2.data.length; i < ln; i++) {
 				                        var friend = data2.data[i];
