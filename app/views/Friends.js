@@ -212,18 +212,14 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					   	reader: {
 					    	type: 'json'
 					   	}
-					},
-					sorters: [
-				             {property: 'name', direction: 'ASC'}
-				        ],
-					
+					},				    
 				    getGroupString : function(record) {
-						var didInstallApp = record.get('didInstallApp');
+					/*	var didInstallApp = record.get('didInstallApp');
 						if (didInstallApp == 'yes'){
 							var str = 'Invite More Friends To Chat';
 						}else{
 							var str = 'My Facebook Friends';
-						}
+						} */
 				        return  record.get('name')[0];
 				    },
 				    autoLoad:false
@@ -310,7 +306,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			
 			itemSubList.store.loadData(friendStore.data.items)
 			this.store = friendStore;
-			this.store.grouped = true;
 	        itemSubList.update();
 	        itemSubList.bindStore(this.store);
 			this.isLoaded = true;
