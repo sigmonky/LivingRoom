@@ -280,9 +280,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											}
 										}
 										if (didInstall == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'yes'}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'a'}, 'Friend');
 										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'false'}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
 										}
 
 										friendStore.add(friendModel);
