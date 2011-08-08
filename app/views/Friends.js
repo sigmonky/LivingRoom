@@ -288,21 +288,22 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										}
 									//	itemsTemp.push(friendModel);
 										that.store.add(friendModel);
-								    	that.store.sync();
-										//didInstallApp
-										loadingMask.hide();
-										var itemSubList = Ext.getCmp('friendsList');
-								        itemSubList.update();
-										//this.store.sync();
 
-										itemSubList.store.loadData(that.store.data.items)
-										//this.store = friendStore;
-
-								        itemSubList.bindStore(that.store);
-										itemSubList.refresh();
-
-										this.isLoaded = true;
 				                    }
+							    	that.store.sync();
+									//didInstallApp
+									loadingMask.hide();
+									var itemSubList = Ext.getCmp('friendsList');
+							        itemSubList.update();
+									//this.store.sync();
+
+									itemSubList.store.loadData(that.store.data.items)
+									//this.store = friendStore;
+
+							        itemSubList.bindStore(that.store);
+									itemSubList.refresh();
+
+									this.isLoaded = true;
 							  	}	
 						});
 						
