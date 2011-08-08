@@ -291,6 +291,19 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								    //	that.store.sync();
 										//didInstallApp
 										loadingMask.hide();
+											var itemSubList = Ext.getCmp('friendsList');
+									        itemSubList.update();
+											//this.store.sync();
+
+										//	itemSubList.store.loadData(this.store.data.items)
+											//this.store = friendStore;
+											console.log('itemsTemp '+itemsTemp);
+											itemSubList.store.loadData(itemsTemp);
+											itemSubList.store.sync();
+									        itemSubList.bindStore(this.store);
+											itemSubList.refresh();
+
+											this.isLoaded = true;
 				                    }
 							  	}	
 						});
@@ -300,19 +313,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			});
 			
 			
-			var itemSubList = Ext.getCmp('friendsList');
-	        itemSubList.update();
-			//this.store.sync();
-	        
-		//	itemSubList.store.loadData(this.store.data.items)
-			//this.store = friendStore;
-			console.log('itemsTemp '+itemsTemp);
-			itemSubList.store.loadData(itemsTemp);
-			itemSubList.store.sync();
-	        itemSubList.bindStore(this.store);
-			itemSubList.refresh();
-	
-			this.isLoaded = true;
+
 		/*	Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				autoLoad: true,
