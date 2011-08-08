@@ -230,30 +230,23 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			this.store = Ext.StoreMgr.get('FriendListStore');
 			var that = this;
 			loadingMask.show();
-			Ext.util.JSONP.request({
-		    		url: 'https://graph.facebook.com/me/friends',
-					params: {
-						access_token: '185799971471968%7Ce83f2eff9c114736aac52c0b.3-527305423%7C_DlATFHB_CJa2hlpSxwDGbCaYEE'
-					},
-				    callbackKey: 'callback',
-				    // Callback
-				    callback: function (data) {
-						console.log('data.length ='+data.data.length);
-						
-						
-						var allFriends = data;
-						
-						var friendsWhoInstalledApp = new Array();
-						
-				
-						var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
+							    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
+									var didInstall = false;
+			                        var friend = allFriends.data[i];
+			
 
-						that.store.add(friendModel);
-					    //	that.store.sync();
+										var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
 
-							//didInstallApp
+									that.store.add(friendModel);
+							    //	that.store.sync();
 
-							loadingMask.hide();
+									//didInstallApp
+
+									loadingMask.hide();
+
+
+									
+			                    }
 						
 
 				  	}	
