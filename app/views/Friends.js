@@ -214,7 +214,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					   	}
 					},
 					sorters: [{
-						property: 'didInstallApp',
+						property: 'thumb',
 						direction: 'ASC'
 					}],
 					
