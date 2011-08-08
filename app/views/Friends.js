@@ -33,13 +33,13 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				
 			    getGroupString : function(record) {
 					var didInstallApp = record.get('thumb');
-					if (didInstallApp == false){
+					if (didInstallApp == 'b'){
 						var str = 'Invite More Friends To Chat';
 					}else{
 						var str = 'My Facebook Friends';
 					}
-			        return  "<span style='display:none'>"+record.get('didInstallApp') + "</span>"+str ;  */
-					return record.get('thumb');
+			        return  "<span style='display:none'>"+record.get('thumb') + "</span>"+str ;  
+				//	return record.get('thumb');
 			    },
 			    autoLoad:false
 
