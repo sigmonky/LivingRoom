@@ -305,7 +305,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			itemSubList.store.loadData(this.store.data.items)
 			//this.store = friendStore;
 	        itemSubList.update();
-	        itemSubList.bindStore(this.store);
+	       // itemSubList.bindStore(this.store);
 			this.isLoaded = true;
 		/*	Ext.regStore('FriendListStore', {
 				model: 'Friend',
