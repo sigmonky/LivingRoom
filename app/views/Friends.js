@@ -219,7 +219,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						if (didInstallApp == false){
 							var str = 'Invite More Friends To Chat';
 						}else{
-							var str = 'My Facebook Friends';
+							var str = 'a My Facebook Friends';
 						}
 				        return  "<span style='display:none'>"+record.get('didInstallApp').toString() + "</span>"+str ; 
 				    },
