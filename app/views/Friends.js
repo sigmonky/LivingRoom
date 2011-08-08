@@ -251,7 +251,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									console.log('data2.length ='+data2.length);
 								    for (var i = 0, ln = data2.length; i < ln; i++) {
 				                        var friend = data2[i];
-										console.log('friendWhoInstalled.name '+friend.name);
+									//	console.log('friendWhoInstalled.name '+friend.name);
 										friendsWhoInstalledApp.push(friend);
 				                    }
 				
@@ -270,9 +270,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											}
 										}
 										if (didInstall == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'a'}, 'Friend');
+									//		var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'a'}, 'Friend');
 										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
+										//	var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
 										}
 
 										that.store.add(friendModel);
