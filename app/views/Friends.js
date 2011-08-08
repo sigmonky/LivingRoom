@@ -230,7 +230,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			console.log('urll '+ url);
 
 			
-			
+			var that = this;
 
 			
 			var friendStore = Ext.StoreMgr.get('FriendListStore');
