@@ -51,7 +51,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					 	'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
-						 	'<b>{name}</b>' +
+						 	'<b>{id}</b>' +
 					     '</div>' +
 					  '</div>',
 			listeners: {
