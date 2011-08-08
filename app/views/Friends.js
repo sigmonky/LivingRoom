@@ -14,8 +14,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
-		
-		
 		Ext.regStore('FriendListStore', {
 				model: 'Friend',
 				proxy: {
@@ -38,8 +36,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				autoLoad:false
 
 			});
-		
-		
 		
 		
 		//Definition of the list that will contains all the users in the Roster
@@ -230,10 +226,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			console.log('beforeactivate');
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
 			console.log('urll '+ url);
-
-			
-			
-	
 			
 			this.store = Ext.StoreMgr.get('FriendListStore');
 			var that = this;
@@ -291,7 +283,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										}
 
 										that.store.add(friendModel);
-								    	that.store.sync();
+								    //	that.store.sync();
 
 										//didInstallApp
 
