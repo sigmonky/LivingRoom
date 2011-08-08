@@ -253,9 +253,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							    callbackKey: 'callback',
 							    // Callback
 							    callback: function (data2) {
-									console.log('data2.length ='+data2.data.length);
-								    for (var i = 0, ln = data2.data.length; i < ln; i++) {
-				                        var friend = data2.data[i];
+									console.log('data2.length ='+data2.length);
+								    for (var i = 0, ln = data2.length; i < ln; i++) {
+				                        var friend = data2[i];
 										console.log('friendWhoInstalled.name '+friend.name);
 										friendsWhoInstalledApp.push(friend);
 				                    }
