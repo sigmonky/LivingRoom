@@ -233,7 +233,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			
 			var friendStore = Ext.StoreMgr.get('FriendListStore');
 			loadingMask.show();
-			var this = that;
+			
 			
 			Ext.util.JSONP.request({
 		    		url: 'https://graph.facebook.com/me/friends',
