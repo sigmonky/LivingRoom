@@ -126,6 +126,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var form = new Ext.form.FormPanel({
 		    id: 'noteEditor',
+			cls: 'textAreaInvite',
 			dock:'bottom',
 		    items: [
 		        {
