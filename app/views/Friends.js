@@ -19,7 +19,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				proxy: {
 							type: 'memory',
 						   	reader: {
-						    	type: 'json'
+						    	type: 'ScriptTagProxy'
 						   	}
 						},	
 				sorters: 'name', 			    
