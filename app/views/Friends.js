@@ -239,7 +239,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				    // Callback
 				    callback: function (data) {
 						console.log('data.length ='+data.data.length);
-						that.store.loadData(Ext.util.JSON.decode(data))
+						
+						this.store.loadData(data.data.items)
+						
 						
 						var allFriends = data;
 						
@@ -283,10 +285,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
 										}
 
-									//	that.store.add(friendModel);
+										that.store.add(friendModel);
 								    //	that.store.sync();
 
 										//didInstallApp
+
 										loadingMask.hide();
 
 
