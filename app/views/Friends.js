@@ -227,6 +227,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				});
 			
 			this.store = Ext.StoreMgr.get('FriendListStore');
+			var that = this;
 			loadingMask.show();
 			Ext.util.JSONP.request({
 		    		url: 'https://graph.facebook.com/me/friends',
@@ -280,7 +281,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
 										}
 
-										this.store.add(friendModel);
+										that.store.add(friendModel);
 								    //	friendStore.sync();
 
 										//didInstallApp
