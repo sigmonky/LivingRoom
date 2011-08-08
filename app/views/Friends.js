@@ -23,7 +23,8 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						   	reader: {
 						    	type: 'json'
 						   	}
-						},				    
+						},	
+				sorters: [{property : 'name', direction: 'ASC'}], 			    
 				getGroupString : function(record) {
 						/*	var didInstallApp = record.get('didInstallApp');
 							if (didInstallApp == 'yes'){
@@ -31,7 +32,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							}else{
 								var str = 'My Facebook Friends';
 							} */
-							sorters: [{property : 'name', direction: 'ASC'}], 
+							
 					        return  record.get('name')[0];
 				},
 				autoLoad:false
