@@ -27,7 +27,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		    activeCls: 'search-item-active',
 		
 			grouped: true,
-			//store: 'FriendListStore',
+			store: this.store,
 			
 			store: new Ext.data.Store({
                 model: 'Friend'
