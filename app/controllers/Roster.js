@@ -119,7 +119,86 @@ Ext.regController('Roster', {
 		
 	},
 	
+	openChatSessionOneToOne: function(options){
+		
+		//Let's take all the user data
+		var user = options.user;
+		console.log('openChatSessionForRoomRoster nickname = '+ user.get('nickname'));
+		console.log('openChatSessionForRoomRoster jid = '+ user.get('jid'));
 
+		//Let's try to take an already active chat session panel
+		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.get('jid'));
+		
+		var userRemoteJidMsg = user.get('jid') +'_message';
+		
+		Ext.regStore(userRemoteJidMsg, {
+			model: 'RoomRosterItem',
+			autoLoad: true,
+			proxy: {
+				type: 'memory',
+				  	reader: {
+				    	type: 'json'
+				   	}
+				}
+		});
+		
+		
+		var roomList = Ext.StoreMgr.get('RoomListStore');
+		
+		console.log('RoomListStore store = '+ roomList);
+		
+		var room = Ext.ModelMgr.create({
+	    	jid: user.get('jid'),
+			name: user.get('nickname'),
+			topic: '',
+			type: '',
+			thumb:'http://www.logoslogic.com/chat/LivingRoom/user_default.gif',
+			isPrivate:true,
+		}, 'Room');
+	
+	
+		roomList.add(room);
+
+
+	//	this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
+		
+
+		if (!pnlChatSession) {
+				//console.log("browse productDetailPanel this.render()")
+				 pnlChatSession = this.render({
+					xtype:"RoomChatSession",
+					itemId: user.get('jid'),
+					name: room.get('jid'),
+					title: user.get('nickname'),
+					barTitle: user.get('nickname'),
+					iconCls: 'chat1',
+					iconMask: true,
+					badgeText: (options.show ? '' : '1'),
+					remoteJid: user.get('jid'),
+					remoteUserName: user.get('nickname'),
+					isChatRoom: false,
+					jabberComponent: jabberClient
+				});
+	     }
+	     else {
+				//console.log("browse productDetailPanel Ext.apply()")
+	            Ext.apply(pnlChatSession, {jid: user.jid, name: room.get('jid'), title:user.get('nickname'),remoteJid: user.get('jid'), isChatRoom:false, jabberComponent: jabberClient });
+	      }
+
+	        pnlChatSession.doUpdate();
+
+	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+		
+	},	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	openChatSessionForRoomRoster: function(options){
 		
