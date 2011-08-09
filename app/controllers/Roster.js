@@ -125,7 +125,7 @@ Ext.regController('Roster', {
 		var user = options.user;
 		console.log('openChatSessionOneToOne nickname = '+ user.get('nickname'));
 		console.log('openChatSessionOneToOne jid = '+ user.get('jid'));
-		var userJid = user.get('jid')+'@conference.logoslogic.com';
+		var userJid = user.get('jid')+'@logoslogic.com';
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(userJid);
 		
@@ -147,7 +147,7 @@ Ext.regController('Roster', {
 		console.log('RoomListStore store = '+ roomList);
 		
 		var room = Ext.ModelMgr.create({
-	    	jid: user.get('jid'),
+	    	jid: userJid,
 			name: user.get('nickname'),
 			topic: '',
 			type: '',
@@ -162,8 +162,8 @@ Ext.regController('Roster', {
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
 					xtype:"RoomChatSession",
-					itemId: user.get('jid'),
-					name: user.get('nickname'),
+					itemId: userJid,
+					name: userJid,
 					title: user.get('nickname'),
 					barTitle: user.get('nickname'),
 					iconCls: 'chat1',
