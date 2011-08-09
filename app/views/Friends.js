@@ -83,12 +83,12 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						console.log('itemtap user =' +user);
 
 						//Let's call the controller method able to show the user Roster
-						/*	Ext.dispatch({
+							Ext.dispatch({
 						    controller: 'Roster',
 						    action: 'openChatSessionForRoomRoster',
 							show: true,
 							user: user
-						}); */
+						}); 
 
 
 						var tplUser = new Ext.XTemplate(
@@ -153,6 +153,24 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	
 	},
 	
+	talkToUser: function(options){
+		
+		var user = options.user;
+		this.popupPnl.hide();
+		//console.log('talk to user = '+user.get('nickname'));
+		
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'openChatSessionOneToOne',
+			show: true,
+			user: user
+		});
+	},
+	
+	closePanel: function(){
+		this.popupPnl.hide();
+	},
+	
 	panelLaunch: function(pluginConfig, panelContent, user){
 		
 		var form = new Ext.form.FormPanel({
@@ -198,7 +216,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								xtype: 'button',
 								margin: '0, 0, 0, 15px',
 								text: 'Cancel',
-								handler: this.talkToUser,
+								handler: this.closePanel,
 								scope: this,
 					},
 
@@ -289,9 +307,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											}
 										}
 										if (didInstall == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, thumb:'a'}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.nickname, thumb:'a'}, 'Friend');
 										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, thumb:'b'}, 'Friend');
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.nickname, thumb:'b'}, 'Friend');
 										}
 
 										friendStore.add(friendModel);
@@ -373,7 +391,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             hasClass  = el.hasCls(activeCls);
         
         this.deactivateAll();
-        
 		
 		var store = list.getStore();
 
