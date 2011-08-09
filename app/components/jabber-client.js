@@ -129,7 +129,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 
 	sendMessage: function(recipient, message){
-		
+		console.log('sendMessage to' +recipient);
 		//Create a new message
 		var p = new JSJaCMessage();
 		
@@ -399,6 +399,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 
 	handlePacketIn: function(packet, me){
+		console.log('handlePacketIn = '+packet);
 		
 		/* Declaration of an xml document and body variable
 		 * (created when I really need it) */
