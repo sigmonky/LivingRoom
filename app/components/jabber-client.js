@@ -588,12 +588,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
+		console.log('handleConnected');
+		
 		me.setVCard();
 		me.getVCard(me.myJID);
 		//It's fired the event associated to the connection successfull estabilished
 		me.fireEvent('connected', me.myJID);
 		me.getRoster();
-			
 			//Let's call the function able to get the Disco Info
 		me.getDiscoInfo();
 		
