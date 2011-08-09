@@ -127,7 +127,7 @@ Ext.regController('Roster', {
 		console.log('openChatSessionOneToOne jid = '+ user.get('jid'));
 
 		//Let's try to take an already active chat session panel
-		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.get('jid'));
+		var pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(user.get('jid'));
 		
 		var userRemoteJidMsg = user.get('jid') +'_message';
 		
@@ -161,7 +161,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(pnlChatSession, {jid: user.jid, name: room.get('jid'), title:user.get('nickname'),remoteJid: user.get('jid'), isChatRoom:false, jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: user.jid, name: user.get('jid'), title:user.get('nickname'),remoteJid: user.get('jid'), isChatRoom:false, jabberComponent: jabberClient });
 	      }
 
 	        pnlChatSession.doUpdate();
