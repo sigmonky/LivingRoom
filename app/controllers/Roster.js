@@ -125,7 +125,7 @@ Ext.regController('Roster', {
 		var user = options.user;
 		console.log('openChatSessionOneToOne nickname = '+ user.get('nickname'));
 		console.log('openChatSessionOneToOne jid = '+ user.get('jid'));
-
+		userJid = user.get('jid')+'@conference.logoslogic.com';
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(user.get('jid'));
 		
