@@ -293,7 +293,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 
-			
 			console.log('handlePresence this.publicRoom'+me.publicRoom)
 			
 			console.log('room handlePresence presense = ' +presence);
@@ -302,18 +301,48 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var from = presence.getFrom();
 			var type = presence.getType();
 			var show = presence.getShow();
-		
+			var status = presence.getStatus();
+			
+			var mainDomain = from.substring(from.indexOf("@"), '.');
+			
+			console.log('handlePresence maindomain '+mainDomain);
 			console.log('room handlePresence from' +from);
 			console.log('room handlePresence from' +type);
-		
-			var roomJid = from.substring(0,from.indexOf('@'));
-			var roomSt = roomJid+'_room';
+			console.log('room handlePresence status' +status);
 			
-			console.log('room handlePresence roomJid' +roomJid);
-		
-			var roster = Ext.StoreMgr.get(roomSt);
+			var roster = Ext.StoreMgr.get('Roster');
+
+			//Let's take the store that will contains all the online users
+			var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
 			
-		
+			if (type == 'subscribe'){
+				
+				var aPresence = new JSJaCPresence();
+				aPresence.setTo(from);
+				aPresence.setType('subscribed');
+				me.jabberConnection.send(aPresence);
+
+				//Subscribe to gateway contact's presence
+				var bPresence = new JSJaCPresence();
+				bPresence.setTo(from);
+				bPresence.setType('subscribe');
+				me.jabberConnection.send(bPresence);
+				
+				me.getVCard(from);
+				
+				return
+			}
+			
+			
+			if (mainDomain == 'conference'){
+				var roomJid = from.substring(0,from.indexOf('@'));
+				var roomSt = roomJid+'_room';
+				console.log('room handlePresence roomJid' +roomJid);
+				var roster = Ext.StoreMgr.get(roomSt);
+			}else{
+				//Let's take the store that will contains all the roster users
+
+			}
 		
 			//console.log('handlePresence getStatus ' +status)
 			// 
@@ -339,25 +368,33 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			if(type == null) {
 				console.log('type is null');
 		
-				//Adding the user to the Online Users store
-				var item = Ext.ModelMgr.create({
-				    jid: from,
-					nickname: nickname,
-					facebook_id: '',
-					profile_thumb_url: '',
-				}, 'RoomRosterItem');
+		
+				if (mainDomain == 'conference'){
+		
+					//Adding the user to the Online Users store
+					var item = Ext.ModelMgr.create({
+				    	jid: from,
+						nickname: nickname,
+						facebook_id: '',
+						profile_thumb_url: '',
+						}, 'RoomRosterItem');
 				
-				roster.add(item);
+						roster.add(item);
+						
+						console.log('handlePresence roster add = ' +nickname);
+						console.log('handlePresence roster add = ' +from);
 				
+				}else{
+					
+					var user = roster.getById(from);
+					onlineUsers.add(user);
+				}
 				
 		/*		Ext.dispatch({
 				    controller: 'Roster',
 				    action: 'addRoomAnnouncement',
 					message: nickname+ ' has joined the room.'
 				}); */
-				
-				console.log('handlePresence roster add = ' +nickname);
-				console.log('handlePresence roster add = ' +from);
 				
 				
 				//Adding the user to the store
@@ -378,6 +415,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				me.getVCard(from);
 		
 			}else if(type == 'unavailable'){
+				if (mainDomain != 'conference'){
+					onlineUsers.remove(user);
+				}
 				
 				user = roster.getById(from);
 				roster.remove(user);
