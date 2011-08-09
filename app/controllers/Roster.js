@@ -123,8 +123,8 @@ Ext.regController('Roster', {
 		
 		//Let's take all the user data
 		var user = options.user;
-		console.log('openChatSessionForRoomRoster nickname = '+ user.get('nickname'));
-		console.log('openChatSessionForRoomRoster jid = '+ user.get('jid'));
+		console.log('openChatSessionOneToOne nickname = '+ user.get('nickname'));
+		console.log('openChatSessionOneToOne jid = '+ user.get('jid'));
 
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlRoomList').getComponent(user.get('jid'));
@@ -141,34 +141,13 @@ Ext.regController('Roster', {
 				   	}
 				}
 		});
-		
-		
-		var roomList = Ext.StoreMgr.get('RoomListStore');
-		
-		console.log('RoomListStore store = '+ roomList);
-		
-		var room = Ext.ModelMgr.create({
-	    	jid: user.get('jid'),
-			name: user.get('nickname'),
-			topic: '',
-			type: '',
-			thumb:'http://www.logoslogic.com/chat/LivingRoom/user_default.gif',
-			isPrivate:true,
-		}, 'Room');
-	
-	
-		roomList.add(room);
-
-
-	//	this.application.viewport.getComponent(this.pnlRoomList).getComponent(user.jid);
-		
 
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
 					xtype:"RoomChatSession",
 					itemId: user.get('jid'),
-					name: room.get('jid'),
+					name: user.get('nickname'),
 					title: user.get('nickname'),
 					barTitle: user.get('nickname'),
 					iconCls: 'chat1',
@@ -187,7 +166,7 @@ Ext.regController('Roster', {
 
 	        pnlChatSession.doUpdate();
 
-	        this.application.viewport.getComponent('pnlRoomList').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+	        this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
 		
 	},	
 	
