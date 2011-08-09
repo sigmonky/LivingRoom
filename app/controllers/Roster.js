@@ -141,6 +141,22 @@ Ext.regController('Roster', {
 				   	}
 				}
 		});
+		
+		var roomList = Ext.StoreMgr.get('RoomListStore');
+		
+		console.log('RoomListStore store = '+ roomList);
+		
+		var room = Ext.ModelMgr.create({
+	    	jid: user.get('jid'),
+			name: user.get('nickname'),
+			topic: '',
+			type: '',
+			thumb:'http://www.logoslogic.com/chat/LivingRoom/user_default.gif',
+			isPrivate:true,
+		}, 'Room');
+	
+	
+		roomList.add(room);
 
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
