@@ -263,7 +263,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			Ext.util.JSONP.request({
 		    		url: 'https://graph.facebook.com/me/friends',
 					params: {
-						access_token: '185799971471968%7Ce83f2eff9c114736aac52c0b.3-527305423%7C_DlATFHB_CJa2hlpSxwDGbCaYEE'
+						access_token:getFacebookTokenFromUrl();
 					},
 				    callbackKey: 'callback',
 				    // Callback
@@ -277,7 +277,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						Ext.util.JSONP.request({
 					    		url: 'https://api.facebook.com/method/fql.query',
 								params: {
-									access_token: '185799971471968%7Ce83f2eff9c114736aac52c0b.3-527305423%7C_DlATFHB_CJa2hlpSxwDGbCaYEE',
+									access_token:getFacebookTokenFromUrl();
 									query: 'SELECT uid,name,pic_square FROM user WHERE is_app_user AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
 									format: 'JSON',
 								},
