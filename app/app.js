@@ -218,7 +218,7 @@ Ext.regApplication('LivingRoomAPI', {
 
 							//Creation of the Facebook Application
 							var fbApp = new JSJaCFBApplication(facebook);
-
+							console.log('this.password = '+this.password);
 							jabberClient = new LIVINGROOM.xmpp.Client({
 												httpbase		   : 'http://www.logoslogic.com/http-bind',
 												timerval		   : 2000,
