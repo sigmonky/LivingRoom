@@ -480,7 +480,7 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 	},
 	
 	getRoster: function(){
-		
+		console.log('getRoster');
 		//Let's make a request to get the roaster back
 		var iq = new JSJaCIQ();
 		iq.setIQ(null,'get','roster_1');
@@ -490,7 +490,7 @@ LIVINGROOM.xmpp.FacebookClient = Ext.extend(Ext.util.Observable, {
 	},
 	
 	getRoasterComplete: function(iq, me){
-		
+		console.log('getRoasterComplete iq' +iq.xml())
 		if (!iq || iq.getType() != 'result') {
 			if (iq)
 				Debug.log("Error fetching roster:\n"+iq.xml(),1);
