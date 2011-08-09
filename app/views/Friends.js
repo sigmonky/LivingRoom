@@ -82,14 +82,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 						var user = store.getAt(index);
 						console.log('itemtap user =' +user);
 
-						//Let's call the controller method able to show the user Roster
-							Ext.dispatch({
-						    controller: 'Roster',
-						    action: 'openChatSessionForRoomRoster',
-							show: true,
-							user: user
-						}); 
-
 
 						var tplUser = new Ext.XTemplate(
 							'<tpl for=".">',
