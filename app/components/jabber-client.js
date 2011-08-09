@@ -99,11 +99,15 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		jabberConnection.registerHandler('onerror', this.handleError);
 		jabberConnection.registerHandler('status_changed', this.handleStatusChanged);
 		
+		jabberConnection.registerHandler('message', this.message);
+	    
 		jabberConnection.registerHandler('iq', 'query', NS_ROSTER, this.iqRoster);
 	    jabberConnection.registerHandler('iq', 'query', NS_DISCO_ITEMS, this.iqDiscoItems);
 	    jabberConnection.registerHandler('iq', 'query', NS_REGISTER, this.iqRegister);
 	},
-	
+	message: function(aJSJaCPacket){
+    	console.log('on message' +aJSJaCPacket);
+	},	
 	iqRoster: function(iq){
     	console.log('iq roster' +iq);
 	},
