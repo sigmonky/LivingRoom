@@ -285,6 +285,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								    				                    }
 				
 									var onLineFriends = Ext.StoreMgr.get('OnlineUsers');
+									onLineFriends.each(function(record) {
+										console.log('onLineFriends each'+record.get('jid'));
+									});
+									
+									
 									console.log('onLineFriends.length -'+onLineFriends.length);
 									
 				
