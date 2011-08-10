@@ -387,6 +387,11 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					console.log('handlePresence onlineUsers add = ' +from);
 					
 					var user = roster.getById(from);
+					user.isLive = true;
+					user.thumb = 'c';
+					
+					var friendsStore = Ext.StoreMgr.get('FriendListStore');
+					friendsStore.add(user)
 					onlineUsers.add(user);
 				}
 				
@@ -824,11 +829,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		//Let's take all the items
 		Ext.each(query.childNodes, function(node){
-
+			var facebook_id = node.getAttribute('jid').substring(0, node.getAttribute('jid').indexOf('@'));
 			var item = Ext.ModelMgr.create({
 			    jid: node.getAttribute('jid'),
+			    id: facebook_id,
 				name: node.getAttribute('name'),
-				subscription: node.getAttribute('subscription')
+				subscription: node.getAttribute('subscription'),
+				didInstallApp: true, 
 			}, 'RosterItem');
 			
 			

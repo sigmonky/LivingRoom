@@ -3,7 +3,7 @@
  */
 
 Ext.regModel('Friend', {
-	idProperty: 'jid',
+	idProperty: 'id',
     fields: [				
         {name: 'jid', type: 'string'},
         {name: 'id', type: 'string'},
@@ -11,6 +11,7 @@ Ext.regModel('Friend', {
 		{name: 'nickname', type: 'string'},
         {name: 'thumb', type: 'string'},
 		{name: 'isLive', type: 'bool'},
+		{name: 'subscription', type: 'string'},
 		{name: 'didInstallApp', type: 'bool'},
     ]
 });

@@ -14,38 +14,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
-		Ext.regStore('FriendListStore', {
-				model: 'Friend',
-				proxy: {
-					type: 'memory',
-				   	reader: {
-				    	type: 'json'
-				   	}
-				},
-				sorters: [{
-					property: 'thumb',
-					direction: 'ASC'
-				},
-				{
-					property: 'name',
-					direction: 'ASC'
-				}],
-				
-			    getGroupString : function(record) {
-					var didInstallApp = record.get('thumb');
-					if (didInstallApp == 'b'){
-						var str = 'Invite More Friends To Chat';
-					}else{
-						var str = 'My Facebook Friends';
-					}
-			        return  "<span style='display:none'>"+record.get('thumb') + "</span>"+str ;  
-				//	return record.get('thumb');
-			    },
-			    autoLoad:false
 
-			});
 			
-			this.store = Ext.StoreMgr.get('FriendListStore');
+		this.store = Ext.StoreMgr.get('FriendListStore');
 			
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
@@ -278,38 +249,40 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							    // Callback
 							    callback: function (data2) {
 									console.log('data2.length ='+data2.length);
+									
+									
+									
 								    for (var i = 0, ln = data2.length; i < ln; i++) {
-								    				                        var friend = data2[i];
-								    										console.log('friendWhoInstalled.name '+friend.name);
-								    										friendsWhoInstalledApp.push(friend);
-								    				                    }
-				
-									var onLineFriends = Ext.StoreMgr.get('OnlineUsers');
-									onLineFriends.each(function(record) {
-										console.log('onLineFriends each'+record.get('jid'));
-									});
-									
-									
-									console.log('onLineFriends.length -'+onLineFriends.length);
-									
+				                        var friend = data2[i];
+										console.log('friendWhoInstalled.name '+friend.name);
+										friendsWhoInstalledApp.push(friend);
+				                    }
 				
 									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
+
+
+
+									var friendsStore = Ext.StoreMgr.get('FriendListStore');
+
+
 
 								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
+				
+								
+				
+										var user = roster.getById(friend.id);
+										console.log('user get by id '+user);
 										
-											var onlineFriend = onLineFriends.getById(friend.id+'@logoslogic.com');
-											console.log('loop onlineFriend '+onlineFriend);
-											if (onlineFriend != undefined){
-												console.log('loop onlineFriend '+onlineFriend.jid);
-												
-												if (onlineFriend.jid.substring(0, onlineFriend.jid.indexOf('/')) == friend.id+'@logoslogic.com'){
-										 			console.log('friendWhoInstalled.id == friend.id');
-										 			didInstall = true;
-										 		}
-											}
-
+										if (user != undefined){
+											
+											
+										}else{
+											friendStore.add(friendModel);
+									    	friendStore.sync();
+										}
+										
 										// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
 										// 	var friendWhoInstalled = friendsWhoInstalledApp[j];
 										// 	if (friendWhoInstalled.uid == friend.id){
@@ -318,14 +291,16 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										// 	}
 										// }
 										
+										
+										
+										
 										if (didInstall == true){
 											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'a'}, 'Friend');
 										}else{
 											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
 										}
 
-										friendStore.add(friendModel);
-								    	friendStore.sync();
+
 										
 				                    }
 				
