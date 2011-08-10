@@ -279,8 +279,8 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											
 											
 										}else{
-											friendStore.add(friendModel);
-									    	friendStore.sync();
+											// friendStore.add(friendModel);
+											// 									    	friendStore.sync();
 										}
 										
 										// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
