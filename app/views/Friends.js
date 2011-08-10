@@ -294,7 +294,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
 										
-											var onlineFriend = onLineFriends.getById(from);
+											var onlineFriend = onLineFriends.getById(friend.id+'@logoslogic.com');
 											console.log('loop onlineFriend '+onlineFriend);
 											if (onlineFriend != undefined){
 												console.log('loop onlineFriend '+onlineFriend.jid);
