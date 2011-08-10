@@ -15,7 +15,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		var that = this;
 		
 
-			
 		this.store = Ext.StoreMgr.get('FriendListStore');
 			
 		//Definition of the list that will contains all the users in the Roster
@@ -249,9 +248,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 							    // Callback
 							    callback: function (data2) {
 									console.log('data2.length ='+data2.length);
-									
-									
-									
 								    for (var i = 0, ln = data2.length; i < ln; i++) {
 				                        var friend = data2[i];
 										console.log('friendWhoInstalled.name '+friend.name);
@@ -260,37 +256,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				
 									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
 
-
-
-									var friendsStore = Ext.StoreMgr.get('FriendListStore');
-
-									var online = Ext.StoreMgr.get('OnlineUsers');
-
-
 								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
-										var isOnline = false;
-								
 				
-										var user = online.getById(friend.id);
-										console.log('user get by id '+user);
-										
-										if (user != undefined){
-											isOnline = true;
-											
-											
-										}else{
-											
-										}
-										
-										if (isOnline == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'c', isLive: true}, 'Friend');
-										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
-										}
-										
-										
+
 										// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
 										// 	var friendWhoInstalled = friendsWhoInstalledApp[j];
 										// 	if (friendWhoInstalled.uid == friend.id){
@@ -298,17 +268,33 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										// 		didInstall = true;
 										// 	}
 										// }
+										var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
 										
+										var user = onlineUsers.getById(friend.id);
 										
-										
-										
-										// if (didInstall == true){
-										// 	var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'a'}, 'Friend');
-										// }else{
-										// 	var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
-										// }
+										console.log('user get by id '+user);
+
+										if (user != undefined){
+											didInstall = true;
 
 
+										}else{
+
+										}
+										
+										
+										
+										if (didInstall == true){
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'c'}, 'Friend');
+										}else{
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
+										}
+										
+										
+										
+
+										friendStore.add(friendModel);
+								    	friendStore.sync();
 										
 				                    }
 				
