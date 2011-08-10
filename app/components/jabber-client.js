@@ -362,12 +362,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				console.log('handlePresence reason = '+reason);
 			}
 		
-		
 			var nickname = from.split('/')[1];
 			
 			if(type == null) {
 				console.log('type is null');
-		
 		
 				if (mainDomain == 'conference'){
 		
@@ -385,6 +383,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 						console.log('handlePresence roster add = ' +from);
 				
 				}else{
+					
+					console.log('handlePresence onlineUsers add = ' +from);
 					
 					var user = roster.getById(from);
 					onlineUsers.add(user);
