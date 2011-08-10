@@ -808,7 +808,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	getRoasterComplete: function(iq, me){
-		//console.log('getRoasterComplete');
+		console.log('getRoasterComplete');
 		
 		if (!iq || iq.getType() != 'result') {
 			if (iq)
@@ -830,6 +830,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//Let's take all the items
 		Ext.each(query.childNodes, function(node){
 			var facebook_id = node.getAttribute('jid').substring(0, node.getAttribute('jid').indexOf('@'));
+			
+			console.log('getRoasterComplete = '+facebook_id);
+			
 			var item = Ext.ModelMgr.create({
 			    jid: node.getAttribute('jid'),
 			    id: facebook_id,
@@ -840,7 +843,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				
 			}, 'RosterItem');
 			
-			
+			var friendsStore = Ext.StoreMgr.get('FriendListStore');
+			friendsStore.add(item);
 			//Adding the user to the store
 			store.add(item);
 			
