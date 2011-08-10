@@ -304,7 +304,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 											if (onlineFriend != undefined){
 												console.log('loop onlineFriend '+onlineFriend.jid);
 												
-												if (onlineFriend.jid == friend.id+'@logoslogic.com'){
+												if (onlineFriend.jid.substring(0, onlineFriend.jid.indexOf('/')) == friend.id+'@logoslogic.com'){
 										 			console.log('friendWhoInstalled.id == friend.id');
 										 			didInstall = true;
 										 		}
