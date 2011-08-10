@@ -264,24 +264,32 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 									var friendsStore = Ext.StoreMgr.get('FriendListStore');
 
+									var online = Ext.StoreMgr.get('OnlineUsers');
 
 
 								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
-				
+										var isOnline = false;
 								
 				
-										var user = friendsStore.getById(friend.id);
+										var user = online.getById(friend.id);
 										console.log('user get by id '+user);
 										
 										if (user != undefined){
+											isOnline = true;
 											
 											
 										}else{
-											friendStore.add(friendModel);
-									    	friendStore.sync();
+											
 										}
+										
+										if (isOnline == true){
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'c', isLive: true}, 'Friend');
+										}else{
+											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
+										}
+										
 										
 										// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
 										// 	var friendWhoInstalled = friendsWhoInstalledApp[j];
@@ -294,11 +302,11 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										
 										
 										
-										if (didInstall == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'a'}, 'Friend');
-										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
-										}
+										// if (didInstall == true){
+										// 	var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'a'}, 'Friend');
+										// }else{
+										// 	var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
+										// }
 
 
 										
