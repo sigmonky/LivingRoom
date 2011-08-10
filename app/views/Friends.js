@@ -275,7 +275,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 													didInstall == true
 												}
 											
-												console.log('online user' +record.get('facebook_id');
+												console.log('online user' +record.get('facebook_id'));
 										});
 										
 										
