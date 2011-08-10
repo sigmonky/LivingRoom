@@ -294,8 +294,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
 										
-										for (var j = 0, ln2 = onLineFriends.length; j < ln2; j++) { 
-											var onlineFriend = roster.getById(from);
+											var onlineFriend = onLineFriends.getById(from);
 											console.log('loop onlineFriend '+onlineFriend);
 											if (onlineFriend != undefined){
 												console.log('loop onlineFriend '+onlineFriend.jid);
@@ -305,7 +304,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										 			didInstall = true;
 										 		}
 											}
-										}
 
 										// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
 										// 	var friendWhoInstalled = friendsWhoInstalledApp[j];
