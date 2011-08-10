@@ -272,7 +272,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										
 										onlineUsers.each(function(record){
 												console.log('online user' +record.facebook_id);
-										}),
+										});
 										
 										
 										var user = onlineUsers.getById(friend.id);
