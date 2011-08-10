@@ -272,7 +272,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				
 								
 				
-										var user = roster.getById(friend.id);
+										var user = friendsStore.getById(friend.id);
 										console.log('user get by id '+user);
 										
 										if (user != undefined){
