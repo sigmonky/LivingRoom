@@ -836,6 +836,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				name: node.getAttribute('name'),
 				subscription: node.getAttribute('subscription'),
 				didInstallApp: true, 
+				thumb: 'b', 
+				
 			}, 'RosterItem');
 			
 			
