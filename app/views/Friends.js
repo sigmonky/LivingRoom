@@ -270,7 +270,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										// }
 										var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
 										
-										onlineUsers.each(function(record){
+										Ext.each(onlineUsers, function(record){
 												console.log('online user' +record.facebook_id);
 										});
 										
