@@ -210,17 +210,17 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
 
-			var itemSubList = Ext.getCmp('friendsList');
-			itemSubList.update();
-			var friendStore = Ext.StoreMgr.get('OnlineUsers');
-
-			this.store.loadData(friendStore.data.items)
-			
-			this.store = friendStore;
-			
-	        itemSubList.update();
-	        itemSubList.bindStore(friendStore);
-			this.isLoaded = true;
+			// var itemSubList = Ext.getCmp('friendsList');
+			// itemSubList.update();
+			// var friendStore = Ext.StoreMgr.get('OnlineUsers');
+			// 
+			// this.store.loadData(friendStore.data.items)
+			// 
+			// this.store = friendStore;
+			// 
+			// 	        itemSubList.update();
+			// 	        itemSubList.bindStore(friendStore);
+			// this.isLoaded = true;
 			
 
 
