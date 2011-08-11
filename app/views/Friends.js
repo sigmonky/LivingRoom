@@ -258,7 +258,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										    controller: 'Roster',
 										    action: 'subscribeToJid',
 											show: true,
-											user: friend.id
+											jid: friend.id+'@logoslogic.com',
 										});
 										
 										
