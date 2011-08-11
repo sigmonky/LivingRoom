@@ -306,7 +306,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('handlePresence maindomain from '+from);
 			console.log('handlePresence maindomain from indexof '+from.indexOf("@"));
 			
-			var mainDomain = from.substring(from.indexOf("@"), from.indexOf("."));
+			var mainDomain = from.substring(from.indexOf("@")+1, from.indexOf("."));
 			
 			console.log('handlePresence maindomain '+mainDomain);
 			console.log('room handlePresence from' +from);
