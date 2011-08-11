@@ -722,7 +722,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	},
 	
 	handleConnected: function(me) {
-		console.log('handleConnected');
+		console.log('handleConnected me.myJID '+me.myJID);
 		
 		me.setVCard();
 		me.getVCard(me.myJID);
