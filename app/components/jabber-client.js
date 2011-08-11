@@ -456,6 +456,22 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 						
 						console.log('handlePresence roster add = ' +nickname);
 						console.log('handlePresence roster add = ' +from);
+						
+						
+						
+
+						var aPresence = new JSJaCPresence();
+						aPresence.setTo(from);
+						aPresence.setType('subscribed');
+						me.jabberConnection.send(aPresence);
+
+						//Subscribe to gateway contact's presence
+						var bPresence = new JSJaCPresence();
+						bPresence.setTo(from);
+						bPresence.setType('subscribe');
+						me.jabberConnection.send(bPresence);
+
+						me.getVCard(from);
 				
 				}else{
 					
@@ -472,7 +488,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				///	var friendsStore = Ext.StoreMgr.get('FriendListStore');
 				//	friendsStore.add(user)
 					onlineUsers.add(user);
-					onlineUsers.sync();
+				//	onlineUsers.sync();
 					
 				}
 				
@@ -488,20 +504,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//	roster.sync();
 				//Approve Subscription Request
 				
-				
-				
-				var aPresence = new JSJaCPresence();
-				aPresence.setTo(from);
-				aPresence.setType('subscribed');
-				me.jabberConnection.send(aPresence);
 
-				//Subscribe to gateway contact's presence
-				var bPresence = new JSJaCPresence();
-				bPresence.setTo(from);
-				bPresence.setType('subscribe');
-				me.jabberConnection.send(bPresence);
-		
-				me.getVCard(from);
 		
 			}else if(type == 'unavailable'){
 				if (mainDomain != 'conference'){
