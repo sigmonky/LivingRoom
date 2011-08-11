@@ -141,7 +141,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		this.jabberConnection.send(p);
 		
 		//Disconnect the component from the remote server
-		this.jabberConnection.disconnect();
+	//	this.jabberConnection.disconnect();
 
 	},
 
@@ -511,9 +511,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}
 				
 				//user = roster.getById(from);
-				var user = roster.getById(from.substring(0, from.indexOf('/')));
-				
-				roster.remove(user);
+				//var user = roster.getById(from.substring(0, from.indexOf('/')));
+				//roster.remove(user);
 				
 				var message = '';
 				if (status == '307'){
