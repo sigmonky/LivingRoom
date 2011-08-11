@@ -3,7 +3,7 @@
  */
 
 Ext.regModel('RosterItem', {
-	idProperty: 'facebook_id',
+	idProperty: 'jid',
     fields: [				
         {name: 'jid', type: 'string'},
         {name: 'facebook_id', type: 'string'},
