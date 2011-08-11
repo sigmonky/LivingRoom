@@ -291,6 +291,21 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 	},
 	
+	subscribeToPresence: function(from){
+		console.log('subscribeToPresence =' +from);
+		var aPresence = new JSJaCPresence();
+		aPresence.setTo(from);
+		aPresence.setType('subscribed');
+		me.jabberConnection.send(aPresence);
+
+		//Subscribe to gateway contact's presence
+		var bPresence = new JSJaCPresence();
+		bPresence.setTo(from);
+		bPresence.setType('subscribe');
+		me.jabberConnection.send(bPresence);
+		
+	},
+	
 	handlePresence: function(presence, me) {
 
 			console.log('handlePresence this.publicRoom'+me.publicRoom)

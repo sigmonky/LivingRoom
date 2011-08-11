@@ -20,6 +20,12 @@ Ext.regController('Roster', {
 		});
 		
 	},
+	
+	subscribeToJid: function(options){
+		console.log('subscribeToJid id = '+options.id);
+		var friend_id = options.id;
+		jabberClient.subscribeToPresence(friend_id+'@logoslogic.com');
+	},
 
 	
 	
