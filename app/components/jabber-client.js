@@ -354,7 +354,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
     var presence = new JSJaCPacket('presence');
     presence.setTo(jid);
     presence.setType(subType);
-    this.jabberConnection(presence);
+    this.jabberConnection.send(presence);
     return false;
   },
 	
