@@ -629,20 +629,20 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	handleIq: function(iq, me){
 
 			var iqID = iq.getID();
-			
+			console.log('handle iq ='+iq.xml());
 			//Let's take the store that will contains all the roster users
 			
 			//Let's take all the iq informations
 			var from = iq.getFrom();
 
-			console.log('Room - handleIq from = '+from);
+			console.log('handleIq from = '+from);
 
 			var room = from.substring(0,from.indexOf('@'))+'_room';
-			console.log('Room - handleIq room = '+room);
+			console.log('handleIq room = '+room);
 			
 			var store = Ext.StoreMgr.get(room);
 
-			console.log('Room - handleIq store = ' +store)
+			console.log('handleIq store = ' +store)
 
 			//Let's take the current user
 			
