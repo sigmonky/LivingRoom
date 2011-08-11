@@ -370,7 +370,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			    autoLoad:true
 
 			}); */
-		//	}
+			}
         },
 
 
