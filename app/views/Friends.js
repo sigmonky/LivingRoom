@@ -35,7 +35,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
-					 	//'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
+					 	'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32" />' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{name}</b>' +
