@@ -154,9 +154,8 @@ Ext.regController('Roster', {
 				}
 		});
 		
-		var roomList = Ext.StoreMgr.get('RoomListStore');
-		
-		console.log('RoomListStore store = '+ roomList);
+		//var roomList = Ext.StoreMgr.get('RoomListStore');
+		//console.log('RoomListStore store = '+ roomList);
 		
 		var room = Ext.ModelMgr.create({
 	    	jid: userJid,
@@ -550,9 +549,11 @@ Ext.regController('Roster', {
 		
 
 				console.log('addMessageToOneToOneChatSession options.from '+ options.from);
+				console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
-				var keyMsg = options.from.substring(0,options.from.indexOf('@'))+'_message';
-
+				var keyMsg = options.from.substring(0,options.from.indexOf('/'))+'_message';
+				
+				console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
 
 				//Let's take the public chat room panel
 		//		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);

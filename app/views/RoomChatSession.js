@@ -59,7 +59,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		});
 		
 		console.log('room jid -' +this.jid)
-		console.log('room store msg -' +this.name+'message')
+		console.log('room store msg -' +this.name+'_message')
 		
 		this.store = Ext.StoreMgr.get(this.name+'_message');
 		console.log('Room Chat session store msg -' +this.store)
