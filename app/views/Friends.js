@@ -14,9 +14,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
-		
-	//	this.store = Ext.StoreMgr.get('FriendListStore');
-		this.store = Ext.StoreMgr.get('OnlineUsers');
+
+		this.store = Ext.StoreMgr.get('FriendListStore');
+			
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			id: 'friendsList',
@@ -30,10 +30,12 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		    activeCls: 'search-item-active',
 		
 			grouped: true,
+			//store: 'FriendListStore',
+			
 			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
-					 	'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32" />' +
+					 	'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{name}</b>' +
@@ -205,6 +207,177 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             this.popupPnl.show();
      },
 
+	listeners: {
+        beforeactivate: function(ct, prevActiveCt) {
+			if (this.isLoaded != true){
+			console.log('beforeactivate');
+			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
+			console.log('urll '+ url);
+
+			
+			var that = this;
+
+			
+			// var friendStore = Ext.StoreMgr.get('FriendListStore');
+			// loadingMask.show();
+			// 
+			// 
+			// Ext.util.JSONP.request({
+			// 		    		url: 'https://graph.facebook.com/me/friends',
+			// 		params: {
+			// 			access_token:getFacebookTokenFromUrl(),
+			// 		},
+			// 	    callbackKey: 'callback',
+			// 	    // Callback
+			// 	    callback: function (data) {
+			// 			console.log('data.length ='+data.data.length);
+			// 			
+			// 			var allFriends = data;
+			// 			
+			// 			var friendsWhoInstalledApp = new Array();
+			// 			
+			// 			Ext.util.JSONP.request({
+			// 		    		url: 'https://api.facebook.com/method/fql.query',
+			// 					params: {
+			// 						access_token:getFacebookTokenFromUrl(),
+			// 						query: 'SELECT uid,name,pic_square FROM user WHERE is_app_user AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
+			// 						format: 'JSON',
+			// 					},
+			// 					
+			// 				    callbackKey: 'callback',
+			// 				    // Callback
+			// 				    callback: function (data2) {
+			// 						console.log('data2.length ='+data2.length);
+			// 					    for (var i = 0, ln = data2.length; i < ln; i++) {
+			// 	                        var friend = data2[i];
+			// 							// console.log('friendWhoInstalled.name '+friend.name);
+			// 							// console.log('friendWhoInstalled.uid '+friend.uid);
+			// 							
+			// 							friendsWhoInstalledApp.push(friend);
+			// 							
+			// 							Ext.dispatch({
+			// 							    controller: 'Roster',
+			// 							    action: 'subscribeToJid',
+			// 								jid: friend.uid+'@logoslogic.com',
+			// 								name: friend.name,
+			// 							});
+			// 							
+			// 							
+			// 	                    }
+			// 	
+			// 						// console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
+			// 
+			// 
+			// 						var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
+			// 
+			// 
+			// 					    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
+			// 							var didInstall = false;
+			// 	                        var friend = allFriends.data[i];
+			// 	
+			// 
+			// 							// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
+			// 							// 	var friendWhoInstalled = friendsWhoInstalledApp[j];
+			// 							// 	if (friendWhoInstalled.uid == friend.id){
+			// 							// 		console.log('friendWhoInstalled.id == friend.id');
+			// 							// 		didInstall = true;
+			// 							// 	}
+			// 							// }
+			// 							
+			// 							onlineUsers.each(function (record) {
+			// 								// if (record.facebook_id == friend.id){
+			// 								// 											didInstall == true
+			// 								// 										}
+			// 								console.log('record.nickname = '+record.get('facebook_id'));
+			// 							});
+			// 
+			// 							
+			// 							var user = onlineUsers.getById(friend.id+'@logoslogic.com');
+			// 							
+			// 							console.log('user get by id '+user);
+			// 
+			// 							if (user != undefined){
+			// 								didInstall = true;
+			// 
+			// 
+			// 							}else{
+			// 
+			// 							}
+			// 							
+			// 							
+			// 							
+			// 							if (didInstall == true){
+			// 								var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'c'}, 'Friend');
+			// 							}else{
+			// 								var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
+			// 							}
+			// 							
+			// 							
+			// 							
+			// 
+			// 							friendStore.add(friendModel);
+			// 					    	friendStore.sync();
+			// 							
+			// 	                    }
+			// 	
+			// 						loadingMask.hide();
+			// 	
+			// 						var itemSubList = Ext.getCmp('friendsList');
+			// 				        itemSubList.update();
+			// 
+			// 
+			// 
+			// 				  	}	
+			// 			});
+			// 			
+			// 
+			// 	  	}	
+			// });
+			
+									var itemSubList = Ext.getCmp('friendsList');
+							        itemSubList.update();
+			var friendStore = Ext.StoreMgr.get('OnlineUsers');
+
+			that.store.loadData(friendStore.data.items)
+			
+			that.store = friendStore;
+			
+	        itemSubList.update();
+	        itemSubList.bindStore(friendStore);
+			that.isLoaded = true;
+			
+
+		/*	Ext.regStore('FriendListStore', {
+				model: 'Friend',
+				autoLoad: true,
+			    proxy: {
+			        type: 'ajax',
+			      //  url: 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl(),
+					url: 'https://graph.facebook.com/me/friends?access_token=185799971471968%7Ce83f2eff9c114736aac52c0b.3-527305423%7C_DlATFHB_CJa2hlpSxwDGbCaYEE',
+			        reader: {
+			            type: 'jsonp',
+			        }
+			    },
+			    getGroupString : function(record) {
+					var isLive = record.get('isLive');
+					if (isLive == false){
+						var str = 'My Facebook Friends';
+					}else{
+						var str = 'Active Chats';
+					}
+			        return  "<span style='display:none'>"+record.get('isLive').toString() + "</span>"+str ; 
+			    },
+			    autoLoad:true
+
+			}); */
+			}
+        },
+
+
+        beforedeactivate: function() {
+
+        }
+    },
 
 	switchBack: function(){
 		    //this.setActiveItem(0);
