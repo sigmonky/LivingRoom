@@ -14,9 +14,9 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
-
-		this.store = Ext.StoreMgr.get('FriendListStore');
-			
+		
+	//	this.store = Ext.StoreMgr.get('FriendListStore');
+		this.store = Ext.StoreMgr.get('OnlineUsers');
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
 			id: 'friendsList',
@@ -30,7 +30,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		    activeCls: 'search-item-active',
 		
 			grouped: true,
-			//store: 'FriendListStore',
+			store: this.store,
 			
 			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
@@ -334,17 +334,17 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			// 	  	}	
 			// });
 			
-			var itemSubList = Ext.getCmp('friendsList');
-			itemSubList.update();
-			var friendStore = Ext.StoreMgr.get('OnlineUsers');
-
-			that.store.loadData(friendStore.data.items)
-			
-			that.store = friendStore;
-			
-	        itemSubList.update();
-	        itemSubList.bindStore(friendStore);
-			that.isLoaded = true;
+			// var itemSubList = Ext.getCmp('friendsList');
+			// itemSubList.update();
+			// var friendStore = Ext.StoreMgr.get('OnlineUsers');
+			// 
+			// that.store.loadData(friendStore.data.items)
+			// 
+			// that.store = friendStore;
+			// 
+			// 	        itemSubList.update();
+			// 	        itemSubList.bindStore(friendStore);
+			// that.isLoaded = true;
 			
 
 		/*	Ext.regStore('FriendListStore', {
