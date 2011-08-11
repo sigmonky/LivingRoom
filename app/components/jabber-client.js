@@ -308,9 +308,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	handlePresence: function(presence, me) {
 
-			console.log('handlePresence this.publicRoom'+me.publicRoom)
 			
-			console.log('room handlePresence presense = ' +presence);
+			console.log('handlePresence presense = ' +presence);
 			
 			//Let's take all the presence informations
 			var from = presence.getFrom();
@@ -324,9 +323,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var mainDomain = from.substring(from.indexOf("@")+1, from.indexOf("."));
 			
 			console.log('handlePresence maindomain '+mainDomain);
-			console.log('room handlePresence from' +from);
-			console.log('room handlePresence from' +type);
-			console.log('room handlePresence status' +status);
+			console.log('handlePresence from' +from);
+			console.log('handlePresence type' +type);
+			console.log('handlePresence status' +status);
 			
 			var roster = Ext.StoreMgr.get('Roster');
 
@@ -358,7 +357,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				console.log('room handlePresence roomJid' +roomJid);
 				var roster = Ext.StoreMgr.get(roomSt);
 			}else{
-				//Let's take the store that will contains all the roster users
 
 			}
 		
@@ -403,8 +401,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}else{
 					
 					console.log('handlePresence onlineUsers add = ' +from);
+					console.log('handlePresence onlineUsers add = ' +from.substring(0, from.indexOf('/')));
 					
-					var user = roster.getById(from);
+					var user = roster.getById(from.substring(0, from.indexOf('/')));
 					
 					console.log('handlePresence onlineUsers add user= ' +user);
 					
