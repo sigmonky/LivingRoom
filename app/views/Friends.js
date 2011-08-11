@@ -334,17 +334,17 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			// 	  	}	
 			// });
 			
-									var itemSubList = Ext.getCmp('friendsList');
-							        itemSubList.update();
+			var itemSubList = Ext.getCmp('friendsList');
+			itemSubList.update();
 			var friendStore = Ext.StoreMgr.get('OnlineUsers');
 
-			that.store.loadData(friendStore.data.items)
+			this.store.loadData(friendStore.data.items)
 			
-			that.store = friendStore;
+			this.store = friendStore;
 			
 	        itemSubList.update();
 	        itemSubList.bindStore(friendStore);
-			that.isLoaded = true;
+			this.isLoaded = true;
 			
 
 		/*	Ext.regStore('FriendListStore', {
