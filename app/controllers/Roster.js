@@ -26,7 +26,7 @@ Ext.regController('Roster', {
 		var friend_jid = options.jid;
 		var friend_name= options.name;
 		
-		var user = {};
+		var user = new Object();
 		user.jid = friend_jid;
 		user.name = friend_name;
 		
