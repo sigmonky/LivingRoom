@@ -303,6 +303,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var show = presence.getShow();
 			var status = presence.getStatus();
 			
+			console.log('handlePresence maindomain from '+from);
+			console.log('handlePresence maindomain from indexof '+from.indexOf("@"));
+			
 			var mainDomain = from.substring(from.indexOf("@"), '.');
 			
 			console.log('handlePresence maindomain '+mainDomain);
