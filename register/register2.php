@@ -246,13 +246,13 @@ $jab->set_handler("authenticated",$addmsg,"handleAuthenticated");
 //$jab->set_handler("error",$addmsg,"handleError");
 
 // connect to the Jabber server
-if ($jab->connect(JABBER_SERVER))
-{
-	$AddUserErrorCode=12001;
-	$jab->execute(CBK_FREQ,RUN_TIME);
-}
-
-$jab->disconnect();
+// if ($jab->connect(JABBER_SERVER))
+// {
+// 	$AddUserErrorCode=12001;
+// 	$jab->execute(CBK_FREQ,RUN_TIME);
+// }
+// 
+// $jab->disconnect();
 
 unset($jab,$addmsg);
 
