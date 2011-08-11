@@ -496,7 +496,7 @@ Ext.regController('Roster', {
 		
 		console.log('addMessageToChatRoom options.from '+ options.from);
 		
-		var mainDomain = from.substring(from.indexOf("@")+1, from.indexOf("."));
+		var mainDomain = options.from.substring(options.from.indexOf("@")+1, options.from.indexOf("."));
 		
 		console.log('addMessageToChatRoom mainDomain '+ mainDomain);
 
