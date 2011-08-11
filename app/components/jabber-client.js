@@ -484,8 +484,10 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					
 				///	var friendsStore = Ext.StoreMgr.get('FriendListStore');
 				//	friendsStore.add(user)
-					onlineUsers.add(user);
-					onlineUsers.sync();
+						if (user != null){
+							onlineUsers.add(user);
+							onlineUsers.sync();
+						}
 					
 				}
 				
