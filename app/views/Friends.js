@@ -256,6 +256,10 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				
 									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
 
+
+									var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
+
+
 								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
 										var didInstall = false;
 				                        var friend = allFriends.data[i];
@@ -268,7 +272,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										// 		didInstall = true;
 										// 	}
 										// }
-										var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
 										
 										onlineUsers.each(function (record) {
 											// if (record.facebook_id == friend.id){

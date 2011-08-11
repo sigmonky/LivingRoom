@@ -387,6 +387,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					console.log('handlePresence onlineUsers add = ' +from);
 					
 					var user = roster.getById(from);
+					
+					console.log('handlePresence onlineUsers add user= ' +user);
+					
 					user.set('isLive', true);
 					user.thumb('thumb', 'c');
 					
