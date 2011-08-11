@@ -287,7 +287,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		}
 		
 		//Let's finally send the presence packety
-	//	this.jabberConnection.send(p);
+		this.jabberConnection.send(p);
 
 	},
 	
