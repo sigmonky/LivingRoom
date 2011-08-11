@@ -486,20 +486,20 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			//	roster.sync();
 				//Approve Subscription Request
 				
-				
-				
-				var aPresence = new JSJaCPresence();
-				aPresence.setTo(from);
-				aPresence.setType('subscribed');
-				me.jabberConnection.send(aPresence);
-
-				//Subscribe to gateway contact's presence
-				var bPresence = new JSJaCPresence();
-				bPresence.setTo(from);
-				bPresence.setType('subscribe');
-				me.jabberConnection.send(bPresence);
-		
-				me.getVCard(from);
+				// 
+				// 
+				// var aPresence = new JSJaCPresence();
+				// aPresence.setTo(from);
+				// aPresence.setType('subscribed');
+				// me.jabberConnection.send(aPresence);
+				// 
+				// //Subscribe to gateway contact's presence
+				// var bPresence = new JSJaCPresence();
+				// bPresence.setTo(from);
+				// bPresence.setType('subscribe');
+				// me.jabberConnection.send(bPresence);
+				// 		
+				// me.getVCard(from);
 		
 			}else if(type == 'unavailable'){
 				if (mainDomain != 'conference'){
