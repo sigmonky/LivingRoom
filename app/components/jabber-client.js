@@ -306,6 +306,57 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 	},
 	
+	addRosterItem: function(buddy){
+    	var iq = new JSJaCIQ();
+    	iq.setFrom(this.myJid);
+    	iq.setType('set');
+    	iq.setID('roster_set');
+    	var query = iq.setQuery(NS_ROSTER);
+ 		//   var group = iq.buildNode('group', {}, buddy.group);
+    	var item = iq.buildNode('item', {
+      		jid: buddy.jid,
+      		name: buddy.name
+    	});
+
+    	item.appendChild(group);
+    	query.appendChild(item);
+    	this.jabberConnection.send(iq);
+  },
+
+  addBuddy: function(buddy){
+    	this.addRosterItem(buddy);
+    	this.subscribe(buddy.jid);
+    	return buddy.jid;
+  },
+	
+	subscribe: function(jid){
+    this.__subscription(jid, 'subscribe');
+  },
+
+  unsubscribe: function(jid){
+    this.__subscription(jid, 'unsubscribe');
+  },
+
+  allowSubscription: function(jid){
+    this.__subscription(jid, 'subscribed');
+  },
+
+  denySubscription: function(buddy){
+    this.__subscription(jid, 'unsubscribed');
+  },
+	/**
+   * Sends a subscription packet of a specified type
+   * @param {JSJaCJID} buddy
+   * @param {String} subType
+   */
+  __subscription: function(jid, subType){
+    var presence = new JSJaCPacket('presence');
+    presence.setTo(jid);
+    presence.setType(subType);
+    this.send(presence);
+    return false;
+  },
+	
 	handlePresence: function(presence, me) {
 
 			
@@ -333,6 +384,9 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
 			
 			if (type == 'subscribe'){
+				
+				me.allowSubscription(from.toString());
+				
 				
 				var aPresence = new JSJaCPresence();
 				aPresence.setTo(from);

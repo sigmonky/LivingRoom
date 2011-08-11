@@ -250,8 +250,8 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 									console.log('data2.length ='+data2.length);
 								    for (var i = 0, ln = data2.length; i < ln; i++) {
 				                        var friend = data2[i];
-										console.log('friendWhoInstalled.name '+friend.name);
-										console.log('friendWhoInstalled.uid '+friend.uid);
+										// console.log('friendWhoInstalled.name '+friend.name);
+										// console.log('friendWhoInstalled.uid '+friend.uid);
 										
 										friendsWhoInstalledApp.push(friend);
 										
@@ -259,12 +259,13 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										    controller: 'Roster',
 										    action: 'subscribeToJid',
 											jid: friend.uid+'@logoslogic.com',
+											name: friend.name,
 										});
 										
 										
 				                    }
 				
-									console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
+									// console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
 
 
 									var onlineUsers = Ext.StoreMgr.get('OnlineUsers');

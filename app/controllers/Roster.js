@@ -24,7 +24,8 @@ Ext.regController('Roster', {
 	subscribeToJid: function(options){
 		console.log('subscribeToJid id = '+options.jid);
 		var friend_jid= options.jid;
-		jabberClient.subscribeToPresence(friend_jid);
+		var friend_name= options.name;
+		jabberClient.addBuddy(friend_jid, friend_name);
 	},
 
 	
