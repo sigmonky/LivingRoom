@@ -291,7 +291,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 										});
 
 										
-										var user = onlineUsers.getById(friend.id);
+										var user = onlineUsers.getById(friend.id+'@logoslogic.com');
 										
 										console.log('user get by id '+user);
 
