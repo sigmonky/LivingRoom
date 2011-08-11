@@ -318,7 +318,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
       		name: buddy.name
     	});
 
-    	item.appendChild(group);
+   // 	item.appendChild(group);
     	query.appendChild(item);
     	this.jabberConnection.send(iq);
   },
