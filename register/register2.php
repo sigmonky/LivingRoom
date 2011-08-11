@@ -243,16 +243,16 @@ $addmsg = new AddMessenger($jab,$UserLogin,$UserPass);
 // set handlers for the events we wish to be notified about
 $jab->set_handler("connected",$addmsg,"handleConnected");
 $jab->set_handler("authenticated",$addmsg,"handleAuthenticated");
-//$jab->set_handler("error",$addmsg,"handleError");
+$jab->set_handler("error",$addmsg,"handleError");
 
-// connect to the Jabber server
-// if ($jab->connect(JABBER_SERVER))
-// {
-// 	$AddUserErrorCode=12001;
-// 	$jab->execute(CBK_FREQ,RUN_TIME);
-// }
-// 
-// $jab->disconnect();
+connect to the Jabber server
+if ($jab->connect(JABBER_SERVER))
+{
+	$AddUserErrorCode=12001;
+	$jab->execute(CBK_FREQ,RUN_TIME);
+}
+
+$jab->disconnect();
 
 unset($jab,$addmsg);
 
