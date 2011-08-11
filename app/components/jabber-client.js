@@ -296,13 +296,13 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		var aPresence = new JSJaCPresence();
 		aPresence.setTo(from);
 		aPresence.setType('subscribed');
-		me.jabberConnection.send(aPresence);
+		this.jabberConnection.send(aPresence);
 
 		//Subscribe to gateway contact's presence
 		var bPresence = new JSJaCPresence();
 		bPresence.setTo(from);
 		bPresence.setType('subscribe');
-		me.jabberConnection.send(bPresence);
+		this.jabberConnection.send(bPresence);
 		
 	},
 	
