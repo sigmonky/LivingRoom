@@ -261,7 +261,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			 * to a chat session */
 			Ext.dispatch({
 			    controller: 'Roster',
-			    action: 'addMessageToOneToOneChatSession',
+			   // action: 'addMessageToOneToOneChatSession',
+			    action: 'addMessageToChatRoom',
 				from: from,
 				message: message
 			});
