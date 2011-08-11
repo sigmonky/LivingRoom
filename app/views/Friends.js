@@ -218,130 +218,130 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			var that = this;
 
 			
-			var friendStore = Ext.StoreMgr.get('FriendListStore');
-			loadingMask.show();
+			// var friendStore = Ext.StoreMgr.get('FriendListStore');
+			// loadingMask.show();
+			// 
+			// 
+			// Ext.util.JSONP.request({
+			// 		    		url: 'https://graph.facebook.com/me/friends',
+			// 		params: {
+			// 			access_token:getFacebookTokenFromUrl(),
+			// 		},
+			// 	    callbackKey: 'callback',
+			// 	    // Callback
+			// 	    callback: function (data) {
+			// 			console.log('data.length ='+data.data.length);
+			// 			
+			// 			var allFriends = data;
+			// 			
+			// 			var friendsWhoInstalledApp = new Array();
+			// 			
+			// 			Ext.util.JSONP.request({
+			// 		    		url: 'https://api.facebook.com/method/fql.query',
+			// 					params: {
+			// 						access_token:getFacebookTokenFromUrl(),
+			// 						query: 'SELECT uid,name,pic_square FROM user WHERE is_app_user AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
+			// 						format: 'JSON',
+			// 					},
+			// 					
+			// 				    callbackKey: 'callback',
+			// 				    // Callback
+			// 				    callback: function (data2) {
+			// 						console.log('data2.length ='+data2.length);
+			// 					    for (var i = 0, ln = data2.length; i < ln; i++) {
+			// 	                        var friend = data2[i];
+			// 							// console.log('friendWhoInstalled.name '+friend.name);
+			// 							// console.log('friendWhoInstalled.uid '+friend.uid);
+			// 							
+			// 							friendsWhoInstalledApp.push(friend);
+			// 							
+			// 							Ext.dispatch({
+			// 							    controller: 'Roster',
+			// 							    action: 'subscribeToJid',
+			// 								jid: friend.uid+'@logoslogic.com',
+			// 								name: friend.name,
+			// 							});
+			// 							
+			// 							
+			// 	                    }
+			// 	
+			// 						// console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
+			// 
+			// 
+			// 						var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
+			// 
+			// 
+			// 					    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
+			// 							var didInstall = false;
+			// 	                        var friend = allFriends.data[i];
+			// 	
+			// 
+			// 							// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
+			// 							// 	var friendWhoInstalled = friendsWhoInstalledApp[j];
+			// 							// 	if (friendWhoInstalled.uid == friend.id){
+			// 							// 		console.log('friendWhoInstalled.id == friend.id');
+			// 							// 		didInstall = true;
+			// 							// 	}
+			// 							// }
+			// 							
+			// 							onlineUsers.each(function (record) {
+			// 								// if (record.facebook_id == friend.id){
+			// 								// 											didInstall == true
+			// 								// 										}
+			// 								console.log('record.nickname = '+record.get('facebook_id'));
+			// 							});
+			// 
+			// 							
+			// 							var user = onlineUsers.getById(friend.id+'@logoslogic.com');
+			// 							
+			// 							console.log('user get by id '+user);
+			// 
+			// 							if (user != undefined){
+			// 								didInstall = true;
+			// 
+			// 
+			// 							}else{
+			// 
+			// 							}
+			// 							
+			// 							
+			// 							
+			// 							if (didInstall == true){
+			// 								var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'c'}, 'Friend');
+			// 							}else{
+			// 								var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
+			// 							}
+			// 							
+			// 							
+			// 							
+			// 
+			// 							friendStore.add(friendModel);
+			// 					    	friendStore.sync();
+			// 							
+			// 	                    }
+			// 	
+			// 						loadingMask.hide();
+			// 	
+			// 						var itemSubList = Ext.getCmp('friendsList');
+			// 				        itemSubList.update();
+			// 
+			// 
+			// 
+			// 				  	}	
+			// 			});
+			// 			
+			// 
+			// 	  	}	
+			// });
+			var friendStore = Ext.StoreMgr.get('OnlineUsers');
+
+			that.store.loadData(friendStore.data.items)
 			
+			that.store = friendStore;
 			
-			Ext.util.JSONP.request({
-		    		url: 'https://graph.facebook.com/me/friends',
-					params: {
-						access_token:getFacebookTokenFromUrl(),
-					},
-				    callbackKey: 'callback',
-				    // Callback
-				    callback: function (data) {
-						console.log('data.length ='+data.data.length);
-						
-						var allFriends = data;
-						
-						var friendsWhoInstalledApp = new Array();
-						
-						Ext.util.JSONP.request({
-					    		url: 'https://api.facebook.com/method/fql.query',
-								params: {
-									access_token:getFacebookTokenFromUrl(),
-									query: 'SELECT uid,name,pic_square FROM user WHERE is_app_user AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
-									format: 'JSON',
-								},
-								
-							    callbackKey: 'callback',
-							    // Callback
-							    callback: function (data2) {
-									console.log('data2.length ='+data2.length);
-								    for (var i = 0, ln = data2.length; i < ln; i++) {
-				                        var friend = data2[i];
-										// console.log('friendWhoInstalled.name '+friend.name);
-										// console.log('friendWhoInstalled.uid '+friend.uid);
-										
-										friendsWhoInstalledApp.push(friend);
-										
-										Ext.dispatch({
-										    controller: 'Roster',
-										    action: 'subscribeToJid',
-											jid: friend.uid+'@logoslogic.com',
-											name: friend.name,
-										});
-										
-										
-				                    }
-				
-									// console.log('friendsWhoInstalledApp lenght' +friendsWhoInstalledApp.length);
-
-
-									var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
-
-
-								    for (var i = 0, ln = allFriends.data.length; i < ln; i++) {
-										var didInstall = false;
-				                        var friend = allFriends.data[i];
-				
-
-										// 									    for (var j = 0, ln2 = friendsWhoInstalledApp.length; j < ln2; j++) {
-										// 	var friendWhoInstalled = friendsWhoInstalledApp[j];
-										// 	if (friendWhoInstalled.uid == friend.id){
-										// 		console.log('friendWhoInstalled.id == friend.id');
-										// 		didInstall = true;
-										// 	}
-										// }
-										
-										onlineUsers.each(function (record) {
-											// if (record.facebook_id == friend.id){
-											// 											didInstall == true
-											// 										}
-											console.log('record.nickname = '+record.get('facebook_id'));
-										});
-
-										
-										var user = onlineUsers.getById(friend.id+'@logoslogic.com');
-										
-										console.log('user get by id '+user);
-
-										if (user != undefined){
-											didInstall = true;
-
-
-										}else{
-
-										}
-										
-										
-										
-										if (didInstall == true){
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: true, jid: friend.id, nickname: friend.name, thumb:'c'}, 'Friend');
-										}else{
-											var friendModel = Ext.ModelMgr.create({id: friend.id, name: friend.name, didInstallApp: false, jid: friend.id, nickname: friend.name, thumb:'b'}, 'Friend');
-										}
-										
-										
-										
-
-										friendStore.add(friendModel);
-								    	friendStore.sync();
-										
-				                    }
-				
-									loadingMask.hide();
-				
-									var itemSubList = Ext.getCmp('friendsList');
-							        itemSubList.update();
-
-
-									var friendStore = Ext.StoreMgr.get('OnlineUsers');
-
-									that.store.loadData(friendStore.data.items)
-									
-									that.store = friendStore;
-									
-							        itemSubList.update();
-							        itemSubList.bindStore(friendStore);
-									that.isLoaded = true;
-							  	}	
-						});
-						
-
-				  	}	
-			});
-			
+	        itemSubList.update();
+	        itemSubList.bindStore(friendStore);
+			that.isLoaded = true;
 			
 
 		/*	Ext.regStore('FriendListStore', {
