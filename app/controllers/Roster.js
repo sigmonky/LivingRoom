@@ -166,7 +166,6 @@ Ext.regController('Roster', {
 			isPrivate:true,
 		}, 'Room');
 	
-	
 	//	roomList.add(room);
 
 		if (!pnlChatSession) {
@@ -583,7 +582,7 @@ Ext.regController('Roster', {
 				var message = Ext.ModelMgr.create({
 			    	jid: options.from,
 					nickname: options.from,
-					photo_url: '',
+					photo_url: photo_url,
 					time: '',
 					message:options.message,
 				}, 'ChatMessage');
