@@ -388,6 +388,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var onlineUsers = Ext.StoreMgr.get('OnlineUsers');
 			
 			if (type == 'subscribe'){
+				console.log('subscribe');
 				
 				me.allowSubscription(from.toString());
 				
