@@ -403,7 +403,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				// bPresence.setType('subscribe');
 				// me.jabberConnection.send(bPresence);
 				
-				me.getVCard(from);
+			//	me.getVCard(from);
 				
 				return
 			}
