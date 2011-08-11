@@ -547,35 +547,52 @@ Ext.regController('Roster', {
 	
 	
 	addMessageToOneToOneChatSession: function(options){
-			var key = jabberClient.publicRoom;
-			var roster = Ext.StoreMgr.get(key);
-			var user = roster.getById(options.from);
+		
 
-			var key = options.from;
-			
-			console.log('addMessageToOneToOneChatSession options.from '+ options.from);
-			//Let's take the chat user
-			var photo = user.get('facebook_id');
-			
-			if (photo != ''){
-				var photo_url = "https://graph.facebook.com/"+photo+"/picture";
-			}else{
-				var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
-			}
-			console.log('addMessageToChatRoom facebook_id ='+photo_url);
+				console.log('addMessageToOneToOneChatSession options.from '+ options.from);
+
+				var keyMsg = options.from.substring(0,options.from.indexOf('@'))+'_message';
+				var keyRoom = options.from.substring(0,options.from.indexOf('@'))+'_room';
+
+				console.log('addMessageToChatRoom key '+ keyRoom);
+
+				//Let's take the public chat room panel
+		//		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
+		//		console.log('addMessageToChatRoom ='+this.pnlRoom );
+				//Let's finally add the chat message
+			//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
+
+				var roster = Ext.StoreMgr.get(keyRoom);
+
+				console.log('addMessageToOneToOneChatSession roster ='+roster);
+				console.log('addMessageToOneToOneChatSession key ='+keyRoom);
+
+				var user = roster.getById(options.from);
+
+				console.log('addMessageToOneToOneChatSession from ='+from);
+
+				console.log('addMessageToOneToOneChatSession user ='+user);
+				var photo = user.get('facebook_id');
+				console.log('addMessageToOneToOneChatSession photo ='+photo);
+
+				if (photo != ''){
+					var photo_url = "https://graph.facebook.com/"+photo+"/picture";
+				}else{
+					var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+				}
+				console.log('addMessageToOneToOneChatSession photo_url ='+photo_url);
 
 
-			var message = Ext.ModelMgr.create({
-		    	jid: options.from,
-				nickname: options.nickname,
-				photo_url: photo_url,
-				time: '',
-				message:options.message,
-			}, 'ChatMessage');
+				var message = Ext.ModelMgr.create({
+			    	jid: options.from,
+					nickname: options.nickname,
+					photo_url: photo_url,
+					time: '',
+					message:options.message,
+				}, 'ChatMessage');
 
-
-			var chatStore = Ext.StoreMgr.get(key+'_message');
-			chatStore.add(message);
+				var chatStore = Ext.StoreMgr.get(keyMsg);
+				chatStore.add(message);
 
 	},
 	
