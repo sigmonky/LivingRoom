@@ -464,8 +464,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					
 					console.log('handlePresence onlineUsers add user= ' +user);
 					
-					user.set('isLive', true);
-					user.thumb('thumb', 'c');
+					//user.set('isLive', true);
+					//user.thumb('thumb', 'c');
 					
 				///	var friendsStore = Ext.StoreMgr.get('FriendListStore');
 				//	friendsStore.add(user)
