@@ -475,7 +475,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					// console.log('handlePresence onlineUsers add = ' +from);
 					// console.log('handlePresence onlineUsers add = ' +from.substring(0, from.indexOf('/')));
 					
-					var user = roster.getById(from);
+					var user = roster.getById(from.substring(0, from.indexOf('/')));
 					
 					console.log('handlePresence onlineUsers add user= ' +user);
 					
@@ -509,7 +509,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}
 				
 				//user = roster.getById(from);
-				var user = roster.getById(from);
+				var user = roster.getById(from.substring(0, from.indexOf('/')));
 				
 				roster.remove(user);
 				
