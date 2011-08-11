@@ -364,7 +364,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	handlePresence: function(presence, me) {
 
 			
-			console.log('handlePresence presense = ' +presence);
+			// console.log('handlePresence presense = ' +presence);
 			
 			//Let's take all the presence informations
 			var from = presence.getFrom();
@@ -372,8 +372,8 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			var show = presence.getShow();
 			var status = presence.getStatus();
 			
-			console.log('handlePresence maindomain from '+from);
-			console.log('handlePresence maindomain from indexof '+from.indexOf("@"));
+			// console.log('handlePresence maindomain from '+from);
+			// console.log('handlePresence maindomain from indexof '+from.indexOf("@"));
 			
 			var mainDomain = from.substring(from.indexOf("@")+1, from.indexOf("."));
 			
@@ -509,7 +509,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				}
 				
 				//user = roster.getById(from);
-				var user = roster.getById(from.substring(0, from.indexOf('/')));
+				var user = roster.getById(from);
 				
 				roster.remove(user);
 				
