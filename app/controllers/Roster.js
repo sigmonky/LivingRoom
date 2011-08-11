@@ -498,6 +498,8 @@ Ext.regController('Roster', {
 		
 		var mainDomain = from.substring(from.indexOf("@")+1, from.indexOf("."));
 		
+		console.log('addMessageToChatRoom mainDomain '+ mainDomain);
+
 		if (mainDomain == 'conference'){
 
 			var keyMsg = options.from.substring(0,options.from.indexOf('@'))+'_message';
