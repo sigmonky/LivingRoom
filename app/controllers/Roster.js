@@ -167,7 +167,7 @@ Ext.regController('Roster', {
 		}, 'Room');
 	
 	
-		roomList.add(room);
+	//	roomList.add(room);
 
 		if (!pnlChatSession) {
 				//console.log("browse productDetailPanel this.render()")
