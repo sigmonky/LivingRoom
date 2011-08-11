@@ -838,7 +838,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('getRoasterComplete '+facebook_id);
 			var item = Ext.ModelMgr.create({
 			    jid: node.getAttribute('jid'),
-			    id: facebook_id,
+			    facebook_id: facebook_id,
 				name: node.getAttribute('name'),
 				subscription: node.getAttribute('subscription'),
 				didInstallApp: true, 
