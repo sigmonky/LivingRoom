@@ -770,7 +770,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('joinRoomComplete me.nickname ' + me.nickname);
 		console.log('joinRoomComplete me.roomJid ' + me.roomJid);
 
-
 		if (fb_id != null){
 			var photo_url = "https://graph.facebook.com/"+fb_id+"/picture";
 		}else{
