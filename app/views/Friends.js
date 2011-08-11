@@ -209,13 +209,13 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
-			if (this.isLoaded != true){
+			//if (this.isLoaded != true){
 			console.log('beforeactivate');
-			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
-			console.log('urll '+ url);
+			//var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
+			//console.log('urll '+ url);
 
 			
-			var that = this;
+			//var that = this;
 
 			
 			// var friendStore = Ext.StoreMgr.get('FriendListStore');
@@ -370,7 +370,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			    autoLoad:true
 
 			}); */
-			}
+		//	}
         },
 
 
