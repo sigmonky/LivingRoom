@@ -178,7 +178,7 @@ Ext.regController('Roster', {
 					iconCls: 'chat1',
 					iconMask: true,
 					badgeText: (options.show ? '' : '1'),
-					remoteJid: userJid,
+					remoteJid: user.get('jid'),
 					remoteUserName: user.get('nickname'),
 					isChatRoom: false,
 					jabberComponent: jabberClient
