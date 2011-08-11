@@ -324,7 +324,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
   },
 
   addBuddy: function(buddy){
-	console.log('addBuddy jid = '+addBuddy.jid);
+	console.log('addBuddy jid = '+buddy.jid);
     	this.addRosterItem(buddy);
     	this.subscribe(buddy.jid);
     	return buddy.jid;
