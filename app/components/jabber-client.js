@@ -838,14 +838,14 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		Ext.each(query.childNodes, function(node){
 			var facebook_id = node.getAttribute('jid').substring(0, node.getAttribute('jid').indexOf('@'));
 			
-			console.log('getRoasterComplete '+facebook_id);
+			console.log('getRoasterComplete facebook_id= '+facebook_id);
+			console.log('getRoasterComplete  jid ='+node.getAttribute('jid'));
+			
 			var item = Ext.ModelMgr.create({
 			    jid: node.getAttribute('jid'),
 			    facebook_id: facebook_id,
 				name: node.getAttribute('name'),
 				subscription: node.getAttribute('subscription'),
-
-				
 			}, 'RosterItem');
 			
 			
