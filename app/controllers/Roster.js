@@ -552,7 +552,6 @@ Ext.regController('Roster', {
 				console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 
 				var keyMsg = options.from.substring(0,options.from.indexOf('@'))+'_message';
-				var keyRoom = options.from.substring(0,options.from.indexOf('@'))+'_room';
 
 				console.log('addMessageToChatRoom key '+ keyRoom);
 
@@ -562,10 +561,9 @@ Ext.regController('Roster', {
 				//Let's finally add the chat message
 			//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
 
-				var roster = Ext.StoreMgr.get(keyRoom);
+				var roster = Ext.StoreMgr.get('Roster');
 
 				console.log('addMessageToOneToOneChatSession roster ='+roster);
-				console.log('addMessageToOneToOneChatSession key ='+keyRoom);
 
 				var user = roster.getById(options.from);
 
@@ -585,8 +583,8 @@ Ext.regController('Roster', {
 
 				var message = Ext.ModelMgr.create({
 			    	jid: options.from,
-					nickname: options.nickname,
-					photo_url: photo_url,
+					nickname: options.from,
+					photo_url: '',
 					time: '',
 					message:options.message,
 				}, 'ChatMessage');
