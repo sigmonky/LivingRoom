@@ -251,14 +251,14 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								    for (var i = 0, ln = data2.length; i < ln; i++) {
 				                        var friend = data2[i];
 										console.log('friendWhoInstalled.name '+friend.name);
-										console.log('friendWhoInstalled.id '+friend.id);
+										console.log('friendWhoInstalled.uid '+friend.uid);
 										
 										friendsWhoInstalledApp.push(friend);
 										
 										Ext.dispatch({
 										    controller: 'Roster',
 										    action: 'subscribeToJid',
-											jid: friend.id+'@logoslogic.com',
+											jid: friend.uid+'@logoslogic.com',
 										});
 										
 										
