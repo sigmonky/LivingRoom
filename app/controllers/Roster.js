@@ -564,9 +564,8 @@ Ext.regController('Roster', {
 
 				console.log('addMessageToOneToOneChatSession roster ='+roster);
 
-				var user = roster.getById(options.from);
+				var user = roster.getById(options.from.substring(0, options.from.indexOf('/')));
 
-				console.log('addMessageToOneToOneChatSession from ='+from);
 
 				console.log('addMessageToOneToOneChatSession user ='+user);
 				var photo = user.get('facebook_id');
