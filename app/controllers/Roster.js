@@ -553,7 +553,6 @@ Ext.regController('Roster', {
 
 				var keyMsg = options.from.substring(0,options.from.indexOf('@'))+'_message';
 
-				console.log('addMessageToChatRoom key '+ keyRoom);
 
 				//Let's take the public chat room panel
 		//		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
