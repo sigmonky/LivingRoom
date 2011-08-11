@@ -137,11 +137,10 @@ Ext.regController('Roster', {
 		var user = options.user;
 		console.log('openChatSessionOneToOne nickname = '+ user.get('nickname'));
 		console.log('openChatSessionOneToOne jid = '+ user.get('jid'));
-		var userJid = user.get('jid')+'@logoslogic.com';
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(userJid);
 		
-		var userRemoteJidMsg = userJid +'_message';
+		var userRemoteJidMsg = user.get('jid') +'_message';
 		
 		Ext.regStore(userRemoteJidMsg, {
 			model: 'RoomRosterItem',
@@ -172,8 +171,8 @@ Ext.regController('Roster', {
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
 					xtype:"RoomChatSession",
-					itemId: userJid,
-					name: userJid,
+					itemId: user.get('jid'),
+					name: user.get('jid'),
 					title: user.get('nickname'),
 					barTitle: user.get('nickname'),
 					iconCls: 'chat1',
@@ -606,7 +605,7 @@ Ext.regController('Roster', {
 				console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 				console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
-				var keyMsg = options.from.substring(0,options.from.indexOf('/'))+'_message';
+				var keyMsg = options.fro+'_message';
 				
 				console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
 
@@ -620,7 +619,7 @@ Ext.regController('Roster', {
 
 				console.log('addMessageToOneToOneChatSession roster ='+roster);
 
-				var user = roster.getById(options.from.substring(0, options.from.indexOf('/')));
+				var user = roster.getById(options.from);
 
 
 				console.log('addMessageToOneToOneChatSession user ='+user);
