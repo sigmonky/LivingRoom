@@ -340,6 +340,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	switchBack: function(){
+		console.log('switchBack isPrivate '+this.isPrivate)
 		
 		if (this.isPrivate == true){
 			Ext.dispatch({
