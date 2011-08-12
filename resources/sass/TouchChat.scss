@@ -495,3 +495,9 @@ color: #000;
 .x-roster-user .delete{float:right;color:#fff;font-size:0.7em;padding:5px 8px;border-color:#555;background-color:red;background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff4d4d), color-stop(50%, #ff1a1a), color-stop(51%, #ff0000), color-stop(100%, #e60000));background-image:linear-gradient(#ff4d4d,#ff1a1a 50%,#ff0000 51%,#e60000)}
 
 .search-item-active .x-roster-user .action{opacity:1;-webkit-transition:opacity 0.3s linear}
+
+
+.facebookBtn{
+background-color: #CCC;
+background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, from(white), color-stop(0.02, #F2F2F2), color-stop(0.3, #E0E0E0), color-stop(0.65, #CCC), to(#B3B3B3));
+}
