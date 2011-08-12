@@ -67,7 +67,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 	
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
-			var textFieldValue = Ext.getCmp('settingsPanel').getCmp('formField').getCmp('facebookFieldName').value = 'cueca';
+			var textFieldValue = this.getCmp('formField').getCmp('facebookFieldName').value = 'cueca';
 			
 			
         },
