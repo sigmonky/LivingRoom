@@ -492,6 +492,7 @@ Ext.regController('Roster', {
 	},
 	
 	backToFriends: function(){
+		console.log('backToFriends')
 		this.application.viewport.getComponent('pnlFriends').setActiveItem(0, {
 			type: 'slide', direction:'right',
 			duration: 500
