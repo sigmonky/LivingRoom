@@ -20,58 +20,64 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 	            title: 'Settings',
 				id: 'formField',
 	            instructions: '',
-		            items: [
-		               {
-		                  xtype: 'textfield',
-						  id: 'facebookFieldName',
-		                  name: 'name',
-		                  label: 'Name',
-		                  placeHolder: 'My display name',
-		                  autoCapitalize : true,
-		                  required: true,
-		                  useClearIcon: true
-		               },
+	            items: [
+	               {
+	                  xtype: 'textfield',
+					  id: 'facebookFieldName',
+	                  name: 'name',
+	                  label: 'Name',
+	                  placeHolder: 'My display name',
+	                  autoCapitalize : true,
+	                  required: true,
+	                  useClearIcon: true
+	               },
+				{
+	                   xtype: 'selectfield',
+	                   name: 'mystatus',
+	                   label: 'My Status',
+	                   options: [{
+	                       text: 'Available',
+	                       value: 'available'
+	                   }, {
+	                       text: 'Away',
+	                       value: 'away'
+	                   }]
+	               },
 					{
-		                   xtype: 'selectfield',
-		                   name: 'mystatus',
-		                   label: 'My Status',
-		                   options: [{
-		                       text: 'Available',
-		                       value: 'available'
-		                   }, {
-		                       text: 'Away',
-		                       value: 'away'
-		                   }]
-		               },
-						{
-			                  xtype: 'togglefield',
-			                  name: 'enable',
-			                  label: 'Auto-Login at Launch'
-			            },
-						{
+		                  xtype: 'togglefield',
+		                  name: 'enable',
+		                  label: 'Auto-Login at Launch'
+		            },
+					{
 
-									xtype: 'button',
-									margin: '20px 0 0 0',
-									text: 'Submit',
-									handler: this.facebookConnect,
-									scope: this
-						}
-		            ]
-	         },{
+								xtype: 'button',
+								margin: '20px 0 0 0',
+								text: 'Submit',
+								handler: this.facebookConnect,
+								scope: this
+					}
+	            ]
+	         },
 	
-				xtype: 'fieldset',
-	            title: 'Facebook',
+			 {
+	            xtype: 'fieldset',
+	            title: 'Settings',
 				id: 'facebookFormField',
 	            instructions: '',
 	            items: [
 				{
+
 							xtype: 'button',
 							margin: '20px 0 0 0',
-							text: 'Login to Facebook',
+							text: 'Login',
 							handler: this.facebookConnect,
 							scope: this
 				}
+				]
 			},
+	
+	
+	
 	      ]
 			
 		});
