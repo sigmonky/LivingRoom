@@ -18,10 +18,12 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 	         {
 	            xtype: 'fieldset',
 	            title: 'Settings',
+				id: 'formField',
 	            instructions: '',
 	            items: [
 	               {
 	                  xtype: 'textfield',
+					  id: 'facebookFieldName',
 	                  name: 'name',
 	                  label: 'Name',
 	                  placeHolder: 'My display name',
@@ -53,7 +55,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 								text: 'Submit',
 								handler: this.facebookConnect,
 								scope: this
-							}
+					}
 	            ]
 	         }
 	      ]
@@ -62,6 +64,20 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 		//Superclass inizialization
 		LivingRoomAPI.views.Settings.superclass.initComponent.call(this);
 	},
+	
+	listeners: {
+        beforeactivate: function(ct, prevActiveCt) {
+			var textFieldValue = Ext.getCmp('settingsPanel').getCmp('formField').getCmp('facebookFieldName').value = 'cueca';
+			
+			
+        },
+
+
+        beforedeactivate: function() {
+
+        }
+    },
+	
 	
 	facebookConnect: function(e){
 
