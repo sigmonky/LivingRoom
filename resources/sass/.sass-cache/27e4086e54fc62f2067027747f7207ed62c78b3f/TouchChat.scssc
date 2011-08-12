@@ -1,7 +1,7 @@
 3.1.1 (Brainy Betty)
-2546d90b513da7a2a5465532a8cd4af957fe58b0
+5a909c8644e3f3548d1ebd34acfc52b010b986e2
 o:Sass::Tree::RootNode
-:@template"+0// 1. Variable overrides, example:
+:@template"?0// 1. Variable overrides, example:
 $theme: 'LivingRoom';
 $base-color: #006898;
 
@@ -500,9 +500,10 @@ color: #000;
 .search-item-active .x-roster-user .action{opacity:1;-webkit-transition:opacity 0.3s linear}
 
 
-.x-button{
+.facebookBtn{
 background-color: #CCC;
-background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, from(white), color-stop(0.02, #F2F2F2), color-stop(0.3, #E0E0E0), color-stop(0.65, #CCC), to(#B3B3B3));
+color:#FFF;
+background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#205595), color-stop(0.02, #2468b9), color-stop(0.3, #205595), color-stop(0.65, #2470ca), to(#2470ca));
 }:@options{:importero: Sass::Importers::Filesystem:
 @root"=/Applications/MAMP/htdocs/chat/LivingRoom/resources/sass:
 @linei:@children[Yo:Sass::Tree::CommentNode:@value"*/* 1. Variable overrides, example: */;@;i:@silenti ;[ :@lines[ :
@@ -741,32 +742,33 @@ color;@;iï;[ ;1i o;.;/;0;o;;"
 ;iñ;*[o;-;)@ž
 ;["x-roster-user;iño;,;)@ž
 ;iñ;*[o;-;)@ž
-;["action;iñ;@;iñ;[o;.;/;0;o;;"1;;$;["opacity;@;iñ;[ ;1i o;.;/;0;o;;"opacity 0.3s linear;;$;["-webkit-transition;@;iñ;[ ;1i ;2T;1i o;%;&[".x-button;'o;(;)" ;iô;*[o;+;*[o;,;)@Â
+;["action;iñ;@;iñ;[o;.;/;0;o;;"1;;$;["opacity;@;iñ;[ ;1i o;.;/;0;o;;"opacity 0.3s linear;;$;["-webkit-transition;@;iñ;[ ;1i ;2T;1i o;%;&[".facebookBtn;'o;(;)" ;iô;*[o;+;*[o;,;)@Â
 ;iô;*[o;-;)@Â
-;["x-button;iô;@;iô;[o;.;/;0;o;;"	#CCC;;$;["background-color;@;iõ;[ ;1i o;.;/;0;o;8
-;"{ ;"-webkit-gradient;{ ;iö;#[o;	;"linear;@Ö
-;iö;;$o;I	;[o;>;?"50%;@[ ;i7;@Ö
-;iö;A["%o;>;?"0%;@[ ;i ;@Ö
-;iö;A["%;J;K;@Ö
-;iöo;I	;[o;>;?"50%;@[ ;i7;@Ö
-;iö;A["%o;>;?"	100%;@[ ;ii;@Ö
-;iö;A["%;J;K;@Ö
-;iöo;8
-;"{ ;"	from;@Ö
-;iö;#[o;	;{	;iÿ;i;iÿ;iÿ;0;@Ö
-;iöo;8
-;"{ ;"color-stop;@Ö
-;iö;#[o;>;?"	0.02;@@°;f0.02 {;@Ö
-;iö;A[ o;	;{	;iò;i;iò;iò;0;@Ö
-;iöo;8
-;"{ ;"color-stop;@Ö
-;iö;#[o;>;?"0.3;@@°;f0.29999999999999999 33;@Ö
-;iö;A[ o;	;{	;ià;i;ià;ià;0;@Ö
-;iöo;8
-;"{ ;"color-stop;@Ö
-;iö;#[o;>;?"	0.65;@@°;f0.65000000000000002 ÌÍ;@Ö
-;iö;A[ o;	;{	;iÌ;i;iÌ;iÌ;0;@Ö
-;iöo;8
-;"{ ;"to;@Ö
-;iö;#[o;	;{	;i³;i;i³;i³;0;@Ö
-;iö;["background-image;@;iö;[ ;1i ;2T;1i ;2T
+;["facebookBtn;iô;@;iô;[o;.;/;0;o;;"	#CCC;;$;["background-color;@;iõ;[ ;1i o;.;/;0;o;;"	#FFF;;$;["
+color;@;iö;[ ;1i o;.;/;0;o;8
+;"{ ;"-webkit-gradient;{ ;i÷;#[o;	;"linear;@Ü
+;i÷;;$o;I	;[o;>;?"50%;@[ ;i7;@Ü
+;i÷;A["%o;>;?"0%;@[ ;i ;@Ü
+;i÷;A["%;J;K;@Ü
+;i÷o;I	;[o;>;?"50%;@[ ;i7;@Ü
+;i÷;A["%o;>;?"	100%;@[ ;ii;@Ü
+;i÷;A["%;J;K;@Ü
+;i÷o;8
+;"{ ;"	from;@Ü
+;i÷;#[o;	;{	;i%;i;iZ;i•;0;@Ü
+;i÷o;8
+;"{ ;"color-stop;@Ü
+;i÷;#[o;>;?"	0.02;@@°;f0.02 {;@Ü
+;i÷;A[ o;	;{	;i);i;im;i¹;0;@Ü
+;i÷o;8
+;"{ ;"color-stop;@Ü
+;i÷;#[o;>;?"0.3;@@°;f0.29999999999999999 33;@Ü
+;i÷;A[ o;	;{	;i%;i;iZ;i•;0;@Ü
+;i÷o;8
+;"{ ;"color-stop;@Ü
+;i÷;#[o;>;?"	0.65;@@°;f0.65000000000000002 ÌÍ;@Ü
+;i÷;A[ o;	;{	;i);i;iu;iÊ;0;@Ü
+;i÷o;8
+;"{ ;"to;@Ü
+;i÷;#[o;	;{	;i);i;iu;iÊ;0;@Ü
+;i÷;["background-image;@;i÷;[ ;1i ;2T;1i ;2T
