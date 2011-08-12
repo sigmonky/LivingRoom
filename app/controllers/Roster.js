@@ -187,7 +187,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	            Ext.apply(pnlChatSession, {jid: user.get('jid'), name: user.get('jid'), title:user.get('nickname'),remoteJid: user.get('jid'), isChatRoom:false, jabberComponent: jabberClient });
+	            Ext.apply(pnlChatSession, {jid: user.get('jid'), name: user.get('jid'), title:user.get('name'),remoteJid: user.get('jid'), isChatRoom:false, jabberComponent: jabberClient });
 	      }
 
 	        pnlChatSession.doUpdate();
