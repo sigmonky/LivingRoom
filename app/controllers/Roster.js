@@ -173,14 +173,14 @@ Ext.regController('Roster', {
 					xtype:"RoomChatSession",
 					itemId: user.get('jid'),
 					name: user.get('jid'),
-					title: user.get('nickname'),
-					barTitle: user.get('nickname'),
+					title: user.get('name'),
+					barTitle: user.get('name'),
 					iconCls: 'chat1',
 					iconMask: true,
 					isPrivate:true,
 					badgeText: (options.show ? '' : '1'),
 					remoteJid: user.get('jid'),
-					remoteUserName: user.get('nickname'),
+					remoteUserName: user.get('name'),
 					isChatRoom: false,
 					jabberComponent: jabberClient
 				});
