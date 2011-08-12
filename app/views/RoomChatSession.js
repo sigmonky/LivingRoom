@@ -341,7 +341,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	switchBack: function(){
 		
-		if (isPrivate == true){
+		if (this.isPrivate == true){
 			Ext.dispatch({
 				controller: 'Roster',
 				action: 'backToFriends'
