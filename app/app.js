@@ -26,7 +26,7 @@ Ext.regApplication('LivingRoomAPI', {
 	
 	//Definition of the application entry point function
 	launch: function() {
-
+		loggedIn = false;
 	/*	this.vwLogin = new LivingRoomAPI.views.Login({
 		
 			listeners: {
@@ -99,7 +99,6 @@ Ext.regApplication('LivingRoomAPI', {
 
 									//Let's hide the loading Mask
 									loadingMask.hide();
-									loggedIn = true;
 
 								},
 								unauthorized: function(component) {
