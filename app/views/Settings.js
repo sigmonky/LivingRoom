@@ -73,7 +73,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 			//Ext.get('facebookFieldName').set({value: 'isaacueca'});
 			//// console.log('settings - beforeactivate '+ Ext.get('facebookFieldName').getValue);
 			
-			var textFieldValue = this.getComponent('formField').getComponent('facebookFieldName').value = 'cueca';
+			var textFieldValue = this.getComponent('formField').getComponent('facebookFieldName').setValue('cueca');
 			console.log('settings - facebookFieldName '+ this.getComponent('formField').getComponent('facebookFieldName'));
 			
 			
