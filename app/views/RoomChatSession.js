@@ -289,7 +289,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		}
 		else{
 			if (toolbar) {
-					if (isPrivate == true){
+					if (this.isPrivate == true){
 						toolbar.setTitle(this.title);
 					}else{
 						toolbar.setTitle(this.title);
