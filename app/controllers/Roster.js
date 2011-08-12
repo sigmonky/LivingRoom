@@ -491,6 +491,13 @@ Ext.regController('Roster', {
 		
 	},
 	
+	backToFriends: function(){
+		this.application.viewport.getComponent('pnlFriends').setActiveItem(0, {
+			type: 'slide', direction:'right',
+			duration: 500
+		});
+	}
+	
 	addMessageToChatRoom: function(options){
 		
 		console.log('addMessageToChatRoom options.from '+ options.from);

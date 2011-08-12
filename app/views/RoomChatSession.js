@@ -27,6 +27,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	toolbar: '',
 	
+	isPrivate: false, 
+	
 	isChatRoom: true,
 	
 	initComponent: function(){
@@ -338,10 +340,18 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	switchBack: function(){
-		Ext.dispatch({
-		    controller: 'Roster',
-		    action: 'backToRoomList'
-		});
+		
+		if (isPrivate == true){
+			Ext.dispatch({
+				controller: 'Roster',
+				action: 'backToFriends'
+			});	
+		}else{
+			Ext.dispatch({
+				controller: 'Roster',
+				action: 'backToRoomList'
+			});
+		}
 		//this.setActiveItem(0, {type:'slide', direction:'right'});
 	},
 	
