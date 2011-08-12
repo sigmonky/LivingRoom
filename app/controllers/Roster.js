@@ -496,7 +496,7 @@ Ext.regController('Roster', {
 			type: 'slide', direction:'right',
 			duration: 500
 		});
-	}
+	},
 	
 	addMessageToChatRoom: function(options){
 		
