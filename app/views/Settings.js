@@ -71,6 +71,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 							handler: this.facebookConnect,
 							scope: this
 				}
+			},
 	      ]
 			
 		});
