@@ -57,7 +57,20 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 								scope: this
 					}
 	            ]
-	         }
+	         },
+	
+				xtype: 'fieldset',
+	            title: 'Facebook',
+				id: 'facebookFormField',
+	            instructions: '',
+	            items: [
+				{
+							xtype: 'button',
+							margin: '20px 0 0 0',
+							text: 'Login to Facebook',
+							handler: this.facebookConnect,
+							scope: this
+				}
 	      ]
 			
 		});
