@@ -182,6 +182,7 @@ Ext.regApplication('LivingRoomAPI', {
 		
 		console.log('doLogin');
 		
+		loggedIn = true;
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		console.log('doLogin obj is ' + obj.get('name'));

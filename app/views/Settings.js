@@ -53,7 +53,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 								xtype: 'button',
 								margin: '20px 0 0 0',
 								text: 'Submit',
-								handler: this.facebookConnect,
+								handler: this.changeSettings,
 								scope: this
 					}
 	            ]
@@ -117,8 +117,13 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 	
 	
 	facebookConnect: function(e){
-
+	if (loggedIn == false){
  location.href="https://graph.facebook.com/oauth/authorize?client_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/&scope=email,offline_access,publish_stream,xmpp_login&display=popup&response_type=token&display=touch";
+	}else{
+		console.log('logout session key '+getFacebookSessionFromUrl());
+		location.href= "http://www.facebook.com/logout.php?api_key=185799971471968&;session_key="+getFacebookSessionFromUrl()+"";
+	}
+	
 	},
 	
 	changeSettings: function(){
