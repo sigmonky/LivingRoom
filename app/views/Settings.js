@@ -62,9 +62,10 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 			 {
 
 							xtype: 'button',
+							id: 'facebookButton',
 							cls: 'facebookBtn',
 							margin: '20px 0 0 0',
-							text: 'Login',
+							text: 'Login to Facebook',
 							handler: this.facebookConnect,
 							scope: this
 			},
@@ -86,7 +87,23 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 			//Ext.get('facebookFieldName').set({value: 'isaacueca'});
 			//// console.log('settings - beforeactivate '+ Ext.get('facebookFieldName').getValue);
 			
-			var textFieldValue = this.getComponent('formField').getComponent('facebookFieldName').setValue('cueca');
+			var facebookStore = Ext.StoreMgr.get('FacebookUser');
+			
+			var loggedIn = false;
+			
+			var obj = facebookStore.getAt(0);
+			if (obj != undefined){
+				var fb_id = obj.get('id');
+				var name = obj.get('name');
+				loggedIn = true;
+			}
+			
+			var textFieldValue = this.getComponent('formField').getComponent('facebookFieldName').setValue(name);
+			
+			if (loggedIn == true){
+				this.getComponent('facebookButton').setText("Logout from Facebook");
+				
+			}
 			console.log('settings - facebookFieldName '+ this.getComponent('formField').getComponent('facebookFieldName'));
 			
 			
