@@ -121,8 +121,11 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
  location.href="https://graph.facebook.com/oauth/authorize?client_id=185799971471968&redirect_uri=http://www.logoslogic.com/chat/LivingRoom/&scope=email,offline_access,publish_stream,xmpp_login&display=popup&response_type=token&display=touch";
 	}else{
 		console.log('logout session key '+getFacebookSessionFromUrl());
+		var facebookStore = Ext.StoreMgr.get('FacebookUser');
+		var obj = facebookStore.getAt(0);
+		facebookStore.remove(obj);
 	//	location.href= "http://www.facebook.com/logout.php?api_key=185799971471968&session_key="+getFacebookSessionFromUrl()+"&confirm=1&next=#http://www.logoslogic.com/chat/LivingRoom/";
-		location.href="http://m.facebook.com/logout.php?confirm=1&next=http://www.logoslogic.com/chat/LivingRoom/"
+		location.href="http://www.logoslogic.com/chat/LivingRoom/"
 	}
 	
 	},
