@@ -177,6 +177,7 @@ Ext.regController('Roster', {
 					barTitle: user.get('nickname'),
 					iconCls: 'chat1',
 					iconMask: true,
+					isPrivate:true,
 					badgeText: (options.show ? '' : '1'),
 					remoteJid: user.get('jid'),
 					remoteUserName: user.get('nickname'),
