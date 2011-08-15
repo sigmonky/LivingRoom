@@ -63,22 +63,22 @@ $(document).ready(function () {
 	connection.connect('isaacueca@logoslogic.com','cigano', onConnect);
 
 
-    $('#back').bind('click', function () {
+    $('#back').click(function () {
 	log("back");
 	publish('back');
       });
 
-    $('#forward').bind('click', function () {
+    $('#forward').click(function () {
 	log("forward");
 	publish('forward');
       });
 
-    $('#pause').bind('click', function () {
+    $('#pause').click(function () {
 	log("pause");
 	publish('pause');
       });
 
-    $('#play').bind('click', function () {
+    $('#play').click(function () {
 	log("play");
 	publish('play');
       });
