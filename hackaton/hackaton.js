@@ -85,9 +85,15 @@ var Client = {
 	if (command == 'forward'){
 		currentTime = player.getPlayheadTime();
 		player.setPlayheadTime(currentTime + step);
-	}else{
+	}else if (command == 'back'){
 		currentTime = player.getPlayheadTime();
 		player.setPlayheadTime(currentTime - step);
+	}
+	else if (command == 'pause'){
+		player.pause();
+	}else if (command == 'play'){
+		player.unpause();
+		
 	}
 	
   },

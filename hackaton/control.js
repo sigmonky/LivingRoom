@@ -73,4 +73,14 @@ $(document).ready(function () {
 	publish('forward');
       });
 
+    $('#pause').bind('click', function () {
+	log("pause");
+	publish('pause');
+      });
+
+    $('#play').bind('click', function () {
+	log("play");
+	publish('play');
+      });
+
 });
