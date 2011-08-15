@@ -83,9 +83,5 @@ $(document).ready(function () {
 	publish('play');
       });
 
-    $('#share').click(function () {
-	log("share");
-	publish('share');
-      });
 
 });
