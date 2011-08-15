@@ -62,7 +62,6 @@
 					allowScriptAccess="always">
 				</embed>
 			</div><br/>
-			<div><button onClick="stepBack();">rewind</button><button onClick="stepForward();">Fast Forward</button></div>
 			<br/>
 			<div id="connection_status">Connecting...</div>
 		  
