@@ -166,7 +166,7 @@ var Client = {
 
 
       if (_data) {
-        Client.show_text(_data, _item);
+        Client.doCommand(_data, _item);
       }
   },
 
