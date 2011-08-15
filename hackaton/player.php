@@ -64,7 +64,7 @@
 			</div><br/>
 			<br/>
 			<div id="connection_status">Connecting...</div><br/><br/>
-			<div id="screenshot"><img src="http://www.logoslogic.com/chat/LivingRoom/hackaton/share.jpg" /></div><br/>
+			<div id="screenshot" style="display:none"><img src="http://www.logoslogic.com/chat/LivingRoom/hackaton/share.jpg" /></div><br/>
 		  	<div id="share" style="font-size:1.2em"></div>
 		
 		</body>
