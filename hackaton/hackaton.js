@@ -9,7 +9,8 @@ var Client = {
   NS_PUBSUB_OWNER: "http://jabber.org/protocol/pubsub#owner",
   NS_PUBSUB_ERRORS: "http://jabber.org/protocol/pubsub#errors",
   NS_PUBSUB_NODE_CONFIG: "http://jabber.org/protocol/pubsub#node_config",
-
+  PUBSUB_NODE:'hackaton_video',
+	
   // log to console if available
   log: function (msg) { 
     if (Client.show_log && window.console) { console.log(msg); }
@@ -43,7 +44,7 @@ var Client = {
     Control.connection.pubsub.publish(
       Control.admin_jid,
       Control.pubsub_server,
-      Config.PUBSUB_NODE,
+      Client.PUBSUB_NODE,
       [_d],
       Control.on_send
     );
@@ -144,7 +145,7 @@ var Client = {
        $iq({to: 'pubsub.logoslogic.com',
              type: "get"})
             .c('pubsub', {xmlns: "http://jabber.org/protocol/pubsub"})
-            .c('items', {node: Config.PUBSUB_NODE,max_items: '10'}),Client.on_old_items); 
+            .c('items', {node: Client.PUBSUB_NODE,max_items: '10'}),Client.on_old_items); 
     return true;
   },
 

@@ -5,7 +5,7 @@ var ignore = true;
 function publish(page) {
   connection.pubsub.publish(connection.jid,
 			    PUBSUB_SERVER,
-			    PUBSUB_NODE,
+			    'hackaton_video',
 			    [page],
 			    log
 			    );
