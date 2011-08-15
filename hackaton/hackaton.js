@@ -93,7 +93,9 @@ var Client = {
 		player.pause();
 	}else if (command == 'play'){
 		player.unpause();
-		
+	}
+	else if (command == 'share'){
+		$('#share').text('Screenshot Taken');
 	}
 	
   },

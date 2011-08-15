@@ -63,7 +63,8 @@
 				</embed>
 			</div><br/>
 			<br/>
-			<div id="connection_status">Connecting...</div>
-		  
+			<div id="connection_status">Connecting...</div><br/>
+		  	<div id="share"></div>
+		
 		</body>
 		</html>
