@@ -48,7 +48,6 @@ function onConnect(status)
 	$('#debug').empty();
     } else if (status == Strophe.Status.CONNECTED) {
 	log('Strophe is connected.');
-	alert('connected.');
 	connection.send($pres());
     }
 }
@@ -60,16 +59,9 @@ $(document).ready(function () {
     connection.rawInput = rawInput;
     connection.rawOutput = rawOutput;
 
-    $('#connect').bind('click', function () {
-	var button = $('#connect').get(0);
-	if (button.value == 'connect') {
-	    button.value = 'disconnect';
-	    connection.connect('isaacueca@logoslogic.com','cigano', onConnect);
-	} else {
-	    button.value = 'connect';
-	    connection.disconnect();
-	}
-    });
+
+	connection.connect('isaacueca@logoslogic.com','cigano', onConnect);
+
 
     $('#back').bind('click', function () {
 	log("back");
