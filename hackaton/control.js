@@ -14,22 +14,22 @@ function publish(page) {
 
 function log(msg) 
 {
-    $('#log').prepend('<div></div>').prepend(document.createTextNode(msg));
+ //   $('#log').prepend('<div></div>').prepend(document.createTextNode(msg));
 }
 
 function debug(msg) 
 {
-    $('#debug').append('<div></div>').append(document.createTextNode(msg));
+   // $('#debug').append('<div></div>').append(document.createTextNode(msg));
 }
 
 function rawInput(data)
 {
-    debug('RECV: ' + data);
+    //debug('RECV: ' + data);
 }
 
 function rawOutput(data)
 {
-    debug('SENT: ' + data);
+   // debug('SENT: ' + data);
 }
 
 function onConnect(status)
