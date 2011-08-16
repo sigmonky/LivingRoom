@@ -119,6 +119,81 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	
 	},
 	
+	
+	panelLaunch: function(pluginConfig, panelContent, user){
+		
+		var form = new Ext.form.FormPanel({
+		    id: 'noteEditor',
+			cls: 'textAreaInvite',
+			dock:'bottom',
+		    items: [
+		        {
+		            xtype: 'textareafield',
+		            name: 'narrative',
+		            label: '',
+					value:'I\'m using the Second Screen App. Download it and join me',
+		        }
+		    ]
+		});
+		
+            this.popupPnl = new Ext.Panel({
+                floating: true,
+				bodyStyle: 'background: #EEE;',
+                width: 240,
+                height: 330,
+                centered: true,
+                modal: true,
+	            scroll: 'vertical',
+				hideMode: 'close',
+                hideOnMaskTap: false,
+                layout: 'fit',
+				dockedItems:[
+				{
+					xtype: 'toolbar',
+					dock: 'bottom',
+					items:[
+					
+					{
+								xtype: 'button', 
+								margin: '0, 0, 0, 10px',
+								text: 'Send Invite',
+								handler: this.talkToUser,
+								scope: this,
+								user: user,
+					},
+					{
+								xtype: 'button',
+								margin: '0, 0, 0, 15px',
+								text: 'Cancel',
+								handler: this.closePanel,
+								scope: this,
+					},
+
+
+					
+					]
+					
+				},
+				
+				{
+					xtype: 'toolbar',
+					dock: 'top',
+					title: 'Invitation'
+				},
+				
+				form,
+				],
+                html: panelContent,
+				showAnimation: {
+					type: 'pop',
+					duration: 250
+				},
+                plugins: [new Ext.ux.PanelAction(pluginConfig)]
+            });
+            
+            this.popupPnl.show();
+     },
+	
 	getRoomRoster: function(){
 			//this.pnlPublicChat.openRoomRoster();
 					/*this.application.viewport.setActiveItem('pnlRoomRoster', {

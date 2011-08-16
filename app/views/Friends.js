@@ -14,7 +14,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
-
 		this.store = Ext.StoreMgr.get('FriendListStore');
 			
 		//Definition of the list that will contains all the users in the Roster
@@ -118,6 +117,8 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	talkToUser: function(options){
 		
 		var user = options.user;
+		user.set('chatActive', true);
+		
 		this.popupPnl.hide();
 		//console.log('talk to user = '+user.get('nickname'));
 		

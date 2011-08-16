@@ -554,9 +554,7 @@ Ext.regController('Roster', {
 				var chatStore = Ext.StoreMgr.get(keyMsg);
 				chatStore.add(message); 
 			}else{
-				
-				
-				
+
 						console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 						console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
@@ -576,6 +574,48 @@ Ext.regController('Roster', {
 
 						var user = roster.getById(options.from.substring(0, options.from.indexOf('/')));
 
+						///////////////////////////////////////////////////
+						
+						this.application.viewport.panelLaunch(user);
+						
+						console.log('addMessageToOneToOneChatSession user=' +user);
+						var isActive = user.get('chatActive');
+						console.log('addMessageToOneToOneChatSession isActive=' +isActive);
+						
+						if (isActive == false){
+							
+							console.log('addMessageToChatRoom is not active ');
+							
+							var tplUser = new Ext.XTemplate(
+								'<tpl for=".">',
+									'<div style="padding:20px; background:#EEE">'+
+								     '<div class="x-user-name">' +
+										'<p class="message" style="font-size:0.8em">Invite {name} to get this app and join you in the chat</p>' +
+									  '</div></div>' +
+								'</tpl>'
+							);
+							
+							var html = tplUser.apply({
+								name: user.get('name'),
+				            	photo_url: "",
+				        	});
+							
+							
+							this.application.viewport.panelLaunch({
+		                        iconClass: 'x-panel-action-icon-close',
+		                        position: 'tr',
+		                        actionMethod: ['hide']
+		                    }, html, user);
+		
+						return;
+							
+						}
+						
+						
+						
+						///////////////////////////////////////////////////
+
+
 
 						console.log('addMessageToOneToOneChatSession user ='+user);
 						var photo = user.get('facebook_id');
@@ -588,7 +628,6 @@ Ext.regController('Roster', {
 						}
 						console.log('addMessageToOneToOneChatSession photo_url ='+photo_url);
 
-
 						var message = Ext.ModelMgr.create({
 					    	jid: options.from,
 							nickname: options.from,
@@ -599,8 +638,6 @@ Ext.regController('Roster', {
 
 						var chatStore = Ext.StoreMgr.get(keyMsg);
 						chatStore.add(message);
-				
-				
 				
 				
 			}

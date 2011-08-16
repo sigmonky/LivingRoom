@@ -163,7 +163,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 	
 	sendRoomMessage: function(message){
 	
-	
 		console.log('sendRoomMessage '+message);
 		
 		console.log('sendRoomMessage this.myJID'+this.myJID);
@@ -252,21 +251,27 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		console.log('handleMessageIn = '+ from);
 		
 		//* Fetch Store with User Active Conversation. If empty show popup asking what the user should do */
-		
-		
-		//Check if the message has some content inside
-		if(message != ''){
 
-			/* Let's call the controller method able to add the message
-			 * to a chat session */
-			Ext.dispatch({
-			    controller: 'Roster',
-			   // action: 'addMessageToOneToOneChatSession',
-			    action: 'addMessageToChatRoom',
-				from: from,
-				message: message
-			});
-		}
+		
+		
+		
+			//Check if the message has some content inside
+			if(message != ''){
+
+				/* Let's call the controller method able to add the message
+			 	* to a chat session */
+				Ext.dispatch({
+			    	controller: 'Roster',
+			   		// action: 'addMessageToOneToOneChatSession',
+			    	action: 'addMessageToChatRoom',
+					from: from,
+					message: message
+				});
+			}
+		
+
+
+		
 	},
 	
 	leaveRoom: function(){
@@ -362,7 +367,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
   },
 	
 	handlePresence: function(presence, me) {
-
 			
 			// console.log('handlePresence presense = ' +presence);
 			
