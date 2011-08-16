@@ -203,7 +203,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 			user: options.user,
 			invitation: true,
 		});
-		
+		this.popupPnl.hide();
 	},
 	
 	
