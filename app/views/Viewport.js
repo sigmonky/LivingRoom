@@ -135,45 +135,45 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
                 hideOnMaskTap: false,
                 layout: 'fit',
 				dockedItems:[
+				
+				{
+					xtype: 'button', 
+					margin: '10, 0, 0,0',
+					dock: 'bottom',
+					text: 'Report this user',
+					handler: this.talkToUser,
+					scope: this,
+					user: user,
+				},
 
-					
-					{
-								xtype: 'button', 
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Accept',
-								handler: this.talkToUser,
-								scope: this,
-								user: user,
-					},
-					{
-								xtype: 'button',
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Decline',
-								handler: this.closePanel,
-								scope: this,
-					},
-					
-					{
-								xtype: 'button', 
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Block this User',
-								handler: this.talkToUser,
-								scope: this,
-								user: user,
-					},
-					
-					{
-								xtype: 'button', 
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Report this user to Moderator',
-								handler: this.talkToUser,
-								scope: this,
-								user: user,
-					},
+				{
+					xtype: 'button', 
+					margin: '10, 0, 0,0',
+					dock: 'bottom',
+					text: 'Block this User',
+					handler: this.talkToUser,
+					scope: this,
+					user: user,
+				},
+
+
+				{
+					xtype: 'button',
+					margin: '10, 0, 0,0',
+					dock: 'bottom',
+					text: 'Decline',
+					handler: this.closePanel,
+					scope: this,
+				},
+				{
+					xtype: 'button', 
+					margin: '10, 0, 0,0',
+					dock: 'bottom',
+					text: 'Accept',
+					handler: this.talkToUser,
+					scope: this,
+					user: user,
+				},
 
 				
 				{

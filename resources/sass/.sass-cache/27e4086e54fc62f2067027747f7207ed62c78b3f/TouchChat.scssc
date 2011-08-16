@@ -1,7 +1,7 @@
 3.1.1 (Brainy Betty)
-407be5e23e698e6c8a962e318b29609ff9fcb37a
+b578b96482e5e9849705f4d0fa75c5078f362887
 o:Sass::Tree::RootNode
-:@template"1// 1. Variable overrides, example:
+:@template"1// 1. Variable overrides, example:
 $theme: 'LivingRoom';
 $base-color: #006898;
 
@@ -44,7 +44,7 @@ $base-gradient: 'bevel';
 	.x-user-name {
 	
 		float: left;
-		margin: 5px 0 0 10px;
+		margin: 0 0 0 10px;
 		width: 150px;
 		
 	}
@@ -549,7 +549,7 @@ chat1;{ ;i#;;$o:Sass::Tree::RuleNode:
 float;@;i);[ :
 @tabsi o;.;/;0;o;;"	55px;;$;["
 width;@;i*;[ ;1i :@has_childrenT;1i o;%;&[".x-user-name;'o;(;)" ;i.;*[o;+;*[o;,;)@Â;i.;*[o;-;)@Â;["x-user-name;i.;@;i.;[o;.;/;0;o;;"	left;;$;["
-float;@;i0;[ ;1i o;.;/;0;o;;"5px 0 0 10px;;$;["margin;@;i1;[ ;1i o;.;/;0;o;;"
+float;@;i0;[ ;1i o;.;/;0;o;;"0 0 0 10px;;$;["margin;@;i1;[ ;1i o;.;/;0;o;;"
 150px;;$;["
 width;@;i2;[ ;1i ;2T;1i ;2T;1i o;%;&[".x-popup-invite;'o;(;)" ;i8;*[o;+;*[o;,;)@â;i8;*[o;-;)@â;["x-popup-invite;i8;@;i8;[o;.;/;0;o;;"	20px;;$;["padding;@;i:;[ ;1i o;%;&[".x-user-picture;'o;(;)" ;i<;*[o;+;*[o;,;)@ö;i<;*[o;-;)@ö;["x-user-picture;i<;@;i<;[o;.;/;0;o;;"	left;;$;["
 float;@;i>;[ ;1i o;.;/;0;o;;"	55px;;$;["
