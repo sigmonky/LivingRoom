@@ -585,18 +585,30 @@ Ext.regController('Roster', {
 							
 							console.log('addMessageToChatRoom is not active ');
 							
+							
 							var tplUser = new Ext.XTemplate(
 								'<tpl for=".">',
-									'<div style="padding:20px; background:#EEE">'+
+									'<div style="padding:20px"><div class="x-user-picture">' +
+										'<img src="{photo_url}" width="52" height="52"/>'+
+									'</div>' +
 								     '<div class="x-user-name">' +
-										'<p class="message" style="font-size:0.8em">Invite {name} to get this app and join you in the chat</p>' +
+										'<p class="message" style="font-size:1.1em">{name} is inviting you to chat</p>' +
 									  '</div></div>' +
 								'</tpl>'
 							);
 							
+							var facebook_id = user.get('id');
+
+							if (facebook_id != ''){
+								var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+							}else{
+								var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+							}
+							
+							
 							var html = tplUser.apply({
 								name: user.get('name'),
-				            	photo_url: "",
+				            	photo_url: photo_url,
 				        	});
 							
 							
