@@ -592,7 +592,7 @@ Ext.regController('Roster', {
 										'<img src="{photo_url}" width="52" height="52"/>'+
 									'</div>' +
 								     '<div class="x-user-name">' +
-										'<p class="message" style="font-size:1.1em">{name} is inviting you to chat</p>' +
+										'<b>{name} is inviting you to chat</b>' +
 									  '</div></div>' +
 								'</tpl>'
 							);
