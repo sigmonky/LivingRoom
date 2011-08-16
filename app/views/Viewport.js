@@ -121,7 +121,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	
 	
 	panelLaunch: function(pluginConfig, panelContent, user){
-
 		
             this.popupPnl = new Ext.Panel({
                 floating: true,
@@ -193,6 +192,19 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
             
             this.popupPnl.show();
      },
+
+
+	talkToUser: function(options){
+		console.log('talkToUser user'+options.user);
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'openChatSessionOneToOne',
+			show: true,
+			user: options.user
+		});
+		
+	},
+	
 	
 	getRoomRoster: function(){
 			//this.pnlPublicChat.openRoomRoster();
