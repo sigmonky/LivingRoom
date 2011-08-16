@@ -200,7 +200,8 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		    controller: 'Roster',
 		    action: 'openChatSessionOneToOne',
 			show: true,
-			user: options.user
+			user: options.user,
+			invitation: true,
 		});
 		
 	},
