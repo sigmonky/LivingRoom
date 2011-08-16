@@ -588,12 +588,12 @@ Ext.regController('Roster', {
 							
 							var tplUser = new Ext.XTemplate(
 								'<tpl for=".">',
-									'<div style="padding:20px"><div class="x-user-picture">' +
+									'<div class="x-user-picture">' +
 										'<img src="{photo_url}" width="52" height="52"/>'+
 									'</div>' +
 								     '<div class="x-user-name">' +
 										'<b>{name} is inviting you to chat</b>' +
-									  '</div></div>' +
+									  '</div>' +
 								'</tpl>'
 							);
 							
