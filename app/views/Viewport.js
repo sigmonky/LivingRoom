@@ -126,7 +126,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
             this.popupPnl = new Ext.Panel({
                 floating: true,
 				bodyStyle: 'background: #EEE;',
-                width: 240,
+                width: 280,
                 height: 330,
                 centered: true,
                 modal: true,
