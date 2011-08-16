@@ -253,8 +253,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		//* Fetch Store with User Active Conversation. If empty show popup asking what the user should do */
 
 		
-		
-		
 			//Check if the message has some content inside
 			if(message != ''){
 

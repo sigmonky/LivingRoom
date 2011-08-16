@@ -121,20 +121,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	
 	
 	panelLaunch: function(pluginConfig, panelContent, user){
-		
-		var form = new Ext.form.FormPanel({
-		    id: 'noteEditor',
-			cls: 'textAreaInvite',
-			dock:'bottom',
-		    items: [
-		        {
-		            xtype: 'textareafield',
-		            name: 'narrative',
-		            label: '',
-					value:'I\'m using the Second Screen App. Download it and join me',
-		        }
-		    ]
-		});
+
 		
             this.popupPnl = new Ext.Panel({
                 floating: true,
@@ -156,7 +143,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 					{
 								xtype: 'button', 
 								margin: '0, 0, 0, 10px',
-								text: 'Send Invite',
+								text: 'Chat with this User',
 								handler: this.talkToUser,
 								scope: this,
 								user: user,
@@ -168,6 +155,15 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 								handler: this.closePanel,
 								scope: this,
 					},
+					
+					{
+								xtype: 'button', 
+								margin: '0, 0, 0, 10px',
+								text: 'Block User',
+								handler: this.talkToUser,
+								scope: this,
+								user: user,
+					},
 
 
 					
@@ -178,10 +174,9 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 				{
 					xtype: 'toolbar',
 					dock: 'top',
-					title: 'Invitation'
+					title: 'Invitation to Chat'
 				},
-				
-				form,
+
 				],
                 html: panelContent,
 				showAnimation: {

@@ -576,7 +576,6 @@ Ext.regController('Roster', {
 
 						///////////////////////////////////////////////////
 						
-						this.application.viewport.panelLaunch(user);
 						
 						console.log('addMessageToOneToOneChatSession user=' +user);
 						var isActive = user.get('chatActive');
