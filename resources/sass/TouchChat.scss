@@ -42,11 +42,34 @@ $base-gradient: 'bevel';
 	
 		float: left;
 		margin: 5px 0 0 10px;
-		width: 170px;
+		width: 150px;
 		
 	}
 	
 }
+
+.x-popup-invite {
+	
+	padding:20px;
+	
+	.x-user-picture {
+	
+		float: left;
+		width: 55px;
+		
+	}
+	
+	.x-user-name {
+	
+		float: left;
+		margin: 5px 0 0 10px;
+		width: 150px;
+		
+	}
+	
+}
+
+
 
 /* Definition of the chat message panel style */
 .x-chat-message {
