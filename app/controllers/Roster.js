@@ -583,7 +583,6 @@ Ext.regController('Roster', {
 
 						
 						
-						
 						///////////////////////////////////////////////////
 
 
@@ -608,6 +607,26 @@ Ext.regController('Roster', {
 						}, 'ChatMessage');
 
 						var chatStore = Ext.StoreMgr.get(keyMsg);
+						
+						if (chatStore == undefined){
+							Ext.regStore(keyMsg, {
+								model: 'ChatMessage',
+								autoLoad: true,
+								proxy: {
+									type: 'memory',
+									  	reader: {
+									    	type: 'json'
+									   	}
+									}
+							});
+							
+							
+							var chatStore = Ext.StoreMgr.get(keyMsg);
+							
+						}
+						
+						
+						
 						chatStore.add(message);
 				
 				
