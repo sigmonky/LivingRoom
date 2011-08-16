@@ -135,10 +135,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
                 hideOnMaskTap: false,
                 layout: 'fit',
 				dockedItems:[
-				{
-					xtype: 'toolbar',
-					dock: 'bottom',
-					items:[
+
 					
 					{
 								xtype: 'button', 
@@ -178,11 +175,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 								user: user,
 					},
 
-
-					
-					]
-					
-				},
 				
 				{
 					xtype: 'toolbar',

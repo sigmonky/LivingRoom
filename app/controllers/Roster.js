@@ -597,7 +597,7 @@ Ext.regController('Roster', {
 								'</tpl>'
 							);
 							
-							var facebook_id = user.get('id');
+							var facebook_id = user.get('facebook_id');
 
 							if (facebook_id != ''){
 								var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
