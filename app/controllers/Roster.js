@@ -668,10 +668,10 @@ Ext.regController('Roster', {
 
 						
 						var message = Ext.ModelMgr.create({
-					    	jid: options.from,
-							nickname: options.from,
+					    	jid: '',
+							nickname: '',
 							facebook_id: '',
-							photo_url: photo_url,
+							photo_url: '',
 							time: '',
 							message:options.message,
 						}, 'ChatMessage');
