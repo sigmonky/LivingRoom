@@ -34,7 +34,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
-					 	'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32" />' +
+					 	'<img src="{photo_url}" width="32" height="32" />' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{name}</b>' +
@@ -111,11 +111,12 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		var store = Ext.StoreMgr.get('OnlineUsers');
 
 		var item = Ext.ModelMgr.create({
-		    jid: 'xxx',
+		    jid: '',
 		    facebook_id: '',
-			name: 'Invite Friends to Chat',
+			name: 'Invite Friends',
 			chatState: 'invite',
-			subscription: 'xxx',
+			subscription: '',
+			photo_url: 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif',
 		}, 'RosterItem');
 		
 		store.add(item);

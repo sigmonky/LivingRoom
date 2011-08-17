@@ -928,16 +928,18 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			console.log('getRoasterComplete facebook_id= '+facebook_id);
 			console.log('getRoasterComplete  jid ='+node.getAttribute('jid'));
 			
+			var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+			
 			var item = Ext.ModelMgr.create({
 			    jid: node.getAttribute('jid'),
 			    facebook_id: facebook_id,
 				name: node.getAttribute('name'),
+				photo_url: photo_url,
 				subscription: node.getAttribute('subscription'),
 			}, 'RosterItem');
 			
 			
 			
-
 				Ext.regStore(node.getAttribute('jid')+'_message', {
 					model: 'ChatMessage',
 					autoLoad: true,
