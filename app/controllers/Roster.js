@@ -185,6 +185,7 @@ Ext.regController('Roster', {
 	
 	//	roomList.add(room);
 
+/*
 
 	var message = Ext.ModelMgr.create({
     	jid: user.get('jid'),
@@ -196,6 +197,7 @@ Ext.regController('Roster', {
 	var chatStore = Ext.StoreMgr.get(userRemoteJidMsg);
 
 	chatStore.add(message);
+*/
 
 		if (!pnlChatSession) {
 			
