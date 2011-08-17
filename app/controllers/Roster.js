@@ -678,7 +678,6 @@ Ext.regController('Roster', {
 							console.log('addMessageToChatRoom is not active ');
 							
 							this.chatStore.add(message);
-							this.chatStore.sync();
 
 							this.chatStore.each(function (record) {
 							    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
