@@ -6,7 +6,7 @@
  * @extends Ext.Panel
  * Main application Viewport
  */
-LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
+LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	
 	isLoaded : false,
 	
@@ -14,6 +14,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
+
 		this.store = Ext.StoreMgr.get('FriendListStore');
 			
 		//Definition of the list that will contains all the users in the Roster
@@ -28,13 +29,13 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		     */
 		    activeCls: 'search-item-active',
 		
-			//	grouped: true,
+		//	grouped: true,
 			//store: 'FriendListStore',
-			grouped: true,
+			
 			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
-					 	'<img src="{photo_url}" width="32" height="32" />' +
+					 	'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32" />' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{name}</b>' +
@@ -43,102 +44,48 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 			listeners: {
 				
 				itemtap: function(list, index, item, e) {
-					
-						if (e.getTarget('.' + this.list.activeCls + ' div.delete')) {
 
-				            var store    = list.getStore(),
-				                selModel = this.list.getSelectionModel(),
-				                instance = store.getAt(index),
-				                selected = selModel.isSelected(instance),
-				                nearest  = store.getAt(index + 1) || store.getAt(index - 1);
+						var store = list.getStore();
 
-				            //if the item we are removing is currently selected, select the nearest item instead
-				            if (selected && nearest) {
-				                selModel.select(nearest);
-				            }
-
-				            store.removeAt(index);
-				            //store.sync();
+						console.log('itemtap at index =' +index);
+						//Let's take the selected user
+						var user = store.getAt(index);
+						console.log('itemtap user =' +user);
 
 
-				        } else {
-				            this.deactivateAll();
+						var tplUser = new Ext.XTemplate(
+							'<tpl for=".">',
+								'<div style="padding:20px; background:#EEE">'+
+							     '<div class="x-user-name">' +
+									'<p class="message" style="font-size:0.8em">Invite {name} to get this app and join you in the chat</p>' +
+								  '</div></div>' +
+							'</tpl>'
+						);
+
+						var facebook_id = user.get('id');
+
+						if (facebook_id != ''){
+							var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
+						}else{
+							var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+						}
+
+						var html = tplUser.apply({
+							name: user.get('name'),
+			            	photo_url: photo_url,
+			        	});
 
 
-							//Let's take the online users store
-							var store = list.getStore();
+						that.user = user;
 
-							//Let's take the selected user
-							var user = store.getAt(index);
-
-							var chatState = user.get('chatState');
-
-							console.log('chatState' +chatState);
-
-							if (chatState == 'invite'){
-								Ext.dispatch({
-								    controller: 'Roster',
-								    action: 'inviteFacebookUsers',
-								});
-
-							}else{
-								user.set('chatActive', true);
-								user.set('chatState', 'active');
-
-								this.popupPnl.hide();
-								//console.log('talk to user = '+user.get('nickname'));
-
-								Ext.dispatch({
-								    controller: 'Roster',
-								    action: 'openChatSessionOneToOne',
-									show: true,
-									user: user
-								});
-	
-							}
-				        }
-					
-
-						// var store = list.getStore();
-						// 
-						// console.log('itemtap at index =' +index);
-						// //Let's take the selected user
-						// var user = store.getAt(index);
-						// console.log('itemtap user =' +user);
-						// 
-						// 
-						// var tplUser = new Ext.XTemplate(
-						// 	'<tpl for=".">',
-						// 		'<div style="padding:20px; background:#EEE">'+
-						// 	     '<div class="x-user-name">' +
-						// 			'<p class="message" style="font-size:0.8em">Invite {name} to get this app and join you in the chat</p>' +
-						// 		  '</div></div>' +
-						// 	'</tpl>'
-						// );
-						// 
-						// var facebook_id = user.get('id');
-						// 
-						// if (facebook_id != ''){
-						// 	var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
-						// }else{
-						// 	var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
-						// }
-						// 
-						// var html = tplUser.apply({
-						// 	name: user.get('name'),
-						// 			            	photo_url: photo_url,
-						// 			        	});
-						// 
-						// 
-						// that.user = user;
-						// 
-						// that.panelLaunch({
-						// 	                        iconClass: 'x-panel-action-icon-close',
-						// 	                        position: 'tr',
-						// 	                        actionMethod: ['hide']
-						// 	                    }, html, user);
+						that.panelLaunch({
+	                        iconClass: 'x-panel-action-icon-close',
+	                        position: 'tr',
+	                        actionMethod: ['hide']
+	                    }, html, user);
 					
 				},
+				
 				
 				itemswipe: this.onItemSwipe,
 	            containertap: this.deactivateAll,
@@ -163,20 +110,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             containertap: this.deactivateAll
         });
 
-		var store = Ext.StoreMgr.get('OnlineUsers');
-
-		var item = Ext.ModelMgr.create({
-		    jid: '',
-		    facebook_id: '',
-			name: 'Invite Friends',
-			chatState: 'invite',
-			subscription: '',
-			photo_url: 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif',
-		}, 'RosterItem');
-		
-		store.add(item);
-
-
 		//Superclass inizialization
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
@@ -185,9 +118,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	talkToUser: function(options){
 		
 		var user = options.user;
-		user.set('chatActive', true);
-		user.set('chatState', 'active');
-		
 		this.popupPnl.hide();
 		//console.log('talk to user = '+user.get('nickname'));
 		
@@ -251,6 +181,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								handler: this.closePanel,
 								scope: this,
 					},
+
 
 					
 					]
@@ -344,4 +275,4 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 });
 
 //Component type registration
-Ext.reg('Friends', LivingRoomAPI.views.Friends);
+Ext.reg('InviteFbFriends', LivingRoomAPI.views.InviteFbFriends);

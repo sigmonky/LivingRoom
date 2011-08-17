@@ -771,6 +771,28 @@ Ext.regController('Roster', {
 
 	},
 	
+	inviteFacebookUsers: function(){
+		var inviteFBFriendsView = this.inviteFBFriendsView;
+
+		if (!inviteFBFriendsView) {
+				//console.log("browse productDetailPanel this.render()")
+				 inviteFBFriendsView = this.inviteFBFriendsView = this.render({
+					xtype: 'InviteFbFriends'
+			});
+	     }
+	    else {
+				//console.log("browse productDetailPanel Ext.apply()")
+	           Ext.apply(roomRosterView);
+	    }
+
+	    inviteFBFriendsView.doUpdate();
+	
+		var direction = 'left';
+
+	    this.application.viewport.getComponent('pnlFriends').setActiveItem(inviteFBFriendsView, {type: 'slide', direction:direction, duration: 500});
+		
+	},
+	
 	addRoomAnnouncement: function(options){
 	//	var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
 		console.log('addRoomAnnouncement options.message = '+options.message)
