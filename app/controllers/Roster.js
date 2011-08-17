@@ -645,13 +645,7 @@ Ext.regController('Roster', {
 						}
 						console.log('addMessageToOneToOneChatSession photo_url ='+photo_url);
 
-						var message = Ext.ModelMgr.create({
-					    	jid: options.from,
-							nickname: options.from,
-							photo_url: photo_url,
-							time: '',
-							message:options.message,
-						}, 'ChatMessage');
+
 
 						
 						if (Ext.StoreMgr.get(keyMsg) == undefined){
@@ -669,7 +663,15 @@ Ext.regController('Roster', {
 	
 						}
 						
-
+						var message = Ext.ModelMgr.create({
+					    	jid: options.from,
+							nickname: options.from,
+							facebook_id: '',
+							photo_url: photo_url,
+							time: '',
+							message:options.message,
+						}, 'ChatMessage');
+						
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 
