@@ -142,16 +142,20 @@ Ext.regController('Roster', {
 		
 		var userRemoteJidMsg = user.get('jid') +'_message';
 		
-		Ext.regStore(userRemoteJidMsg, {
-			model: 'ChatMessage',
-			autoLoad: true,
-			proxy: {
-				type: 'memory',
-				  	reader: {
-				    	type: 'json'
-				   	}
+		
+		if (Ext.StoreMgr.get('userRemoteJidMsg') == null) {
+			Ext.regStore(userRemoteJidMsg, {
+				model: 'ChatMessage',
+				autoLoad: true,
+				proxy: {
+					type: 'memory',
+					reader: {
+						type: 'json'
+					}
 				}
-		});
+			});
+		
+		}
 		
 		//var roomList = Ext.StoreMgr.get('RoomListStore');
 		//console.log('RoomListStore store = '+ roomList);
@@ -608,10 +612,11 @@ Ext.regController('Roster', {
 
 						var chatStore = Ext.StoreMgr.get(keyMsg);
 						
-						console.log('addMessageToChatRoom chatStore '+chatStore);
+						console.log('addMessageToChatRoom chatStore1 '+chatStore);
 						
 						
 						if (chatStore == undefined){
+							
 							Ext.regStore(keyMsg, {
 								model: 'ChatMessage',
 								autoLoad: true,
@@ -624,10 +629,11 @@ Ext.regController('Roster', {
 							});
 							
 							
-							var chatStore = Ext.StoreMgr.get(keyMsg);
+							chatStore = Ext.StoreMgr.get(keyMsg);
 							
 						}
 						
+						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 						
 						chatStore.add(message);
