@@ -677,10 +677,13 @@ Ext.regController('Roster', {
 							message:options.message,
 						}, 'ChatMessage');
 						
-						console.log('addMessageToChatRoom chatStore2 '+chatStore);
-						
 
 						var chatStore = Ext.StoreMgr.get(keyMsg);
+
+
+						console.log('addMessageToChatRoom chatStore2 '+chatStore);
+
+
 
 						chatStore.add(message);
 						
