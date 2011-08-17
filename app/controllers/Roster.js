@@ -782,7 +782,7 @@ Ext.regController('Roster', {
 	     }
 	    else {
 				//console.log("browse productDetailPanel Ext.apply()")
-	           Ext.apply(roomRosterView);
+	           Ext.apply(inviteFBFriendsView);
 	    }
 
 	

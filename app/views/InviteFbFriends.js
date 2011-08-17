@@ -230,6 +230,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 
 	listeners: {
         beforeactivate: function(ct, prevActiveCt) {
+			console.log('invite friends beforeactivate');
+	
 			if (this.isLoaded != true){
 			console.log('beforeactivate');
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
