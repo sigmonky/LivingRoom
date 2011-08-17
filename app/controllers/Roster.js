@@ -219,9 +219,9 @@ Ext.regController('Roster', {
 				var message = Ext.ModelMgr.create({
 			    	jid: options.from,
 					nickname: options.from,
-					photo_url: photo_url,
+					photo_url: '',
 					time: '',
-					message:options.message,
+					message:'wwww',
 				}, 'ChatMessage');
 				var chatStore = Ext.StoreMgr.get(keyMsg);
 
