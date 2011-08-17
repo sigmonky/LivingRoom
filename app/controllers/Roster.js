@@ -567,19 +567,9 @@ Ext.regController('Roster', {
 							message:options.message,
 						}, 'ChatMessage');
 						
-						var message2 = Ext.ModelMgr.create({
-					    	jid: options.from,
-							nickname: options.from,
-							facebook_id: '',
-							photo_url: photo_url,
-							time: '',
-							message:'cueca',
-						}, 'ChatMessage');
-						
 						var chatStore = Ext.StoreMgr.get(keyMsg);
 
 						chatStore.add(message);
-						chatStore.add(message2);
 						
 						chatStore.each(function (record) {
 						     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
