@@ -673,7 +673,14 @@ Ext.regController('Roster', {
 							});
 							
 							pnlChatSession.doUpdate();
-							this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+						}
+						
+						
+						var chatStore = Ext.StoreMgr.get(keyMsg);
+						
+						chatStore.add(message);
+						
+						if (isActive == false){
 							
 							console.log('addMessageToChatRoom is not active ');
 					
@@ -717,9 +724,6 @@ Ext.regController('Roster', {
 							
 						}
 
-						var chatStore = Ext.StoreMgr.get(keyMsg);
-						
-						chatStore.add(message);
 			}
 		
 	},
