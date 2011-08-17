@@ -146,9 +146,9 @@ Ext.regController('Roster', {
 		console.log('openChatSessionOneToOne userRemoteJidMsg ='+userRemoteJidMsg)
 		
 		
-		console.log('openChatSessionOneToOne userRemoteJidMsg STORE ='+Ext.StoreMgr.get(userRemoteJidMsg))
+		console.log('openChatSessionOneToOne userRemoteJidMsg STORE ='+Ext.StoreMgr.get('cuecao'))
 		
-		Ext.StoreMgr.get(userRemoteJidMsg).each(function (record) {
+		Ext.StoreMgr.get('cuecao').each(function (record) {
 		    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
 		});
 		
@@ -623,14 +623,14 @@ Ext.regController('Roster', {
 							message:options.message,
 						}, 'ChatMessage');
 
-						var chatStore = Ext.StoreMgr.get(keyMsg);
+						var chatStore = Ext.StoreMgr.get('cuecao');
 						
 						console.log('addMessageToChatRoom chatStore1 '+chatStore);
 						
 						
 						if (chatStore == undefined){
 							
-							Ext.regStore(keyMsg, {
+							Ext.regStore('cuecao', {
 								model: 'ChatMessage',
 								autoLoad: true,
 								proxy: {
@@ -642,7 +642,7 @@ Ext.regController('Roster', {
 							});
 							
 							
-							chatStore = Ext.StoreMgr.get(keyMsg);
+							chatStore = Ext.StoreMgr.get('cuecao');
 							console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						}
 						
