@@ -587,7 +587,7 @@ Ext.regController('Roster', {
 						var chatStore = Ext.StoreMgr.get(keyMsg);
 
 						chatStore.add(message);
-						
+						chatStore.sync();
 						chatStore.each(function (record) {
 						     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
 						 });
