@@ -223,7 +223,7 @@ Ext.regController('Roster', {
 					time: '',
 					message:'wwww',
 				}, 'ChatMessage');
-				var chatStore = Ext.StoreMgr.get(keyMsg);
+				var chatStore = Ext.StoreMgr.get(userRemoteJidMsg);
 
 				chatStore.add(message);
 				
