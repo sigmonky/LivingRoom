@@ -639,10 +639,9 @@ Ext.regController('Roster', {
 							
 							
 							chatStore = Ext.StoreMgr.get(keyMsg);
-							
+							console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						}
 						
-						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 						
 						chatStore.add(message);
