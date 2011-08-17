@@ -166,9 +166,13 @@ Ext.regController('Roster', {
 			});
 		
 		}else{
+			
+			 console.log('openChatSessionOneToOne chat message store = '+Ext.StoreMgr.get(userRemoteJidMsg));
+		    
+			
 			var chatStr = Ext.StoreMgr.get(userRemoteJidMsg);
 				 chatStr.each(function (record) {
-				     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+				     console.log('openChatSessionOneToOne store each message = '+record.get('message'));
 				 });
 		}
 		
