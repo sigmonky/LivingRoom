@@ -266,25 +266,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 					   	}
 					}
 			});
-			
-			
-			var message = Ext.ModelMgr.create({
-		    	jid: options.from,
-				nickname: options.from,
-				facebook_id: '',
-				photo_url: photo_url,
-				time: '',
-				message:options.message,
-			}, 'ChatMessage');
-			
-			var chatStore = Ext.StoreMgr.get(keyMsg);
-
-
-			console.log('addMessageToChatRoom chatStore2 '+chatStore);
-
-
-
-			chatStore.add(message);
 
 		}
 		
