@@ -676,25 +676,7 @@ Ext.regController('Roster', {
 							
 							console.log('addMessageToOneToOneChatSession jid'+user.get('jid'))
 							console.log('addMessageToOneToOneChatSession name'+user.get('name'))
-							
-							var pnlChatSession = this.render({
-								xtype:"RoomChatSession",
-								itemId: user.get('jid'),
-								name: user.get('jid'),
-								title: user.get('name'),
-								barTitle: user.get('name'),
-								iconCls: 'chat1',
-								iconMask: true,
-								isPrivate:true,
-								badgeText: (options.show ? '' : '1'),
-								remoteJid: user.get('jid'),
-								remoteUserName: user.get('name'),
-								isChatRoom: false,
-								jabberComponent: jabberClient
-							});
-							
-							pnlChatSession.doUpdate();
-							
+
 
 							
 							console.log('addMessageToChatRoom is not active ');
