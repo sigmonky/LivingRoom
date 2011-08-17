@@ -689,9 +689,9 @@ Ext.regController('Roster', {
 							console.log('addMessageToChatRoom is not active ');
 					
 
-							// chatStore.each(function (record) {
-							//     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
-							// });
+							chatStore.each(function (record) {
+							     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+							 });
 							
 							var tplUser = new Ext.XTemplate(
 								'<tpl for=".">',
