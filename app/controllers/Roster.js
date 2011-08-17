@@ -206,7 +206,6 @@ Ext.regController('Roster', {
 	            Ext.apply(pnlChatSession, {jid: user.get('jid'), name: user.get('jid'), title:user.get('name'),remoteJid: user.get('jid'), remoteUserName: user.get('name'), isChatRoom:false, jabberComponent: jabberClient });
 	      }
 
-	        pnlChatSession.doUpdate();
 			
 			if (options.invitation == true){
 				
@@ -216,7 +215,10 @@ Ext.regController('Roster', {
 				this.application.viewport.setActiveItem('pnlFriends');
 				this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
 			}else{
+				pnlChatSession.doUpdate();
+		        
 				this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+				
 			}
 		
 	},	
