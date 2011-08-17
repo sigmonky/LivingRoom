@@ -650,7 +650,10 @@ Ext.regController('Roster', {
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 
-				
+						var chatStore = Ext.StoreMgr.get(keyMsg);
+
+						chatStore.add(message);
+						
 						if (isActive == false){
 							
 							console.log('addMessageToOneToOneChatSession jid'+user.get('jid'))
@@ -674,9 +677,7 @@ Ext.regController('Roster', {
 							
 							pnlChatSession.doUpdate();
 							
-							var chatStore = Ext.StoreMgr.get(keyMsg);
 
-							chatStore.add(message);
 							
 							console.log('addMessageToChatRoom is not active ');
 					
