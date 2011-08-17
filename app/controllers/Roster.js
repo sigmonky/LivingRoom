@@ -646,7 +646,7 @@ Ext.regController('Roster', {
 						
 						
 						chatStore.add(message);
-				
+						chatStore.sync();
 				
 						if (isActive == false){
 							
