@@ -608,6 +608,9 @@ Ext.regController('Roster', {
 
 						var chatStore = Ext.StoreMgr.get(keyMsg);
 						
+						console.log('addMessageToChatRoom chatStore '+chatStore);
+						
+						
 						if (chatStore == undefined){
 							Ext.regStore(keyMsg, {
 								model: 'ChatMessage',
