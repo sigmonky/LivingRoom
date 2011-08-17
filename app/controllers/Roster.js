@@ -676,7 +676,7 @@ Ext.regController('Roster', {
 							
 							var chatStore = Ext.StoreMgr.get(keyMsg);
 
-							chatStore.add(message);
+						//	chatStore.add(message);
 							
 							console.log('addMessageToChatRoom is not active ');
 					
