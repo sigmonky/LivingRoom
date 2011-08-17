@@ -608,7 +608,7 @@ Ext.regController('Roster', {
 							facebook_id: '',
 							photo_url: photo_url,
 							time: '',
-							message:options.message,
+							message:'cueca',
 						}, 'ChatMessage');
 						
 
