@@ -313,6 +313,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 		console.log('updateStore ='+this.name+'_message');
 
+		console.log('updateStore newStore ='+newStore);
 
 
 		newStore.each(function (record) {
