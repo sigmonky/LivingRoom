@@ -140,7 +140,7 @@ Ext.regController('Roster', {
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(user.get('jid'));
 		
-		var userRemoteJidMsg = user.get('jid') +'_message';
+		var userRemoteJidMsg = 'aaaa_message';
 		
 		
 		console.log('openChatSessionOneToOne userRemoteJidMsg ='+userRemoteJidMsg)
@@ -148,9 +148,9 @@ Ext.regController('Roster', {
 		
 		console.log('openChatSessionOneToOne userRemoteJidMsg STORE ='+Ext.StoreMgr.get('userRemoteJidMsg'))
 		
-		if (Ext.StoreMgr.get('userRemoteJidMsg') == undefined) {
+		if (Ext.StoreMgr.get(userRemoteJidMsg == undefined) {
 			
-			Ext.regStore(userRemoteJidMsg, {
+			Ext.regStore('aaaa_message', {
 				model: 'ChatMessage',
 				autoLoad: true,
 				proxy: {
