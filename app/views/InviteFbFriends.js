@@ -17,12 +17,12 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
-			title: 'Co-Viewers',
+			title: 'Invite Friends',
 			layout: 'hbox',
 			items: [{
 				//Definition of logout button
 				ui: 'back',
-				text: 'Room',
+				text: 'Friends',
 				iconMask: true,
 				scope: this,
 				handler: this.switchBack
@@ -127,6 +127,13 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		//Superclass inizialization
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
+	},
+	
+	switchBack: function(){
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'backToRoom'
+		});
 	},
 	
 	talkToUser: function(options){
