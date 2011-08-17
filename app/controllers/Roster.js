@@ -148,6 +148,10 @@ Ext.regController('Roster', {
 		
 		console.log('openChatSessionOneToOne userRemoteJidMsg STORE ='+Ext.StoreMgr.get(userRemoteJidMsg))
 		
+		Ext.StoreMgr.get(userRemoteJidMsg).each(function (record) {
+		    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+		});
+		
 		if (Ext.StoreMgr.get(userRemoteJidMsg) == undefined) {
 			
 			Ext.regStore(userRemoteJidMsg, {
