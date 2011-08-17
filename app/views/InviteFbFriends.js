@@ -31,6 +31,9 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		});
 
 		this.store = Ext.StoreMgr.get('FriendListStore');
+		
+		
+		this.isLoaded = false;
 			
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
