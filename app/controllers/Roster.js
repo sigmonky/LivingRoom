@@ -678,16 +678,7 @@ Ext.regController('Roster', {
 						chatStore.add(message);
 						
 						if (isActive == false){
-							var message = Ext.ModelMgr.create({
-						    	jid: user.get('jid'),
-								nickname: user.get('name'),
-								photo_url: '',
-								time: '',
-								message:'wwww',
-							}, 'ChatMessage');
-							var chatStore = Ext.StoreMgr.get(userRemoteJidMsg);
-
-							chatStore.add(message);
+							
 							console.log('addMessageToOneToOneChatSession jid'+user.get('jid'))
 							console.log('addMessageToOneToOneChatSession name'+user.get('name'))
 
@@ -746,7 +737,7 @@ Ext.regController('Roster', {
 				console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 				console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
-				var keyMsg = options.from+'_message';
+				var keyMsg = options.fro+'_message';
 				
 				console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
 
