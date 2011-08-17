@@ -690,7 +690,6 @@ Ext.regController('Roster', {
 		                        actionMethod: ['hide']
 		                    }, html, user);
 		
-						return;
 							
 						}
 				
