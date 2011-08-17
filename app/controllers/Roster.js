@@ -654,9 +654,9 @@ Ext.regController('Roster', {
 						}, 'ChatMessage');
 
 						
-						if (Ext.StoreMgr.get('100001502348575@logoslogic.com_message') == undefined){
+						if (Ext.StoreMgr.get(keyMsg) == undefined){
 							
-							Ext.regStore('100001502348575@logoslogic.com_message', {
+							Ext.regStore(keyMsg, {
 								model: 'ChatMessage',
 								autoLoad: true,
 								proxy: {
@@ -673,7 +673,7 @@ Ext.regController('Roster', {
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 
-						var chatStore = Ext.StoreMgr.get('100001502348575@logoslogic.com_message');
+						var chatStore = Ext.StoreMgr.get(keyMsg);
 
 						chatStore.add(message);
 						
