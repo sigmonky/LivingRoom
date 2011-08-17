@@ -206,8 +206,6 @@ Ext.regController('Roster', {
 
 		if (!pnlChatSession) {
 			
-
-			
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
 					xtype:"RoomChatSession",
@@ -237,13 +235,10 @@ Ext.regController('Roster', {
 				user.set('chatState', 'active');
 
 				
-				
 				console.log('openChatSessionOneToOne invitation true');
 				this.application.viewport.setActiveItem('pnlFriends');
 				this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
-				
 
-				
 				
 			}else{
 				pnlChatSession.doUpdate();
@@ -254,7 +249,6 @@ Ext.regController('Roster', {
 		
 	},	
 	
-
 	
 	openChatSessionForRoomRoster: function(options){
 		
