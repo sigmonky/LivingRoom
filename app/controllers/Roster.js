@@ -205,7 +205,7 @@ Ext.regController('Roster', {
 				});
 	     }
 	     else {
-				//console.log("browse productDetailPanel Ext.apply()")
+				console.log("openChatSessionOneToOne already exists")
 	            Ext.apply(pnlChatSession, {jid: user.get('jid'), name: user.get('jid'), title:user.get('name'),remoteJid: user.get('jid'), remoteUserName: user.get('name'), isChatRoom:false, jabberComponent: jabberClient });
 	      }
 
@@ -718,7 +718,7 @@ Ext.regController('Roster', {
 
 						var chatStore = Ext.StoreMgr.get(keyMsg);
 						
-						chatStore.add(message);
+				//		chatStore.add(message);
 			}
 		
 	},
