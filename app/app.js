@@ -190,7 +190,6 @@ Ext.regApplication('LivingRoomAPI', {
 		this.connectAsRegistered(this.username);
 		
 		
-		this.getFacebookFriendsWhoInstalledApp();
 		
 	},
 	
@@ -272,6 +271,8 @@ Ext.regApplication('LivingRoomAPI', {
 
 														//Let's hide the loading Mask
 														loadingMask.hide();
+														this.getFacebookFriendsWhoInstalledApp();
+														
 
 													},
 													unauthorized: function(component) {
