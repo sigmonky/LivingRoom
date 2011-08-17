@@ -254,20 +254,7 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 
 
 		var keyMsg = from.substring(0,from.indexOf('/'))+'_message';
-		if (Ext.StoreMgr.get(keyMsg) == undefined){
-			
-			Ext.regStore(keyMsg, {
-				model: 'ChatMessage',
-				autoLoad: true,
-				proxy: {
-					type: 'memory',
-					  	reader: {
-					    	type: 'json'
-					   	}
-					}
-			});
 
-		}
 		
 			//Check if the message has some content inside
 			if(message != ''){
