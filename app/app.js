@@ -219,8 +219,6 @@ Ext.regApplication('LivingRoomAPI', {
 					});
 				}
 			}
-
-			loadingMask.hide();
 		});
  	},
 	
