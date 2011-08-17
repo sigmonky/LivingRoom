@@ -253,7 +253,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
      */
     doUpdate: function() {
 		console.log("doUpdate()");
-		console.log('room jid -' +this.jid)
 		
 		console.log('doUpdate this.isChatRoom -' +this.isChatRoom)
 		
