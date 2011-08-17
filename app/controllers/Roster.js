@@ -625,12 +625,8 @@ Ext.regController('Roster', {
 							message:options.message,
 						}, 'ChatMessage');
 
-						var chatStore = Ext.StoreMgr.get(keyMsg);
 						
-						console.log('addMessageToChatRoom chatStore1 '+chatStore);
-						
-						
-						if (chatStore == undefined){
+						if (Ext.StoreMgr.get(keyMsg) == undefined){
 							
 							Ext.regStore(keyMsg, {
 								model: 'ChatMessage',
@@ -642,13 +638,11 @@ Ext.regController('Roster', {
 									   	}
 									}
 							});
-							
-							
-							chatStore = Ext.StoreMgr.get(keyMsg);
-							console.log('addMessageToChatRoom chatStore2 '+chatStore);
+	
 						}
 						
-						
+						var	chatStore = Ext.StoreMgr.get(keyMsg);
+						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 						chatStore.add(message);
 						chatStore.sync();
