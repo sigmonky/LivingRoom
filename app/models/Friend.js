@@ -11,6 +11,7 @@ Ext.regModel('Friend', {
 		{name: 'nickname', type: 'string'},
         {name: 'thumb', type: 'string'},
 		{name: 'isLive', type: 'bool'},
+		{name: 'isActive', type: 'bool'},
 		{name: 'subscription', type: 'string'},
 		{name: 'didInstallApp', type: 'bool'},
     ]

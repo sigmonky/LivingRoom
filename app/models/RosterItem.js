@@ -10,6 +10,7 @@ Ext.regModel('RosterItem', {
 		{name: 'name', type: 'string'},
         {name: 'subscription', type: 'string'},
 		{name: 'chatActive', type: 'bool'},
+		{name: 'chatState', type: 'string'},
 		{name: 'photoType', type: 'string'},
 		{name: 'photoBase64', type: 'string'}
     ]

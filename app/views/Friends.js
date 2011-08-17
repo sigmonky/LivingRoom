@@ -30,7 +30,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 			//	grouped: true,
 			//store: 'FriendListStore',
-			
+			grouped: true,
 			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
@@ -85,7 +85,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 					
 				},
 				
-				
 				itemswipe: this.onItemSwipe,
 	            containertap: this.deactivateAll,
 	            
@@ -118,6 +117,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var user = options.user;
 		user.set('chatActive', true);
+		user.set('chatState', 'active');
 		
 		this.popupPnl.hide();
 		//console.log('talk to user = '+user.get('nickname'));
@@ -182,7 +182,6 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								handler: this.closePanel,
 								scope: this,
 					},
-
 
 					
 					]

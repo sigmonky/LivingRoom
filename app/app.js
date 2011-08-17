@@ -273,7 +273,6 @@ Ext.regApplication('LivingRoomAPI', {
 														loadingMask.hide();
 														that.getFacebookFriendsWhoInstalledApp();
 														
-
 													},
 													unauthorized: function(component) {
 
