@@ -664,6 +664,7 @@ Ext.regController('Roster', {
 								jabberComponent: jabberClient
 							});
 							
+							pnlChatSession.doUpdate();
 							
 							console.log('addMessageToChatRoom is not active ');
 							
