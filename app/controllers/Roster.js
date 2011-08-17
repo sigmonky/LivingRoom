@@ -217,8 +217,8 @@ Ext.regController('Roster', {
 				user.set('chatActive', true);
 				
 				var message = Ext.ModelMgr.create({
-			    	jid: options.from,
-					nickname: options.from,
+			    	jid: user.get('jid'),
+					nickname: user.get('name'),
 					photo_url: '',
 					time: '',
 					message:'wwww',
