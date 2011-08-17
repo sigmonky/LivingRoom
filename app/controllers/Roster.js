@@ -164,7 +164,7 @@ Ext.regController('Roster', {
 			});
 		
 		}else{
-				Ext.StoreMgr.get(userRemoteJidMsg).each(function (record) {
+				cueca.each(function (record) {
 				    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
 				});
 		}
@@ -641,7 +641,7 @@ Ext.regController('Roster', {
 	
 						}
 						
-						var	chatStore = Ext.StoreMgr.get(keyMsg);
+						cueca = Ext.StoreMgr.get(keyMsg);
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 						chatStore.add(message);
