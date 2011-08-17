@@ -646,6 +646,12 @@ Ext.regController('Roster', {
 						
 						chatStore.add(message);
 						chatStore.sync();
+						
+						chatStore.each(function (record) {
+						    console.log('addMessageToOneToOneChatSession store each message / fbid = '+record.get('facebook_id'));
+						});
+						
+						
 				
 						if (isActive == false){
 							
