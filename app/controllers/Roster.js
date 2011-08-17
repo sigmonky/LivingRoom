@@ -673,14 +673,10 @@ Ext.regController('Roster', {
 							});
 							
 							pnlChatSession.doUpdate();
-						}
-						
-						
-						var chatStore = Ext.StoreMgr.get(keyMsg);
-						
-						chatStore.add(message);
-						
-						if (isActive == false){
+							
+							var chatStore = Ext.StoreMgr.get(keyMsg);
+
+							chatStore.add(message);
 							
 							console.log('addMessageToChatRoom is not active ');
 					
