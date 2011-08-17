@@ -230,47 +230,12 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 				    callbackKey: 'callback',
 				    // Callback
 				    callback: function (data) {
-						console.log('data.length ='+data.data.length);
-						
-						var allFriends = data;
-						
-						var friendsWhoInstalledApp = new Array();
-						
-						Ext.util.JSONP.request({
-					    		url: 'https://api.facebook.com/method/fql.query',
-								params: {
-									access_token:getFacebookTokenFromUrl(),
-									query: 'SELECT uid,name,pic_square FROM user WHERE is_app_user AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())',
-									format: 'JSON',
-								},
-								
-							    callbackKey: 'callback',
-							    // Callback
-							    callback: function (data2) {
-									console.log('data2.length ='+data2.length);
-								    for (var i = 0, ln = data2.length; i < ln; i++) {
-				                        var friend = data2[i];
-										// console.log('friendWhoInstalled.name '+friend.name);
-										// console.log('friendWhoInstalled.uid '+friend.uid);
-										friendsWhoInstalledApp.push(friend);
-										Ext.dispatch({
-										    controller: 'Roster',
-										    action: 'subscribeToJid',
-											jid: friend.uid+'@logoslogic.com',
-											name: friend.name,
-										});
-				                     }
-								}
-								
-								loadingMask.hide();
-						});
-						
+
 
 				  	}	
 			});
 			
 
-			}
         },
 
 
