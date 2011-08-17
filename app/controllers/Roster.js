@@ -609,21 +609,7 @@ Ext.regController('Roster', {
 						console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 						console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
-						var keyMsg = options.from.substring(0,options.from.indexOf('/'))+'_message';
-						if (Ext.StoreMgr.get(keyMsg) == undefined){
-							
-							Ext.regStore(keyMsg, {
-								model: 'ChatMessage',
-								autoLoad: true,
-								proxy: {
-									type: 'memory',
-									  	reader: {
-									    	type: 'json'
-									   	}
-									}
-							});
-	
-						}
+
 						console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
 
 						//Let's take the public chat room panel
@@ -668,10 +654,10 @@ Ext.regController('Roster', {
 
 						
 						var message = Ext.ModelMgr.create({
-					    	jid: '',
-							nickname: '',
+					    	jid: options.from,
+							nickname: options.from,
 							facebook_id: '',
-							photo_url: '',
+							photo_url: photo_url,
 							time: '',
 							message:options.message,
 						}, 'ChatMessage');
