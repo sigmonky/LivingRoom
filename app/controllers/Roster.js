@@ -646,8 +646,7 @@ Ext.regController('Roster', {
 	
 						}
 						
-						var chatStore = Ext.StoreMgr.get(keyMsg);
-						
+
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
 
@@ -676,8 +675,7 @@ Ext.regController('Roster', {
 							pnlChatSession.doUpdate();
 							
 							console.log('addMessageToChatRoom is not active ');
-							
-							chatStore.add(message);
+					
 
 							// chatStore.each(function (record) {
 							//     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
@@ -718,7 +716,9 @@ Ext.regController('Roster', {
 							
 						}
 
-				
+						var chatStore = Ext.StoreMgr.get(keyMsg);
+						
+						chatStore.add(message);
 			}
 		
 	},
