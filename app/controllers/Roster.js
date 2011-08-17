@@ -642,18 +642,28 @@ Ext.regController('Roster', {
 						}
 						
 						this.chatStore = Ext.StoreMgr.get(keyMsg);
-						console.log('addMessageToChatRoom chatStore2 '+chatStore);
-						
-						this.chatStore.add(message);
-						this.chatStore.sync();
-						
-						this.chatStore.each(function (record) {
-						    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
-						});
+
 						
 						
 				
 						if (isActive == false){
+							
+							 pnlChatSession = this.render({
+								xtype:"RoomChatSession",
+								itemId: user.get('jid'),
+								name: user.get('jid'),
+								title: user.get('name'),
+								barTitle: user.get('name'),
+								iconCls: 'chat1',
+								iconMask: true,
+								isPrivate:true,
+								badgeText: (options.show ? '' : '1'),
+								remoteJid: user.get('jid'),
+								remoteUserName: user.get('name'),
+								isChatRoom: false,
+								jabberComponent: jabberClient
+							});
+							
 							
 							console.log('addMessageToChatRoom is not active ');
 							
@@ -692,6 +702,15 @@ Ext.regController('Roster', {
 		
 							
 						}
+						
+						console.log('addMessageToChatRoom chatStore2 '+chatStore);
+						
+						this.chatStore.add(message);
+						this.chatStore.sync();
+						
+						this.chatStore.each(function (record) {
+						    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+						});
 				
 			}
 		
