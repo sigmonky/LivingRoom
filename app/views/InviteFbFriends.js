@@ -35,7 +35,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 			store: this.store,
             itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 					    '<div class="x-user-picture">' +
-					 	'<img src="https://graph.facebook.com/{facebook_id}/picture" width="32" height="32" />' +
+					 	'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
 					     '</div>' +
 					 	'<div class="x-user-name">' +
 						 	'<b>{name}</b>' +
@@ -233,7 +233,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					    for (var i = 0, ln = data.data.length; i < ln; i++) {
 						
 	                        var friend = data.data[i];
-							var friend = Ext.ModelMgr.create({id: friend.id, name: friend.name}, 'Friend');
+							var friend = Ext.ModelMgr.create({id: friend.uid, name: friend.name}, 'Friend');
 							friendStore.add(friend);
 					    	friendStore.sync();
 							var obj = friendStore.getAt(0);
