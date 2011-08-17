@@ -142,6 +142,7 @@ Ext.regController('Roster', {
 		
 		var userRemoteJidMsg = user.get('jid') +'_message';
 		
+		console.log('openChatSessionOneToOne pnlChatSession ='+pnlChatSession)
 		
 		console.log('openChatSessionOneToOne userRemoteJidMsg ='+userRemoteJidMsg)
 		
