@@ -609,6 +609,7 @@ Ext.regController('Roster', {
 						console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 						console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
+						var keyMsg = options.from.substring(0,options.from.indexOf('/'))+'_message';
 
 						console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
 
