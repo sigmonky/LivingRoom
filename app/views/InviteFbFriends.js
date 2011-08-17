@@ -259,25 +259,23 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 							var friend = Ext.ModelMgr.create({id: friend.id, name: friend.name}, 'Friend');
 							friendStore.add(friend);
 					    	friendStore.sync();
-							var obj = friendStore.getAt(0);
-							console.log('obj is ' + obj.get('name'));
 	                    }
 	
 	
 						loadingMask.hide();
-	
+						var itemSubList = Ext.getCmp('friendsList');
+				        itemSubList.update();
+
+						itemSubList.store.loadData(friendStore.data.items)
+						this.store = friendStore;
+				        itemSubList.update();
+				        itemSubList.bindStore(this.store);
+						this.isLoaded = true;
 				  	}	
 			});
 			
 			
-			var itemSubList = Ext.getCmp('friendsList');
-	        itemSubList.update();
-			
-			itemSubList.store.loadData(friendStore.data.items)
-			this.store = friendStore;
-	        itemSubList.update();
-	        itemSubList.bindStore(this.store);
-			this.isLoaded = true;
+
 			
 
 			}
