@@ -239,9 +239,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		);
 	},
 
-	/**
-	 * Scroll to the button of the list
-	 */
+
 	scrollToBottom: function(){
 		console.log('scrollToBottom');
 		var list = this.getComponent('chatList');
