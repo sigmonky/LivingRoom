@@ -640,15 +640,10 @@ Ext.regController('Roster', {
 									   	}
 									}
 							});
-								
+							
+							
 							chatStore = Ext.StoreMgr.get(keyMsg);
 							console.log('addMessageToChatRoom chatStore2 '+chatStore);
-							chatStore.add(message);
-							chatStore.sync();
-						}
-						else{
-							chatStore.add(message);
-							chatStore.sync();
 						}
 						
 						

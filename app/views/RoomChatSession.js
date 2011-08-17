@@ -318,7 +318,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 
 		newStore.each(function (record) {
-		    console.log('updateStore store each message / fbid = '+record.get('facebook_id'));
+		    console.log('updateStore store each message / fbid = '+record.get('message'));
 		});
 
 
