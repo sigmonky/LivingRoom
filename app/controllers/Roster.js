@@ -184,6 +184,9 @@ Ext.regController('Roster', {
 	//	roomList.add(room);
 
 		if (!pnlChatSession) {
+			
+
+			
 				//console.log("browse productDetailPanel this.render()")
 				 pnlChatSession = this.render({
 					xtype:"RoomChatSession",
@@ -644,17 +647,12 @@ Ext.regController('Roster', {
 						}
 						
 						this.chatStore = Ext.StoreMgr.get(keyMsg);
-						
-						console.log('addMessageToChatRoom chatStore2 '+chatStore);
-						
-						this.chatStore.add(message);
-						this.chatStore.sync();
-						
-						this.chatStore.each(function (record) {
-						    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
-						});
+
 				
 						if (isActive == false){
+							
+							console.log('addMessageToOneToOneChatSession jid'+user.get('jid'))
+							console.log('addMessageToOneToOneChatSession name'+user.get('name'))
 							
 							 pnlChatSession = this.render({
 								xtype:"RoomChatSession",
@@ -673,6 +671,16 @@ Ext.regController('Roster', {
 							});
 							
 							pnlChatSession.doUpdate();
+							
+							
+							console.log('addMessageToChatRoom chatStore2 '+chatStore);
+
+							this.chatStore.add(message);
+							this.chatStore.sync();
+
+							this.chatStore.each(function (record) {
+							    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+							});
 							
 							console.log('addMessageToChatRoom is not active ');
 							
