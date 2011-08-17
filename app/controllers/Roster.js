@@ -579,7 +579,7 @@ Ext.regController('Roster', {
 					    	jid: options.from,
 							nickname: options.from,
 							facebook_id: '',
-							photo_url: photo_url,
+							photo_url: '',
 							time: '',
 							message:options.message,
 						}, 'ChatMessage');
