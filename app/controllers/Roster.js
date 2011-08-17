@@ -185,6 +185,18 @@ Ext.regController('Roster', {
 	
 	//	roomList.add(room);
 
+
+	var message = Ext.ModelMgr.create({
+    	jid: user.get('jid'),
+		nickname: user.get('name'),
+		photo_url: '',
+		time: '',
+		message:'wwww',
+	}, 'ChatMessage');
+	var chatStore = Ext.StoreMgr.get(userRemoteJidMsg);
+
+	chatStore.add(message);
+
 		if (!pnlChatSession) {
 			
 
@@ -217,16 +229,7 @@ Ext.regController('Roster', {
 				user.set('chatActive', true);
 				
 
-				var message = Ext.ModelMgr.create({
-			    	jid: user.get('jid'),
-					nickname: user.get('name'),
-					photo_url: '',
-					time: '',
-					message:'wwww',
-				}, 'ChatMessage');
-				var chatStore = Ext.StoreMgr.get(userRemoteJidMsg);
-
-				chatStore.add(message);
+				
 				
 				console.log('openChatSessionOneToOne invitation true');
 				this.application.viewport.setActiveItem('pnlFriends');
