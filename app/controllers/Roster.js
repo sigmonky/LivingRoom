@@ -643,8 +643,6 @@ Ext.regController('Roster', {
 						
 						this.chatStore = Ext.StoreMgr.get(keyMsg);
 
-						
-						
 				
 						if (isActive == false){
 							

@@ -60,6 +60,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			]
 		});
 		
+		console.log('room jid -' +this.jid)
 		console.log('room store msg -' +this.name+'_message')
 		
 		this.store = Ext.StoreMgr.get(this.name+'_message');
@@ -253,6 +254,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
      */
     doUpdate: function() {
 		console.log("doUpdate()");
+		console.log('room jid -' +this.jid)
 		
 		console.log('doUpdate this.isChatRoom -' +this.isChatRoom)
 		
@@ -312,16 +314,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
         var newStore = Ext.StoreMgr.get(this.name+'_message');
 
 		console.log('updateStore ='+this.name+'_message');
-
-		console.log('updateStore newStore ='+newStore);
-
-
-		newStore.each(function (record) {
-		    console.log('updateStore store each message / fbid = '+record.get('message'));
-		});
-
-
-
 
 
 		this.store = newStore;
