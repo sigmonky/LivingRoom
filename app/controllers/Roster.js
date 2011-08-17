@@ -143,7 +143,8 @@ Ext.regController('Roster', {
 		var userRemoteJidMsg = user.get('jid') +'_message';
 		
 		
-		if (Ext.StoreMgr.get('userRemoteJidMsg') == null) {
+		if (Ext.StoreMgr.get('userRemoteJidMsg') == undefined) {
+			
 			Ext.regStore(userRemoteJidMsg, {
 				model: 'ChatMessage',
 				autoLoad: true,
@@ -197,6 +198,9 @@ Ext.regController('Roster', {
 	        pnlChatSession.doUpdate();
 			
 			if (options.invitation == true){
+				
+				user.set('chatActive' true);
+				
 				console.log('openChatSessionOneToOne invitation true');
 				this.application.viewport.setActiveItem('pnlFriends');
 				this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
