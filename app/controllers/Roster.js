@@ -199,7 +199,7 @@ Ext.regController('Roster', {
 			
 			if (options.invitation == true){
 				
-				user.set('chatActive' true);
+				user.set('chatActive', true);
 				
 				console.log('openChatSessionOneToOne invitation true');
 				this.application.viewport.setActiveItem('pnlFriends');
