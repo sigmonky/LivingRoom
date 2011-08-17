@@ -193,7 +193,6 @@ Ext.regApplication('LivingRoomAPI', {
 		this.getFacebookFriendsWhoInstalledApp();
 		
 	},
-	
 	getFacebookFriendsWhoInstalledApp: function(){
 		Ext.util.JSONP.request({
 			url: 'https://api.facebook.com/method/fql.query',
