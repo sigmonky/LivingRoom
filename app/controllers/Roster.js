@@ -644,10 +644,10 @@ Ext.regController('Roster', {
 						this.chatStore = Ext.StoreMgr.get(keyMsg);
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
-						chatStore.add(message);
-						chatStore.sync();
+						this.chatStore.add(message);
+						this.chatStore.sync();
 						
-						chatStore.each(function (record) {
+						this.chatStore.each(function (record) {
 						    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
 						});
 						
