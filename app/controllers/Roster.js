@@ -164,9 +164,9 @@ Ext.regController('Roster', {
 			});
 		
 		}else{
-				this.chatStore.each(function (record) {
-				    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
-				});
+				// this.chatStore.each(function (record) {
+				//     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+				// });
 		}
 		
 		//var roomList = Ext.StoreMgr.get('RoomListStore');
@@ -646,7 +646,7 @@ Ext.regController('Roster', {
 	
 						}
 						
-						this.chatStore = Ext.StoreMgr.get(keyMsg);
+						var chatStore = Ext.StoreMgr.get(keyMsg);
 						
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
 						
@@ -677,11 +677,11 @@ Ext.regController('Roster', {
 							
 							console.log('addMessageToChatRoom is not active ');
 							
-							this.chatStore.add(message);
+							chatStore.add(message);
 
-							this.chatStore.each(function (record) {
-							    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
-							});
+							// chatStore.each(function (record) {
+							//     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+							// });
 							
 							var tplUser = new Ext.XTemplate(
 								'<tpl for=".">',
