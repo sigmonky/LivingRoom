@@ -553,74 +553,74 @@ Ext.regController('Roster', {
 	
 	addMessageToChatRoom: function(options){
 		
-	
+		console.log('addMessageToChatRoom options.from '+ options.from);
+		
+		var mainDomain = options.from.substring(options.from.indexOf("@")+1, options.from.indexOf("."));
+		
+		console.log('addMessageToChatRoom mainDomain '+ mainDomain);
+
+		if (mainDomain == 'conference'){
+
+			var keyMsg = options.from.substring(0,options.from.indexOf('@'))+'_message';
+			var keyRoom = options.from.substring(0,options.from.indexOf('@'))+'_room';
+
+			console.log('addMessageToChatRoom key '+ keyRoom);
+
+			//Let's take the public chat room panel
+			//		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
+			//		console.log('addMessageToChatRoom ='+this.pnlRoom );
+			//Let's finally add the chat message
+			//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
+
+			var roster = Ext.StoreMgr.get(keyRoom);
+
+			console.log('addMessageToChatRoom roster ='+roster);
+			console.log('addMessageToChatRoom key ='+keyRoom);
+
+			var user = roster.getById(options.from);
+
+			//	console.log('addMessageToChatRoom from ='+from);
+
+			console.log('addMessageToChatRoom user ='+user);
+			var photo = user.get('facebook_id');
+			console.log('addMessageToChatRoom photo ='+photo);
+
+			if (photo != ''){
+				var photo_url = "https://graph.facebook.com/"+photo+"/picture";
+			}else{
+				var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+			}
+			console.log('addMessageToChatRoom photo_url ='+photo_url);
+
+
+			var message = Ext.ModelMgr.create({
+				jid: options.from,
+				nickname: options.nickname,
+				photo_url: photo_url,
+				time: '',
+				message:options.message,
+				}, 'ChatMessage');
+
+
+				var chatStore = Ext.StoreMgr.get(keyMsg);
+				chatStore.add(message); 
+			}else{
+
 						console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 						console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
 						var keyMsg = options.from.substring(0,options.from.indexOf('/'))+'_message';
 
-
-
-
-						var message2 = Ext.ModelMgr.create({
-					    	jid: "",
-							nickname: "",
-							facebook_id: '',
-							photo_url: "",
-							time: '',
-							message:"",
-						}, 'ChatMessage');
-
-						var chatStore = Ext.StoreMgr.get(keyMsg);
-
-						console.log('addMessageToChatRoom chatStore2 '+chatStore);
-
-						chatStore.add(message2);
-
-						console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
-
-						//Let's take the public chat room panel
-				//		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
-				//		console.log('addMessageToChatRoom ='+this.pnlRoom );
-						//Let's finally add the chat message
-					//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
-
-						var roster = Ext.StoreMgr.get('Roster');
-
-						console.log('addMessageToOneToOneChatSession roster ='+roster);
-
-						var user = roster.getById(options.from.substring(0, options.from.indexOf('/')));
-
-						///////////////////////////////////////////////////
-						
-						
-						console.log('addMessageToOneToOneChatSession user=' +user);
-						var isActive = user.get('chatActive');
-						console.log('addMessageToOneToOneChatSession isActive=' +isActive);
-						
-						
-						
-						///////////////////////////////////////////////////
-
-
-
-						console.log('addMessageToOneToOneChatSession user ='+user);
-						var photo = user.get('facebook_id');
-						console.log('addMessageToOneToOneChatSession photo ='+photo);
-
-						if (photo != ''){
-							var photo_url = "https://graph.facebook.com/"+photo+"/picture";
-						}else{
-							var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
-						}
-						console.log('addMessageToOneToOneChatSession photo_url ='+photo_url);
-
-
-
-						
-
-						
 						var message = Ext.ModelMgr.create({
+					    	jid: options.from,
+							nickname: options.from,
+							facebook_id: '',
+							photo_url: photo_url,
+							time: '',
+							message:options.message,
+						}, 'ChatMessage');
+						
+						var message2 = Ext.ModelMgr.create({
 					    	jid: options.from,
 							nickname: options.from,
 							facebook_id: '',
@@ -629,32 +629,70 @@ Ext.regController('Roster', {
 							message:'cueca',
 						}, 'ChatMessage');
 						
-
-
-
-						console.log('addMessageToChatRoom chatStore2 '+chatStore);
-
-
+						var chatStore = Ext.StoreMgr.get(keyMsg);
 
 						chatStore.add(message);
-						
+						chatStore.add(message2);
 						
 						chatStore.each(function (record) {
 						     console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
 						 });
 						
-						if (isActive == false){
-							
+	
 
-		
-							
-						}
-
+			}
 		
 	},
 	
 	
+	addMessageToOneToOneChatSession: function(options){
+		
 
+				console.log('addMessageToOneToOneChatSession options.from '+ options.from);
+				console.log('addMessageToOneToOneChatSession options.message '+ options.message);
+
+				var keyMsg = options.fro+'_message';
+				
+				console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
+
+				//Let's take the public chat room panel
+		//		var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
+		//		console.log('addMessageToChatRoom ='+this.pnlRoom );
+				//Let's finally add the chat message
+			//	this.pnlRoom.addChatRoomMessage(options.message, options.from);
+
+				var roster = Ext.StoreMgr.get('Roster');
+
+				console.log('addMessageToOneToOneChatSession roster ='+roster);
+
+				var user = roster.getById(options.from);
+
+
+				console.log('addMessageToOneToOneChatSession user ='+user);
+				var photo = user.get('facebook_id');
+				console.log('addMessageToOneToOneChatSession photo ='+photo);
+
+				if (photo != ''){
+					var photo_url = "https://graph.facebook.com/"+photo+"/picture";
+				}else{
+					var photo_url  = 'http://www.logoslogic.com/chat/LivingRoom/user_default.gif';
+				}
+				console.log('addMessageToOneToOneChatSession photo_url ='+photo_url);
+
+
+				var message = Ext.ModelMgr.create({
+			    	jid: options.from,
+					nickname: options.from,
+					photo_url: photo_url,
+					time: '',
+					message:options.message,
+				}, 'ChatMessage');
+
+				var chatStore = Ext.StoreMgr.get(keyMsg);
+				chatStore.add(message);
+
+	},
+	
 	addRoomAnnouncement: function(options){
 	//	var pnlChatRoom = this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlRoom);
 		console.log('addRoomAnnouncement options.message = '+options.message)
