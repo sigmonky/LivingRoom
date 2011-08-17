@@ -937,7 +937,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 			
 			
 			
-			if (Ext.StoreMgr.get(keyMsg) == undefined){
 
 				Ext.regStore(node.getAttribute('jid')+'_message', {
 					model: 'ChatMessage',
@@ -950,7 +949,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 						}
 				});
 
-			}
 			
 			//Adding the user to the store
 			store.add(item);
