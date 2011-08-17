@@ -559,6 +559,24 @@ Ext.regController('Roster', {
 
 						var keyMsg = options.from.substring(0,options.from.indexOf('/'))+'_message';
 
+
+
+
+						var message2 = Ext.ModelMgr.create({
+					    	jid: "",
+							nickname: "",
+							facebook_id: '',
+							photo_url: "",
+							time: '',
+							message:"",
+						}, 'ChatMessage');
+
+						var chatStore = Ext.StoreMgr.get(keyMsg);
+
+						console.log('addMessageToChatRoom chatStore2 '+chatStore);
+
+						chatStore.add(message2);
+
 						console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
 
 						//Let's take the public chat room panel
@@ -612,7 +630,6 @@ Ext.regController('Roster', {
 						}, 'ChatMessage');
 						
 
-						var chatStore = Ext.StoreMgr.get(keyMsg);
 
 
 						console.log('addMessageToChatRoom chatStore2 '+chatStore);
