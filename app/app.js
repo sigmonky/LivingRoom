@@ -271,7 +271,7 @@ Ext.regApplication('LivingRoomAPI', {
 
 														//Let's hide the loading Mask
 														loadingMask.hide();
-														this.getFacebookFriendsWhoInstalledApp();
+														that.getFacebookFriendsWhoInstalledApp();
 														
 
 													},
