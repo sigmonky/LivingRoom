@@ -148,9 +148,7 @@ Ext.regController('Roster', {
 		
 		console.log('openChatSessionOneToOne userRemoteJidMsg STORE ='+Ext.StoreMgr.get(userRemoteJidMsg))
 		
-	//	chatStore.each(function (record) {
-	//	    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
-	//	});
+
 		
 		if (Ext.StoreMgr.get(userRemoteJidMsg) == undefined) {
 			
@@ -165,6 +163,10 @@ Ext.regController('Roster', {
 				}
 			});
 		
+		}else{
+				Ext.StoreMgr.get(userRemoteJidMsg).each(function (record) {
+				    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
+				});
 		}
 		
 		//var roomList = Ext.StoreMgr.get('RoomListStore');
