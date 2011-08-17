@@ -152,7 +152,6 @@ Ext.regController('Roster', {
 	//	    console.log('addMessageToOneToOneChatSession store each message = '+record.get('message'));
 	//	});
 		
-/*
 		if (Ext.StoreMgr.get(userRemoteJidMsg) == undefined) {
 			
 			Ext.regStore(userRemoteJidMsg, {
@@ -166,8 +165,7 @@ Ext.regController('Roster', {
 				}
 			});
 		
-		}*/
-
+		}
 		
 		//var roomList = Ext.StoreMgr.get('RoomListStore');
 		//console.log('RoomListStore store = '+ roomList);
