@@ -234,7 +234,7 @@ Ext.regController('Roster', {
 			if (options.invitation == true){
 				
 				user.set('chatActive', true);
-				
+				user.set('chatState', 'active');
 
 				
 				
