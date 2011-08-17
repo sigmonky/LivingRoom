@@ -935,6 +935,23 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 				subscription: node.getAttribute('subscription'),
 			}, 'RosterItem');
 			
+			
+			
+			if (Ext.StoreMgr.get(keyMsg) == undefined){
+
+				Ext.regStore(node.getAttribute('jid')+'_message', {
+					model: 'ChatMessage',
+					autoLoad: true,
+					proxy: {
+						type: 'memory',
+						  	reader: {
+						    	type: 'json'
+						   	}
+						}
+				});
+
+			}
+			
 			//Adding the user to the store
 			store.add(item);
 			
