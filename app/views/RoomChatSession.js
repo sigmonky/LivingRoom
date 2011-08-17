@@ -243,19 +243,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	 * Scroll to the button of the list
 	 */
 	scrollToBottom: function(){
-		
-		var newStore = Ext.StoreMgr.get(this.name+'_message');
-
-		console.log('scrollToBottom ='+this.name+'_message');
-
-
-
-		newStore.each(function (record) {
-		    console.log('scrollToBottom store each message / fbid = '+record.get('facebook_id'));
-		});
-		
-		
-		
 		console.log('scrollToBottom');
 		var list = this.getComponent('chatList');
 		list.scroller.updateBoundary();
