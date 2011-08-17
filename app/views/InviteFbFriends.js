@@ -14,6 +14,21 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
+		this.toolbar = new Ext.Toolbar({
+			itemId: 'toolbar',
+			dock: 'top',
+			title: 'Co-Viewers',
+			layout: 'hbox',
+			items: [{
+				//Definition of logout button
+				ui: 'back',
+				text: 'Room',
+				iconMask: true,
+				scope: this,
+				handler: this.switchBack
+			}
+			]
+		});
 
 		this.store = Ext.StoreMgr.get('FriendListStore');
 			
@@ -98,9 +113,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 
 
 		Ext.apply(this,{
-		
-			fullscreen: true,
-			layout:'card',
+			layout:'fit',
+			dockedItems: [this.toolbar],
 			items: [this.list]
 			
 		});
