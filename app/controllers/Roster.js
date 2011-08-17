@@ -610,7 +610,20 @@ Ext.regController('Roster', {
 						console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 
 						var keyMsg = options.from.substring(0,options.from.indexOf('/'))+'_message';
-
+						if (Ext.StoreMgr.get(keyMsg) == undefined){
+							
+							Ext.regStore(keyMsg, {
+								model: 'ChatMessage',
+								autoLoad: true,
+								proxy: {
+									type: 'memory',
+									  	reader: {
+									    	type: 'json'
+									   	}
+									}
+							});
+	
+						}
 						console.log('addMessageToOneToOneChatSession keyMsg =' +keyMsg);
 
 						//Let's take the public chat room panel
@@ -632,7 +645,6 @@ Ext.regController('Roster', {
 						var isActive = user.get('chatActive');
 						console.log('addMessageToOneToOneChatSession isActive=' +isActive);
 						
-
 						
 						
 						///////////////////////////////////////////////////
@@ -653,20 +665,7 @@ Ext.regController('Roster', {
 
 
 						
-						if (Ext.StoreMgr.get(keyMsg) == undefined){
-							
-							Ext.regStore(keyMsg, {
-								model: 'ChatMessage',
-								autoLoad: true,
-								proxy: {
-									type: 'memory',
-									  	reader: {
-									    	type: 'json'
-									   	}
-									}
-							});
-	
-						}
+
 						
 						var message = Ext.ModelMgr.create({
 					    	jid: options.from,
