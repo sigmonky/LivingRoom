@@ -108,14 +108,14 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             containertap: this.deactivateAll
         });
 
-		var store = Ext.StoreMgr.get('Roster');
+		var store = Ext.StoreMgr.get('OnlineUsers');
 
 		var item = Ext.ModelMgr.create({
-		    jid: '',
-		    facebook_id: '',
+		    jid: 'xxx',
+		    facebook_id: 'xxx',
 			name: 'Invite Friends to Chat',
 			chatState: 'invite',
-			subscription: '',
+			subscription: 'xxx',
 		}, 'RosterItem');
 		
 		store.add(item);
