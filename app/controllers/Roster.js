@@ -719,6 +719,7 @@ Ext.regController('Roster', {
 						var chatStore = Ext.StoreMgr.get(keyMsg);
 						
 						chatStore.add(message);
+										this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
 			}
 		
 	},
