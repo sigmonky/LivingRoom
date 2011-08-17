@@ -659,7 +659,8 @@ Ext.regController('Roster', {
 				
 						if (isActive == false){
 							
-
+							console.log('addMessageToOneToOneChatSession jid'+user.get('jid'))
+							console.log('addMessageToOneToOneChatSession name'+user.get('name'))
 							
 							 pnlChatSession = this.render({
 								xtype:"RoomChatSession",
