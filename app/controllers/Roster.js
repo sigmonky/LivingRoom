@@ -216,6 +216,18 @@ Ext.regController('Roster', {
 				
 				user.set('chatActive', true);
 				
+				var message = Ext.ModelMgr.create({
+			    	jid: options.from,
+					nickname: options.from,
+					photo_url: photo_url,
+					time: '',
+					message:options.message,
+				}, 'ChatMessage');
+				var chatStore = Ext.StoreMgr.get(keyMsg);
+
+				chatStore.add(message);
+				
+				
 				console.log('openChatSessionOneToOne invitation true');
 				this.application.viewport.setActiveItem('pnlFriends');
 				this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
