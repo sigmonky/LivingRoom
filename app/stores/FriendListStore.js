@@ -23,6 +23,7 @@
 				property: 'name',
 				direction: 'ASC'
 			}],
+/*
 			
 		    getGroupString : function(record) {
 				var didInstallApp = record.get('thumb');
@@ -36,7 +37,8 @@
 				}
 		        return  "<span style='display:none'>"+record.get('thumb') + "</span>"+str ;  
 			//	return record.get('thumb');
-		    },
-		    autoLoad:false
+		    },*/
+
+		    autoLoad:true
 
 		});

@@ -785,7 +785,6 @@ Ext.regController('Roster', {
 	           Ext.apply(roomRosterView);
 	    }
 
-	    inviteFBFriendsView.doUpdate();
 	
 		var direction = 'left';
 
