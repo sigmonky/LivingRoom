@@ -143,6 +143,9 @@ Ext.regController('Roster', {
 		var userRemoteJidMsg = user.get('jid') +'_message';
 		
 		
+		console.log('openChatSessionOneToOne userRemoteJidMsg ='+userRemoteJidMsg)
+		
+		
 		if (Ext.StoreMgr.get('userRemoteJidMsg') == undefined) {
 			
 			Ext.regStore(userRemoteJidMsg, {
