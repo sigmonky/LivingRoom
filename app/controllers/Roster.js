@@ -138,7 +138,7 @@ Ext.regController('Roster', {
 		console.log('openChatSessionOneToOne nickname = '+ user.get('nickname'));
 		console.log('openChatSessionOneToOne jid = '+ user.get('jid'));
 		//Let's try to take an already active chat session panel
-		var pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(user.get('jid'));
+		this.pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(user.get('jid'));
 		
 		var userRemoteJidMsg = user.get('jid') +'_message';
 		
@@ -184,12 +184,12 @@ Ext.regController('Roster', {
 	
 	//	roomList.add(room);
 
-		if (!pnlChatSession) {
+		if (!this.pnlChatSession) {
 			
 
 			
 				//console.log("browse productDetailPanel this.render()")
-				 pnlChatSession = this.render({
+				 this.pnlChatSession = this.render({
 					xtype:"RoomChatSession",
 					itemId: user.get('jid'),
 					name: user.get('jid'),
@@ -207,7 +207,7 @@ Ext.regController('Roster', {
 	     }
 	     else {
 				console.log("openChatSessionOneToOne already exists")
-	            Ext.apply(pnlChatSession, {jid: user.get('jid'), name: user.get('jid'), title:user.get('name'),remoteJid: user.get('jid'), remoteUserName: user.get('name'), isChatRoom:false, jabberComponent: jabberClient });
+	            Ext.apply(this.pnlChatSession, {jid: user.get('jid'), name: user.get('jid'), title:user.get('name'),remoteJid: user.get('jid'), remoteUserName: user.get('name'), isChatRoom:false, jabberComponent: jabberClient });
 	      }
 
 			
@@ -217,11 +217,11 @@ Ext.regController('Roster', {
 				
 				console.log('openChatSessionOneToOne invitation true');
 				this.application.viewport.setActiveItem('pnlFriends');
-				this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+				this.application.viewport.getComponent('pnlFriends').setActiveItem(this.pnlChatSession,{type: 'slide', duration: 500});
 			}else{
 				pnlChatSession.doUpdate();
 		        
-				this.application.viewport.getComponent('pnlFriends').setActiveItem(pnlChatSession,{type: 'slide', duration: 500});
+				this.application.viewport.getComponent('pnlFriends').setActiveItem(this.pnlChatSession,{type: 'slide', duration: 500});
 				
 			}
 		
@@ -659,7 +659,7 @@ Ext.regController('Roster', {
 							console.log('addMessageToOneToOneChatSession jid'+user.get('jid'))
 							console.log('addMessageToOneToOneChatSession name'+user.get('name'))
 							
-							var pnlChatSession = this.render({
+							this.pnlChatSession = this.render({
 								xtype:"RoomChatSession",
 								itemId: user.get('jid'),
 								name: user.get('jid'),
@@ -675,7 +675,7 @@ Ext.regController('Roster', {
 								jabberComponent: jabberClient
 							});
 							
-							pnlChatSession.doUpdate();
+							this.pnlChatSession.doUpdate();
 							
 
 							
