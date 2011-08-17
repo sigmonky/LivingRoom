@@ -112,7 +112,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 
 		var item = Ext.ModelMgr.create({
 		    jid: 'xxx',
-		    facebook_id: 'xxx',
+		    facebook_id: '',
 			name: 'Invite Friends to Chat',
 			chatState: 'invite',
 			subscription: 'xxx',

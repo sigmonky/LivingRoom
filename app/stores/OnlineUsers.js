@@ -17,7 +17,7 @@ Ext.regStore('OnlineUsers', {
 	},
 	sorters: [
 	{
-		property: 'name',
+		property: 'chatState',
 		direction: 'ASC'
 	}],
 	
@@ -31,7 +31,7 @@ Ext.regStore('OnlineUsers', {
 		else{
 			var str = 'Online Friends';
 		}
-        return  "<span style='display:none'>"+record.get('thumb') + "</span>"+str ;  
+        return  "<span style='display:none'>"+record.get('chatState') + "</span>"+str ;  
 	//	return record.get('thumb');
     },
 });
