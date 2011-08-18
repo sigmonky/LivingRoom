@@ -233,10 +233,10 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
             this.popupPnl = new Ext.Panel({
                 floating: true,
 				bodyStyle: 'background: #EEE;',
-                width: 240,
+                width: 320,
                 height: 330,
                 centered: true,
-				html: "<iframe frameborder='0' src='http://www.google.co.in/' width='100%' height='100%' id='iframe-external'></iframe>",
+				html: "<iframe frameborder='0' src='https://www.facebook.com/dialog/send?app_id=185799971471968&name=People%20Argue%20Just%20to%20Win&link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&redirect_uri=http://www.logoslogic.com/chat/LivingRoom' width='100%' height='100%' id='iframe-external'></iframe>",
 				listeners:{
 					activate : function(){
 						console.log('activate popup');
