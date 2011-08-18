@@ -85,7 +85,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 								user.set('chatActive', true);
 								user.set('chatState', 'active');
 
-								this.popupPnl.hide();
+								//this.popupPnl.hide();
 								//console.log('talk to user = '+user.get('nickname'));
 
 								Ext.dispatch({
