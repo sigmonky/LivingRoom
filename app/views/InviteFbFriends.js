@@ -141,7 +141,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	},
 	
 	
-	function ShowWebPageInPanel(myPanel,url){
+	ShowWebPageInPanel: function (myPanel,url){
 
 		myPanel.update("");
 		myPanel.setLoading(true, true);
