@@ -317,11 +317,10 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	},
 
 	switchBack: function(){
-		    //this.setActiveItem(0);
-			//this.setActiveItem('test1', {type:'slide', direction:'left'});
-			this.setActiveItem(0, {type:'slide', direction:'right'});
-		
-			//this.dockedItems.items[0].setTitle("Room Topic");
+		Ext.dispatch({
+		    controller: 'Roster',
+		    action: 'backToFriends'
+		});
 	},
 	
 	deactivateAll: function() {
