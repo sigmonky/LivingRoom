@@ -289,7 +289,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 						link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&
 						redirect_uri=http://www.logoslogic.com/chat/LivingRoom");						
 					}				
-				}
+				},
                 plugins: [new Ext.ux.PanelAction(pluginConfig)]
             });
             
