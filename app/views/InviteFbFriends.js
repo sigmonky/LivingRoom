@@ -140,6 +140,33 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		});
 	},
 	
+	
+	function ShowWebPageInPanel(myPanel,url){
+
+		myPanel.update("");
+		myPanel.setLoading(true, true);
+
+		//Perform AJAX Call
+		//Note:- If you are using PhoneGap then you can even do cross domain AJAX
+		Ext.Ajax.request({
+
+			url: url,
+			success: function(response, opts){
+
+				var resText = response.responseText;
+				myPanel.update(resText);
+				myPanel.scroller.scrollTo({x: 0, y: 0});
+
+			},
+			failure: function(response, opts){
+				alert(response.status);
+			}		
+		});
+
+		myPanel.setLoading(false);
+
+	},
+	
 	/**
      * Wraps all updates of children into one easy call
      */
@@ -246,13 +273,23 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					title: 'Invite'
 				},
 				
-				form,
+			//	form,
 				],
-                html: panelContent,
+               // html: panelContent,
 				showAnimation: {
 					type: 'pop',
 					duration: 250
 				},
+				listeners:{
+					activate : function(){
+						
+						//Ext.Msg.alert("Success","listener working successfully",Ext.emptyFn);
+						this.ShowWebPageInPanel(this,"https://www.facebook.com/dialog/send?app_id=185799971471968&
+						name=People%20Argue%20Just%20to%20Win&
+						link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&
+						redirect_uri=http://www.logoslogic.com/chat/LivingRoom");						
+					}				
+				}
                 plugins: [new Ext.ux.PanelAction(pluginConfig)]
             });
             
