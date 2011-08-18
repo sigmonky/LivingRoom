@@ -26,7 +26,7 @@ Ext.regStore('OnlineUsers', {
 		if (chatState == 'active'){
 			var str = 'Active Chats';
 		}else if (chatState == 'invite'){
-			var str = 'Invite More Friends To Chat';
+			var str = 'Invite Friends To Chat';
 		}
 		else{
 			var str = 'Online Friends';

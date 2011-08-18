@@ -266,19 +266,19 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	
 	
 						loadingMask.hide();
-						var itemSubList = Ext.getCmp('friendsList');
-				        itemSubList.update();
 
-						itemSubList.store.loadData(friendStore.data.items)
-						this.store = friendStore;
-				        itemSubList.update();
-				        itemSubList.bindStore(this.store);
 						this.isLoaded = true;
 				  	}	
 			});
 			
 			
+			var itemSubList = Ext.getCmp('friendsList');
+	        itemSubList.update();
 
+			itemSubList.store.loadData(friendStore.data.items)
+			this.store = friendStore;
+	        itemSubList.update();
+	        itemSubList.bindStore(this.store);
 			
 
 			}
