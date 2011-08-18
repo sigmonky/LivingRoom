@@ -292,7 +292,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					this.isLoaded = true;
 			  	}	
 		});
-	}
+	},
 
 	switchBack: function(){
 		    //this.setActiveItem(0);
