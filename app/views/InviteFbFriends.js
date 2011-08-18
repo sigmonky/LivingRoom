@@ -284,10 +284,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					activate : function(){
 						
 						//Ext.Msg.alert("Success","listener working successfully",Ext.emptyFn);
-						this.ShowWebPageInPanel(this,"https://www.facebook.com/dialog/send?app_id=185799971471968&
-						name=People%20Argue%20Just%20to%20Win&
-						link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&
-						redirect_uri=http://www.logoslogic.com/chat/LivingRoom");						
+						that.ShowWebPageInPanel(this,"https://www.facebook.com/dialog/send?app_id=185799971471968&name=People%20Argue%20Just%20to%20Win&link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&redirect_uri=http://www.logoslogic.com/chat/LivingRoom");						
 					}				
 				},
                 plugins: [new Ext.ux.PanelAction(pluginConfig)]
