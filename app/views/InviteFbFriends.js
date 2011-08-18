@@ -234,6 +234,13 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
                 width: 240,
                 height: 330,
                 centered: true,
+				listeners:{
+					beforeactivate : function(){
+						console.log('activate popup');
+						Ext.Msg.alert("Success","listener working successfully",Ext.emptyFn);
+						that.ShowWebPageInPanel(this,"https://www.facebook.com/dialog/send?app_id=185799971471968&name=People%20Argue%20Just%20to%20Win&link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&redirect_uri=http://www.logoslogic.com/chat/LivingRoom");						
+					}				
+				},
                 modal: true,
 	            scroll: 'vertical',
 				hideMode: 'close',
@@ -280,13 +287,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					type: 'pop',
 					duration: 250
 				},
-				listeners:{
-					beforeactivate : function(){
-						console.log('activate popup');
-						Ext.Msg.alert("Success","listener working successfully",Ext.emptyFn);
-						that.ShowWebPageInPanel(this,"https://www.facebook.com/dialog/send?app_id=185799971471968&name=People%20Argue%20Just%20to%20Win&link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&redirect_uri=http://www.logoslogic.com/chat/LivingRoom");						
-					}				
-				},
+
                 plugins: [new Ext.ux.PanelAction(pluginConfig)]
             });
             
