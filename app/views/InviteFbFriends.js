@@ -140,6 +140,31 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		});
 	},
 	
+	/**
+     * Wraps all updates of children into one easy call
+     */
+    doUpdate: function() {
+		//console.log("productGalleryPanel doUpdate()");
+        this.updateStore();
+    },
+
+    /**
+     * When a new room is defined for the Room Roster list panel
+     * the store needs to be updated 
+     * @private
+     */
+	updateStore: function(){
+		
+		console.log('update Swtore' +this.key);
+		
+		
+		var itemListGallery = Ext.getCmp('friendsList');
+        itemListGallery.update();
+        itemListGallery.bindStore(this.store);
+
+	},
+	
+	
 	talkToUser: function(options){
 		
 		var user = options.user;
@@ -232,33 +257,31 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
             this.popupPnl.show();
      },
 
-	listeners: {
-        beforeactivate: function(ct, prevActiveCt) {
-			console.log('invite friends beforeactivate');
-	
-			console.log('beforeactivate');
-
-			
-			
-
-			
-
-        },
-
-
-        beforedeactivate: function() {
-
-        }
-    },
+	// listeners: {
+	//         beforeactivate: function(ct, prevActiveCt) {
+	// 		console.log('invite friends beforeactivate');
+	// 
+	// 		console.log('beforeactivate');
+	// 
+	// 		
+	// 		
+	// 
+	// 		
+	// 
+	//         },
+	// 
+	// 
+	//         beforedeactivate: function() {
+	// 
+	//         }
+	//     },
 
 	loadFacebookFriends: function(){
 		var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
 		console.log('urll '+ url);
 
-		
 		var that = this;
 
-		
 		var friendStore = Ext.StoreMgr.get('FriendListStore');
 		loadingMask.show();
 		
@@ -289,7 +312,6 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 			        itemSubList.update();
 			        itemSubList.bindStore(this.store);
 			
-					this.isLoaded = true;
 			  	}	
 		});
 	},

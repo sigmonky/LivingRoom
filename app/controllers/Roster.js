@@ -784,7 +784,7 @@ Ext.regController('Roster', {
 				//console.log("browse productDetailPanel Ext.apply()")
 	           Ext.apply(inviteFBFriendsView);
 	    }
-
+		inviteFBFriendsView.update();
 	
 		var direction = 'left';
 
