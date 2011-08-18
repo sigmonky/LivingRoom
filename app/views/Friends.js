@@ -14,7 +14,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
-		this.store = Ext.StoreMgr.get('FriendListStore');
+		this.store = Ext.StoreMgr.get('OnlineUsers');
 			
 		//Definition of the list that will contains all the users in the Roster
 		this.list = new Ext.List({
@@ -276,29 +276,29 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             this.popupPnl.show();
      },
 
-	listeners: {
-        beforeactivate: function(ct, prevActiveCt) {
-
-			var itemSubList = Ext.getCmp('friendsList');
-			itemSubList.update();
-			var friendStore = Ext.StoreMgr.get('OnlineUsers');
-
-			// this.store.loadData(friendStore.data.items)
-			// 
-			// this.store = friendStore;
-			
-	        //itemSubList.update();
-	        itemSubList.bindStore(friendStore);
-			
-
-
-        },
-
-
-        beforedeactivate: function() {
-
-        }
-    },
+	// listeners: {
+	//         beforeactivate: function(ct, prevActiveCt) {
+	// 
+	// 		var itemSubList = Ext.getCmp('friendsList');
+	// 		itemSubList.update();
+	// 		var friendStore = Ext.StoreMgr.get('OnlineUsers');
+	// 
+	// 		// this.store.loadData(friendStore.data.items)
+	// 		// 
+	// 		// this.store = friendStore;
+	// 		
+	//         //itemSubList.update();
+	//         itemSubList.bindStore(friendStore);
+	// 		
+	// 
+	// 
+	//         },
+	// 
+	// 
+	//         beforedeactivate: function() {
+	// 
+	//         }
+	//     },
 
 	switchBack: function(){
 		    //this.setActiveItem(0);
