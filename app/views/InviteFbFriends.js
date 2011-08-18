@@ -157,6 +157,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		
 		console.log('update Swtore' +this.key);
 		
+		var newStore = Ext.StoreMgr.get('FriendListStore');
+		this.store = newStore;
 		
 		var itemListGallery = Ext.getCmp('friendsList');
         itemListGallery.update();
