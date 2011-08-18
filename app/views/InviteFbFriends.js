@@ -288,9 +288,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 				showAnimation: {
 					type: 'pop',
 					duration: 250
-				},
+				}
 
-                plugins: [new Ext.ux.PanelAction(pluginConfig)]
             });
             
             this.popupPnl.show();
