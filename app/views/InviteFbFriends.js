@@ -113,7 +113,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 				
 			}
         });
-
+		
+		this.loadFacebookFriends();
 
 		Ext.apply(this,{
 			layout:'fit',
@@ -236,46 +237,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 			console.log('invite friends beforeactivate');
 	
 			console.log('beforeactivate');
-			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
-			console.log('urll '+ url);
 
-			
-			var that = this;
-
-			
-			var friendStore = Ext.StoreMgr.get('FriendListStore');
-			loadingMask.show();
-			
-			Ext.util.JSONP.request({
-		    		url: 'https://graph.facebook.com/me/friends',
-					params: {
-						access_token: getFacebookTokenFromUrl(),
-					},
-				    callbackKey: 'callback',
-				    // Callback
-				    callback: function (data) {
-						console.log('data.length ='+data.data.length);
-					    for (var i = 0, ln = data.data.length; i < ln; i++) {
-						
-	                        var friend = data.data[i];
-							var friend = Ext.ModelMgr.create({id: friend.id, name: friend.name}, 'Friend');
-							friendStore.add(friend);
-					    	friendStore.sync();
-	                    }
-	
-	
-						loadingMask.hide();
-						var itemSubList = Ext.getCmp('friendsList');
-				        itemSubList.update();
-
-						itemSubList.store.loadData(friendStore.data.items)
-						this.store = friendStore;
-				        itemSubList.update();
-				        itemSubList.bindStore(this.store);
-				
-						this.isLoaded = true;
-				  	}	
-			});
 			
 			
 
@@ -288,6 +250,49 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 
         }
     },
+
+	loadFacebookFriends: function(){
+		var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
+		console.log('urll '+ url);
+
+		
+		var that = this;
+
+		
+		var friendStore = Ext.StoreMgr.get('FriendListStore');
+		loadingMask.show();
+		
+		Ext.util.JSONP.request({
+	    		url: 'https://graph.facebook.com/me/friends',
+				params: {
+					access_token: getFacebookTokenFromUrl(),
+				},
+			    callbackKey: 'callback',
+			    // Callback
+			    callback: function (data) {
+					console.log('data.length ='+data.data.length);
+				    for (var i = 0, ln = data.data.length; i < ln; i++) {
+					
+                        var friend = data.data[i];
+						var friend = Ext.ModelMgr.create({id: friend.id, name: friend.name}, 'Friend');
+						friendStore.add(friend);
+				    	friendStore.sync();
+                    }
+
+
+					loadingMask.hide();
+					var itemSubList = Ext.getCmp('friendsList');
+			        itemSubList.update();
+
+					itemSubList.store.loadData(friendStore.data.items)
+					this.store = friendStore;
+			        itemSubList.update();
+			        itemSubList.bindStore(this.store);
+			
+					this.isLoaded = true;
+			  	}	
+		});
+	}
 
 	switchBack: function(){
 		    //this.setActiveItem(0);
