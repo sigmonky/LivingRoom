@@ -236,6 +236,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
                 width: 240,
                 height: 330,
                 centered: true,
+				html: "<iframe frameborder='0' src='http://www.google.co.in/' width='100%' height='100%' id='iframe-external'></iframe>",
 				listeners:{
 					activate : function(){
 						console.log('activate popup');
