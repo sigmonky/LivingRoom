@@ -235,6 +235,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
         beforeactivate: function(ct, prevActiveCt) {
 			console.log('invite friends beforeactivate');
 	
+			if (this.isLoaded != true){
 			console.log('beforeactivate');
 			var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
 			console.log('urll '+ url);
@@ -265,7 +266,6 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	
 	
 						loadingMask.hide();
-						
 						var itemSubList = Ext.getCmp('friendsList');
 				        itemSubList.update();
 
@@ -273,13 +273,20 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 						this.store = friendStore;
 				        itemSubList.update();
 				        itemSubList.bindStore(this.store);
-		
+				
+						this.isLoaded = true;
+				  	}	
 			});
 			
 			
 
 			
 
+			}else{
+				var friendStore = Ext.StoreMgr.get('FriendListStore');
+				this.store = friendStore;
+		        itemSubList.update();
+		        itemSubList.bindStore(this.store);
 			}
         },
 
