@@ -214,6 +214,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	
 	panelLaunch: function(pluginConfig, panelContent, user){
 		
+		console.log('panel launch')
+		
 		var form = new Ext.form.FormPanel({
 		    id: 'noteEditor',
 			cls: 'textAreaInvite',
