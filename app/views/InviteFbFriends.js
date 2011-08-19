@@ -292,9 +292,26 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 
 	postToWall: function(options){
 		var user = options.user;
+		var message = Ext.getCmp('userMessageField').getValue();
+		console.log('user id ='+user.get('id'));
 		
-		var message = this.getComponent('userMessageField').getValue();
-		console.log('post to wall =' +message);
+		Ext.Ajax.request({
+					url : 'https://graph.facebook.com/'+user.get('id') +'/feed' , 
+					params: {
+						access_token: getFacebookTokenFromUrl(),
+						message: message;
+					},
+					method: 'POST',
+					success: function ( result, request ) {
+						Ext.Msg.alert('Invitation Sucessfuly Sent'); 
+					},
+
+					failure: function ( result, request) { 
+						Ext.Msg.alert('Failed', result.responseText); 
+					}  
+		});
+
+		
 		
 	},
 

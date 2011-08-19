@@ -25,11 +25,9 @@ Ext.regController('Roster', {
 		console.log('subscribeToJid id = '+options.jid);
 		var friend_jid = options.jid;
 		var friend_name= options.name;
-		
 		var user = new Object();
 		user.jid = friend_jid;
 		user.name = friend_name;
-		
 		jabberClient.addBuddy(user);
 	},
 
