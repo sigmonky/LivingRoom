@@ -56,7 +56,18 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//		iconCls: 'arrow_right',
 				scope: this,
 				handler: this.showRoster
-			}
+			},
+			
+				{
+					//Definition of Show Rost button
+					ui: 'action',
+					id: 'inviteFriends',
+					text: 'Add Friends',
+					iconMask: true,
+			//		iconCls: 'arrow_right',
+					scope: this,
+					handler: this.addFriendsToChat
+				}
 			]
 		});
 		
@@ -265,6 +276,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			this
 		);
 	},
+	
+	
+	addFriendsToChat: function(){
+		console.log('addFriendsToChat');
+		
+	},
 
 
 	scrollToBottom: function(){
@@ -288,8 +305,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			console.log("roomchatsession - hide Roster");
 			
 			this.getComponent('toolbar2').getComponent('showRoster').setVisible(false)
-		}else{
+			this.getComponent('toolbar2').getComponent('inviteFriends').setVisible(true)
 			
+		}else{
+			this.getComponent('toolbar2').getComponent('inviteFriends').setVisible(false)
 			this.getComponent('toolbar2').getComponent('showRoster').setVisible(true)
 		}
 		
