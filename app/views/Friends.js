@@ -57,9 +57,10 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 				                selModel.select(nearest);
 				            }
 
-				            store.removeAt(index);
-				            //store.sync();
-
+				            //store.removeAt(index);
+				            var user = store.getAt(index);
+							user.set('chatActive', false);
+							user.set('chatState', '');
 
 				        } else {
 				            this.deactivateAll();
@@ -317,10 +318,10 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
      * on any other items
      */
     onItemSwipe: function(list, index, node) {
-			console.log('onItemSwipe');
-        	var el        = Ext.get(node),
-            activeCls = this.list.activeCls,
-            hasClass  = el.hasCls(activeCls);
+		console.log('onItemSwipe');
+		var el        = Ext.get(node),
+		activeCls = this.list.activeCls,
+		hasClass  = el.hasCls(activeCls);
         
         this.deactivateAll();
 		
