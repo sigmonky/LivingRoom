@@ -249,7 +249,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				list.scroller.updateBoundary();
 				list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
 			},
-			
 	
 	        beforedeactivate: function() {
 	
