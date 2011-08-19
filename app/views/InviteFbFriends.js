@@ -291,6 +291,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 
 
 	postToWall: function(options){
+		var that = this;
 		var user = options.user;
 		var message = Ext.getCmp('userMessageField').getValue();
 		console.log('user id ='+user.get('id'));
@@ -312,6 +313,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					success: function ( result, request ) {
 						Ext.Msg.alert('Success', result.responseText); 
 						Ext.Msg.alert('Invitation Sucessfuly Sent'); 
+						that.popupPnl.hide();
 					},
 
 					failure: function ( result, request) { 

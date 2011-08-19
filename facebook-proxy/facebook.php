@@ -13,7 +13,6 @@ if ($action  == "postToWall"){
 
 $url = $base_url.$user_id.'/feed';
 
-
 $curl_post_data = array(
     'access_token' =>$token,
     'message' =>$message
