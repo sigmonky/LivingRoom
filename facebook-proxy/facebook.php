@@ -9,11 +9,15 @@ if ($action  == "postToWall"){
 		$base_url = 'https://graph.facebook.com/';
 }
 
+$base_url = 'https://graph.facebook.com/';
+
+
+$user_id = '527305423';
 $url = $base_url.$user_id.'/feed';
 
 $curl_post_data = array(
-    'token' =>$token,
-    'message' =>$message,
+    'token' =>'185799971471968%7C6abd4ab71ccadfcce7dba26c.3-100001502348575%7CKm3jSxCMzaZl9kbUBN_jkgmwTY8',
+    'message' =>'cueca',
     );
 
 $ch = curl_init();
