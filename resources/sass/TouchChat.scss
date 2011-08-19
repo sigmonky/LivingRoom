@@ -351,9 +351,13 @@ img.x-menupanel-icon-mask.check1
 	margin-bottom: 10px;
 	max-width: 80%;
 	clear: left;
+	border-top: none;
+	border-bottom: none;
 }
 
 .bubbledLeft{
+border-top: none;
+border-bottom: none;
     float: left;
 	margin-right: auto;
 	margin-left: 36px;
@@ -411,7 +415,8 @@ float: left;
 	bottom: 0px;
 	height: 32px;
 	content:"";
-
+	border-top: none;
+	border-bottom: none;
 	/*background-image: url(left_chatter.png); */
 	background-size: 32px 32px;
 	background-position: bottom left;
@@ -433,6 +438,8 @@ background-position: bottom left;
 
 border-radius: 3px;
 -webkit-border-radius: 3px;
+border-top: none;
+border-bottom: none;
 }
 
 .bubbledRight{
@@ -444,6 +451,8 @@ border-radius: 3px;
 	padding: 4px 15px 4px 10px; /*position within the border*/	
 	
 	clear: right;
+	border-top: none;
+	border-bottom: none;
 }
 
 .bubbledRight:before{
