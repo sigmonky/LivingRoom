@@ -31,18 +31,18 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 	                  required: true,
 	                  useClearIcon: true
 	               },
-				{
-	                   xtype: 'selectfield',
-	                   name: 'mystatus',
-	                   label: 'My Status',
-	                   options: [{
-	                       text: 'Available',
-	                       value: 'available'
-	                   }, {
-	                       text: 'Away',
-	                       value: 'away'
-	                   }]
-	               },
+				// {
+				// 	                   xtype: 'selectfield',
+				// 	                   name: 'mystatus',
+				// 	                   label: 'My Status',
+				// 	                   options: [{
+				// 	                       text: 'Available',
+				// 	                       value: 'available'
+				// 	                   }, {
+				// 	                       text: 'Away',
+				// 	                       value: 'away'
+				// 	                   }]
+				// 	               },
 					{
 		                  xtype: 'togglefield',
 		                  name: 'enable',
