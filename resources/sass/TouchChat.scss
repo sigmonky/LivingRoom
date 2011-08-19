@@ -479,6 +479,7 @@ border-radius: 3px;
 
 .messageList{
 border-top: 1px solid #FFF;
+border-bottom:1px solid #FFF;
 border:none;
 color: black;
 display: -webkit-box;
@@ -495,6 +496,8 @@ display: -webkit-box;
 min-height: 2.6em;
 padding: 0.5em 0.8em;
 position: relative;
+border-top: 1px solid #FFF;
+border-bottom:1px solid #FFF;
 }
 
 .messageList .x-list-item.x-item-selected{
@@ -506,6 +509,8 @@ border-top-color: none;
 color: #000;
 border-top: none;
 border-bottom: none;
+border-top: 1px solid #FFF;
+border-bottom:1px solid #FFF;
 }
 
 .x-tabbar.x-docked-top .x-tab {
