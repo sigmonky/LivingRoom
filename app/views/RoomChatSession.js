@@ -285,7 +285,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					cls: 'messageList',
 		            itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 							    '<div class="x-user-picture">' +
-							 	'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
+							 	'<img src="{photo_url}" width="32" height="32" />' +
 							     '</div>' +
 							 	'<div class="x-user-name">' +
 								 	'<b>{name}</b>' +
