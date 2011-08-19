@@ -60,11 +60,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			]
 		});
 		
-		console.log('room jid -' +this.jid)
-		console.log('room store msg -' +this.name+'_message')
+		console.log('roomchatsession - room jid -' +this.jid)
+		console.log('roomchatsession - room store msg -' +this.name+'_message')
 		
 		this.store = Ext.StoreMgr.get(this.name+'_message');
-		console.log('Room Chat session store msg -' +this.store)
+		console.log('roomchatsession - Room Chat session store msg -' +this.store)
 		panelLaunch = function(pluginConfig, panelContent){
 
 	
@@ -241,7 +241,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 
 	scrollToBottom: function(){
-		console.log('scrollToBottom');
+		console.log('roomchatsession - scrollToBottom');
 		var list = this.getComponent('chatList');
 		list.scroller.updateBoundary();
 		list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
@@ -251,14 +251,14 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
      * Wraps all updates of children into one easy call
      */
     doUpdate: function() {
-		console.log("doUpdate()");
-		console.log('room jid -' +this.jid)
+		console.log("roomchatsession - doUpdate()");
+		console.log('roomchatsession - room jid -' +this.jid)
 		
-		console.log('doUpdate this.isChatRoom -' +this.isChatRoom)
+		console.log('roomchatsession - doUpdate this.isChatRoom -' +this.isChatRoom)
 		
 		if (this.isChatRoom == false){
 		//	this.getCmp('showRoster').setVisible(true);	
-			console.log("hide Roster");
+			console.log("roomchatsession - hide Roster");
 			
 			this.getComponent('toolbar2').getComponent('showRoster').setVisible(false)
 		}else{
@@ -311,7 +311,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		var chatList = this.getComponent('chatList');
         var newStore = Ext.StoreMgr.get(this.name+'_message');
 
-		console.log('updateStore ='+this.name+'_message');
+		console.log('roomchatsession - updateStore ='+this.name+'_message');
 
 
 		this.store = newStore;
@@ -320,19 +320,18 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	showRoster: function(){
-		console.log('show roster 3');
-		
+		console.log('roomchatsession - show roster');
 		
 		var roomStore = this.name+'_room';
-		console.log('show roster 3roomStore '+roomStore);
+		console.log('roomchatsession - show roster roomStore '+roomStore);
 		
-		var store = Ext.StoreMgr.get(roomStore);
-		
-		console.log('store show Roster = '+store);
-		
-		store.each(function (record) {
-		    console.log('record.nickname = '+record.get('nickname'));
-		});
+		// var store = Ext.StoreMgr.get(roomStore);
+		// 
+		// console.log('store show Roster = '+store);
+		// 
+		// store.each(function (record) {
+		//     console.log('record.nickname = '+record.get('nickname'));
+		// });
 		
 		Ext.dispatch({
 		    controller: 'Roster',
@@ -417,9 +416,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
 		if (obj != undefined){
-			console.log('obj = '+obj);
+			console.log('roomchatsession - obj = '+obj);
 			var facebook_id = obj.get('id');
-			console.log('facebok id ' +facebook_id);
+			console.log('roomchatsession - facebok id ' +facebook_id);
 			var photo_url = "https://graph.facebook.com/"+facebook_id+"/picture";
 		}
 		else{
