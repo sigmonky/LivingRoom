@@ -280,7 +280,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	addFriendsToChat: function(){
 		console.log('addFriendsToChat');
-		
 	},
 
 
