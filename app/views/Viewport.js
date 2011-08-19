@@ -65,6 +65,10 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		
 		//Definition of Room List
 		
+		
+		
+		currentScreen = 
+		
 		this.pnlRoomList= new LivingRoomAPI.views.RoomList({
 			itemId: 'pnlRoomList',
 			title: 'All Fans',

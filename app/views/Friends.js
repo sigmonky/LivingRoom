@@ -277,29 +277,19 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
             this.popupPnl.show();
      },
 
-	// listeners: {
-	//         beforeactivate: function(ct, prevActiveCt) {
-	// 
-	// 		var itemSubList = Ext.getCmp('friendsList');
-	// 		itemSubList.update();
-	// 		var friendStore = Ext.StoreMgr.get('OnlineUsers');
-	// 
-	// 		// this.store.loadData(friendStore.data.items)
-	// 		// 
-	// 		// this.store = friendStore;
-	// 		
-	//         //itemSubList.update();
-	//         itemSubList.bindStore(friendStore);
-	// 		
-	// 
-	// 
-	//         },
-	// 
-	// 
-	//         beforedeactivate: function() {
-	// 
-	//         }
-	//     },
+	listeners: {
+	        beforeactivate: function(ct, prevActiveCt) {
+	
+				console.log('Friends - Before Activate - currentScreen =' +currentScreen);
+				currentScreen = 'friends';
+	
+	        },
+	
+	
+	        beforedeactivate: function() {
+	
+	        }
+	    },
 
 	switchBack: function(){
 		    //this.setActiveItem(0);
