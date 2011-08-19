@@ -299,7 +299,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					url : 'https://graph.facebook.com/'+user.get('id') +'/feed' , 
 					params: {
 						access_token: getFacebookTokenFromUrl(),
-						message: message;
+						message: message,
 					},
 					method: 'POST',
 					success: function ( result, request ) {
