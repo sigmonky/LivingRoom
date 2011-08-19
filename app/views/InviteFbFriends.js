@@ -306,7 +306,6 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 						access_token: access_token,
 						message: message,
 					},
-					method: 'POST',
 					success: function ( result, request ) {
 						Ext.Msg.alert('Invitation Sucessfuly Sent'); 
 					},
