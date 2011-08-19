@@ -40,7 +40,6 @@ LivingRoomAPI.views.Login = Ext.extend(Ext.form.FormPanel, {
 		}); 
 		
 		
-		currentScreen = 'room';
 		
 		LivingRoomAPI.views.Login.superclass.initComponent.call(this);
 	},

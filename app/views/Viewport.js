@@ -13,6 +13,9 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 	
 	initComponent : function(){
 	
+	
+		currentScreen = 'room';
+	
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
@@ -67,7 +70,7 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		
 		
 		
-		currentScreen = 
+	
 		
 		this.pnlRoomList= new LivingRoomAPI.views.RoomList({
 			itemId: 'pnlRoomList',
