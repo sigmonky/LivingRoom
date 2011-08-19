@@ -611,7 +611,7 @@ Ext.regController('Roster', {
 			}else{
 						console.log('current screen '+currentScreen);
 						
-						this.resetBadge();
+					//	this.resetBadge();
 						
 						
 						console.log('addMessageToOneToOneChatSession options.from '+ options.from);
