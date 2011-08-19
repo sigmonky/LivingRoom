@@ -319,7 +319,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	addFriendsToChat: function(){
 		console.log('addFriendsToChat');
-		selectFriendLaunch({
+		this.selectFriendLaunch({
             iconClass: 'x-panel-action-icon-close',
             position: 'tr',
             actionMethod: ['hide']
