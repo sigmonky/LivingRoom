@@ -598,6 +598,18 @@ Ext.regController('Roster', {
 				chatStore.add(message); 
 			}else{
 
+
+						if (currentScreen != 'friends'){
+							
+							console.log('addMessageToChatRoom - badgeText = '+this.application.viewport.getComponent('pnlFriends').getBadgeText());
+							
+							var badgeNumber = (this.application.viewport.getComponent('pnlFriends').getBadgeText() != '' ? parseInt(this.application.viewport.getComponent('pnlFriends').getBadgeText()) : 0);
+							
+							this.application.viewport.getComponent('pnlFriends').setBadge(badgeNumber + 1);
+							
+						}
+						
+						
 						console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 						console.log('addMessageToOneToOneChatSession options.message '+ options.message);
 

@@ -106,6 +106,7 @@ LivingRoomAPI.views.Settings = Ext.extend(Ext.form.FormPanel, {
 			}
 			console.log('settings - facebookFieldName '+ this.getComponent('formField').getComponent('facebookFieldName'));
 			
+			currentScreen = 'settings';
 			
         },
 
