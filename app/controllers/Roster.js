@@ -601,7 +601,7 @@ Ext.regController('Roster', {
 
 						if (currentScreen != 'friends'){
 							
-							console.log('get tab bar'+this.application.viewport.getTabBar());
+							console.log('get tab bar'+this.application.viewport.getTabBar().getComponent('pnlFriends'));
 						//	console.log('addMessageToChatRoom - badgeText = '+this.application.viewport.getComponent('pnlFriends').getBadgeText());
 							// var badgeNumber = (this.application.viewport.getComponent('pnlFriends').getBadgeText() != '' ? parseInt(this.application.viewport.getComponent('pnlFriends').getBadgeText()) : 0);
 							// this.application.viewport.getComponent('pnlFriends').setBadge(badgeNumber + 1);
