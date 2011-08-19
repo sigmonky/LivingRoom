@@ -299,9 +299,9 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		
 		console.log('url ='+url);
 		console.log('access_token ='+access_token);
-		
-		Ext.Ajax.request({
+		 Ext.data.ScriptTagProxy({
 					url : url, 
+					method: 'POST',
 					params: {
 						access_token: access_token,
 						message: message,
