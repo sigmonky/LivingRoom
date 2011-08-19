@@ -265,6 +265,45 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	        }
 	},
+	
+	selectFriendLaunch = function(pluginConfig, panelContent){
+
+    var pnl = new Ext.Panel({
+            floating: true,
+            width: 270,
+            height: 370,
+            centered: true,
+            modal: true,
+            scroll: 'vertical',
+			hideMode: 'close',
+            hideOnMaskTap: false,
+            layout: 'fit',
+			items: [
+				{
+					xtype: 'list',
+					itemId: 'chatList',
+					cls: 'messageList',
+		            itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
+							    '<div class="x-user-picture">' +
+							 	'<img src="https://graph.facebook.com/{id}/picture" width="32" height="32" />' +
+							     '</div>' +
+							 	'<div class="x-user-name">' +
+								 	'<b>{name}</b>' +
+							     '</div>' +
+							  '</div>',
+					store: Ext.StoreMgr.get('Roster'),
+					scroll: 'vertical',
+				}
+			],
+			showAnimation: {
+				type: 'pop',
+				duration: 250
+			},
+            plugins: [new Ext.ux.PanelAction(pluginConfig)]
+     });
+        
+        pnl.show();
+    },
 
 	/**
 	 * Add custom event listener
@@ -280,6 +319,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	addFriendsToChat: function(){
 		console.log('addFriendsToChat');
+		
+		selectFriendLaunch
+		
 	},
 
 
