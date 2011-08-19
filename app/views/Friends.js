@@ -280,7 +280,7 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 	listeners: {
 	        beforeactivate: function(ct, prevActiveCt) {
 	
-				console.log('Friends - Before Activate - currentScreen =' +currentScreen);
+				console.log('Friends - Before Activate - currentScreen ==' +currentScreen);
 				currentScreen = 'friends';
 	
 	        },
