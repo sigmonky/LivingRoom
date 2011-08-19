@@ -168,7 +168,13 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					store: this.store,
 					scroll: 'vertical',
 					listeners: {
-
+					
+						render: function(){
+							var list = this;
+							list.scroller.updateBoundary();
+							list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
+						},
+						
 						itemtap: function(list, index, item, e) {
 
 							//Let's take the online users store
@@ -243,12 +249,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				});
 
 	        },
-	
-		    afterrender: function(){
-	        	var list = this.getComponent('chatList');
-				list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
-			},
-	
+
 	        beforedeactivate: function() {
 	
 	        }
