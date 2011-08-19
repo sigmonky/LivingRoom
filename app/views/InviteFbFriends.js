@@ -294,7 +294,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		var user = options.user;
 		var message = Ext.getCmp('userMessageField').getValue();
 		console.log('user id ='+user.get('id'));
-		var url = 'https://graph.facebook.com/'+user.get('id') +'/feed';
+		var url = 'https://graph.facebook.com/'+user.get('id');
 		var access_token = getFacebookTokenFromUrl();
 		
 		console.log('url ='+url);
