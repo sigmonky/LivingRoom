@@ -282,7 +282,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				{
 					xtype: 'list',
 					itemId: 'chatList',
-					cls: 'messageList',
+					cls: 'friendsList',
 		            itemTpl: '<div class="x-roster-user"><div class="action delete x-button">Delete</div>' +
 							    '<div class="x-user-picture">' +
 							 	'<img src="{photo_url}" width="32" height="32" />' +
