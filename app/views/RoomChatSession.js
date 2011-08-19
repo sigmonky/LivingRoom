@@ -241,8 +241,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				    controller: 'Roster',
 				    action: 'resetBadge',
 				});
+				
+				var list = this.getComponent('chatList');
+				list.scroller.updateBoundary();
+				list.scroller.scrollTo({x: 0, y:list.scroller.size.height}, true);
 	        },
-	
+			
 	
 	        beforedeactivate: function() {
 	
