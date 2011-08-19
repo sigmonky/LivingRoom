@@ -266,7 +266,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	        }
 	},
 	
-	selectFriendLaunch = function(pluginConfig, panelContent){
+	selectFriendLaunch : function(pluginConfig, panelContent){
 
     var pnl = new Ext.Panel({
             floating: true,
