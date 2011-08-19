@@ -294,6 +294,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					store: Ext.StoreMgr.get('OnlineUsers'),
 					scroll: 'vertical',
 					multiSelect: true,
+					selModel: {
+					  mode: 'SIMPLE',
+					  allowDeselect: true
+					},
 				}
 			],
 			showAnimation: {
