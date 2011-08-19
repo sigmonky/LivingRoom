@@ -544,6 +544,8 @@ Ext.regController('Roster', {
 	},
 	
 	resetBadge: function(){
+		var tabBarItem = this.application.viewport.getTabBar().items.items[1];
+		
 		if (currentScreen != 'friends'){
 			console.log('get tab bar'+this.application.viewport.getTabBar().items.items[1].getBadgeText());
 			console.log('addMessageToChatRoom - badgeText = '+tabBarItem.getBadgeText());
@@ -612,18 +614,7 @@ Ext.regController('Roster', {
 			}else{
 						console.log('current screen '+currentScreen);
 						
-						var tabBarItem = this.application.viewport.getTabBar().items.items[1];
-
-						if (currentScreen != 'friends'){
-							console.log('get tab bar'+this.application.viewport.getTabBar().items.items[1].getBadgeText());
-							console.log('addMessageToChatRoom - badgeText = '+tabBarItem.getBadgeText());
-						    var badgeNumber = (tabBarItem.getBadgeText() != '' ? parseInt(tabBarItem.getBadgeText()) : 0);
-							tabBarItem.setBadge(badgeNumber + 1);
-						}else if (currentScreen == 'friends'){
-							tabBarItem.setBadge('');
-							
-						}
-						
+						this.resetBadge();
 						
 						console.log('addMessageToOneToOneChatSession options.from '+ options.from);
 						console.log('addMessageToOneToOneChatSession options.message '+ options.message);
