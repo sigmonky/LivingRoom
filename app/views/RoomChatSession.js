@@ -291,7 +291,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 								 	'<b>{name}</b>' +
 							     '</div>' +
 							  '</div>',
-					store: Ext.StoreMgr.get('Roster'),
+					store: Ext.StoreMgr.get('OnlineUsers'),
 					scroll: 'vertical',
 				}
 			],
