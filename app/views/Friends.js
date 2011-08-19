@@ -327,9 +327,8 @@ LivingRoomAPI.views.Friends = Ext.extend(Ext.Panel, {
 		var store = list.getStore();
 
 		//Let's take the selected user
-		var room = store.getAt(index);
-		if (room.get('isPrivate') == true){
-			console.log('onItemSwipe index '+index);
+		var user = store.getAt(index);
+		if (user.get('chatActive') == true){
 
         	if (hasClass) {
             	el.removeCls(activeCls);
