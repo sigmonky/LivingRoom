@@ -597,16 +597,12 @@ Ext.regController('Roster', {
 				var chatStore = Ext.StoreMgr.get(keyMsg);
 				chatStore.add(message); 
 			}else{
-
+						console.log('current screen '+currentScreen);
 
 						if (currentScreen != 'friends'){
-							
 							console.log('addMessageToChatRoom - badgeText = '+this.application.viewport.getComponent('pnlFriends').getBadgeText());
-							
 							var badgeNumber = (this.application.viewport.getComponent('pnlFriends').getBadgeText() != '' ? parseInt(this.application.viewport.getComponent('pnlFriends').getBadgeText()) : 0);
-							
 							this.application.viewport.getComponent('pnlFriends').setBadge(badgeNumber + 1);
-							
 						}
 						
 						
