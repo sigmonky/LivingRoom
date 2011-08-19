@@ -479,6 +479,7 @@ border-radius: 3px;
 
 .messageList{
 border-top: 1px solid #FFF;
+border:none;
 color: black;
 display: -webkit-box;
 min-height: 2.6em;
@@ -488,6 +489,7 @@ position: relative;
 
 .messageList .x-list-item{
 border-top: none;
+border-bottom: none;
 color: black;
 display: -webkit-box;
 min-height: 2.6em;
@@ -502,6 +504,8 @@ background:none;
 border-bottom-color: none;
 border-top-color: none;
 color: #000;
+border-top: none;
+border-bottom: none;
 }
 
 .x-tabbar.x-docked-top .x-tab {
@@ -525,3 +529,5 @@ background-color: #CCC;
 color:#FFF;
 background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, from(#205595), color-stop(0.02, #2468b9), color-stop(0.3, #205595), color-stop(0.65, #2470ca), to(#2470ca));
 }
+
+
