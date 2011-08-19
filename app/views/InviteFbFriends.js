@@ -217,12 +217,13 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		console.log('panel launch')
 		
 		var form = new Ext.form.FormPanel({
-		    id: 'noteEditor',
+		    id: 'messageEditor',
 			cls: 'textAreaInvite',
 			dock:'bottom',
 		    items: [
 		        {
 		            xtype: 'textareafield',
+					id: 'userMessageField',
 		            name: 'narrative',
 		            label: '',
 					value:'I\'m using the Second Screen App. Download it and join me',
@@ -233,17 +234,9 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
             this.popupPnl = new Ext.Panel({
                 floating: true,
 				bodyStyle: 'background: #EEE;',
-                width: 320,
+                width: 280,
                 height: 330,
                 centered: true,
-				html: "<iframe frameborder='0' src='https://www.facebook.com/dialog/send?app_id=185799971471968&name=People%20Argue%20Just%20to%20Win&link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&redirect_uri=http://www.logoslogic.com/chat/LivingRoom' width='100%' height='100%' id='iframe-external'></iframe>",
-				listeners:{
-					activate : function(){
-						console.log('activate popup');
-					//	Ext.Msg.alert("Success","listener working successfully",Ext.emptyFn);
-						// that.ShowWebPageInPanel(this,"https://www.facebook.com/dialog/send?app_id=185799971471968&name=People%20Argue%20Just%20to%20Win&link=http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html&redirect_uri=http://www.logoslogic.com/chat/LivingRoom");						
-					}				
-				},
                 modal: true,
 	            scroll: 'vertical',
 				hideMode: 'close',
@@ -259,7 +252,7 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 								xtype: 'button', 
 								margin: '0, 0, 0, 10px',
 								text: 'Send Invite',
-								handler: this.talkToUser,
+								handler: this.postToWall,
 								scope: this,
 								user: user,
 					},
@@ -283,9 +276,9 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 					title: 'Invite'
 				},
 				
-			//	form,
+				form,
 				],
-               // html: panelContent,
+                html: panelContent,
 				showAnimation: {
 					type: 'pop',
 					duration: 250
@@ -296,24 +289,16 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
             this.popupPnl.show();
      },
 
-	// listeners: {
-	//         beforeactivate: function(ct, prevActiveCt) {
-	// 		console.log('invite friends beforeactivate');
-	// 
-	// 		console.log('beforeactivate');
-	// 
-	// 		
-	// 		
-	// 
-	// 		
-	// 
-	//         },
-	// 
-	// 
-	//         beforedeactivate: function() {
-	// 
-	//         }
-	//     },
+
+	postToWall: function(options){
+		var user = options.user;
+		
+		var message = this.getComponent('userMessageField').getValue();
+		console.log('post to wall =' +message);
+		
+	},
+
+
 
 	loadFacebookFriends: function(){
 		var url = 'https://graph.facebook.com/me/friends?access_token='+getFacebookTokenFromUrl();
