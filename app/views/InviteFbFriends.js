@@ -294,19 +294,23 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		var user = options.user;
 		var message = Ext.getCmp('userMessageField').getValue();
 		console.log('user id ='+user.get('id'));
-		var url = 'https://graph.facebook.com/'+user.get('id') +'/feed';
+		var url = 'http://www.logoslogic.com/chat/LivingRoom/facebook-proxy/facebook.php';
 		var access_token = getFacebookTokenFromUrl();
 		
 		console.log('url ='+url);
+		console.log('access_token ='+access_token);
 		
 		Ext.Ajax.request({
 					url : url, 
 					params: {
 						access_token: access_token,
 						message: message,
+						user_id: user.get('id'),
+						action: 'postToWall',
 					},
 					method: 'POST',
 					success: function ( result, request ) {
+						Ext.Msg.alert('Success', result.responseText); 
 						Ext.Msg.alert('Invitation Sucessfuly Sent'); 
 					},
 
