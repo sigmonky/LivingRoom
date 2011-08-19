@@ -135,7 +135,22 @@ LivingRoomAPI.views.RoomRosterView = Ext.extend(Ext.Panel, {
 	
 	},
 	
+	listeners: {
+	        beforeactivate: function(ct, prevActiveCt) {
 	
+				console.log('Friends - Before Activate - currentScreen ==' +currentScreen);
+				currentScreen = 'room';
+				Ext.dispatch({
+				    controller: 'Roster',
+				    action: 'resetBadge',
+				});
+	        },
+	
+	
+	        beforedeactivate: function() {
+	
+	        }
+	},
 		
 	panelLaunch: function(pluginConfig, panelContent, user){
             this.popupPnl = new Ext.Panel({

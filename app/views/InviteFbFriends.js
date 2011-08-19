@@ -133,6 +133,23 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	
 	},
 	
+	listeners: {
+	        beforeactivate: function(ct, prevActiveCt) {
+	
+				console.log('Friends - Before Activate - currentScreen ==' +currentScreen);
+				currentScreen = 'friends';
+				Ext.dispatch({
+				    controller: 'Roster',
+				    action: 'resetBadge',
+				});
+	        },
+	
+	
+	        beforedeactivate: function() {
+	
+	        }
+	},
+	
 	switchBack: function(){
 		Ext.dispatch({
 		    controller: 'Roster',

@@ -131,7 +131,10 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 	
 				console.log('Friends - Before Activate - currentScreen ==' +currentScreen);
 				currentScreen = 'room';
-	
+				Ext.dispatch({
+				    controller: 'Roster',
+				    action: 'resetBadge',
+				});	
 	        },
 	
 	
