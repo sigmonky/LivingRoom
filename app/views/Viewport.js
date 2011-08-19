@@ -74,8 +74,6 @@ LivingRoomAPI.Viewport = Ext.extend(Ext.TabPanel, {
 		this.pnlRoomList= new LivingRoomAPI.views.RoomList({
 			itemId: 'pnlRoomList',
 			title: 'All Fans',
-			badgeText : '1',
-		    
 		});
 		
 		
