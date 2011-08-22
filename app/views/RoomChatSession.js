@@ -290,6 +290,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	onLine.each(function(record){
 	  OnlineUsersClone.add(record);
 	});
+	//OnlineUsersClone.refresh();
 	
     var pnl = new Ext.Panel({
             floating: true,
@@ -314,7 +315,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 								 	'<b>{name}</b>' +
 							     '</div>' +
 							  '</div>',
-					store: friendPopupSelector,
+					store: OnlineUsersClone,
 					scroll: 'vertical',
 					selModel: {
 					  mode: 'SIMPLE',
