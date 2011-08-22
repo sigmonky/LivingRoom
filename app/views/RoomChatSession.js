@@ -284,6 +284,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	inviteUsers: function(){
 		console.log('room chat session inviteUsers = '+this.invitedFriends);
+		this.FriendsPnlInvite.hide();
 	},
 	
 	selectFriendLaunch : function(pluginConfig, panelContent){
@@ -302,7 +303,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	});
 	//OnlineUsersClone.refresh();
 	var that = this;
-    var pnl = new Ext.Panel({
+    this.FriendsPnlInvite = new Ext.Panel({
             floating: true,
             width: 270,
             height: 320,
@@ -378,7 +379,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
             plugins: [new Ext.ux.PanelAction(pluginConfig)]
      });
         
-        pnl.show();
+        this.FriendsPnlInvite.show();
     },
 
 	/**
