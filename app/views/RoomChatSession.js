@@ -278,6 +278,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	        }
 	},
 	
+	inviteUsers: function(usersArray){
+		
+	},
+	
 	selectFriendLaunch : function(pluginConfig, panelContent){
  //http://stackoverflow.com/questions/4270356/sencha-touch-extjs-adding-checkbox-to-list
 	
@@ -297,13 +301,22 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
     var pnl = new Ext.Panel({
             floating: true,
             width: 270,
-            height: 370,
+            height: 320,
             centered: true,
             modal: true,
             scroll: 'vertical',
 			hideMode: 'close',
             hideOnMaskTap: false,
             layout: 'fit',
+			dockedItems:[
+			{
+						xtype: 'button', 
+						margin: '10, 0, 0,0',
+						dock: 'bottom',
+						text: 'Invite',
+						handler: this.inviteUsers,
+						scope: this,
+			},
 			items: [
 				{
 					xtype: 'list',
@@ -326,6 +339,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					listeners: {
 						selectionchange: function(model, array){
 							var count = array.length;
+							
+							if (count == 0){
+								
+							}
 							console.log('selectionchange recordsArray count='+count);
 							
 							for (i=0; i<count; i++){
