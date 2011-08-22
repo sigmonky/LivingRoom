@@ -288,7 +288,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 		
 	onLine.each(function(record){
-	  OnlineUsersClone.add(record);
+	 if(record.get('chatState') != 'invite'){
+	  	OnlineUsersClone.add(record);
+	}
 	});
 	//OnlineUsersClone.refresh();
 	
