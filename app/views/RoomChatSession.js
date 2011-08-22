@@ -325,7 +325,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					},
 					listeners: {
 						selectionchange: function(model, array){
-							console.log('selectionchange recordsArray ='+array[0].get('name'));
+							var count = array.length;
+							
+							for (i=0; i<count; i++){
+								console.log('selectionchange recordsArray ='+array[i].get('jid'));
+							}
 							
 						}
 					},
