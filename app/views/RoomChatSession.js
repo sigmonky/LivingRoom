@@ -62,6 +62,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			{xtype: 'spacer'},
 			{
 				//Definition of Show Rost button
+				
 				ui: 'action',
 				id: 'showRoster',
 				text: 'Co-Viewers',
@@ -73,6 +74,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			
 				{
 					//Definition of Show Rost button
+					xtype: 'button',
+					
 					ui: 'action',
 					id: 'inviteFriends',
 					text: 'Add Friends',
