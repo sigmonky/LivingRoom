@@ -80,7 +80,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					id: 'inviteFriends',
 					text: 'Add Friends',
 					iconMask: true,
-					iconCls: 'arrow_plus',
+					iconCls: 'arrow_left',
 					scope: this,
 					handler: this.addFriendsToChat
 				}
