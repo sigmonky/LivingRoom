@@ -157,32 +157,32 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		});
 	},
 	
-	
-	ShowWebPageInPanel: function (myPanel,url){
-
-		myPanel.update("");
-		myPanel.setLoading(true, true);
-
-		//Perform AJAX Call
-		//Note:- If you are using PhoneGap then you can even do cross domain AJAX
-		Ext.Ajax.request({
-
-			url: url,
-			success: function(response, opts){
-
-				var resText = response.responseText;
-				myPanel.update(resText);
-				myPanel.scroller.scrollTo({x: 0, y: 0});
-
-			},
-			failure: function(response, opts){
-				alert(response.status);
-			}		
-		});
-
-		myPanel.setLoading(false);
-
-	},
+	// 
+	// ShowWebPageInPanel: function (myPanel,url){
+	// 
+	// 	myPanel.update("");
+	// 	myPanel.setLoading(true, true);
+	// 
+	// 	//Perform AJAX Call
+	// 	//Note:- If you are using PhoneGap then you can even do cross domain AJAX
+	// 	Ext.Ajax.request({
+	// 
+	// 		url: url,
+	// 		success: function(response, opts){
+	// 
+	// 			var resText = response.responseText;
+	// 			myPanel.update(resText);
+	// 			myPanel.scroller.scrollTo({x: 0, y: 0});
+	// 
+	// 		},
+	// 		failure: function(response, opts){
+	// 			alert(response.status);
+	// 		}		
+	// 	});
+	// 
+	// 	myPanel.setLoading(false);
+	// 
+	// },
 	
 	/**
      * Wraps all updates of children into one easy call
@@ -337,11 +337,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 						Ext.Msg.alert('Failed', result.responseText); 
 					}  
 		});
-
-		
 		
 	},
-
 
 
 	loadFacebookFriends: function(){
