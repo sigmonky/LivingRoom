@@ -342,13 +342,13 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							var count = array.length;
 							
 							if (count == 0){
-								invitedFriends = nil;
+								this.invitedFriends = nil;
 							}
 							console.log('selectionchange recordsArray count='+count);
 							
 							for (i=0; i<count; i++){
 								console.log('selectionchange recordsArray ='+array[i].get('jid'));
-								invitedFriends.push(array[i].get('jid'));
+								this.invitedFriends.push(array[i].get('jid'));
 							}
 							
 						}
