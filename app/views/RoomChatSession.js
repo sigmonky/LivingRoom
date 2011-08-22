@@ -343,6 +343,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							
 							if (count == 0){
 								that.invitedFriends = 0;
+								that.invitedFriends = new array();
 							}
 							console.log('selectionchange recordsArray count='+count);
 							
