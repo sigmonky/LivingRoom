@@ -325,7 +325,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 					},
 					listeners: {
 						selectionchange: function(model, array){
-							console.log('selectionchange recordsArray ='+array);
+							console.log('selectionchange recordsArray ='+array[0].get('name'));
+							
 						}
 					},
 					multiSelect:true,
