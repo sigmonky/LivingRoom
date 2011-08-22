@@ -33,6 +33,18 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	initComponent: function(){
 		
+		Ext.regStore('OnlineUsersClone', {
+			model: 'RosterItem',
+			autoLoad: true,
+			proxy: {
+				type: 'memory',
+			   	reader: {
+			    	type: 'json'
+			   	}
+			},
+		});
+		
+		
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar2',
 			dock: 'top',
@@ -268,11 +280,15 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	selectFriendLaunch : function(pluginConfig, panelContent){
  //http://stackoverflow.com/questions/4270356/sencha-touch-extjs-adding-checkbox-to-list
-
+	
 	var onLine = Ext.StoreMgr.get('OnlineUsers');
-	var friendPopupSelector = new Ext.data.Store();
+	
+	var OnlineUsersClone = Ext.StoreMgr.get('OnlineUsersClone');
+	OnlineUsersClone.removeAll();
+	
+		
 	onLine.each(function(record){
-	  friendPopupSelector.add(record.copy());
+	  OnlineUsersClone.add(record);
 	});
 	
     var pnl = new Ext.Panel({
