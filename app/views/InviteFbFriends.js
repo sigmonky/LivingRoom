@@ -14,6 +14,9 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 		
 		var that = this;
 		
+
+		
+		
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar',
 			dock: 'top',
@@ -135,6 +138,8 @@ LivingRoomAPI.views.InviteFbFriends = Ext.extend(Ext.Panel, {
 	
 	listeners: {
 	        beforeactivate: function(ct, prevActiveCt) {
+
+	
 	
 				console.log('Friends - Before Activate - currentScreen ==' +currentScreen);
 				currentScreen = 'friends';
