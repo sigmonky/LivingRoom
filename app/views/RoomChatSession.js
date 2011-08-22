@@ -332,8 +332,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				duration: 250
 			},
 			listeners: {
-				selectionchange: function(selectionModel, recordsArray){
-					console.log('selectionchange recordsArray'+recordsArray);
+				selectionchange: function(){
+					console.log('selectionchange recordsArray');
 				}
 			},
             plugins: [new Ext.ux.PanelAction(pluginConfig)]
