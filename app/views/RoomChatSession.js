@@ -44,7 +44,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			},
 		});
 		
-		this.invitedFriends = Array();
+		this.invitedFriends = new Array();
 		
 		this.toolbar = new Ext.Toolbar({
 			itemId: 'toolbar2',
@@ -279,8 +279,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	        }
 	},
 	
-	inviteUsers: function(usersArray){
-		console.log('room chat session inviteUsers = '+usersArray);
+	inviteUsers: function(){
+		console.log('room chat session inviteUsers = '+this.invitedFriends);
 	},
 	
 	selectFriendLaunch : function(pluginConfig, panelContent){
@@ -298,7 +298,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	}
 	});
 	//OnlineUsersClone.refresh();
-	
+	var that = this;
     var pnl = new Ext.Panel({
             floating: true,
             width: 270,
@@ -342,13 +342,13 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							var count = array.length;
 							
 							if (count == 0){
-								this.invitedFriends = nil;
+								that.invitedFriends = nil;
 							}
 							console.log('selectionchange recordsArray count='+count);
 							
 							for (i=0; i<count; i++){
 								console.log('selectionchange recordsArray ='+array[i].get('jid'));
-								this.invitedFriends.push(array[i].get('jid'));
+								that.invitedFriends.push(array[i].get('jid'));
 							}
 							
 						}
