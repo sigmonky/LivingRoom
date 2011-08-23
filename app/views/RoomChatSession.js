@@ -305,7 +305,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			 },
 			// 	
 			orientationchange: function(pnl){
-					console.log('RoomChatSession orientationchange');
+				console.log('RoomChatSession orientationchange');
 			                   // Ext.getCmp('viewport').doLayout();  
 				//Let's take the written message
 				// 

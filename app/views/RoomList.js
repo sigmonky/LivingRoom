@@ -121,11 +121,14 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
             containertap: this.deactivateAll
         });
 		this.on('orientationchange', function(pnl){
+			this.setActiveItem(0);
+			
 			console.log('RoomChatSession orientationchange');
 			Ext.dispatch({
 			    controller: 'Roster',
 			    action: 'orientationChange',
 			});
+			
 		// //Let's take the written message
 		// 	var message = this.getDockedComponent('msgToolbar').getComponent('message');
 		// 
