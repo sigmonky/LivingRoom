@@ -112,6 +112,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 									keyup: function(fld, e){
 				                    	if (e.browserEvent.keyCode == 13) {
 				                      		e.stopEvent();
+											console.log('keyup');
 									  		var message = Ext.getCmp('cueca');
 				                      		message.fieldEl.dom.blur()
 				                      	}
