@@ -207,10 +207,12 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 		//Superclass inizialization
 		// 
-		console.log('RoomChatSession getDockedComponent ='+this.getComponent('msgToolbar'));
+		// 
+		
 		
 		this.on('orientationchange', function(pnl){
 			console.log('RoomChatSession orientationchange');
+			console.log('RoomChatSession getDockedComponent ='+this.getDockedComponent('msgToolbar'));
 		
 		//Let's take the written message
 			var message = this.getDockedComponent('msgToolbar').getComponent('message');
