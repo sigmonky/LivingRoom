@@ -251,7 +251,7 @@ Ext.regController('Roster', {
 		console.log('RoomChatSession getDockedComponent 1 ='+this.application.viewport.getComponent('pnlFriends'));
 		console.log('RoomChatSession getDockedComponent 2 ='+this.application.viewport.getComponent('pnlFriends').getDockedComponent('msgToolbar'));
 		
-		console.log('RoomChatSession getDockedComponent 3 ='+this.application.viewport.getComponent.('pnlFriends').getDockedComponent('msgToolbar').getComponent('message'));
+		console.log('RoomChatSession getDockedComponent 3 ='+this.application.viewport.getComponent('pnlFriends').getDockedComponent('msgToolbar').getComponent('message'));
 		
 	},
 	
