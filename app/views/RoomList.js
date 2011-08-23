@@ -123,7 +123,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 		this.on('orientationchange', function(pnl){
 			console.log('RoomChatSession orientationchange');
 			console.log('RoomChatSession getDockedComponent 1 ='+this.application.getComponent.('pnlFriends'));
-			console.log('RoomChatSession getDockedComponent 2 ='+this.application.getComponent.('pnlFriends').getDockedComponent('msgToolbar'));
+
 			
 			console.log('RoomChatSession getDockedComponent 3 ='+this.application.getComponent.('pnlFriends').getDockedComponent('msgToolbar').getComponent('message'));
 		// //Let's take the written message
