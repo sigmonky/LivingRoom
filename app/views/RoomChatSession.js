@@ -106,6 +106,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 							{
 								xtype: 'textareafield',
 								itemId: 'message',
+								id: 'cueca',
 								width: '70%'
 							},
 							{
