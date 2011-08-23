@@ -121,7 +121,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
             containertap: this.deactivateAll
         });
 		this.on('orientationchange', function(pnl){
-			console.log('RoomChatSession orientationchange Ext.getCmpmessage' +Ext.getCmp('message'));
+			console.log('RoomChatSession orientationchange Ext.getCmpmessage' +Ext.getCmp('msgToolbar'));
 			Ext.dispatch({
 			    controller: 'Roster',
 			    action: 'orientationChange',
