@@ -120,7 +120,19 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
             itemswipe: this.onItemSwipe,
             containertap: this.deactivateAll
         });
-
+		this.on('orientationchange', function(pnl){
+			console.log('RoomChatSession orientationchange');
+		
+		// //Let's take the written message
+		// 	var message = this.getDockedComponent('msgToolbar').getComponent('message');
+		// 
+		// 	console.log('RoomChatSession getDockedComponent ='+this.getDockedComponent('msgToolbar'));
+		// 
+		// 	console.log('RoomChatSession message ='+message);
+		// //Let's hide the virtual keyboard
+		// 	message.fieldEl.dom.blur();
+		
+		}, this);
 		//Superclass inizialization
 		LivingRoomAPI.views.Roster.superclass.initComponent.call(this);
 	
