@@ -232,7 +232,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.addEventListener();
 		Ext.EventManager.onOrientationChange(function(){
 		    console.log('RoomChatSession EventManager changed');
-			 var message = this.getDockedComponent('msgToolbar').getComponent('message');
+			 var message = this.getDockedComponent('msgToolbar').getComponent('cueca');
 	
 			console.log('RoomChatSession EventManager message ='+message);
 			 	message.fieldEl.dom.blur();
