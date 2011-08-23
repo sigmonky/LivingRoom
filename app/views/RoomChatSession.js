@@ -15,7 +15,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	jid: undefined, 
 	
-	id: undefined, 
+	id: 'cueca', 
 	
 	topic: undefined, 
 	
