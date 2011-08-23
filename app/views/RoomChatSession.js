@@ -285,6 +285,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		var message = this.getDockedComponent('msgToolbar').getComponent('message');
 		console.log('orientationChangeAction message'+message);
 		message.fieldEl.dom.blur();
+		Ext.getCmp('viewport').doLayout();
 	},
 	
 	listeners: {
