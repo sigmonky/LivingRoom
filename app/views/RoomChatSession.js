@@ -92,56 +92,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		this.store = Ext.StoreMgr.get(this.name+'_message');
 		console.log('roomchatsession - Room Chat session store msg -' +this.store)
-		panelLaunch = function(pluginConfig, panelContent){
-
-	
-        var pnl = new Ext.Panel({
-                floating: true,
-                width: 270,
-                height: 370,
-                centered: true,
-                modal: true,
-	            scroll: 'vertical',
-				hideMode: 'close',
-                hideOnMaskTap: false,
-                layout: 'fit',
-				dockedItems:[
-				{
-							xtype: 'button', 
-							margin: '10, 0, 0,0',
-							dock: 'bottom',
-							text: 'Block this User',
-							handler: this.facebookConnect,
-							scope: this,
-				},
-				{
-							xtype: 'button',
-							margin: '10, 0, 0,0',
-							dock: 'bottom',
-							text: 'Report this User',
-							handler: this.facebookConnect,
-							scope: this,
-				},
-					{
-								xtype: 'button', 
-								margin: '10, 0, 0,0',
-								dock: 'bottom',
-								text: 'Chat with this User',
-								handler: this.facebookConnect,
-								scope: this,
-					}
-
-				],
-                html: panelContent,
-				showAnimation: {
-					type: 'pop',
-					duration: 250
-				},
-                plugins: [new Ext.ux.PanelAction(pluginConfig)]
-            });
-            
-            pnl.show();
-        };
 
 
 		Ext.apply(this,{
