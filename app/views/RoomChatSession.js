@@ -226,6 +226,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		// }, this);
 		// 
 		
+
+		
+		LivingRoomAPI.views.RoomChatSession.superclass.initComponent.call(this);
+		this.addEventListener();
 		Ext.EventManager.onOrientationChange(function(){
 		    console.log('RoomChatSession EventManager changed');
 			 var message = this.getDockedComponent('msgToolbar').getComponent('message');
@@ -233,10 +237,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			console.log('RoomChatSession EventManager message ='+message);
 			 	message.fieldEl.dom.blur();
 		});
-		
-		LivingRoomAPI.views.RoomChatSession.superclass.initComponent.call(this);
-		this.addEventListener();
-	
 	},
 	
 	panelLaunch: function(pluginConfig, panelContent){
