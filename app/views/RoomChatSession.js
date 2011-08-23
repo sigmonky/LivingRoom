@@ -256,6 +256,17 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		});
 
 		//Superclass inizialization
+		
+		this.on('orientationchange', function(pnl){
+
+		//Let's take the written message
+		var message = this.getDockedComponent('pnlMessage').getComponent('message');
+
+		//Let's hide the virtual keyboard
+		message.fieldEl.dom.blur();
+
+		}, this);
+		
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
 		this.addEventListener();
 	
