@@ -225,6 +225,11 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		// 
 		// }, this);
 		// 
+		
+		Ext.EventManager.onOrientationChange(function(){
+		    console.log('changed');
+		});
+		
 		LivingRoomAPI.views.RoomChatSession.superclass.initComponent.call(this);
 		this.addEventListener();
 	
