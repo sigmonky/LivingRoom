@@ -279,6 +279,13 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
         
         pnl.show();
     },
+
+	orientationChangeAction: function(){
+		console.log('orientationChangeAction');
+		var message = this.getDockedComponent('msgToolbar').getComponent('message');
+		console.log('orientationChangeAction message'+message);
+		
+	},
 	
 	listeners: {
 			   beforeactivate: function(ct, prevActiveCt) {

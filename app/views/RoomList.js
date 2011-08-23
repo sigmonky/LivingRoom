@@ -166,12 +166,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			//this.dockedItems.items[0].setTitle("Room Topic");
 	},
 	
-	orientationChangeAction: function(){
-		console.log('orientationChangeAction');
-		var message = this.getDockedComponent('msgToolbar').getComponent('message');
-		console.log('orientationChangeAction message'+message);
-		
-	},
+
 	
 	deactivateAll: function() {
         Ext.select('div.search-item', this.el.dom).removeCls(this.activeCls);
