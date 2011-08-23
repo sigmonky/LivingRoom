@@ -260,7 +260,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.on('orientationchange', function(pnl){
 
 		//Let's take the written message
-		var message = this.getDockedComponent('pnlMessage').getComponent('message');
+		var message = this.getDockedComponent('msgToolbar').getComponent('message');
 
 		//Let's hide the virtual keyboard
 		message.fieldEl.dom.blur();
