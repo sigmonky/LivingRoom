@@ -161,6 +161,27 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 	},
 	
+	inviteFriend: function(jid){
+		console.log('inviteFriend jid' +jid);
+		var p = new JSJaCPacket('message');
+		//Set the message from with my JID
+		p.setFrom(this.myJID);
+		
+		//Set the room jid
+		p.setTo(jid);
+		
+		var x = p.appendNode(
+			p.buildNode('x', {'xmlns': 'http://jabber.org/protocol/muc#user'})
+		);
+		
+		var aNode = x.appendChild(p.getDoc().createElement('invite'));
+		aNode.setAttribute('to',jid);
+		
+		//Finally send the message
+		this.jabberConnection.send(p);
+		
+	},
+	
 	sendRoomMessage: function(message){
 	
 		console.log('sendRoomMessage '+message);

@@ -178,9 +178,7 @@ Ext.regApplication('LivingRoomAPI', {
 	},
 	
 	doLogin: function(){
-		
 		console.log('doLogin');
-		
 		loggedIn = true;
 		var facebookStore = Ext.StoreMgr.get('FacebookUser');
 		var obj = facebookStore.getAt(0);
@@ -188,9 +186,6 @@ Ext.regApplication('LivingRoomAPI', {
 		this.nickname = obj.get('name');
 		this.username = obj.get('id');
 		this.connectAsRegistered(this.username);
-		
-		
-		
 	},
 	
 	getFacebookFriendsWhoInstalledApp: function(){

@@ -347,6 +347,19 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 	inviteUsers: function(){
 		console.log('room chat session inviteUsers = '+this.invitedFriends);
+		
+		var numOfInvitees = this.invitedFriends.length;
+		
+		for (i=0; i<numOfInvitees; i++){
+			var jid = this.invitedFriends[i];
+			Ext.dispatch({
+			    controller: 'Roster',
+			    action: 'inviteFriend',
+				jid: jid,
+			});
+		}
+		
+		
 		this.FriendsPnlInvite.hide();
 	},
 	
