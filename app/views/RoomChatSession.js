@@ -107,7 +107,17 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 								xtype: 'textareafield',
 								itemId: 'message',
 								id: 'cueca',
-								width: '70%'
+								width: '70%',
+								listeners: {
+									keyup: function(fld, e){
+				                    if (e.browserEvent.keyCode == 13) {
+				                      e.stopEvent();
+									  var message = Ext.getCmp('cueca');
+				                      message.fieldEl.dom.blur()
+				                    }
+								}
+
+			                    
 							},
 							{
 								xtype: 'button',
@@ -235,7 +245,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//	 var message = this.getDockedComponent('msgToolbar').getComponent('cueca');
 			var message = Ext.getCmp('cueca');
 			console.log('RoomChatSession EventManager message ='+message);
-			 	message.fieldEl.dom.blur();
+			message.fieldEl.dom.blur();
 		});
 	},
 	
