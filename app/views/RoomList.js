@@ -129,7 +129,7 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 			    action: 'orientationChange',
 			});
 			
-			Ext.getCmp('message').fieldEl.dom.blur();
+			Ext.getCmp('cueca').fieldEl.dom.blur();
 		// //Let's take the written message
 		// 	var message = this.getDockedComponent('msgToolbar').getComponent('message');
 		// 
