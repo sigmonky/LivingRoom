@@ -123,11 +123,11 @@ LivingRoomAPI.views.RoomList = Ext.extend(Ext.Panel, {
 		this.on('orientationchange', function(pnl){
 			console.log('RoomChatSession orientationchange Ext.getCmpmessage' +Ext.getCmp('msgToolbar'));
 			console.log('RoomChatSession orientationchange Ext.getCmpmessage cueca' +Ext.getCmp('cueca'));
-			
-			Ext.dispatch({
-			    controller: 'Roster',
-			    action: 'orientationChange',
-			});
+			// 
+			// Ext.dispatch({
+			//     controller: 'Roster',
+			//     action: 'orientationChange',
+			// });
 			
 			Ext.getCmp('cueca').fieldEl.dom.blur();
 		// //Let's take the written message
