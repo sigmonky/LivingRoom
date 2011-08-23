@@ -272,7 +272,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		}, this);
 		
 		LivingRoomAPI.views.ChatSession.superclass.initComponent.call(this);
-		this.addEventListener();
+		//this.addEventListener();
 	
 	},
 	
@@ -294,7 +294,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	
 			orientationchange: function(){
 					console.log('RoomChatSession orientationchange');
-
+                   // Ext.getCmp('viewport').doLayout();  
 				//Let's take the written message
 				var message = this.getDockedComponent('msgToolbar').getComponent('message');
 
