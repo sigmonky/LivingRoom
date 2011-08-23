@@ -247,6 +247,14 @@ Ext.regController('Roster', {
 		
 	},	
 	
+	orientationChange: function(){
+		console.log('RoomChatSession getDockedComponent 1 ='+this.application.getComponent.('pnlFriends'));
+		console.log('RoomChatSession getDockedComponent 2 ='+this.application.getComponent.('pnlFriends').getDockedComponent('msgToolbar'));
+		
+		console.log('RoomChatSession getDockedComponent 3 ='+this.application.getComponent.('pnlFriends').getDockedComponent('msgToolbar').getComponent('message'));
+		
+	},
+	
 	
 	openChatSessionForRoomRoster: function(options){
 		
