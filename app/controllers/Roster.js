@@ -250,7 +250,8 @@ Ext.regController('Roster', {
 	orientationChange: function(){
 		console.log('orientationChange '+	Ext.getCmp('message'))
 		console.log('RoomChatSession getDockedComponent 1 ='+this.application.viewport.getComponent('pnlRoomList').items);
-		console.log('RoomChatSession getDockedComponent 2 ='+this.application.viewport.getComponent('pnlRoomList').items[0]);
+		console.log('RoomChatSession getDockedComponent 2 ='+this.application.viewport.getComponent('pnlRoomList').items.item[0]);
+		console.log('RoomChatSession getDockedComponent 3 ='+this.application.viewport.getComponent('pnlRoomList').items.items[0]);
 		
 		// console.log('RoomChatSession getDockedComponent 2 ='+this.application.viewport.getComponent('pnlFriends').getDockedComponent('msgToolbar'));
 		//this.application.viewport.getComponent('pnlRoomList').getComponent(this.pnlChatSession).orientationChangeAction();
