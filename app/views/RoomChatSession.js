@@ -191,7 +191,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 				          // overlay.show();
 
-							panelLaunch({
+							this.panelLaunch({
 		                        iconClass: 'x-panel-action-icon-close',
 		                        position: 'tr',
 		                        actionMethod: ['hide']
@@ -210,14 +210,14 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.on('orientationchange', function(pnl){
 			console.log('RoomChatSession orientationchange');
 		
-		// //Let's take the written message
-		// 	var message = this.getDockedComponent('msgToolbar').getComponent('message');
-		// 
-		// 	console.log('RoomChatSession getDockedComponent ='+this.getDockedComponent('msgToolbar'));
-		// 
-		// 	console.log('RoomChatSession message ='+message);
-		// //Let's hide the virtual keyboard
-		// 	message.fieldEl.dom.blur();
+		//Let's take the written message
+			var message = this.getDockedComponent('msgToolbar').getComponent('message');
+		
+			console.log('RoomChatSession getDockedComponent ='+this.getDockedComponent('msgToolbar'));
+		
+			console.log('RoomChatSession message ='+message);
+		//Let's hide the virtual keyboard
+			message.fieldEl.dom.blur();
 		
 		}, this);
 		// 
@@ -225,6 +225,57 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		this.addEventListener();
 	
 	},
+	
+	panelLaunch: function(pluginConfig, panelContent){
+
+
+    var pnl = new Ext.Panel({
+            floating: true,
+            width: 270,
+            height: 370,
+            centered: true,
+            modal: true,
+            scroll: 'vertical',
+			hideMode: 'close',
+            hideOnMaskTap: false,
+            layout: 'fit',
+			dockedItems:[
+			{
+						xtype: 'button', 
+						margin: '10, 0, 0,0',
+						dock: 'bottom',
+						text: 'Block this User',
+						handler: this.facebookConnect,
+						scope: this,
+			},
+			{
+						xtype: 'button',
+						margin: '10, 0, 0,0',
+						dock: 'bottom',
+						text: 'Report this User',
+						handler: this.facebookConnect,
+						scope: this,
+			},
+				{
+							xtype: 'button', 
+							margin: '10, 0, 0,0',
+							dock: 'bottom',
+							text: 'Chat with this User',
+							handler: this.facebookConnect,
+							scope: this,
+				}
+
+			],
+            html: panelContent,
+			showAnimation: {
+				type: 'pop',
+				duration: 250
+			},
+            plugins: [new Ext.ux.PanelAction(pluginConfig)]
+        });
+        
+        pnl.show();
+    },
 	
 	listeners: {
 			   beforeactivate: function(ct, prevActiveCt) {
