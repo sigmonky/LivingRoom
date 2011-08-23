@@ -261,7 +261,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 		//Let's take the written message
 		var message = this.getDockedComponent('msgToolbar').getComponent('message');
-
+		
+		console.log('RoomChatSession getDockedComponent ='+this.getDockedComponent('msgToolbar'));
+		
+		console.log('RoomChatSession message ='+message);
 		//Let's hide the virtual keyboard
 		message.fieldEl.dom.blur();
 
