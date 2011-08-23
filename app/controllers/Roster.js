@@ -460,9 +460,8 @@ Ext.regController('Roster', {
 
         this.pnlRoom.doUpdate();
 
-        //this.application.viewport.getComponent('pnlRoomList').setActiveItem(this.pnlRoom,{type: 'slide', duration: 500});
-		this.application.viewport.setActiveItem(this.pnlRoom,{type: 'slide', duration: 500});
-        
+        this.application.viewport.getComponent('pnlRoomList').setActiveItem(this.pnlRoom,{type: 'slide', duration: 500});
+		
 	},
 	
 	showRoomParticipants:function(options){
