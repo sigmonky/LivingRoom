@@ -307,17 +307,13 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 			// 	
 			orientationchange: function(pnl){
 				console.log('RoomChatSession orientationchange');
-			                   // Ext.getCmp('viewport').doLayout();  
+			    // Ext.getCmp('viewport').doLayout();  
 				//Let's take the written message
-				// 
 				console.log('RoomChatSession getDockedComponent');
-				
 				console.log('RoomChatSession getDockedComponent ='+this.getComponent('msgToolbar'));
 				 console.log('RoomChatSession getDockedComponent ='+this.getDockedComponent('msgToolbar'));
 				var message = this.getDockedComponent('msgToolbar').getComponent('message');
-			
 				console.log('RoomChatSession getDockedComponent ='+this.getDockedComponent('msgToolbar'));
-			
 				console.log('RoomChatSession message ='+message);
 				//Let's hide the virtual keyboard
 				message.fieldEl.dom.blur();
