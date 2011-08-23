@@ -610,7 +610,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//Let's take the written message
 		var message = this.getDockedComponent('msgToolbar').getComponent('message');
 
-			
 		//Send the message to all the room participants
 		if (this.isChatRoom == true){
 			this.jabberComponent.sendRoomMessage(message.getValue());
