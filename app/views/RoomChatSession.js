@@ -257,9 +257,9 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 
 		//Superclass inizialization
 		// 
-		// this.on('orientationchange', function(pnl){
-		// 	console.log('RoomChatSession orientationchange');
-		// 
+		this.on('orientationchange', function(pnl){
+			console.log('RoomChatSession orientationchange');
+		
 		// //Let's take the written message
 		// 	var message = this.getDockedComponent('msgToolbar').getComponent('message');
 		// 
@@ -268,8 +268,8 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		// 	console.log('RoomChatSession message ='+message);
 		// //Let's hide the virtual keyboard
 		// 	message.fieldEl.dom.blur();
-		// 
-		// }, this);
+		
+		}, this);
 		// 
 		LivingRoomAPI.views.RoomChatSession.superclass.initComponent.call(this);
 		this.addEventListener();
@@ -292,7 +292,7 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 				
 			 },
 	
-			orientationchange: function(orientation, w, h){
+			orientationchange: function(pnl){
 					console.log('RoomChatSession orientationchange');
                    // Ext.getCmp('viewport').doLayout();  
 				//Let's take the written message
