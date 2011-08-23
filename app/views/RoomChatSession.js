@@ -615,8 +615,10 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		if (this.isChatRoom == true){
 			this.jabberComponent.sendRoomMessage(message.getValue());
 		}else{
-			this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
-			this.addChatMessage(message.getValue(), null, true);
+			this.jabberComponent.sendRoomMessage(message.getValue());
+			
+			//this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
+			//this.addChatMessage(message.getValue(), null, true);
 		}
 		
 		//Clear the message field
