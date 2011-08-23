@@ -277,20 +277,20 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 	},
 	
 	listeners: {
-				// 	        beforeactivate: function(ct, prevActiveCt) {
-				// 	
-				// console.log('Friends - Before Activate - currentScreen ==' +currentScreen);
-				// if (this.isChatRoom == false){
-				// 	currentScreen = 'friends';
-				// }else{
-				// 	currentScreen = 'room';
-				// }
-				// Ext.dispatch({
-				//     controller: 'Roster',
-				//     action: 'resetBadge',
-				// });
-				// 
-				// 	        },
+			   beforeactivate: function(ct, prevActiveCt) {
+					
+				console.log('Friends - Before Activate - currentScreen ==' +currentScreen);
+				if (this.isChatRoom == false){
+					currentScreen = 'friends';
+				}else{
+					currentScreen = 'room';
+				}
+				Ext.dispatch({
+				    controller: 'Roster',
+				    action: 'resetBadge',
+				});
+				
+			 },
 	
 			orientationchange: function(pnl){
 					console.log('RoomChatSession orientationchange');
