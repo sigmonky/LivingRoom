@@ -604,7 +604,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//this.setActiveItem(0, {type:'slide', direction:'right'});
 	},
 	
-	
 	sendMessage: function(message){
 		
 		//Let's take the written message
@@ -622,7 +621,6 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		
 		//Clear the message field
 		message.setValue('');
-		
 	},
 	
 	addRoomAnnouncement: function(message){

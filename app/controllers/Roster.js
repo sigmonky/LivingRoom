@@ -137,9 +137,6 @@ Ext.regController('Roster', {
 		console.log('openChatSessionOneToOne jid = '+ user.get('jid'));
 		//Let's try to take an already active chat session panel
 		var pnlChatSession = this.application.viewport.getComponent('pnlFriends').getComponent(user.get('jid'));
-
-		var remote_friend_room_jid = user.get('jid').substring(0, user.get('jid').indexOf('@'))+'@conference.logoslogic.com';
-		console.log('openChatSessionOneToOne remote_friend_room_jid = '+ remote_friend_room_jid);
 		
 		var userRemoteJidMsg = user.get('jid') +'_message';
 		
@@ -218,7 +215,7 @@ Ext.regController('Roster', {
 					iconMask: true,
 					isPrivate:true,
 					badgeText: (options.show ? '' : '1'),
-					remoteJid: remote_friend_room_jid,
+					remoteJid: user.get('jid'),
 					remoteUserName: user.get('name'),
 					isChatRoom: false,
 					jabberComponent: jabberClient
