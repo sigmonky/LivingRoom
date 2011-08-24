@@ -1,6 +1,6 @@
 [
-{"jid":"mariah", "name":"Chat with Mariah Carey", "topic":"Mariah Carey", "type": "pubsub", "thumb":"http://www.logoslogic.com/chat/LivingRoom/mariah.png"},
-{"jid":"southpark", "name":"South Park", "topic":"South Park", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/south_park.png"},
-{"jid":"mtv", "name":"MTV", "topic":"MTV", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/mtv.png"},
-{"jid":"spongebob", "name":"Sponge Bob", "topic":"Sponge Bob", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/sponge_bob.png"}
+{"jid":"mariah", "name":"Chat with Mariah Carey", "topic":"Mariah Carey", "type": "pubsub", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"},
+{"jid":"chanel1", "name":"chanel1", "topic":"chanel1", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"},
+{"jid":"chanel2", "name":"chanel2", "topic":"chanel2", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"},
+{"jid":"chanel3", "name":"chanel3", "topic":"chanel3", "type": "room", "thumb":"http://www.logoslogic.com/chat/LivingRoom/user_default.gif"}
 ]
