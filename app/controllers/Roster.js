@@ -372,8 +372,10 @@ Ext.regController('Roster', {
 	inviteFriend: function(options){
 		var jid = options.jid;
 		jabberClient.inviteFriend(jid);
+		
 	},
 	
+
 	
 	addMessageToChatSession: function(options){
 		

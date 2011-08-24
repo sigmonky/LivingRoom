@@ -176,7 +176,6 @@ LIVINGROOM.xmpp.Client = Ext.extend(Ext.util.Observable, {
 		
 		var aNode = x.appendChild(p.getDoc().createElement('invite'));
 		aNode.setAttribute('to',jid);
-		
 		//Finally send the message
 		this.jabberConnection.send(p);
 		
