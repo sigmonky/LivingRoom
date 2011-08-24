@@ -604,23 +604,24 @@ LivingRoomAPI.views.RoomChatSession = Ext.extend(Ext.Panel, {
 		//this.setActiveItem(0, {type:'slide', direction:'right'});
 	},
 	
+	
 	sendMessage: function(message){
 		
 		//Let's take the written message
 		var message = this.getDockedComponent('msgToolbar').getComponent('message');
 
+			
 		//Send the message to all the room participants
 		if (this.isChatRoom == true){
 			this.jabberComponent.sendRoomMessage(message.getValue());
 		}else{
-			this.jabberComponent.sendRoomMessage(message.getValue());
-			
-			//this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
+			this.jabberComponent.sendMessage(this.remoteJid, message.getValue());
 			//this.addChatMessage(message.getValue(), null, true);
 		}
 		
 		//Clear the message field
 		message.setValue('');
+		
 	},
 	
 	addRoomAnnouncement: function(message){
