@@ -26,30 +26,30 @@ otalk.init = function () {
 	// show login dialog if we don't have it in local storage
 	// the localStorage option needs to be replaced with a 
 	// local password manager or OAuth.
-	if (localStorage.jid) {
-		account = otalk.get_credentials();
-		
-		otalk.connect(account);
-	}
-	else {
-		// $('#login_dialog').dialog({
-		// 	autoOpen: true,
-		// 	draggable: false,
-		// 	modal: true,
-		// 	title: 'Connect to XMPP',
-		// 	buttons: {
-		// 		"Connect": function () {
-		// 			otalk.connect({
-		// 				jid: $('#jid').val(),
-		// 				password: $('#password').val()
-		// 			});
-		// 			
-		// 			$('#password').val('');
-		// 			$(this).dialog('close');
-		// 		}
-		// 	}
-		// });
-	}
+	// if (localStorage.jid) {
+	// 	account = otalk.get_credentials();
+	// 	
+	// 	otalk.connect(account);
+	// }
+	// else {
+	// 	$('#login_dialog').dialog({
+	// 		autoOpen: true,
+	// 		draggable: false,
+	// 		modal: true,
+	// 		title: 'Connect to XMPP',
+	// 		buttons: {
+	// 			"Connect": function () {
+	// 				otalk.connect({
+	// 					jid: $('#jid').val(),
+	// 					password: $('#password').val()
+	// 				});
+	// 				
+	// 				$('#password').val('');
+	// 				$(this).dialog('close');
+	// 			}
+	// 		}
+	// 	});
+	// }
 	
 	// Set up UI element listeners
 	$('.close_tab').live('click', function () {
