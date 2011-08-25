@@ -134,43 +134,69 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		             RID: '<?=$sessionInfo['rid']?>'
 		      };
 		
-			function onAttach(status){
-				alert(status)
-			}
+			var connection = null;
+			var startTime = null;
+			var BOSH_SERVICE = '/http-bind';
 			
-		    Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind");
-		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onAttach);
-		    $('#log').append("<div>Session attached!</div>");
-		    Attacher.connection.sendIQ(
-		        $iq({to: Strophe.getDomainFromJid(Attacher.JID),
-		             type: "get"})
-		            .c('query', {xmlns:
-		                         'http://jabber.org/protocol/disco#info'}),
-		        function () {
-		            $('#log').append("<div>Response received " +
-		                             "from server!</div>");
-		        });
+			connection = new Strophe.Connection(BOSH_SERVICE);
+			
+			connection.rawInput = function (data) {
+			log('RECV: ' + data);
+			};
+			
+			connection.rawOutput = function (data) {
+			log('SENT: ' + data);
+			};
+			
+			// uncomment for extra debugging
+			// Strophe.log = function (lvl, msg) { log(msg); };
+			connection.attach(Attacher.JID, Attacher.SID, Attacher.RID,
+			onConnect);
+
+			              // set up handler
+			connection.addHandler(onResult, null, 'iq',
+			'result', 'disco-1', null);
+
+			              log('Strophe is attached.');
+
+			// send disco#info to jabber.org
+			var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
+
+			connection.send(iq);
+			
+		    // Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind");
+		    // Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onAttach);
+		    // $('#log').append("<div>Session attached!</div>");
+		    // Attacher.connection.sendIQ(
+		    //     $iq({to: Strophe.getDomainFromJid(Attacher.JID),
+		    //          type: "get"})
+		    //         .c('query', {xmlns:
+		    //                      'http://jabber.org/protocol/disco#info'}),
+		    //     function () {
+		    //         $('#log').append("<div>Response received " +
+		    //                          "from server!</div>");
+		    //     });
 		
 				// our global config object
 				// plugins use this if it exists
-				var StropheConfig = {
-					// Settings
-					boshUrl: 'http://www.logoslogic.com/http-bind',
-
-					// Implemented event handlers
-					subscriptionRequested: otalk.subscription_requested,
-					chatReceived: otalk.on_chat_message,
-					rosterChanged: otalk.update_roster,
-
-					// Not implemented in UI
-					handleMucMessage: otalk.handle_muc_message,
-					chatStateReceived: otalk.chat_state_received
-				};
-
-				$(function () {
-					// init our app
-					otalk.init(Attacher.connection);
-				});
+				// var StropheConfig = {
+				// 	// Settings
+				// 	boshUrl: 'http://www.logoslogic.com/http-bind',
+				// 
+				// 	// Implemented event handlers
+				// 	subscriptionRequested: otalk.subscription_requested,
+				// 	chatReceived: otalk.on_chat_message,
+				// 	rosterChanged: otalk.update_roster,
+				// 
+				// 	// Not implemented in UI
+				// 	handleMucMessage: otalk.handle_muc_message,
+				// 	chatStateReceived: otalk.chat_state_received
+				// };
+				// 
+				// $(function () {
+				// 	// init our app
+				// 	otalk.init(Attacher.connection);
+				// });
 		});
 		</script>
 		
