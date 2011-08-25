@@ -150,7 +150,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 				// plugins use this if it exists
 				var StropheConfig = {
 					// Settings
-					boshUrl: 'http://www.logoslogic.com/http-bind',
+					boshUrl: 'http://www.logoslogic.com/http-bind2',
 
 					// Implemented event handlers
 					subscriptionRequested: otalk.subscription_requested,
