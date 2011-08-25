@@ -131,7 +131,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		         var Attacher = {
 		             JID: '<?=$sessionInfo['jid']?>',
 		             SID: '<?=$sessionInfo['sid']?>',
-		             RID: '<?=$sessionInfo['rid']+1?>'
+		             RID: '<?=$sessionInfo['rid']?>'
 		      };
 		
 			var connection = null;
