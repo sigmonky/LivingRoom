@@ -93,7 +93,7 @@ $xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http
 $xmppPrebind->connect('isaacueca', 'cigano');
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
-print_r($sessionInfo);
+//print_r($sessionInfo);
 
 
 ?>
@@ -129,9 +129,9 @@ print_r($sessionInfo);
 		$(document).ready(function(){
 
 		         var Attacher = {
-		             JID: '<?=$jid?>',
-		             SID: '<?=$sid?>',
-		             RID: '<?=$rid?>'
+		             JID: '<?=$sessionInfo['jid']?>',
+		             SID: '<?=$sessionInfo['sid']?>',
+		             RID: '<?=$sessionInfo['rid']?>'
 		      };
 		    Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind");
 		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, null);
