@@ -121,7 +121,7 @@ Message: ".$e->getMessage()." on line ".$e->getLine();
         }
 
 }
-$bosh = new XMPP_BOSHConnect('logoslogic.com','/http-bind');
+$bosh = new XMPP_BOSHConnect('logoslogic.com','/http-bind2');
 
 $bosh->connect('john', 'john');
 
