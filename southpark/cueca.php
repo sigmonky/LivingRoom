@@ -87,13 +87,144 @@
 // $sid = $connection->getSid();
 
 
-include 'xmppprebind.php';
-
-$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
-$xmppPrebind->connect('john', 'john');
-$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
+// include 'xmppprebind.php';
+// 
+// $xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
+// $xmppPrebind->connect('john', 'john');
+// $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
 //print_r($sessionInfo);
+
+$bosh = new XMPP_BOSHConnect('logoslogic.com','/http-bind2');
+
+$bosh->connect($username,$password);
+
+$xmppJID = $bosh->getJid();
+$xmppSID = (string)$bosh->getSid();
+$xmppRID = $bosh->getRid();
+
+$_SESSION['xmpp_attached_sid'] = $xmppSID;
+-------------------------------------------------------------------------
+class XMPP_BOSHConnect {
+
+        protected $sid;
+        protected $rid;
+        protected $jid;
+        protected $of_server;
+        protected $httpbind_uri;
+        protected $authid;
+
+        public function getRid(){
+                return $this->rid;
+        }
+
+        public function getSid(){
+                return $this->sid;
+        }
+
+        public function getJid(){
+                return $this->jid;
+        }
+
+        public function __construct($of_server,$httpbind_uri){
+
+                $this->of_server = $of_server;
+
+                $this->httpbind_uri = $httpbind_uri;
+
+        }
+
+        public function connect ($user,$password){
+
+                $hash = base64_encode( $user . "@" . $this->of_server . "\0" .
+$user . "\0" . $password ) . "\n";
+
+        $rid = rand();
+        $jid = $user . "@" . $this->of_server ;
+                //
+        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' to='" . $this->of_server . "' xml:lang='en' wait='60' hold='1' ver='1.6' xmpp:version='1.0' content='application/xml; charset=utf-8' xmlns:xmpp='urn:xmpp:xbosh' route='xmpp:logoslogic.com:5222'/>";
+                //route='xmpp:127.0.0.1:5222'
+                $return = $this->__sendBody( $body );
+
+//              echo '<pre>';
+//              print_r(htmlentities($return));
+//              exit;
+
+        try {
+                $xml = new SimpleXMLElement( $return );
+        }
+
+        catch(Exception $e){
+                print get_class($e)." thrown within the exception handler.
+Message: ".$e->getMessage()." on line ".$e->getLine();
+                                exit;
+                }
+
+        $sid = $xml['sid'];
+        $rid++;
+        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>" .$hash ."</auth></body>";
+
+        $return = $this->__sendBody( $body );
+
+        $rid++;
+
+        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><iq type='set' id='_bind_auth_2' xmlns='jabber:client'><bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'/></iq></body>";
+
+        $return = $this->__sendBody( $body );
+        $rid++;
+        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><iq type='set'id='_session_auth_2' xmlns='jabber:client'><session xmlns='urn:ietf:params:xml:ns:xmpp-session'/></iq></body>";
+        $return = $this->__sendBody( $body );
+        $rid++;
+
+        $this->rid = $rid;
+        $this->sid = $sid;
+        $this->jid = $jid . '/' . $xml['authid'];
+
+        echo 'RID:' . $this->rid ;
+        echo '<br/>SID' . $this->sid;
+        echo '<br/>JID' . $this->jid;
+        echo '<br/>authid: ' . $xml['authid'];
+//        exit;
+        }
+
+        private function __sendBody($body){
+
+                try {
+                        $ch = curl_init(XMPP_HTTPBIND_URI);
+                }
+
+                catch(Exception $e){
+                print get_class($e)." thrown within the exception handler.
+Message: ".$e->getMessage()." on line ".$e->getLine();
+                exit;
+        }
+
+        curl_setopt( $ch , CURLOPT_HEADER , 0 );
+        curl_setopt( $ch , CURLOPT_POST , 1 );
+        curl_setopt( $ch , CURLOPT_POSTFIELDS , $body );
+        curl_setopt( $ch , CURLOPT_FOLLOWLOCATION , true );
+        $header = array('Content- Type: text/xml; charset=utf-8');
+        curl_setopt( $ch , CURLOPT_HTTPHEADER , $header );
+        curl_setopt( $ch , CURLOPT_VERBOSE , 0 );
+        $output = '';
+        curl_setopt( $ch , CURLOPT_RETURNTRANSFER , 1 );
+
+        try {
+                $output = curl_exec( $ch );
+        }
+
+        catch(Exception $e){
+                print get_class($e)." thrown within the exception handler.
+Message: ".$e->getMessage()." on line ".$e->getLine();
+                exit;
+        }
+
+        //$this->http_buffer[] = $output;
+        curl_close($ch);
+        return ($output);
+        }
+
+}
 
 
 ?>
@@ -128,10 +259,16 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		<script type="text/javascript">
 		$(document).ready(function(){
 
+		      //    var Attacher = {
+		      //        JID: '<?=$sessionInfo['jid']?>',
+		      //        SID: '<?=$sessionInfo['sid']?>',
+		      //        RID: '<?=$sessionInfo['rid']?>'
+		      // };
+		
 		         var Attacher = {
-		             JID: '<?=$sessionInfo['jid']?>',
-		             SID: '<?=$sessionInfo['sid']?>',
-		             RID: '<?=$sessionInfo['rid']?>'
+		             JID: '<?=$jid?>',
+		             SID: '<?=$sid?>',
+		             RID: '<?=$rid?>'
 		      };
 		
 			var connection = null;
