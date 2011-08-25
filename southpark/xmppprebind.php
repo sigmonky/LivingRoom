@@ -75,7 +75,7 @@ class XmppPrebind {
 	 * @param bool   $useSsl     Use SSL (not working yet, TODO)
 	 * @param bool   $debug      Enable debug
 	 */
-	public function __construct($jabberHost, $boshUri, $resource, $useSsl = false, $debug = false) {
+	public function __construct($jabberHost, $boshUri, $resource, $useSsl = false, $debug = true) {
 		$this->jabberHost = $jabberHost;
 		$this->boshUri    = $boshUri;
 		$this->resource   = $resource;
