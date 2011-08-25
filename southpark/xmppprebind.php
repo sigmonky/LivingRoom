@@ -322,7 +322,8 @@ class XmppPrebind {
 		$body->appendChild($auth);
 
 		$response = $this->send($domDocument->saveXML());
-
+		$this->debug($response, 'sendChallenge - body');
+		
 		$body = $this->getBodyFromXml($response);
 		$challenge = base64_decode($body->firstChild->nodeValue);
 
@@ -375,6 +376,7 @@ class XmppPrebind {
 
 		$body->appendChild($response);
 
+		$this->debug($body, 'sendChallengeAndBuildDigestMd5Auth String');
 
 		$challengeResponse = $this->send($domDocument->saveXML());
 
