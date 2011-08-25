@@ -124,7 +124,7 @@
         <script type="text/javascript">
             var button;
             var userInfo;
-            
+            var accessToken = '';
             window.fbAsyncInit = function() {
                 FB.init({ appId: '103751443062683', 
                     status: true, 
@@ -141,7 +141,6 @@
                         //user is already logged in and connected
                         FB.api('/me', function(info) {
                             login(response, info);
-		                    alert(response.authResponse);
 
                         });
                         
@@ -173,7 +172,7 @@
                 FB.getLoginStatus(updateButton);
                 FB.Event.subscribe('auth.statusChange', updateButton);	
 		      	FB.Event.subscribe('auth.login', function () {
-		          window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/cueca.php";
+		          window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/cueca.php?token="+accessToken;
 		      });
 
             };
@@ -187,7 +186,7 @@
             
             function login(response, info){
                 if (response.authResponse) {
-                    var accessToken                                 =   response.authResponse.accessToken;
+                     accessToken                                 =   response.authResponse.accessToken;
                 //    alert(accessToken);
                 //    userInfo.innerHTML                             = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
                  //                                                   + "<br /> Your Access Token: " + accessToken;
