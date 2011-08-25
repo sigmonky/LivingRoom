@@ -43,7 +43,7 @@
  */
 
 if(!class_exists('firephp')) {
-    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'FirePHP.class.php';
+    require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'firephp.class.php';
 }
 
 /**
