@@ -89,7 +89,7 @@
 
 include 'xmppprebind.php';
 
-$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
+$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
 $xmppPrebind->connect('john', 'john');
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
@@ -167,7 +167,8 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 			
 			// uncomment for extra debugging
 			// Strophe.log = function (lvl, msg) { log(msg); };
-			connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
+			connection.attach(Attacher.JID, Attacher.SID, Attacher.RID,
+			onConnect);
 
 			              // set up handler
 			connection.addHandler(onResult, null, 'iq',
@@ -193,25 +194,26 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		    //                          "from server!</div>");
 		    //     });
 		
-
-				var StropheConfig = {
-					// Settings
-					boshUrl: 'http://www.logoslogic.com/http-bind',
-				
-					// Implemented event handlers
-					subscriptionRequested: otalk.subscription_requested,
-					chatReceived: otalk.on_chat_message,
-					rosterChanged: otalk.update_roster,
-				
-					// Not implemented in UI
-					handleMucMessage: otalk.handle_muc_message,
-					chatStateReceived: otalk.chat_state_received
-				};
-				
-				$(function () {
-					// init our app
-					otalk.init(connection);
-				});
+				// our global config object
+				// plugins use this if it exists
+				// var StropheConfig = {
+				// 	// Settings
+				// 	boshUrl: 'http://www.logoslogic.com/http-bind',
+				// 
+				// 	// Implemented event handlers
+				// 	subscriptionRequested: otalk.subscription_requested,
+				// 	chatReceived: otalk.on_chat_message,
+				// 	rosterChanged: otalk.update_roster,
+				// 
+				// 	// Not implemented in UI
+				// 	handleMucMessage: otalk.handle_muc_message,
+				// 	chatStateReceived: otalk.chat_state_received
+				// };
+				// 
+				// $(function () {
+				// 	// init our app
+				// 	otalk.init(Attacher.connection);
+				// });
 		});
 		</script>
 		
