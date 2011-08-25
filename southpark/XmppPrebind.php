@@ -42,7 +42,7 @@ class XmppPrebind {
 	private $boshUri    = '';
 	private $resource   = '';
 
-	private $debug = false;
+	private $debug = true;
 	/**
 	 * FirePHP Instance
 	 *

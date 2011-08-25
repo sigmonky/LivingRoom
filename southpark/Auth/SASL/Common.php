@@ -43,7 +43,7 @@
 * @package Auth_SASL
 */
 
-require_once(dirname(__FILE__) . '/Exception.php');
+require_once(dirname(__FILE__) . '/exception.php');
 
 class Auth_SASL_Common
 {

@@ -43,7 +43,7 @@
 * @package Auth_SASL
 */
 
-require_once(dirname(__FILE__) . '/Common.php');
+require_once(dirname(__FILE__) . '/common.php');
 
 class Auth_SASL_DigestMD5 extends Auth_SASL_Common
 {
