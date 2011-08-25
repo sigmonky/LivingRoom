@@ -5,6 +5,12 @@ include 'xmppprebind.php';
 
 /* 1.Connect to Facebook via authentication Token in order to retrieve FB ID and set pass*/
 
+$facebook_token = $_GET['token'];
+
+$token
+
+
+
 /* 2.Connect to Jabber and register/authenticate user */
 
 /* 3.Set VCard */
@@ -20,6 +26,10 @@ $xmppPrebind->auth();
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
 //print_r($sessionInfo);
+
+
+
+
 
 
 ?>
@@ -45,7 +55,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		<script src="libs/strophe.chat.js" type="text/javascript"></script>
 		<script src="libs/strophe.muc.js" type="text/javascript"></script>
 		<script src="libs/mustache.js" type="text/javascript"></script>
-		<script src="otalk.js" type="text/javascript"></script>
+		<script src="client.js" type="text/javascript"></script>
 		<script src="ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- <script src="libs/backbone.js"></script>

@@ -26,7 +26,7 @@ include '/xmpphp/xmppprebind.php';
 		<script src="libs/strophe.chat.js" type="text/javascript"></script>
 		<script src="libs/strophe.muc.js" type="text/javascript"></script>
 		<script src="libs/mustache.js" type="text/javascript"></script>
-		<script src="otalk.js" type="text/javascript"></script>
+		<script src="client2.js" type="text/javascript"></script>
 		<script src="ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- <script src="libs/backbone.js"></script>
