@@ -133,8 +133,13 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		             SID: '<?=$sessionInfo['sid']?>',
 		             RID: '<?=$sessionInfo['rid']?>'
 		      };
+		
+			function onAttach(status){
+				alert(status)
+			}
+			
 		    Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind");
-		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, null);
+		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onAttach);
 		    $('#log').append("<div>Session attached!</div>");
 		    Attacher.connection.sendIQ(
 		        $iq({to: Strophe.getDomainFromJid(Attacher.JID),
