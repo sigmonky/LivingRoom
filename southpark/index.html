@@ -137,11 +137,12 @@
                function updateButton(response) {
                     button       =   document.getElementById('fb-auth');
                //     userInfo     =   document.getElementById('user-info');
-                    alert(response.authResponse);
                     if (response.authResponse) {
                         //user is already logged in and connected
                         FB.api('/me', function(info) {
                             login(response, info);
+		                    alert(response);
+
                         });
                         
                         button.onclick = function() {
