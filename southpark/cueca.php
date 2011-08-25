@@ -1,0 +1,6 @@
+<?php
+
+echo 'cueca';
+
+
+?>
