@@ -31,12 +31,11 @@ $result = curl_exec($ch);
 curl_close($ch);
 
 
-$result_array = json_decode($result);
+$result_obj = json_decode($result);
 
 
-print_r($result_array);
 
-$facebook_id = $result_array['id'];
+$facebook_id = $result_obj->id;
 
 echo $facebook_id;
 
