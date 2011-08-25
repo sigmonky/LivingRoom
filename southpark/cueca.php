@@ -167,7 +167,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 			
 			// uncomment for extra debugging
 			// Strophe.log = function (lvl, msg) { log(msg); };
-			connection.attach(Attacher.JID, Attacher.SID, Attacher.RID,
+			connection.attach(Attacher.JID, Attacher.SID, parseInt(Attacher.RID,10),
 			onConnect);
 
 			              // set up handler
