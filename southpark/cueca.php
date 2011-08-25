@@ -1,136 +1,100 @@
 <?php
+// class Xmpp_Bosh
+// {
+//     protected $sid;
+//     protected $rid;
+//     protected $jid;
+// 
+//     public function getRid ()
+//     {
+//         return $this->rid;
+//     }
+// 
+//     public function getSid ()
+//     {
+//         return $this->sid;
+//     }
+// 
+//     public function getJid ()
+//     {
+//         return $this->jid;
+//     }
+// 
+//     public function connect ( $user , $password )
+//     {
+//         $hash = base64_encode( $user . "@logoslogic.com\0" . $user ."\0" . $password ) . "\n";
+//         $rid = rand();
+//         $jid = $user . "@logoslogic.com";
+// 
+// 		$body = "<body content='text/xml; charset=utf-8' hold='1' xmlns='http://jabber.org/protocol/httpbind' to='logoslogic.com' wait='300' rid='" . $rid . "' route='xmpp:logoslogic.com:5222' secure='false'  ver='1.6' xmlns:xmpp='urn:xmpp:xbosh' xmpp:version='1.0'/>";
+//         $return = $this->__sendBody( $body );
+// 		echo $output ."<br>";
+//          $xml = new SimpleXMLElement( $return );
+//         
+//                 $sid = $xml['sid'];
+//                 $rid ++;
+//                 $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><authxmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>" . $hash ."</auth></body>";
+//                 $return = $this->__sendBody( $body );
+//         			
+//                 $rid ++;
+//                 $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "' to='logoslogic.com' xml:lang='en' xmpp:restart='true' xmlns:xmpp='urn:xmpp:xbosh'/>";
+//                 $return = $this->__sendBody( $body );
+//         
+//                 $rid ++;
+//                 $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><iq type='set' id='_bind_auth_2' xmlns='jabber:client'><bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'/></iq></body>";
+//         
+//                 $return = $this->__sendBody( $body );
+//         
+//                 $rid ++;
+//                 $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><iq type='set' id='_session_auth_2' xmlns='jabber:client'><session xmlns='urn:ietf:params:xml:ns:xmpp-session'/></iq></body>";
+//                 $return = $this->__sendBody( $body );
+//                 $rid ++;
+// 
+//                 $this->rid = $rid;
+//                 $this->sid = $sid;
+//                 $this->jid = $jid;
+//     }
+// 
+//     private function __sendBody ( $body )
+//     {
+// 		echo 'SEND BODY =='.$body."<BR>";
+// 
+//         $ch = curl_init( "http://www.logoslogic.com/http-bind" );
+//         curl_setopt( $ch , CURLOPT_HEADER , 0 );
+//         curl_setopt( $ch , CURLOPT_POST , 1 );
+//         curl_setopt( $ch , CURLOPT_POSTFIELDS , $body );
+//         curl_setopt( $ch , CURLOPT_FOLLOWLOCATION , true );
+//         $header = array(/*'Accept-Encoding: gzip, deflate',*/'Content-Type: text/xml; charset=utf-8'
+//         );
+//         curl_setopt( $ch , CURLOPT_HTTPHEADER , $header );
+//         curl_setopt( $ch , CURLOPT_VERBOSE , 0 );
+//         $output = '';
+// 
+//         curl_setopt( $ch , CURLOPT_RETURNTRANSFER , 1 );
+//         $output = curl_exec( $ch );
+//         //$this->http_buffer[] = $output;
+// 
+//         curl_close( $ch );
+//         return ( $output );
+//     }
+// }
 
-define('XMPP_HTTPBIND_URI', '/http-bind/');
-class XMPP_BOSHConnect {
+// $connection = new Xmpp_Bosh( );
+// 
+// $connection->connect( "john" , "john" );
+// $rid = $connection->getRid();
+// $jid = $connection->getJid();
+// $sid = $connection->getSid();
 
-        protected $sid;
-        protected $rid;
-        protected $jid;
-        protected $of_server;
-        protected $httpbind_uri;
-        protected $authid;
 
-        public function getRid(){
-                return $this->rid;
-        }
+include 'xmppprebind.php';
 
-        public function getSid(){
-                return $this->sid;
-        }
+$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
+$xmppPrebind->connect('john', 'john2');
+$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
-        public function getJid(){
-                return $this->jid;
-        }
+//print_r($sessionInfo);
 
-        public function __construct($of_server,$httpbind_uri){
-
-                $this->of_server = $of_server;
-
-                $this->httpbind_uri = $httpbind_uri;
-
-        }
-
-        public function connect ($user,$password){
-
-                $hash = base64_encode( $user . "@" . $this->of_server . "\0" .
-$user . "\0" . $password ) . "\n";
-
-        $rid = rand();
-        $jid = $user . "@" . $this->of_server ;
-                //
-        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' to='" . $this->of_server . "' xml:lang='en' wait='60' hold='1' ver='1.6' xmpp:version='1.0' content='application/xml; charset=utf-8' xmlns:xmpp='urn:xmpp:xbosh' route='xmpp:logoslogic.com:5222'/>";
-                //route='xmpp:127.0.0.1:5222'
-                $return = $this->__sendBody( $body );
-
-//              echo '<pre>';
-//              print_r(htmlentities($return));
-//              exit;
-
-        try {
-	echo $return;
-                $xml = new SimpleXMLElement( $return );
-        }
-
-        catch(Exception $e){
-                print get_class($e)." thrown within the exception handler.
-Message: ".$e->getMessage()." on line ".$e->getLine();
-                                exit;
-                }
-
-        $sid = $xml['sid'];
-        $rid++;
-        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>" .$hash ."</auth></body>";
-
-        $return = $this->__sendBody( $body );
-
-        $rid++;
-
-        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><iq type='set' id='_bind_auth_2' xmlns='jabber:client'><bind xmlns='urn:ietf:params:xml:ns:xmpp-bind'/></iq></body>";
-
-        $return = $this->__sendBody( $body );
-        $rid++;
-        $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><iq type='set'id='_session_auth_2' xmlns='jabber:client'><session xmlns='urn:ietf:params:xml:ns:xmpp-session'/></iq></body>";
-        $return = $this->__sendBody( $body );
-        $rid++;
-
-        $this->rid = $rid;
-        $this->sid = $sid;
-        $this->jid = $jid . '/' . $xml['authid'];
-
-        echo 'RID:' . $this->rid ;
-        echo '<br/>SID' . $this->sid;
-        echo '<br/>JID' . $this->jid;
-        echo '<br/>authid: ' . $xml['authid'];
-//        exit;
-        }
-
-        private function __sendBody($body){
-
-                try {
-                        $ch = curl_init(XMPP_HTTPBIND_URI);
-                }
-
-                catch(Exception $e){
-                print get_class($e)." thrown within the exception handler.
-Message: ".$e->getMessage()." on line ".$e->getLine();
-                exit;
-        }
-
-        curl_setopt( $ch , CURLOPT_HEADER , 0 );
-        curl_setopt( $ch , CURLOPT_POST , 1 );
-        curl_setopt( $ch , CURLOPT_POSTFIELDS , $body );
-        curl_setopt( $ch , CURLOPT_FOLLOWLOCATION , true );
-        $header = array('Content- Type: text/xml; charset=utf-8');
-        curl_setopt( $ch , CURLOPT_HTTPHEADER , $header );
-        curl_setopt( $ch , CURLOPT_VERBOSE , 0 );
-        $output = '';
-        curl_setopt( $ch , CURLOPT_RETURNTRANSFER , 1 );
-
-        try {
-                $output = curl_exec( $ch );
-        }
-
-        catch(Exception $e){
-                print get_class($e)." thrown within the exception handler.
-Message: ".$e->getMessage()." on line ".$e->getLine();
-                exit;
-        }
-
-        //$this->http_buffer[] = $output;
-        curl_close($ch);
-        return ($output);
-        }
-
-}
-$bosh = new XMPP_BOSHConnect('logoslogic.com','/http-bind2');
-
-$bosh->connect('john', 'john');
-
-$xmppJID = $bosh->getJid();
-$xmppSID = (string)$bosh->getSid();
-$xmppRID = $bosh->getRid();
-
-$_SESSION['xmpp_attached_sid'] = $xmppSID;
 
 ?>
 
@@ -164,16 +128,10 @@ $_SESSION['xmpp_attached_sid'] = $xmppSID;
 		<script type="text/javascript">
 		$(document).ready(function(){
 
-		      //    var Attacher = {
-		      //        JID: '<?=$sessionInfo['jid']?>',
-		      //        SID: '<?=$sessionInfo['sid']?>',
-		      //        RID: '<?=$sessionInfo['rid']?>'
-		      // };
-		
 		         var Attacher = {
-		             JID: '<?=$jid?>',
-		             SID: '<?=$sid?>',
-		             RID: '<?=$rid?>'
+		             JID: '<?=$sessionInfo['jid']?>',
+		             SID: '<?=$sessionInfo['sid']?>',
+		             RID: '<?=$sessionInfo['rid']?>'
 		      };
 		
 			var connection = null;

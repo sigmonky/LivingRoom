@@ -167,6 +167,8 @@ class XmppPrebind {
 		$response = $this->send($authXml);
 
 		$body = self::getBodyFromXml($response);
+		
+		$this->debug($body, 'auth - body');
 
 		if (!$body->hasChildNodes() || $body->firstChild->nodeName !== 'success') {
 			throw new XmppPrebindException("Invalid login");
@@ -226,6 +228,7 @@ class XmppPrebind {
 				}
 			}
 		}
+		$this->debug($restartResponse, 'sendRestart - restartResponse');
 
 		return $restartResponse;
 	}
