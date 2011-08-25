@@ -169,6 +169,10 @@
                 // run once with current status and whenever the status changes
                 FB.getLoginStatus(updateButton);
                 FB.Event.subscribe('auth.statusChange', updateButton);	
+		      FB.Event.subscribe('auth.login', function () {
+		          window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/cueca.php";
+		      });
+
             };
             (function() {
                 var e = document.createElement('script'); e.async = true;
