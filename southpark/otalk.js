@@ -10,6 +10,7 @@ otalk.init = function (connection) {
 	var account;
 	
 	this.conn = connection;
+	otalk.conn = this.conn;
 	
 	// various elems we want convenient access to
 	this.$roster = $('#roster');
