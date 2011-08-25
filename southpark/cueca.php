@@ -201,17 +201,39 @@ $sid = $connection->getSid();
 				<label>Nickname:</label><input type="text" id="muc_nickname"/>
 			</div>
 		</script>
+		
+		<script type="text/javascript">
+
+		  <!-- 
+	         var Attacher = {
+	             JID: '<?=$jid?>',
+	             SID: '<?=$rid?>',
+	             RID: '<?=$sid?>'
+	         };
+	    </script>
+	
+		
+		<script type="text/javascript">
+		$(document).ready(function () {
+		    Attacher.connection = new Strophe.Connection(
+		        “http://bosh.metajack.im:5280/xmpp-httpbind”);
+		    Attacher.connection.attach(
+		        Attacher.JID, Attacher.SID, Attacher.RID, null);
+		    $(‘#log’).append(“<div>Session attached!</div>”);
+		    Attacher.connection.sendIQ(
+		        $iq({to: Strophe.getDomainFromJid(Attacher.JID),
+		             type: “get”})
+		            .c(‘query’, {xmlns:
+		                         ‘http://jabber.org/protocol/disco#info’}),
+		        function () {
+		            $(‘#log’).append(“<div>Response received “ +
+		                             “from server!</div>”);
+		        });
+		});
+		</script>
+		
 	</head>
 	
-	<script type="text/javascript">
-    
-	  <!-- 
-         var Attacher = {
-             JID: '<?=$jid?>',
-             SID: '<?=$rid?>',
-             RID: '<?=$sid?>'
-         };
-    </script>
 
 
        <button id="fb-auth">Login</button>
@@ -253,25 +275,7 @@ $sid = $connection->getSid();
 			<label>JID:</label><input type="text" id="contact-jid">
 			<label>Name:</label><input type="text" id="contact-name">
 		</div>
-		
-		<script type="text/javascript">
-		$(document).ready(function () {
-		    Attacher.connection = new Strophe.Connection(
-		        “http://bosh.metajack.im:5280/xmpp-httpbind”);
-		    Attacher.connection.attach(
-		        Attacher.JID, Attacher.SID, Attacher.RID, null);
-		    $(‘#log’).append(“<div>Session attached!</div>”);
-		    Attacher.connection.sendIQ(
-		        $iq({to: Strophe.getDomainFromJid(Attacher.JID),
-		             type: “get”})
-		            .c(‘query’, {xmlns:
-		                         ‘http://jabber.org/protocol/disco#info’}),
-		        function () {
-		            $(‘#log’).append(“<div>Response received “ +
-		                             “from server!</div>”);
-		        });
-		});
-		</script>
+
 		
 		<div id='log'>
 	    </div>
