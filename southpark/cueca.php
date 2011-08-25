@@ -64,7 +64,7 @@ class Xmpp_Bosh
         curl_setopt( $ch , CURLOPT_POST , 1 );
         curl_setopt( $ch , CURLOPT_POSTFIELDS , $body );
         curl_setopt( $ch , CURLOPT_FOLLOWLOCATION , true );
-        $header = array(/*'Accept-Encoding: gzip, deflate',*/'Content-Type: text/xml; charset=utf-8'
+        $header = array('Accept-Encoding: gzip, deflate','Content-Type: text/xml; charset=utf-8'
         );
         curl_setopt( $ch , CURLOPT_HTTPHEADER , $header );
         curl_setopt( $ch , CURLOPT_VERBOSE , 0 );
