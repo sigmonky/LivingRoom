@@ -89,7 +89,7 @@
 
 include 'xmppprebind.php';
 
-$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind2', '', false, true);
+$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
 $xmppPrebind->connect('isaacueca', 'cigano');
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
@@ -133,7 +133,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		             SID: '<?=$sessionInfo['sid']?>',
 		             RID: '<?=$sessionInfo['rid']?>'
 		      };
-		    Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind2");
+		    Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind");
 		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, null);
 		    $('#log').append("<div>Session attached!</div>");
 		    Attacher.connection.sendIQ(
@@ -150,7 +150,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 				// plugins use this if it exists
 				var StropheConfig = {
 					// Settings
-					boshUrl: 'http://www.logoslogic.com/http-bind2',
+					boshUrl: 'http://www.logoslogic.com/http-bind',
 
 					// Implemented event handlers
 					subscriptionRequested: otalk.subscription_requested,
