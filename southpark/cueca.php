@@ -89,7 +89,7 @@
 
 include 'xmppprebind.php';
 
-$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
+$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind2', '', false, true);
 $xmppPrebind->connect('isaacueca', 'cigano');
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
