@@ -265,16 +265,6 @@ $sid = $connection->getSid();
 			<ul></ul>
 		</section>
 
-		<!-- Dialogs Below -->
-		<div id="login_dialog" class="hidden">
-			<label>JID:</label><input type="text" id="jid">
-			<label>Password:</label><input type="password" id="password">
-		</div>
-
-		<div id="contact_dialog" class="hidden">
-			<label>JID:</label><input type="text" id="contact-jid">
-			<label>Name:</label><input type="text" id="contact-name">
-		</div>
 
 		
 		<div id='log'>
