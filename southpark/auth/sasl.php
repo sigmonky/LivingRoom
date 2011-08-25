@@ -80,12 +80,12 @@ class Auth_SASL
                 break;
 
             case 'cram-md5':
-                $filename  = 'sasl/cramMD5.php';
+                $filename  = 'sasl/crammd5.php';
                 $classname = 'Auth_SASL_CramMD5';
                 break;
 
             case 'digest-md5':
-                $filename  = 'sasl/digestMD5.php';
+                $filename  = 'sasl/digestmd5.php';
                 $classname = 'Auth_SASL_DigestMD5';
                 break;
 
