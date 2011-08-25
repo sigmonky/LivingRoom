@@ -26,8 +26,8 @@ class Xmpp_Bosh
         $rid = rand();
         $jid = $user . "@logoslogic.com";
 
-		$body = "<body content='text/xml; charset=utf-8' hold='1' xmlns='http://jabber.org/protocol/httpbind' to='logoslogic.com' wait='300' rid='" . $rid . "' route='xmpp:logoslogic.com:5222' secure='false'  ver='1.6' xmlns:xmpp='urn:xmpp:xbosh' xmpp:version='1.0'/>";
-
+//		$body = "<body content='text/xml; charset=utf-8' hold='1' xmlns='http://jabber.org/protocol/httpbind' to='logoslogic.com' wait='300' rid='" . $rid . "' route='xmpp:logoslogic.com:5222' secure='false'  ver='1.6' xmlns:xmpp='urn:xmpp:xbosh' xmpp:version='1.0'/>";
+		$body = 'CUECA';
         $return = $this->__sendBody( $body );
 
          $xml = new SimpleXMLElement( $return );
