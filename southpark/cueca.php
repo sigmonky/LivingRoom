@@ -1,19 +1,4 @@
 <?php
-$connection = new Xmpp_Bosh( );
-$connection->connect( "isaacueca@logoslogic.com" , "cigano" );
-$rid = $connection->getRid();
-$jid = $connection->getJid();
-$sid = $connection->getSid();
-?>
-
-... YOUR CODE HERE
-
-var conn = new Strophe.Connection(
-         'http://127.0.0.1/xmpp-httpbind');
-   conn.connect.attach(<?=$jid?>, <?=$rid?>, <?=$sid?>, null);
-The class
-----------------------------------
-<?php
 class Xmpp_Bosh
 {
     protected $sid;
@@ -116,5 +101,22 @@ Type: text/xml; charset=utf-8'
         return ( $output );
     }
 }
+
+$connection = new Xmpp_Bosh( );
+$connection->connect( "isaacueca@logoslogic.com" , "cigano" );
+$rid = $connection->getRid();
+$jid = $connection->getJid();
+$sid = $connection->getSid();
+?>
+
+... YOUR CODE HERE
+
+var conn = new Strophe.Connection(
+         'http://127.0.0.1/xmpp-httpbind');
+   conn.connect.attach(<?=$jid?>, <?=$rid?>, <?=$sid?>, null);
+The class
+----------------------------------
+<?php
+
 
 ?>
