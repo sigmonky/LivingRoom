@@ -115,6 +115,12 @@ $sid = $connection->getSid();
 		
 		<script type="text/javascript">
 		$(document).ready(function(){
+
+		         var Attacher = {
+		             JID: '<?=$jid?>',
+		             SID: '<?=$rid?>',
+		             RID: '<?=$sid?>'
+		      };
 			alert(Attacher.JID)
 		    Attacher.connection = new Strophe.Connection("http://bosh.metajack.im:5280/xmpp-httpbind");
 		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, null);
@@ -259,15 +265,7 @@ $sid = $connection->getSid();
 		<div id='log'>
 	    </div>
 	
-		<script>
 
-		  <!-- 
-	         var Attacher = {
-	             JID: '<?=$jid?>',
-	             SID: '<?=$rid?>',
-	             RID: '<?=$sid?>'
-	         };
-	    </script>
 
 
 	</body>
