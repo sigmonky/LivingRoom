@@ -58,7 +58,7 @@ class Xmpp_Bosh
 
     private function __sendBody ( $body )
     {
-		echo 'SEND BODY =='.$body;
+		echo 'SEND BODY =='.$body."<BR>";
 
         $ch = curl_init( "http://www.logoslogic.com/http-bind" );
         curl_setopt( $ch , CURLOPT_HEADER , 0 );
