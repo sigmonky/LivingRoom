@@ -28,7 +28,7 @@ class Xmpp_Bosh
 
 		$body = "<body content='text/xml; charset=utf-8' hold='1' xmlns='http://jabber.org/protocol/httpbind' to='logoslogic.com' wait='300' rid='" . $rid . "' route='xmpp:logoslogic.com:5222' secure='false'  ver='1.6' xmlns:xmpp='urn:xmpp:xbosh' xmpp:version='1.0'/>";
         $return = $this->__sendBody( $body );
-		echo $output ."<br>";
+	//	echo $output ."<br>";
          $xml = new SimpleXMLElement( $return );
         
                 $sid = $xml['sid'];
@@ -57,15 +57,14 @@ class Xmpp_Bosh
 
     private function __sendBody ( $body )
     {
-		echo 'SEND BODY =='.$body."<BR>";
+		//echo 'SEND BODY =='.$body."<BR>";
 
         $ch = curl_init( "http://www.logoslogic.com/http-bind" );
         curl_setopt( $ch , CURLOPT_HEADER , 0 );
         curl_setopt( $ch , CURLOPT_POST , 1 );
         curl_setopt( $ch , CURLOPT_POSTFIELDS , $body );
         curl_setopt( $ch , CURLOPT_FOLLOWLOCATION , true );
-        $header = array('Accept-Encoding: gzip, deflate','Content-Type: text/xml; charset=utf-8'
-        );
+        $header = array('Accept-Encoding: gzip, deflate','Content-Type: text/xml; charset=utf-8');
         curl_setopt( $ch , CURLOPT_HTTPHEADER , $header );
         curl_setopt( $ch , CURLOPT_VERBOSE , 0 );
         $output = '';
