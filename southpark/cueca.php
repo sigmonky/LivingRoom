@@ -194,8 +194,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		    //                          "from server!</div>");
 		    //     });
 		
-				our global config object
-				plugins use this if it exists
+
 				var StropheConfig = {
 					// Settings
 					boshUrl: 'http://www.logoslogic.com/http-bind',
