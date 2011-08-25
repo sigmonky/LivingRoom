@@ -32,23 +32,23 @@ otalk.init = function () {
 		otalk.connect(account);
 	}
 	else {
-		$('#login_dialog').dialog({
-			autoOpen: true,
-			draggable: false,
-			modal: true,
-			title: 'Connect to XMPP',
-			buttons: {
-				"Connect": function () {
-					otalk.connect({
-						jid: $('#jid').val(),
-						password: $('#password').val()
-					});
-					
-					$('#password').val('');
-					$(this).dialog('close');
-				}
-			}
-		});
+		// $('#login_dialog').dialog({
+		// 	autoOpen: true,
+		// 	draggable: false,
+		// 	modal: true,
+		// 	title: 'Connect to XMPP',
+		// 	buttons: {
+		// 		"Connect": function () {
+		// 			otalk.connect({
+		// 				jid: $('#jid').val(),
+		// 				password: $('#password').val()
+		// 			});
+		// 			
+		// 			$('#password').val('');
+		// 			$(this).dialog('close');
+		// 		}
+		// 	}
+		// });
 	}
 	
 	// Set up UI element listeners
