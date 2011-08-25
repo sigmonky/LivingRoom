@@ -87,10 +87,10 @@ otalk.init = function (connection) {
 						$('#muc_room').val(), 
 						$('#muc_nickname').val(), 
 						function (m) {
-							console.log(m);
+						//	console.log(m);
 						}, 
 						function (m) {
-							console.log(m);
+						//	console.log(m);
 						},
 						$('#muc_password').val()
 					);
@@ -226,13 +226,13 @@ otalk.connect = function (account) {
 	// Logging so i can see all the traffic
 	conn.xmlInput = function (body) {
 		if (otalk.show_traffic) {
-			console.log('input', body);
+			//console.log('input', body);
 		}
 	};
 
 	conn.xmlOutput = function (body) {
 		if (otalk.show_traffic) {
-			console.log('output', body);
+			//console.log('output', body);
 		}
 	};
 	
@@ -405,14 +405,14 @@ otalk.get_or_create_chat = function (full_jid) {
 otalk.get_or_create_muc = function (muc_jid) {
 	var jid, jid_id, chat_div, chat_selector;
 	
-	console.log('get_or_create called', muc_jid);
+//	console.log('get_or_create called', muc_jid);
 	
 	jid = Strophe.getBareJidFromJid(muc_jid);
 	jid_id = otalk.jid_to_id(muc_jid);
 	
 	chat_selector = '#muc_' + jid_id;
 	
-	console.log();
+	//console.log();
 	
 	// get our jquery object
 	chat_div = $(chat_selector);
@@ -489,7 +489,7 @@ otalk.on_chat_message = function (message) {
 
 // chat state received
 otalk.chat_state_received = function (chat_state) {
-	console.log('chat state:', chat_state);
+//	console.log('chat state:', chat_state);
 };
 
 
