@@ -110,8 +110,8 @@ $sid = $connection->getSid();
 		<script src="otalk.js" type="text/javascript"></script>
 		<script src="ICanHaz.js" type="text/javascript"></script>
 		
-		<script src="libs/backbone.js"></script>
-		<script src="libs/underscore.js"></script>
+		<!-- <script src="libs/backbone.js"></script>
+		<script src="libs/underscore.js"></script> -->
 		
 		<script type="text/javascript">
 			
