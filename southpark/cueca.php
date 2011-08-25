@@ -95,15 +95,7 @@
 
 //print_r($sessionInfo);
 
-$bosh = new XMPP_BOSHConnect('logoslogic.com','/http-bind2');
 
-$bosh->connect($username,$password);
-
-$xmppJID = $bosh->getJid();
-$xmppSID = (string)$bosh->getSid();
-$xmppRID = $bosh->getRid();
-
-$_SESSION['xmpp_attached_sid'] = $xmppSID;
 -------------------------------------------------------------------------
 class XMPP_BOSHConnect {
 
@@ -225,7 +217,15 @@ Message: ".$e->getMessage()." on line ".$e->getLine();
         }
 
 }
+$bosh = new XMPP_BOSHConnect('logoslogic.com','/http-bind');
 
+$bosh->connect($username,$password);
+
+$xmppJID = $bosh->getJid();
+$xmppSID = (string)$bosh->getSid();
+$xmppRID = $bosh->getRid();
+
+$_SESSION['xmpp_attached_sid'] = $xmppSID;
 
 ?>
 
