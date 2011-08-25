@@ -60,32 +60,32 @@ class Auth_SASL
     {
         switch (strtolower($type)) {
             case 'anonymous':
-                $filename  = 'SASL/Anonymous.php';
+                $filename  = 'sasl/anonymous.php';
                 $classname = 'Auth_SASL_Anonymous';
                 break;
 
             case 'login':
-                $filename  = 'SASL/Login.php';
+                $filename  = 'sasl/login.php';
                 $classname = 'Auth_SASL_Login';
                 break;
 
             case 'plain':
-                $filename  = 'SASL/Plain.php';
+                $filename  = 'sasl/plain.php';
                 $classname = 'Auth_SASL_Plain';
                 break;
 
             case 'external':
-                $filename  = 'SASL/External.php';
+                $filename  = 'sasl/external.php';
                 $classname = 'Auth_SASL_External';
                 break;
 
             case 'cram-md5':
-                $filename  = 'SASL/CramMD5.php';
+                $filename  = 'sasl/cramMD5.php';
                 $classname = 'Auth_SASL_CramMD5';
                 break;
 
             case 'digest-md5':
-                $filename  = 'SASL/DigestMD5.php';
+                $filename  = 'sasl/digestMD5.php';
                 $classname = 'Auth_SASL_DigestMD5';
                 break;
 
