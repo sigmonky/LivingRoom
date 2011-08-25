@@ -172,7 +172,7 @@
                 FB.getLoginStatus(updateButton);
                 FB.Event.subscribe('auth.statusChange', updateButton);	
 		      	FB.Event.subscribe('auth.login', function () {
-		          window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/cueca.php?token="+accessToken;
+		          
 		      });
 
             };
@@ -187,6 +187,7 @@
             function login(response, info){
                 if (response.authResponse) {
                      accessToken                                 =   response.authResponse.accessToken;
+					 window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/cueca.php?token="+accessToken;
                 //    alert(accessToken);
                 //    userInfo.innerHTML                             = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
                  //                                                   + "<br /> Your Access Token: " + accessToken;

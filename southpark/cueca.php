@@ -11,6 +11,8 @@ $fields = array(
 	'access_token'=>urlencode($facebook_token),
 );
 
+
+
 foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
 
 rtrim($fields_string,'&');
