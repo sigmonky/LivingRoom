@@ -6,8 +6,37 @@ include 'xmppprebind.php';
 /* 1.Connect to Facebook via authentication Token in order to retrieve FB ID and set pass*/
 
 $facebook_token = $_GET['token'];
+$url = "https://graph.facebook.com/me?access_token=".$facebook_token;
+$fields = array(
+	'access_token'=>urlencode($facebook_token),
+);
 
-$token
+foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+
+rtrim($fields_string,'&');
+
+//open connection 
+$ch = curl_init();
+
+//set the url, number of POST vars, POST data 
+curl_setopt($ch,CURLOPT_URL,$url););
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// curl_setopt($ch,CURLOPT_POST,count($fields));
+// curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+//execute post 
+$result = curl_exec($ch);
+//close connection
+curl_close($ch);
+
+
+$result_array = json_decode($result);
+
+
+print_r($result_array);
+
+$facebook_id = $result_array['id'];
+
+echo $facebook_id;
 
 
 
