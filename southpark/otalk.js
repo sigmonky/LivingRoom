@@ -6,10 +6,10 @@
 var otalk = {};
 
 // set up the object
-otalk.init = function () {
+otalk.init = function (connection) {
 	var account;
 	
-	this.conn = '';
+	this.conn = connection;
 	
 	// various elems we want convenient access to
 	this.$roster = $('#roster');
