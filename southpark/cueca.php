@@ -133,32 +133,31 @@ $sid = $connection->getSid();
 		            $('#log').append("<div>Response received " +
 		                             "from server!</div>");
 		        });
+		
+				// our global config object
+				// plugins use this if it exists
+				var StropheConfig = {
+					// Settings
+					boshUrl: 'http://www.logoslogic.com/http-bind',
+
+					// Implemented event handlers
+					subscriptionRequested: otalk.subscription_requested,
+					chatReceived: otalk.on_chat_message,
+					rosterChanged: otalk.update_roster,
+
+					// Not implemented in UI
+					handleMucMessage: otalk.handle_muc_message,
+					chatStateReceived: otalk.chat_state_received
+				};
+
+				$(function () {
+					// init our app
+					otalk.init(Attacher.connection);
+				});
 		});
 		</script>
 		
-		<script type="text/javascript">
-			
-			// our global config object
-			// plugins use this if it exists
-			var StropheConfig = {
-				// Settings
-				boshUrl: 'http://www.logoslogic.com/http-bind',
-				
-				// Implemented event handlers
-				subscriptionRequested: otalk.subscription_requested,
-				chatReceived: otalk.on_chat_message,
-				rosterChanged: otalk.update_roster,
-				
-				// Not implemented in UI
-				handleMucMessage: otalk.handle_muc_message,
-				chatStateReceived: otalk.chat_state_received
-			};
-			
-			$(function () {
-				// init our app
-				otalk.init(Attacher.connection);
-			});
-		</script>
+
 		
 		<!-- Our html Mustache.js templates all go below. (Yes this validates) -->
 		<script id="user" type="text/html">
