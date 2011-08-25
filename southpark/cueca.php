@@ -202,35 +202,7 @@ $sid = $connection->getSid();
 			</div>
 		</script>
 		
-		<script type="text/javascript">
 
-		  <!-- 
-	         var Attacher = {
-	             JID: '<?=$jid?>',
-	             SID: '<?=$rid?>',
-	             RID: '<?=$sid?>'
-	         };
-	    </script>
-	
-		
-		<script type="text/javascript">
-		$(document).ready(function () {
-		    Attacher.connection = new Strophe.Connection(
-		        “http://bosh.metajack.im:5280/xmpp-httpbind”);
-		    Attacher.connection.attach(
-		        Attacher.JID, Attacher.SID, Attacher.RID, null);
-		    $(‘#log’).append(“<div>Session attached!</div>”);
-		    Attacher.connection.sendIQ(
-		        $iq({to: Strophe.getDomainFromJid(Attacher.JID),
-		             type: “get”})
-		            .c(‘query’, {xmlns:
-		                         ‘http://jabber.org/protocol/disco#info’}),
-		        function () {
-		            $(‘#log’).append(“<div>Response received “ +
-		                             “from server!</div>”);
-		        });
-		});
-		</script>
 		
 	</head>
 	
@@ -269,6 +241,37 @@ $sid = $connection->getSid();
 		
 		<div id='log'>
 	    </div>
+	
+		<script>
+
+		  <!-- 
+	         var Attacher = {
+	             JID: '<?=$jid?>',
+	             SID: '<?=$rid?>',
+	             RID: '<?=$sid?>'
+	         };
+	    </script>
+	
+		
+		<script>
+		$(document).ready(function () {
+			alert('a')
+		    Attacher.connection = new Strophe.Connection(
+		        “http://bosh.metajack.im:5280/xmpp-httpbind”);
+		    Attacher.connection.attach(
+		        Attacher.JID, Attacher.SID, Attacher.RID, null);
+		    $(‘#log’).append(“<div>Session attached!</div>”);
+		    Attacher.connection.sendIQ(
+		        $iq({to: Strophe.getDomainFromJid(Attacher.JID),
+		             type: “get”})
+		            .c(‘query’, {xmlns:
+		                         ‘http://jabber.org/protocol/disco#info’}),
+		        function () {
+		            $(‘#log’).append(“<div>Response received “ +
+		                             “from server!</div>”);
+		        });
+		});
+		</script>
 	</body>
 </html>
 
