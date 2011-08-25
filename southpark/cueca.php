@@ -79,12 +79,22 @@ class Xmpp_Bosh
     }
 }
 
-$connection = new Xmpp_Bosh( );
+// $connection = new Xmpp_Bosh( );
+// 
+// $connection->connect( "john" , "john" );
+// $rid = $connection->getRid();
+// $jid = $connection->getJid();
+// $sid = $connection->getSid();
 
-$connection->connect( "john" , "john" );
-$rid = $connection->getRid();
-$jid = $connection->getJid();
-$sid = $connection->getSid();
+
+include 'XmppPrebind.php';
+
+$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, false);
+$xmppPrebind->connect('isaacueca', 'cigano');
+$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
+
+print_r($sessionInfo);
+
 
 ?>
 
