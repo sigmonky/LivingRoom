@@ -122,7 +122,7 @@ $sid = $connection->getSid();
 		             RID: '<?=$sid?>'
 		      };
 			alert(Attacher.JID)
-		    Attacher.connection = new Strophe.Connection("http://bosh.metajack.im:5280/xmpp-httpbind");
+		    Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind");
 		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, null);
 		    $('#log').append("<div>Session attached!</div>");
 		    Attacher.connection.sendIQ(
