@@ -9,12 +9,12 @@
 /**
  * FirePHP for debugging
  */
-include 'FirePHP/fb.php';
+include 'firephp/fb.php';
 
 /**
  * PEAR Auth_SASL
  */
-require 'Auth/SASL.php';
+require 'auth/sasl.php';
 
 /**
  * XMPP Library for connecting to jabber server & receiving sid and rid

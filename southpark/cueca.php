@@ -87,7 +87,7 @@
 // $sid = $connection->getSid();
 
 
-include 'XmppPrebind.php';
+include 'xmppprebind.php';
 
 $xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, false);
 $xmppPrebind->connect('isaacueca', 'cigano');
