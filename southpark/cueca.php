@@ -213,7 +213,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 				
 				$(function () {
 					// init our app
-					otalk.init(Attacher.connection);
+					otalk.init(connection);
 				});
 		});
 		</script>
