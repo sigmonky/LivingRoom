@@ -58,12 +58,12 @@ class Xmpp_Bosh
 
     private function __sendBody ( $body )
     {
+		echo 'SEND BODY =='.$body;
 
         $ch = curl_init( "http://www.logoslogic.com/http-bind" );
         curl_setopt( $ch , CURLOPT_HEADER , 0 );
         curl_setopt( $ch , CURLOPT_POST , 1 );
         curl_setopt( $ch , CURLOPT_POSTFIELDS , $body );
-		echo $body;
         curl_setopt( $ch , CURLOPT_FOLLOWLOCATION , true );
         $header = array(/*'Accept-Encoding: gzip, deflate',*/'Content-Type: text/xml; charset=utf-8'
         );
