@@ -47,6 +47,7 @@ $user . "\0" . $password ) . "\n";
 //              exit;
 
         try {
+	echo $return;
                 $xml = new SimpleXMLElement( $return );
         }
 
