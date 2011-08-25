@@ -89,7 +89,7 @@
 
 include 'xmppprebind.php';
 
-$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
+$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
 $xmppPrebind->connect('john', 'john');
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
@@ -167,8 +167,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 			
 			// uncomment for extra debugging
 			// Strophe.log = function (lvl, msg) { log(msg); };
-			connection.attach(Attacher.JID, Attacher.SID, parseInt(Attacher.RID,10),
-			onConnect);
+			connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
 
 			              // set up handler
 			connection.addHandler(onResult, null, 'iq',
