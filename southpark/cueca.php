@@ -79,7 +79,7 @@ class Xmpp_Bosh
 
 $connection = new Xmpp_Bosh( );
 
-$connection->connect( "isaacueca" , "cigano" );
+$connection->connect( "john" , "john" );
 $rid = $connection->getRid();
 $jid = $connection->getJid();
 $sid = $connection->getSid();
