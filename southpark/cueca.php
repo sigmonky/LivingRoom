@@ -261,6 +261,9 @@ $sid = $connection->getSid();
 
 		
 		<div id='log'>
+			JID: <?=$jid?>
+            SID: <?=$sid?>
+            RID: <?=$rid?>
 	    </div>
 	
 
