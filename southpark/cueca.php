@@ -138,6 +138,23 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 			var startTime = null;
 			var BOSH_SERVICE = '/http-bind';
 			
+			function log(msg)
+			{
+			$('#log').append('<div></div>').append(
+			document.createTextNode(msg));
+			}
+
+			function onConnect(status)
+			{
+			if (status == Strophe.Status.DISCONNECTED)
+			log('Disconnected.');
+			}
+
+			          function onResult(iq) {
+			var elapsed = (new Date()) - startTime;
+			log('Response from jabber.org took ' + elapsed + 'ms.');
+			          }
+			
 			connection = new Strophe.Connection(BOSH_SERVICE);
 			
 			connection.rawInput = function (data) {
