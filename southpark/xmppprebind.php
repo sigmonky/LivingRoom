@@ -426,6 +426,7 @@ class XmppPrebind {
 		$body = self::getBodyFromDomDocument($domDocument);
 		$response = $domDocument->createElement('response');
 		$response->appendChild(self::getNewTextAttribute($domDocument, 'xmlns', self::XMLNS_SASL));
+		$this->debug($response, 'replyToChallengeResponse');
 
 		$body->appendChild($response);
 
