@@ -118,10 +118,10 @@ $sid = $connection->getSid();
 
 		         var Attacher = {
 		             JID: '<?=$jid?>',
-		             SID: '<?=$rid?>',
-		             RID: '<?=$sid?>'
+		             SID: '<?=$sid?>',
+		             RID: '<?=$rid?>'
 		      };
-			alert(Attacher.JID)
+			alert(Attacher.RID)
 		    Attacher.connection = new Strophe.Connection("http://www.logoslogic.com/http-bind");
 		    Attacher.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, null);
 		    $('#log').append("<div>Session attached!</div>");
