@@ -202,13 +202,15 @@ $sid = $connection->getSid();
 			</div>
 		</script>
 	</head>
+	
+	<script type="text/javascript">
+    
 	  <!-- 
          var Attacher = {
              JID: '<?=$jid?>',
-             SID: '<?=$rid?>,
+             SID: '<?=$rid?>',
              RID: '<?=$sid?>'
          };
-         // -->
     </script>
 
 
