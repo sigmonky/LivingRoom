@@ -29,13 +29,14 @@ class Xmpp_Bosh
 		$body = "<body content='text/xml; charset=utf-8' hold='1' xmlns='http://jabber.org/protocol/httpbind' to='logoslogic.com' wait='300' rid='" . $rid . "' route='xmpp:logoslogic.com:5222' secure='false'  ver='1.6' xmlns:xmpp='urn:xmpp:xbosh' xmpp:version='1.0'/>";
 
         $return = $this->__sendBody( $body );
+
          $xml = new SimpleXMLElement( $return );
         
                 $sid = $xml['sid'];
                 $rid ++;
                 $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><authxmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN'>" . $hash ."</auth></body>";
                 $return = $this->__sendBody( $body );
-        
+        			
                 $rid ++;
                 $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "' to='logoslogic.com' xml:lang='en' xmpp:restart='true' xmlns:xmpp='urn:xmpp:xbosh'/>";
                 $return = $this->__sendBody( $body );
@@ -49,6 +50,7 @@ class Xmpp_Bosh
                 $body = "<body rid='" . $rid . "' xmlns='http://jabber.org/protocol/httpbind' sid='" . $sid . "'><iq type='set' id='_session_auth_2' xmlns='jabber:client'><session xmlns='urn:ietf:params:xml:ns:xmpp-session'/></iq></body>";
                 $return = $this->__sendBody( $body );
                 $rid ++;
+
                 $this->rid = $rid;
                 $this->sid = $sid;
                 $this->jid = $jid;
@@ -61,6 +63,7 @@ class Xmpp_Bosh
         curl_setopt( $ch , CURLOPT_HEADER , 0 );
         curl_setopt( $ch , CURLOPT_POST , 1 );
         curl_setopt( $ch , CURLOPT_POSTFIELDS , $body );
+		echo $body;
         curl_setopt( $ch , CURLOPT_FOLLOWLOCATION , true );
         $header = array(/*'Accept-Encoding: gzip, deflate',*/'Content-Type: text/xml; charset=utf-8'
         );
