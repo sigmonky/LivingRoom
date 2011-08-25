@@ -2,7 +2,8 @@
 
 include 'xmppprebind.php';
 
-/* 1.Connect to Facebook via authentication Token in order to retrieve FB ID and set pass*//
+
+/* 1.Connect to Facebook via authentication Token in order to retrieve FB ID and set pass*/
 
 /* 2.Connect to Jabber and register/authenticate user */
 
@@ -12,12 +13,14 @@ include 'xmppprebind.php';
 
 /* 5.Fetch Available Room from Ejabberd */
 
+
 $xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
 $xmppPrebind->connect('john', 'john');
 $xmppPrebind->auth();
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
 //print_r($sessionInfo);
+
 
 ?>
 
@@ -97,7 +100,7 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 			connection.addHandler(onResult, null, 'iq',
 			'result', 'disco-1', null);
 
-			 log('Strophe is attached.');
+			              log('Strophe is attached.');
 
 			// send disco#info to jabber.org
 			var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
