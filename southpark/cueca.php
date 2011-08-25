@@ -194,26 +194,26 @@ $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and 
 		    //                          "from server!</div>");
 		    //     });
 		
-				// our global config object
-				// plugins use this if it exists
-				// var StropheConfig = {
-				// 	// Settings
-				// 	boshUrl: 'http://www.logoslogic.com/http-bind',
-				// 
-				// 	// Implemented event handlers
-				// 	subscriptionRequested: otalk.subscription_requested,
-				// 	chatReceived: otalk.on_chat_message,
-				// 	rosterChanged: otalk.update_roster,
-				// 
-				// 	// Not implemented in UI
-				// 	handleMucMessage: otalk.handle_muc_message,
-				// 	chatStateReceived: otalk.chat_state_received
-				// };
-				// 
-				// $(function () {
-				// 	// init our app
-				// 	otalk.init(Attacher.connection);
-				// });
+				our global config object
+				plugins use this if it exists
+				var StropheConfig = {
+					// Settings
+					boshUrl: 'http://www.logoslogic.com/http-bind',
+				
+					// Implemented event handlers
+					subscriptionRequested: otalk.subscription_requested,
+					chatReceived: otalk.on_chat_message,
+					rosterChanged: otalk.update_roster,
+				
+					// Not implemented in UI
+					handleMucMessage: otalk.handle_muc_message,
+					chatStateReceived: otalk.chat_state_received
+				};
+				
+				$(function () {
+					// init our app
+					otalk.init(Attacher.connection);
+				});
 		});
 		</script>
 		
