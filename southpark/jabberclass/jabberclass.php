@@ -7,7 +7,71 @@ define('JABBER_PASSWORD','cigano');
 define('RUN_TIME',5); // set a maximum run time of 5 seconds
 define('CBK_FREQ',1); // fire a callback event every second
 
+// This class handles events fired by the first call of CommandJabber client class (to create a user);
 
+class AddMessenger
+{
+
+	function AddMessenger(&$jab,$name,$pass)
+	{
+		$this->jab = &$jab;
+		$this->jab->NewUserName = $name;
+		$this->jab->NewUserPass = $pass;
+	}
+
+// called when a connection to the Jabber server is established
+	function handleConnected()
+	{
+		global $AddUserErrorCode;
+		$AddUserErrorCode=12002;
+		// now that we're connected, tell the Jabber class to login
+		$this->jab->login(JABBER_USERNAME,JABBER_PASSWORD);
+
+	}
+
+	// called after a login to indicate the the login was successful
+	function handleAuthenticated()
+	{
+		global $AddUserErrorCode;
+		$AddUserErrorCode=12003;
+		$this->jab->adduser_init();
+	}
+
+}
+// End of AddMessenger class
+
+/******************************************************************************************************/
+
+// Here is class to handle second call to CommandJabber clase - to fill out vcard
+
+class AddVcard
+{
+
+	function AddVcard(&$jab,$name,$pass,$firstn,$lastn,$patro,$sex,$role)
+	{
+		$this->jab = &$jab;
+		$this->jab->NewUserName = $name;
+		$this->jab->NewUserPass = $pass;
+		$this->GivenName = $firstn;
+		$this->FamilyName = $lastn;
+		$this->MiddleName = $patro;
+	}
+
+	function handleConnected()
+	{
+		global $AddVcardErrorCode;
+		$AddVcardErrorCode=14002;
+		$this->jab->login($this->jab->NewUserName,$this->jab->NewUserPass);
+	}
+
+	function handleAuthenticated()
+	{
+		global $AddVcardErrorCode;
+		$AddVcardErrorCode=14003;
+		$this->jab->addvcard_request($this->GivenName, $this->FamilyName, $this->MiddleName, $this->UserRole);
+	}
+
+} // End of AddVcard class
 
 /******************************************************************************************************/
 
@@ -21,7 +85,6 @@ require_once(dirname(__FILE__).'/jabber.php');
 class CommandJabber extends Jabber
 {
 	var $AddUserDialogID=0;
-	
 	var $NewUserName, $NewUserPass;
 
 	function adduser_init()
@@ -69,46 +132,46 @@ class CommandJabber extends Jabber
   				$this->_send($xml);
   			}
 		}
-	}
+}
 
-	function _on_adduser_getresult(&$packet)
+function _on_adduser_getresult(&$packet)
+{
+	global $AddUserErrorCode;
+	$AddUserErrorCode=12007;
+	if ($this->_node($packet,array('iq','@','type'))=='result')
 	{
-		global $AddUserErrorCode;
-		$AddUserErrorCode=12007;
-		if ($this->_node($packet,array('iq','@','type'))=='result')
-		{
-			if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
-			$AddUserErrorCode=0;
-		}
+		if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
+		$AddUserErrorCode=0;
+	}
 
 	$this->terminated = true;
-	}
+}
 
-	// following functions - for fill Vcard only
+// following functions - for fill Vcard only
 
-	function addvcard_request($GivenName, $FamilyName, $MiddleName)
-	{
-		$DialogID = $this->_unique_id('addvcard');
+function addvcard_request($GivenName, $FamilyName, $MiddleName)
+{
+	$DialogID = $this->_unique_id('addvcard');
 
-		$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
+	$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
 
-		$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
+	$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
 		<vCard xmlns="vcard-temp">
 		<N><FAMILY>'.$FamilyName.'</FAMILY><GIVEN>'.$GivenName.'</GIVEN><MIDDLE>'.$MiddleName.'</MIDDLE></N>
 		</vCard>
 		</iq>';
-		return $this->_send($xml);
-	}
+	return $this->_send($xml);
+}
 
-	function _on_addvcard_reply(&$packet)
-	{
+function _on_addvcard_reply(&$packet)
+{
 	global $AddVcardErrorCode;
 	$AddVcardErrorCode=14004;
 
 	if ($this->_node($packet,array('iq','@','type'))=='result') $AddVcardErrorCode=0;
 
 	$this->terminated = true;
-	}
+}
 
 } // End of Jabber class extension
 

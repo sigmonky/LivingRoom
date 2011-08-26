@@ -12,7 +12,7 @@ class User {
     public $facebook_id = null;
     public $facebook_name = null;
 	public $password = null;
-	public $sessionInfo = array();
+	public $sessionInfo = null;
 	
     public function __construct($token) {
 		$this->facebook_token = $token;
@@ -193,9 +193,9 @@ $facebook_name = $user->facebook_name;
 		$(document).ready(function(){
 
 	      var Attacher = {
-	             JID: '<?=$this->sessionInfo['jid']?>',
-	             SID: '<?=$this->sessionInfo['sid']?>',
-	             RID: '<?=$this->sessionInfo['rid']?>'
+	             JID: '<?=$user->sessionInfo['jid']?>',
+	             SID: '<?=$user->sessionInfo['sid']?>',
+	             RID: '<?=$user->sessionInfo['rid']?>'
 	      };
 		
 			var connection = null;
