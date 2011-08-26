@@ -14,6 +14,7 @@ class User {
 	public $password = null;
 	public $sessionInfo = null;
 	private $firePhp = null;
+	public $roomJid = null;
 	
 	private function debug($msg, $label = null) {
 		if ($this->firePhp) {
@@ -70,7 +71,6 @@ class User {
 			$this->generateUserPassword();
 		}
 		
-		$this->shutdown();
     }
 
     /**
@@ -168,6 +168,7 @@ class User {
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
+		$this->getRoomJidFromRoomProxyService();
 	}
 	
 	public function generateAnonymousSessionAttachment(){
@@ -176,6 +177,26 @@ class User {
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
+	}
+	
+	public function getRoomJidFromRoomProxyService(){
+		
+		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/room_proxy.json";
+		curl_setopt($this->curl,CURLOPT_URL, $url);
+		curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
+		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+			//open connection 
+        $response = curl_exec($this->curl);
+
+		if ($response){
+        	$result_obj = json_decode($response);
+			$roomJid = $result_obj->jid;
+			$this->roomJid = $roomJid;
+			$this->generateUserPassword();
+		}
+		
+		$this->shutdown();
+		
 	}
 
 }
@@ -246,6 +267,8 @@ http://xmpp.org/extensions/xep-0045.html#example-8*/
 	             SID: '<?=$user->sessionInfo['sid']?>',
 	             RID: '<?=$user->sessionInfo['rid']?>'
 	      };
+			
+			var roomJid = '<?=$user->roomJid?>';
 		
 			var connection = null;
 			var startTime = null;
