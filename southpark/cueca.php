@@ -27,12 +27,16 @@ class User {
 		$this->firePhp = FirePHP::getInstance(true);
 		$this->firePhp->setEnabled(true);
 		
-		$this->debug($token, '__construct - restartResponse');
+		$this->debug($token, '__construct');
 
 		if ($token != NULL){
+			$this->debug($token, '__construct nao eh nulo');
+			
 			$this->facebook_token = $token;
 			$this->getFBUser();
 		}else{
+			$this->debug($token, '__construct eh nulo -');
+			
 		//	$this->generateAnonymousSessionAttachment();
 		}
         register_shutdown_function(array($this, 'shutdown'));
