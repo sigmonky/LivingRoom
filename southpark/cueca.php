@@ -5,8 +5,6 @@ require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
 require_once(dirname(__FILE__)."/xmppprebind.php");
 
 
-
-
 class User {
 
     public $curl = null;
@@ -31,7 +29,7 @@ class User {
 		
 		$this->debug($token, '__construct - restartResponse');
 
-		if ($token != ''){
+		if ($token != NULL){
 			$this->facebook_token = $token;
 			$this->getFBUser();
 		}else{
