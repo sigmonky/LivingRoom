@@ -40,6 +40,8 @@ class User {
 			$this->facebook_id = $facebook_id;
 			$this->facebook_name = $facebook_name;
 		}
+		
+		$this->shutdown();
     }
 
     /**
@@ -58,10 +60,11 @@ $facebook_token = $_GET['token'];
 
 $user = new User($facebook_token);
 $facebook_id = $user->facebook_id;
+$facebook_name = $user->facebook_name;
 
 
 echo 'facebook_id = '.$facebook_id;
-echo 'facebook name = '.$user->name;
+echo 'facebook name = '.$facebook_name;
 
 
 
