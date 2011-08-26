@@ -157,7 +157,7 @@ class User {
 		$this->generateSessionAttachment();
 	}
 	
-	public function generateSessionAttachment($isAnonymous = false){
+	public function generateSessionAttachment($isAnonymous){
 		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
 		if ($isAnonymous == false){
 			$xmppPrebind->connect($this->facebook_id, $this->password);
