@@ -4,6 +4,8 @@ require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
 
 require_once(dirname(__FILE__)."/xmppprebind.php");
 
+include 'firephp/fb.php';
+
 
 class User {
 
@@ -17,6 +19,8 @@ class User {
     public function __construct($token=null) {
 		$this->facebook_token = $token;
         $this->curl = curl_init();
+		$this->debug($token, '__construct - ');
+
 		if ($token != null){
 			$this->getFBUser();
 		}else{
@@ -175,7 +179,7 @@ class User {
 		}
 	}else{
 		//Connect Anonymous User
-		$user = new User($facebook_token);
+		$user = new User();
 		
 	}
 
