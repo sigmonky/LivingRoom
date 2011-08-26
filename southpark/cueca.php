@@ -3,6 +3,7 @@
 require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
 
 require_once(dirname(__FILE__)."/xmppprebind.php");
+include 'firephp/fb.php';
 
 
 
@@ -14,9 +15,21 @@ class User {
     public $facebook_name = null;
 	public $password = null;
 	public $sessionInfo = null;
+	private $firePhp = null;
+	
+	private function debug($msg, $label = null) {
+		if ($this->firePhp) {
+			$this->firePhp->log($msg, $label);
+		}
+	}
 	
     public function __construct($token=null) {
         $this->curl = curl_init();
+		$this->firePhp = FirePHP::getInstance(true);
+		$this->firePhp->setEnabled(true);
+		
+		$this->debug($token, '__construct - restartResponse');
+
 		if ($token != ''){
 			$this->facebook_token = $token;
 			$this->getFBUser();
