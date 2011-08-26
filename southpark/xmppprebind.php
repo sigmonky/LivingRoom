@@ -189,8 +189,8 @@ class XmppPrebind {
 			
 			$xml = new SimpleXMLElement($result_jid);
 			$jid = (string)$xml->iq->bind->jid[0];
+			$this->jid = $jid;
 			$this->debug($jid, 'auth - JID RESULT');
-			
 		}
 		
 		$this->sendSessionIfRequired();
