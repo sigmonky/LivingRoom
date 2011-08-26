@@ -24,7 +24,7 @@ class User {
 		if ($token != null){
 			$this->getFBUser();
 		}else{
-			$this->generateAnonymousSessionAttachment();
+		//	$this->generateAnonymousSessionAttachment();
 		}
         register_shutdown_function(array($this, 'shutdown'));
     }
