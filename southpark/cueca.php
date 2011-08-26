@@ -180,22 +180,22 @@ class User {
 	}
 	
 	public function getRoomJidFromRoomProxyService(){
-		$this->curl = curl_init();
-		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/room_proxy.json";
-		curl_setopt($this->curl,CURLOPT_URL, $url);
-		curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
-		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
-			//open connection 
-        $response = curl_exec($this->curl);
-
-		if ($response){
-        	$result_obj = json_decode($response);
-			$roomJid = $result_obj->jid;
-			$this->roomJid = $roomJid;
-			$this->generateUserPassword();
-		}
-		
-		$this->shutdown();
+		// $this->curl = curl_init();
+		// $url = "http://www.logoslogic.com/chat/LivingRoom/southpark/room_proxy.json";
+		// curl_setopt($this->curl,CURLOPT_URL, $url);
+		// curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
+		// curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+		// 	//open connection 
+		//         $response = curl_exec($this->curl);
+		// 
+		// if ($response){
+		//         	$result_obj = json_decode($response);
+		// 	$roomJid = $result_obj->jid;
+		// 	$this->roomJid = $roomJid;
+		// 	$this->generateUserPassword();
+		// }
+		// 
+		// $this->shutdown();
 		
 	}
 
