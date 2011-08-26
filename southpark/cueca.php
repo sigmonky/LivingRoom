@@ -17,7 +17,6 @@ class User {
 	
     public function __construct($token=null) {
         $this->curl = curl_init();
-		echo 'token is ='$token;
 		if ($token != ''){
 			$this->facebook_token = $token;
 			$this->getFBUser();
