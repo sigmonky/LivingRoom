@@ -180,7 +180,7 @@ $facebook_name = $user->facebook_name;
 		<script src="libs/strophe.chat.js" type="text/javascript"></script>
 		<script src="libs/strophe.muc.js" type="text/javascript"></script>
 		<script src="libs/mustache.js" type="text/javascript"></script>
-		<script src="client.js" type="text/javascript"></script>
+		<script src="jabberclient.js" type="text/javascript"></script>
 		<script src="ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- <script src="libs/backbone.js"></script>
