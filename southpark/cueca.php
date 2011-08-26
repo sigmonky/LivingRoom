@@ -37,7 +37,9 @@ class User {
 		}else{
 			$this->debug($token, '__construct eh nulo -');
 			
-			$this->generateAnonymousSessionAttachment();
+			//$this->generateAnonymousSessionAttachment();
+			$isAnonymous = true;
+			$this->generateSessionAttachment($isAnonymous);
 		}
         register_shutdown_function(array($this, 'shutdown'));
     }
@@ -156,9 +158,13 @@ class User {
 		
 	}
 	
-	public function generateSessionAttachment(){
+	public function generateSessionAttachment($isAnonymous = false){
 		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
-		$xmppPrebind->connect($this->facebook_id, $this->password);
+		if ($isAnonymous != true){
+			$xmppPrebind->connect($this->facebook_id, $this->password);
+		}else{
+			$xmppPrebind->connect('', '');
+		}
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
