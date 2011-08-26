@@ -4,7 +4,6 @@ require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
 
 require_once(dirname(__FILE__)."/xmppprebind.php");
 
-include 'firephp/fb.php';
 
 
 class User {
