@@ -183,7 +183,9 @@ class XmppPrebind {
 		}
 
 		$this->sendRestart();
-		$this->sendBindIfRequired();
+		$result_jid = $this->sendBindIfRequired();
+		$this->debug($result_jid, 'auth - JID ANONYM');
+		
 		$this->sendSessionIfRequired();
 
 		return true;
