@@ -132,7 +132,9 @@ class XmppPrebind {
 		}
 
 		if (in_array(self::ENCRYPTION_DIGEST_MD5, $this->mechanisms)) {
-			$this->encryption = self::ENCRYPTION_DIGEST_MD5;
+			if ($username && $password != ''){
+				$this->encryption = self::ENCRYPTION_DIGEST_MD5;
+			}
 		} elseif (in_array(self::ENCRYPTION_CRAM_MD5, $this->mechanisms)) {
 			$this->encryption = self::ENCRYPTION_CRAM_MD5;
 		} elseif (in_array(self::ENCRYPTION_ANONYMOUS, $this->mechanisms)) {
