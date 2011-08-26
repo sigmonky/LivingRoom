@@ -37,9 +37,8 @@ class User {
 			$this->getFBUser();
 		}else{
 			$this->debug($token, '__construct eh nulo -');
-			$anonymous = true;
-			$this->generateSessionAttachment($anonymous);
-			//$this->generateAnonymousSessionAttachment();
+			
+			$this->generateAnonymousSessionAttachment();
 		}
         register_shutdown_function(array($this, 'shutdown'));
     }
@@ -153,12 +152,11 @@ class User {
 		// 
 		// unset($jab,$avcard);
 		
-		$anonymous = false;
 		
-		$this->generateSessionAttachment($anonymous);
+		$this->generateSessionAttachment();
 	}
 	
-	public function generateSessionAttachment($isAnonymous){
+	public function generateSessionAttachment($isAnonymous = false){
 		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
 		if ($isAnonymous == false){
 			$xmppPrebind->connect($this->facebook_id, $this->password);
