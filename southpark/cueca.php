@@ -189,8 +189,8 @@ class User {
 		$response = curl_exec($ch);
 		
 		if ($response){
-		        	$result_obj = json_decode($response);
-			$roomJid = $result_obj->jid;
+		     $result_obj = json_decode($response);
+			$roomJid = $result_obj[0]->jid;
 			$this->roomJid = $roomJid;
 			$this->generateUserPassword();
 		}
