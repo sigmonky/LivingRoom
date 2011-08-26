@@ -48,6 +48,7 @@ class User {
 			$facebook_name = $result_obj->name;
 			$this->facebook_id = $facebook_id;
 			$this->facebook_name = $facebook_name;
+			echo 'facebook id' .$facebook_id;
 			$this->generateUserPassword();
 		}
 		
