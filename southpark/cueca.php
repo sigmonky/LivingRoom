@@ -4,6 +4,7 @@ require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
 
 require_once(dirname(__FILE__)."/xmppprebind.php");
 
+
 class User {
 
     public $curl = null;
@@ -11,6 +12,7 @@ class User {
     public $facebook_id = null;
     public $facebook_name = null;
 	public $password = null;
+	public $sessionInfo = [];
 	
     public function __construct($token) {
 		$this->facebook_token = $token;
@@ -90,8 +92,8 @@ class User {
 		$display_debug_info = false;
 		$AddUserErrorCode = 12000;
 		 
-		var $jab = new CommandJabber($display_debug_info);
-		var $addmsg = new AddMessenger($jab, $this->facebook_id, $this->password);
+		$jab = new CommandJabber($display_debug_info);
+		$addmsg = new AddMessenger($jab, $this->facebook_id, $this->password);
 		
 		$jab->set_handler("connected",$addmsg,"handleConnected");
 		$jab->set_handler("authenticated",$addmsg,"handleAuthenticated");
@@ -137,6 +139,7 @@ class User {
 		$xmppPrebind->connect($this->facebook_id, $this->password);
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
+		$this->sessionInfo = $sessionInfo;
 	}
 
 }
@@ -190,9 +193,9 @@ $facebook_name = $user->facebook_name;
 		$(document).ready(function(){
 
 	      var Attacher = {
-	             JID: '<?=$sessionInfo['jid']?>',
-	             SID: '<?=$sessionInfo['sid']?>',
-	             RID: '<?=$sessionInfo['rid']?>'
+	             JID: '<?=$this->sessionInfo['jid']?>',
+	             SID: '<?=$this->sessionInfo['sid']?>',
+	             RID: '<?=$this->sessionInfo['rid']?>'
 	      };
 		
 			var connection = null;
