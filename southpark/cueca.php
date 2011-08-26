@@ -4,10 +4,10 @@ include 'xmppprebind.php';
 
 class User {
 
-    private $curl = null;
-    private $facebook_token = null;
-    private $facebook_id = null;
-    private $facebook_name = null;
+    public $curl = null;
+    public $facebook_token = null;
+    public $facebook_id = null;
+    public $facebook_name = null;
 
     public function __construct($token) {
 		$this->facebook_token = $token;
