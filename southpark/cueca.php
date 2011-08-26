@@ -2,42 +2,84 @@
 
 include 'xmppprebind.php';
 
+class User {
 
-/* 1.Connect to Facebook via authentication Token in order to retrieve FB ID and set pass*/
+    private $curl = null;
+    private $facebook_token = null;
+    private $facebook_id = null;
+    private $facebook_name = null;
+
+    public function __construct($token) {
+		$this->facebook_token = $token;
+        $this->curl = curl_init();
+		$this->getFBUser();
+        register_shutdown_function(array($this, 'shutdown'));
+    }
+
+    /**
+     * Get FB User ID
+     */
+    public function getFBUser() {    
+		$fields = array(
+			'access_token'=>urlencode($this->facebook_token),
+		);
+		
+		$url = "https://graph.facebook.com/me?access_token=".$this->facebook_token;
+		
+		curl_setopt($this->curl,CURLOPT_URL, $url);
+		curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
+		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+			rtrim($fields_string,'&');
+			//open connection 
+        	$response = curl_exec($this->curl);
+		if ($response){
+        	$result_obj = json_decode($response);
+			$facebook_id = $result_obj->id;
+			$facebook_name = $result_obj->name;
+			$this->facebook_id = $facebook_id;
+			$this->facebook_name = $facebook_name;
+		}
+    }
+
+    /**
+     * Cleanup resources
+     */
+    public function shutdown() {
+        if($this->curl) {
+            curl_close($this->curl);
+        }
+    }
+
+
+}
 
 $facebook_token = $_GET['token'];
-$url = "https://graph.facebook.com/me?access_token=".$facebook_token;
-$fields = array(
-	'access_token'=>urlencode($facebook_token),
-);
+
+$user = new User($facebook_token);
+$facebook_id = $user->facebook_id;
+
+
+echo 'facebook_id = '.$facebook_id;
+echo 'facebook name = '.$user->name;
 
 
 
-foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+/**** MD5 String  */
 
-rtrim($fields_string,'&');
+function md5_salt($string) {
+    $chars = str_split('~`!@#$%^&*()[]{}-_\/|\'";:,.+=<>?');
+    $keys = array_rand($chars, 6);
 
-//open connection 
-$ch = curl_init();
+    foreach($keys as $key) {
+        $hash['salt'][] = $chars[$key];
+    }
 
-//set the url, number of POST vars, POST data 
-curl_setopt($ch,CURLOPT_URL,$url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// curl_setopt($ch,CURLOPT_POST,count($fields));
-// curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
-//execute post 
-$result = curl_exec($ch);
-//close connection
-curl_close($ch);
-
-
-$result_obj = json_decode($result);
-
-
-
-$facebook_id = $result_obj->id;
-
-echo $facebook_id;
+    $hash['salt'] = implode('', $hash['salt']);
+    $hash['salt'] = md5($hash['salt']);
+    $hash['string'] = md5($hash['salt'].$string.$hash['salt']);
+    return $hash;
+}
 
 
 
@@ -56,9 +98,6 @@ $xmppPrebind->auth();
 $sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 
 //print_r($sessionInfo);
-
-
-
 
 
 
