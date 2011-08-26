@@ -173,6 +173,8 @@ class User {
 
 }
 
+	/* Authenticated versus Anonymous */
+
 	if ($_GET['token'] != "") {
 		//Connect Facebook Authenticated User
 		
@@ -193,26 +195,12 @@ class User {
 		
 	}
 
-
-
-
-// 
-// 
-// $facebook_token = $_GET['token'];
-// 
-// $user = new User($facebook_token);
-// 
-// $facebook_id = $user->facebook_id;
-// 
-// $facebook_name = $user->facebook_name;
-
-
-
-/* 3.Set VCard */
+/* 3.Set a property of VCard in order to verify user is authenticated. SET NICKNAME as equal to FULL NAME
+Only authenticated users should have the right to setup VCARD property*/
 
 /* 5.Fetch Available Room from Ejabberd */
-
-
+/*extended disco info has muc#roominfo_occupants 
+http://xmpp.org/extensions/xep-0045.html#example-8*/
 
 ?>
 
@@ -440,9 +428,7 @@ class User {
 
 		
 		<div id='log'>
-			JID: <?=$jid?>
-            SID: <?=$sid?>
-            RID: <?=$rid?>
+
 	    </div>
 	
 
