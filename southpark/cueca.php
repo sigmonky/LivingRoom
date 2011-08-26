@@ -176,7 +176,7 @@ class User {
 
 
 
-	if ($GET_['token'] != "") {
+	if ($_GET['token'] != "") {
 		//Connect Facebook Authenticated User
 		
 		$facebook_token = $_GET['token'];
