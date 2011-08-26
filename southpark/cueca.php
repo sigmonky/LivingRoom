@@ -12,7 +12,7 @@ class User {
     public $facebook_id = null;
     public $facebook_name = null;
 	public $password = null;
-	public $sessionInfo = new Array();
+	public $sessionInfo = array();
 	
     public function __construct($token) {
 		$this->facebook_token = $token;
