@@ -125,6 +125,8 @@ class User {
 		{
 			$AddUserErrorCode=12001;
 			$jab->execute(CBK_FREQ,RUN_TIME);
+			$this->generateSessionAttachment();
+			
 		}
 
 		$jab->disconnect();
@@ -152,7 +154,6 @@ class User {
 		// unset($jab,$avcard);
 		
 		
-		$this->generateSessionAttachment();
 	}
 	
 	public function generateSessionAttachment(){
