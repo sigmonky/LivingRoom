@@ -18,12 +18,11 @@ class User {
     public function __construct($token=null) {
 		$this->facebook_token = $token;
         $this->curl = curl_init();
-		$this->debug($token, '__construct - ');
 
 		if ($token != null){
 			$this->getFBUser();
 		}else{
-			$this->generateAnonymousSessionAttachment();
+		//	$this->generateAnonymousSessionAttachment();
 		}
         register_shutdown_function(array($this, 'shutdown'));
     }
