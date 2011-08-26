@@ -35,7 +35,7 @@ class XmppPrebind {
 	const ENCRYPTION_PLAIN      = 'PLAIN';
 	const ENCRYPTION_DIGEST_MD5 = 'DIGEST-MD5';
 	const ENCRYPTION_CRAM_MD5 = 'CRAM-MD5';
-
+	const ENCRYPTION_ANONYMOUS = 'ANONYMOUS';
 	const SERVICE_NAME = 'xmpp';
 
 	private $jabberHost = '';
@@ -135,6 +135,8 @@ class XmppPrebind {
 			$this->encryption = self::ENCRYPTION_DIGEST_MD5;
 		} elseif (in_array(self::ENCRYPTION_CRAM_MD5, $this->mechanisms)) {
 			$this->encryption = self::ENCRYPTION_CRAM_MD5;
+		} elseif (in_array(self::ENCRYPTION_ANONYMOUS, $this->mechanisms)) {
+			$this->encryption = self::ENCRYPTION_ANONYMOUS;
 		} elseif (in_array(self::ENCRYPTION_PLAIN, $this->mechanisms)) {
 			$this->encryption = self::ENCRYPTION_PLAIN;
 		} else {
@@ -156,6 +158,9 @@ class XmppPrebind {
 		switch ($this->encryption) {
 			case self::ENCRYPTION_PLAIN:
 				$authXml = $this->buildPlainAuth($auth);
+				break;
+			case self::ENCRYPTION_ANONYMOUS:
+				$authXml = $this->buildAnonymous($auth);
 				break;
 			case self::ENCRYPTION_DIGEST_MD5:
 				$authXml = $this->sendChallengeAndBuildDigestMd5Auth($auth);
@@ -337,6 +342,30 @@ class XmppPrebind {
 	 * @return string Auth XML to send
 	 */
 	private function buildPlainAuth(Auth_SASL_Common $auth) {
+		$authString = $auth->getResponse(self::getNodeFromJid($this->jid), $this->password, self::getBareJidFromJid($this->jid));
+		$authString = base64_encode($authString);
+		$this->debug($authString, 'PLAIN Auth String');
+
+		$domDocument = $this->buildBody();
+		$body = self::getBodyFromDomDocument($domDocument);
+
+		$auth = $domDocument->createElement('auth');
+		$auth->appendChild(self::getNewTextAttribute($domDocument, 'xmlns', self::XMLNS_SASL));
+		$auth->appendChild(self::getNewTextAttribute($domDocument, 'mechanism', $this->encryption));
+		$auth->appendChild($domDocument->createTextNode($authString));
+		$body->appendChild($auth);
+
+		return $domDocument->saveXML();
+	}
+	
+	/**
+	 * Build Anonymous auth string
+	 *
+	 * @param Auth_SASL_Common $auth
+	 * @return string Auth XML to send
+	 */
+	
+	private function buildAnonymous(Auth_SASL_Common $auth) {
 		$authString = $auth->getResponse(self::getNodeFromJid($this->jid), $this->password, self::getBareJidFromJid($this->jid));
 		$authString = base64_encode($authString);
 		$this->debug($authString, 'PLAIN Auth String');
