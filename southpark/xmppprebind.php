@@ -189,7 +189,7 @@ class XmppPrebind {
 			
 			$xml = new SimpleXMLElement($result_jid);
 			echo $xml->movie[0]->plot;
-			$jid = $xml->body[0]->iq->bind->jid;
+			$jid = $xml->iq->bind->jid;
 			$this->debug($jid, 'auth - JID RESULT');
 			
 		}
