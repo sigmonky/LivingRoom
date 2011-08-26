@@ -141,7 +141,8 @@ class XmppPrebind {
 			$this->encryption = self::ENCRYPTION_ANONYMOUS;
 		} // elseif (in_array(self::ENCRYPTION_PLAIN, $this->mechanisms)) {
 		 // 			$this->encryption = self::ENCRYPTION_PLAIN;
-		 // 		} else {
+	//	} 
+		else {
 			throw new XmppPrebindConnectionException("No encryption supported by the server is supported by this library.");
 		}
 
