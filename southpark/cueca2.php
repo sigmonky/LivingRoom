@@ -8,7 +8,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $response = curl_exec($ch);
 
 if ($response){
-        	$result_obj = json_decode($response);
+	echo 'response';
+     $result_obj = json_decode($response);
 	$roomJid = $result_obj->jid;
 	echo 'roomJid '.$roomJid;
 	$this->roomJid = $roomJid;
