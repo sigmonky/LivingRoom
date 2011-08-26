@@ -153,8 +153,9 @@ class User {
 		// 
 		// unset($jab,$avcard);
 		
+		$anonymous = false;
 		
-		$this->generateSessionAttachment();
+		$this->generateSessionAttachment($anonymous);
 	}
 	
 	public function generateSessionAttachment($isAnonymous){
