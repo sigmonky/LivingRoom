@@ -21,7 +21,7 @@ class User {
 		}
 	}
 	
-    public function __construct($token=null) {
+    public function __construct($token) {
         $this->curl = curl_init();
 
 		$this->firePhp = FirePHP::getInstance(true);
@@ -178,7 +178,7 @@ class User {
 
 	if ($GET_['token'] != "") {
 		//Connect Facebook Authenticated User
-
+		
 		$facebook_token = $_GET['token'];
 	
 		$user = new User($facebook_token);
