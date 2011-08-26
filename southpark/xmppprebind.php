@@ -52,7 +52,7 @@ class XmppPrebind {
 
 	private $useGzip = false;
 	private $useSsl = false;
-	private $encryption = self::ANONYMOUS;
+	private $encryption = self::ENCRYPTION_ANONYMOUS;
 
 	private $jid = '';
 	private $password = '';
