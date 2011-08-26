@@ -14,10 +14,14 @@ class User {
 	public $password = null;
 	public $sessionInfo = null;
 	
-    public function __construct($token) {
+    public function __construct($token=null) {
 		$this->facebook_token = $token;
         $this->curl = curl_init();
-		$this->getFBUser();
+		if ($token != null){
+			$this->getFBUser();
+		}else{
+			
+		}
         register_shutdown_function(array($this, 'shutdown'));
     }
 
@@ -141,24 +145,59 @@ class User {
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
 	}
+	
+	public function generateAnonymousSessionAttachment(){
+		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
+		$xmppPrebind->connect('', '');
+		$xmppPrebind->auth();
+		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
+		$this->sessionInfo = $sessionInfo;
+	}
 
 }
 
-$facebook_token = $_GET['token'];
 
-$user = new User($facebook_token);
 
-$facebook_id = $user->facebook_id;
+	if ($GET_['token'] != "") {
+		//Connect Facebook Authenticated User
 
-$facebook_name = $user->facebook_name;
+		$facebook_token = $_GET['token'];
+	
+		$user = new User($facebook_token);
+
+		$facebook_id = $user->facebook_id;
+		$facebook_name = $user->facebook_name;
+		
+		//Check if FB user ID is valid
+		if($facebook_id != ''){
+			/// GENERATE SESSION ////
+		}
+	}else{
+		//Connect Anonymous User
+		$user = new User($facebook_token);
+		
+	}
+
+
+
+
+// 
+// 
+// $facebook_token = $_GET['token'];
+// 
+// $user = new User($facebook_token);
+// 
+// $facebook_id = $user->facebook_id;
+// 
+// $facebook_name = $user->facebook_name;
+
+
 
 /* 3.Set VCard */
 
-/* 4.Generate Session */
-
 /* 5.Fetch Available Room from Ejabberd */
 
-//print_r($sessionInfo);
+
 
 ?>
 
