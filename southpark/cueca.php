@@ -154,8 +154,6 @@ class User {
 		// $jab->disconnect();
 		// 
 		// unset($jab,$avcard);
-		
-		
 	}
 	
 	public function generateSessionAttachment($isAnonymous = false){
@@ -168,7 +166,7 @@ class User {
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
-		$this->getRoomJidFromRoomProxyService();
+		$this->getAvailableRoomJidFromRoomProxyService();
 	}
 	
 	public function generateAnonymousSessionAttachment(){
@@ -179,7 +177,7 @@ class User {
 		$this->sessionInfo = $sessionInfo;
 	}
 	
-	public function getRoomJidFromRoomProxyService(){
+	public function getAvailableRoomJidFromRoomProxyService(){
 		$ch = curl_init();
 		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/room_proxy.json";
 		curl_setopt($ch,CURLOPT_URL, $url);
@@ -189,9 +187,19 @@ class User {
 		$response = curl_exec($ch);
 		
 		if ($response){
-		     $result_obj = json_decode($response);
+		    $result_obj = json_decode($response);
 			$roomJid = $result_obj[0]->jid;
 			$this->roomJid = $roomJid;
+		}else{
+			/* A problem Happenned. Using Backup room */
+			$this->roomJid = 'backup_room_JID';
+			/* Admin Notification Email */
+			$to = "isaac.dasilva@mtvncontractor.com";
+			$subject = "Room Proxy Problem";
+			$message = "There was a problem with the room Proxy at ".date("Y-m-d H:i:s");
+			$from = "southpark@southpark.com";
+			$headers = "From:" . $from;
+			mail($to,$subject,$message,$headers);
 		}
 		
 		curl_close($ch);
