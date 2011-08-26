@@ -14,6 +14,7 @@ class User {
 	public $password = null;
 	public $sessionInfo = null;
 	private $firePhp = null;
+	private $room = null;
 	
 	private function debug($msg, $label = null) {
 		if ($this->firePhp) {
@@ -36,8 +37,9 @@ class User {
 			$this->getFBUser();
 		}else{
 			$this->debug($token, '__construct eh nulo -');
-			
-			$this->generateAnonymousSessionAttachment();
+			$anonymous = true;
+			$this->generateSessionAttachment($anonymous);
+			//$this->generateAnonymousSessionAttachment();
 		}
         register_shutdown_function(array($this, 'shutdown'));
     }
@@ -155,9 +157,13 @@ class User {
 		$this->generateSessionAttachment();
 	}
 	
-	public function generateSessionAttachment(){
+	public function generateSessionAttachment($isAnonymous = false){
 		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
-		$xmppPrebind->connect($this->facebook_id, $this->password);
+		if ($isAnonymous == false){
+			$xmppPrebind->connect($this->facebook_id, $this->password);
+		}else{
+			$xmppPrebind->connect('', '');
+		}
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
