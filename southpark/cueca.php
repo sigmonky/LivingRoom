@@ -37,7 +37,7 @@ class User {
 		}else{
 			$this->debug($token, '__construct eh nulo -');
 			
-		//	$this->generateAnonymousSessionAttachment();
+			$this->generateAnonymousSessionAttachment();
 		}
         register_shutdown_function(array($this, 'shutdown'));
     }
@@ -65,7 +65,6 @@ class User {
 			$facebook_name = $result_obj->name;
 			$this->facebook_id = $facebook_id;
 			$this->facebook_name = $facebook_name;
-			echo 'facebook id' .$facebook_id;
 			$this->generateUserPassword();
 		}
 		
@@ -173,8 +172,6 @@ class User {
 	}
 
 }
-
-
 
 	if ($_GET['token'] != "") {
 		//Connect Facebook Authenticated User
