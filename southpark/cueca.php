@@ -136,6 +136,11 @@ class User {
 		unset($jab,$addmsg);
 		
 		
+		/* Set a property of VCard in order to verify user is authenticated. SET NICKNAME as equal to FULL NAME
+		Only authenticated users should have the right to setup VCARD property*/
+		
+		
+		
 		// // If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
 		// 
 		// $AddVcardErrorCode = 14000;
@@ -178,6 +183,11 @@ class User {
 	}
 	
 	public function getAvailableRoomJidFromRoomProxyService(){
+		
+		/* Fetch Available Room from Ejabberd */
+		/*extended disco info has muc#roominfo_occupants 
+		http://xmpp.org/extensions/xep-0045.html#example-8*/
+		
 		$ch = curl_init();
 		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/room_proxy.json";
 		curl_setopt($ch,CURLOPT_URL, $url);
@@ -230,12 +240,7 @@ class User {
 		
 	}
 
-/* 3.Set a property of VCard in order to verify user is authenticated. SET NICKNAME as equal to FULL NAME
-Only authenticated users should have the right to setup VCARD property*/
 
-/* 5.Fetch Available Room from Ejabberd */
-/*extended disco info has muc#roominfo_occupants 
-http://xmpp.org/extensions/xep-0045.html#example-8*/
 
 ?>
 
