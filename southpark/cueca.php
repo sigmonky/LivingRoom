@@ -352,6 +352,7 @@ $facebook_name = $user->facebook_name;
 		
 	</head>
 	
+    <button id="fb-auth">Logout</button>
 
 
         <!-- <div id="loader" style="display:none">
