@@ -184,7 +184,15 @@ class XmppPrebind {
 
 		$this->sendRestart();
 		$result_jid = $this->sendBindIfRequired();
-		$this->debug($result_jid, 'auth - JID ANONYM');
+		if ($result_jid != ''){
+			$this->debug($result_jid, 'auth - JID ANONYM');
+			
+			$xml = new SimpleXMLElement($result_jid);
+			echo $xml->movie[0]->plot;
+			$jid = $xml->body[0]->iq->bind->jid;
+			$this->debug($jid, 'auth - JID RESULT');
+			
+		}
 		
 		$this->sendSessionIfRequired();
 
