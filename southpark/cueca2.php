@@ -10,7 +10,7 @@ $response = curl_exec($ch);
 if ($response){
 	echo 'response '.$response;
      $result_obj = json_decode($response);
-	$roomJid = $result_obj->jid;
+	$roomJid = $result_obj['jid'];
 	echo 'roomJid '.$roomJid;
 	$this->roomJid = $roomJid;
 	$this->generateUserPassword();
