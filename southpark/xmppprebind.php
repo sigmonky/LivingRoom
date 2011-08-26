@@ -369,9 +369,7 @@ class XmppPrebind {
 	 */
 	
 	private function buildAnonymous(Auth_SASL_Common $auth) {
-		$authString = $auth->getResponse(self::getNodeFromJid($this->jid), $this->password, self::getBareJidFromJid($this->jid));
-		$authString = base64_encode($authString);
-		$this->debug($authString, 'PLAIN Auth String');
+		$this->debug($buildAnonymous, 'buildAnonymous');
 
 		$domDocument = $this->buildBody();
 		$body = self::getBodyFromDomDocument($domDocument);
@@ -379,7 +377,6 @@ class XmppPrebind {
 		$auth = $domDocument->createElement('auth');
 		$auth->appendChild(self::getNewTextAttribute($domDocument, 'xmlns', self::XMLNS_SASL));
 		$auth->appendChild(self::getNewTextAttribute($domDocument, 'mechanism', $this->encryption));
-		$auth->appendChild($domDocument->createTextNode($authString));
 		$body->appendChild($auth);
 
 		return $domDocument->saveXML();
