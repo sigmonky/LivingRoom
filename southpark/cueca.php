@@ -14,7 +14,6 @@ class User {
 	public $password = null;
 	public $sessionInfo = null;
 	private $firePhp = null;
-	private $room = null;
 	
 	private function debug($msg, $label = null) {
 		if ($this->firePhp) {
