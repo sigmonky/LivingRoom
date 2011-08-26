@@ -70,7 +70,7 @@ class User {
 			$this->facebook_name = $facebook_name;
 			$this->generateUserPassword();
 		}
-		
+		$this->shutdown();
     }
 
     /**
@@ -180,7 +180,7 @@ class User {
 	}
 	
 	public function getRoomJidFromRoomProxyService(){
-		
+		$this->curl = curl_init();
 		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/room_proxy.json";
 		curl_setopt($this->curl,CURLOPT_URL, $url);
 		curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
