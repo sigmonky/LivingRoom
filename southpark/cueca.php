@@ -156,13 +156,9 @@ class User {
 		$this->generateSessionAttachment();
 	}
 	
-	public function generateSessionAttachment($isAnonymous = false){
+	public function generateSessionAttachment(){
 		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
-		if ($isAnonymous == false){
-			$xmppPrebind->connect($this->facebook_id, $this->password);
-		}else{
-			$xmppPrebind->connect('', '');
-		}
+		$xmppPrebind->connect($this->facebook_id, $this->password);
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
