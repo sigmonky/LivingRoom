@@ -1,6 +1,8 @@
 <?php
 
-include 'xmppprebind.php';
+require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
+
+require_once(dirname(__FILE__)."/xmppprebind.php");
 
 class User {
 
@@ -8,7 +10,8 @@ class User {
     public $facebook_token = null;
     public $facebook_id = null;
     public $facebook_name = null;
-
+	public $password = null;
+	
     public function __construct($token) {
 		$this->facebook_token = $token;
         $this->curl = curl_init();
@@ -39,6 +42,7 @@ class User {
 			$facebook_name = $result_obj->name;
 			$this->facebook_id = $facebook_id;
 			$this->facebook_name = $facebook_name;
+			$this->generateUserPassword();
 		}
 		
 		$this->shutdown();
@@ -53,40 +57,97 @@ class User {
         }
     }
 
+	/**** MD5 String  */
+
+	public function md5_salt($string) {
+	    $chars = str_split('~`!@#$%^&*()[]{}-_\/|\'";:,.+=<>?');
+	    $keys = array_rand($chars, 6);
+
+	    foreach($keys as $key) {
+	        $hash['salt'][] = $chars[$key];
+	    }
+
+	    $hash['salt'] = implode('', $hash['salt']);
+	    $hash['salt'] = md5($hash['salt']);
+	    $hash['string'] = md5($hash['salt'].$string.$hash['salt']);
+	    return $hash;
+	}
+	
+	public function generateUserPassword(){
+		$facebook_id = $this->facebook_id;
+		
+		/* API Secret Key */
+		$apiSalt = '1333232523232299852232';
+		$token = $apiSalt.$facebook_id;
+		
+		$pass = $this->md5_salt($token);
+		$this->password = $pass;
+		$this->generateJabberUser();
+	}
+	
+	public function generateJabberUser(){
+		
+		$display_debug_info = false;
+		$AddUserErrorCode = 12000;
+		 
+		var $jab = new CommandJabber($display_debug_info);
+		var $addmsg = new AddMessenger($jab, $this->facebook_id, $this->password);
+		
+		$jab->set_handler("connected",$addmsg,"handleConnected");
+		$jab->set_handler("authenticated",$addmsg,"handleAuthenticated");
+		$jab->set_handler("error",$addmsg,"handleError");
+		
+		//connect to the Jabber server
+		if ($jab->connect(JABBER_SERVER))
+		{
+			$AddUserErrorCode=12001;
+			$jab->execute(CBK_FREQ,RUN_TIME);
+		}
+
+		$jab->disconnect();
+
+		unset($jab,$addmsg);
+		
+		
+		// // If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
+		// 
+		// $AddVcardErrorCode = 14000;
+		// $jab = new CommandJabber($display_debug_info);
+		// $avcard = new AddVcard($jab,$UserLogin,$UserPass,$FirstName,$LastName,$Patronymic);
+		// 
+		// $jab->set_handler("connected",$avcard,"handleConnected");
+		// $jab->set_handler("authenticated",$avcard,"handleAuthenticated");
+		// 
+		// if ($jab->connect(JABBER_SERVER))
+		// {
+		// $AddVcardErrorCode=14001;
+		// $jab->execute(CBK_FREQ,RUN_TIME);
+		// }
+		// 
+		// $jab->disconnect();
+		// 
+		// unset($jab,$avcard);
+		
+		
+		$this->generateSessionAttachment();
+	}
+	
+	public function generateSessionAttachment(){
+		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
+		$xmppPrebind->connect($this->facebook_id, $this->password);
+		$xmppPrebind->auth();
+		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
+	}
 
 }
 
 $facebook_token = $_GET['token'];
 
 $user = new User($facebook_token);
+
 $facebook_id = $user->facebook_id;
+
 $facebook_name = $user->facebook_name;
-
-
-echo 'facebook_id = '.$facebook_id;
-echo 'facebook name = '.$facebook_name;
-
-
-
-/**** MD5 String  */
-
-function md5_salt($string) {
-    $chars = str_split('~`!@#$%^&*()[]{}-_\/|\'";:,.+=<>?');
-    $keys = array_rand($chars, 6);
-
-    foreach($keys as $key) {
-        $hash['salt'][] = $chars[$key];
-    }
-
-    $hash['salt'] = implode('', $hash['salt']);
-    $hash['salt'] = md5($hash['salt']);
-    $hash['string'] = md5($hash['salt'].$string.$hash['salt']);
-    return $hash;
-}
-
-
-
-/* 2.Connect to Jabber and register/authenticate user */
 
 /* 3.Set VCard */
 
@@ -94,15 +155,7 @@ function md5_salt($string) {
 
 /* 5.Fetch Available Room from Ejabberd */
 
-
-$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', 'asdasd', false, true);
-$xmppPrebind->connect('john', 'john');
-$xmppPrebind->auth();
-$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
-
 //print_r($sessionInfo);
-
-
 
 ?>
 

@@ -86,6 +86,7 @@ require_once(dirname(__FILE__).'/jabber.php');
 class CommandJabber extends Jabber
 {
 	var $AddUserDialogID=0;
+	
 	var $NewUserName, $NewUserPass;
 
 	function adduser_init()
@@ -133,46 +134,46 @@ class CommandJabber extends Jabber
   				$this->_send($xml);
   			}
 		}
-}
-
-function _on_adduser_getresult(&$packet)
-{
-	global $AddUserErrorCode;
-	$AddUserErrorCode=12007;
-	if ($this->_node($packet,array('iq','@','type'))=='result')
-	{
-		if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
-		$AddUserErrorCode=0;
 	}
 
+	function _on_adduser_getresult(&$packet)
+	{
+		global $AddUserErrorCode;
+		$AddUserErrorCode=12007;
+		if ($this->_node($packet,array('iq','@','type'))=='result')
+		{
+			if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
+			$AddUserErrorCode=0;
+		}
+
 	$this->terminated = true;
-}
+	}
 
-// following functions - for fill Vcard only
+	// following functions - for fill Vcard only
 
-function addvcard_request($GivenName, $FamilyName, $MiddleName)
-{
-	$DialogID = $this->_unique_id('addvcard');
+	function addvcard_request($GivenName, $FamilyName, $MiddleName)
+	{
+		$DialogID = $this->_unique_id('addvcard');
 
-	$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
+		$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
 
-	$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
+		$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
 		<vCard xmlns="vcard-temp">
 		<N><FAMILY>'.$FamilyName.'</FAMILY><GIVEN>'.$GivenName.'</GIVEN><MIDDLE>'.$MiddleName.'</MIDDLE></N>
 		</vCard>
 		</iq>';
-	return $this->_send($xml);
-}
+		return $this->_send($xml);
+	}
 
-function _on_addvcard_reply(&$packet)
-{
+	function _on_addvcard_reply(&$packet)
+	{
 	global $AddVcardErrorCode;
 	$AddVcardErrorCode=14004;
 
 	if ($this->_node($packet,array('iq','@','type'))=='result') $AddVcardErrorCode=0;
 
 	$this->terminated = true;
-}
+	}
 
 } // End of Jabber class extension
 
@@ -237,7 +238,6 @@ $UserPass=$pass;
 //$Patronymic='Ivanovich :)';
 
 $jab = new CommandJabber($display_debug_info);
-
 $addmsg = new AddMessenger($jab,$UserLogin,$UserPass);
 
 // set handlers for the events we wish to be notified about
