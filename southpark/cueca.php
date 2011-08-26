@@ -16,10 +16,10 @@ class User {
 	public $sessionInfo = null;
 	
     public function __construct($token=null) {
-		$this->facebook_token = $token;
         $this->curl = curl_init();
 
 		if ($token != null){
+			$this->facebook_token = $token;
 			$this->getFBUser();
 		}else{
 		//	$this->generateAnonymousSessionAttachment();
