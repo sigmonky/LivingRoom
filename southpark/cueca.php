@@ -70,7 +70,7 @@ class User {
 			$this->facebook_name = $facebook_name;
 			$this->generateUserPassword();
 		}
-		$this->shutdown();
+	//	$this->shutdown();
     }
 
     /**
