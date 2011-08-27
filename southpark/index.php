@@ -272,11 +272,6 @@ class User {
 		<script src="libs/underscore.js"></script> -->
 		
 		<script type="text/javascript">
-		var facebook_id =<?= $user->facebook_id ?>
-		if (facebook_id != ''){ 
-		 	window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/index.php?token="+response.authResponse.accessToken;
-    		//userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
-	    }
 		$(document).ready(function(){
 
 	      var Attacher = {
@@ -445,6 +440,7 @@ class User {
             var button;
             var userInfo;
             var accessToken = '';
+			var facebook_id =<?= $user->facebook_id ?>
             window.fbAsyncInit = function() {
                 FB.init({ appId: '103751443062683', 
                     status: true, 
@@ -507,7 +503,10 @@ class User {
             function login(response, info){
                 if (response.authResponse) {
                     accessToken =   response.authResponse.accessToken;
-
+					if (facebook_id != ''){ 
+					 	window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/index.php?token="+response.authResponse.accessToken;
+                		//userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
+				    }
                     button.innerHTML = 'Logout';
                     showLoader(false);
                 }
