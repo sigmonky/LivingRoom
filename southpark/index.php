@@ -638,9 +638,9 @@ class User {
 	
     <button id="fb-auth">Login</button>
 
-        <!-- <div id="loader" style="display:none">
-             <img src="ajax-loader.gif" alt="loading" />
-         </div> -->
+        <div id="loader" style="display:none">
+             <img src="images/ajax-loader.gif" alt="loading" />
+         </div>
 		<br/>
 
 
