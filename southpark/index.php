@@ -506,7 +506,7 @@ class User {
             function login(response, info){
                 if (response.authResponse) {
                      accessToken                                 =   response.authResponse.accessToken;
-				//	 window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/cueca.php?token="+response.authResponse.accessToken;
+					 window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/index.php?token="+response.authResponse.accessToken;
                 //    alert(accessToken);
                 //    userInfo.innerHTML                             = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
                  //                                                   + "<br /> Your Access Token: " + accessToken;
