@@ -288,29 +288,29 @@ class User {
 			
 			function log(msg)
 			{
-			$('#log').append('<div></div>').append(
-			document.createTextNode(msg));
+				$('#log').append('<div></div>').append(
+				document.createTextNode(msg));
 			}
 
 			function onConnect(status)
 			{
-			if (status == Strophe.Status.DISCONNECTED)
-			log('Disconnected.');
+				if (status == Strophe.Status.DISCONNECTED)
+				log('Disconnected.');
 			}
 
-			          function onResult(iq) {
-			var elapsed = (new Date()) - startTime;
-			log('Response from jabber.org took ' + elapsed + 'ms.');
-			          }
+            function onResult(iq) {
+				var elapsed = (new Date()) - startTime;
+				log('Response from jabber.org took ' + elapsed + 'ms.');
+			}
 			
 			connection = new Strophe.Connection(BOSH_SERVICE);
 			
 			connection.rawInput = function (data) {
-			log('RECV: ' + data);
+				log('RECV: ' + data);
 			};
 			
 			connection.rawOutput = function (data) {
-			log('SENT: ' + data);
+				log('SENT: ' + data);
 			};
 			
 			// uncomment for extra debugging
@@ -319,10 +319,9 @@ class User {
 			onConnect);
 
 			              // set up handler
-			connection.addHandler(onResult, null, 'iq',
-			'result', 'disco-1', null);
+			connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
-			              log('Strophe is attached.');
+			log('Strophe is attached.');
 
 			// send disco#info to jabber.org
 			var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
@@ -344,28 +343,27 @@ class User {
 		
 				// our global config object
 				// plugins use this if it exists
-				var StropheConfig = {
+			var StropheConfig = {
 					// Settings
-					boshUrl: 'http://www.logoslogic.com/http-bind',
+				boshUrl: 'http://www.logoslogic.com/http-bind',
 				
 					// Implemented event handlers
-					subscriptionRequested: otalk.subscription_requested,
-					chatReceived: otalk.on_chat_message,
-					rosterChanged: otalk.update_roster,
+				subscriptionRequested: otalk.subscription_requested,
+				chatReceived: otalk.on_chat_message,
+				rosterChanged: otalk.update_roster,
 				
 					// Not implemented in UI
-					handleMucMessage: otalk.handle_muc_message,
-					chatStateReceived: otalk.chat_state_received
-				};
+				handleMucMessage: otalk.handle_muc_message,
+				chatStateReceived: otalk.chat_state_received
+			};
 				
-				$(function () {
-					// init our app
-					otalk.init(connection);
-				});
+			$(function () {
+				otalk.init(connection);
+			});
+			
 		});
-		</script>
 		
-
+		</script>
 		
 		<!-- Our html Mustache.js templates all go below. (Yes this validates) -->
 		<script id="user" type="text/html">
@@ -433,8 +431,6 @@ class User {
 			</div>
 		</script>
 		
-
-		
 	</head>
 	<body>
 		<div id="fb-root"></div>
@@ -444,6 +440,7 @@ class User {
             var button;
             var userInfo;
             var accessToken = '';
+			var facebook_id =<?= $user->facebook_id ?>
             window.fbAsyncInit = function() {
                 FB.init({ appId: '103751443062683', 
                     status: true, 
@@ -505,88 +502,18 @@ class User {
             
             function login(response, info){
                 if (response.authResponse) {
-                     accessToken                                 =   response.authResponse.accessToken;
-					 window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/index.php?token="+response.authResponse.accessToken;
-                //    alert(accessToken);
-                //    userInfo.innerHTML                             = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
-                 //                                                   + "<br /> Your Access Token: " + accessToken;
-                    button.innerHTML                               = 'Logout';
+                    accessToken =   response.authResponse.accessToken;
+					if (facebook_id != ''){ 
+					 	window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/index.php?token="+response.authResponse.accessToken;
+                		//userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
+				    }
+                    button.innerHTML = 'Logout';
                     showLoader(false);
-                   // document.getElementById('other').style.display = "block";
                 }
             }
         
             function logout(response){
-                //userInfo.innerHTML                             =   "";
-              //  document.getElementById('debug').innerHTML     =   "";
-               // document.getElementById('other').style.display =   "none";
                 showLoader(false);
-            }
-
-            //stream publish method
-            function streamPublish(name, description, hrefTitle, hrefLink, userPrompt){
-                showLoader(true);
-                FB.ui(
-                {
-                    method: 'stream.publish',
-                    message: '',
-                    attachment: {
-                        name: name,
-                        caption: '',
-                        description: (description),
-                        href: hrefLink
-                    },
-                    action_links: [
-                        { text: hrefTitle, href: hrefLink }
-                    ],
-                    user_prompt_message: userPrompt
-                },
-                function(response) {
-                    showLoader(false);
-                });
-
-            }
-            function showStream(){
-                FB.api('/me', function(response) {
-                    //console.log(response.id);
-                    streamPublish(response.name, 'I like the articles of Thinkdiff.net', 'hrefTitle', 'http://thinkdiff.net', "Share thinkdiff.net");
-                });
-            }
-
-            function share(){
-                showLoader(true);
-                var share = {
-                    method: 'stream.share',
-                    u: 'http://thinkdiff.net/'
-                };
-
-                FB.ui(share, function(response) { 
-                    showLoader(false);
-                    console.log(response); 
-                });
-            }
-
-            function graphStreamPublish(){
-                showLoader(true);
-                
-                FB.api('/me/feed', 'post', 
-                    { 
-                        message     : "I love thinkdiff.net for facebook app development tutorials",
-                        link        : 'http://ithinkdiff.net',
-                        picture     : 'http://thinkdiff.net/iphone/lucky7_ios.jpg',
-                        name        : 'iOS Apps & Games',
-                        description : 'Checkout iOS apps and games from iThinkdiff.net. I found some of them are just awesome!'
-                        
-                }, 
-                function(response) {
-                    showLoader(false);
-                    
-                    if (!response || response.error) {
-                        alert('Error occured');
-                    } else {
-                        alert('Post ID: ' + response.id);
-                    }
-                });
             }
 
             function fqlQuery(){
@@ -666,13 +593,9 @@ class User {
 			<ul></ul>
 		</section>
 
-
-		
 		<div id='log'>
 
 	    </div>
-	
-
 
 
 	</body>
