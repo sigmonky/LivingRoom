@@ -246,7 +246,12 @@ class User {
 		$(document).ready(function(){
 			
 			
-		<?php print_r($fqlResult) ?>	
+		<?php 
+		
+		print ($fqlResult) 
+		
+		
+		?>	
 			
           function newInvite(){
                 var receiverUserIds = FB.ui({ 
