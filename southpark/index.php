@@ -112,8 +112,8 @@ if ($facebook_user_profile['id'] != "") {
 			   <a href="http://twitter.com/#!/{{user.screen_name}}" class="tweet-user"><img src="{{user.profile_image_url}}" class="avatar" width="48" height="48" alt=""/></a>
 			</div>
 			<div class="details">
-			   <div class="date"><span><a href="http://twitter.com/#!/{{screen_name}}" class="tweet-user">{{user.screen_name}}</a></span></div>
 			   <p>{{text}}</p>
+			   <div class="date"><span><a href="http://twitter.com/#!/{{user.screen_name}}" class="tweet-user">{{user.screen_name}}</a></span></div>
 			</div>
 			<div class="clearfix"></div>
 		</script>
@@ -188,7 +188,7 @@ if ($facebook_user_profile['id'] != "") {
 		<div class="pane-section" id="buzz_view">
 			<div class="main_panel">
 				<div class="scroll-pane">
-					<div id="rows-content">
+					<div id="rows-content"  style="height:2500px">
 						<div id="rows"></div>
 					</div>
 				</div>
@@ -306,7 +306,6 @@ if ($facebook_user_profile['id'] != "") {
 	
 	<!-- Startup Script !-->
 	
-	<script src="application/main.js"></script>
 	
 	<script src="application/models/ChatEntry.js" type="text/javascript"></script>
 	<script src="application/models/Room.js" type="text/javascript"></script>
@@ -328,6 +327,7 @@ if ($facebook_user_profile['id'] != "") {
 	<!-- Jabber/XMPP Client  !-->
 	
 	<script src="application/components/jabberclient.js" type="text/javascript"></script>
+	<script src="application/main.js"></script>
 	
 	<script>
 	
