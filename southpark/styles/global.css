@@ -174,7 +174,7 @@ width:1000px;
 
 .main_menu {}
 
-.main_menu li{margin-top:10px; margin-right:35px; float:left; text-decoration:none; list-style: none; }
+.main_menu li{margin-top:5px; margin-right:35px; float:left; text-decoration:none; list-style: none; }
 
 #bottom_panel{
 background:url(../images/bottom_panel_back.png) repeat-x;
