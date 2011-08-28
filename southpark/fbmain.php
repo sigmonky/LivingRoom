@@ -32,7 +32,7 @@
     // Facebook, but we don’t know if the access token is valid. An access
     // token is invalid if the user logged out of Facebook.
     
-    $loginUrl   = $facebook->getLoginUrl(
+    $loginUrl = $facebook->getLoginUrl(
             array(
                 'scope'         => 'email,offline_access,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown',
                 'redirect_uri'  => $fbconfig['baseurl']

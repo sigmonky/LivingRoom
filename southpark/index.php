@@ -1,5 +1,4 @@
 <?php
-
 include_once "fbmain.php";
 include_once "user.php";
 require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
@@ -8,14 +7,11 @@ require_once(dirname(__FILE__)."/xmppprebind.php");
 /* Creates Session Attachment based on Anonymous or FB authenticated user */
 
 if ($facebook_user_profile['id'] != "") {
-	
 	//Connect Facebook Authenticated User
 	$user = new User($facebook_user_profile['id']);
 	$facebook_id = $user->facebook_id;
 	$facebook_name = $user->facebook_user_profile['name'];
-	
 }else{
-	
 	//Connect Anonymous User
 	$user = new User();
 }
@@ -31,45 +27,71 @@ if ($facebook_user_profile['id'] != "") {
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		
-		<link href="styles/global.css" rel="stylesheet" type="text/css" />
+		<!-- Stylesheets !-->
 		
+		<link href="styles/global.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/flick/jquery-ui.css">
+		
+		<!-- XMPP Bootstrap from XMPP Session Attachment and Facebook !-->
+		
 		<script>
-		var Attacher = {
+		
+			var Attacher = {
 	           JID: '<?=$user->sessionInfo['jid']?>',
 	           SID: '<?=$user->sessionInfo['sid']?>',
 	           RID: '<?=$user->sessionInfo['rid']?>'
-	 	};
+	 		};
 
-	 	var FriendsWhoInstalledApp = {
-			data: <?php print json_encode($fqlResult); ?>
-	 	}
+	 		var FriendsWhoInstalledApp = {
+				data: <?php print json_encode($fqlResult); ?>
+	 		}
 
-	 	var roomJid = '<?=$user->roomJid?>';
+	 		var roomJid = '<?=$user->roomJid?>';
+	
 		</script>
-		<script src="libs/jquery-1.4.2.min.js"></script>
-		<script src="libs/jquery-ui-1.8.2.custom.min.js"></script>
-		<script src="libs/jquery.inlineEdit.js" type="text/javascript"></script>
 		
-		<script src="libs/strophe.js" type="text/javascript"></script>
-		<script src="libs/strophe.roster.js" type="text/javascript"></script>
-		<script src="libs/strophe.status.js" type="text/javascript"></script>
-		<script src="libs/strophe.chat.js" type="text/javascript"></script>
-		<script src="libs/strophe.muc.js" type="text/javascript"></script>
+		<!-- JQuery core and plugins !-->
 		
-		<script src="libs/mustache.js" type="text/javascript"></script>
-		<script src="js/ICanHaz.js" type="text/javascript"></script>
+		<script src="application/libs/jquery-1.4.2.min.js"></script>
+		<script src="application/libs/jquery-ui-1.8.2.custom.min.js"></script>
+		<script src="application/libs/jquery.inlineEdit.js" type="text/javascript"></script>
 		
-		<script src="libs/backbone-min.js"></script>
-		<script src="libs/underscore.js"></script> 
+		<!-- Strophe core and plugins  !-->
 		
-		<script src="js/jabberclient.js" type="text/javascript"></script>
+		<script src="application/libs/strophe.js" type="text/javascript"></script>
+		<script src="application/libs/strophe.roster.js" type="text/javascript"></script>
+		<script src="application/libs/strophe.status.js" type="text/javascript"></script>
+		<script src="application/libs/strophe.chat.js" type="text/javascript"></script>
+		<script src="application/libs/strophe.muc.js" type="text/javascript"></script>
+		
+		<!-- Template Engine  !-->
+		
+		<script src="application/libs/mustache.js" type="text/javascript"></script>
+		<script src="application/libs/ICanHaz.js" type="text/javascript"></script>
+		
+		<!-- Backbone MVC  !-->
+		
+		<script src="application/libs/backbone-min.js"></script>
+		<script src="application/libs/underscore.js"></script> 
+
+		<!-- Backbone Models !-->
+		
+		<!-- Backbone Stores/Collections !-->
+
+		<!-- Backbone Views !-->
+		
+		<!-- Backbone Controller !-->
+		
+		<!-- Jabber/XMPP Client  !-->
+		
+		<script src="application/components/jabberclient.js" type="text/javascript"></script>
 		
 		<!-- Startup Script !-->
 		
-		<script src="js/application.js"></script> -->
-
-		<!-- Our html Mustache.js templates all go below. -->
+		<script src="application/main.js"></script>
+		
+		<!-- Mustache.js templates  -->
+		
 		<script id="user" type="text/html">
 			<li class="user {{ status }}" id="roster_{{ jid_id }}" data-jid="{{ jid }}">
 				<span class="name">{{ name }}</span><a href="#" class="edit_user">edit</a>
@@ -181,7 +203,6 @@ if ($facebook_user_profile['id'] != "") {
 		        <input type="submit" value='send'/>
 		    </div>
 		</div>
-		
 
 	
 <!-- 		<section id="roster">

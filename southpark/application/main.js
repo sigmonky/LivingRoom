@@ -1,8 +1,5 @@
 $(document).ready(function(){
 
-
-	
-
 	function log(msg)
 	{
 		$('#log').append('<div></div>').append(
@@ -67,7 +64,6 @@ $(document).ready(function(){
 	});
 
 });
-
 
 function FacebookNewInvite(){
         var receiverUserIds = FB.ui({ 
