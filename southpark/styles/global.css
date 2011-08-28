@@ -161,7 +161,7 @@ footer {
 
 #log{font-size:0.8em; margin-top:30px; padding:15px; background:#000; width:720px; color:#FFF; border:1px solid #FFF; height:400px; position:relative; overflow-y:scroll;}
 
-#facebook_debug {color:#FFF; font-size:0.9em;}
+#facebook_debug {margin-top:10px; color:#FFF; font-size:0.9em;}
 
 #body_wrapper {width:800px; margin-left:auto; margin-right:auto;}
 

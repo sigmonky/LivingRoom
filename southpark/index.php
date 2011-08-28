@@ -200,7 +200,7 @@ if ($facebook_user_profile['id'] != "") {
 			</div>
 			<div class="bottom_panel">
 					<form id="message_form" onsubmit="return false" method="post">
-						<input type="text" id="message_field" size="240" name="message">
+						<input type="text" id="message_field" size="140" name="message">
 						<input type="submit" id="message_send_button" value="send">
 					</form>		        
 			</div>
