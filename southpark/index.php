@@ -1,4 +1,5 @@
 <?php
+
 include_once "fbmain.php";
 include_once "user.php";
 require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
@@ -35,19 +36,19 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- XMPP Bootstrap from XMPP Session Attachment and Facebook !-->
 		
 		<script>
-		
-			var Attacher = {
-	           JID: '<?=$user->sessionInfo['jid']?>',
-	           SID: '<?=$user->sessionInfo['sid']?>',
-	           RID: '<?=$user->sessionInfo['rid']?>'
-	 		};
 
-	 		var FriendsWhoInstalledApp = {
-				data: <?php print json_encode($fqlResult); ?>
-	 		}
+		var Attacher = {
+    		JID: '<?=$user->sessionInfo['jid']?>',
+    		SID: '<?=$user->sessionInfo['sid']?>',
+    		RID: '<?=$user->sessionInfo['rid']?>'
+		};
 
-	 		var roomJid = '<?=$user->roomJid?>';
-	
+		var FriendsWhoInstalledApp = {
+			data: <?php print json_encode($fqlResult); ?>
+		}
+
+		var roomJid = '<?=$user->roomJid?>';
+
 		</script>
 		
 		<!-- JQuery core and plugins !-->
@@ -159,9 +160,9 @@ if ($facebook_user_profile['id'] != "") {
 		
 	</head>
 	<body>
-		<div id="fb-root"></div>
-		<script src="http://connect.facebook.net/en_US/all.js"></script>
-        <script type="text/javascript">
+	<div id="fb-root"></div>
+	<script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script type="text/javascript">
             FB.init({ appId: '103751443062683', 
                     status: true, 
                     cookie: true,
@@ -171,8 +172,6 @@ if ($facebook_user_profile['id'] != "") {
         </script>
 	
 	<div id="body_wrapper">
-
-
 		<div id="facebook_debug">
     		<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a> |
 	    	<?php if (!$facebook_user) { ?>
@@ -181,7 +180,6 @@ if ($facebook_user_profile['id'] != "") {
 	        	<a href="<?=$logoutUrl?>">Facebook Logout</a>
 	    		<?php } ?>
 		</div>
-	
 		<div class="toolbar">
 			<button id="join_muc">Join MUC</button>
 		</div>
@@ -193,17 +191,14 @@ if ($facebook_user_profile['id'] != "") {
 				<li><a href="#">Buzz</a></li>
 			</ul>	
 		</div>
-		
 		<div id="main_panel">
 		</div>
-		
 		<div id="bottom_panel">
 			<div id="chatArea">
 		        <input name= 'newMessageString' type="text" />
 		        <input type="submit" value='send'/>
 		    </div>
 		</div>
-
 	
 <!-- 		<section id="roster">
 		</section>
@@ -216,8 +211,6 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<div id='log'>
 	    </div>
-
 	</div>
-
 	</body>
 </html>
