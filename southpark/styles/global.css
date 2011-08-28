@@ -283,8 +283,12 @@ color:#FFF;
 
 .roster_user {
 	list-style:none;
-	position:relative;
 }
+
+.roster-user-wrap{position:relative; width:200px;}
+.roster-thumb{float:left; width:100px;}
+.roster-details{float:left; width:100px;}
+.friend_roster_menu {position:absolute; left:150px; display:none;}
 
 #chat-area {
     float: right;
@@ -299,4 +303,3 @@ color:#FFF;
     height: 300px;
 }
 
-#friend_roster_menu {position:absolute; left:150px; display:none;}
