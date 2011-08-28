@@ -43,21 +43,21 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Mustache.js templates  -->
 		
 		<script id="user" type="text/html">
-			<li class="roster_user" id="roster_{{ uid }}" data-jid="{{ uid }}">
+			<li class="roster_user view-menu" id="roster_{{ uid }}" data-jid="{{ uid }}">
 			<div class="roster-user-wrap">
 				<div class="roster-thumb">
 				   <img src="http://graph.facebook.com/{{uid}}/picture" class="avatar" width="38" height="38" alt=""/>
 				</div>
 				<div class="roster-details">
-				  {{name}}
+				  		{{name}}
 				</div>
-				<div class="clearfix">
+				<div class="clearfix"></div>
 				<div class="friend_roster_menu">
-					<span>
-						<a href="#" class="start_chat">Chat</a>
-						<a href="#" class="remove">Add to Group Chat</a>
-						<a href="#" class="remove">Create Group Chat</a>
-					</span>
+					<ul class="friend-menu-options">
+						<li><a href="#" class="start-chat">Start Chat</a></li>
+						<li><a href="#" class="add-group-chat">Add to Group Chat</a></li>
+						<li><a href="#" class="create-group-chat">Create Group Chat</a></li>
+					</ul>
 				</div>
 				</div>
 			</li>
@@ -256,9 +256,15 @@ if ($facebook_user_profile['id'] != "") {
 		SID: '<?=$user->sessionInfo['sid']?>',
 		RID: '<?=$user->sessionInfo['rid']?>'
 	};
+	// 
+	// var FriendsWhoInstalledApp = {
+	// 	data: <?php print json_encode($fqlResult); ?>
+	// }
 
 	var FriendsWhoInstalledApp = {
-		data: <?php print json_encode($fqlResult); ?>
+		data: [{
+			"uid":"527305423","name":"Isaac Da Silva","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"
+		}]
 	}
 
 	var RoomJid = '<?=$user->roomJid?>';

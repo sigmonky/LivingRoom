@@ -283,13 +283,34 @@ color:#FFF;
 
 .roster_user {
 	list-style:none;
+	display:block;
+	margin:0;height:38px;
+	padding: 10px;
+	position:relative;
+    
 }
-.invite-friends-btn {margin-top:15px; font-weight:bold; text-align:center;}
+
+.roster_user:hover {
+background:#404040;
+}
+
+.invite-friends-btn {margin-top:15px; padding:10px; font-weight:bold; text-align:center;}
 .friends-list {margin:0; padding:0;}
-.roster-user-wrap{position:relative; width:240px;}
+.view-menu{cursor:pointer;}
+
+.roster-user-wrap{ width:150px; margin:0; padding:0;}
+
 .roster-thumb{float:left; width:50px;}
-.roster-details{float:left; width:100px; font-size:0.8em; margin-left:0px; margin-top:5px;}
-.friend_roster_menu {position:absolute; left:150px; display:none;}
+
+.roster-details{float:left; width:85px; font-size:0.8em; margin-left:0px; margin-top:5px; font-weight:bold;}
+
+.friend_roster_menu {position:absolute; left:150px; top:0; width:135px; display:none; background:#404040;border:3px solid #fff;}
+
+.friend_roster_menu a{color:#fff;}
+.friend-menu-options {margin:0; padding:0;}
+.friend-menu-options li{list-style:none; margin:0; padding:0;}
+.friend-menu-options li a{ font-size:0.8em; font-weight:bold; display:block; padding:5px;}
+.friend-menu-options li a:hover{background:#CCC;}
 
 #chat-area {
     float: right;
@@ -299,7 +320,6 @@ color:#FFF;
 
 #roster-area {
     float: left;
-    padding: 10px;
     width: 150px;
 	border-right:5px solid #000;
     height: 300px;

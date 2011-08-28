@@ -12,6 +12,12 @@ $(document).ready(function(){
 	{
 		$('.scroll-pane').jScrollPane();
 	});	
+	
+	$(document).click(function(){
+		$('.friend_roster_menu').each(function(item){
+			$(this).hide();
+		})
+	})
 });
 
 
