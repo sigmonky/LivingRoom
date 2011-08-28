@@ -51,11 +51,18 @@ if ($facebook_user_profile['id'] != "") {
 
 		</script>
 		
+		<!-- Template Engine  !-->
+		<script src="application/libs/mustache.js" type="text/javascript"></script>
+		
 		<!-- JQuery core and plugins !-->
 		
 		<script src="application/libs/jquery-1.4.2.min.js"></script>
 		<script src="application/libs/jquery-ui-1.8.2.custom.min.js"></script>
-		<script src="application/libs/jquery.inlineEdit.js" type="text/javascript"></script>
+		<script type="text/javascript" src="application/libs/jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" src="application/libs/jquery.jscrollpane.min.js"></script>
+		<script type="text/javascript" src="application/libs/jquery.mustache.js"></script>
+		
+		<script src="application/components/ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- Strophe core and plugins  !-->
 		
@@ -65,14 +72,13 @@ if ($facebook_user_profile['id'] != "") {
 		<script src="application/libs/strophe.chat.js" type="text/javascript"></script>
 		<script src="application/libs/strophe.muc.js" type="text/javascript"></script>
 		
-		<!-- Template Engine  !-->
-		
-		<script src="application/libs/mustache.js" type="text/javascript"></script>
-		<script src="application/components/ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- Backbone MVC  !-->
 		<script src="application/libs/underscore.js"></script> 
 		<script src="application/libs/backbone-min.js"></script>
+		
+		<!-- Backbone Controller !-->
+		<script src="application/controllers/MainController.js" type="text/javascript"></script>
 		
 		<!-- Backbone Models !-->
 		
@@ -96,6 +102,7 @@ if ($facebook_user_profile['id'] != "") {
 	    });
 	
 		</script>
+
 		
 		<!-- Startup Script !-->
 		
@@ -116,9 +123,6 @@ if ($facebook_user_profile['id'] != "") {
 		<script src="application/views/RoomView.js" type="text/javascript"></script>
 		<script src="application/views/PaneView.js" type="text/javascript"></script>
 
-		<!-- Backbone Controller !-->
-		<script src="application/controllers/MainController.js" type="text/javascript"></script>
-		
 		
 		<!-- Jabber/XMPP Client  !-->
 		
@@ -210,6 +214,16 @@ if ($facebook_user_profile['id'] != "") {
 			</div>
 		</script>
 		
+		<script type="text/x-tmpl-mustache" id="tweet-template">
+			<div class="thumb">
+			   <a href="http://twitter.com/#!/{{from_user}}" class="tweet-user"><img src="{{profile_image_url}}" class="avatar" width="48" height="48" alt=""/></a>
+			</div>
+			<div class="details">
+			   <div class="date"><span><a href="http://twitter.com/#!/{{from_user}}" class="tweet-user">{{from_user}}</a></span></div>
+			   <p>{{text}}</p>
+			</div>
+		</script>
+		
 	</head>
 	
 	<body>
@@ -267,7 +281,10 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- My Friends View-->
 		
 		<div class="pane-section" id="friends_view">
-			<br/><br/>Friends View
+			<div class="main_panel">Friends
+				<div id="chat_list"></div>
+			</div>
+
 		</div>
 		
 		<!-- My Friends End-->
@@ -275,7 +292,13 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Buzz View Begin -->
 		
 		<div class="pane-section" id="buzz_view">
-			<br/><br/>Buzz View
+			<div class="main_panel">Buzz
+				<div class="scroll-pane">
+					<div id="rows-content">
+						<div id="rows"></div>
+					</div>
+				</div>
+			</div>
 			
 		</div>
 		
@@ -291,6 +314,9 @@ if ($facebook_user_profile['id'] != "") {
 		</section> -->
 		
 		
+		<span id="load" style="display: none; ">loading...</span>					
+		
+		
 		<!-- Log Debug Console Begin -->
 		
 		<div id="facebook_debug">
@@ -301,6 +327,7 @@ if ($facebook_user_profile['id'] != "") {
 	        	<a href="<?=$logoutUrl?>">Facebook Logout</a>
 	    		<?php } ?>
 		</div>
+			
 			
 		<div id='log'>
 	    </div>

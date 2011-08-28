@@ -24,6 +24,24 @@ var PaneView = Backbone.View.extend({
 	},
 	
 	render: function() {
+		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json';
+		$.getJSON(url, function(data) {
+			// clear 
+			$("#rows").html('');
+			// append each tweet
+			if (data && data.results.length > 0) {
+				var $rows = $("#rows");
+				_.each(data.results, function(item) {
+					var rowView = new BuzzView({model: item});
+					$(rowView.render().el).prependTo($rows);
+				});
+			} else {
+				// show there are no tweets at this location
+				$("#rows").html('<div class="row"><div class="thumb"></div><div class="details">There is no tweet at this location.</div><div>');
+			}
+
+		});
+
 
 		// // display the tweet pane
 		// $("#tweets").css({'display': 'block', 'height': '100%'});				

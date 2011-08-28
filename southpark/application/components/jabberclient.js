@@ -63,11 +63,11 @@ JabberClient.init = function (connection) {
 	}
 	
 	// make status editable
-	$('#custom_status').inlineEdit({
-		save: function (new_status) {
-			JabberClient.conn.status.setCustomStatus(new_status);
-		}
-	});
+	// $('#custom_status').inlineEdit({
+	// 	save: function (new_status) {
+	// 		JabberClient.conn.status.setCustomStatus(new_status);
+	// 	}
+	// });
 	
 	// disconnect button
 	$('#disconnect').click(function () {

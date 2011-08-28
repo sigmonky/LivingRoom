@@ -1,12 +1,21 @@
 $(document).ready(function(){
 
 
-  	window.app = MainController.init();   
-  	
+  //	window.app = MainController.init();   
+
+  	app = new MainController();
+ 	app.init();
+	Backbone.history.start();
+	
 	$('input[name=message]').focus();  
 
 
 });
+
+
+function getTweetUrl( position, radius ) {
+	return "http://search.twitter.com/search.json?geocode=" + position.lat() + "," + position.lng() + "," + radius + "mi&callback=?";
+}
 
 
 function log(msg)

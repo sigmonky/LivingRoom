@@ -195,7 +195,6 @@ width:750px;
 background:url(../images/bottom_panel_back.png) repeat-x;
 height:69px;
 width:750px;
-
 }
 
 #message_form{margin-left:15px;}
@@ -206,6 +205,7 @@ width:750px;
 background:url(../images/main_panel_back.png) repeat-x;
 height:316px;
 width:750px;
+color:#FFF;
 position:relative;
 overflow-y:scroll;
 }
