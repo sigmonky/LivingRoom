@@ -153,7 +153,7 @@ if ($facebook_user_profile['id'] != "") {
 
 		<div id="facebook_debug">
     		<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a> |
-	    	<?php echo 'facebook_user='. $facebook_user;if (!$facebook_user) { ?>
+	    	<?php if (!$facebook_user) { ?>
 	        	<a href="<?=$loginUrl?>">Facebook Login</a>
 	    	<?php } else { ?>
 	        	<a href="<?=$logoutUrl?>">Facebook Logout</a>
