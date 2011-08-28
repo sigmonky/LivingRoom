@@ -57,7 +57,7 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<script src="libs/application.js"></script> -->
 
-		<!-- Our html Mustache.js templates all go below. (Yes this validates) -->
+		<!-- Our html Mustache.js templates all go below. -->
 		<script id="user" type="text/html">
 			<li class="user {{ status }}" id="roster_{{ jid_id }}" data-jid="{{ jid }}">
 				<span class="name">{{ name }}</span><a href="#" class="edit_user">edit</a>
@@ -147,6 +147,15 @@ if ($facebook_user_profile['id'] != "") {
 	
 		<div class="toolbar">
 			<button id="join_muc">Join MUC</button>
+		</div>
+		
+		<div id="top_panel">
+		</div>
+		
+		<div id="main_panel">
+		</div>
+		
+		<div id="bottom_panel">
 		</div>
 		
 	    <div id="chatArea">
