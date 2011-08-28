@@ -169,7 +169,7 @@ if ($facebook_user_profile['id'] != "") {
                     xfbml: true,
                     oauth: true,
 			});
-        </script>
+	</script>
 	
 	<div id="body_wrapper">
 		<div id="facebook_debug">
