@@ -188,6 +188,7 @@ if ($facebook_user_profile['id'] != "") {
 				
 				<div id='roster-area'>
 					 <ul></ul>
+					<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
 				</div>
 				
 			    <div id='chat-area'>
@@ -231,7 +232,6 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Log Debug Console Begin -->
 		
 		<div id="facebook_debug">
-    		<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a> |
 	    	<?php if (!$facebook_user) { ?>
 	        	<a href="<?=$loginUrl?>">Facebook Login</a>
 	    	<?php } else { ?>
