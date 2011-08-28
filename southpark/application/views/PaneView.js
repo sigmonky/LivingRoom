@@ -16,7 +16,7 @@ var PaneView = Backbone.View.extend({
 	},
 	
 	getScrollPane: function() {
-		  return $('.scroll-pane').jScrollPane({scrollbarWidth:3}).data('jsp');
+		  // return $('.scroll-pane').jScrollPane({scrollbarWidth:3}).data('jsp');
 	},
 	
 	render: function() {
