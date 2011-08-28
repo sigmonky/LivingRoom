@@ -285,7 +285,7 @@ color:#FFF;
 	list-style:none;
 }
 
-.roster-user-wrap{position:relative; width:200px;}
+.roster-user-wrap{position:relative; width:240px;}
 .roster-thumb{float:left; width:100px;}
 .roster-details{float:left; width:100px;}
 .friend_roster_menu {position:absolute; left:150px; display:none;}
