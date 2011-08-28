@@ -64,7 +64,7 @@ MainController = {
 		var remoteJid = '';
         var name = '';
 		
-        this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('.roomView'), name: name});
+        this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
 		$(function () {
 			JabberClient.init(connection);

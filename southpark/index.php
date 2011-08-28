@@ -48,6 +48,22 @@ if ($facebook_user_profile['id'] != "") {
 		}
 
 		var RoomJid = '<?=$user->roomJid?>';
+		
+		
+		var StropheConfig = {
+
+		// Settings
+			boshUrl: 'http://www.logoslogic.com/http-bind',
+
+		// Implemented event handlers
+			subscriptionRequested: JabberClient.subscription_requested,
+			chatReceived: JabberClient.on_chat_message,
+			rosterChanged: JabberClient.update_roster,
+
+		// Not implemented in UI
+			handleMucMessage: JabberClient.handle_muc_message,
+			chatStateReceived: JabberClient.chat_state_received
+		};
 
 		</script>
 		
@@ -230,6 +246,7 @@ if ($facebook_user_profile['id'] != "") {
 		<div id="all_fans_view">
 
 			<div class="main_panel">
+				<div id="chat_list"></div>
 			</div>
 			<div class="bottom_panel">
 					<form id="message_form" onsubmit="return false" method="post">
