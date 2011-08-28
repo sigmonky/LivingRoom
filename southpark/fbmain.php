@@ -11,7 +11,7 @@
     
     $facebook_user =  null; //facebook user uid
     try{
-        include_once dirname(__FILE__)."/facebook/facebook.php";
+        include_once "facebook.php";
     }
     catch(Exception $o){
         error_log($o);
