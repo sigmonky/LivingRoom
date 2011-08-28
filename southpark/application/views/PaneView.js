@@ -62,7 +62,7 @@ var PaneView = Backbone.View.extend({
 		var roster_area = $("#roster-area");
 		console.log('FriendsWhoInstalledApp.data '+FriendsWhoInstalledApp.data);
 		_.each(FriendsWhoInstalledApp.data, function(friend){
-			console.log('friend '+friend);
+			console.log('friend '+friend.name);
 			var rowView = new FriendRosterView({model: FriendRoster});
 			$(rowView.render().el).prependTo(roster_area);
 		})
