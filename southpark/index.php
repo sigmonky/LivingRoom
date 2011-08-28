@@ -43,10 +43,10 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Mustache.js templates  -->
 		
 		<script id="user" type="text/html">
-			<li class="user {{ status }}" id="roster_{{ jid_id }}" data-jid="{{ jid }}">
+			<li class="user" id="roster_{{ uid }}" data-jid="{{ uid }}">
 				<span class="name">{{ name }}</span><a href="#" class="edit_user">edit</a>
-				<span class="status">{{#status_message}} - {{ status_message }}{{/status_message}}</span>
-				<span class="jid">{{ jid }}</span>
+				//	<span class="status">{{#status_message}} - {{ status_message }}{{/status_message}}</span>
+				<span class="jid">{{ uid }}</span>
 				<span>
 					<a href="#" class="remove">remove</a>
 					<a href="#" class="start_chat">chat</a>
@@ -160,14 +160,13 @@ if ($facebook_user_profile['id'] != "") {
 		<div class="pane-section" id="all_fans_view">
 
 			<div class="main_panel">
-				<div id="chat_list"></div>
+				
+				<div id="room-chat-area">
+					
+				</div>
+				
 			</div>
-			<div class="bottom_panel">
-					<form id="message_form" onsubmit="return false" method="post">
-						<input type="text" id="message_field" name="message">
-						<input type="submit" id="message_send_button" value="send">
-					</form>		        
-			</div>
+
 		</div>
 		
 		<!-- All Fans View End -->
@@ -175,8 +174,17 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- My Friends View-->
 		
 		<div class="pane-section" id="friends_view">
-			<div class="main_panel">Friends
-				<div id="chat_list"></div>
+			
+			<div class="main_panel">
+				
+				<div id='roster-area'>
+					 <ul></ul>
+				</div>
+				
+			    <div id='chat-area'>
+			      <ul></ul>
+			    </div>
+
 			</div>
 
 		</div>

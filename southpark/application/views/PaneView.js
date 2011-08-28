@@ -12,7 +12,6 @@ var PaneView = Backbone.View.extend({
 			self.getScrollPane().reinitialise();
 		});
 		
-
 		//
 		this.render();
 		// done
@@ -24,6 +23,9 @@ var PaneView = Backbone.View.extend({
 	},
 	
 	render: function() {
+		
+		/* Buzz View Begin */
+		
 		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json&callback=?';
 		$.getJSON(url, function(data) {
 			// clear 
@@ -53,49 +55,16 @@ var PaneView = Backbone.View.extend({
 			// $("#load").remove();
 			// $("#rows-content").append('<span id="load">Loading....</span>');
 			// $("#load").fadeIn();
-
 		});
-
-
-		// // display the tweet pane
-		// $("#tweets").css({'display': 'block', 'height': '100%'});				
-		// // display the current location
-		// $("#current-location").html("Location: " + position.lat() + ", " + position.lng());
-		// // hide the rows
-		// $("#rows").slideUp('fast', function() {
-		// 	// get the data
-		// 	var url = getTweetUrl( position, radius );
-		//             $.getJSON(url, function(data) {
-		// 		// clear 
-		// 		$("#rows").html('');
-		// 		// append each tweet
-		// 		if (data && data.results.length > 0) {
-		// 			var $rows = $("#rows");
-		// 			_.each(data.results, function(item) {
-		// 				var rowView = new TweetView({model: item});
-		// 				$(rowView.render().el).prependTo($rows);
-		// 			});
-		// 		} else {
-		// 			// show there are no tweets at this location
-		// 			$("#rows").html('<div class="row"><div class="thumb"></div><div class="details">There is no tweet at this location.</div><div>');
-		// 		}
-		// 		// show the results
-		// 		$('#rows').slideDown('fast', function() {
-		// 			// resize the scroll pane
-		// 			var pane = self.getScrollPane();
-		// 			pane.scrollTo(0,0);
-		// 			pane.reinitialise();
-		// 			// 
-		// 			$('#load').fadeOut('fast');
-		// 		});
-		// 	});
-		// });
 		
-		// // show loading
-		// $("#load").remove();
-		// $("#rows-content").append('<span id="load">Loading....</span>');
-		// $("#load").fadeIn();
-		//
+		/* Buzz View End */
+		$("#roster-area").html('');
+		var $roster-area = $("#roster-area");
+		_.each(FriendsWhoInstalledApp.data, function(friend){
+			var rowView = new FriendRosterView({model: friend});
+			$(rowView.render().el).prependTo($rows);
+		})
+		
 		return this;
 	},
 	

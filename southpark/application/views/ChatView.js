@@ -1,4 +1,5 @@
 var ChatView = Backbone.View.extend({
+	el: $("#login-form"),
     events: {
         'submit #message_form': 'sendMessage'
     }, 

@@ -9,9 +9,8 @@ var FriendRosterView = Backbone.View.extend({
     }, 
 
 	render: function () {
-        var uName = this.model.get('name');
-        uName = uName.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        $(this.el).html(uName);
+		var template = Handlebars.compile(this.template.html());
+		$(this.el).html(template(this.model));
         return this;
     },
 
