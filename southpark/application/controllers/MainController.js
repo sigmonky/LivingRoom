@@ -17,20 +17,13 @@ MainController = {
 	
 		var view;
 		
-		var StropheConfig = {
-
-		// Settings
-			boshUrl: 'http://www.logoslogic.com/http-bind',
-
-		// Implemented event handlers
-			subscriptionRequested: JabberClient.subscription_requested,
-			chatReceived: JabberClient.on_chat_message,
-			rosterChanged: JabberClient.update_roster,
-
-		// Not implemented in UI
-			handleMucMessage: JabberClient.handle_muc_message,
-			chatStateReceived: JabberClient.chat_state_received
-		};
+	    routes: {
+	        "":       "index",
+	        "allfans":  "index",
+			"myfriends": "goToMyFriends",
+			"buzz":  "goToBuzz"
+	    },
+	
 
 		/*Start XMPP Connection */
 
@@ -135,6 +128,18 @@ MainController = {
         return this;
     }, 
 
+	index: funtion(){
+		this.paneView.renderAllFans();
+	},
+
+	goToMyFriends: function() {
+		this.paneView.renderMyFriends();
+	},
+	
+	goToBuzz: function() {
+		this.paneView.renderBuzz();
+	},
+	
 	msgReceived: function (message) {
         // switch (message.event) {
         //     case 'chat':

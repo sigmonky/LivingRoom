@@ -114,6 +114,7 @@ if ($facebook_user_profile['id'] != "") {
 		<script src="application/views/ChatView.js" type="text/javascript"></script>
 		<script src="application/views/FriendRosterView.js" type="text/javascript"></script>
 		<script src="application/views/RoomView.js" type="text/javascript"></script>
+		<script src="application/views/PaneView.js" type="text/javascript"></script>
 
 		<!-- Backbone Controller !-->
 		<script src="application/controllers/MainController.js" type="text/javascript"></script>
@@ -234,18 +235,21 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<div class="top_panel">
 			<ul class="main_menu">
-				<li><a href="#">All Fans</a></li>
-				<li><a href="#">My Friends</a></li>
-				<li><a href="#">Buzz</a></li>
+				<li><a href="#allfans">All Fans</a></li>
+				<li><a href="#myfriends">My Friends</a></li>
+				<li><a href="#buzz">Buzz</a></li>
 			</ul>	
 			<div class="clearfix"></div>
 		</div>
 		
 		<!-- Main Menu End -->
 		
+		
+		<div id="pane-content">
+		
 		<!-- All Fans View Begin -->
 		
-		<div id="all_fans_view">
+		<div class="pane-section" id="all_fans_view">
 
 			<div class="main_panel">
 				<div id="chat_list"></div>
@@ -262,17 +266,22 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<!-- My Friends View-->
 		
-		<div id="friends_view">
+		<div class="pane-section" id="friends_view">
+			<br/><br/>Friends View
 		</div>
 		
 		<!-- My Friends End-->
 		
 		<!-- Buzz View Begin -->
 		
-		<div id="buzz_view">
+		<div class="pane-section" id="buzz_view">
+			<br/><br/>Buzz View
+			
 		</div>
 		
 		<!-- Buzz View End -->
+	
+		</div>
 	
 		<!--<section id="roster">
 		</section>
