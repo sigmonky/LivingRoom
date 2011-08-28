@@ -167,24 +167,24 @@ footer {
 
 #chatArea{padding-top:20px; padding-left:20px;}
 
-#top_panel{
+.top_panel{
 background:url(../images/top_panel_back.png) repeat-x;
 height:29px;
 width:750px;
 }
 
-#top_panel .main_menu a{
+.top_panel .main_menu a{
 	font-weight:bold;
 	font-size:0.8em;
 	text-decoration:none;
 	color:#a98a10;
 }
 
-#top_panel .main_menu a:hover{
+.top_panel .main_menu a:hover{
 	color:#FFF;
 }
 
-#top_panel .main_menu a.selected{
+.top_panel .main_menu a.selected{
 	color:#FFF;
 }
 
@@ -192,17 +192,21 @@ width:750px;
 
 .main_menu li{margin-top:6px; margin-right:35px; float:left; text-decoration:none; list-style: none; }
 
-#bottom_panel{
+.bottom_panel{
 background:url(../images/bottom_panel_back.png) repeat-x;
 height:69px;
 width:750px;
 
 }
 
-#main_panel{
+.main_panel{
 background:url(../images/main_panel_back.png) repeat-x;
 height:316px;
 width:750px;
 position:relative;
 overflow-y:scroll;
 }
+
+#all_fans_view{ display:block;}
+#friends_view{ display:none;}
+#buzz_view{ display:none;}

@@ -159,7 +159,11 @@ if ($facebook_user_profile['id'] != "") {
 		</script>
 		
 	</head>
+	
 	<body>
+		
+	<!-- Facebook SDK Begin -->
+		
 	<div id="fb-root"></div>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
 	<script type="text/javascript">
@@ -171,7 +175,63 @@ if ($facebook_user_profile['id'] != "") {
 			});
 	</script>
 	
+	<!-- Facebook SDK End -->
+	
 	<div id="body_wrapper">
+
+		<!-- Main Menu Begin -->
+		
+		<div class="top_panel">
+			<ul class="main_menu">
+				<li><a href="#">All Fans</a></li>
+				<li><a href="#">My Friends</a></li>
+				<li><a href="#">Buzz</a></li>
+			</ul>	
+			<div class="clearfix"></div>
+		</div>
+		
+		<!-- Main Menu End -->
+		
+		<!-- All Fans View Begin -->
+		
+		<div id="all_fans_view">
+
+			<div class="main_panel">
+			</div>
+			<div class="bottom_panel">
+					<form id="message_form" onsubmit="return false" method="post">
+						<input type="text" id="message_field" size="240" name="message">
+						<input type="submit" id="message_send_button" value="send">
+					</form>		        
+			</div>
+		</div>
+		
+		<!-- All Fans View End -->
+		
+		<!-- My Friends View-->
+		
+		<div id="friends_view">
+		</div>
+		
+		<!-- My Friends End-->
+		
+		<!-- Buzz View Begin -->
+		
+		<div id="buzz_view">
+		</div>
+		
+		<!-- Buzz View End -->
+	
+		<!--<section id="roster">
+		</section>
+
+		<section id="chats">
+			<ul></ul>
+		</section> -->
+		
+		
+		<!-- Log Debug Begin -->
+		
 		<div id="facebook_debug">
     		<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a> |
 	    	<?php if (!$facebook_user) { ?>
@@ -180,37 +240,16 @@ if ($facebook_user_profile['id'] != "") {
 	        	<a href="<?=$logoutUrl?>">Facebook Logout</a>
 	    		<?php } ?>
 		</div>
+		
 		<div class="toolbar">
 			<button id="join_muc">Join MUC</button>
 		</div>
-		<br/>
-		<div id="top_panel">
-			<ul class="main_menu">
-				<li><a href="#">All Fans</a></li>
-				<li><a href="#">My Friends</a></li>
-				<li><a href="#">Buzz</a></li>
-			</ul>	
-		</div>
-		<div id="main_panel">
-		</div>
-		<div id="bottom_panel">
-			<div id="chatArea">
-		        <input name= 'newMessageString' type="text" />
-		        <input type="submit" value='send'/>
-		    </div>
-		</div>
-	
-<!-- 		<section id="roster">
-		</section>
-
-		<section id="chats">
-			<ul></ul>
-		</section> -->
-		
-		<!-- <div class="clearfix"></div> -->
-		
+			
 		<div id='log'>
 	    </div>
+	
+		<!-- Log Debug End -->
+	
 	</div>
 	</body>
 </html>
