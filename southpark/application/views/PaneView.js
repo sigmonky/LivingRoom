@@ -58,7 +58,7 @@ var PaneView = Backbone.View.extend({
 		});
 		
 		/* Buzz View End */
-		$("#roster-area").html('');
+	//	$("#roster-area").html('');
 		var roster_area = $("#roster-area");
 		console.log('FriendsWhoInstalledApp.data '+FriendsWhoInstalledApp.data);
 		_.each(FriendsWhoInstalledApp.data, function(friend){
