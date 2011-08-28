@@ -154,3 +154,5 @@ footer {
 #chats .chat_message span.chat_text {
 	display: block;
 }
+
+.clearfix{clear:both}

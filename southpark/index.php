@@ -242,15 +242,14 @@ function FacebookNewInvite(){
 		</div>
 
 		<section id="roster">
-
 		</section>
 
 		<section id="chats">
 			<ul></ul>
 		</section>
-
+		
+		<div class="clearfix"></div>
 		<div id='log'>
-
 	    </div>
 
 	</body>
