@@ -73,14 +73,47 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Backbone MVC  !-->
 		<script src="application/libs/underscore.js"></script> 
 		<script src="application/libs/backbone-min.js"></script>
-
+		
 		<!-- Backbone Models !-->
 		
-		<!-- Backbone Stores/Collections !-->
-
+		<script>
+		
+	    var server = false, models;
+	    if (typeof exports !== 'undefined') {
+	        _ = require('underscore')._;
+	        Backbone = require('backbone');
+	        models = exports;
+	        server = true;
+	    } else {
+	        models = this.models = {};
+	    }
+	
+	    models.ChatRoomModel = Backbone.Model.extend({
+	        initialize: function() {
+	            this.chats = new models.ChatCollection();
+	            this.users = new models.RoomRosterCollection();
+	        }
+	    });
+	
+		</script>
+		
+		<script src="application/models/ChatEntry.js" type="text/javascript"></script>
+		<script src="application/models/Room.js" type="text/javascript"></script>
+		<script src="application/models/User.js" type="text/javascript"></script>
+		<script src="application/models/TweetEntry.js" type="text/javascript"></script>
+		
 		<!-- Backbone Views !-->
 		
+		<script src="application/views/BuzzMessageView.js" type="text/javascript"></script>
+		<script src="application/views/BuzzView.js" type="text/javascript"></script>
+		<script src="application/views/ChatMessageView.js" type="text/javascript"></script>
+		<script src="application/views/ChatView.js" type="text/javascript"></script>
+		<script src="application/views/FriendRosterView.js" type="text/javascript"></script>
+		<script src="application/views/RoomView.js" type="text/javascript"></script>
+
 		<!-- Backbone Controller !-->
+		<script src="application/controllers/MainController.js" type="text/javascript"></script>
+		
 		
 		<!-- Jabber/XMPP Client  !-->
 		

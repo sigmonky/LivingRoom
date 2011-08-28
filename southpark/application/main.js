@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-  	window.app = NodeChatController.init({port: 80, hashpassword:"b01b41c4c102ec09c", userName: 'isaacueca', version: '0.3.19' });   
+
+  	window.app = MainController.init();   
   	
 	$('input[name=message]').focus();  
 
@@ -9,18 +10,6 @@ $(document).ready(function(){
 		$('#log').append('<div></div>').append(
 		document.createTextNode(msg));
 	}
-
-	function onConnect(status)
-	{
-		if (status == Strophe.Status.DISCONNECTED)
-		log('Disconnected.');
-	}
-
-	function onResult(iq) {
-		var elapsed = (new Date()) - startTime;
-		log('Response from jabber.org took ' + elapsed + 'ms.');
-	}
-
 
 });
 
@@ -36,9 +25,22 @@ function FacebookNewInvite(){
       );
 }
 
+
+
 function log() {
   if (typeof console == 'undefined') {  
     return;  
   }  
   console.log.apply(console, arguments);
+}
+
+function onConnect(status)
+{
+	if (status == Strophe.Status.DISCONNECTED)
+	log('Disconnected.');
+}
+
+function onResult(iq) {
+	var elapsed = (new Date()) - startTime;
+	log('Response from jabber.org took ' + elapsed + 'ms.');
 }

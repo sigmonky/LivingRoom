@@ -6,7 +6,7 @@ var Room = Backbone.Model.extend({
     name: '',
 	isPrivate: '',
 	isActive: ''
-  }
+  },
   initialize: function() {
       this.users = new models.UserCollection();
   }
