@@ -34,7 +34,19 @@ if ($facebook_user_profile['id'] != "") {
 		<link href="styles/global.css" rel="stylesheet" type="text/css" />
 		
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/flick/jquery-ui.css">
-		
+		<script>
+		var Attacher = {
+	           JID: '<?=$user->sessionInfo['jid']?>',
+	           SID: '<?=$user->sessionInfo['sid']?>',
+	           RID: '<?=$user->sessionInfo['rid']?>'
+	 	};
+
+	 	var FriendsWhoInstalledApp = {
+			data: <?php print json_encode($fqlResult); ?>
+	 	}
+
+	 	var roomJid = '<?=$user->roomJid?>';
+		</script>
 		<script src="libs/jquery-1.4.2.min.js"></script>
 		<script src="libs/jquery-ui-1.8.2.custom.min.js"></script>
 		<script src="libs/jquery.inlineEdit.js" type="text/javascript"></script>

@@ -1,16 +1,6 @@
 $(document).ready(function(){
 
- 	var Attacher = {
-           JID: '<?=$user->sessionInfo['jid']?>',
-           SID: '<?=$user->sessionInfo['sid']?>',
-           RID: '<?=$user->sessionInfo['rid']?>'
- 	};
 
- 	var FriendsWhoInstalledApp = {
-		data: <?php print json_encode($fqlResult); ?>
- 	}
-
- 	var roomJid = '<?=$user->roomJid?>';
 	
 
 	function log(msg)
