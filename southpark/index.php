@@ -235,13 +235,14 @@ if ($facebook_user_profile['id'] != "") {
             var button;
             var userInfo;
             var accessToken = '';
-			var facebook_id =<?= $user->facebook_id ?>
+			var facebook_id = <?= $user->facebook_id ?>;
+			
             FB.init({ appId: '103751443062683', 
                     status: true, 
                     cookie: true,
                     xfbml: true,
-                    oauth: true
-				   });
+                    oauth: true,
+			});
 		          
 			
         </script>
