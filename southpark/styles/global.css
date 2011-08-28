@@ -162,14 +162,19 @@ footer {
 #top_panel{
 background:url(../images/top_panel_back.png)
 height:31px;
+width:1000px;
 }
 
 #bottom_panel{
 background:url(../images/bottom_panel_back.png)
 height:69px;
+width:1000px;
+
 }
 
 #main_panel{
 background:url(../images/main_panel_back.png)
 height:316px;
+width:1000px;
+
 }
