@@ -157,11 +157,11 @@ footer {
 
 .clearfix{clear:both}
 
-#log{font-size:0.8em; margin-top:10px; padding:15px; background:#000; color:#FFF}
+#log{font-size:0.8em; margin-top:10px; padding:15px; background:#000; color:#FFF; height:400px; position:relative; overflow-y:hidden;}
 
 #top_panel{
 background:url(../images/top_panel_back.png) repeat-x;
-height:31px;
+height:29px;
 width:1000px;
 }
 
@@ -172,9 +172,9 @@ width:1000px;
 	color:#a98a10;
 }
 
-.main_menu {}
+.main_menu {margin:0; padding:0;}
 
-.main_menu li{margin-top:5px; margin-right:35px; float:left; text-decoration:none; list-style: none; }
+.main_menu li{margin-top:7px; margin-right:35px; float:left; text-decoration:none; list-style: none; }
 
 #bottom_panel{
 background:url(../images/bottom_panel_back.png) repeat-x;
