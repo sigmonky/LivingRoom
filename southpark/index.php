@@ -147,15 +147,15 @@ if ($facebook_user_profile['id'] != "") {
                     oauth: true,
 			});
         </script>
-	
-    	<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
-
-	    <?php echo 'facebook_user='. $facebook_user;if (!$facebook_user) { ?>
-	        You've to login using FB Login Button to see api calling result.
-	        <a href="<?=$loginUrl?>">Facebook Login</a>
-	    <?php } else { ?>
-	        <a href="<?=$logoutUrl?>">Facebook Logout</a>
-	    <?php } ?>
+		<div id="facebook_debug">
+    		<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
+	    	<?php echo 'facebook_user='. $facebook_user;if (!$facebook_user) { ?>
+	        	You've to login using FB Login Button to see api calling result.
+	        	<a href="<?=$loginUrl?>">Facebook Login</a>
+	    	<?php } else { ?>
+	        	<a href="<?=$logoutUrl?>">Facebook Logout</a>
+	    		<?php } ?>
+		</div>
 	
 		<div class="toolbar">
 			<button id="join_muc">Join MUC</button>
