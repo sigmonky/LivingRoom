@@ -7,11 +7,7 @@ $(document).ready(function(){
 	Backbone.history.start();
 	
 	$('input[name=message]').focus();  
-	// $(function()
-	// {
-	// 	$('.scroll-pane').jScrollPane();
-	// });
-	//$('.scroll-pane').jScrollPane();
+
 	$(function()
 	{
 		$('.scroll-pane').jScrollPane();

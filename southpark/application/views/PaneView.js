@@ -1,12 +1,9 @@
 var PaneView = Backbone.View.extend({
-	el: $('#pane-container'),
+	el: $('#buzz_view'),
 
 	initialize: function() {
 		_.bindAll(this, 'render', 'getScrollPane', 'renderAllFans', 'renderMyFriends', 'renderBuzz');
-		// re-render if there is a change
-		// additional behaviours
 		var self = this;		
-			
 	//	- when window is resized, recalc pane
 		$(window).resize(function() {
 			self.getScrollPane().reinitialise();
@@ -19,7 +16,7 @@ var PaneView = Backbone.View.extend({
 	},
 	
 	getScrollPane: function() {
-		 // return $('.scroll-pane').jScrollPane({scrollbarWidth:3}).data('jsp');
+		  return $('.scroll-pane').jScrollPane({scrollbarWidth:3}).data('jsp');
 	},
 	
 	render: function() {

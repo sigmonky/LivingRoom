@@ -10,7 +10,7 @@ a {
 }
 
 a:hover {
-	color: #00B4EB;
+	color: #A98A10;
 	cursor: pointer;
 }
 
@@ -284,7 +284,7 @@ color:#FFF;
 .roster_user {
 	list-style:none;
 }
-.invite-friends-btn {margin-top:15px; font-weight:bold;}
+.invite-friends-btn {margin-top:15px; font-weight:bold; text-align:center;}
 .friends-list {margin:0; padding:0;}
 .roster-user-wrap{position:relative; width:240px;}
 .roster-thumb{float:left; width:50px;}
@@ -293,14 +293,15 @@ color:#FFF;
 
 #chat-area {
     float: right;
-    width: 600px;
+    width: 500px;
     height: 300px;
 }
 
 #roster-area {
     float: left;
     padding: 10px;
-    width: 250px;
+    width: 150px;
+	border-right:5px solid #000;
     height: 300px;
 }
 
