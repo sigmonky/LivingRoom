@@ -5,7 +5,12 @@ var BuzzView = Backbone.View.extend({
 	  _.bindAll(this, 'render');
 	},
 	render: function() {
-		$(this.el).html(this.template.mustache(this.model));
+	//	console.log('render this.model'+this.model.screen_name)
+		var template = Handlebars.compile(this.template.html());
+		$(this.el).html(template(this.model));
+		
+		//$(this.el).html(this.template.mustache(this.model));
+	//	ICH.subscription_request(info)
 		return this;
 	}
 });

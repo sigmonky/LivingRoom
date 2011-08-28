@@ -17,9 +17,9 @@ JabberClient.init = function (connection) {
 	this.$chats = $('#chats');
 	
 	// init chat area tabs
-	this.$chats.tabs({
-		tabTemplate: '<li><a href="#{href}"><span>#{label}</span></a><a class="close_tab">x</a></li>'
-	});
+	// this.$chats.tabs({
+	// 	tabTemplate: '<li><a href="#{href}"><span>#{label}</span></a><a class="close_tab">x</a></li>'
+	// });
 	
 	// debug traffic toggle
 	this.show_traffic = false;
@@ -220,7 +220,7 @@ JabberClient.init = function (connection) {
 JabberClient.joinRoom = function(roomJid){
 		var roomJid = roomJid+'@conference.logoslogic.com';
 		var cueca = 'guest_'+Math.floor(Math.random()*1111001);
-		JabberClient.conn.muc.join(roomJid, cueca, function(m){console.log('room  message handler'+m)}, function(m){console.log('room presence handler'+m)});
+		JabberClient.conn.muc.join(roomJid, cueca);
 }
 
 // tell it to connect

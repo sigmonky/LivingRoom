@@ -7,11 +7,11 @@ var PaneView = Backbone.View.extend({
 		// additional behaviours
 		var self = this;		
 			
-		// - when window is resized, recalc pane
-		// $(window).resize(function() {
-		// 	self.getScrollPane().reinitialise();
-		// });
-		// 
+	//	- when window is resized, recalc pane
+		$(window).resize(function() {
+			self.getScrollPane().reinitialise();
+		});
+		
 
 		//
 		this.render();
@@ -20,7 +20,7 @@ var PaneView = Backbone.View.extend({
 	},
 	
 	getScrollPane: function() {
-	//	return $('.scroll-pane').jScrollPane({scrollbarWidth:3}).data('jsp');
+	//	 return $('.scroll-pane').jScrollPane({scrollbarWidth:3}).data('jsp');
 	},
 	
 	render: function() {
@@ -40,6 +40,19 @@ var PaneView = Backbone.View.extend({
 				// show there are no tweets at this location
 				$("#rows").html('<div class="row"><div class="thumb"></div><div class="details">There is no tweet at this location.</div><div>');
 			}
+			// show the results
+			$('#rows').slideDown('fast', function() {
+				// resize the scroll pane
+				// var pane = self.getScrollPane();
+				// pane.scrollTo(0,0);
+				// pane.reinitialise();
+				// // 
+				$('#load').fadeOut('fast');
+			});
+			// 
+			// $("#load").remove();
+			// $("#rows-content").append('<span id="load">Loading....</span>');
+			// $("#load").fadeIn();
 
 		});
 

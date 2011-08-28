@@ -213,3 +213,64 @@ overflow-y:scroll;
 #all_fans_view{ display:block;}
 #friends_view{ display:none;}
 #buzz_view{ display:none;}
+
+#load {
+	position: absolute;
+	margin: 15px;
+	font-size: 14px;
+	z-index: 9999;
+}
+
+#pane-container {
+	height: 100%;		
+}
+
+.scroll-pane {
+	width: 100%;
+	height: 90%;
+	overflow: auto;
+	
+}
+
+#pane-content { 
+
+}
+
+.row { 
+	margin: 0;
+	margin-top: 12px;
+	border-bottom: 1px solid rgba(136,136,136, 0.3);	
+}
+
+.row .thumb {
+	float: left;
+	margin-left: 15px;
+}
+.row .details {
+	margin: 0 15px 12px 75px;
+}
+	.row .avatar {
+	outline: 1px inset rgba(207,207,207,0.5);
+	outline-offset: 1px; 
+}
+.row .details .date {
+	color: #888;
+	font-size: 12px;
+	text-align: right;
+	line-height: 22px;
+	padding: 0 15px 3px 0;
+	white-space: nowrap;
+		overflow: hidden;
+}
+.row .details .date span {
+		float: left;
+}
+	.row .details p {
+	background: rgba(207,207,207,0.5);
+	margin: 0;
+	padding: 8px 10px;
+	width: 607px;
+    -webkit-border-radius: 10px;
+		   -moz-border-radius: 10px;
+               border-radius: 10px;			
+}
