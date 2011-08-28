@@ -47,7 +47,7 @@ MainController = {
 		connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
 		connection.rawInput = function (data) {
-			Debuggerlog('RECV: ' + data);
+			log('RECV: ' + data);
 		};
 
 		connection.rawOutput = function (data) {
