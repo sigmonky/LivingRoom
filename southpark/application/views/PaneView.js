@@ -29,9 +29,10 @@ var PaneView = Backbone.View.extend({
 			// clear 
 			$("#rows").html('');
 			// append each tweet
-			if (data && data.results.length > 0) {
+			console.log('data results '+data)
+			if (data && data.length > 0) {
 				var $rows = $("#rows");
-				_.each(data.results, function(item) {
+				_.each(data, function(item) {
 					var rowView = new BuzzView({model: item});
 					$(rowView.render().el).prependTo($rows);
 				});
