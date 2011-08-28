@@ -49,9 +49,7 @@ if ($facebook_user_profile['id'] != "") {
 				   <img src="http://graph.facebook.com/{{uid}}/picture" class="avatar" width="48" height="48" alt=""/>
 				</div>
 				<div class="roster-details">
-				   <p>{{name}}</p>
-				   <p>{{uid}}</p>
-				
+				  {{name}}
 				</div>
 				<div class="clearfix">
 				<div class="friend_roster_menu">
