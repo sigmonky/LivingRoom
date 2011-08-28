@@ -236,7 +236,7 @@ function FacebookNewInvite(){
 	
     	<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
 
-	    <?php if (!$facebook_user) { ?>
+	    <?php echo 'facebook_user='. facebook_user;if (!$facebook_user) { ?>
 	        You've to login using FB Login Button to see api calling result.
 	        <a href="<?=$loginUrl?>">Facebook Login</a>
 	    <?php } else { ?>
