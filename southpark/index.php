@@ -168,22 +168,23 @@ if ($facebook_user_profile['id'] != "") {
 		</div>
 		
 		<div id="bottom_panel">
+			<div id="chatArea">
+		      <textarea id='chatHistory'></textarea>
+		      <form method="post" action="#" id= 'chatForm' name="newMessage" onsubmit="return false">
+		        <input name= 'newMessageString' type="text" />
+		        <input type="submit" value='send'/>
+		      </form>
+		    </div>
 		</div>
 		
-	    <div id="chatArea">
-	      <textarea id='chatHistory'></textarea>
-	      <form method="post" action="#" id= 'chatForm' name="newMessage" onsubmit="return false">
-	        <input name= 'newMessageString' type="text" />
-	        <input type="submit" value='send'/>
-	      </form>
-	    </div>
+
 	
-		<section id="roster">
+<!-- 		<section id="roster">
 		</section>
 
 		<section id="chats">
 			<ul></ul>
-		</section>
+		</section> -->
 		
 		<div class="clearfix"></div>
 		
