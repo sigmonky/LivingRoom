@@ -48,8 +48,9 @@ if ($facebook_user_profile['id'] != "") {
 				//	<span class="status">{{#status_message}} - {{ status_message }}{{/status_message}}</span>
 				<span class="jid">{{ uid }}</span>
 				<span>
-					<a href="#" class="remove">remove</a>
-					<a href="#" class="start_chat">chat</a>
+					<a href="#" class="start_chat">Chat</a>
+					<a href="#" class="remove">Add to Group Chat</a>
+					<a href="#" class="remove">Create Group Chat</a>
 				</span>
 			</li>
 		</script>
