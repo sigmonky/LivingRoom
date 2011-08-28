@@ -53,7 +53,7 @@ if ($facebook_user_profile['id'] != "") {
 			
 		<?php 
 		
-		json_encode($fqlResult);
+		print json_encode($fqlResult);
 		
 		
 		?>	
