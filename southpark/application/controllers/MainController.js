@@ -47,11 +47,11 @@ MainController = {
 		connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
 		connection.rawInput = function (data) {
-			log('RECV: ' + data);
+			Debuggerlog('RECV: ' + data);
 		};
 
 		connection.rawOutput = function (data) {
-			log('SENT: ' + data);
+			Debuggerlog('SENT: ' + data);
 		};
 
 		// send disco#info to jabber.org
