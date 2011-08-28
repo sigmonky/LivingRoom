@@ -99,17 +99,18 @@ $(document).ready(function(){
 	// Strophe.log = function (lvl, msg) { log(msg); };
 	connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
 
-              // set up handler
+    // set up handler
 	connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
 	log('Strophe is attached.');
 
-// send disco#info to jabber.org
+	// send disco#info to jabber.org
 	var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 
 	connection.send(iq);
 
 	var StropheConfig = {
+		
 	// Settings
 		boshUrl: 'http://www.logoslogic.com/http-bind',
 	
@@ -123,26 +124,23 @@ $(document).ready(function(){
 		chatStateReceived: otalk.chat_state_received
 	};
 
-
-	function FacebookNewInvite(){
-            var receiverUserIds = FB.ui({ 
-                 method : 'apprequests',
-                 message: 'Come on man checkout SouthPark',
-            },
-
-           function(receiverUserIds) {
-                       console.log("IDS : " + receiverUserIds.request_ids);
-            }
-          );
-     }
-	
 	$(function () {
 		otalk.init(connection);
 	});
 
 });
 
+function FacebookNewInvite(){
+        var receiverUserIds = FB.ui({ 
+             method : 'apprequests',
+             message: 'Come on man checkout SouthPark',
+        },
 
+       function(receiverUserIds) {
+                   console.log("IDS : " + receiverUserIds.request_ids);
+        }
+      );
+ }
 </script>
 		
 		<!-- Our html Mustache.js templates all go below. (Yes this validates) -->
