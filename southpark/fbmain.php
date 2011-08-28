@@ -51,7 +51,6 @@
         $facebook_user = null;
       }
     }
-    
 
     //if user is logged in and session is valid.
     if ($facebook_user){
@@ -85,7 +84,6 @@
 	        setcookie($name, '', time()-1000, '/');
 	    }
 	}
-
     
     function d($d){
         echo '<pre>';

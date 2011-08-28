@@ -47,6 +47,7 @@ if ($facebook_user_profile['id'] != "") {
 		<script src="js/ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- <script src="libs/backbone.js"></script>
+		
 		<script src="libs/underscore.js"></script> -->
 		
 <script type="text/javascript">
@@ -66,10 +67,7 @@ $(document).ready(function(){
  	}
 
  	var roomJid = '<?=$user->roomJid?>';
-
- 	var connection = null;
- 	var startTime = null;
- 	var BOSH_SERVICE = '/http-bind';
+	
 
 	function log(msg)
 	{
@@ -88,7 +86,6 @@ $(document).ready(function(){
 		log('Response from jabber.org took ' + elapsed + 'ms.');
 	}
 
-	connection = new Strophe.Connection(BOSH_SERVICE);
 
 	connection.rawInput = function (data) {
 		log('RECV: ' + data);
@@ -97,20 +94,7 @@ $(document).ready(function(){
 	connection.rawOutput = function (data) {
 		log('SENT: ' + data);
 	};
-
-	// Strophe.log = function (lvl, msg) { log(msg); };
-	connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
-
-    // set up handler
-	connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
-
-	log('Strophe is attached.');
-
-	// send disco#info to jabber.org
-	var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-
-	connection.send(iq);
-
+	
 	var StropheConfig = {
 		
 	// Settings
@@ -125,6 +109,25 @@ $(document).ready(function(){
 		handleMucMessage: otalk.handle_muc_message,
 		chatStateReceived: otalk.chat_state_received
 	};
+	
+	/*Start XMPP Connection */
+	
+	var connection = null;
+ 	var startTime = null;
+ 	var BOSH_SERVICE = '/http-bind';
+
+	connection = new Strophe.Connection(BOSH_SERVICE);
+
+	// Strophe.log = function (lvl, msg) { log(msg); };
+	connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
+
+    // set up handler
+	connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
+
+	// send disco#info to jabber.org
+	var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
+
+	connection.send(iq);
 
 	$(function () {
 		otalk.init(connection);
@@ -217,21 +220,13 @@ function FacebookNewInvite(){
 	<body>
 		<div id="fb-root"></div>
 		<script src="http://connect.facebook.net/en_US/all.js"></script>
-
         <script type="text/javascript">
-            var button;
-            var userInfo;
-            var accessToken = '';
-			var facebook_id = <?= $user->facebook_id ?>;
-			
             FB.init({ appId: '103751443062683', 
                     status: true, 
                     cookie: true,
                     xfbml: true,
                     oauth: true,
 			});
-		          
-			
         </script>
 	
     	<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
@@ -261,8 +256,3 @@ function FacebookNewInvite(){
 
 	</body>
 </html>
-
-<?php
-
-
-?>
