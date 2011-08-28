@@ -5,13 +5,16 @@ $(document).ready(function(){
   	
 	$('input[name=message]').focus();  
 
-	function log(msg)
-	{
-		$('#log').append('<div></div>').append(
-		document.createTextNode(msg));
-	}
 
 });
+
+
+function log(msg)
+{
+	$('#log').append('<div></div>').append(
+	document.createTextNode(msg));
+}
+
 
 function FacebookNewInvite(){
         var receiverUserIds = FB.ui({ 
@@ -24,7 +27,6 @@ function FacebookNewInvite(){
         }
       );
 }
-
 
 
 function log() {
