@@ -531,6 +531,7 @@ JabberClient.subscription_requested = function (info) {
 JabberClient.handle_muc_message = function (message) {
 	console.log('handle_muc_message body' +message.body);
 	console.log('handle_muc_message room' +message.room);
+	console.log('handle_muc_message nickname' +message.nickname);
 	
 	var chat_div;
 	

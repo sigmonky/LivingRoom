@@ -71,6 +71,7 @@ Strophe.addConnectionPlugin('muc', {
 		message = $(message);
 		
 		result.room = message.attr('from').split('/')[0];
+		result.nickname = message.attr('from').split('/')[1];
 		result.body = message.find('> body').text();
 		result.html_body = message.find('html[xmlns="http://jabber.org/protocol/xhtml-im"] > body').html();
 		
