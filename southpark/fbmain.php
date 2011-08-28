@@ -65,7 +65,7 @@
                 'method'    => 'fql.query',
                 'query'     => $fql,
                 'callback'  => '', 
-				'format'=> 'JSON',
+				'format' => 'JSON',
 
             );
             $fqlResult   =   $facebook->api($param);
