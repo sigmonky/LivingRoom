@@ -21,7 +21,7 @@ class User {
 		}
 	}
 	
-    public function __construct($token) {
+    public function __construct($facebook_id) {
         $this->curl = curl_init();
 
 		$this->firePhp = FirePHP::getInstance(true);
@@ -29,11 +29,12 @@ class User {
 		
 		$this->debug($token, '__construct');
 
-		if ($token != NULL){
-			$this->debug($token, '__construct nao eh nulo');
+		if ($facebook_id != NULL){
+			$this->debug($facebook_id, '__construct nao eh nulo');
 			
-			$this->facebook_token = $token;
-			$this->getFBUser();
+			$this->facebook_id = $facebook_id;
+			// $this->getFBUser();
+			$this->generateUserPassword();
 		}else{
 			$this->debug($token, '__construct eh nulo -');
 			
@@ -48,27 +49,27 @@ class User {
      * Get FB User ID
      */
     public function getFBUser() {    
-		$fields = array(
-			'access_token'=>urlencode($this->facebook_token),
-		);
-		
-		$url = "https://graph.facebook.com/me?access_token=".$this->facebook_token;
-		
-		curl_setopt($this->curl,CURLOPT_URL, $url);
-		curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
-		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
-		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-			rtrim($fields_string,'&');
-			//open connection 
-        	$response = curl_exec($this->curl);
-		if ($response){
-        	$result_obj = json_decode($response);
-			$facebook_id = $result_obj->id;
-			$facebook_name = $result_obj->name;
-			$this->facebook_id = $facebook_id;
-			$this->facebook_name = $facebook_name;
-			$this->generateUserPassword();
-		}
+		// $fields = array(
+		// 	'access_token'=>urlencode($this->facebook_token),
+		// );
+		// 
+		// $url = "https://graph.facebook.com/me?access_token=".$this->facebook_token;
+		// 
+		// curl_setopt($this->curl,CURLOPT_URL, $url);
+		// curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
+		// curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
+		// foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		// 	rtrim($fields_string,'&');
+		// 	//open connection 
+		//         	$response = curl_exec($this->curl);
+		// if ($response){
+		//         	$result_obj = json_decode($response);
+		// 	$facebook_id = $result_obj->id;
+		// 	$facebook_name = $result_obj->name;
+		// 	$this->facebook_id = $facebook_id;
+		// 	$this->facebook_name = $facebook_name;
+		// 	$this->generateUserPassword();
+		// }
 		$this->shutdown();
     }
 
@@ -215,13 +216,14 @@ class User {
 }
 
 	/* Authenticated versus Anonymous */
+	
+	print_r($facebook_user_profile);
 
-	if ($_GET['token'] != "") {
+
+	if ($facebook_user_profile['id'] != "") {
 		//Connect Facebook Authenticated User
 		
-		$facebook_token = $_GET['token'];
-	
-		$user = new User($facebook_token);
+		$user = new User($facebook_user_profile['id']);
 
 		$facebook_id = $user->facebook_id;
 		$facebook_name = $user->facebook_name;

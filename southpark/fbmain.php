@@ -9,7 +9,7 @@
         //track them if you need
     }
     
-    $user =  null; //facebook user uid
+    $facebook_user =  null; //facebook user uid
     try{
         include_once dirname(__FILE__)."/facebook/facebook.php";
     }
@@ -24,10 +24,10 @@
     ));
 
     //Facebook Authentication part
-    $user = $facebook->getUser();
+    $facebook_user = $facebook->getUser();
     // We may or may not have this data based 
     // on whether the user is logged in.
-    // If we have a $user id here, it means we know 
+    // If we have a $facebook_user id here, it means we know 
     // the user is logged into
     // Facebook, but we don’t know if the access token is valid. An access
     // token is invalid if the user logged out of Facebook.
@@ -41,25 +41,25 @@
     
     $logoutUrl  = $facebook->getLogoutUrl();
    
-    if ($user) {
+    if ($facebook_user) {
       try {
         // Proceed knowing you have a logged in user who's authenticated.
-        $user_profile = $facebook->api('/me');
+        $facebook_user_profile = $facebook->api('/me');
       } catch (FacebookApiException $e) {
         //you should use error_log($e); instead of printing the info on browser
         d($e);  // d is a debug function defined at the end of this file
-        $user = null;
+        $facebook_user = null;
       }
     }
     
     //if user is logged in and session is valid.
-    if ($user){
+    if ($facebook_user){
         //get user basic description
-        $userInfo = $facebook->api("/$user");
+        $facebook_userInfo = $facebook->api("/$facebook_user");
         
         //fql query example using legacy method call and passing parameter
         try{
-            $fql    =   "select name, hometown_location, sex, pic_square from user where uid=" . $user;
+            $fql    =   "select name, hometown_location, sex, pic_square from user where uid=" . $facebook_user;
             $param  =   array(
                 'method'    => 'fql.query',
                 'query'     => $fql,
