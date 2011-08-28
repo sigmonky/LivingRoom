@@ -1,9 +1,8 @@
 <?php
 
+include_once "fbmain.php";
 require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
-
 require_once(dirname(__FILE__)."/xmppprebind.php");
-
 
 class User {
 
@@ -135,11 +134,8 @@ class User {
 
 		unset($jab,$addmsg);
 		
-		
 		/* Set a property of VCard in order to verify user is authenticated. SET NICKNAME as equal to FULL NAME
 		Only authenticated users should have the right to setup VCARD property*/
-		
-		
 		
 		// // If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
 		// 
@@ -189,7 +185,7 @@ class User {
 		http://xmpp.org/extensions/xep-0045.html#example-8*/
 		
 		$ch = curl_init();
-		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/room_proxy.json";
+		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/service/room_proxy.json";
 		curl_setopt($ch,CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -241,13 +237,12 @@ class User {
 	}
 
 
-
 ?>
 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
 	<head>
-		<title>South Park</title>
+		<title>South Park Chat Widget</title>
 		
 		<!--[if lt IE 9]>
 			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -265,14 +260,26 @@ class User {
 		<script src="libs/strophe.chat.js" type="text/javascript"></script>
 		<script src="libs/strophe.muc.js" type="text/javascript"></script>
 		<script src="libs/mustache.js" type="text/javascript"></script>
-		<script src="jabberclient.js" type="text/javascript"></script>
-		<script src="ICanHaz.js" type="text/javascript"></script>
+		<script src="js/jabberclient.js" type="text/javascript"></script>
+		<script src="js/ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- <script src="libs/backbone.js"></script>
 		<script src="libs/underscore.js"></script> -->
 		
 		<script type="text/javascript">
 		$(document).ready(function(){
+			
+          function newInvite(){
+                var receiverUserIds = FB.ui({ 
+                        method : 'apprequests',
+                        message: 'Come on man checkout my applications. visit http://ithinkdiff.net',
+                 },
+
+                 function(receiverUserIds) {
+                          console.log("IDS : " + receiverUserIds.request_ids);
+                        }
+                 );
+          }
 
 	      var Attacher = {
 	             JID: '<?=$user->sessionInfo['jid']?>',
@@ -315,8 +322,7 @@ class User {
 			
 			// uncomment for extra debugging
 			// Strophe.log = function (lvl, msg) { log(msg); };
-			connection.attach(Attacher.JID, Attacher.SID, Attacher.RID,
-			onConnect);
+			connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
 
 			              // set up handler
 			connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
@@ -441,147 +447,26 @@ class User {
             var userInfo;
             var accessToken = '';
 			var facebook_id =<?= $user->facebook_id ?>
-            window.fbAsyncInit = function() {
                 FB.init({ appId: '103751443062683', 
                     status: true, 
                     cookie: true,
                     xfbml: true,
                     oauth: true});
-
-               showLoader(true);
-               
-               function updateButton(response) {
-                    button       =   document.getElementById('fb-auth');
-               //     userInfo     =   document.getElementById('user-info');
-                    if (response.authResponse) {
-                        //user is already logged in and connected
-                        FB.api('/me', function(info) {
-                            login(response, info);
-
-                        });
-                        
-                        button.onclick = function() {
-                            FB.logout(function(response) {
-                                logout(response);
-                            });
-                        };
-                    } else {
-                        //user is not connected to your app or logged out
-                        button.innerHTML = 'Login';
-                        button.onclick = function() {
-                            showLoader(true);
-                            FB.login(function(response) {
-                                if (response.authResponse) {
-                                    FB.api('/me', function(info) {
-                                        login(response, info);
-                                    });	   
-                                } else {
-                                    //user cancelled login or did not grant authorization
-                                    showLoader(false);
-                                }
-                            }, {scope:'email,user_birthday,status_update,publish_stream,user_about_me'});  	
-                        }
-                    }
-                }
-                
-                // run once with current status and whenever the status changes
-                FB.getLoginStatus(updateButton);
-                FB.Event.subscribe('auth.statusChange', updateButton);	
-		      	FB.Event.subscribe('auth.login', function () {
 		          
 		      });
 
-            };
-            (function() {
-                var e = document.createElement('script'); e.async = true;
-                e.src = document.location.protocol 
-                    + '//connect.facebook.net/en_US/all.js';
-                document.getElementById('fb-root').appendChild(e);
-            }());
-            
-            
-            function login(response, info){
-                if (response.authResponse) {
-                    accessToken =   response.authResponse.accessToken;
-					if (facebook_id != ''){ 
-					 	window.location = "http://www.logoslogic.com/chat/LivingRoom/southpark/index.php?token="+response.authResponse.accessToken;
-                		//userInfo.innerHTML = '<img src="https://graph.facebook.com/' + info.id + '/picture">' + info.name
-				    }
-                    button.innerHTML = 'Logout';
-                    showLoader(false);
-                }
-            }
-        
-            function logout(response){
-                showLoader(false);
-            }
-
-            function fqlQuery(){
-                showLoader(true);
-                FB.api('/me', function(response) {
-                    showLoader(false);
-                    //http://developers.facebook.com/docs/reference/fql/user/
-                    var query       =  FB.Data.query('select name, profile_url, sex, pic_small from user where uid={0}', response.id);
-                    query.wait(function(rows) {
-                       // document.getElementById('debug').innerHTML =  
-                         // 'FQL Information: '+  "<br />" + 
-                         // 'Your name: '      +  rows[0].name                                                            + "<br />" +
-                         // 'Your Sex: '       +  (rows[0].sex!= undefined ? rows[0].sex : "")                            + "<br />" +
-                         // 'Your Profile: '   +  "<a href='" + rows[0].profile_url + "'>" + rows[0].profile_url + "</a>" + "<br />" +
-                         // '<img src="'       +  rows[0].pic_small + '" alt="" />' + "<br />";
-                     });
-                });
-            }
-
-            function setStatus(){
-                showLoader(true);
-                
-                status1 = document.getElementById('status').value;
-                FB.api(
-                  {
-                    method: 'status.set',
-                    status: status1
-                  },
-                  function(response) {
-                    if (response == 0){
-                        alert('Your facebook status not updated. Give Status Update Permission.');
-                    }
-                    else{
-                        alert('Your facebook status updated');
-                    }
-                    showLoader(false);
-                  }
-                );
-            }
-            
-            function showLoader(status){
-                if (status)
-                    document.getElementById('loader').style.display = 'block';
-                else
-                    document.getElementById('loader').style.display = 'none';
-            }
-            
         </script>
 	
-    <button id="fb-auth">Login</button>
+    	<a href="#" onclick="newInvite(); return false;">Invite Friends</a>
 
-        <div id="loader" style="display:none">
-             <img src="images/ajax-loader.gif" alt="loading" />
-         </div>
-		<br/>
-
-
+	    <?php if (!$user) { ?>
+	        You've to login using FB Login Button to see api calling result.
+	        <a href="<?=$loginUrl?>">Facebook Login</a>
+	    <?php } else { ?>
+	        <a href="<?=$logoutUrl?>">Facebook Logout</a>
+	    <?php } ?>
+	
 		<div class="toolbar">
-			<!-- <input id="disconnect" type="button" value="disconnect" disabled="disabled">
-			<button id="add_contact">Add Contact</button>
-			<select id="show">
-				<option value="">Available</option>
-				<option value="chat">Free for chat</option>
-				<option value="away">Away</option>
-				<option value="xa">Extended Away</option>
-				<option value="dnd">Do Not Distrub</option>
-			</select>
-			<label>Custom Status:</label><span id="custom_status"></span> -->
 			<button id="join_muc">Join MUC</button>
 		</div>
 
@@ -596,7 +481,6 @@ class User {
 		<div id='log'>
 
 	    </div>
-
 
 	</body>
 </html>
