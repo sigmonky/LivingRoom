@@ -189,8 +189,9 @@ if ($facebook_user_profile['id'] != "") {
 				
 				<div id='roster-area'>
 					 <ul class="friends-list"></ul>
-					<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
-					
+					<div class="invite-friends-btn">
+						<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
+					</div>
 				</div>
 				
 			    <div id='chat-area'>
