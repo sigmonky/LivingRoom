@@ -4,8 +4,8 @@ var FriendRosterView = Backbone.View.extend({
 
     initialize: function (options) {
         _.bindAll(this, 'render');
-        this.model.bind('all', this.render);
-        this.model.view = this;
+        // this.model.bind('all', this.render);
+        // this.model.view = this;
     }, 
 
 	render: function () {
