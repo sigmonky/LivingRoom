@@ -24,8 +24,8 @@ var PaneView = Backbone.View.extend({
 	},
 	
 	render: function() {
-		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json';
-		$.getJSON(url, function(data) {
+		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json&callback=?';
+		$.getJSONP(url, function(data) {
 			// clear 
 			$("#rows").html('');
 			// append each tweet
