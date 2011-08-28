@@ -53,7 +53,7 @@
     }
     
 
-	echo 'user_pro '.$facebook_user_profile;
+	//echo 'user_pro '.$facebook_user_profile;
 
     //if user is logged in and session is valid.
     if ($facebook_user){

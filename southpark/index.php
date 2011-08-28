@@ -216,8 +216,8 @@ class User {
 }
 
 	/* Authenticated versus Anonymous */
-	echo 'facebook_user_profile '.$facebook_user_profile;
-	print_r($facebook_user_profile);
+	//echo 'facebook_user_profile '.$facebook_user_profile;
+	//print_r($facebook_user_profile);
 
 
 	if ($facebook_user_profile['id'] != "") {
