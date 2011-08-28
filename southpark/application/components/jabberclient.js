@@ -529,6 +529,7 @@ JabberClient.subscription_requested = function (info) {
 
 // handle muc message in the UI
 JabberClient.handle_muc_message = function (message) {
+	console.log('handle_muc_message' +message);
 	var chat_div;
 	
 	chat_div = JabberClient.get_or_create_muc(message.room);
