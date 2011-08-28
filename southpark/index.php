@@ -43,9 +43,9 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Mustache.js templates  -->
 		
 		<script id="user" type="text/html">
-			<li class="user" id="roster_{{ uid }}" data-jid="{{ uid }}">
+			<li class="roster_user" id="roster_{{ uid }}" data-jid="{{ uid }}">
 				<div class="thumb">
-				   <a href="http://twitter.com/#!/{{user.screen_name}}" class="tweet-user"><img src="http://graph.facebook.com/{{uid}}" class="avatar" width="48" height="48" alt=""/></a>
+				   <img src="http://graph.facebook.com/{{uid}}" class="avatar" width="48" height="48" alt=""/>
 				</div>
 				<div class="details">
 				   <p>{{name}}</p>
