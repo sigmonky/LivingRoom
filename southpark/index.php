@@ -216,7 +216,7 @@ class User {
 }
 
 	/* Authenticated versus Anonymous */
-	
+	echo 'facebook_user_profile '.$facebook_user_profile;
 	print_r($facebook_user_profile);
 
 
@@ -449,13 +449,13 @@ class User {
             var userInfo;
             var accessToken = '';
 			var facebook_id =<?= $user->facebook_id ?>
-                FB.init({ appId: '103751443062683', 
+            FB.init({ appId: '103751443062683', 
                     status: true, 
                     cookie: true,
                     xfbml: true,
-                    oauth: true});
+                    oauth: true
+				   });
 		          
-		      });
 
         </script>
 	
