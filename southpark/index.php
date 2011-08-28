@@ -46,7 +46,7 @@ if ($facebook_user_profile['id'] != "") {
 			<li class="roster_user" id="roster_{{ uid }}" data-jid="{{ uid }}">
 			<div class="roster-user-wrap">
 				<div class="roster-thumb">
-				   <img src="http://graph.facebook.com/{{uid}}/picture" class="avatar" width="48" height="48" alt=""/>
+				   <img src="http://graph.facebook.com/{{uid}}/picture" class="avatar" width="38" height="38" alt=""/>
 				</div>
 				<div class="roster-details">
 				  {{name}}
