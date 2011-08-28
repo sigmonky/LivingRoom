@@ -97,6 +97,10 @@ if ($facebook_user_profile['id'] != "") {
 	
 		</script>
 		
+		<!-- Startup Script !-->
+		
+		<script src="application/main.js"></script>
+		
 		<script src="application/models/ChatEntry.js" type="text/javascript"></script>
 		<script src="application/models/Room.js" type="text/javascript"></script>
 		<script src="application/models/User.js" type="text/javascript"></script>
@@ -119,10 +123,7 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<script src="application/components/jabberclient.js" type="text/javascript"></script>
 		
-		<!-- Startup Script !-->
-		
-		<script src="application/main.js"></script>
-		
+
 		<!-- Mustache.js templates  -->
 		
 		<script id="user" type="text/html">

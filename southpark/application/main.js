@@ -9,7 +9,7 @@ $(document).ready(function(){
 });
 
 
-function log(msg)
+function DebuggerLog(msg)
 {
 	$('#log').append('<div></div>').append(
 	document.createTextNode(msg));

@@ -51,7 +51,7 @@ MainController = {
 		};
 
 		connection.rawOutput = function (data) {
-			Debuggerlog('SENT: ' + data);
+			DebuggerLog('SENT: ' + data);
 		};
 
 		// send disco#info to jabber.org
