@@ -81,7 +81,7 @@ $(document).ready(function(){
 		log('Disconnected.');
 	}
 
-   function onResult(iq) {
+	function onResult(iq) {
 		var elapsed = (new Date()) - startTime;
 		log('Response from jabber.org took ' + elapsed + 'ms.');
 	}
@@ -124,10 +124,10 @@ $(document).ready(function(){
 	};
 
 
-    function FacebookNewInvite(){
+	function FacebookNewInvite(){
             var receiverUserIds = FB.ui({ 
                  method : 'apprequests',
-                 message: 'Come on man checkout my applications. visit http://ithinkdiff.net',
+                 message: 'Come on man checkout SouthPark',
             },
 
            function(receiverUserIds) {
@@ -232,7 +232,7 @@ $(document).ready(function(){
 			
         </script>
 	
-    	<a href="#" onclick="newInvite(); return false;">Invite Friends</a>
+    	<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
 
 	    <?php if (!$facebook_user) { ?>
 	        You've to login using FB Login Button to see api calling result.
