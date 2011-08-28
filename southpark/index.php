@@ -162,7 +162,7 @@ if ($facebook_user_profile['id'] != "") {
 	<body>
 	<div id="fb-root"></div>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
-    <script type="text/javascript">
+	<script type="text/javascript">
             FB.init({ appId: '103751443062683', 
                     status: true, 
                     cookie: true,
