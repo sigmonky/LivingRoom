@@ -28,13 +28,13 @@ function FacebookNewInvite(){
       );
 }
 
-
-function log() {
-  if (typeof console == 'undefined') {  
-    return;  
-  }  
-  console.log.apply(console, arguments);
-}
+// 
+// function log() {
+//   if (typeof console == 'undefined') {  
+//     return;  
+//   }  
+//   console.log.apply(console, arguments);
+// }
 
 function onConnect(status)
 {
