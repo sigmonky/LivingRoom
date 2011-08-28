@@ -86,15 +86,6 @@ $(document).ready(function(){
 		log('Response from jabber.org took ' + elapsed + 'ms.');
 	}
 
-
-	connection.rawInput = function (data) {
-		log('RECV: ' + data);
-	};
-
-	connection.rawOutput = function (data) {
-		log('SENT: ' + data);
-	};
-	
 	var StropheConfig = {
 		
 	// Settings
@@ -124,6 +115,14 @@ $(document).ready(function(){
     // set up handler
 	connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
+	connection.rawInput = function (data) {
+		log('RECV: ' + data);
+	};
+
+	connection.rawOutput = function (data) {
+		log('SENT: ' + data);
+	};
+	
 	// send disco#info to jabber.org
 	var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 
