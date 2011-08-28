@@ -147,6 +147,10 @@ if ($facebook_user_profile['id'] != "") {
                     oauth: true,
 			});
         </script>
+	
+	<div id="body_wrapper">
+
+
 		<div id="facebook_debug">
     		<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
 	    	<?php echo 'facebook_user='. $facebook_user;if (!$facebook_user) { ?>
@@ -188,10 +192,12 @@ if ($facebook_user_profile['id'] != "") {
 			<ul></ul>
 		</section> -->
 		
-		<div class="clearfix"></div>
+		<!-- <div class="clearfix"></div> -->
 		
 		<div id='log'>
 	    </div>
+
+	</div>
 
 	</body>
 </html>
