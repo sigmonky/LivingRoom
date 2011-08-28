@@ -47,7 +47,7 @@ if ($facebook_user_profile['id'] != "") {
 			data: <?php print json_encode($fqlResult); ?>
 		}
 
-		var roomJid = '<?=$user->roomJid?>';
+		var RoomJid = '<?=$user->roomJid?>';
 
 		</script>
 		

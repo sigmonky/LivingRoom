@@ -217,6 +217,11 @@ JabberClient.init = function (connection) {
 	});
 };
 
+JabberClient.joinRoom = function(roomJid){
+		var roomJid = roomJid+'@conference.logoslogic.com';
+		var cueca = 'cueca';
+		JabberClient.conn.muc.join(roomJid, cueca, function(m){console.log('room  message handler'+m)}, function(m){console.log('room presence handler'+m)});
+}
 
 // tell it to connect
 JabberClient.connect = function (account) {
@@ -249,16 +254,16 @@ JabberClient.connect = function (account) {
 
 // tell it to disconnect
 JabberClient.disconnect = function () {	
-	$('#disconnect').attr('disabled', 'disabled');
-	
-	JabberClient.conn.status.goOffline();
+	// $('#disconnect').attr('disabled', 'disabled');
+	// 
+	// JabberClient.conn.status.goOffline();
 	
 	JabberClient.conn.disconnect();
 };
 
 // handler for when we're connected
 JabberClient.handleConnected = function () {
-	$('#disconnect').removeAttr('disabled');
+//	$('#disconnect').removeAttr('disabled');
 };
 
 // hendler for when we're disconnected
@@ -270,7 +275,7 @@ JabberClient.handleDisconnected = function () {
 	JabberClient.$roster.empty();
 	
 	// re open the login dialog
-	$('#login_dialog').dialog('open');
+	// $('#login_dialog').dialog('open');
 };
 
 // retrieves credentials from localStorage as a convenience while developing
@@ -282,10 +287,10 @@ JabberClient.get_credentials = function () {
 	// Credentials are not automatically saved for testing this you can, however
 	// create a localStorage.jid and a localStorage.password in the browser to avoid
 	// having to log in each time.
-	return {
-		jid: localStorage.jid, 
-		password: localStorage.password
-	};
+	// return {
+	// 	jid: localStorage.jid, 
+	// 	password: localStorage.password
+	// };
 };
 
 // retrieves a group if it has one or returns a new one by the name you give

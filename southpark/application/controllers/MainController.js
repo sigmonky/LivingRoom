@@ -69,6 +69,9 @@ MainController = {
 		$(function () {
 			JabberClient.init(connection);
 		});
+		
+		JabberClient.joinRoom(RoomJid)
+		
         // var mySocket, hashpassword, user, view, trying, connected;
         // 
         //  this.socket = new io.Socket(null, {port: options.port
