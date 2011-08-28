@@ -172,9 +172,9 @@ width:1000px;
 	color:#a98a10;
 }
 
-#top_panel .main_menu {margin-top:10px;}
+.main_menu {margin-top:10px;}
 
-#top_panel .main_menu li{margin-right:15px; float:left;}
+.main_menu li{margin-right:15px; float:left; text-decoration:none; list-style: none; }
 
 #bottom_panel{
 background:url(../images/bottom_panel_back.png) repeat-x;
