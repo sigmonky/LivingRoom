@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Start XMPP User Obj based on Facebook User ID
+ * Creates XMPP user
+ * Creates a XMPP session attachment
+ *
+ * @param String Facebook user ID
+ */
+
 class User {
 
     public $curl = null;
