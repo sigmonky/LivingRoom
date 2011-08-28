@@ -160,20 +160,20 @@ footer {
 #log{font-size:0.8em; margin-top:10px; padding:15px; background:#000; color:#FFF}
 
 #top_panel{
-background:url(../images/top_panel_back.png)
+background:url(../images/top_panel_back.png) repeat-x;
 height:31px;
 width:1000px;
 }
 
 #bottom_panel{
-background:url(../images/bottom_panel_back.png)
+background:url(../images/bottom_panel_back.png) repeat-x;
 height:69px;
 width:1000px;
 
 }
 
 #main_panel{
-background:url(../images/main_panel_back.png)
+background:url(../images/main_panel_back.png) repeat-x;
 height:316px;
 width:1000px;
 
