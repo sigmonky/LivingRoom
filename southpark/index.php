@@ -75,13 +75,13 @@ $(document).ready(function(){
 
 	function log(msg)
 	{
-		$('#log').append('<div></div>').append(
-		document.createTextNode(msg));
+	//	$('#log').append('<div></div>').append(
+	//	document.createTextNode(msg));
 	}
 
 	function onConnect(status)
 	{
-		if (status == Strophe.Status.DISCONNECTED)
+	//	if (status == Strophe.Status.DISCONNECTED)
 		//log('Disconnected.');
 	}
 
