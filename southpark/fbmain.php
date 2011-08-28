@@ -52,7 +52,6 @@
       }
     }
     
-	print_r($facebook_user_profile);
 
     //if user is logged in and session is valid.
     if ($facebook_user){
@@ -61,7 +60,7 @@
         
         //fql query example using legacy method call and passing parameter
         try{
-            $fql    =   "select name, hometown_location, sex, pic_square from user where uid=" . $facebook_user;
+            $fql    =   "SELECT uid,name,pic_square FROM user WHERE is_app_user AND uid IN (SELECT uid2 FROM friend WHERE uid1 = me())";
             $param  =   array(
                 'method'    => 'fql.query',
                 'query'     => $fql,
