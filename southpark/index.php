@@ -200,7 +200,7 @@ if ($facebook_user_profile['id'] != "") {
 			</div>
 			<div class="bottom_panel">
 					<form id="message_form" onsubmit="return false" method="post">
-						<input type="text" id="message_field" size="140" name="message">
+						<input type="text" id="message_field" name="message">
 						<input type="submit" id="message_send_button" value="send">
 					</form>		        
 			</div>
@@ -239,10 +239,6 @@ if ($facebook_user_profile['id'] != "") {
 	    	<?php } else { ?>
 	        	<a href="<?=$logoutUrl?>">Facebook Logout</a>
 	    		<?php } ?>
-		</div>
-		
-		<div class="toolbar">
-			<button id="join_muc">Join MUC</button>
 		</div>
 			
 		<div id='log'>
