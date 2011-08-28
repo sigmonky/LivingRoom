@@ -167,19 +167,15 @@ if ($facebook_user_profile['id'] != "") {
 				<li><a href="#">My Friends</a></li>
 				<li><a href="#">Buzz</a></li>
 			</ul>	
-			<div class="clearfix"></div>
 		</div>
 		
-		<div id="main_panel">aaa
+		<div id="main_panel">
 		</div>
 		
 		<div id="bottom_panel">
 			<div id="chatArea">
-		      <textarea id='chatHistory'></textarea>
-		      <form method="post" action="#" id= 'chatForm' name="newMessage" onsubmit="return false">
 		        <input name= 'newMessageString' type="text" />
 		        <input type="submit" value='send'/>
-		      </form>
 		    </div>
 		</div>
 		
