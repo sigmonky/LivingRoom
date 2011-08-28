@@ -218,6 +218,114 @@ class User {
 	/* Authenticated versus Anonymous */
 	//echo 'facebook_user_profile '.$facebook_user_profile;
 	//print_r($facebook_user_profile);
+	echo $fbme;
+	
+    if ($fbme){
+        $urllike    =   'http://thinkdiff.net';
+        if (isset($_REQUEST['urllike']) && !empty($_REQUEST['urllike'])){
+            $urllike=    $_REQUEST['urllike'];
+        }
+
+        //check number of like of an url
+        $pagelike = '';
+        try {
+            $pagelike = $facebook->api("/$urllike");
+        }
+        catch(Exception $o) {
+            d($o);
+        }
+
+        //facebook page information
+        $fbpageinfo =   '';
+        try {
+            $fbpageinfo = $facebook->api("/thinkdiff.net");
+        }
+        catch(Exception $o) {
+            d($o);
+        }
+
+        //publish in fanpage
+        if (isset($_REQUEST['publish'])){
+            try {
+                  $wallpostpage = $facebook->api('/thinkdiff.net/feed', 'post',
+                                  array(
+                                      'message' => 'I love Thinkdiff.net for facebook and web related tutorials and iThinkdiff.net for iPhone/iPad Dictionaries.',
+                                      'picture' => 'http://thinkdiff.net/ithinkdiff.png',
+                                      'link'    => 'http://ithinkdiff.net',
+                                      'name'    => 'iThinkdiff.net iOS App Site',
+                                      'cb'      => ''
+                                      )
+                                  );
+            } catch (FacebookApiException $e) {
+                  d($e);
+            }
+        }
+
+        //upload photo in facebook album
+        if (isset($_REQUEST['albumid'])){
+            $albumID    =   isset($_REQUEST['albumid']) ? $_REQUEST['albumid'] : '';
+           
+            try {
+                  $uploadstatus = $facebook->api("/me/photos", 'post',
+                                  array(
+                                      'source'  =>  '@ithinkdiff.png',
+                                      'message' => 'I love Thinkdiff.net for facebook and web related tutorials and iThinkdiff.net for iPhone/iPad Dictionaries.'
+                                      )
+                                  );
+            } catch (FacebookApiException $e) {
+                  d($e);
+            }
+        }
+
+        //create events
+        /*
+        try {
+                  $event = $facebook->api("/me/events", 'post',
+                                  array(
+                                        'name'       => 'Facebook Users Party',
+                                        'start_time' => '1272718027',
+                                        'end_time'   => '1272718027'
+
+                                      )
+                                  );
+            } catch (FacebookApiException $e) {
+                  d($e);
+            }
+            */
+        
+
+            //fql query example using legacy method call and passing parameter
+        try{
+            //get user id
+            $uid    = $facebook->getUser();
+            //or you can use $uid = $fbme['id'];
+
+            $fql    =   "select name, cell FROM user where uid=$uid";
+            $param  =   array(
+                'method'    => 'fql.query',
+                'query'     => $fql,
+                'callback'  => ''
+            );
+            $fqlResult   =   $facebook->api($param);
+            d($fqlResult);
+        }
+        catch(Exception $o){
+            d($o);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	if ($facebook_user_profile['id'] != "") {
