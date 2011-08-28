@@ -46,10 +46,6 @@ if ($facebook_user_profile['id'] != "") {
 		<script src="js/jabberclient.js" type="text/javascript"></script>
 		<script src="js/ICanHaz.js" type="text/javascript"></script>
 		
-		<!-- IF DEBUG == TRUE -->
-		<link href="styles/peek.css" rel="stylesheet" type="text/css" />
-		<script src="js/peek.js" type="text/javascript"></script>
-		
 		<!-- <script src="libs/backbone.js"></script>
 		
 		<script src="libs/underscore.js"></script> -->
@@ -75,19 +71,19 @@ $(document).ready(function(){
 
 	function log(msg)
 	{
-	//	$('#log').append('<div></div>').append(
-	//	document.createTextNode(msg));
+		$('#log').append('<div></div>').append(
+		document.createTextNode(msg));
 	}
 
 	function onConnect(status)
 	{
-	//	if (status == Strophe.Status.DISCONNECTED)
-		//log('Disconnected.');
+		if (status == Strophe.Status.DISCONNECTED)
+		log('Disconnected.');
 	}
 
 	function onResult(iq) {
 		var elapsed = (new Date()) - startTime;
-	//	log('Response from jabber.org took ' + elapsed + 'ms.');
+		log('Response from jabber.org took ' + elapsed + 'ms.');
 	}
 
 	var StropheConfig = {
@@ -120,11 +116,11 @@ $(document).ready(function(){
 	connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
 	connection.rawInput = function (data) {
-		//log('RECV: ' + data);
+		log('RECV: ' + data);
 	};
 
 	connection.rawOutput = function (data) {
-		//log('SENT: ' + data);
+		log('SENT: ' + data);
 	};
 	
 	// send disco#info to jabber.org
@@ -254,15 +250,6 @@ function FacebookNewInvite(){
 		
 		<div class="clearfix"></div>
 		
-		<div id='console'></div>
-	    <textarea id='input' class='disabled'
-	              disabled='disabled'></textarea>
-
-	    <div id='buttonbar'>
-	      <input id='send_button' type='button' value='Send Data'
-	             disabled='disabled' class='button'>
-	    </div>
-	
 		<div id='log'>
 	    </div>
 
