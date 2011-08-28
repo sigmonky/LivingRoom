@@ -53,7 +53,7 @@ if ($facebook_user_profile['id'] != "") {
 			
 		<?php 
 		
-		print ($fqlResult) 
+		print_r($fqlResult) 
 		
 		
 		?>	
