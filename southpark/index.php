@@ -49,6 +49,8 @@ if ($facebook_user_profile['id'] != "") {
 				</div>
 				<div class="details">
 				   <p>{{name}}</p>
+				   <p>{{uid}}</p>
+				
 				</div>
 				<div class="clearfix">
 				<div class="friend_roster_menu">
