@@ -284,7 +284,7 @@ color:#FFF;
 .roster_user {
 	list-style:none;
 }
-.invite-friends-btn {margin-top:15px; font-weight:bold; text-align:center;}
+.invite-friends-btn {margin-top:15px; font-weight:bold;}
 .friends-list {margin:0; padding:0;}
 .roster-user-wrap{position:relative; width:240px;}
 .roster-thumb{float:left; width:50px;}
