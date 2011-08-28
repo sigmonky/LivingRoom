@@ -286,8 +286,8 @@ color:#FFF;
 }
 
 .roster-user-wrap{position:relative; width:240px;}
-.roster-thumb{float:left; width:100px;}
-.roster-details{float:left; width:100px;}
+.roster-thumb{float:left; width:50px;}
+.roster-details{float:left; width:150px; font-size:0.9em;}
 .friend_roster_menu {position:absolute; left:150px; display:none;}
 
 #chat-area {
