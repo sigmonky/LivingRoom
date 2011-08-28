@@ -16,14 +16,14 @@ models.RoomRosterCollection = Backbone.Collection.extend({
 });
 
 var FriendRoster = Backbone.Model.extend({
-  defaults: {
-    jid: '',
-    facebook_id: '',
-	nickname: '',
-	profile_thumb_url: '',
-	subscription: '',
-	chatActive: ''
-  }
+	//   defaults: {
+	//     jid: '',
+	//     facebook_id: '',
+	// nickname: '',
+	// profile_thumb_url: '',
+	// subscription: '',
+	// chatActive: ''
+	//   }
 });
 
 models.FriendRosterCollection = Backbone.Collection.extend({
