@@ -1,7 +1,7 @@
 var FriendRosterView = Backbone.View.extend({
    // className: 'friends-list',
 	template: $('#user'),
-  	el: $('#roster-area .friends-list'),
+  	el: $('.friends-list'),
 
     initialize: function (options) {
         _.bindAll(this, 'render');
