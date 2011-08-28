@@ -167,11 +167,14 @@ width:1000px;
 
 #top_panel .main_menu a{
 	font-weight:bold;
+	font-size:0.8em;
+	text-decoration:none;
 	color:#a98a10;
 }
 
 #top_panel .main_menu {margin-right:15px;}
-#top_panel .main_menu li{margin-right:15px;}
+
+#top_panel .main_menu li{margin-right:15px; float:left;}
 
 #bottom_panel{
 background:url(../images/bottom_panel_back.png) repeat-x;

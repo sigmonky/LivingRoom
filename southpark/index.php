@@ -167,6 +167,7 @@ if ($facebook_user_profile['id'] != "") {
 				<li><a href="#">My Friends</a></li>
 				<li><a href="#">Buzz</a></li>
 			</ul>	
+			<div class="clearfix"></div>
 		</div>
 		
 		<div id="main_panel">aaa
