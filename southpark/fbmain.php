@@ -9,9 +9,9 @@
         //track them if you need
     }
     
-    $facebook_user =  null; //facebook user uid
+    $user =  null; //facebook user uid
     try{
-        include_once "facebook.php";
+        include_once dirname(__FILE__)."/facebook/facebook.php";
     }
     catch(Exception $o){
         error_log($o);
@@ -24,10 +24,10 @@
     ));
 
     //Facebook Authentication part
-    $facebook_user = $facebook->getUser();
+    $user = $facebook->getUser();
     // We may or may not have this data based 
     // on whether the user is logged in.
-    // If we have a $facebook_user id here, it means we know 
+    // If we have a $user id here, it means we know 
     // the user is logged into
     // Facebook, but we don’t know if the access token is valid. An access
     // token is invalid if the user logged out of Facebook.
@@ -40,31 +40,28 @@
     );
     
     $logoutUrl  = $facebook->getLogoutUrl();
-    echo 'facebook_user '.$facebook_user;
-    if ($facebook_user) {
+   
+    if ($user) {
       try {
         // Proceed knowing you have a logged in user who's authenticated.
-        $facebook_user_profile = $facebook->api('/me');
+        $user_profile = $facebook->api('/me');
       } catch (FacebookApiException $e) {
         //you should use error_log($e); instead of printing the info on browser
         d($e);  // d is a debug function defined at the end of this file
-        $facebook_user = null;
+        $user = null;
       }
     }
     
-
-	
-
-	echo 'user_pro '.$facebook_user_profile;
+	print_r($user_profile);
 
     //if user is logged in and session is valid.
-    if ($facebook_user){
+    if ($user){
         //get user basic description
-        $facebook_userInfo = $facebook->api("/$facebook_user");
+        $userInfo = $facebook->api("/$user");
         
         //fql query example using legacy method call and passing parameter
         try{
-            $fql    =   "select name, hometown_location, sex, pic_square from user where uid=" . $facebook_user;
+            $fql    =   "select name, hometown_location, sex, pic_square from user where uid=" . $user;
             $param  =   array(
                 'method'    => 'fql.query',
                 'query'     => $fql,
