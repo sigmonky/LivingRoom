@@ -44,14 +44,20 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<script id="user" type="text/html">
 			<li class="user" id="roster_{{ uid }}" data-jid="{{ uid }}">
-				<span class="name">{{ name }}</span><a href="#" class="edit_user">edit</a>
-				//	<span class="status">{{#status_message}} - {{ status_message }}{{/status_message}}</span>
-				<span class="jid">{{ uid }}</span>
-				<span>
-					<a href="#" class="start_chat">Chat</a>
-					<a href="#" class="remove">Add to Group Chat</a>
-					<a href="#" class="remove">Create Group Chat</a>
-				</span>
+				<div class="thumb">
+				   <a href="http://twitter.com/#!/{{user.screen_name}}" class="tweet-user"><img src="http://graph.facebook.com/{{uid}}" class="avatar" width="48" height="48" alt=""/></a>
+				</div>
+				<div class="details">
+				   <p>{{name}}</p>
+				</div>
+				<div class="clearfix">
+				<div class="friend_roster_menu">
+					<span>
+						<a href="#" class="start_chat">Chat</a>
+						<a href="#" class="remove">Add to Group Chat</a>
+						<a href="#" class="remove">Create Group Chat</a>
+					</span>
+				</div>
 			</li>
 		</script>
 		
