@@ -55,7 +55,7 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<!-- Startup Script !-->
 		
-		<script src="libs/application.js"></script> -->
+		<script src="js/application.js"></script> -->
 
 		<!-- Our html Mustache.js templates all go below. -->
 		<script id="user" type="text/html">
