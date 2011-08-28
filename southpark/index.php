@@ -34,121 +34,29 @@ if ($facebook_user_profile['id'] != "") {
 		<link href="styles/global.css" rel="stylesheet" type="text/css" />
 		
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/flick/jquery-ui.css">
+		
 		<script src="libs/jquery-1.4.2.min.js"></script>
 		<script src="libs/jquery-ui-1.8.2.custom.min.js"></script>
 		<script src="libs/jquery.inlineEdit.js" type="text/javascript"></script>
+		
 		<script src="libs/strophe.js" type="text/javascript"></script>
 		<script src="libs/strophe.roster.js" type="text/javascript"></script>
 		<script src="libs/strophe.status.js" type="text/javascript"></script>
 		<script src="libs/strophe.chat.js" type="text/javascript"></script>
 		<script src="libs/strophe.muc.js" type="text/javascript"></script>
+		
 		<script src="libs/mustache.js" type="text/javascript"></script>
-		<script src="js/jabberclient.js" type="text/javascript"></script>
 		<script src="js/ICanHaz.js" type="text/javascript"></script>
 		
-		<!-- <script src="libs/backbone.js"></script>
+		<script src="libs/backbone-min.js"></script>
+		<script src="libs/underscore.js"></script> 
 		
-		<script src="libs/underscore.js"></script> -->
+		<script src="js/jabberclient.js" type="text/javascript"></script>
 		
-<script type="text/javascript">
-
-/* Startup Script */
-
-$(document).ready(function(){
-
- 	var Attacher = {
-           JID: '<?=$user->sessionInfo['jid']?>',
-           SID: '<?=$user->sessionInfo['sid']?>',
-           RID: '<?=$user->sessionInfo['rid']?>'
- 	};
-
- 	var FriendsWhoInstalledApp = {
-		data: <?php print json_encode($fqlResult); ?>
- 	}
-
- 	var roomJid = '<?=$user->roomJid?>';
-	
-
-	function log(msg)
-	{
-		$('#log').append('<div></div>').append(
-		document.createTextNode(msg));
-	}
-
-	function onConnect(status)
-	{
-		if (status == Strophe.Status.DISCONNECTED)
-		log('Disconnected.');
-	}
-
-	function onResult(iq) {
-		var elapsed = (new Date()) - startTime;
-		log('Response from jabber.org took ' + elapsed + 'ms.');
-	}
-
-	var StropheConfig = {
+		<!-- Startup Script !-->
 		
-	// Settings
-		boshUrl: 'http://www.logoslogic.com/http-bind',
-	
-	// Implemented event handlers
-		subscriptionRequested: otalk.subscription_requested,
-		chatReceived: otalk.on_chat_message,
-		rosterChanged: otalk.update_roster,
-	
-	// Not implemented in UI
-		handleMucMessage: otalk.handle_muc_message,
-		chatStateReceived: otalk.chat_state_received
-	};
-	
-	/*Start XMPP Connection */
-	
-	var connection = null;
- 	var startTime = null;
- 	var BOSH_SERVICE = '/http-bind';
+		<script src="libs/application.js"></script> -->
 
-	connection = new Strophe.Connection(BOSH_SERVICE);
-
-	// Strophe.log = function (lvl, msg) { log(msg); };
-	connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
-
-    // set up handler
-	connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
-
-	connection.rawInput = function (data) {
-		log('RECV: ' + data);
-	};
-
-	connection.rawOutput = function (data) {
-		log('SENT: ' + data);
-	};
-	
-	// send disco#info to jabber.org
-	var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-
-	connection.send(iq);
-
-	$(function () {
-		otalk.init(connection);
-	});
-
-});
-
-
-function FacebookNewInvite(){
-        var receiverUserIds = FB.ui({ 
-             method : 'apprequests',
-             message: 'Come on man checkout SouthPark',
-        },
-
-       function(receiverUserIds) {
-                   console.log("IDS : " + receiverUserIds.request_ids);
-        }
-      );
-}
-
-</script>
-		
 		<!-- Our html Mustache.js templates all go below. (Yes this validates) -->
 		<script id="user" type="text/html">
 			<li class="user {{ status }}" id="roster_{{ jid_id }}" data-jid="{{ jid }}">
@@ -240,7 +148,15 @@ function FacebookNewInvite(){
 		<div class="toolbar">
 			<button id="join_muc">Join MUC</button>
 		</div>
-
+		
+	    <div id="chatArea">
+	      <textarea id='chatHistory'></textarea>
+	      <form method="post" action="#" id= 'chatForm' name="newMessage" onsubmit="return false">
+	        <input name= 'newMessageString' type="text" />
+	        <input type="submit" value='send'/>
+	      </form>
+	    </div>
+	
 		<section id="roster">
 		</section>
 
