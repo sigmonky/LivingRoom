@@ -40,7 +40,7 @@
     );
     
     $logoutUrl  = $facebook->getLogoutUrl();
-   
+    echo 'facebook_user '.$facebook_user;
     if ($facebook_user) {
       try {
         // Proceed knowing you have a logged in user who's authenticated.
@@ -53,7 +53,9 @@
     }
     
 
-	//echo 'user_pro '.$facebook_user_profile;
+	
+
+	echo 'user_pro '.$facebook_user_profile;
 
     //if user is logged in and session is valid.
     if ($facebook_user){
