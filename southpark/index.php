@@ -564,12 +564,12 @@ class User {
                     oauth: true
 				   });
 		          
-
+			
         </script>
 	
     	<a href="#" onclick="newInvite(); return false;">Invite Friends</a>
 
-	    <?php if (!$user) { ?>
+	    <?php if (!$facebook_user) { ?>
 	        You've to login using FB Login Button to see api calling result.
 	        <a href="<?=$loginUrl?>">Facebook Login</a>
 	    <?php } else { ?>
