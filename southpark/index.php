@@ -160,11 +160,11 @@ if ($facebook_user_profile['id'] != "") {
 		<div class="toolbar">
 			<button id="join_muc">Join MUC</button>
 		</div>
-		
-		<div id="top_panel">
+		<br/>
+		<div id="top_panel">aaa
 		</div>
 		
-		<div id="main_panel">
+		<div id="main_panel">aaa
 		</div>
 		
 		<div id="bottom_panel">
