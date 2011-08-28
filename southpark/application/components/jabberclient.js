@@ -3,14 +3,14 @@
 "use strict";
 
 
-var otalk = {};
+var JabberClient = {};
 
 // set up the object
-otalk.init = function (connection) {
+JabberClient.init = function (connection) {
 	var account;
 	
 	this.conn = connection;
-	otalk.conn = this.conn;
+	JabberClient.conn = this.conn;
 	
 	// various elems we want convenient access to
 	this.$roster = $('#roster');
@@ -28,9 +28,9 @@ otalk.init = function (connection) {
 	// the localStorage option needs to be replaced with a 
 	// local password manager or OAuth.
 	// if (localStorage.jid) {
-	// 	account = otalk.get_credentials();
+	// 	account = JabberClient.get_credentials();
 	// 	
-	// 	otalk.connect(account);
+	// 	JabberClient.connect(account);
 	// }
 	// else {
 	// 	$('#login_dialog').dialog({
@@ -40,7 +40,7 @@ otalk.init = function (connection) {
 	// 		title: 'Connect to XMPP',
 	// 		buttons: {
 	// 			"Connect": function () {
-	// 				otalk.connect({
+	// 				JabberClient.connect({
 	// 					jid: $('#jid').val(),
 	// 					password: $('#password').val()
 	// 				});
@@ -54,66 +54,66 @@ otalk.init = function (connection) {
 	
 	// Set up UI element listeners
 	$('.close_tab').live('click', function () {
-		otalk.$chats.tabs('remove', $(this).context.tabIndex);
+		JabberClient.$chats.tabs('remove', $(this).context.tabIndex);
 	});
 	
 	// set custom status if we have it
-	if (otalk.conn.status && otalk.conn.status.status) {
-		$('#custom_status').html(otalk.conn.status.status.statusMessage);
+	if (JabberClient.conn.status && JabberClient.conn.status.status) {
+		$('#custom_status').html(JabberClient.conn.status.status.statusMessage);
 	}
 	
 	// make status editable
 	$('#custom_status').inlineEdit({
 		save: function (new_status) {
-			otalk.conn.status.setCustomStatus(new_status);
+			JabberClient.conn.status.setCustomStatus(new_status);
 		}
 	});
 	
 	// disconnect button
 	$('#disconnect').click(function () {
-		otalk.disconnect();
+		JabberClient.disconnect();
 	});
 	
 	// availability select box
-	$('#join_muc').click(function () {
-		ICH.muc_dialog().dialog({
-			autoOpen: true,
-			draggable: false,
-			modal: true,
-			title: 'Join MUC',
-			buttons: {
-				"Join": function () {
-					otalk.conn.muc.join(
-						$('#muc_room').val(), 
-						$('#muc_nickname').val(), 
-						function (m) {
-						//	console.log(m);
-						}, 
-						function (m) {
-						//	console.log(m);
-						},
-						$('#muc_password').val()
-					);
-					
-					otalk.get_or_create_muc($('#muc_room').val());
-					
-					// clear inputs
-					$(this).contents('input').val('');
-										
-					$(this).dialog('close');
-				}
-			}
-		});
-	});
+	// $('#join_muc').click(function () {
+	// 	ICH.muc_dialog().dialog({
+	// 		autoOpen: true,
+	// 		draggable: false,
+	// 		modal: true,
+	// 		title: 'Join MUC',
+	// 		buttons: {
+	// 			"Join": function () {
+	// 				JabberClient.conn.muc.join(
+	// 					$('#muc_room').val(), 
+	// 					$('#muc_nickname').val(), 
+	// 					function (m) {
+	// 					//	console.log(m);
+	// 					}, 
+	// 					function (m) {
+	// 					//	console.log(m);
+	// 					},
+	// 					$('#muc_password').val()
+	// 				);
+	// 				
+	// 				JabberClient.get_or_create_muc($('#muc_room').val());
+	// 				
+	// 				// clear inputs
+	// 				$(this).contents('input').val('');
+	// 									
+	// 				$(this).dialog('close');
+	// 			}
+	// 		}
+	// 	});
+	// });
 	
 	// try to get and show status from status plugin
-	if (otalk.conn.status && otalk.conn.status.status.show) {
-		$('#show').val(otalk.conn.status.status.show);
+	if (JabberClient.conn.status && JabberClient.conn.status.status.show) {
+		$('#show').val(JabberClient.conn.status.status.show);
 	}
 	
 	// availability select box
 	$('#show').change(function () {
-		otalk.conn.status.setShow($(this).val());
+		JabberClient.conn.status.setShow($(this).val());
 	});
 	
 	// roster item clicks
@@ -125,7 +125,7 @@ otalk.init = function (connection) {
 		jid = $(this).parents('.user').attr('data-jid');
 		
 		if ($(this).hasClass('remove')) {
-			otalk.conn.roster.unsubscribe(jid);
+			JabberClient.conn.roster.unsubscribe(jid);
 		}
 		
 		else if ($(this).hasClass('edit_user')) {
@@ -134,7 +134,7 @@ otalk.init = function (connection) {
 			
 			input = $('<input type="text">').val(elem.html()).keypress(function (e) {
 				if (e.which === 13) {
-					otalk.conn.roster.modifyContact(jid, $(this).val());
+					JabberClient.conn.roster.modifyContact(jid, $(this).val());
 					$(this).remove();
 					elem.show(0);
 				}
@@ -145,7 +145,7 @@ otalk.init = function (connection) {
 				$(this).html('edit');
 				elem.show(0);
 				// submit the change to the roster
-				otalk.conn.roster.modifyContact(jid, input.val());
+				JabberClient.conn.roster.modifyContact(jid, input.val());
 				
 				input.remove();
 				
@@ -157,28 +157,28 @@ otalk.init = function (connection) {
 		}
 				
 		else if ($(this).hasClass('start_chat')) {
-			chat_div = otalk.get_or_create_chat(jid);
+			chat_div = JabberClient.get_or_create_chat(jid);
 			
 			chat_div.children('input').focus();
 		}
 	});
 	
-	// add contact button
-	$('#add_contact').click(function () {
-		ICH.add_user_dialog().dialog({
-			autoOpen: true,
-			draggable: false,
-			modal: true,
-			title: 'Add user',
-			buttons: {
-				"Add": function () {
-					otalk.conn.roster.subscribe($('#add_user_jid').val(), $('#add_user_name').val()); 
-										
-					$(this).dialog('close');
-				}
-			}
-		});
-	});
+	// // add contact button
+	// $('#add_contact').click(function () {
+	// 	ICH.add_user_dialog().dialog({
+	// 		autoOpen: true,
+	// 		draggable: false,
+	// 		modal: true,
+	// 		title: 'Add user',
+	// 		buttons: {
+	// 			"Add": function () {
+	// 				JabberClient.conn.roster.subscribe($('#add_user_jid').val(), $('#add_user_name').val()); 
+	// 									
+	// 				$(this).dialog('close');
+	// 			}
+	// 		}
+	// 	});
+	// });
 	
 	// chat input handler
 	$('.chat_input').live('keypress', function (e) {
@@ -188,13 +188,13 @@ otalk.init = function (connection) {
 		if (e.which === 13) {
 			e.preventDefault();
 			
-			otalk.send_chat_message(jid, $(this).val());
+			JabberClient.send_chat_message(jid, $(this).val());
 			
 			// clear the chat box
 			$(this).val('');
 		}
 		else {
-			otalk.conn.chat.sendChatState(jid, "composing");
+			// JabberClient.conn.chat.sendChatState(jid, "composing");
 		}
 	});
 	
@@ -206,75 +206,75 @@ otalk.init = function (connection) {
 		if (e.which === 13) {
 			e.preventDefault();
 			
-			otalk.send_muc_message(jid, $(this).val());
+			JabberClient.send_muc_message(jid, $(this).val());
 			
 			// clear the chat box
 			$(this).val('');
 		}
 		else {
-			//otalk.conn.chat.sendChatState(jid, "composing");
+			//JabberClient.conn.chat.sendChatState(jid, "composing");
 		}
 	});
 };
 
 
 // tell it to connect
-otalk.connect = function (account) {
+JabberClient.connect = function (account) {
 	//var conn = new Strophe.Connection('http://bosh.metajack.im:5280/xmpp-httpbind');
 	var conn = new Strophe.Connection(StropheConfig.boshUrl);
 	
 	// Logging so i can see all the traffic
 	conn.xmlInput = function (body) {
-		if (otalk.show_traffic) {
+		if (JabberClient.show_traffic) {
 			//console.log('input', body);
 		}
 	};
 
 	conn.xmlOutput = function (body) {
-		if (otalk.show_traffic) {
+		if (JabberClient.show_traffic) {
 			//console.log('output', body);
 		}
 	};
 	
 	conn.connect(account.jid, account.password, function (status) {
 		if (status === Strophe.Status.CONNECTED) {
-			otalk.handleConnected();
+			JabberClient.handleConnected();
 		} else if (status === Strophe.Status.DISCONNECTED) {
-			otalk.handleDisconnected();
+			JabberClient.handleDisconnected();
 		}
 	});
 
-	otalk.conn = conn;
+	JabberClient.conn = conn;
 };
 
 // tell it to disconnect
-otalk.disconnect = function () {	
+JabberClient.disconnect = function () {	
 	$('#disconnect').attr('disabled', 'disabled');
 	
-	otalk.conn.status.goOffline();
+	JabberClient.conn.status.goOffline();
 	
-	otalk.conn.disconnect();
+	JabberClient.conn.disconnect();
 };
 
 // handler for when we're connected
-otalk.handleConnected = function () {
+JabberClient.handleConnected = function () {
 	$('#disconnect').removeAttr('disabled');
 };
 
 // hendler for when we're disconnected
-otalk.handleDisconnected = function () {
+JabberClient.handleDisconnected = function () {
 	// clear the connection
-	otalk.conn = null;
+	JabberClient.conn = null;
 	
 	// empty the roster UI
-	otalk.$roster.empty();
+	JabberClient.$roster.empty();
 	
 	// re open the login dialog
 	$('#login_dialog').dialog('open');
 };
 
 // retrieves credentials from localStorage as a convenience while developing
-otalk.get_credentials = function () {
+JabberClient.get_credentials = function () {
 	// this is clearly not very secure, but it's a way of storing the credentials
 	// without having to hardcode anything
 	
@@ -289,7 +289,7 @@ otalk.get_credentials = function () {
 };
 
 // retrieves a group if it has one or returns a new one by the name you give
-otalk.get_or_create_group = function (name) {
+JabberClient.get_or_create_group = function (name) {
 	var group;
 	
 	group = this.$roster.children('div.group[title="' + name + '"]');
@@ -304,7 +304,7 @@ otalk.get_or_create_group = function (name) {
 };
 
 // creates a group
-otalk.create_group = function (title) {
+JabberClient.create_group = function (title) {
 	var $newGroup;
 	
 	// get our group template and append to roster
@@ -317,7 +317,7 @@ otalk.create_group = function (title) {
 		
 // this adds the user html to the roster, this is used by update_roster to 
 // add the html to the page
-otalk.add_user = function (jid, status, status_message, name, group_name) {
+JabberClient.add_user = function (jid, status, status_message, name, group_name) {
 	var $user, group, ctx;
 	
 	ctx = {
@@ -337,11 +337,11 @@ otalk.add_user = function (jid, status, status_message, name, group_name) {
 	
 	
 // handler to upadate roster UI when the roster 
-otalk.update_roster = function (roster) {
+JabberClient.update_roster = function (roster) {
 	var empty = true;
 	
 	// empty the current roster
-	otalk.$roster.empty();
+	JabberClient.$roster.empty();
 
 	$.each(roster.contacts, function (jid) {
 		var away, status, i, status_message = '';
@@ -363,21 +363,21 @@ otalk.update_roster = function (roster) {
 			status = away ? "away" : "online";
 		}
 		
-		otalk.add_user(jid, status, status_message, this.name, this.groups[0]);
+		JabberClient.add_user(jid, status, status_message, this.name, this.groups[0]);
 	});
 
 	if (empty) {
-		otalk.$roster.append("<i>No contacts :(</i>");
+		JabberClient.$roster.append("<i>No contacts :(</i>");
 	}
 };
 
 
 // get or create a chat window
-otalk.get_or_create_chat = function (full_jid) {
+JabberClient.get_or_create_chat = function (full_jid) {
 	var jid, jid_id, chat_div, chat_selector;
 	
 	jid = Strophe.getBareJidFromJid(full_jid);
-	jid_id = otalk.jid_to_id(jid);
+	jid_id = JabberClient.jid_to_id(jid);
 	chat_selector = '#chat_' + jid_id;
 	
 	// get our jquery object
@@ -402,13 +402,13 @@ otalk.get_or_create_chat = function (full_jid) {
 
 
 // get or create a chat window
-otalk.get_or_create_muc = function (muc_jid) {
+JabberClient.get_or_create_muc = function (muc_jid) {
 	var jid, jid_id, chat_div, chat_selector;
 	
 //	console.log('get_or_create called', muc_jid);
 	
 	jid = Strophe.getBareJidFromJid(muc_jid);
-	jid_id = otalk.jid_to_id(muc_jid);
+	jid_id = JabberClient.jid_to_id(muc_jid);
 	
 	chat_selector = '#muc_' + jid_id;
 	
@@ -436,7 +436,7 @@ otalk.get_or_create_muc = function (muc_jid) {
 
 
 // actually send the chat message
-otalk.send_chat_message = function (jid, body) {
+JabberClient.send_chat_message = function (jid, body) {
 	// send the message
 	this.conn.chat.sendChat(jid, body);
 	
@@ -448,14 +448,14 @@ otalk.send_chat_message = function (jid, body) {
 	}));
 	
 	// scroll down if needed
-	otalk.scroll_chat(jid);
+	JabberClient.scroll_chat(jid);
 	
 	return true;
 };
 
 
-otalk.send_muc_message = function (room, body) {
-	otalk.conn.muc.message(room, 'nick', body);
+JabberClient.send_muc_message = function (room, body) {
+	JabberClient.conn.muc.message(room, 'nick', body);
 	
 	// build the ui
 	this.get_or_create_muc(room).children('ul').append(ICH.chat_message({
@@ -465,15 +465,15 @@ otalk.send_muc_message = function (room, body) {
 	}));
 	
 	// scroll down if needed
-	otalk.scroll_muc(room);
+	JabberClient.scroll_muc(room);
 };
 
 
 // handle incoming chat messages
-otalk.on_chat_message = function (message) {
+JabberClient.on_chat_message = function (message) {
 	var chat_div;
 	
-	chat_div = otalk.get_or_create_chat(message.full_jid);
+	chat_div = JabberClient.get_or_create_chat(message.full_jid);
 	
 	if (message.body) {
 		chat_div.children('ul').append(ICH.chat_message({
@@ -481,20 +481,20 @@ otalk.on_chat_message = function (message) {
 			name: Strophe.getNodeFromJid(message.full_jid)
 		}));
 		
-		otalk.scroll_chat(message.full_jid);
+		JabberClient.scroll_chat(message.full_jid);
 	}
 
 	return true;
 };
 
 // chat state received
-otalk.chat_state_received = function (chat_state) {
+JabberClient.chat_state_received = function (chat_state) {
 //	console.log('chat state:', chat_state);
 };
 
 
 // subscription requested handler
-otalk.subscription_requested = function (info) {
+JabberClient.subscription_requested = function (info) {
 	ICH.subscription_request(info).dialog({
 		autoOpen: true,
 		draggable: false,
@@ -505,16 +505,16 @@ otalk.subscription_requested = function (info) {
 				var name = $('#add_user_name').val();
 				
 				if (name.length) {
-					otalk.conn.roster.approveSubscription(info.from, name);
+					JabberClient.conn.roster.approveSubscription(info.from, name);
 				}
 				else {
-					otalk.conn.roster.approveSubscription(info.from);
+					JabberClient.conn.roster.approveSubscription(info.from);
 				}
 				
 				$(this).dialog('close');
 			},
 			"Deny": function () {
-				otalk.conn.roster.denySubscription(info.from);
+				JabberClient.conn.roster.denySubscription(info.from);
 				
 				$(this).dialog('close');
 			}
@@ -523,10 +523,10 @@ otalk.subscription_requested = function (info) {
 };
 
 // handle muc message in the UI
-otalk.handle_muc_message = function (message) {
+JabberClient.handle_muc_message = function (message) {
 	var chat_div;
 	
-	chat_div = otalk.get_or_create_muc(message.room);
+	chat_div = JabberClient.get_or_create_muc(message.room);
 	
 	if (message.body) {
 		chat_div.children('ul').append(ICH.chat_message({
@@ -534,24 +534,24 @@ otalk.handle_muc_message = function (message) {
 			name: Strophe.getNodeFromJid(message.room)
 		}));
 		
-		otalk.scroll_chat(message.room);
+		JabberClient.scroll_chat(message.room);
 	}
 
 	return true;
 };
 
-otalk.scroll_muc = function (jid) {
-	var div = otalk.get_or_create_muc(jid);
+JabberClient.scroll_muc = function (jid) {
+	var div = JabberClient.get_or_create_muc(jid);
 	
 	div.scrollTop = div.scrollHeight;
 };
 
-otalk.scroll_chat = function (jid) {
-	var div = otalk.get_or_create_chat(jid);
+JabberClient.scroll_chat = function (jid) {
+	var div = JabberClient.get_or_create_chat(jid);
 	
 	div.scrollTop = div.scrollHeight;
 };
 
-otalk.jid_to_id = function (jid) {
+JabberClient.jid_to_id = function (jid) {
 	return Strophe.getBareJidFromJid(jid).replace(/@/g, "_").replace(/\./g, "_");
 };

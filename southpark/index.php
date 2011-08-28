@@ -68,12 +68,11 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Template Engine  !-->
 		
 		<script src="application/libs/mustache.js" type="text/javascript"></script>
-		<script src="application/libs/ICanHaz.js" type="text/javascript"></script>
+		<script src="application/components/ICanHaz.js" type="text/javascript"></script>
 		
 		<!-- Backbone MVC  !-->
-		
-		<script src="application/libs/backbone-min.js"></script>
 		<script src="application/libs/underscore.js"></script> 
+		<script src="application/libs/backbone-min.js"></script>
 
 		<!-- Backbone Models !-->
 		
@@ -230,7 +229,7 @@ if ($facebook_user_profile['id'] != "") {
 		</section> -->
 		
 		
-		<!-- Log Debug Begin -->
+		<!-- Log Debug Console Begin -->
 		
 		<div id="facebook_debug">
     		<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a> |
@@ -244,7 +243,7 @@ if ($facebook_user_profile['id'] != "") {
 		<div id='log'>
 	    </div>
 	
-		<!-- Log Debug End -->
+		<!-- Log Debug Console End -->
 	
 	</div>
 	</body>

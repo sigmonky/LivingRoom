@@ -16,7 +16,6 @@ a:hover {
 
 header h1 {
 	text-indent: -9999px;
-	background: transparent url('../images/otalk_logo.png') 0 0 no-repeat;
 	width: 540px;
 	height: 230px;
 	margin: -30px 0 0 0;
@@ -202,6 +201,7 @@ width:750px;
 #message_form{margin-left:15px;}
 #message_field {width:630px; height:26px; margin-top:15px; font-size:1.1em;}
 #message_send_button{height:34px; font-size:1.4em; margin-top:15px; margin-left:10px;}
+
 .main_panel{
 background:url(../images/main_panel_back.png) repeat-x;
 height:316px;
