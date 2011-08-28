@@ -1,5 +1,5 @@
 var FriendRosterView = Backbone.View.extend({
-    className: 'user_model',
+    className: 'friends-list',
 	template: $('#user'),
 
     initialize: function (options) {

@@ -187,7 +187,7 @@ if ($facebook_user_profile['id'] != "") {
 			<div class="main_panel">
 				
 				<div id='roster-area'>
-					 <ul></ul>
+					 <ul class="friends-list"></ul>
 					<a href="#" onclick="FacebookNewInvite(); return false;">Invite Friends</a>
 				</div>
 				
