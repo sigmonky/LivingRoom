@@ -161,7 +161,12 @@ if ($facebook_user_profile['id'] != "") {
 			<button id="join_muc">Join MUC</button>
 		</div>
 		<br/>
-		<div id="top_panel">aaa
+		<div id="top_panel">
+			<ul class="main_menu">
+				<li><a href="#">All Fans</a></li>
+				<li><a href="#">My Friends</a></li>
+				<li><a href="#">Buzz</a></li>
+			</ul>	
 		</div>
 		
 		<div id="main_panel">aaa
