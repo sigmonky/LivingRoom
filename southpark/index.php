@@ -45,10 +45,10 @@ if ($facebook_user_profile['id'] != "") {
 		<script id="user" type="text/html">
 			<li class="roster_user" id="roster_{{ uid }}" data-jid="{{ uid }}">
 			<div class="roster-user-wrap">
-				<div class="thumb">
+				<div class="roster-thumb">
 				   <img src="http://graph.facebook.com/{{uid}}/picture" class="avatar" width="48" height="48" alt=""/>
 				</div>
-				<div class="details">
+				<div class="roster-details">
 				   <p>{{name}}</p>
 				   <p>{{uid}}</p>
 				
