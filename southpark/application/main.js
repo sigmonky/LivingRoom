@@ -11,6 +11,8 @@ $(document).ready(function(){
 	$(function()
 	{
 		$('.scroll-pane').jScrollPane();
+		$('.friends-scroll-pane').jScrollPane();
+		
 	});	
 	
 	$(document).click(function(){

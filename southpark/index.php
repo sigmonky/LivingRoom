@@ -42,7 +42,7 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<!-- Mustache.js templates  -->
 		
-		<script id="user" type="text/html">
+		<script id="user" type="text/x-handlebars-template">
 			<li class="roster_user view-menu" id="roster_{{ uid }}" data-jid="{{ uid }}">
 			<div class="roster-user-wrap">
 				<div class="roster-thumb">
@@ -51,7 +51,6 @@ if ($facebook_user_profile['id'] != "") {
 				<div class="roster-details">
 				  		{{name}}
 				</div>
-				<div class="clearfix"></div>
 				<div class="friend_roster_menu">
 					<ul class="friend-menu-options">
 						<li><a href="#" class="start-chat">Start Chat</a></li>
@@ -60,6 +59,7 @@ if ($facebook_user_profile['id'] != "") {
 					</ul>
 				</div>
 				</div>
+				<div class="clearfix"></div>
 			</li>
 		</script>
 		
@@ -188,7 +188,11 @@ if ($facebook_user_profile['id'] != "") {
 				
 				
 				<div id='roster-area'>
-					 <ul class="friends-list"></ul>
+					<div class="friends-scroll-pane">
+					
+					 	<ul class="friends-list"  style="height:400px"></ul>
+
+					</div>
 					<div class="invite-friends-btn">
 						<a href="#" onclick="FacebookNewInvite(); return false;">Invite More Friends To Chat</a>
 					</div>
@@ -262,9 +266,14 @@ if ($facebook_user_profile['id'] != "") {
 	// }
 
 	var FriendsWhoInstalledApp = {
-		data: [{
-			"uid":"527305423","name":"Isaac Da Silva","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"
-		}]
+		data: [
+			{"uid":"527305423","name":"Isaac Da Silva","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			{"uid":"618523003","name":"Raphael Cordero","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			{"uid":"788994656","name":"Flora Gillon","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			{"uid":"679733001","name":"Wagner Az","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			{"uid":"556531140","name":"Julio Cezar Cruz","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			
+		]
 	}
 
 	var RoomJid = '<?=$user->roomJid?>';

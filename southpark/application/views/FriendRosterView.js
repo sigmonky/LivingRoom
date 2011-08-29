@@ -2,7 +2,6 @@ var FriendRosterView = Backbone.View.extend({
    // className: 'friends-list',
 	template: $('#user'),
 	
-  	el: $('#roster-area .friends-list'),
 
   	events: {
     	'click .start-chat': 'startChat',
@@ -19,6 +18,7 @@ var FriendRosterView = Backbone.View.extend({
     }, 
 	
 	render: function () {
+		console.log('render friend '+this.model.name)
 		var template = Handlebars.compile(this.template.html());
 		$(this.el).html(template(this.model));
         return this;
@@ -27,20 +27,26 @@ var FriendRosterView = Backbone.View.extend({
 	viewMenu: function(e){
 		e.preventDefault();
 	 	e.stopPropagation();
+		$('.friend_roster_menu').each(function(item){
+			$(this).hide();
+		})
 		this.$('.friend_roster_menu').show();
 		console.log('view_menu')
 	},
 	
 	startChat: function(e){
-		
+		e.preventDefault();
+	 	e.stopPropagation();
 	},
 
 	startGroupChat: function(e){
-		
+		e.preventDefault();
+	 	e.stopPropagation();
 	},
 	
 	addToGroupChat: function(e){
-		
+		e.preventDefault();
+	 	e.stopPropagation();
 	},
 
 

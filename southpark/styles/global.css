@@ -234,6 +234,14 @@ color:#FFF;
 	
 }
 
+.friends-scroll-pane {
+	width: 100%;
+	height: 256px;
+	overflow-y: scroll;
+	overflow-x: visible;
+	
+}
+
 #pane-content { 
 
 }
@@ -294,7 +302,9 @@ color:#FFF;
 background:#404040;
 }
 
-.invite-friends-btn {margin-top:15px; padding:10px; font-weight:bold; text-align:center;}
+.invite-friends-btn {padding:18px 10px; font-weight:bold; text-align:center; border-top:4px solid #000; cursor:pointer;}
+.invite-friends-btn:hover {background:#404040;}
+
 .friends-list {margin:0; padding:0;}
 .view-menu{cursor:pointer;}
 
@@ -304,7 +314,7 @@ background:#404040;
 
 .roster-details{float:left; width:85px; font-size:0.8em; margin-left:0px; margin-top:5px; font-weight:bold;}
 
-.friend_roster_menu {position:absolute; left:150px; top:0; width:135px; display:none; background:#404040;border:3px solid #fff;}
+.friend_roster_menu {position:absolute; left:0; top:0; width:177px; display:none; background:#404040;border:3px solid #e1e1e1; z-index:9999;}
 
 .friend_roster_menu a{color:#fff;}
 .friend-menu-options {margin:0; padding:0;}
@@ -320,8 +330,8 @@ background:#404040;
 
 #roster-area {
     float: left;
-    width: 150px;
+    width: 200px;
 	border-right:5px solid #000;
-    height: 300px;
+    height: 316px;
 }
 
