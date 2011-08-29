@@ -237,9 +237,8 @@ color:#FFF;
 .friends-scroll-pane {
 	width: 100%;
 	height: 256px;
-	overflow-y: scroll;
-	overflow-x: visible;
-	
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 #pane-content { 
@@ -306,6 +305,8 @@ background:#404040;
 .invite-friends-btn:hover {background:#404040;}
 
 .friends-list {margin:0; padding:0;}
+.friends-list li{padding:20px; border-bottom:1px solid #ccc; ;}
+
 .view-menu{cursor:pointer;}
 
 .roster-user-wrap{ width:150px; margin:0; padding:0;}
@@ -314,11 +315,11 @@ background:#404040;
 
 .roster-details{float:left; width:85px; font-size:0.8em; margin-left:0px; margin-top:5px; font-weight:bold;}
 
-.friend_roster_menu {position:absolute; left:0; top:0; width:177px; display:none; background:#404040;border:3px solid #e1e1e1; z-index:9999;}
+.friend_roster_menu {position:absolute; left:0; top:-1px; width:178px; display:none; background:#404040;border:3px solid #e1e1e1; z-index:9999;}
 
 .friend_roster_menu a{color:#fff;}
 .friend-menu-options {margin:0; padding:0;}
-.friend-menu-options li{list-style:none; margin:0; padding:0;}
+.friend-menu-options li{list-style:none; margin:0; padding:0; border-bottom:1px solid #ccc; width:178px;}
 .friend-menu-options li a{ font-size:0.8em; font-weight:bold; display:block; padding:5px;}
 .friend-menu-options li a:hover{background:#CCC;}
 
