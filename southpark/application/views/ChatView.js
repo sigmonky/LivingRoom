@@ -30,5 +30,11 @@ var ChatView = Backbone.View.extend({
 		}
     }, 
 
+	addMessage: function(){
+		var view = new ChatView({model: chat});
+        $('#chat_list').append(view.render().el);
+        $('#chat_list')[0].scrollTop = $('#chat_list')[0].scrollHeight;
+	}
+
 	
 });

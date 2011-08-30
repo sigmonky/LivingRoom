@@ -48,7 +48,7 @@ var FriendRosterView = Backbone.View.extend({
 		var tabAlreadyExists = false;
 		
 		var id = $(this.el).find('.start-chat').attr('id').split('-')[2];
-		console.log('startChat id ' +id);
+	//	console.log('startChat id ' +id);
 		$('#friend-chat-message-panel').hide();
 		for(i=0; i < this.addedTabs.length; i++){
 			if (this.addedTabs[i] == id){
@@ -56,10 +56,10 @@ var FriendRosterView = Backbone.View.extend({
 				$('ul.chat-tabs > li').each(function(item){
 					var full_tab_id = $(this).find('a').attr('href');
 					var tab_id = full_tab_id.substring(full_tab_id.indexOf('-')+1, full_tab_id.length);
-					console.log('startChat tab_id =' +tab_id);
+					//console.log('startChat tab_id =' +tab_id);
 					if (tab_id == id){
 						tabAlreadyExists = true;
-						console.log('tabAlreadyExists true' +tabAlreadyExists);
+						//console.log('tabAlreadyExists true' +tabAlreadyExists);
 					}
 				})
 			}
@@ -67,7 +67,9 @@ var FriendRosterView = Backbone.View.extend({
 		
 		if (tabAlreadyExists != true){
 			this.addedTabs.push(id);
-			var rowView = new FriendChatView({model: id});
+			var friend = {};
+			friend.jid = id;
+			var rowView = new FriendChatView({model: friend});
 			$('#chat-area').tabs('add', '#chat-' + id, id);
 			$('.ui-widget-header').css('border-bottom','1px solid #6a6a6a' )
 			var chat_area = $('#chat-' + id);

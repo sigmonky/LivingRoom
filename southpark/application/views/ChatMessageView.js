@@ -1,4 +1,4 @@
-var ChatView = Backbone.View.extend({
+var ChatMessageView = Backbone.View.extend({
     initialize: function (options) {
         _.bindAll(this, 'render');
         this.model.bind('all', this.render);

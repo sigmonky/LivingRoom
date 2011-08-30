@@ -67,7 +67,7 @@ var PaneView = Backbone.View.extend({
 		var mainBuzzView = new BuzzTweetInputView(this.model);
 	//	$(mainBuzzView.render().el).prependTo(twitter_message_panel);
 		
-		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json?';
+		var url = 'http://tweetriver.com/camilarc/south-park-test.json?';
 		
 		$.ajax({
 		    type: "GET",
@@ -112,7 +112,6 @@ var PaneView = Backbone.View.extend({
 		$("#friends_view").css({'display': 'block', 'height': '100%'});
 		$("#buzz_view").css('display', 'none');
 		$("#all_fans_view").css('display', 'none');
-		console.log('isLoggedIn ='+isLoggedIn);
 		if (isLoggedIn == true){
 			 $('.friends-scroll-pane').jScrollPane();
 		}	
