@@ -33,7 +33,7 @@ var PaneView = Backbone.View.extend({
 		if (isLoggedIn == true){
 			var photo = 'https://graph.facebook.com/'+MyFacebookUser.id+'/picture';
 		}else{
-			var photo = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/nouser.png';
+			var photo = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
 		}
 		room.photo = photo;
 		

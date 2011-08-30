@@ -1,6 +1,6 @@
 var ChatView = Backbone.View.extend({
     events: {
-        'submit #message_form': 'sendMessage'
+        'click .message_send_button': 'sendMessage'
      }, 
 	template: $('#muc_window'),
 
@@ -17,41 +17,11 @@ var ChatView = Backbone.View.extend({
 		$(this.el).html(template(this.model));
         return this;
     }, 
-	
-	clearAlerts: function (count) {
-
-    },
-
-	setDirectAlert: function () {
-
-    },
-
-	setMsgAlert: function () {
-
-    }, 
-
-	addUser: function (user) {
-
-    }, 
-
-	removeUser: function (user) {
-
-    }, 
-
-	displayUserLeaveMessage: function (user) {
-
-    },
-
- 	addChat: function (chat) {
-
-    }, 
-
-	removeChat: function (chat) {
-        // chat.view.remove();
-    }, 
 
 	sendMessage: function () {
-
+		console.log('send message');
+		var remoteJid = $(this.el).find('.message_field').attr('id').split('_')[1];
+		console.log('send message to remoteJid' +remoteJid);
     }, 
 
 	

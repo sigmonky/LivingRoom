@@ -463,14 +463,14 @@ JabberClient.send_muc_message = function (room, body) {
 	JabberClient.conn.muc.message(room, 'nick', body);
 	
 	// build the ui
-	this.get_or_create_muc(room).children('ul').append(ICH.chat_message({
-		from: "me",
-		name: "me",
-		message: body
-	}));
-	
-	// scroll down if needed
-	JabberClient.scroll_muc(room);
+	// this.get_or_create_muc(room).children('ul').append(ICH.chat_message({
+	// 	from: "me",
+	// 	name: "me",
+	// 	message: body
+	// }));
+	// 
+	// // scroll down if needed
+	// JabberClient.scroll_muc(room);
 };
 
 
