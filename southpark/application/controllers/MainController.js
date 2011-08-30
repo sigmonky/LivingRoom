@@ -47,6 +47,9 @@ var App =  Backbone.Controller.extend({
 		// Strophe.log = function (lvl, msg) { log(msg); };
 		connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
 		
+		$(function () {
+			JabberClient.init(connection);
+		});
 			    // set up handler
 		connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
@@ -69,10 +72,7 @@ var App =  Backbone.Controller.extend({
 		var remoteJid = '';
         var name = '';
 		
-		
-		$(function () {
-			JabberClient.init(connection);
-		});
+
 
 		
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
