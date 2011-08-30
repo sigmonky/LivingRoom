@@ -225,7 +225,7 @@ JabberClient.joinRoom = function(roomJid){
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		
 		
-		
+		console.log('JabberClient.conn =' +JabberClient.conn);
 		JabberClient.conn.muc.join(roomJid, nickname);
 }
 
