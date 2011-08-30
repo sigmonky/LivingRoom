@@ -295,15 +295,15 @@ if ($facebook_user_profile['id'] != "") {
 	var RoomJid = '<?=$user->roomJid?>';
 	
 	
-	// var myFacebookUser = {
-	// 	id: '<?=$facebook_user_profile['id']?>',
-	// 	name: '<?=$facebook_user_profile['name']?>',
-	// }
+	var MyFacebookUser = {
+		id: '<?=$facebook_user_profile['id']?>',
+		name: '<?=$facebook_user_profile['name']?>',
+	}
 	
-	 var MyFacebookUser = {
-	 	id: '100001502348575',
-	 	name: 'Isaac s',
-	 }
+	 // var MyFacebookUser = {
+	 // 	id: '100001502348575',
+	 // 	name: 'Isaac s',
+	 // }
 	
 	if (MyFacebookUser.id != ''){
 		isLoggedIn = true;

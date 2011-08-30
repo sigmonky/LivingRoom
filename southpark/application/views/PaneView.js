@@ -28,6 +28,8 @@ var PaneView = Backbone.View.extend({
 		room.jid = RoomJid;
 		console.log('facebook id'+Attacher.JID);
 		
+		console.log('isLoggedIn ='+isLoggedIn)
+		
 		if (isLoggedIn == true){
 			var photo = 'https://graph.facebook.com/'+MyFacebookUser.id+'/picture';
 		}else{
