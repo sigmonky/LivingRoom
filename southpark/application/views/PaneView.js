@@ -114,7 +114,7 @@ var PaneView = Backbone.View.extend({
 		$("#all_fans_view").css('display', 'none');
 		console.log('isLoggedIn ='+isLoggedIn);
 		if (isLoggedIn == true){
-			 $('.scroll-pane-friends').jScrollPane();
+			 $('.friends-scroll-pane').jScrollPane();
 		}	
 	},
 
