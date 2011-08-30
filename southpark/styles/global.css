@@ -198,7 +198,7 @@ height:69px;
 width:750px;
 }
 
-#my_profile_photo {float:left; width:60px; margin:10px 0 0 15px; height:54px; border: 1px solid #FFF;}
+#my_profile_photo {float:left; width:50px; margin:10px 0 0 15px; height:50px; border: 1px solid #FFF;}
 .message_field {float:left; width:543px; height:26px; margin-top:17px; font-size:1.1em;margin-left:10px;}
 .message_send_button{float:left; height:34px; font-size:1.4em; width:80px; margin-top:17px; margin-left:17px;}
 
