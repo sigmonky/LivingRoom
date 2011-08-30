@@ -79,7 +79,7 @@ var App =  Backbone.Controller.extend({
 
 
 
-	//	JabberClient.joinRoom(RoomJid)
+	JabberClient.joinRoom(RoomJid)
 
    //    this.view.render();
 
