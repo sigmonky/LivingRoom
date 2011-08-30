@@ -27,9 +27,7 @@ var PaneView = Backbone.View.extend({
 		var room = {};
 		room.jid = RoomJid;
 		//console.log('facebook id'+Attacher.JID);
-		
 		//console.log('isLoggedIn ='+isLoggedIn)
-		
 		if (isLoggedIn == true){
 			var photo = 'https://graph.facebook.com/'+MyFacebookUser.id+'/picture';
 		}else{
@@ -39,9 +37,6 @@ var PaneView = Backbone.View.extend({
 		
 		var mainChatRoom = new ChatView({model: room, jid: RoomJid});
 		$(mainChatRoom.render().el).prependTo(main_chat);
-		
-		//this.view = new NodeChatView({model: this.model, socket: this.socket, el: $('#wrap'), userName: options.userName});
-        
 		/* All Fans View End  */
 		
 		
@@ -58,6 +53,9 @@ var PaneView = Backbone.View.extend({
 		
 		
 		/* Buzz View Begin */
+		var twitter_message_panel = $("#twitter_message_panel");
+		var mainBuzzView = new BuzzTweetInputView(this.model);
+	//	$(mainBuzzView.render().el).prependTo(twitter_message_panel);
 		
 		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json?';
 		

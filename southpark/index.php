@@ -64,6 +64,14 @@ if ($facebook_user_profile['id'] != "") {
 			</div>
 		</script>
 		
+		<script id="tweet_message_view" type="text/x-handlebars-template">
+			<input class="tweet_input message_field" id="input_tweet" type="text" />
+			<input type="submit" class="message_send_button" value="Tweet">
+			<div id="tweet_count"></div>
+		</script>
+		
+
+		
 		<script id="user" type="text/x-handlebars-template">
 			<li class="roster_user view-menu" id="roster_{{ uid }}" data-jid="{{ uid }}">
 			<div class="roster-user-wrap">
@@ -232,7 +240,12 @@ if ($facebook_user_profile['id'] != "") {
 					</div>
 				</div>
 			</div>
-			
+			<div id="twitter_message_panel" class="bottom_panel">
+				<input class="tweet_input message_field" id="input_tweet" type="text" />
+				<input type="submit" class="message_send_button" value="Tweet">
+				<div id="tweet_count"></div>
+			</div>
+			<div class="clearfix"></div>
 		</div>
 		
 		<!-- Buzz View End -->
@@ -388,6 +401,7 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/models/TweetEntry.js" type="text/javascript"></script>
 	
 	<!-- Backbone Views !-->
+	<script src="application/views/BuzzTweetInputView.js" type="text/javascript"></script>
 	
 	<script src="application/views/BuzzMessageView.js" type="text/javascript"></script>
 	<script src="application/views/BuzzView.js" type="text/javascript"></script>

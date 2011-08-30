@@ -6,7 +6,7 @@ var ChatView = Backbone.View.extend({
 
 	initialize: function (options) {
         // 
-        this.jid = options.jid;
+        //this.jid = options.jid;
          _.bindAll(this, 'sendMessage');
         $('input#message_field').focusin(function () {});
         _.bindAll(this, 'render');

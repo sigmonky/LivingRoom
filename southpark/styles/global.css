@@ -210,6 +210,8 @@ color:#FFF;
 
 }
 
+#tweet_count{float:left; color:#FFCC00; font-size:0.8em; margin:25px 0 0 20px;}
+
 
 
 .chat_body{background:url(../images/main_panel_back.png) repeat-x;

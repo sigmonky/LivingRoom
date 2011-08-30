@@ -11,8 +11,8 @@ $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $msg = $_REQUEST['tweet'];
 $twitterObj->setToken($_SESSION['ot'], $_SESSION['ots']);
 
-echo '1 - '.$_SESSION['ot'];
-echo '2 -'.$_SESSION['ots'];
+//echo '1 - '.$_SESSION['ot'];
+//echo '2 -'.$_SESSION['ots'];
 
 $twitterInfo= $twitterObj->get_accountVerify_credentials();
 $twitterInfo->response;
@@ -23,5 +23,5 @@ $update_status = $twitterObj->post_statusesUpdate(array('status' => $msg));
 $temp = $update_status->response;
 echo "<pre>200 OK</pre>";
 
-print_r($temp);
+//print_r($temp);
 ?> 
