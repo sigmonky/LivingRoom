@@ -18,7 +18,7 @@ $username = $twitterInfo->screen_name;
 
 $update_status = $twitterObj->post_statusesUpdate(array('status' => $msg));
 $temp = $update_status->response;
-echo "<pre>200 OK</pre>";
+echo "<pre>200 $temp</pre>";
 
 
 ?> 
