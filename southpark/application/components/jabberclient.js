@@ -219,8 +219,15 @@ JabberClient.init = function (connection) {
 
 JabberClient.joinRoom = function(roomJid){
 		var roomJid = roomJid+'@conference.logoslogic.com';
-		var cueca = 'guest_'+Math.floor(Math.random()*1111001);
-		JabberClient.conn.muc.join(roomJid, cueca);
+		
+		
+		
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
+		
+		
+		
+		
+		JabberClient.conn.muc.join(roomJid, nickname);
 }
 
 // tell it to connect
