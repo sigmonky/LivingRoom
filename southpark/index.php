@@ -309,7 +309,7 @@ if ($facebook_user_profile['id'] != "") {
 		isLoggedIn = true;
 	}
 	
-	isLoggedIn = true;
+//	isLoggedIn = true;
 	
 	
 	</script>
