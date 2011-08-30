@@ -22,10 +22,7 @@ $oauth_token = $_GET['oauth_token'];
 		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
 		$_SESSION['ot'] = $token->oauth_token;
 		$_SESSION['ots'] = $token->oauth_token_secret;
-		/*	$twitterInfo= $twitterObj->get_accountVerify_credentials();
-		$twitterInfo->response; */
-		//header('HTTP/1.1 200 OK');
-
+		header('http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz')
 		echo "<pre>200 OK</pre>";
      } 
 
