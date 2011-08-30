@@ -58,7 +58,7 @@ if ($facebook_user_profile['id'] != "") {
 			<div class="chat_body"></div>
 			
 			<div class="bottom_panel">
-				<div id="my_profile_photo"><img src="images/no_user.png" width="50" height="50"></div>
+				<div id="my_profile_photo"><img src="{{photo}}" width="50" height="50"></div>
 				<input class="muc_input message_field" id="input_{{ jid }}" type="text" />
 				<input type="submit" class="message_send_button" value="send">
 			</div>
