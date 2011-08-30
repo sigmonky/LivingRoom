@@ -1,31 +1,28 @@
+var app;
+
 $(document).ready(function(){
 
-  //	window.app = MainController.init();   
-
-  	app = new MainController();
+  	app = new App();
  	app.init();
 	Backbone.history.start();
 	
-	$('input[name=message]').focus();  
+	$(function(){
+		//To get the random tabs label with variable length for testing the calculations			
+		//example 
+		 $('#chat-area')
+			.tabs()
+			.scrollabletabs({
+				customNavNext:'#n',
+				customNavPrev:'#p',
+				customNavFirst:'#f',
+				customNavLast:'#l'//,
+				//easing : 'easeInBounce'
+			});
 
-	$(function()
-	{
-		$('.scroll-pane').jScrollPane();
-		$('.friends-scroll-pane').jScrollPane();
-		
-	});	
+	});
+
 	
-	$(document).click(function(){
-		$('.friend_roster_menu').each(function(item){
-			$(this).hide();
-		})
-	})
 });
-
-
-function getTweetUrl( position, radius ) {
-	return "http://search.twitter.com/search.json?geocode=" + position.lat() + "," + position.lng() + "," + radius + "mi&callback=?";
-}
 
 
 function log(msg)
@@ -33,7 +30,6 @@ function log(msg)
 	$('#log').append('<div></div>').append(
 	document.createTextNode(msg));
 }
-
 
 function FacebookNewInvite(){
         var receiverUserIds = FB.ui({ 
@@ -47,14 +43,6 @@ function FacebookNewInvite(){
       );
 }
 
-// 
-// function log() {
-//   if (typeof console == 'undefined') {  
-//     return;  
-//   }  
-//   console.log.apply(console, arguments);
-// }
-
 function onConnect(status)
 {
 	if (status == Strophe.Status.DISCONNECTED)
@@ -65,3 +53,12 @@ function onResult(iq) {
 	var elapsed = (new Date()) - startTime;
 	log('Response from jabber.org took ' + elapsed + 'ms.');
 }
+
+
+// 
+// function log() {
+//   if (typeof console == 'undefined') {  
+//     return;  
+//   }  
+//   console.log.apply(console, arguments);
+// }

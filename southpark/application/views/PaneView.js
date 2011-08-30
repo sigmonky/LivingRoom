@@ -1,9 +1,10 @@
 var PaneView = Backbone.View.extend({
-	el: $('#buzz_view'),
+	el: $('#pane-content'),
 
 	initialize: function() {
 		_.bindAll(this, 'render', 'getScrollPane', 'renderAllFans', 'renderMyFriends', 'renderBuzz');
-		var self = this;		
+		var self = this;
+				
 	//	- when window is resized, recalc pane
 		$(window).resize(function() {
 			self.getScrollPane().reinitialise();
@@ -11,7 +12,6 @@ var PaneView = Backbone.View.extend({
 		
 		//
 		this.render();
-		// done
 		return this;
 	},
 	
@@ -21,71 +21,90 @@ var PaneView = Backbone.View.extend({
 	
 	render: function() {
 		
-		/* Buzz View Begin */
+		/* All Fans View Begin  */
 		
-		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json&callback=?';
-		$.getJSON(url, function(data) {
-			// clear 
-			$("#rows").html('');
-			// append each tweet
-			console.log('data results '+data)
-			if (data && data.length > 0) {
-				var $rows = $("#rows");
-				_.each(data, function(item) {
-					var rowView = new BuzzView({model: item});
-					$(rowView.render().el).prependTo($rows);
-				});
-			} else {
-				// show there are no tweets at this location
-				$("#rows").html('<div class="row"><div class="thumb"></div><div class="details">There is no tweet at this location.</div><div>');
-			}
-			// show the results
-			$('#rows').slideDown('fast', function() {
-				// resize the scroll pane
-				// var pane = self.getScrollPane();
-				// pane.scrollTo(0,0);
-				// pane.reinitialise();
-				// // 
-				$('#load').fadeOut('fast');
-			});
-			// 
-			// $("#load").remove();
-			// $("#rows-content").append('<span id="load">Loading....</span>');
-			// $("#load").fadeIn();
-		});
+		var main_chat = $("#room_chat_area");
+		var room = {};
+		room.jid = RoomJid;
+		console.log('facebook id'+Attacher.JID);
 		
-		/* Buzz View End */
-	//	$("#roster-area").html('');
+		if (isLoggedIn == true){
+			var photo = 'https://graph.facebook.com/'+MyFacebookUser.id+'/picture';
+		}else{
+			var photo = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/nouser.png';
+		}
+		room.photo = photo;
+		
+		var mainChatRoom = new ChatView({model: room, jid: RoomJid});
+		$(mainChatRoom.render().el).prependTo(main_chat);
+		
+		//this.view = new NodeChatView({model: this.model, socket: this.socket, el: $('#wrap'), userName: options.userName});
+        
+		/* All Fans View End  */
+		
+		
+		/* Friends View Begin  */
+		
 		var roster_area = $(".friends-list");
-		console.log('FriendsWhoInstalledApp.data '+FriendsWhoInstalledApp.data);
 		_.each(FriendsWhoInstalledApp.data, function(friend){
-			console.log('friend '+friend.name);
+			//console.log('friend '+friend.name);
 			var rowView = new FriendRosterView({model: friend});
 			$(rowView.render().el).prependTo(roster_area);
 		})
+		
+		/* Friends View End  */
+		
+		
+		/* Buzz View Begin */
+		
+		var url = 'http://tweetriver.com/afrogjumps/-mtvronnie.json?';
+		
+		$.ajax({
+		    type: "GET",
+		    url: url,
+		    dataType: "jsonp",
+		    success: function(json) {
+					// clear 
+					$("#rows").html('');
+					if (json && json.length > 0) {
+						var $rows = $("#rows");
+						_.each(json, function(item) {
+							var rowView = new BuzzView({model: item});
+							$(rowView.render().el).prependTo($rows);
+						});
+					} else {
+						$("#rows").html('<div class="row"><div class="thumb"></div><div class="details">There is no tweet at this location.</div><div>');
+					}
+					//$('#load').fadeOut('fast');
+			}
+					// 
+					// $("#load").remove();
+					// $("#rows-content").append('<span id="load">Loading....</span>');
+					// $("#load").fadeIn();		    
+		});
+		
+		/* Buzz View End */
+		
 		
 		return this;
 	},
 	
 	renderAllFans: function() {
-		$("#buzz_view").hide();
-		$("#all_fans_view").show();
-		$("#friends_view").hide();
+		$("#all_fans_view").css({'display': 'block', 'height': '100%'});
+		$("#buzz_view").css('display', 'none');
+		$("#friends_view").css('display', 'none');
 	},
 	
 	renderMyFriends: function() {
-		$("#buzz_view").hide();
-		$("#all_fans_view").hide();
-		$("#friends_view").show();	
+		$("#friends_view").css({'display': 'block', 'height': '100%'});
+		$("#buzz_view").css('display', 'none');
+		$("#all_fans_view").css('display', 'none');
 	},
 
 	renderBuzz: function() {
-		$("#buzz_view").show();
-		$("#all_fans_view").hide();
-		$("#friends_view").hide();
+		$("#buzz_view").css({'display': 'block', 'height': '100%'});
+		$("#friends_view").css('display', 'none');
+		$("#all_fans_view").css('display', 'none');
 	},
-	
-
-	
 
 });

@@ -181,7 +181,7 @@ width:750px;
 }
 
 .top_panel .main_menu a:hover{
-	color:#FFF;
+	color:#FFFFFF;
 }
 
 .top_panel .main_menu a.selected{
@@ -198,9 +198,9 @@ height:69px;
 width:750px;
 }
 
-#message_form{margin-left:15px;}
-#message_field {width:630px; height:26px; margin-top:15px; font-size:1.1em;}
-#message_send_button{height:34px; font-size:1.4em; margin-top:15px; margin-left:10px;}
+#my_profile_photo {float:left; width:60px; margin:10px 0 0 15px; height:54px;}
+.message_field {float:left; width:543px; height:26px; margin-top:17px; font-size:1.1em;margin-left:10px;}
+.message_send_button{float:left; height:34px; font-size:1.4em; width:80px; margin-top:17px; margin-left:17px;}
 
 .main_panel{
 background:url(../images/main_panel_back.png) repeat-x;
@@ -209,6 +209,12 @@ width:750px;
 color:#FFF;
 
 }
+
+
+
+.chat_body{background:url(../images/main_panel_back.png) repeat-x;
+height:316px; overflow-y:hidden; width:750px; color:#FFF;}
+
 
 
 
@@ -305,7 +311,7 @@ background:#404040;
 .invite-friends-btn:hover {background:#404040;}
 
 .friends-list {margin:0; padding:0;}
-.friends-list li{padding:20px; border-bottom:1px solid #ccc; ;}
+.friends-list li{padding:20px; border-bottom:1px solid #474747; ;}
 
 .view-menu{cursor:pointer;}
 
@@ -319,15 +325,17 @@ background:#404040;
 
 .friend_roster_menu a{color:#fff;}
 .friend-menu-options {margin:0; padding:0;}
-.friend-menu-options li{list-style:none; margin:0; padding:0; border-bottom:1px solid #ccc; width:178px;}
+.friend-menu-options li{list-style:none; margin:0; padding:0; border-bottom:1px solid #6a6a6a; width:178px;}
 .friend-menu-options li a{ font-size:0.8em; font-weight:bold; display:block; padding:5px;}
 .friend-menu-options li a:hover{background:#CCC;}
 
 #chat-area {
-    float: right;
-    width: 500px;
-    height: 300px;
+    float: left;
+    width: 530px;
+	margin: 5px 0 0 5px;
 }
+
+#stTabswrapper {float:left;width: 530px;}
 
 #roster-area {
     float: left;
@@ -336,3 +344,66 @@ background:#404040;
     height: 316px;
 }
 
+			
+			/*CSS only for scrollable tabs*/
+			.stMainWrapper ul.ui-tabs-nav {
+				position:relative;
+				overflow:hidden;
+			}
+			
+			.stMainWrapper ul.ui-tabs-nav li {
+				position:absolute;
+				top:3px; /*do not set 'left' should be done in the plugin after some calculations*/
+			}
+			
+			.stMainWrapper ul.ui-tabs-nav li.stHasCloseBtn a {
+				padding-right:5px;
+			}
+			
+			.stMainWrapper ul.ui-tabs-nav li.stFirstTab {
+				margin-right:3px;
+			}
+			
+			.stMainWrapper ul.ui-tabs-nav li span.stCloseBtn {
+				float:left;
+				margin-top:6px;
+				margin-right:4px;
+				border:none;
+				cursor:pointer;
+			}
+			
+			.stNavMain {
+				list-style:none;
+				margin: 0 !important;
+				padding: 0 1px 0 1px !important;
+				position:relative;
+				border:none !important;
+				width:100%;
+			}
+			
+			.stNavMain li {
+				position:absolute;
+				width:16px;
+				border-top:none !important;
+				border-bottom:none !important;
+				cursor:pointer;
+				margin-top:-1px;
+			}
+
+			.stNavMain li .ui-icon {
+				margin-top:38%;
+			}
+			
+			.stNavMain li.stNavNextArrow,
+			.stNavMain li.stNavLastArrow {
+				border-right:none !important;
+				right:3px;
+			}
+			
+			.stNavMain li.stNavPrevArrow,
+			.stNavMain li.stNavFirstArrow {
+				border-left:none !important;
+			}
+			
+			/*End of scrollable tabs css*/
+.ui-tabs-panel{font-size:0.8em;}

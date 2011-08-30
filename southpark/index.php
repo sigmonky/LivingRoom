@@ -33,14 +33,36 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Stylesheets !-->
 		
 		<link href="styles/global.css" rel="stylesheet" type="text/css" />
-		<link type="text/css" href="styles/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-		
-		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/flick/jquery-ui.css">
-		
+		<link type="text/css" href="styles/jquery.jscrollpane.css" rel="stylesheet" media="all" /> 
+		 <link rel="stylesheet" href="styles/jquery-ui.css">
+	    
+	
+		<!-- <link type="text/css" href="styles/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
+		<link type="text/css" href="styles/sh/sh_style.css" rel="stylesheet" /> -->
+	
 		<!-- XMPP Bootstrap from XMPP Session Attachment and Facebook !-->
 		
 		
 		<!-- Mustache.js templates  -->
+		
+		<script id="chat_window" type="text/x-handlebars-template">
+			<div id="chat_body_{{ jid }}" class="chat_body"></div>
+			<div class="bottom_panel">
+				<input class="chat_input message_field" id="input_{{ jid }}" type="text" />
+				<input type="submit" class="message_send_button" value="send">
+			</div>
+			<div class="clearfix"></div>
+		</script>
+		
+		<script id="muc_window" type="text/x-handlebars-template">
+			<div class="chat_body"></div>
+			
+			<div class="bottom_panel">
+				<div id="my_profile_photo"><img src="images/no_user.png" width="50" height="50"></div>
+				<input class="muc_input message_field" id="input_{{ jid }}" type="text" />
+				<input type="submit" class="message_send_button" value="send">
+			</div>
+		</script>
 		
 		<script id="user" type="text/x-handlebars-template">
 			<li class="roster_user view-menu" id="roster_{{ uid }}" data-jid="{{ uid }}">
@@ -53,9 +75,9 @@ if ($facebook_user_profile['id'] != "") {
 				</div>
 				<div class="friend_roster_menu">
 					<ul class="friend-menu-options">
-						<li><a href="#" class="start-chat">Start Chat</a></li>
-						<li><a href="#" class="add-group-chat">Add to Group Chat</a></li>
-						<li><a href="#" class="create-group-chat">Create Group Chat</a></li>
+						<li><a href="#" class="start-chat" id="start-chat-{{ uid }}">Start Chat</a></li>
+						<li><a href="#" class="add-togroup-chat" id="add-togroup-{{ uid }}">Add to Group Chat</a></li>
+						<li><a href="#" class="start-group-chat" id="start-groupchat-{{ uid }}" >Create Group Chat</a></li>
 					</ul>
 				</div>
 				</div>
@@ -90,17 +112,7 @@ if ($facebook_user_profile['id'] != "") {
 				<label>Name:</label><input type="text" id="add_user_name">
 			</div>
 		</script>
-		
-		<script id="chat_window" type="text/html">
-			<ul class="chat_list"></ul>
-			<input class="chat_input" id="input_{{ id }}" type="text" />
-		</script>
-		
-		<script id="muc_window" type="text/html">
-			<ul class="chat_list"></ul>
-			<input class="muc_input" id="input_{{ id }}" type="text" />
-			<ul class="roster"></ul>
-		</script>
+
 		
 		<script id="chat_message" type="text/html">
 			<li class="chat_message{{#from}} {{from}}{{/from}}">
@@ -149,16 +161,16 @@ if ($facebook_user_profile['id'] != "") {
 	<div id="body_wrapper">
 
 		<!-- Main Menu Begin -->
-		
+	 	<div id="header_view">
 		<div class="top_panel">
 			<ul class="main_menu">
-				<li><a href="#allfans">All Fans</a></li>
-				<li><a href="#myfriends">My Friends</a></li>
-				<li><a href="#buzz">Buzz</a></li>
+				<li><a class="mainNav" href="#allfans">All Fans</a></li>
+				<li><a class="mainNav"href="#myfriends">My Friends</a></li>
+				<li><a class="mainNav" href="#buzz">Buzz</a></li>
 			</ul>	
 			<div class="clearfix"></div>
 		</div>
-		
+		</div>
 		<!-- Main Menu End -->
 		
 		
@@ -168,15 +180,14 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<div class="pane-section" id="all_fans_view">
 
-			<div class="main_panel">
 				
-				<div id="room-chat-area">
+				<div id="room_chat_area">
 					
 				</div>
 				
-			</div>
 
 		</div>
+		<div class="clearfix"></div>			
 		
 		<!-- All Fans View End -->
 		
@@ -198,9 +209,12 @@ if ($facebook_user_profile['id'] != "") {
 					</div>
 				</div>
 				
-			    <div id='chat-area'>
-			      <ul></ul>
-			    </div>
+					<div id="chat-area" class="tabs">
+						<ul style="height:30px">
+
+						</ul>
+						
+				</div>
 
 			</div>
 
@@ -254,7 +268,9 @@ if ($facebook_user_profile['id'] != "") {
 	
 	</div>
 	<script>
-
+	
+	var isLoggedIn = false;
+	
 	var Attacher = {
 		JID: '<?=$user->sessionInfo['jid']?>',
 		SID: '<?=$user->sessionInfo['sid']?>',
@@ -277,36 +293,59 @@ if ($facebook_user_profile['id'] != "") {
 	}
 
 	var RoomJid = '<?=$user->roomJid?>';
-
+	
+	
+	// var myFacebookUser = {
+	// 	id: '<?=$facebook_user_profile['id']?>',
+	// 	name: '<?=$facebook_user_profile['name']?>',
+	// }
+	
+	 var MyFacebookUser = {
+	 	id: '100001502348575',
+	 	name: 'Isaac s',
+	 }
+	
+	if (MyFacebookUser.id != ''){
+		isLoggedIn = true;
+	}
+	
+	isLoggedIn = true;
+	
+	
 	</script>
 	
 
 	
 	<!-- JQuery core and plugins !-->
 	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">
-	<script src="application/libs/jquery-ui-1.8.2.custom.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<!-- // <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script> -->
+	
+	<script type="text/javascript" src="application/libs/jquery/jquery-ui.js"></script>
+	
+	<script type="text/javascript" src="application/libs/jquery/jquery.scrollabletab.js"></script>
+
 	<!-- the mousewheel plugin -->
-	<script type="text/javascript" src="application/libs/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="application/libs/jquery/jquery.mousewheel.js"></script>
 	<!-- the jScrollPane script -->
-	<script type="text/javascript" src="application/libs/jquery.jscrollpane.min.js"></script>
+	<!-- <script type="text/javascript" src="application/libs/jquery/jquery.jscrollpane.min.js"></script> -->
 	
 	<!-- Template Engine  !-->
 	
 	<script src="application/libs/mustache.js" type="text/javascript"></script>
 	<script src="application/libs/handlebars.js" type="text/javascript"></script>
 	
-	<script type="text/javascript" src="application/libs/jquery.mustache.js"></script>
+	<script type="text/javascript" src="application/libs/jquery/jquery.mustache.js"></script>
 	
 	<script src="application/components/ICanHaz.js" type="text/javascript"></script>
 	
 	<!-- Strophe core and plugins  !-->
 	
-	<script src="application/libs/strophe.js" type="text/javascript"></script>
-	<script src="application/libs/strophe.roster.js" type="text/javascript"></script>
-	<script src="application/libs/strophe.status.js" type="text/javascript"></script>
-	<script src="application/libs/strophe.chat.js" type="text/javascript"></script>
-	<script src="application/libs/strophe.muc.js" type="text/javascript"></script>
+	<script src="application/libs/strophe/strophe.js" type="text/javascript"></script>
+	<script src="application/libs/strophe/strophe.roster.js" type="text/javascript"></script>
+	<script src="application/libs/strophe/strophe.status.js" type="text/javascript"></script>
+	<script src="application/libs/strophe/strophe.chat.js" type="text/javascript"></script>
+	<script src="application/libs/strophe/strophe.muc.js" type="text/javascript"></script>
 	
 	
 	<!-- Backbone MVC  !-->
@@ -356,12 +395,14 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/views/FriendRosterView.js" type="text/javascript"></script>
 	<script src="application/views/RoomView.js" type="text/javascript"></script>
 	<script src="application/views/PaneView.js" type="text/javascript"></script>
+	<script src="application/views/HeaderView.js" type="text/javascript"></script>
 
 	<!-- Backbone Controller !-->
 	<script src="application/controllers/MainController.js" type="text/javascript"></script>
 	<!-- Jabber/XMPP Client  !-->
 	
 	<script src="application/components/jabberclient.js" type="text/javascript"></script>
+	
 	<script src="application/main.js"></script>
 	
 	<script>

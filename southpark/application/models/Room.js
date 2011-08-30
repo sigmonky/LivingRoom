@@ -1,15 +1,15 @@
 /* Main Room  */
 
 var Room = Backbone.Model.extend({
-  defaults: {
-    jid: '',
-    name: '',
+	  defaults: {
+	    jid: '',
+	    name: '',
 	isPrivate: '',
 	isActive: ''
-  },
-  initialize: function() {
-      this.users = new models.UserCollection();
-  }
+	  },
+	  initialize: function() {
+	      this.users = new models.RoomCollection();
+	  }
 });
 
 
