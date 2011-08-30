@@ -218,7 +218,7 @@ JabberClient.init = function (connection) {
 };
 
 JabberClient.joinRoom = function(roomJid){
-		var roomJid = roomJid+'@conference.logoslogic.com';
+		var roomJid = roomJid;
 		
 		
 		
