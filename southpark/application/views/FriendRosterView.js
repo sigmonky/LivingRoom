@@ -49,7 +49,7 @@ var FriendRosterView = Backbone.View.extend({
 		
 		var id = $(this.el).find('.start-chat').attr('id').split('-')[2];
 		console.log('startChat id ' +id);
-		
+		$('#friend-chat-message-panel').hide();
 		for(i=0; i < this.addedTabs.length; i++){
 			if (this.addedTabs[i] == id){
 				var that = this;

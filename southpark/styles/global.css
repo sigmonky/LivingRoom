@@ -206,6 +206,7 @@ color:#FFF;
 
 }
 
+#friend-chat-message-panel{float:left; padding:40px}
 
 #tweet_count{float:left; color:#FFCC00; font-size:0.8em; margin:25px 0 0 20px;}
 
@@ -325,7 +326,10 @@ cursor:pointer;
 
 }
 
-.invite-friends-btn {padding:18px 10px; font-weight:bold; text-align:center; border-top:4px solid #000; cursor:pointer;}
+.invite-friends-btn {padding:18px 10px;  text-align:center; border-top:4px solid #000; cursor:pointer; background:#4d4d4d; color:#ffcc01}
+
+.invite-friends-btn  a{color:#ffcc01}
+
 .invite-friends-btn:hover {background:#404040;}
 
 .friends-list {margin:0; padding:0;}

@@ -70,13 +70,15 @@ if ($facebook_user_profile['id'] != "") {
 			 	<ul class="friends-list"  style="height:400px"></ul>
 			</div>
 			<div class="invite-friends-btn">
-				<a href="#" onclick="FacebookNewInvite(); return false;">Invite More Friends To Chat</a>
+				<a href="#" onclick="FacebookNewInvite(); return false;">Invite to SP Live</a>
 			</div>
 		</div>
 		<div id="chat-area" class="tabs">
+				<div id="friend-chat-message-panel">Start a chat with one or many of your friends by selecting from your friend list.<br/><br/>Invite other Facebook friends to joint South Park Live by clicking the Invite to SP Life button</div>
 				<ul class="chat-tabs" style="height:30px">
 				</ul>
 		</div>
+
 		<div class="clearfix"></div>
 		</script>
 		
