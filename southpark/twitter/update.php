@@ -42,7 +42,7 @@ return false;
 <p>Twitter Handle: <?php echo $username ?></p>
 <p>Profile Picture: <br /><?php echo "<img src='$profilepic' />" ?><br /></p>
 <label>Update Twitter Timeline</label><br />
-<form method='post' action='post.php'>
+<form method='post' action='index.php'>
 
 <div align="left" id="character-count"><!--Start Character Count-->
  <div id="count">140</div>
