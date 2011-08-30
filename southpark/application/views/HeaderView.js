@@ -3,11 +3,15 @@ var HeaderView = Backbone.View.extend({
 	
 	initialize: function() {
 		_.bindAll(this);
-		$(document).click(function(){
-			$('.friend_roster_menu').each(function(item){
-				$(this).hide();
+
+		
+		$('.mainNav').click(function(){
+			$('.mainNav').each(function(item){
+				$(this).css('color', '#A98A10');
 			})
+			$(this).css('color', '#FFF');
 		})
+		
 		return this;
 	},
 

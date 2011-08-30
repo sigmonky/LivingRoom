@@ -486,7 +486,7 @@ JabberClient.send_muc_message = function (room, body) {
 // handle incoming chat messages
 JabberClient.on_chat_message = function (message) {
 	var chat_div;
-	console.log('on_chat_message '+message);
+	//console.log('on_chat_message '+message);
 	chat_div = JabberClient.get_or_create_chat(message.full_jid);
 	
 	if (message.body) {

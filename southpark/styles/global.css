@@ -192,11 +192,7 @@ width:750px;
 
 .main_menu li{margin-top:6px; margin-right:35px; float:left; text-decoration:none; list-style: none; }
 
-.bottom_panel{
-background:url(../images/bottom_panel_back.png) repeat-x;
-height:69px;
-width:750px;
-}
+
 
 #my_profile_photo {float:left; width:50px; margin:7px 0 0 7px; height:50px; border: 1px solid #FFF;}
 .message_field {float:left; width:573px; height:26px; margin-top:17px; font-size:1.1em;margin-left:10px;}
@@ -210,14 +206,31 @@ color:#FFF;
 
 }
 
+
 #tweet_count{float:left; color:#FFCC00; font-size:0.8em; margin:25px 0 0 20px;}
 
 
-
+/* MUC Chat Window */
 .chat_body{background:url(../images/main_panel_back.png) repeat-x;
 height:316px; overflow-y:hidden; width:750px; color:#FFF;}
+.bottom_panel{
+background:url(../images/bottom_panel_back.png) repeat-x;
+height:69px;
+width:750px;
+}
 
+/* Friend Chat Window */
 
+.friend_chat_body{background:url(../images/main_panel_back.png) repeat-x;
+height:196px; overflow-y:hidden; width:530px; color:#FFF;}
+.friend_bottom_panel{
+background:url(../images/bottom_panel_back.png) repeat-x;
+height:69px;
+width:530px;
+}
+.friend_bottom_panel  .message_field{width:410px;}
+
+#chat-area .ui-tabs-panel{padding:0;}
 
 
 #all_fans_view{ display:block;}
@@ -301,12 +314,15 @@ height:316px; overflow-y:hidden; width:750px; color:#FFF;}
 	display:block;
 	margin:0;height:38px;
 	padding: 10px;
+	cursor:pointer;
 	position:relative;
     
 }
 
 .roster_user:hover {
 background:#404040;
+cursor:pointer;
+
 }
 
 .invite-friends-btn {padding:18px 10px; font-weight:bold; text-align:center; border-top:4px solid #000; cursor:pointer;}
@@ -409,3 +425,4 @@ background:#404040;
 			
 			/*End of scrollable tabs css*/
 .ui-tabs-panel{font-size:0.8em;}
+

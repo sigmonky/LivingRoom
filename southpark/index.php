@@ -46,8 +46,8 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Mustache.js templates  -->
 		
 		<script id="chat_window" type="text/x-handlebars-template">
-			<div id="chat_body_{{ jid }}" class="chat_body"></div>
-			<div class="bottom_panel">
+			<div id="chat_body_{{ jid }}" class="friend_chat_body"></div>
+			<div class="friend_bottom_panel">
 				<input class="chat_input message_field" id="input_{{ jid }}" type="text" />
 				<input type="submit" class="message_send_button" value="send">
 			</div>
@@ -218,11 +218,12 @@ if ($facebook_user_profile['id'] != "") {
 				</div>
 				
 					<div id="chat-area" class="tabs">
-						<ul style="height:30px">
+						<ul class="chat-tabs" style="height:30px">
 
 						</ul>
 						
-				</div>
+					</div>
+					<div class="clearfix"></div>
 
 			</div>
 
@@ -411,6 +412,8 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/views/RoomView.js" type="text/javascript"></script>
 	<script src="application/views/PaneView.js" type="text/javascript"></script>
 	<script src="application/views/HeaderView.js" type="text/javascript"></script>
+	<script src="application/views/FriendChatView.js" type="text/javascript"></script>
+	
 
 	<!-- Backbone Controller !-->
 	<script src="application/controllers/MainController.js" type="text/javascript"></script>
