@@ -50,6 +50,11 @@ var App =  Backbone.Controller.extend({
 			    // set up handler
 		connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 
+		$(function () {
+			JabberClient.init(connection);
+		});
+
+
 		connection.rawInput = function (data) {
 				log('RECV: ' + data);
 			};
@@ -73,10 +78,7 @@ var App =  Backbone.Controller.extend({
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
 
-		$(function () {
-			JabberClient.init(connection);
-		});
-		
+
 		JabberClient.joinRoom(RoomJid)
 
        this.view.render();

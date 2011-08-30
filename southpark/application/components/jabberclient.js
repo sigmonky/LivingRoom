@@ -226,7 +226,6 @@ JabberClient.joinRoom = function(roomJid){
 		
 		
 		
-		
 		JabberClient.conn.muc.join(roomJid, nickname);
 }
 
