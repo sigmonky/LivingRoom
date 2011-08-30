@@ -69,11 +69,11 @@ var FriendRosterView = Backbone.View.extend({
 			this.addedTabs.push(id);
 			var friend = {};
 			friend.jid = id;
-			var rowView = new FriendChatView({model: friend});
+			var friendView = new FriendChatView({model: friend});
 			$('#chat-area').tabs('add', '#chat-' + id, id);
 			$('.ui-widget-header').css('border-bottom','1px solid #6a6a6a' )
 			var chat_area = $('#chat-' + id);
-			$(rowView.render().el).appendTo(chat_area);	
+			$(friendView.render().el).appendTo(chat_area);	
 		}
 		$('input.message_field').focus();
 
