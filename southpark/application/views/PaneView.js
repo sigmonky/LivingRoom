@@ -26,9 +26,9 @@ var PaneView = Backbone.View.extend({
 		var main_chat = $("#room_chat_area");
 		var room = {};
 		room.jid = RoomJid;
-		console.log('facebook id'+Attacher.JID);
+		//console.log('facebook id'+Attacher.JID);
 		
-		console.log('isLoggedIn ='+isLoggedIn)
+		//console.log('isLoggedIn ='+isLoggedIn)
 		
 		if (isLoggedIn == true){
 			var photo = 'https://graph.facebook.com/'+MyFacebookUser.id+'/picture';
