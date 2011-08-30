@@ -23,7 +23,11 @@ var ChatView = Backbone.View.extend({
 		var remoteJid = $(this.el).find('.message_field').attr('id').split('_')[1];
 		console.log('send message to remoteJid' +remoteJid);
 		var message = $(this.el).find('.muc_input').val();
-		JabberClient.send_muc_message(remoteJid, message)
+		if (isLoggedIn == true){
+			JabberClient.send_muc_message(remoteJid, message)
+		}else{
+			location.href= MyFacebookUser.loginUrl
+		}
     }, 
 
 	

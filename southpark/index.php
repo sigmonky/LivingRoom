@@ -298,6 +298,7 @@ if ($facebook_user_profile['id'] != "") {
 	var MyFacebookUser = {
 		id: '<?=$facebook_user_profile['id']?>',
 		name: '<?=$facebook_user_profile['name']?>',
+		loginUrl: '<?=$loginUrl?>">',
 	}
 	
 	 // var MyFacebookUser = {
