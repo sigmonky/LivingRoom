@@ -54,6 +54,33 @@ if ($facebook_user_profile['id'] != "") {
 			<div class="clearfix"></div>
 		</script>
 		
+		<script id="facebook_login_window" type="text/x-handlebars-template">
+			<div class="facebook_login_panel">
+			You are not currently logged in to Facebook. In order to participate with other Facebook friends using South Park Live, you must log in.
+			<br/><br/>
+				<center>
+					<a href={{url}}><img src="images/facebook-connect-button.png" alt="Login to Facebook" title="Login to Facebook" /></a>
+				</center>
+			</div>
+		</script>
+		
+		<script id="friends_main_window" type="text/x-handlebars-template">
+		<div id='roster-area'>
+			<div class="friends-scroll-pane">
+			 	<ul class="friends-list"  style="height:400px"></ul>
+			</div>
+			<div class="invite-friends-btn">
+				<a href="#" onclick="FacebookNewInvite(); return false;">Invite More Friends To Chat</a>
+			</div>
+		</div>
+		<div id="chat-area" class="tabs">
+				<ul class="chat-tabs" style="height:30px">
+				</ul>
+		</div>
+		<div class="clearfix"></div>
+		</script>
+		
+		
 		<script id="muc_window" type="text/x-handlebars-template">
 			<div class="chat_body"></div>
 			
@@ -204,27 +231,8 @@ if ($facebook_user_profile['id'] != "") {
 		<div class="pane-section" id="friends_view">
 			
 			<div class="main_panel">
-				
-				
-				<div id='roster-area'>
-					<div class="friends-scroll-pane">
-					
-					 	<ul class="friends-list"  style="height:400px"></ul>
-
-					</div>
-					<div class="invite-friends-btn">
-						<a href="#" onclick="FacebookNewInvite(); return false;">Invite More Friends To Chat</a>
-					</div>
-				</div>
-				
-					<div id="chat-area" class="tabs">
-						<ul class="chat-tabs" style="height:30px">
-
-						</ul>
-						
-					</div>
-					<div class="clearfix"></div>
-
+				<div id="facebook_login"></div>
+				<div id="friends_main_panel"></div>
 			</div>
 
 		</div>
@@ -343,7 +351,7 @@ if ($facebook_user_profile['id'] != "") {
 	<!-- the mousewheel plugin -->
 	<script type="text/javascript" src="application/libs/jquery/jquery.mousewheel.js"></script>
 	<!-- the jScrollPane script -->
-	<!-- <script type="text/javascript" src="application/libs/jquery/jquery.jscrollpane.min.js"></script> -->
+	<script type="text/javascript" src="application/libs/jquery/jquery.jscrollpane.min.js"></script>
 	
 	<!-- Template Engine  !-->
 	
@@ -413,6 +421,8 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/views/PaneView.js" type="text/javascript"></script>
 	<script src="application/views/HeaderView.js" type="text/javascript"></script>
 	<script src="application/views/FriendChatView.js" type="text/javascript"></script>
+	<script src="application/views/FacebookLogin.js" type="text/javascript"></script>
+	<script src="application/views/FriendsMainView.js" type="text/javascript"></script>
 	
 
 	<!-- Backbone Controller !-->

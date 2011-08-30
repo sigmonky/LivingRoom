@@ -41,13 +41,23 @@ var PaneView = Backbone.View.extend({
 		
 		
 		/* Friends View Begin  */
-		
-		var roster_area = $(".friends-list");
-		_.each(FriendsWhoInstalledApp.data, function(friend){
-			//console.log('friend '+friend.name);
-			var rowView = new FriendRosterView({model: friend});
-			$(rowView.render().el).prependTo(roster_area);
-		})
+		if (isLoggedIn != false){
+			
+			var friends_main_panel = $("#friends_main_panel");
+			var rowView = new FriendsMainView();
+			$(rowView.render().el).prependTo(friends_main_panel);
+			
+			var roster_area = $(".friends-list");
+			_.each(FriendsWhoInstalledApp.data, function(friend){
+				//console.log('friend '+friend.name);
+				var rowView = new FriendRosterView({model: friend});
+				$(rowView.render().el).prependTo(roster_area);
+			})
+		}else{
+			var facebook_login = $("#facebook_login");
+			var mainChatRoom = new FacebookLogin();
+			$(mainChatRoom.render().el).prependTo(facebook_login);
+		}
 		
 		/* Friends View End  */
 		
@@ -93,18 +103,27 @@ var PaneView = Backbone.View.extend({
 		$("#all_fans_view").css({'display': 'block', 'height': '100%'});
 		$("#buzz_view").css('display', 'none');
 		$("#friends_view").css('display', 'none');
+		$('input.message_field').focus();
+
+        
 	},
 	
 	renderMyFriends: function() {
 		$("#friends_view").css({'display': 'block', 'height': '100%'});
 		$("#buzz_view").css('display', 'none');
 		$("#all_fans_view").css('display', 'none');
+		console.log('isLoggedIn ='+isLoggedIn);
+		if (isLoggedIn == true){
+			 $('.scroll-pane-friends').jScrollPane();
+		}	
 	},
 
 	renderBuzz: function() {
 		$("#buzz_view").css({'display': 'block', 'height': '100%'});
 		$("#friends_view").css('display', 'none');
 		$("#all_fans_view").css('display', 'none');
+		$('input.message_field').focus();
+		$('.scroll-pane').jScrollPane();
 	},
 
 });

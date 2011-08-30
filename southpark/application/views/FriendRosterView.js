@@ -73,6 +73,7 @@ var FriendRosterView = Backbone.View.extend({
 			var chat_area = $('#chat-' + id);
 			$(rowView.render().el).appendTo(chat_area);	
 		}
+		$('input.message_field').focus();
 
 		this.hidePopupMenu();
 

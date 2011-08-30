@@ -195,7 +195,7 @@ width:750px;
 
 
 #my_profile_photo {float:left; width:50px; margin:7px 0 0 7px; height:50px; border: 1px solid #FFF;}
-.message_field {float:left; width:573px; height:26px; margin-top:17px; font-size:1.1em;margin-left:10px;}
+.message_field {float:left; width:573px; height:26px; margin-top:17px; font-size:1.1em;margin-left:10px; border:3px solid #A98A10}
 .message_send_button{float:left; height:34px; font-size:1.4em; width:80px; margin-top:17px; margin-left:12px;}
 
 .main_panel{
@@ -425,4 +425,4 @@ cursor:pointer;
 			
 			/*End of scrollable tabs css*/
 .ui-tabs-panel{font-size:0.8em;}
-
+.facebook_login_panel{padding:60px 40px 0 60px; height:320px; line-height:1.3em; font-weight:bold; color:#FFF}

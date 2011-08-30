@@ -13,12 +13,7 @@ var App =  Backbone.Controller.extend({
     
 		$('input[name=message]').focus();  
 
-		// $(function()
-		// {
-		// 	$('.scroll-pane').jScrollPane();
-		// 	$('.friends-scroll-pane').jScrollPane();
-		// 	
-		// });	
+
 
 		
 		this.headerView = new HeaderView({view: this});
