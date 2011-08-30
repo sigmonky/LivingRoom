@@ -12,6 +12,8 @@ JabberClient.init = function (connection) {
 	this.conn = connection;
 	JabberClient.conn = this.conn;
 	
+	console.log('JabberClient init this.connec ='+this.conn);
+	
 	// various elems we want convenient access to
 	this.$roster = $('#roster');
 	this.$chats = $('#chats');
