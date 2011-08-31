@@ -33,8 +33,8 @@ var App =  Backbone.Controller.extend({
 		
 		
 			    // set up handler
-		this.connection.addHandler(this.onResult, null, 'iq',	'result', 'disco-1', null);
-		this.connection.addHandler(this.msgReceived, null, 'message', 'groupchat', null,  null); 
+		this.connection.addHandler(onConnect.onResult, null, 'iq',	'result', 'disco-1', null);
+		this.connection.addHandler(onConnect, null, 'message', 'groupchat', null,  null); 
 		
 		this.connection.addHandler(onResult,null, "message", "groupchat");
 	
