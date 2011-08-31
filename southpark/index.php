@@ -46,7 +46,8 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Mustache.js templates  -->
 		
 		<script id="chat_window" type="text/x-handlebars-template">
-			<div id="chat_body_{{ jid }}" class="friend_chat_body"></div>
+			<div id="chat_body_{{ jid }}" class="friend_chat_body">
+			</div>
 			<div class="friend_bottom_panel">
 				<input class="chat_input message_field" id="input_{{ jid }}" type="text" />
 				<input type="submit" class="message_send_button" value="send">
@@ -84,7 +85,9 @@ if ($facebook_user_profile['id'] != "") {
 		
 		
 		<script id="muc_window" type="text/x-handlebars-template">
-			<div class="chat_body"></div>
+			<div class="chat_body">
+						<div class="chat_messages"></div>
+			</div>
 			
 			<div class="bottom_panel">
 				<div id="my_profile_photo"><img src="{{photo}}" width="50" height="50"></div>
@@ -151,11 +154,11 @@ if ($facebook_user_profile['id'] != "") {
 		</script>
 
 		
-		<script id="chat_message" type="text/html">
-			<li class="chat_message{{#from}} {{from}}{{/from}}">
-				<span class="chat_name">{{ name }}</span>
-				<span class="chat_text">{{{ message }}}</span>
-			</li>
+		<script id="chat_message" type="text/x-handlebars-template">
+			<div class="chat_message{{#from}} {{from}}{{/from}}">
+				<span class="chat_name">{{ jid }}</span>
+				<span class="chat_text">{{{ text }}}</span>
+			</div>
 		</script>
 		
 		<script id="muc_dialog" type="text/html">
@@ -340,6 +343,9 @@ if ($facebook_user_profile['id'] != "") {
 	</script>
 	
 
+	<!-- LAB.js Asynchronous Script Loading -->
+	<!-- http://addyosmani.com/blog/building-spas-jquerys-best-friends/ -->
+	
 	
 	<!-- JQuery core and plugins !-->
 	

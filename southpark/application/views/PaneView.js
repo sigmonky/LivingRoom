@@ -35,7 +35,8 @@ var PaneView = Backbone.View.extend({
 		}
 		room.photo = photo;
 		
-		var mainChatRoom = new ChatView({model: room, jid: RoomJid});
+		var chatCollection = new models.ChatCollection();
+		var mainChatRoom = new ChatView({collection: chatCollection, model: room, jid: RoomJid});
 		$(mainChatRoom.render().el).prependTo(main_chat);
 		/* All Fans View End  */
 		

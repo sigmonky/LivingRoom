@@ -10,12 +10,7 @@ var App =  Backbone.Controller.extend({
     },
 
 	initialize: function() {
-    
 		$('input[name=message]').focus();  
-
-
-
-		
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
 		return this;		
@@ -61,12 +56,8 @@ var App =  Backbone.Controller.extend({
 		var remoteJid = '';
         var name = '';
 		
-
-
 		
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
-
-
 
 
    //    this.view.render();

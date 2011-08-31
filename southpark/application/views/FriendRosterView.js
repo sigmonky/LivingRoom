@@ -1,6 +1,6 @@
 var FriendRosterView = Backbone.View.extend({
 	template: $('#user'),
-	
+	/*http://wekeroad.com/post/8831772818/the-backbone-js-todo-list-refactored-part-2-being* and CUSTOM TRIGGERS */
   	events: {
     	'click .start-chat': 'startChat',
     	'click .start-group-chat': 'startGroupChat',
@@ -69,7 +69,10 @@ var FriendRosterView = Backbone.View.extend({
 			this.addedTabs.push(id);
 			var friend = {};
 			friend.jid = id;
+			
+			/* Add New Chat View */
 			var friendView = new FriendChatView({model: friend});
+			
 			$('#chat-area').tabs('add', '#chat-' + id, id);
 			$('.ui-widget-header').css('border-bottom','1px solid #6a6a6a' )
 			var chat_area = $('#chat-' + id);

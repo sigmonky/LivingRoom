@@ -213,7 +213,8 @@ color:#FFF;
 
 /* MUC Chat Window */
 .chat_body{background:url(../images/main_panel_back.png) repeat-x;
-height:316px; overflow-y:hidden; width:750px; color:#FFF;}
+height:316px; overflow-y:scroll; width:750px; color:#FFF;}
+
 .bottom_panel{
 background:url(../images/bottom_panel_back.png) repeat-x;
 height:69px;

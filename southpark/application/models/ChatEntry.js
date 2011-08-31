@@ -1,12 +1,12 @@
 /* Chat Message  */
 
-var ChatEntry = Backbone.Model.extend({
+models.ChatEntry = Backbone.Model.extend({
   defaults: {
     jid: '',
-    facebook_id: '',
-	nickname: '',
-	time: '',
-	text:''
+	//     facebook_id: '',
+	// nickname: '',
+	// time: '',
+	text:'',
   }
 });
 
