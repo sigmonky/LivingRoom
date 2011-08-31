@@ -48,9 +48,8 @@ var App =  Backbone.Controller.extend({
 		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
 		 connection.send(iq);
-		$(function () {
-			JabberClient.init(connection);
-		});
+		JabberClient.init(connection);
+		
 		/* All Fans View Start up */
         this.model = new models.ChatRoomModel();
 		var remoteJid = '';
