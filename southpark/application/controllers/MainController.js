@@ -33,8 +33,8 @@ var App =  Backbone.Controller.extend({
 		
 		
 			    // set up handler
-		connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
-		connection.addHandler(msgReceived, null, 'message', null, null,  null); 
+		connection.addHandler(this.onResult, null, 'iq',	'result', 'disco-1', null);
+		connection.addHandler(this.msgReceived, null, 'message', null, null,  null); 
 		
 		
 		connection.rawInput = function (data) {
@@ -81,6 +81,11 @@ var App =  Backbone.Controller.extend({
 	},
 	
 	msgReceived: function (message) {
+		console.log('msgReceived')
+    },
+
+	onResult: function (message) {
+		console.log('result')
 
     },
 
