@@ -31,6 +31,10 @@ function log(msg)
 	document.createTextNode(msg));
 }
 
+function onConnect(){
+	log('on connect');
+}
+
 function FacebookNewInvite(){
         var receiverUserIds = FB.ui({ 
              method : 'apprequests',
