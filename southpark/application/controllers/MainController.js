@@ -49,8 +49,10 @@ var App =  Backbone.Controller.extend({
 		
 		connection.send(iq);
 		
-		connection.addHandler(this.onMessage, null, 'message', null, null,  null); 
-		
+		//connection.addHandler(this.onMessage, null, 'message', null, null,  null); 
+		connection.addHandler(this.onMessage,
+	                              null, "message", "chat");
+	
 		JabberClient.init(connection);
 		
 		/* All Fans View Start up */
