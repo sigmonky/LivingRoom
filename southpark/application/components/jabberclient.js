@@ -143,7 +143,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	joinRoom: function(roomJid){
 		var roomJid = roomJid;
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		this.connection.muc.join(roomJid, nickname, this.roomMessageHandler, this.roomPresenceHandler);
+		this.connection.muc.join(roomJid, nickname, this.callback('roomMessageHandler'));
 	},
 	
 	roomPresenceHandler : function(obj){
