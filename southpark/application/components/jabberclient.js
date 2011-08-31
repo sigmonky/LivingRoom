@@ -15,116 +15,58 @@ JabberClient.init = function (connection) {
 	
 	this.conn = connection;
 	JabberClient.conn = this.conn;
-	JabberClient.joinRoom(RoomJid)
+	JabberClient.joinRoom(RoomJid);
 	
 	
-	//	JabberClient.conn.addHandler(JabberClient.onMessage, null, 'message', null, null,  null); 
+		JabberClient.conn.addHandler(JabberClient.onMessage, null, 'message', null, null,  null); 
+		this.conn.addHandler(JabberClient.onMessage, null, 'message', null, null,  null); 
 	
 	
 	console.log('JabberClient init this.connec ='+this.conn);
 	
 	// various elems we want convenient access to
-	this.$roster = $('#roster');
-	this.$chats = $('#chats');
-
-	// debug traffic toggle
-	this.show_traffic = false;
-
-
-	
-	// set custom status if we have it
-	if (JabberClient.conn.status && JabberClient.conn.status.status) {
-		$('#custom_status').html(JabberClient.conn.status.status.statusMessage);
-	}
-
-	// disconnect button
-	$('#disconnect').click(function () {
-		JabberClient.disconnect();
-	});
+	// this.$roster = $('#roster');
+	// this.$chats = $('#chats');
+	// 
+	// // debug traffic toggle
+	// this.show_traffic = false;
 
 	
-	// roster item clicks
-	$('#roster').delegate('a', 'click', function () {
-		var chat_div, jid, elem, input;
-		
-		// we'll need this for all of 'em
-		// we're using the 'data-' HTML5 attribute
-		jid = $(this).parents('.user').attr('data-jid');
-		
-		if ($(this).hasClass('remove')) {
-			JabberClient.conn.roster.unsubscribe(jid);
-		}
-		
-		else if ($(this).hasClass('edit_user')) {
-			// grab the name element
-			elem = $(this).siblings('.name');
-			
-			input = $('<input type="text">').val(elem.html()).keypress(function (e) {
-				if (e.which === 13) {
-					JabberClient.conn.roster.modifyContact(jid, $(this).val());
-					$(this).remove();
-					elem.show(0);
-				}
-			}); 
-			
-			// make the link say save instead of edit
-			$(this).html('save').click(function (e) {
-				$(this).html('edit');
-				elem.show(0);
-				// submit the change to the roster
-				JabberClient.conn.roster.modifyContact(jid, input.val());
-				
-				input.remove();
-				
-				// don't let it bubble up to the delegated handler
-				return false;
-			});
-			
-			elem.after(input).hide();
-		}
-				
-		else if ($(this).hasClass('start_chat')) {
-			chat_div = JabberClient.get_or_create_chat(jid);
-			
-			chat_div.children('input').focus();
-		}
-	});
-	
-	// chat input handler
-	$('.chat_input').live('keypress', function (e) {
-		var jid = $(this).parents('.ui-tabs-panel').data('jid');
-		
-		// look for enter key
-		if (e.which === 13) {
-			e.preventDefault();
-			
-			JabberClient.send_chat_message(jid, $(this).val());
-			
-			// clear the chat box
-			$(this).val('');
-		}
-		else {
-			// JabberClient.conn.chat.sendChatState(jid, "composing");
-		}
-	});
-	
-	// muc input handler
-	$('.muc_input').live('keypress', function (e) {
-		var jid = $(this).parents('.ui-tabs-panel').data('jid');
-		
-		// look for enter key
-		if (e.which === 13) {
-			e.preventDefault();
-			
-			JabberClient.send_muc_message(jid, $(this).val());
-			
-			// clear the chat box
-			$(this).val('');
-		}
-		else {
-			//JabberClient.conn.chat.sendChatState(jid, "composing");
-		}
-	});
+	// // chat input handler
+	// $('.chat_input').live('keypress', function (e) {
+	// 	var jid = $(this).parents('.ui-tabs-panel').data('jid');
+	// 	
+	// 	// look for enter key
+	// 	if (e.which === 13) {
+	// 		e.preventDefault();
+	// 		
+	// 		JabberClient.send_chat_message(jid, $(this).val());
+	// 		
+	// 		// clear the chat box
+	// 		$(this).val('');
+	// 	}
+	// 	else {
+	// 		// JabberClient.conn.chat.sendChatState(jid, "composing");
+	// 	}
+	// });
+	// 
+	// // muc input handler
+	// $('.muc_input').live('keypress', function (e) {
+	// 	var jid = $(this).parents('.ui-tabs-panel').data('jid');
+	// 	
+	// 	// look for enter key
+	// 	if (e.which === 13) {
+	// 		e.preventDefault();
+	// 		
+	// 		JabberClient.send_muc_message(jid, $(this).val());
+	// 		
+	// 		// clear the chat box
+	// 		$(this).val('');
+	// 	}
+	// 	else {
+	// 		//JabberClient.conn.chat.sendChatState(jid, "composing");
+	// 	}
+	// });
 };
 
 
