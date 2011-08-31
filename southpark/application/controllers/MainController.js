@@ -22,38 +22,38 @@ var App =  Backbone.Controller.extend({
 		
 		/*Start XMPP Connection */
 
-		var connection = null;
+		this.connection = null;
 	 	var startTime = null;
 	 	var BOSH_SERVICE = '/http-bind';
 
-		connection = new Strophe.Connection(BOSH_SERVICE);
+		this.connection = new Strophe.Connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
-		connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
+		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
 		
 		
 			    // set up handler
-		connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
+		this.connection.addHandler(onResult, null, 'iq',	'result', 'disco-1', null);
 		
 		
-		connection.rawInput = function (data) {
+		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
 			};
 		
-			connection.rawOutput = function (data) {
+			this.connection.rawOutput = function (data) {
 				log('SENT: ' + data);
 			};
 		
 		// send disco#info to jabber.org
 		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
-		connection.send(iq);
+		this.connection.send(iq);
 		
 		//connection.addHandler(this.onMessage, null, 'message', null, null,  null); 
-		connection.addHandler(this.onMessage,
+		this.connection.addHandler(this.onMessage,
 	                              null, "message", "chat");
 	
-		JabberClient.init(connection);
+	//	JabberClient.init(connection);
 		
 		/* All Fans View Start up */
         this.model = new models.ChatRoomModel();
@@ -64,6 +64,8 @@ var App =  Backbone.Controller.extend({
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
 		
+		this.joinRoom(RoomJid);
+		
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
 
@@ -71,6 +73,12 @@ var App =  Backbone.Controller.extend({
 
         return this;
     }, 
+
+	joinRoom = function(roomJid){
+			var roomJid = roomJid;
+			var nickname = 'guest_'+Math.floor(Math.random()*1111001);
+			this.connection.muc.join(roomJid, nickname, this.onMessage, this.onPresence);
+	},
 
 	index: function(){
 		this.paneView.renderAllFans();
@@ -82,6 +90,10 @@ var App =  Backbone.Controller.extend({
 	
 	onMessage: function(m){
 		console.log('on message');
+	},
+	
+	onPresence: function(m){
+		console.log('on onPresence');
 	},
 	
 	goToBuzz: function() {
