@@ -60,7 +60,7 @@ var App =  Backbone.Controller.extend({
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
 		
-		connection.muc.join(roomJid, nickname, this.msgReceived);
+		connection.muc.join('southpark3@conference.logoslogic.com', nickname, this.msgReceived);
 		
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
