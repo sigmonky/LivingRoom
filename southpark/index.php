@@ -373,9 +373,9 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/libs/strophe/base64.js" type="text/javascript"></script>
 	
 	<script src="application/libs/strophe/strophe.js" type="text/javascript"></script>
-	<script src="application/libs/strophe/strophe.roster.js" type="text/javascript"></script>
-	<script src="application/libs/strophe/strophe.status.js" type="text/javascript"></script>
-	<script src="application/libs/strophe/strophe.chat.js" type="text/javascript"></script>
+	<!-- // <script src="application/libs/strophe/strophe.roster.js" type="text/javascript"></script>
+	// <script src="application/libs/strophe/strophe.status.js" type="text/javascript"></script>
+	// <script src="application/libs/strophe/strophe.chat.js" type="text/javascript"></script> -->
 	<script src="application/libs/strophe/strophe.muc.js" type="text/javascript"></script>
 	
 	
