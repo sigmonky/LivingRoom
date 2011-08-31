@@ -1,7 +1,7 @@
 var App =  Backbone.Controller.extend({	
 	paneView: null,
 	headerView: null,
-	connection:null,
+	connection:  null,
 	routes: {
         "":       "index",
         "allfans":  "index",
@@ -20,13 +20,13 @@ var App =  Backbone.Controller.extend({
 	
 		var view;
 		
-		/*Start XMPP this.connection */
+		/*Start XMPP Connection */
 
 		
 	 	var startTime = null;
 	 	var BOSH_SERVICE = '/http-bind';
 
-		this.connection = new Strophe.connection(BOSH_SERVICE);
+		this.connection = new Strophe.Connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
 		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
@@ -49,7 +49,7 @@ var App =  Backbone.Controller.extend({
 		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
 		 this.connection.send(iq);
-		//JabberClient.init(this.connection);
+		//JabberClient.init(connection);
 		
 		/* All Fans View Start up */
         this.model = new models.ChatRoomModel();
