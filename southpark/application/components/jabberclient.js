@@ -5,6 +5,9 @@
 
 var JabberClient = {};
 
+JabberClient.onMessage = function(msg){
+	console.log('onmessage');
+}
 // set up the object
 JabberClient.init = function (connection) {
 	var account;
@@ -226,9 +229,7 @@ JabberClient.init = function (connection) {
 	});
 };
 
-JabberClient.onMessage = function(msg){
-	console.log('onmessage');
-}
+
 JabberClient.joinRoom = function(roomJid){
 		var roomJid = roomJid;
 		
