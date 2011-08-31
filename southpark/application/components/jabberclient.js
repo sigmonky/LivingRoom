@@ -88,6 +88,31 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		view_el_id: 'online-block'
 	},
 	initialize: function(){
+		
+		var BOSH_SERVICE = '/http-bind';
+		this.connection = new Strophe.Connection(BOSH_SERVICE);
+		
+		// Strophe.log = function (lvl, msg) { log(msg); };
+		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
+		
+		this.connection.rawInput = function (data) {
+				log('RECV: ' + data);
+			};
+		
+			connection.conn.rawOutput = function (data) {
+				log('SENT: ' + data);
+			};
+		
+		// send disco#info to jabber.org
+		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
+		
+		this.connection.send(iq);
+		
+		this.bind('connected', this.onConnect);
+		
+		this.joinRoom(RoomJid)
+		
+		
 // 		this.connection = new Strophe.Connection(this.options.bosh_service);
 // 		// this.roster = new Jabber.Roster();
 // 		// this.chatlog = new Jabber.ChatLog();
@@ -105,10 +130,41 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 // 		this.chatlog.bind('add', this.callback('onMessageAdd'));
 // 		this.view.bind('send:message', this.callback('sendMessage'));
 	},
+	
+	onMessage: function(msg){
+		console.log('onmessage');
+	},
+	
+	
+	onConnect: function(){
+		console.log('onConnect ')
+	
+	},
+	
+	joinRoom: function(roomJid){
+		var roomJid = roomJid;
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
+		console.log('JabberClient.conn =' +JabberClient.conn);
+		this.connection.muc.join(roomJid, nickname, this.roomMessageHandler, this.roomPresenceHandler);
+	},
+	
+	roomPresenceHandler : function(obj){
+		console.log('room presence handler '+obj)
+	},
+	
+	roomMessageHandler : function(obj){
+		console.log('room roomMessageHandler '+obj)
+	},
+	
+	send_muc_message: function (room, body) {
+		this.connection.muc.message(room, 'nickxx', body);
+	},
+	
 	connect: function(){
 		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
 		this.trigger('ui:connect');
 	},
+	
 	onConnectChange: function(status_code, error){
 		for (st in Strophe.Status) {
 			if (status_code === Strophe.Status[st]) {
@@ -119,7 +175,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 			this.trigger('connected');
 		}
 	},
+	
 	onConnect: function(){
+		console.log('onConnect ')
+		
 		// request roster
 		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
 		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
@@ -128,6 +187,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
 	},
+	
 	onRoster: function(roster){
 		this.connection.send($pres());
 		this.trigger('ui:ready');
@@ -140,33 +200,36 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		}
 		return true;
 	},
+	
 	onContactPresence: function(presence){
-		var from = Strophe.getBareJidFromJid($(presence).attr('from')),
-			contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
-		if (contact) {
-			contact.updatePrecense(presence);
-		}
-        if(this.options.autoChat){
-        	_.delay(function(self){
-        		self.sendWelcome();
-        	}, '2000', this);
-        }
-		return true;
+		console.log('onContactPresence ')
+		
+		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
+		// 	contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
+		// if (contact) {
+		// 	contact.updatePrecense(presence);
+		// }
+		//         if(this.options.autoChat){
+		//         	_.delay(function(self){
+		//         		self.sendWelcome();
+		//         	}, '2000', this);
+		//         }
+		// return true;
 	},
 //	Public method, use it directly if you set `{autoChat: false}`
 	sendWelcome: function(){
-    	if (!this._welcomeSent) {
-    		var userinfo = this.getUserinfo();
-    		this.roster.freezeManager();
-    		this._welcomeSent = true;
-    		this.sendMessage({
-    			text: userinfo,
-    			from: this.options.jid,
-    			to: this.roster.manager.get('jid'),
-    			hidden: true,
-    			dt: new Date()
-    		});
-    	}
+    	// if (!this._welcomeSent) {
+    	// 	var userinfo = this.getUserinfo();
+    	// 	this.roster.freezeManager();
+    	// 	this._welcomeSent = true;
+    	// 	this.sendMessage({
+    	// 		text: userinfo,
+    	// 		from: this.options.jid,
+    	// 		to: this.roster.manager.get('jid'),
+    	// 		hidden: true,
+    	// 		dt: new Date()
+    	// 	});
+    	// }
 	},
 //	`sendMessage` used for send all messages 
 	sendMessage: function(message){
@@ -195,15 +258,17 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
-		var msg = new Jabber.Message({
-			text: $(message).find('body').text(),
-			from: $(message).attr('from'),
-			to: $(message).attr('to'),
-			incoming: true,
-			dt: new Date()
-		});
-		this.chatlog.add(msg);
-		return true;
+		console.log('onMessage ')
+		
+		// var msg = new Jabber.Message({
+		// 	text: $(message).find('body').text(),
+		// 	from: $(message).attr('from'),
+		// 	to: $(message).attr('to'),
+		// 	incoming: true,
+		// 	dt: new Date()
+		// });
+		// this.chatlog.add(msg);
+		// return true;
 	},
 //	Only trigger view event
 	onMessageAdd: function(message){
