@@ -10,6 +10,7 @@ JabberClient.init = function (connection) {
 	var account;
 	
 	this.chatViews = new Array();
+	console.log('JabberClient init chatViews'+this.chatViews);
 	
 	
 	this.conn = connection;
