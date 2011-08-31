@@ -441,20 +441,20 @@ if ($facebook_user_profile['id'] != "") {
 	
 	<script>
 	
-	var StropheConfig = {
-
-	// Settings
-		boshUrl: 'http://www.logoslogic.com/http-bind',
-
-	// Implemented event handlers
-		subscriptionRequested: JabberClient.subscription_requested,
-		chatReceived: JabberClient.on_chat_message,
-		rosterChanged: JabberClient.update_roster,
-
-	// Not implemented in UI
-		handleMucMessage: JabberClient.handle_muc_message,
-		chatStateReceived: JabberClient.chat_state_received
-	};
+	// var StropheConfig = {
+	// 
+	// // Settings
+	// 	boshUrl: 'http://www.logoslogic.com/http-bind',
+	// 
+	// // Implemented event handlers
+	// 	subscriptionRequested: JabberClient.subscription_requested,
+	// 	chatReceived: JabberClient.on_chat_message,
+	// 	rosterChanged: JabberClient.update_roster,
+	// 
+	// // Not implemented in UI
+	// 	handleMucMessage: JabberClient.handle_muc_message,
+	// 	chatStateReceived: JabberClient.chat_state_received
+	// };
 
 	</script>
 	<script src="application/main.js"></script>
