@@ -473,7 +473,7 @@ JabberClient.send_chat_message = function (jid, body) {
 
 
 JabberClient.send_muc_message = function (room, body) {
-	JabberClient.conn.muc.message(room, 'nick', body);
+	JabberClient.conn.muc.message(room, 'nickxx', body);
 	
 	// build the ui
 	// this.get_or_create_muc(room).children('ul').append(ICH.chat_message({
