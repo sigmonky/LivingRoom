@@ -1,3 +1,5 @@
+
+
 var App =  Backbone.Controller.extend({	
 	paneView: null,
 	headerView: null,
@@ -23,34 +25,8 @@ var App =  Backbone.Controller.extend({
 		/*Start XMPP Connection */
 
 		
-	 	var startTime = null;
-	 	var BOSH_SERVICE = '/http-bind';
 
-		this.connection = new Strophe.Connection(BOSH_SERVICE);
-		
-		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
-		
-		
-			    // set up handler
-		this.connection.addHandler(onConnect.onResult, null, 'iq',	'result', 'disco-1', null);
-		this.connection.addHandler(onConnect, null, 'message', 'groupchat', null,  null); 
-		
-		this.connection.addHandler(onResult,null, "message", "groupchat");
-	
-		this.connection.rawInput = function (data) {
-				log('RECV: ' + data);
-			};
-		
-			this.connection.rawOutput = function (data) {
-				log('SENT: ' + data);
-			};
-		
-		// send disco#info to jabber.org
-		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-		
-		 this.connection.send(iq);
-		//JabberClient.init(connection);
+		JabberClient.init(connection);
 		
 		/* All Fans View Start up */
         this.model = new models.ChatRoomModel();
@@ -60,9 +36,8 @@ var App =  Backbone.Controller.extend({
 		$('input[name=message]').focus();  
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
-		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		
-		this.connection.muc.join('southpark3@conference.logoslogic.com', nickname, this.msgReceived);
+
+		window.chat = new JabberClient.Xmpp();
 
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
