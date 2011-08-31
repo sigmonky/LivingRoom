@@ -59,6 +59,7 @@ var App =  Backbone.Controller.extend({
 		$('input[name=message]').focus();  
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		
 		connection.muc.join('southpark3@conference.logoslogic.com', nickname, this.msgReceived);
 		
