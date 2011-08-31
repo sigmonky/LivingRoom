@@ -228,7 +228,7 @@ JabberClient.init = function (connection) {
 	});
 };
 
-JabberClient.on_public_message: function (message) {
+JabberClient.on_public_message = function (message) {
 	console.log('message');
 }
 
