@@ -95,6 +95,8 @@ Strophe.addConnectionPlugin('chat', {
 	},
 	
 	handleChat: function (jid, message) {
+		
+		console.log('handleChat '+message);
 		var mess = {};
 		
 		mess.full_jid = jid;
