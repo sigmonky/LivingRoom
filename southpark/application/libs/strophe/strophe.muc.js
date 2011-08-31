@@ -68,8 +68,9 @@ Strophe.addConnectionPlugin('muc', {
         var msg = $pres({from: this._connection.jid,
                          to: room_nick})
             .c("x",{xmlns: Strophe.NS.MUC});
-			 this._connection.addHandler(this.handleMucMessage.bind(this), null, "message", "groupchat");
-
+			// this._connection.addHandler(this.handleMucMessage.bind(this), null, "message", "groupchat");
+		 this._connection.addHandler(this.handleMucMessage.bind(this),
+		                              null, "message", "chat");
 				//         if (password)
 				//         {
 				//             var password_elem = Strophe.xmlElement("password", 
