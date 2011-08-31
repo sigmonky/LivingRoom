@@ -123,7 +123,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 // //	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
 // //	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
 // //		listen events
-// 		this.bind('connected', this.onConnect);
+ 		this.bind('connected', this.onConnect);
 // 		if (this.options.autoConnect){
 // 			this.connect();
 // 		}
@@ -189,6 +189,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+	
 	},
 	
 	onRoster: function(roster){
