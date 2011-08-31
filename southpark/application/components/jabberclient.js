@@ -137,6 +137,8 @@ JabberClient.joinRoom = function(roomJid){
 		
 		console.log('JabberClient.conn =' +JabberClient.conn);
 		JabberClient.conn.muc.join(roomJid, nickname, JabberClient.roomMessageHandler, JabberClient.roomPresenceHandler);
+		JabberClient.conn.muc.join(roomJid, nickname);
+		
 }
 
 JabberClient.roomPresenceHandler = function(obj){
