@@ -171,7 +171,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		}
 	},
 	
-	onConnect: function(){
+	onConnect: function(that){
 		console.log('onConnect ')
 		that.joinRoom();
 		
