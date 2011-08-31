@@ -34,7 +34,7 @@ var App =  Backbone.Controller.extend({
 		
 			    // set up handler
 		this.connection.addHandler(this.onResult, null, 'iq',	'result', 'disco-1', null);
-		this.connection.addHandler(this.msgReceived, null, 'message', null, null,  null); 
+		this.connection.addHandler(this.msgReceived, null, 'message', 'groupchat', null,  null); 
 		
 		
 		this.connection.rawInput = function (data) {
@@ -62,7 +62,7 @@ var App =  Backbone.Controller.extend({
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		
 		this.connection.muc.join('southpark3@conference.logoslogic.com', nickname, this.msgReceived);
-		
+
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
 
