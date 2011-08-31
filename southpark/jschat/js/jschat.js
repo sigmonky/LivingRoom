@@ -373,7 +373,6 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		this.trigger('ui:roster');
 		// add handlers
 		
-		this.connection.send(
 		    this.connection.send(
 		        $pres({
 		            to: 'southpark3@conference.logoslogic.com' + "/" + 'testando'
