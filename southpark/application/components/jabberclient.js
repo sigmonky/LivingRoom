@@ -133,11 +133,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onmessage');
 	},
 	
-	
-	onConnect: function(){
-		console.log('onConnect ')
-	
-	},
+
 	
 	joinRoom: function(roomJid){
 		var roomJid = roomJid;
