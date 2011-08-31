@@ -88,22 +88,22 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		view_el_id: 'online-block'
 	},
 	initialize: function(){
-		this.connection = new Strophe.Connection(this.options.bosh_service);
-		this.roster = new Jabber.Roster();
-		this.chatlog = new Jabber.ChatLog();
-		this.view = new Jabber.ChatView({
-			el: $('#'+this.options.view_el_id)
-		});
-		this._welcomeSent = false;
-//	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
-//	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
-//		listen events
-		this.bind('connected', this.onConnect);
-		if (this.options.autoConnect){
-			this.connect();
-		}
-		this.chatlog.bind('add', this.callback('onMessageAdd'));
-		this.view.bind('send:message', this.callback('sendMessage'));
+// 		this.connection = new Strophe.Connection(this.options.bosh_service);
+// 		// this.roster = new Jabber.Roster();
+// 		// this.chatlog = new Jabber.ChatLog();
+// 		// this.view = new Jabber.ChatView({
+// 		// 	el: $('#'+this.options.view_el_id)
+// 		// });
+// 		// this._welcomeSent = false;
+// //	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
+// //	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
+// //		listen events
+// 		this.bind('connected', this.onConnect);
+// 		if (this.options.autoConnect){
+// 			this.connect();
+// 		}
+// 		this.chatlog.bind('add', this.callback('onMessageAdd'));
+// 		this.view.bind('send:message', this.callback('sendMessage'));
 	},
 	connect: function(){
 		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
