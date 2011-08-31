@@ -25,6 +25,32 @@ Strophe.addConnectionPlugin('muc', {
         Strophe.addNamespace('MUC_OWNER', Strophe.NS.MUC+"#owner");
         Strophe.addNamespace('MUC_ADMIN', Strophe.NS.MUC+"#admin");
     },
+
+	handleMucMessage: function (message) {
+		var result = {};
+		
+		console.log('handleMucMessage called');
+		
+		// we'll just cache the jquery object for efficiency
+		message = $(message);
+		
+		result.room = message.attr('from').split('/')[0];
+		result.nickname = message.attr('from').split('/')[1];
+		result.body = message.find('> body').text();
+		result.html_body = message.find('html[xmlns="http://jabber.org/protocol/xhtml-im"] > body').html();
+		
+		// look for the global StropheConfig object
+		// otherwise just trigger an event on the document that can be listened for
+		if (StropheConfig && $.isFunction(StropheConfig.handleMucMessage)) {
+			StropheConfig.handleMucMessage(result);
+		}
+		else {
+			$(document).trigger('mucMessageReceived', result);
+		}
+		
+		// return true so Strophe doesn't delete the handler stays
+		return true;
+	},
     /***Function
     Join a multi-user chat room
     Parameters:
@@ -42,61 +68,63 @@ Strophe.addConnectionPlugin('muc', {
         var msg = $pres({from: this._connection.jid,
                          to: room_nick})
             .c("x",{xmlns: Strophe.NS.MUC});
-        if (password)
-        {
-            var password_elem = Strophe.xmlElement("password", 
-                                                   [],
-                                                   password);
-            msg.cnode(password_elem);
-        }
-        if (msg_handler_cb)
-        {
-            this._connection.addHandler(function(stanza) {
-				console.log('room roomMessageHandler '+stanza)
-		
-                var from = stanza.getAttribute('from');
-                var roomname = from.split("/");
-                // filter on room name
-                if (roomname[0] == room)
-                {
-                    return msg_handler_cb(stanza);
-                }
-                else
-                {
-                    return true;
-                }
-            },
-                                        null,
-                                        "message",
-                                        null,
-                                        null,
-                                        null);
-        }
-        if (pres_handler_cb)
-        {
-            this._connection.addHandler(function(stanza) {
-                var xquery = stanza.getElementsByTagName("x");
-                if (xquery.length > 0)
-                {
-                    //Handle only MUC user protocol
-                    for (var i = 0; i < xquery.length; i++)
-                    {
-                        var xmlns = xquery[i].getAttribute("xmlns");
-                        
-                        if (xmlns && xmlns.match(Strophe.NS.MUC))
-                        {
-                            return pres_handler_cb(stanza);
-                        }
-                    }
-                }
-                return true;                
-            },
-                                        null,
-                                        "presence",
-                                        null,
-                                        null,
-                                        null);
-        }
+			 this._connection.addHandler(this.handleMucMessage.bind(this), null, "message", "groupchat");
+
+				//         if (password)
+				//         {
+				//             var password_elem = Strophe.xmlElement("password", 
+				//                                                    [],
+				//                                                    password);
+				//             msg.cnode(password_elem);
+				//         }
+				//         if (msg_handler_cb)
+				//         {
+				//             this._connection.addHandler(function(stanza) {
+				// console.log('room roomMessageHandler '+stanza)
+				// 		
+				//                 var from = stanza.getAttribute('from');
+				//                 var roomname = from.split("/");
+				//                 // filter on room name
+				//                 if (roomname[0] == room)
+				//                 {
+				//                     return msg_handler_cb(stanza);
+				//                 }
+				//                 else
+				//                 {
+				//                     return true;
+				//                 }
+				//             },
+				//                                         null,
+				//                                         "message",
+				//                                         null,
+				//                                         null,
+				//                                         null);
+				//         }
+				//         if (pres_handler_cb)
+				//         {
+				//             this._connection.addHandler(function(stanza) {
+				//                 var xquery = stanza.getElementsByTagName("x");
+				//                 if (xquery.length > 0)
+				//                 {
+				//                     //Handle only MUC user protocol
+				//                     for (var i = 0; i < xquery.length; i++)
+				//                     {
+				//                         var xmlns = xquery[i].getAttribute("xmlns");
+				//                         
+				//                         if (xmlns && xmlns.match(Strophe.NS.MUC))
+				//                         {
+				//                             return pres_handler_cb(stanza);
+				//                         }
+				//                     }
+				//                 }
+				//                 return true;                
+				//             },
+				//                                         null,
+				//                                         "presence",
+				//                                         null,
+				//                                         null,
+				//                                         null);
+				//         }
         this._connection.send(msg);
     },
     /***Function
