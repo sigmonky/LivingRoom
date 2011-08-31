@@ -99,7 +99,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 				log('RECV: ' + data);
 			};
 		
-			this.connection.conn.rawOutput = function (data) {
+			this.connection.rawOutput = function (data) {
 				log('SENT: ' + data);
 			};
 		
