@@ -38,16 +38,16 @@ var ChatView = Backbone.View.extend({
 		var message = new models.ChatEntry({jid:'111', text:'cueca'});
       	this.collection.add(message);
 
-		//console.log( 'colection' +this.collection.models ); //
-		// console.log('send message');
-		// var remoteJid = $(this.el).find('.message_field').attr('id').split('_')[1];
-		// console.log('send message to remoteJid' +remoteJid);
-		// var message = $(this.el).find('.muc_input').val();
-		// if (isLoggedIn == true){
-		// 	JabberClient.send_muc_message(remoteJid, message)
-		// }else{
-		// 	location.href= MyFacebookUser.loginUrl
-		// }
+		console.log( 'colection' +this.collection.models ); //
+		console.log('send message');
+		var remoteJid = $(this.el).find('.message_field').attr('id').split('_')[1];
+		console.log('send message to remoteJid' +remoteJid);
+		var message = $(this.el).find('.muc_input').val();
+		if (isLoggedIn == true){
+			JabberClient.send_muc_message(remoteJid, message)
+		}else{
+			location.href= MyFacebookUser.loginUrl
+		}
     }, 
 
 	addMessage: function(chatEntryModel){
