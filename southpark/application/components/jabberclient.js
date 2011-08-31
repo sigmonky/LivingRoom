@@ -109,7 +109,12 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection.send(iq);
 		
 		this.bind('joinRoom', this.callback(this.joinRoom));
-		this.joinRoom();
+		
+		
+		var roomJid = 'southpark3@conference.logoslogic.com';
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
+		this.connection.muc.join(roomJid, nickname, this.callback('roomMessageHandler'));
+		
 		
 		var that = this;
 	//	this.bind('connected', this.onConnect, that);
@@ -142,9 +147,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	joinRoom: function(){
 		console.log('joinRoom ')
 		
-		var roomJid = 'southpark3@conference.logoslogic.com';
-		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		this.connection.muc.join(roomJid, nickname, this.callback('roomMessageHandler'));
+
 	},
 	
 	roomPresenceHandler : function(obj){
