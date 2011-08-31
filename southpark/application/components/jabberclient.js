@@ -17,7 +17,8 @@ JabberClient.init = function (connection) {
 	JabberClient.conn = this.conn;
 	JabberClient.joinRoom(RoomJid)
 	
-	JabberClient.conn.addHandler(JabberClient.onMessage, null, 'message', null, null,  null); 
+	
+	//	JabberClient.conn.addHandler(JabberClient.onMessage, null, 'message', null, null,  null); 
 	
 	
 	console.log('JabberClient init this.connec ='+this.conn);
