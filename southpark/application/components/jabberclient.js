@@ -17,6 +17,10 @@ JabberClient.init = function (connection) {
 	JabberClient.conn = this.conn;
 	JabberClient.joinRoom(RoomJid)
 	
+	JabberClient.conn.addHandler(JabberClient.on_public_message,
+                                  null, "message", "groupchat");
+	
+	
 	console.log('JabberClient init this.connec ='+this.conn);
 	
 	// various elems we want convenient access to
@@ -223,6 +227,10 @@ JabberClient.init = function (connection) {
 		}
 	});
 };
+
+JabberClient.on_public_message: function (message) {
+	console.log('message');
+}
 
 JabberClient.joinRoom = function(roomJid){
 		var roomJid = roomJid;
