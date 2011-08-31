@@ -372,8 +372,17 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
 		this.trigger('ui:roster');
 		// add handlers
+		
+		this.connection.send(
+		    this.connection.send(
+		        $pres({
+		            to: 'southpark3@conference.logoslogic.com' + "/" + 'testando'
+		        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
+
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+		
 	},
 	onRoster: function(roster){
 		this.connection.send($pres());
@@ -442,6 +451,7 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
+		console.log('on message'+message);
 		var msg = new Jschat.Message({
 			text: $(message).find('body').text(),
 			from: $(message).attr('from'),
