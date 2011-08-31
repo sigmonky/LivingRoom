@@ -70,98 +70,97 @@ JabberClient.Xmpp = function(options) {
 
 _.extend(JabberClient.Xmpp, JabberClient.JsmvcCallback, Backbone.Events, {
 
-
 	initialize: function () {
-		
-		var startTime = null;
-	 	var BOSH_SERVICE = '/http-bind';
-
-		this.conn = new Strophe.Connection(BOSH_SERVICE);
-		
-		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.conn.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
-
-		this.conn.rawInput = function (data) {
-				log('RECV: ' + data);
-			};
-		
-			this.conn.rawOutput = function (data) {
-				log('SENT: ' + data);
-			};
-		
-		// send disco#info to jabber.org
-		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-		
-		this.conn.send(iq);
-		
-		this.bind('connected', this.onConnect);
-		
-		var account;
-		//this.chatViews = new Array();
-		console.log('JabberClient init chatViews'+this.chatViews);
-
-		this.joinRoom(RoomJid)
-
-		this.conn.addHandler(this.handle_muc_message, null, 'message', 'groupchat', null,  null); 
-
-		console.log('JabberClient init this.connec ='+this.conn);
-
-		// various elems we want convenient access to
-		// this.$roster = $('#roster');
-		// this.$chats = $('#chats');
-
-		// debug traffic toggle
-		this.show_traffic = false;
-	},
-	
-	onMessage: function(msg){
-		console.log('onmessage');
-	},
-	
-	
-	onConnect: function(){
-		console.log('onConnect ')
-
-	},
-	
-	joinRoom: function(roomJid){
-		var roomJid = roomJid;
-		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		console.log('JabberClient.conn =' +JabberClient.conn);
-		this.conn.muc.join(roomJid, nickname, JabberClient.roomMessageHandler, JabberClient.roomPresenceHandler);
-	},
-
-	roomPresenceHandler : function(obj){
-		console.log('room presence handler '+obj)
-	},
-
-	roomMessageHandler : function(obj){
-		console.log('room roomMessageHandler '+obj)
-	},
-
-	send_muc_message: function (room, body) {
-		this.conn.muc.message(room, 'nickxx', body);
-	},
-	
-	handle_muc_message: function (message) {
-		console.log('handle_muc_message body' +message.body);
-		console.log('handle_muc_message room' +message.room);
-		console.log('handle_muc_message nickname' +message.nickname);
-	
-		// var chat_div;
-		// 	
-		// chat_div = JabberClient.get_or_create_muc(message.room);
-		// 	
-		// if (message.body) {
-		// 	chat_div.children('ul').append(ICH.chat_message({
-		// 		message: message.body,
-		// 		name: Strophe.getNodeFromJid(message.room)
-		// 	}));
 		// 
-		// 	//JabberClient.scroll_chat(message.room);
-		// }
-
-		return true;
+		// var startTime = null;
+		// 	 	var BOSH_SERVICE = '/http-bind';
+		// 
+		// this.conn = new Strophe.Connection(BOSH_SERVICE);
+		// 
+		// // Strophe.log = function (lvl, msg) { log(msg); };
+		// this.conn.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
+		// 
+		// this.conn.rawInput = function (data) {
+		// 		log('RECV: ' + data);
+		// 	};
+		// 
+		// 	this.conn.rawOutput = function (data) {
+		// 		log('SENT: ' + data);
+		// 	};
+		// 
+		// // send disco#info to jabber.org
+		// var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
+		// 
+		// this.conn.send(iq);
+		// 
+		// this.bind('connected', this.onConnect);
+		// 
+		// var account;
+		// //this.chatViews = new Array();
+		// console.log('JabberClient init chatViews'+this.chatViews);
+		// 
+		// this.joinRoom(RoomJid)
+		// 
+		// this.conn.addHandler(this.handle_muc_message, null, 'message', 'groupchat', null,  null); 
+		// 
+		// console.log('JabberClient init this.connec ='+this.conn);
+		// 
+		// // various elems we want convenient access to
+		// // this.$roster = $('#roster');
+		// // this.$chats = $('#chats');
+		// 
+		// // debug traffic toggle
+		// this.show_traffic = false;
 	},
+	
+	// onMessage: function(msg){
+	// 	console.log('onmessage');
+	// },
+	// 
+	// 
+	// onConnect: function(){
+	// 	console.log('onConnect ')
+	// 
+	// },
+	// 
+	// joinRoom: function(roomJid){
+	// 	var roomJid = roomJid;
+	// 	var nickname = 'guest_'+Math.floor(Math.random()*1111001);
+	// 	console.log('JabberClient.conn =' +JabberClient.conn);
+	// 	this.conn.muc.join(roomJid, nickname, JabberClient.roomMessageHandler, JabberClient.roomPresenceHandler);
+	// },
+	// 
+	// roomPresenceHandler : function(obj){
+	// 	console.log('room presence handler '+obj)
+	// },
+	// 
+	// roomMessageHandler : function(obj){
+	// 	console.log('room roomMessageHandler '+obj)
+	// },
+	// 
+	// send_muc_message: function (room, body) {
+	// 	this.conn.muc.message(room, 'nickxx', body);
+	// },
+	// 
+	// handle_muc_message: function (message) {
+	// 	console.log('handle_muc_message body' +message.body);
+	// 	console.log('handle_muc_message room' +message.room);
+	// 	console.log('handle_muc_message nickname' +message.nickname);
+	// 
+	// 	// var chat_div;
+	// 	// 	
+	// 	// chat_div = JabberClient.get_or_create_muc(message.room);
+	// 	// 	
+	// 	// if (message.body) {
+	// 	// 	chat_div.children('ul').append(ICH.chat_message({
+	// 	// 		message: message.body,
+	// 	// 		name: Strophe.getNodeFromJid(message.room)
+	// 	// 	}));
+	// 	// 
+	// 	// 	//JabberClient.scroll_chat(message.room);
+	// 	// }
+	// 
+	// 	return true;
+	// },
 	
 });
