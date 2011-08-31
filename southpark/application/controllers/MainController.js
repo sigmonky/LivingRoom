@@ -36,7 +36,8 @@ var App =  Backbone.Controller.extend({
 		this.connection.addHandler(this.onResult, null, 'iq',	'result', 'disco-1', null);
 		this.connection.addHandler(this.msgReceived, null, 'message', 'groupchat', null,  null); 
 		
-		
+		this.connection.addHandler(onResult,null, "message", "groupchat");
+	
 		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
 			};
