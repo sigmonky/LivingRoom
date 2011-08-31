@@ -105,10 +105,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 			};
 		
 		// send disco#info to jabber.org
-		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-		
-		this.connection.send(iq);
-		
+		// var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
+		// 
+		// this.connection.send(iq);
+		// 
 		this.bind('joinRoom', this.callback(this.joinRoom));
 		
 		this.bind('connected', this.onConnect);
