@@ -553,12 +553,14 @@ JabberClient.handle_muc_message = function (message) {
 	chat_div = JabberClient.get_or_create_muc(message.room);
 	
 	if (message.body) {
-		chat_div.children('ul').append(ICH.chat_message({
-			message: message.body,
-			name: Strophe.getNodeFromJid(message.room)
-		}));
-		
-		JabberClient.scroll_chat(message.room);
+		// chat_div.children('ul').append(ICH.chat_message({
+		// 	message: message.body,
+		// 	name: Strophe.getNodeFromJid(message.room)
+		// }));
+		// 
+		// JabberClient.scroll_chat(message.room);
+		var message = new models.ChatEntry({jid:'111', text:message});
+		this.chatViews[0].collection.add(message);
 	}
 
 	return true;
