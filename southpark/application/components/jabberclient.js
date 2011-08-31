@@ -16,9 +16,7 @@ JabberClient.init = function (connection) {
 	this.conn = connection;
 	JabberClient.conn = this.conn;
 	JabberClient.joinRoom(RoomJid)
-	
-	JabberClient.conn.addHandler(JabberClient.on_public_message,
-                                  null, "message", "groupchat");
+	this.conn.addHandler(JabberClient.onMessage, null, 'message', null, null,  null); 
 	
 	
 	console.log('JabberClient init this.connec ='+this.conn);
@@ -228,10 +226,9 @@ JabberClient.init = function (connection) {
 	});
 };
 
-JabberClient.on_public_message = function (message) {
-	console.log('message');
+JabberClient.onMessage = function(msg){
+	console.log('onmessage');
 }
-
 JabberClient.joinRoom = function(roomJid){
 		var roomJid = roomJid;
 		
