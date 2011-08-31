@@ -435,8 +435,7 @@ if ($facebook_user_profile['id'] != "") {
 	
 
 	<!-- Backbone Controller !-->
-	<script src="application/controllers/MainController.js" type="text/javascript"></script>
-	<!-- Jabber/XMPP Client  !-->
+
 	
 	<script src="application/components/jabberclient.js" type="text/javascript"></script>
 	
@@ -458,6 +457,9 @@ if ($facebook_user_profile['id'] != "") {
 	// };
 
 	</script>
+	
+	<script src="application/controllers/MainController.js" type="text/javascript"></script>
+	<!-- Jabber/XMPP Client  !-->
 	<script src="application/main.js"></script>
 	
 
