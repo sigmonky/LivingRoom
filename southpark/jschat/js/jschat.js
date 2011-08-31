@@ -331,11 +331,11 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 	defaults: {
 		jid: 'isaacueca@logoslogic.com',
 		password: 'cigano',
-		bosh_service: '/http-bind',
+		bosh_service: 'http:/www.logoslogic.com/http-bind',
 		view_el_id: 'online-block'
 	},
 	initialize: function(){
-		this.connection = new Strophe.Connection(this.options.bosh_service);
+		this.connection = new Strophe.Connection('http:/www.logoslogic.com/http-bind');
 		this.roster = new Jschat.Roster();
 		this.chatlog = new Jschat.ChatLog();
 		this.view = new Jschat.ChatView({
