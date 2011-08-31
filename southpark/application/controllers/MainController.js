@@ -36,7 +36,7 @@ var App =  Backbone.Controller.extend({
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
 
-		window.chat = new JabberClient.Xmpp({
+		window.chat = new Jschat.Xmpp({
 	        autoConnect: false,
 	        view_el_id: 'chat',
 	        autoChat: true
