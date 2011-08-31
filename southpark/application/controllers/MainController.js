@@ -49,7 +49,7 @@ var App =  Backbone.Controller.extend({
 		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
 		 connection.send(iq);
-		JabberClient.init(connection);
+		//JabberClient.init(connection);
 		
 		/* All Fans View Start up */
         this.model = new models.ChatRoomModel();
@@ -59,6 +59,8 @@ var App =  Backbone.Controller.extend({
 		$('input[name=message]').focus();  
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
+		
+		connection.muc.join(roomJid, nickname, this.msgReceived);
 		
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
