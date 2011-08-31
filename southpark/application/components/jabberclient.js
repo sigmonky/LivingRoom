@@ -113,7 +113,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		var roomJid = 'southpark3@conference.logoslogic.com';
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		this.connection.muc.join(roomJid, nickname, this.callback('roomMessageHandler'));
+		this.connection.muc.join(roomJid, nickname, this.roomMessageHandler);
 		
 		
 		var that = this;
