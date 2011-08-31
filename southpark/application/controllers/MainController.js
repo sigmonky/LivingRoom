@@ -1,7 +1,7 @@
 var App =  Backbone.Controller.extend({	
 	paneView: null,
 	headerView: null,
-	connection,
+	connection:null,
 	routes: {
         "":       "index",
         "allfans":  "index",
