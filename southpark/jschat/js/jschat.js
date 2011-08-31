@@ -331,7 +331,7 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 	defaults: {
 		jid: 'isaacueca@logoslogic.com',
 		password: 'cigano',
-		bosh_service: 'http:/www.logoslogic.com/http-bind',
+		bosh_service: '/http-bind',
 		view_el_id: 'online-block'
 	},
 	initialize: function(){
