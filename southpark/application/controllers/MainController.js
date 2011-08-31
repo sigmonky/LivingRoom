@@ -26,7 +26,7 @@ var App =  Backbone.Controller.extend({
 	 	var startTime = null;
 	 	var BOSH_SERVICE = '/http-bind';
 
-		this.connection = new Strophe.this.connection(BOSH_SERVICE);
+		this.connection = new Strophe.connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
 		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
