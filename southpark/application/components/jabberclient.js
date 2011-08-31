@@ -5,7 +5,7 @@
 //=======
 // This is tool from [JavascriptMVC](http://javascriptmvc.com/) framework.
 // It used to create binded to `this` callbacks, when _.bind() can not do this.
-Jschat.JsmvcCallback = {
+JabberClient.JsmvcCallback = {
 	callback: function( funcs ) {
 		var makeArray = $.makeArray,
 		isFunction = $.isFunction,
@@ -68,7 +68,7 @@ JabberClient.Xmpp = function(options) {
     this.initialize();
 };
 
-_.extend(JabberClient.Xmpp, Jschat.JsmvcCallback, Backbone.Events, {
+_.extend(JabberClient.Xmpp, JabberClient.JsmvcCallback, Backbone.Events, {
 
 	onMessage: function(msg){
 		console.log('onmessage');
