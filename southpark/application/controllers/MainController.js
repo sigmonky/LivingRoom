@@ -74,7 +74,7 @@ var App =  Backbone.Controller.extend({
         return this;
     }, 
 
-	joinRoom = function(roomJid){
+	joinRoom: function(roomJid){
 			var roomJid = roomJid;
 			var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 			this.connection.muc.join(roomJid, nickname, this.onMessage, this.onPresence);
