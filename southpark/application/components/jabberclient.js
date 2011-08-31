@@ -1,5 +1,7 @@
 "use strict";
 
+var JabberClient = {};
+
 //
 //Models
 //=======
@@ -59,7 +61,6 @@ JabberClient.JsmvcCallback = {
 };
 
 
-var JabberClient = {};
 
 JabberClient.Xmpp = function(options) {
 	if (!options) options = {}; 
