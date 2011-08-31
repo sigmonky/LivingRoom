@@ -61,7 +61,6 @@ JabberClient.JsmvcCallback = {
 };
 
 
-
 JabberClient.Xmpp = function(options) {
 	if (!options) options = {}; 
     if (this.defaults) options = _.extend(this.defaults, options);
@@ -71,10 +70,7 @@ JabberClient.Xmpp = function(options) {
 
 _.extend(JabberClient.Xmpp, JabberClient.JsmvcCallback, Backbone.Events, {
 
-	onMessage: function(msg){
-		console.log('onmessage');
-	},
-	
+
 	initialize: function () {
 		
 		var startTime = null;
@@ -117,6 +113,11 @@ _.extend(JabberClient.Xmpp, JabberClient.JsmvcCallback, Backbone.Events, {
 		// debug traffic toggle
 		this.show_traffic = false;
 	},
+	
+	onMessage: function(msg){
+		console.log('onmessage');
+	},
+	
 	
 	onConnect: function(){
 		console.log('onConnect ')
