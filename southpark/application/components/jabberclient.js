@@ -9,7 +9,7 @@ var JabberClient = {};
 JabberClient.init = function (connection) {
 	var account;
 	
-	this.chatViews = Array();
+	this.chatViews = new Array();
 	
 	
 	this.conn = connection;
