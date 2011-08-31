@@ -329,9 +329,9 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 //	
 //	`chat = new Jschat.Xmpp({'jid': 'me@jabber.org})`
 	defaults: {
-		jid: 'jschat-demo@jabber.org',
-		password: 'password',
-		bosh_service: 'http://bosh.metajack.im:5280/xmpp-httpbind',
+		jid: 'isaacueca@logoslogic.com',
+		password: 'cigano',
+		bosh_service: 'http:/www.logoslogic.com/http-bind',
 		view_el_id: 'online-block'
 	},
 	initialize: function(){
