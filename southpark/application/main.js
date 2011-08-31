@@ -6,6 +6,12 @@ $(document).ready(function(){
  	app.init();
 	Backbone.history.start();
 	
+	window.chat = new Jabber.Xmpp({
+        autoConnect: false,
+        view_el_id: 'chat',
+        autoChat: true
+    });
+
 	$(function(){
 		//To get the random tabs label with variable length for testing the calculations			
 		//example 
