@@ -110,7 +110,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.bind('connected', this.onConnect);
 		
-		this.joinRoom(RoomJid)
 		
 		
 // 		this.connection = new Strophe.Connection(this.options.bosh_service);
@@ -176,6 +175,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onConnect: function(){
 		console.log('onConnect ')
+		this.joinRoom(RoomJid);
 		
 		// request roster
 		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
