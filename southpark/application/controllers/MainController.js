@@ -26,7 +26,6 @@ var App =  Backbone.Controller.extend({
 
 		
 
-		JabberClient.init(connection);
 		
 		/* All Fans View Start up */
         this.model = new models.ChatRoomModel();
