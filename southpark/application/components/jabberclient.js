@@ -110,6 +110,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.bind('joinRoom', this.callback(this.joinRoom));
 		
+		this.bind('connected', this.onConnect);
 		
 
 		
