@@ -1,7 +1,7 @@
 var App =  Backbone.Controller.extend({	
 	paneView: null,
 	headerView: null,
-	
+	connection,
 	routes: {
         "":       "index",
         "allfans":  "index",
@@ -20,36 +20,36 @@ var App =  Backbone.Controller.extend({
 	
 		var view;
 		
-		/*Start XMPP Connection */
+		/*Start XMPP this.connection */
 
-		var connection = null;
+		
 	 	var startTime = null;
 	 	var BOSH_SERVICE = '/http-bind';
 
-		connection = new Strophe.Connection(BOSH_SERVICE);
+		this.connection = new Strophe.this.connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
-		connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
+		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, onConnect);
 		
 		
 			    // set up handler
-		connection.addHandler(this.onResult, null, 'iq',	'result', 'disco-1', null);
-		connection.addHandler(this.msgReceived, null, 'message', null, null,  null); 
+		this.connection.addHandler(this.onResult, null, 'iq',	'result', 'disco-1', null);
+		this.connection.addHandler(this.msgReceived, null, 'message', null, null,  null); 
 		
 		
-		connection.rawInput = function (data) {
+		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
 			};
 		
-			connection.rawOutput = function (data) {
+			this.connection.rawOutput = function (data) {
 				log('SENT: ' + data);
 			};
 		
 		// send disco#info to jabber.org
 		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
-		 connection.send(iq);
-		//JabberClient.init(connection);
+		 this.connection.send(iq);
+		//JabberClient.init(this.connection);
 		
 		/* All Fans View Start up */
         this.model = new models.ChatRoomModel();
@@ -61,7 +61,7 @@ var App =  Backbone.Controller.extend({
 		this.paneView = new PaneView();
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		
-		connection.muc.join('southpark3@conference.logoslogic.com', nickname, this.msgReceived);
+		this.connection.muc.join('southpark3@conference.logoslogic.com', nickname, this.msgReceived);
 		
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
