@@ -115,6 +115,19 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 
 		
 		var that = this;
+		
+		var roomJid = 'southpark3@conference.logoslogic.com';
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
+		
+		    this.connection.send(
+		        $pres({
+		            to: 'southpark3@conference.logoslogic.com' + "/" + nickname
+		        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
+
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+		
 	//	this.bind('connected', this.onConnect, that);
 		
 		
@@ -178,22 +191,11 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onConnect: function(that){
 		
-		var roomJid = 'southpark3@conference.logoslogic.com';
-		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		
-		    this.connection.send(
-		        $pres({
-		            to: 'southpark3@conference.logoslogic.com' + "/" + nickname
-		        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
 
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
-		
 		// add handlers
 		
 	//	this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+
 	
 	},
 	
