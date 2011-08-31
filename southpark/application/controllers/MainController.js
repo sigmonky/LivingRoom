@@ -1,7 +1,7 @@
 var App =  Backbone.Controller.extend({	
 	paneView: null,
 	headerView: null,
-	
+	connection: null,
 	routes: {
         "":       "index",
         "allfans":  "index",
@@ -50,8 +50,7 @@ var App =  Backbone.Controller.extend({
 		this.connection.send(iq);
 		
 		//connection.addHandler(this.onMessage, null, 'message', null, null,  null); 
-		this.connection.addHandler(this.onMessage,
-	                              null, "message", "chat");
+		this.connection.addHandler(this.onMessage, null, "message", "chat");
 	
 	//	JabberClient.init(connection);
 		
