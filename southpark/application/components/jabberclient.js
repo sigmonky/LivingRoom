@@ -111,13 +111,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.bind('joinRoom', this.callback(this.joinRoom));
 		
 		
-		var roomJid = 'southpark3@conference.logoslogic.com';
-		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-	//	this.connection.muc.join(roomJid, nickname, this.roomMessageHandler);
-		this.connection.send(
-	        $pres({
-	            to: 'southpark3@conference.logoslogic.com' + "/" + nickname
-	        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
+
 		
 		var that = this;
 	//	this.bind('connected', this.onConnect, that);
@@ -182,16 +176,18 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	onConnect: function(that){
-		console.log('onConnect ')
-		this.trigger('joinRoom');
 		
+		var roomJid = 'southpark3@conference.logoslogic.com';
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		
-		// request roster
-		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
-		
-	//	this.trigger('ui:roster');
-		
+		    this.connection.send(
+		        $pres({
+		            to: 'southpark3@conference.logoslogic.com' + "/" + nickname
+		        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
+
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 		
 		// add handlers
 		
