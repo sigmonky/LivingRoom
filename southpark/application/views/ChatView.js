@@ -7,6 +7,9 @@ var ChatView = Backbone.View.extend({
 	initialize: function (options) {
         _.bindAll(this, "render", 'sendMessage', 'addMessage');
         this.collection.bind("add", this.render);
+		var jid = options.jid;
+		console.log('initialize jid'+jid);
+		JabberClient.chatViews[jid] = this;
     }, 
 
 	render: function() {

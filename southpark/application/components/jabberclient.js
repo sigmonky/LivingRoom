@@ -9,6 +9,9 @@ var JabberClient = {};
 JabberClient.init = function (connection) {
 	var account;
 	
+	this.chatViews = Array();
+	
+	
 	this.conn = connection;
 	JabberClient.conn = this.conn;
 	JabberClient.joinRoom(RoomJid)
