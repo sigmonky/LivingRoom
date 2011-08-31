@@ -107,6 +107,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
 		this.connection.send(iq);
+		
+		this.bind('joinRoom', this.joinRoom);
+		
+		
 		var that = this;
 	//	this.bind('connected', this.onConnect, that);
 		
@@ -135,7 +139,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 
 	
-	joinRoom: function(roomJid){
+	joinRoom: function(){
 		console.log('joinRoom ')
 		
 		var roomJid = 'southpark3@conference.logoslogic.com';
@@ -173,7 +177,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onConnect: function(that){
 		console.log('onConnect ')
-		that.joinRoom();
+		this.trigger('joinRoom');
+		
 		
 		// request roster
 		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
