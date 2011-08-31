@@ -22,7 +22,7 @@ var App =  Backbone.Controller.extend({
 		
 		/*Start XMPP Connection */
 
-		this.connection = null;
+	//	this.connection = null;
 	 	var startTime = null;
 	 	var BOSH_SERVICE = '/http-bind';
 
