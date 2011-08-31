@@ -52,6 +52,8 @@ Strophe.addConnectionPlugin('muc', {
         if (msg_handler_cb)
         {
             this._connection.addHandler(function(stanza) {
+				console.log('room roomMessageHandler '+stanza)
+		
                 var from = stanza.getAttribute('from');
                 var roomname = from.split("/");
                 // filter on room name
