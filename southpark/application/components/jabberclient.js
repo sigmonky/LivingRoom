@@ -490,16 +490,18 @@ JabberClient.send_muc_message = function (room, body) {
 // handle incoming chat messages
 JabberClient.on_chat_message = function (message) {
 	var chat_div;
-	//console.log('on_chat_message '+message);
+	console.log('on_chat_message '+message);
 	chat_div = JabberClient.get_or_create_chat(message.full_jid);
 	
 	if (message.body) {
-		chat_div.children('ul').append(ICH.chat_message({
-			message: message.body,
-			name: Strophe.getNodeFromJid(message.full_jid)
-		}));
-		
-		JabberClient.scroll_chat(message.full_jid);
+		var message = new models.ChatEntry({jid:'111', text:message});
+		this.chatViews[0].collection.add(message);
+		// chat_div.children('ul').append(ICH.chat_message({
+		// 	message: message.body,
+		// 	name: Strophe.getNodeFromJid(message.full_jid)
+		// }));
+		// 
+		// JabberClient.scroll_chat(message.full_jid);
 	}
 
 	return true;
