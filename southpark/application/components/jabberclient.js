@@ -93,7 +93,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection = new Strophe.Connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
+	//	this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
+		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
 		
 		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
@@ -116,17 +117,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		var that = this;
 		
-		var roomJid = 'southpark3@conference.logoslogic.com';
-		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		
-		    this.connection.send(
-		        $pres({
-		            to: 'southpark3@conference.logoslogic.com' + "/" + nickname
-		        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
 
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.onMessage, null, 'message', 'groupchat');
 		
 	//	this.bind('connected', this.onConnect, that);
 		
@@ -190,7 +181,17 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	onConnect: function(that){
+		var roomJid = 'southpark3@conference.logoslogic.com';
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		
+		    this.connection.send(
+		        $pres({
+		            to: 'southpark3@conference.logoslogic.com' + "/" + nickname
+		        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
+
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.onMessage, null, 'message', 'groupchat');
 
 		// add handlers
 		
