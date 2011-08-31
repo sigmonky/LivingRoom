@@ -35,15 +35,13 @@ if ($facebook_user_profile['id'] != "") {
 		<link href="styles/global.css" rel="stylesheet" type="text/css" />
 		<link type="text/css" href="styles/jquery.jscrollpane.css" rel="stylesheet" media="all" /> 
 		 <link rel="stylesheet" href="styles/jquery-ui.css">
-	    
 	
 		<!-- <link type="text/css" href="styles/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
 		<link type="text/css" href="styles/sh/sh_style.css" rel="stylesheet" /> -->
 	
 		<!-- XMPP Bootstrap from XMPP Session Attachment and Facebook !-->
 		
-		
-		<!-- Mustache.js templates  -->
+		<!-- Mustache.js / Handlebars.js templates  -->
 		
 		<script id="chat_window" type="text/x-handlebars-template">
 			<div id="chat_body_{{ jid }}" class="friend_chat_body">
@@ -371,6 +369,8 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/components/ICanHaz.js" type="text/javascript"></script>
 	
 	<!-- Strophe core and plugins  !-->
+	<script src="application/libs/strophe/md5.js" type="text/javascript"></script>
+	<script src="application/libs/strophe/base64.js" type="text/javascript"></script>
 	
 	<script src="application/libs/strophe/strophe.js" type="text/javascript"></script>
 	<script src="application/libs/strophe/strophe.roster.js" type="text/javascript"></script>

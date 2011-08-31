@@ -1,7 +1,4 @@
-/*jslint white: true, browser: true, onevar: true, undef: true, nomen: true, eqeqeq: true, plusplus: true, bitwise: true, regexp: true, strict: true, newcap: true, immed: true */
-/*global $ window document Strophe StropheConfig $pres $iq $msg ICH localStorage console */
 "use strict";
-
 
 var JabberClient = {};
 
@@ -28,106 +25,22 @@ JabberClient.init = function (connection) {
 	// various elems we want convenient access to
 	this.$roster = $('#roster');
 	this.$chats = $('#chats');
-	
-	// init chat area tabs
-	// this.$chats.tabs({
-	// 	tabTemplate: '<li><a href="#{href}"><span>#{label}</span></a><a class="close_tab">x</a></li>'
-	// });
-	
+
 	// debug traffic toggle
 	this.show_traffic = false;
-	
-	// show login dialog if we don't have it in local storage
-	// the localStorage option needs to be replaced with a 
-	// local password manager or OAuth.
-	// if (localStorage.jid) {
-	// 	account = JabberClient.get_credentials();
-	// 	
-	// 	JabberClient.connect(account);
-	// }
-	// else {
-	// 	$('#login_dialog').dialog({
-	// 		autoOpen: true,
-	// 		draggable: false,
-	// 		modal: true,
-	// 		title: 'Connect to XMPP',
-	// 		buttons: {
-	// 			"Connect": function () {
-	// 				JabberClient.connect({
-	// 					jid: $('#jid').val(),
-	// 					password: $('#password').val()
-	// 				});
-	// 				
-	// 				$('#password').val('');
-	// 				$(this).dialog('close');
-	// 			}
-	// 		}
-	// 	});
-	// }
-	
-	// Set up UI element listeners
-	$('.close_tab').live('click', function () {
-		JabberClient.$chats.tabs('remove', $(this).context.tabIndex);
-	});
+
+
 	
 	// set custom status if we have it
 	if (JabberClient.conn.status && JabberClient.conn.status.status) {
 		$('#custom_status').html(JabberClient.conn.status.status.statusMessage);
 	}
-	
-	// make status editable
-	// $('#custom_status').inlineEdit({
-	// 	save: function (new_status) {
-	// 		JabberClient.conn.status.setCustomStatus(new_status);
-	// 	}
-	// });
-	
+
 	// disconnect button
 	$('#disconnect').click(function () {
 		JabberClient.disconnect();
 	});
-	
-	// availability select box
-	// $('#join_muc').click(function () {
-	// 	ICH.muc_dialog().dialog({
-	// 		autoOpen: true,
-	// 		draggable: false,
-	// 		modal: true,
-	// 		title: 'Join MUC',
-	// 		buttons: {
-	// 			"Join": function () {
-	// 				JabberClient.conn.muc.join(
-	// 					$('#muc_room').val(), 
-	// 					$('#muc_nickname').val(), 
-	// 					function (m) {
-	// 					//	console.log(m);
-	// 					}, 
-	// 					function (m) {
-	// 					//	console.log(m);
-	// 					},
-	// 					$('#muc_password').val()
-	// 				);
-	// 				
-	// 				JabberClient.get_or_create_muc($('#muc_room').val());
-	// 				
-	// 				// clear inputs
-	// 				$(this).contents('input').val('');
-	// 									
-	// 				$(this).dialog('close');
-	// 			}
-	// 		}
-	// 	});
-	// });
-	
-	// try to get and show status from status plugin
-	if (JabberClient.conn.status && JabberClient.conn.status.status.show) {
-		$('#show').val(JabberClient.conn.status.status.show);
-	}
-	
-	// availability select box
-	$('#show').change(function () {
-		JabberClient.conn.status.setShow($(this).val());
-	});
+
 	
 	// roster item clicks
 	$('#roster').delegate('a', 'click', function () {
@@ -176,23 +89,6 @@ JabberClient.init = function (connection) {
 		}
 	});
 	
-	// // add contact button
-	// $('#add_contact').click(function () {
-	// 	ICH.add_user_dialog().dialog({
-	// 		autoOpen: true,
-	// 		draggable: false,
-	// 		modal: true,
-	// 		title: 'Add user',
-	// 		buttons: {
-	// 			"Add": function () {
-	// 				JabberClient.conn.roster.subscribe($('#add_user_jid').val(), $('#add_user_name').val()); 
-	// 									
-	// 				$(this).dialog('close');
-	// 			}
-	// 		}
-	// 	});
-	// });
-	
 	// chat input handler
 	$('.chat_input').live('keypress', function (e) {
 		var jid = $(this).parents('.ui-tabs-panel').data('jid');
@@ -240,8 +136,18 @@ JabberClient.joinRoom = function(roomJid){
 		
 		
 		console.log('JabberClient.conn =' +JabberClient.conn);
-		JabberClient.conn.muc.join(roomJid, nickname);
+		JabberClient.conn.muc.join(roomJid, nickname, JabberClient.roomMessageHandler, JabberClient.roomPresenceHandler);
 }
+
+JabberClient.roomPresenceHandler = function(obj){
+	console.log('room presence handler '+obj)
+}
+
+JabberClient.roomMessageHandler = function(obj){
+	console.log('room roomMessageHandler '+obj)
+}
+
+
 
 // tell it to connect
 JabberClient.connect = function (account) {
