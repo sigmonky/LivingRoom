@@ -132,6 +132,7 @@ Strophe.addConnectionPlugin('muc', {
 	msgiq - the unique id used to send the message
 	*/
 	message: function (room, nick, message) {
+		console.log('muc strophe message ='+message);
 		var room_nick, msgid, msg;
 		
 		room_nick = this.test_append_nick(room, nick);		
