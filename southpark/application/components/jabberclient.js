@@ -191,7 +191,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.onMessage, null, 'message', 'groupchat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 
 		// add handlers
 		
