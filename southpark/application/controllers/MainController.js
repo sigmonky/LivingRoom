@@ -47,8 +47,7 @@ var App =  Backbone.Controller.extend({
 		// send disco#info to jabber.org
 		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
-		connection.send(iq);
-		
+		 connection.send(iq);
 		JabberClient.init(connection);
 		
 		/* All Fans View Start up */
