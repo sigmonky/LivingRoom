@@ -67,25 +67,25 @@ Strophe.addConnectionPlugin('muc', {
 		
 		console.log('handleMucMessage called');
 		
-		// we'll just cache the jquery object for efficiency
-		message = $(message);
-		
-		result.room = message.attr('from').split('/')[0];
-		result.nickname = message.attr('from').split('/')[1];
-		result.body = message.find('> body').text();
-		result.html_body = message.find('html[xmlns="http://jabber.org/protocol/xhtml-im"] > body').html();
-		
-		// look for the global StropheConfig object
-		// otherwise just trigger an event on the document that can be listened for
-		if (StropheConfig && $.isFunction(StropheConfig.handleMucMessage)) {
-			StropheConfig.handleMucMessage(result);
-		}
-		else {
-			$(document).trigger('mucMessageReceived', result);
-		}
-		
-		// return true so Strophe doesn't delete the handler stays
-		return true;
+		// // we'll just cache the jquery object for efficiency
+		// message = $(message);
+		// 
+		// result.room = message.attr('from').split('/')[0];
+		// result.nickname = message.attr('from').split('/')[1];
+		// result.body = message.find('> body').text();
+		// result.html_body = message.find('html[xmlns="http://jabber.org/protocol/xhtml-im"] > body').html();
+		// 
+		// // look for the global StropheConfig object
+		// // otherwise just trigger an event on the document that can be listened for
+		// if (StropheConfig && $.isFunction(StropheConfig.handleMucMessage)) {
+		// 	StropheConfig.handleMucMessage(result);
+		// }
+		// else {
+		// 	$(document).trigger('mucMessageReceived', result);
+		// }
+		// 
+		// // return true so Strophe doesn't delete the handler stays
+		// return true;
 	},
 	
 	
