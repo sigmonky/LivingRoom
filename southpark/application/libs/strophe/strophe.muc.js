@@ -133,6 +133,12 @@ Strophe.addConnectionPlugin('muc', {
     msgiq - the unique id used to send the message
     */
     message: function(room, nick, message, type) {
+	
+	console.log('messsage room' +room);
+	console.log('messsage nick' +nick);
+	console.log('messsage message' +message);
+	console.log('messsage message connection' +this._connection);
+	
         var room_nick = this.test_append_nick(room, nick);        
         type = type || "groupchat";
         var msgid = this._connection.getUniqueId();
