@@ -294,7 +294,7 @@ if ($facebook_user_profile['id'] != "") {
 	</div>
 	<script>
 	
-	var isLoggedIn = true;
+	var isLoggedIn = false;
 	
 	var Attacher = {
 		JID: '<?=$user->sessionInfo['jid']?>',
