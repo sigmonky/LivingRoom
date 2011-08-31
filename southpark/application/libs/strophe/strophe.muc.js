@@ -69,7 +69,7 @@ Strophe.addConnectionPlugin('muc', {
                          to: room_nick})
             .c("x",{xmlns: Strophe.NS.MUC});
 			// this._connection.addHandler(this.handleMucMessage.bind(this), null, "message", "groupchat");
-		 this._connection.addHandler(this.handleMucMessage.bind(this),
+		 this._connection.addHandler(this.handleMucMessage,
 		                              null, "message", "chat");
 				//         if (password)
 				//         {
