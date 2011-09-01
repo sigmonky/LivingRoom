@@ -290,47 +290,7 @@ if ($facebook_user_profile['id'] != "") {
 	    </div>
 	
 		<!-- Log Debug Console End -->
-		<div id="container">
-			<header>
-	        <h1>This is JSchat test page</h1>
-			</header>
-
-			<div id="main" role="main">
-			<div class="chat-button">Enable chat!</div>
-			<a href="#" id="chat-button" class="myButton">Start chat</a>
-		    <div id="chat"> 
-		        <h3>Chat</h3> 
-		         <form id="online-form" action="" method="post">
-		                <label for="id_full_name">Name</label> 
-		                <input id="id_full_name" type="text" name="full_name" /> 
-		                <label for="id_email">Ee-mail</label> 
-		                <input id="id_email" type="email" name="email" /> 
-		                <div class="clear"></div>
-
-		                <div id="online-messages" >
-		                    <ul id="online-message-list">
-		                    </ul>
-		                </div>
-
-		                <div class="clear"></div>  
-
-		                <label for="id_text">Leave your message</label>
-		                <textarea id="id_text" name="text"></textarea> 
-
-		                <div class="clear"></div>
-
-		                <button class="submit" id="id_send">Send</button>
-		                <a id="id_close">Hide</a>
-		            </form>
-	        </div> 
-	    </div> 
-
-			</div>
-
-			<footer>
-
-			</footer>
-		</div>
+	
 	</div>
 	<script>
 	
