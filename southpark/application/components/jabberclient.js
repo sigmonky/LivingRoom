@@ -450,15 +450,15 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
-		console.log('on message'+message);
-		// var msg = new Jschat.Message({
-		// 	text: $(message).find('body').text(),
-		// 	from: $(message).attr('from'),
-		// 	to: $(message).attr('to'),
-		// 	incoming: true,
-		// 	dt: new Date()
-		// });
-		// this.chatlog.add(msg);
+		console.log('aas on message'+message);
+		var msg = new Jschat.Message({
+			text: $(message).find('body').text(),
+			from: $(message).attr('from'),
+			to: $(message).attr('to'),
+			incoming: true,
+			dt: new Date()
+		});
+		this.chatlog.add(msg);
 		return true;
 	},
 //	Only trigger view event
