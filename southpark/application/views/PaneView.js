@@ -38,6 +38,8 @@ var PaneView = Backbone.View.extend({
 		 var chatCollection = new models.ChatCollection();
 	//	var chatCollection = new Jabber.MessageCollection();
 		var mainChatRoom = new ChatView({collection: chatCollection, model: room, jid: RoomJid});
+		window.chat.chatViews[jid] = mainChatRoom;
+		
 		$(mainChatRoom.render().el).prependTo(main_chat);
 		/* All Fans View End  */
 		

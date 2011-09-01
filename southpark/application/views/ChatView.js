@@ -11,7 +11,6 @@ var ChatView = Backbone.View.extend({
 		console.log('initialize jid'+jid);
 	//	console.log('initialize JabberClient chatViews'+JabberClient.chatViews);
 		
-		window.chat.chatViews[jid] = this;
     }, 
 
 	render: function() {
