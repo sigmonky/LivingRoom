@@ -123,6 +123,7 @@ footer {
 .chat_messages .chat_message {
 	list-style-type: none;
 	margin-top: 5px;
+	margin-left:15px;
 	width: auto;
 	float: left;
 	clear: both;
