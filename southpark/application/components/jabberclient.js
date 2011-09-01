@@ -151,6 +151,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	onConnectChange: function(status_code, error){
+		console.log('onConnectChange ')
+		
 		this.trigger('connected');
 	},
 	
