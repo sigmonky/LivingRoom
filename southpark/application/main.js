@@ -2,7 +2,7 @@ var app;
 	
 $(function(){
 	window.chat = new Jschat.Xmpp({
-        autoConnect: false,
+        autoConnect: true,
         view_el_id: 'chat',
         autoChat: true
     });
