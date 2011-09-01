@@ -168,7 +168,7 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<script type="text/x-handlebars-template" id="tweet-template">
 			<div class="thumb">
-			   <a href="http://twitter.com/#!/user.screen_name" class="tweet-user"><img src="{{user.profile_image_url}}" class="avatar" width="48" height="48" alt=""/></a>
+			   <a href="http://twitter.com/#!/user.screen_name" class="tweet-user"><img src=user.profile_image_url" class="avatar" width="48" height="48" alt=""/></a>
 			</div>
 			<div class="details">
 			   <p>{{text}}</p>
