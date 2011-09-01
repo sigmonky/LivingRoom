@@ -1,5 +1,7 @@
 var app;
 
+window.chat = new Jabber.Xmpp();
+
 $(document).ready(function(){
 
   	app = new App();
