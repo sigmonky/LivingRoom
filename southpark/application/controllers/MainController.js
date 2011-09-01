@@ -37,7 +37,7 @@ var App =  Backbone.Controller.extend({
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
 
-	//	window.chat = new Jschat.Xmpp();
+		window.chat = new Jschat.Xmpp();
 
       //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
 
