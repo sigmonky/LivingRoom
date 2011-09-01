@@ -396,17 +396,17 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		return true;
 	},
 	onContactPresence: function(presence){
-		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
-		// 	contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
-		// if (contact) {
-		// 	contact.updatePrecense(presence);
-		// }
-		//         if(this.options.autoChat){
-		//         	_.delay(function(self){
-		//         		self.sendWelcome();
-		//         	}, '2000', this);
-		//         }
-		// return true;
+		var from = Strophe.getBareJidFromJid($(presence).attr('from')),
+			contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
+		if (contact) {
+			contact.updatePrecense(presence);
+		}
+        if(this.options.autoChat){
+        	_.delay(function(self){
+        		self.sendWelcome();
+        	}, '2000', this);
+        }
+		return true;
 	},
 //	Public method, use it directly if you set `{autoChat: false}`
 	sendWelcome: function(){
