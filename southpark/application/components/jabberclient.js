@@ -236,7 +236,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		 	dt: new Date()
 		 });
 		
-		 this.chatViews[RoomJid].collection.add(msg);
+	//	 this.chatViews[RoomJid].collection.add(msg);
 	// //	 this.chatlog.add(msg);
 		
 		 return true;
