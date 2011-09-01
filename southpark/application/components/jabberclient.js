@@ -396,57 +396,57 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		return true;
 	},
 	onContactPresence: function(presence){
-		var from = Strophe.getBareJidFromJid($(presence).attr('from')),
-			contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
-		if (contact) {
-			contact.updatePrecense(presence);
-		}
-        if(this.options.autoChat){
-        	_.delay(function(self){
-        		self.sendWelcome();
-        	}, '2000', this);
-        }
-		return true;
+		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
+		// 	contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
+		// if (contact) {
+		// 	contact.updatePrecense(presence);
+		// }
+		//         if(this.options.autoChat){
+		//         	_.delay(function(self){
+		//         		self.sendWelcome();
+		//         	}, '2000', this);
+		//         }
+		// return true;
 	},
 //	Public method, use it directly if you set `{autoChat: false}`
 	sendWelcome: function(){
-    	if (!this._welcomeSent) {
-    		var userinfo = this.getUserinfo();
-    		this.roster.freezeManager();
-    		this._welcomeSent = true;
-    		this.sendMessage({
-    			text: userinfo,
-    			from: this.options.jid,
-    			to: this.roster.manager.get('jid'),
-    			hidden: true,
-    			dt: new Date()
-    		});
-    	}
+    	// if (!this._welcomeSent) {
+    	// 	var userinfo = this.getUserinfo();
+    	// 	this.roster.freezeManager();
+    	// 	this._welcomeSent = true;
+    	// 	this.sendMessage({
+    	// 		text: userinfo,
+    	// 		from: this.options.jid,
+    	// 		to: this.roster.manager.get('jid'),
+    	// 		hidden: true,
+    	// 		dt: new Date()
+    	// 	});
+    	// }
 	},
 //	`sendMessage` used for send all messages 
 	sendMessage: function(message){
-		if (!this._welcomeSent){
-			this.sendWelcome();
-		}
-		if (typeof(message) === 'string'){
-			var msg = new Jschat.Message({
-				text: message,
-				from: this.options.jid,
-				to: this.roster.manager.get('jid'),
-				incoming: false,
-				dt: new Date()
-			});
-		} else {
-			var msg = new Jschat.Message(message);
-		}
-		msg.send(this.connection);
-		if (!msg.get('hidden')){
-			this.chatlog.add(msg);
-		} 
+		// if (!this._welcomeSent){
+		// 	this.sendWelcome();
+		// }
+		// if (typeof(message) === 'string'){
+		// 	var msg = new Jschat.Message({
+		// 		text: message,
+		// 		from: this.options.jid,
+		// 		to: this.roster.manager.get('jid'),
+		// 		incoming: false,
+		// 		dt: new Date()
+		// 	});
+		// } else {
+		// 	var msg = new Jschat.Message(message);
+		// }
+		// msg.send(this.connection);
+		// if (!msg.get('hidden')){
+		// 	this.chatlog.add(msg);
+		// } 
 	},
 //	Prepare and render userinfo
 	getUserinfo: function(){
-		return Jschat.welcome_template(this.view.getUserinfo());
+	//	return Jschat.welcome_template(this.view.getUserinfo());
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
