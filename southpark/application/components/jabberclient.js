@@ -100,9 +100,13 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		// this.bind('connected', this.onConnect);
 		this.chatViews = new Array();
-		this.chatViews.bind('send:message', this.callback('sendMessage'));
 
 
+	},
+	
+	addView: function(jid){
+		this.chatViews[jid].bind('send:message', this.callback('sendMessage'));
+		
 	},
 	
 	onMessage: function(msg){
