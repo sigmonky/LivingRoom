@@ -44,7 +44,7 @@ var ChatView = Backbone.View.extend({
 		if (isLoggedIn == true){
 			
 			// JabberClient.send_muc_message(remoteJid, message)
-			this.trigger('send:message', message);
+			this.trigger('send:message', message, remoteJid);
 			
 			// var message = new Jabber.Message({jid:'111', text:'cueca'});
 			// this.collection.add(message);

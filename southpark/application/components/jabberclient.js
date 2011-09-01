@@ -202,14 +202,14 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
     	// }
 	},
 //	`sendMessage` used for send all messages 
-	sendMessage: function(message){
+	sendMessage: function(message, to){
 		// if (!this._welcomeSent){
 		// 	this.sendWelcome();
 		// }
 		console.log('send message');
 		
 		if (typeof(message) === 'string'){
-			var msg = new Jabber.Message({
+			var msg = new models.ChatEntry({
 				text: message,
 				from: this.options.jid,
 				to: this.roster.manager.get('jid'),
