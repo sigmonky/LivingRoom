@@ -106,7 +106,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		// 
 		// this.connection.send(iq);
 		
-		this.bind('connected', this.onConnect);
+		this.bind('connected', this.onConnect2);
 		
 
 	},
@@ -116,7 +116,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	
-	onConnect: function(){
+	onConnect2: function(){
 		console.log('onConnect ')
 		this.joinRoom(RoomJid);
 		
