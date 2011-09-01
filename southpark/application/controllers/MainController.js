@@ -1,5 +1,3 @@
-
-
 var App =  Backbone.Controller.extend({	
 	paneView: null,
 	headerView: null,
@@ -34,21 +32,9 @@ var App =  Backbone.Controller.extend({
 
 		});
 
-		
-		/* All Fans View Start up */
-        this.model = new models.ChatRoomModel();
-		var remoteJid = '';
-        var name = '';
-		
 		$('input[name=message]').focus();  
 		this.headerView = new HeaderView({view: this});
 		this.paneView = new PaneView();
-
-
-      //  this.view = new ChatView({model: this.model, remoteJid: remoteJid, el: $('#all_fans_view'), name: name});
-
-
-   //    this.view.render();
 
         return this;
     }, 

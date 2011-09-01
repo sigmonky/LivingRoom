@@ -60,8 +60,6 @@ Jabber.JsmvcCallback = {
 	}
 };
 
-
-
 //
 //Main class
 //==========
@@ -109,47 +107,26 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection.send(iq);
 		
 		this.bind('connected', this.onConnect);
-		
-		this.joinRoom(RoomJid)
-		
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
-		
-// 		this.connection = new Strophe.Connection(this.options.bosh_service);
-// 		// this.roster = new Jabber.Roster();
-// 		// this.chatlog = new Jabber.ChatLog();
-// 		// this.view = new Jabber.ChatView({
-// 		// 	el: $('#'+this.options.view_el_id)
-// 		// });
-// 		// this._welcomeSent = false;
-// //	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
-// //	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
-// //		listen events
-// 		this.bind('connected', this.onConnect);
-// 		if (this.options.autoConnect){
-// 			this.connect();
-// 		}
-// 		this.chatlog.bind('add', this.callback('onMessageAdd'));
-// 		this.view.bind('send:message', this.callback('sendMessage'));
+
+
 	},
 	
 	onMessage: function(msg){
 		console.log('onmessage');
 	},
 	
-	
 	onConnect: function(){
-		console.log('onConnect ')
-	
+		console.log('onConnect ');
+		this.joinRoom(RoomJid)
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 	},
 	
 	joinRoom: function(roomJid){
 		var roomJid = roomJid;
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-	//	console.log('JabberClient.conn =' +JabberClient.conn);
 		this.connection.muc.join(roomJid, nickname);
-		
 	},
 	
 	roomPresenceHandler : function(obj){
