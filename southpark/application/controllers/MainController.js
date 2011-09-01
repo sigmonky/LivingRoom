@@ -27,9 +27,9 @@ var App =  Backbone.Controller.extend({
 		//JabberClient.init(connection);
 		
 		/* All Fans View Start up */
-        this.model = new models.ChatRoomModel();
-		var remoteJid = '';
-        var name = '';
+		//         this.model = new models.ChatRoomModel();
+		// var remoteJid = '';
+		//         var name = '';
 		
 		$('input[name=message]').focus();  
 		this.headerView = new HeaderView({view: this});

@@ -26,6 +26,6 @@ var FriendRoster = Backbone.Model.extend({
 	//   }
 });
 
-models.FriendRosterCollection = Backbone.Collection.extend({
-    model: models.FriendRoster
-});
+// models.FriendRosterCollection = Backbone.Collection.extend({
+//     model: models.FriendRoster
+// });
