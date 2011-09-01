@@ -109,9 +109,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	
-	onConnect: function(){
+	onConnect: function(me){
 		console.log('onmessage');
-		this.joinRoom(RoomJid)
+		me.joinRoom(RoomJid)
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
