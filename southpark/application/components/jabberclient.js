@@ -99,7 +99,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection.send(iq);
 		
 		// this.bind('connected', this.onConnect);
-
+		this.chatViews = new Array();
+		this.chatViews.bind('send:message', this.callback('sendMessage'));
 
 
 	},
@@ -201,6 +202,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		// if (!this._welcomeSent){
 		// 	this.sendWelcome();
 		// }
+		console.log('send message');
+		
 		if (typeof(message) === 'string'){
 			var msg = new Jabber.Message({
 				text: message,
