@@ -120,7 +120,7 @@ footer {
 	width: 375px;
 }
 
-#chats .chat_message {
+.chat_messages .chat_message {
 	list-style-type: none;
 	margin-top: 5px;
 	width: auto;
