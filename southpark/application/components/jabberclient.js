@@ -337,7 +337,7 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 	initialize: function(){
 		this.connection = new Strophe.Connection(this.options.bosh_service);
 		// this.roster = new Jschat.Roster();
-		this.chatlog = new Jschat.ChatLog();
+		// this.chatlog = new Jschat.ChatLog();
 		// this.view = new Jschat.ChatView({
 		// 	el: $('#'+this.options.view_el_id)
 		// });
