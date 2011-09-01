@@ -110,7 +110,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	
 	onConnect: function(me){
-		console.log('onmessage');
+		console.log('onConnect');
 		me.joinRoom(RoomJid)
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
@@ -146,20 +146,20 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	onConnectChange: function(status_code, error){
 		this.trigger('connected');
 	},
-	
-	onConnect: function(){
-		console.log('onConnect ')
-		
-		// request roster
-		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
-		this.trigger('ui:roster');
-		// add handlers
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
-		
-	},
+	// 
+	// onConnect: function(){
+	// 	console.log('onConnect ')
+	// 	
+	// 	// request roster
+	// 	var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
+	// 	this.connection.sendIQ(roster_iq, this.callback('onRoster'));
+	// 	this.trigger('ui:roster');
+	// 	// add handlers
+	// 	this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+	// 	this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+	// 	this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+	// 	
+	// },
 	
 	onRoster: function(roster){
 		// this.connection.send($pres());
