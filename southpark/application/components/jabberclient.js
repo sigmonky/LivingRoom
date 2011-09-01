@@ -341,7 +341,7 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		// this.view = new Jschat.ChatView({
 		// 	el: $('#'+this.options.view_el_id)
 		// });
-		// this._welcomeSent = false;
+		this._welcomeSent = false;
 //	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
 //	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
 //		listen events
