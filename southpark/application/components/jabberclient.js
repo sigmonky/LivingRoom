@@ -118,7 +118,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onConnect: function(){
 		console.log('onConnect ')
-		this.joinRoom(RoomJid)
+		this.joinRoom(RoomJid);
 		
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
@@ -152,8 +152,16 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onConnectChange: function(status_code, error){
 		console.log('onConnectChange ')
-		
-		this.trigger('connected');
+				for (st in Strophe.Status) {
+					if (status_code === Strophe.Status[st]) {
+		//				console.log('status: ' + st);
+					}
+				}
+				if (status_code === Strophe.Status.CONNECTED) {
+					console.log('status: connected');
+					
+					this.trigger('connected');
+				}
 	},
 	
 	onConnect: function(){
