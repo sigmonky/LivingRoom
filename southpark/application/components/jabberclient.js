@@ -88,87 +88,19 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		view_el_id: 'online-block'
 	},
 	initialize: function(){
-		
-		var BOSH_SERVICE = '/http-bind';
-		this.connection = new Strophe.Connection(BOSH_SERVICE);
-		
-		// Strophe.log = function (lvl, msg) { log(msg); };
-	//	this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
-		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
-		
-		this.connection.rawInput = function (data) {
-				log('RECV: ' + data);
-			};
-		
-			this.connection.rawOutput = function (data) {
-				log('SENT: ' + data);
-			};
-		
-		// send disco#info to jabber.org
-		// var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-		// 
-		// this.connection.send(iq);
-		// 
-		this.bind('joinRoom', this.callback(this.joinRoom));
-		
+		this.connection = new Strophe.Connection(this.options.bosh_service);
+
+		this._welcomeSent = false;
+//	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
+//	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
+//		listen events
 		this.bind('connected', this.onConnect);
-		
-
-		
-		var that = this;
-		
-
-		
-	//	this.bind('connected', this.onConnect, that);
-		
-		
-		
-// 		this.connection = new Strophe.Connection(this.options.bosh_service);
-// 		// this.roster = new Jabber.Roster();
-// 		// this.chatlog = new Jabber.ChatLog();
-// 		// this.view = new Jabber.ChatView({
-// 		// 	el: $('#'+this.options.view_el_id)
-// 		// });
-// 		// this._welcomeSent = false;
-// //	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
-// //	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
-// //		listen events
-// 		if (this.options.autoConnect){
-// 			this.connect();
-// 		}
-// 		this.chatlog.bind('add', this.callback('onMessageAdd'));
-// 		this.view.bind('send:message', this.callback('sendMessage'));
+		this.connect();
 	},
-	
-	onMessage: function(msg){
-		console.log('onmessage');
-	},
-	
-
-	
-	joinRoom: function(){
-		console.log('joinRoom ')
-		
-
-	},
-	
-	roomPresenceHandler : function(obj){
-		console.log('room presence handler '+obj)
-	},
-	
-	roomMessageHandler : function(obj){
-		console.log('room roomMessageHandler '+obj)
-	},
-	
-	send_muc_message: function (room, body) {
-		this.connection.muc.message(room, 'nickxx', body);
-	},
-	
 	connect: function(){
 		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
 		this.trigger('ui:connect');
 	},
-	
 	onConnectChange: function(status_code, error){
 		for (st in Strophe.Status) {
 			if (status_code === Strophe.Status[st]) {
@@ -179,7 +111,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 			this.trigger('connected');
 		}
 	},
-	
 	onConnect: function(){
 		// request roster
 		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
@@ -195,98 +126,44 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
-
-		// add handlers
 		
-	//	this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-
-	
 	},
-	
 	onRoster: function(roster){
 		this.connection.send($pres());
 		this.trigger('ui:ready');
-		this.view.setStatus(Jabber.viewstates.online);
-		
-		var items = Jabber.Roster.serializeRoster(roster);
-		
-		for (var i=0; i<items.length; i++) {
-			this.roster.add(items[i]);
-		}
+
 		return true;
 	},
-	
 	onContactPresence: function(presence){
-		console.log('onContactPresence ')
-		
-		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
-		// 	contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
-		// if (contact) {
-		// 	contact.updatePrecense(presence);
-		// }
-		//         if(this.options.autoChat){
-		//         	_.delay(function(self){
-		//         		self.sendWelcome();
-		//         	}, '2000', this);
-		//         }
-		// return true;
+		var from = Strophe.getBareJidFromJid($(presence).attr('from')),
+			contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
+		if (contact) {
+			contact.updatePrecense(presence);
+		}
+        if(this.options.autoChat){
+        	_.delay(function(self){
+        		self.sendWelcome();
+        	}, '2000', this);
+        }
+		return true;
 	},
 //	Public method, use it directly if you set `{autoChat: false}`
 	sendWelcome: function(){
-    	// if (!this._welcomeSent) {
-    	// 	var userinfo = this.getUserinfo();
-    	// 	this.roster.freezeManager();
-    	// 	this._welcomeSent = true;
-    	// 	this.sendMessage({
-    	// 		text: userinfo,
-    	// 		from: this.options.jid,
-    	// 		to: this.roster.manager.get('jid'),
-    	// 		hidden: true,
-    	// 		dt: new Date()
-    	// 	});
-    	// }
+
 	},
 //	`sendMessage` used for send all messages 
 	sendMessage: function(message){
-		if (!this._welcomeSent){
-			this.sendWelcome();
-		}
-		if (typeof(message) === 'string'){
-			var msg = new Jabber.Message({
-				text: message,
-				from: this.options.jid,
-				to: this.roster.manager.get('jid'),
-				incoming: false,
-				dt: new Date()
-			});
-		} else {
-			var msg = new Jabber.Message(message);
-		}
-		msg.send(this.connection);
-		if (!msg.get('hidden')){
-			this.chatlog.add(msg);
-		} 
+
 	},
 //	Prepare and render userinfo
 	getUserinfo: function(){
-		return Jabber.welcome_template(this.view.getUserinfo());
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
-		console.log('onMessage ')
-		
-		// var msg = new Jabber.Message({
-		// 	text: $(message).find('body').text(),
-		// 	from: $(message).attr('from'),
-		// 	to: $(message).attr('to'),
-		// 	incoming: true,
-		// 	dt: new Date()
-		// });
-		// this.chatlog.add(msg);
-		// return true;
+		console.log('on message'+message);
+
 	},
 //	Only trigger view event
 	onMessageAdd: function(message){
-		this.view.trigger('add:message', message);
 	}
 });
