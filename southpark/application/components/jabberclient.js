@@ -384,16 +384,16 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		
 	},
 	onRoster: function(roster){
-		// this.connection.send($pres());
-		// this.trigger('ui:ready');
-		// this.view.setStatus(Jschat.viewstates.online);
-		// 
-		// var items = Jschat.Roster.serializeRoster(roster);
-		// 
-		// for (var i=0; i<items.length; i++) {
-		// 	this.roster.add(items[i]);
-		// }
-		// return true;
+		this.connection.send($pres());
+		this.trigger('ui:ready');
+		this.view.setStatus(Jschat.viewstates.online);
+		
+		var items = Jschat.Roster.serializeRoster(roster);
+		
+		for (var i=0; i<items.length; i++) {
+			this.roster.add(items[i]);
+		}
+		return true;
 	},
 	onContactPresence: function(presence){
 		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
