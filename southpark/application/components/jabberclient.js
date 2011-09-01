@@ -91,7 +91,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection = new Strophe.Connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.callback('onConnect'));
+		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
 		
 		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
@@ -102,19 +102,29 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 			};
 		
 		// send disco#info to jabber.org
-		// var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-		// 
-		// this.connection.send(iq);
+		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
 		
-		this.bind('connected', this.onConnect2);
+		this.connection.send(iq);
 		
+		this.bind('connected', this.onConnect);
+		
+		this.joinRoom(RoomJid)
+		
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 
 	},
 	
 	onMessage: function(msg){
 		console.log('onmessage');
 	},
-
+	
+	
+	onConnect: function(){
+		console.log('onConnect ')
+	
+	},
 	
 	joinRoom: function(roomJid){
 		var roomJid = roomJid;
@@ -141,7 +151,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	onConnectChange: function(status_code, error){
-		console.log('onConnectChange ')
 		this.trigger('connected');
 	},
 	
@@ -149,12 +158,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onConnect ')
 		
 		// request roster
-		// var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-		// this.connection.sendIQ(roster_iq, this.callback('onRoster'));
-		// this.trigger('ui:roster');
+		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
+		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
+		this.trigger('ui:roster');
 		// add handlers
-		this.joinRoom(RoomJid);
-		
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
@@ -232,6 +239,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 //	Handler for incoming messages
 	onMessage: function(message){
 		console.log('onMessage ')
+		
 		// var msg = new Jabber.Message({
 		// 	text: $(message).find('body').text(),
 		// 	from: $(message).attr('from'),
