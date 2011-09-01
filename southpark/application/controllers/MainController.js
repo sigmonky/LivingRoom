@@ -25,6 +25,14 @@ var App =  Backbone.Controller.extend({
 		/*Start XMPP Connection */
 
 		
+		$(function(){
+			window.chat = new Jabber.Xmpp({
+		        autoConnect: false,
+		        view_el_id: 'chat',
+		        autoChat: true
+		    });
+
+		});
 
 		
 		/* All Fans View Start up */
