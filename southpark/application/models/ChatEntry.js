@@ -15,7 +15,7 @@
 // });
 
 
-Jabber.Message = Backbone.Model.extend({
+models.ChatEntry = Backbone.Model.extend({
 	incoming: function(){
 		var to = Strophe.getBareJidFromJid(this.to),
 		myjid = Strophe.getBareJidFromJid(this.myjid);
@@ -34,6 +34,6 @@ Jabber.Message = Backbone.Model.extend({
 	}
 });
 
-Jabber.MessageCollection = Backbone.Collection.extend({
+models.ChatCollection = Backbone.Collection.extend({
 	model: Jabber.Message
 });

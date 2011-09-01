@@ -48,7 +48,7 @@ var ChatView = Backbone.View.extend({
 			
 			// var message = new Jabber.Message({jid:'111', text:'cueca'});
 			// this.collection.add(message);
-			var msg = new Jabber.Message({
+			var msg = new models.ChatEntry({
 				text: message,
 			//	from: $(message).attr('from'),
 				to: remoteJid,

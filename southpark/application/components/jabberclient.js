@@ -1,6 +1,6 @@
 //
 // Declare namespace
-Jabber = {};
+
 
 //
 //Models
@@ -210,7 +210,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 				dt: new Date()
 			});
 		} else {
-			var msg = new Jabber.Message(message);
+			var msg = new models.ChatEntry(message);
 		}
 		msg.send(this.connection);
 		if (!msg.get('hidden')){
