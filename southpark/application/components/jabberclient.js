@@ -459,7 +459,7 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		// 	dt: new Date()
 		// });
 		// this.chatlog.add(msg);
-		return true;
+	//	return true;
 	},
 //	Only trigger view event
 	onMessageAdd: function(message){
