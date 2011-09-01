@@ -91,7 +91,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection = new Strophe.Connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
+		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.callback('onConnectChange'));
 		
 		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
@@ -151,14 +151,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	onConnectChange: function(status_code, error){
-		for (st in Strophe.Status) {
-			if (status_code === Strophe.Status[st]) {
-//				console.log('status: ' + st);
-			}
-		}
-		if (status_code === Strophe.Status.CONNECTED) {
-			this.trigger('connected');
-		}
+		this.trigger('connected');
 	},
 	
 	onConnect: function(){
