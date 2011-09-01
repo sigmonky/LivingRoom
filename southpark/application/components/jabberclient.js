@@ -144,7 +144,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	joinRoom: function(roomJid){
 		var roomJid = roomJid;
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
-		console.log('JabberClient.conn =' +JabberClient.conn);
+	//	console.log('JabberClient.conn =' +JabberClient.conn);
 		this.connection.muc.join(roomJid, nickname, this.roomMessageHandler, this.roomPresenceHandler);
 	},
 	
@@ -186,19 +186,21 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		// add handlers
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+		
 	},
 	
 	onRoster: function(roster){
-		this.connection.send($pres());
-		this.trigger('ui:ready');
-		this.view.setStatus(Jabber.viewstates.online);
-		
-		var items = Jabber.Roster.serializeRoster(roster);
-		
-		for (var i=0; i<items.length; i++) {
-			this.roster.add(items[i]);
-		}
-		return true;
+		// this.connection.send($pres());
+		// this.trigger('ui:ready');
+		// this.view.setStatus(Jabber.viewstates.online);
+		// 
+		// var items = Jabber.Roster.serializeRoster(roster);
+		// 
+		// for (var i=0; i<items.length; i++) {
+		// 	this.roster.add(items[i]);
+		// }
+		// return true;
 	},
 	
 	onContactPresence: function(presence){
@@ -233,28 +235,28 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 //	`sendMessage` used for send all messages 
 	sendMessage: function(message){
-		if (!this._welcomeSent){
-			this.sendWelcome();
-		}
-		if (typeof(message) === 'string'){
-			var msg = new Jabber.Message({
-				text: message,
-				from: this.options.jid,
-				to: this.roster.manager.get('jid'),
-				incoming: false,
-				dt: new Date()
-			});
-		} else {
-			var msg = new Jabber.Message(message);
-		}
-		msg.send(this.connection);
-		if (!msg.get('hidden')){
-			this.chatlog.add(msg);
-		} 
+		// if (!this._welcomeSent){
+		// 	this.sendWelcome();
+		// }
+		// if (typeof(message) === 'string'){
+		// 	var msg = new Jabber.Message({
+		// 		text: message,
+		// 		from: this.options.jid,
+		// 		to: this.roster.manager.get('jid'),
+		// 		incoming: false,
+		// 		dt: new Date()
+		// 	});
+		// } else {
+		// 	var msg = new Jabber.Message(message);
+		// }
+		// msg.send(this.connection);
+		// if (!msg.get('hidden')){
+		// 	this.chatlog.add(msg);
+		// } 
 	},
 //	Prepare and render userinfo
 	getUserinfo: function(){
-		return Jabber.welcome_template(this.view.getUserinfo());
+		// return Jabber.welcome_template(this.view.getUserinfo());
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
