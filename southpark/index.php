@@ -402,7 +402,7 @@ if ($facebook_user_profile['id'] != "") {
         models = exports;
         server = true;
     } else {
-        models = this.Jabber = {};
+        models = this.models = {};
     }
     // 
     // models.ChatRoomModel = Backbone.Model.extend({
