@@ -91,7 +91,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection = new Strophe.Connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
+		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.callback('onConnect'));
 		
 		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
@@ -108,11 +108,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.bind('connected', this.onConnect);
 		
-		this.joinRoom(RoomJid)
-		
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+
 
 	},
 	
@@ -123,7 +119,11 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onConnect: function(){
 		console.log('onConnect ')
-	
+		this.joinRoom(RoomJid)
+		
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 	},
 	
 	joinRoom: function(roomJid){
