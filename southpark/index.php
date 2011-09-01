@@ -41,6 +41,11 @@ if ($facebook_user_profile['id'] != "") {
 	
 		<!-- XMPP Bootstrap from XMPP Session Attachment and Facebook !-->
 		
+		<script>
+		Jabber = {};
+		</script>
+		
+		
 		<!-- Mustache.js / Handlebars.js templates  -->
 		
 		<script id="chat_window" type="text/x-handlebars-template">
