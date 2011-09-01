@@ -313,7 +313,7 @@ Jschat.ChatView = Backbone.View.extend({
 //Main class
 //==========
 //
-JabberClient = function(options) {
+Jschat.Xmpp = function(options) {
 	if (!options) options = {}; 
     if (this.defaults) options = _.extend(this.defaults, options);
     this.options = options;
@@ -324,10 +324,10 @@ JabberClient = function(options) {
 //Xmpp class implementation
 //-------------------------
  
-_.extend(JabberClient.prototype, Jschat.JsmvcCallback, Backbone.Events, {
+_.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 //	Default options can be overriden in constructor:
 //	
-//	`chat = new JabberClient({'jid': 'me@jabber.org})`
+//	`chat = new Jschat.Xmpp({'jid': 'me@jabber.org})`
 	defaults: {
 		jid: 'isaacueca@logoslogic.com',
 		password: 'cigano',
@@ -336,12 +336,12 @@ _.extend(JabberClient.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 	},
 	initialize: function(){
 		this.connection = new Strophe.Connection(this.options.bosh_service);
-		// this.roster = new Jschat.Roster();
-		// this.chatlog = new Jschat.ChatLog();
-		// this.view = new Jschat.ChatView({
-		// 	el: $('#'+this.options.view_el_id)
-		// });
-		// this._welcomeSent = false;
+		this.roster = new Jschat.Roster();
+		this.chatlog = new Jschat.ChatLog();
+		this.view = new Jschat.ChatView({
+			el: $('#'+this.options.view_el_id)
+		});
+		this._welcomeSent = false;
 //	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
 //	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
 //		listen events
@@ -349,8 +349,8 @@ _.extend(JabberClient.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		if (this.options.autoConnect){
 			this.connect();
 		}
-		// this.chatlog.bind('add', this.callback('onMessageAdd'));
-		// this.view.bind('send:message', this.callback('sendMessage'));
+		this.chatlog.bind('add', this.callback('onMessageAdd'));
+		this.view.bind('send:message', this.callback('sendMessage'));
 	},
 	connect: function(){
 		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
@@ -384,85 +384,85 @@ _.extend(JabberClient.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		
 	},
 	onRoster: function(roster){
-		// this.connection.send($pres());
-		// this.trigger('ui:ready');
-		// this.view.setStatus(Jschat.viewstates.online);
-		// 
-		// var items = Jschat.Roster.serializeRoster(roster);
-		// 
-		// for (var i=0; i<items.length; i++) {
-		// 	this.roster.add(items[i]);
-		// }
-		// return true;
+		this.connection.send($pres());
+		this.trigger('ui:ready');
+		this.view.setStatus(Jschat.viewstates.online);
+		
+		var items = Jschat.Roster.serializeRoster(roster);
+		
+		for (var i=0; i<items.length; i++) {
+			this.roster.add(items[i]);
+		}
+		return true;
 	},
 	onContactPresence: function(presence){
-		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
-		// 	contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
-		// if (contact) {
-		// 	contact.updatePrecense(presence);
-		// }
-		//         if(this.options.autoChat){
-		//         	_.delay(function(self){
-		//         		self.sendWelcome();
-		//         	}, '2000', this);
-		//         }
-		// return true;
+		var from = Strophe.getBareJidFromJid($(presence).attr('from')),
+			contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
+		if (contact) {
+			contact.updatePrecense(presence);
+		}
+        if(this.options.autoChat){
+        	_.delay(function(self){
+        		self.sendWelcome();
+        	}, '2000', this);
+        }
+		return true;
 	},
 //	Public method, use it directly if you set `{autoChat: false}`
 	sendWelcome: function(){
-    	// if (!this._welcomeSent) {
-    	// 	var userinfo = this.getUserinfo();
-    	// 	this.roster.freezeManager();
-    	// 	this._welcomeSent = true;
-    	// 	this.sendMessage({
-    	// 		text: userinfo,
-    	// 		from: this.options.jid,
-    	// 		to: this.roster.manager.get('jid'),
-    	// 		hidden: true,
-    	// 		dt: new Date()
-    	// 	});
-    	// }
+    	if (!this._welcomeSent) {
+    		var userinfo = this.getUserinfo();
+    		this.roster.freezeManager();
+    		this._welcomeSent = true;
+    		this.sendMessage({
+    			text: userinfo,
+    			from: this.options.jid,
+    			to: this.roster.manager.get('jid'),
+    			hidden: true,
+    			dt: new Date()
+    		});
+    	}
 	},
 //	`sendMessage` used for send all messages 
 	sendMessage: function(message){
-		// if (!this._welcomeSent){
-		// 	this.sendWelcome();
-		// }
-		// if (typeof(message) === 'string'){
-		// 	var msg = new Jschat.Message({
-		// 		text: message,
-		// 		from: this.options.jid,
-		// 		to: this.roster.manager.get('jid'),
-		// 		incoming: false,
-		// 		dt: new Date()
-		// 	});
-		// } else {
-		// 	var msg = new Jschat.Message(message);
-		// }
-		// msg.send(this.connection);
-		// if (!msg.get('hidden')){
-		// 	this.chatlog.add(msg);
-		// } 
+		if (!this._welcomeSent){
+			this.sendWelcome();
+		}
+		if (typeof(message) === 'string'){
+			var msg = new Jschat.Message({
+				text: message,
+				from: this.options.jid,
+				to: this.roster.manager.get('jid'),
+				incoming: false,
+				dt: new Date()
+			});
+		} else {
+			var msg = new Jschat.Message(message);
+		}
+		msg.send(this.connection);
+		if (!msg.get('hidden')){
+			this.chatlog.add(msg);
+		} 
 	},
 //	Prepare and render userinfo
 	getUserinfo: function(){
-		// return Jschat.welcome_template(this.view.getUserinfo());
+		return Jschat.welcome_template(this.view.getUserinfo());
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
 		console.log('on message'+message);
-		// var msg = new Jschat.Message({
-		// 	text: $(message).find('body').text(),
-		// 	from: $(message).attr('from'),
-		// 	to: $(message).attr('to'),
-		// 	incoming: true,
-		// 	dt: new Date()
-		// });
-		// this.chatlog.add(msg);
-		// return true;
+		var msg = new Jschat.Message({
+			text: $(message).find('body').text(),
+			from: $(message).attr('from'),
+			to: $(message).attr('to'),
+			incoming: true,
+			dt: new Date()
+		});
+		this.chatlog.add(msg);
+		return true;
 	},
 //	Only trigger view event
 	onMessageAdd: function(message){
-		// this.view.trigger('add:message', message);
+		this.view.trigger('add:message', message);
 	}
 });
