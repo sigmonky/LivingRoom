@@ -91,7 +91,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection = new Strophe.Connection(BOSH_SERVICE);
 		
 		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.callback('onConnect'));
+		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.onConnect);
 		
 		this.connection.rawInput = function (data) {
 				log('RECV: ' + data);
