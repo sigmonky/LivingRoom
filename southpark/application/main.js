@@ -11,24 +11,24 @@ $(function(){
 
 $(document).ready(function(){
 
-  	app = new App();
- 	app.init();
-	Backbone.history.start();
-
-	$(function(){
-		//To get the random tabs label with variable length for testing the calculations			
-		//example 
-		 $('#chat-area')
-			.tabs()
-			.scrollabletabs({
-				customNavNext:'#n',
-				customNavPrev:'#p',
-				customNavFirst:'#f',
-				customNavLast:'#l'//,
-				//easing : 'easeInBounce'
-			});
-
-	});
+	//   	app = new App();
+	//  	app.init();
+	// Backbone.history.start();
+	// 
+	// $(function(){
+	// 	//To get the random tabs label with variable length for testing the calculations			
+	// 	//example 
+	// 	 $('#chat-area')
+	// 		.tabs()
+	// 		.scrollabletabs({
+	// 			customNavNext:'#n',
+	// 			customNavPrev:'#p',
+	// 			customNavFirst:'#f',
+	// 			customNavLast:'#l'//,
+	// 			//easing : 'easeInBounce'
+	// 		});
+	// 
+	// });
 
 	
 });
