@@ -313,7 +313,7 @@ Jschat.ChatView = Backbone.View.extend({
 //Main class
 //==========
 //
-Jschat.Xmpp = function(options) {
+JabberClient = function(options) {
 	if (!options) options = {}; 
     if (this.defaults) options = _.extend(this.defaults, options);
     this.options = options;
@@ -324,10 +324,10 @@ Jschat.Xmpp = function(options) {
 //Xmpp class implementation
 //-------------------------
  
-_.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
+_.extend(JabberClient.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 //	Default options can be overriden in constructor:
 //	
-//	`chat = new Jschat.Xmpp({'jid': 'me@jabber.org})`
+//	`chat = new JabberClient({'jid': 'me@jabber.org})`
 	defaults: {
 		jid: 'isaacueca@logoslogic.com',
 		password: 'cigano',

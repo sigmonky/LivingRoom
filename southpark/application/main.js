@@ -1,7 +1,7 @@
 var app;
 	
 $(function(){
-	window.chat = new Jschat.Xmpp({
+	window.chat = new JabberClient.Xmpp({
         autoConnect: true,
         view_el_id: 'chat',
         autoChat: true
