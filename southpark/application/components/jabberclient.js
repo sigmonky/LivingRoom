@@ -112,6 +112,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.joinRoom(RoomJid)
 		
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 		
 // 		this.connection = new Strophe.Connection(this.options.bosh_service);
 // 		// this.roster = new Jabber.Roster();
@@ -146,6 +149,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 	//	console.log('JabberClient.conn =' +JabberClient.conn);
 		this.connection.muc.join(roomJid, nickname);
+		
 	},
 	
 	roomPresenceHandler : function(obj){
