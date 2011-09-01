@@ -381,10 +381,11 @@ if ($facebook_user_profile['id'] != "") {
 	
 	
 	<!-- Backbone MVC  !-->
-	<script src="application/libs/underscore.js"></script> 
-	<script src="application/libs/backbone-min.js"></script>
+	<script src="http://www.logoslogic.com/chat/LivingRoom/southpark/jschat/js/libs/underscore.js"></script> 
+	<script src="http://www.logoslogic.com/chat/LivingRoom/southpark/jschat/js/libs/backbone-min.js"></script>
 	
 
+	
 	
 	<!-- Backbone Models !-->
 	
