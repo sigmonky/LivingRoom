@@ -372,10 +372,10 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
 		this.trigger('ui:roster');
 		// add handlers
-		
+		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		    this.connection.send(
 		        $pres({
-		            to: 'southpark3@conference.logoslogic.com' + "/" + 'testando'
+		            to: 'southpark3@conference.logoslogic.com' + "/" + nickname
 		        }).c('x', {xmlns: "http://jabber.org/protocol/muc"}));
 
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
