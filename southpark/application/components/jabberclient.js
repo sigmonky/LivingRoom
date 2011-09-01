@@ -137,14 +137,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection.muc.message(room, 'nickxx', body);
 	},
 	
-	connect: function(){
-		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
-		this.trigger('ui:connect');
-	},
-	
-	onConnectChange: function(status_code, error){
-		this.trigger('connected');
-	},
+
 	// 
 	// onConnect: function(){
 	// 	console.log('onConnect ')
@@ -208,21 +201,21 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		// if (!this._welcomeSent){
 		// 	this.sendWelcome();
 		// }
-		// if (typeof(message) === 'string'){
-		// 	var msg = new Jabber.Message({
-		// 		text: message,
-		// 		from: this.options.jid,
-		// 		to: this.roster.manager.get('jid'),
-		// 		incoming: false,
-		// 		dt: new Date()
-		// 	});
-		// } else {
-		// 	var msg = new Jabber.Message(message);
-		// }
-		// msg.send(this.connection);
-		// if (!msg.get('hidden')){
-		// 	this.chatlog.add(msg);
-		// } 
+		if (typeof(message) === 'string'){
+			var msg = new Jabber.Message({
+				text: message,
+				from: this.options.jid,
+				to: this.roster.manager.get('jid'),
+				incoming: false,
+				dt: new Date()
+			});
+		} else {
+			var msg = new Jabber.Message(message);
+		}
+		msg.send(this.connection);
+		if (!msg.get('hidden')){
+			this.chatlog.add(msg);
+		} 
 	},
 //	Prepare and render userinfo
 	getUserinfo: function(){
