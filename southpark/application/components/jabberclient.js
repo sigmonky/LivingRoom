@@ -228,16 +228,15 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 //	Handler for incoming messages
 	onMessage: function(message){
 		console.log('onMessage ')
-		console.log('romo collec '+this.chatViews[RoomJid].collection);
-	// 	 var msg = new Jabber.Message({
-	// 	 	text: $(message).find('body').text(),
-	// 	 	from: $(message).attr('from'),
-	// 	 	to: $(message).attr('to'),
-	// 	 	incoming: true,
-	// 	 	dt: new Date()
-	// 	 });
-	// 	
-	// 	 this.chatViews[RoomJid].collection.add(msg);
+		 var msg = new Jabber.Message({
+		 	text: $(message).find('body').text(),
+		 	from: $(message).attr('from'),
+		 	to: $(message).attr('to'),
+		 	incoming: true,
+		 	dt: new Date()
+		 });
+		
+		 this.chatViews[RoomJid].collection.add(msg);
 	// //	 this.chatlog.add(msg);
 		
 		 return true;
