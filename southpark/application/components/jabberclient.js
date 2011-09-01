@@ -223,12 +223,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 //		if (!msg.get('hidden')){
 			
 			//this.chatlog.add(msg);
-		} 
 	},
-//	Prepare and render userinfo
-	getUserinfo: function(){
-		// return Jabber.welcome_template(this.view.getUserinfo());
-	},
+
 //	Handler for incoming messages
 	onMessage: function(message){
 		console.log('onMessage ')
