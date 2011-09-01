@@ -211,8 +211,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		if (typeof(message) === 'string'){
 			var msg = new models.ChatEntry({
 				text: message,
-				from: this.options.jid,
-				to: this.roster.manager.get('jid'),
+				from: '',
+				to: to,
 				incoming: false,
 				dt: new Date()
 			});
@@ -221,7 +221,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		}
 		msg.send(this.connection);
 		if (!msg.get('hidden')){
-			this.chatlog.add(msg);
+			//this.chatlog.add(msg);
 		} 
 	},
 //	Prepare and render userinfo
