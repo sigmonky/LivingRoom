@@ -1,13 +1,13 @@
 //
 // Declare namespace
-JabberClient = {};
+Jschat = {};
 
 //
 //Models
 //=======
 // This is tool from [JavascriptMVC](http://javascriptmvc.com/) framework.
 // It used to create binded to `this` callbacks, when _.bind() can not do this.
-JabberClient.JsmvcCallback = {
+Jschat.JsmvcCallback = {
 	callback: function( funcs ) {
 		var makeArray = $.makeArray,
 		isFunction = $.isFunction,
@@ -63,8 +63,8 @@ JabberClient.JsmvcCallback = {
 //Contact model
 //--------------
 //Presence updated with `updatePrecense`. While updating,
-//program selects best status from `JabberClient.Contact.Statuses`
-JabberClient.Contact = Backbone.Model.extend({
+//program selects best status from `Jschat.Contact.Statuses`
+Jschat.Contact = Backbone.Model.extend({
 	updatePrecense: function(presence){
 		var status;
 		if ($(presence).attr('type')) {
@@ -76,12 +76,12 @@ JabberClient.Contact = Backbone.Model.extend({
 				status = 'available';
 			}
 		}
-		if (_.indexOf(JabberClient.Contact.Statuses, status) > _.indexOf(JabberClient.Contact.Statuses, this.status)) {
+		if (_.indexOf(Jschat.Contact.Statuses, status) > _.indexOf(Jschat.Contact.Statuses, this.status)) {
 			this.set({status: status});
 		}
 	}
 });
-JabberClient.Contact.Statuses = ['unavailable', 'xa', 'dnd', 'away', 'available', 'chat'];
+Jschat.Contact.Statuses = ['unavailable', 'xa', 'dnd', 'away', 'available', 'chat'];
 
 //Roster model
 //-------------
@@ -89,7 +89,7 @@ JabberClient.Contact.Statuses = ['unavailable', 'xa', 'dnd', 'away', 'available'
 //It has special method to hold information about 
 //started conversation, current manager and so on.
 
-JabberClient.Roster = Backbone.Collection.extend({
+Jschat.Roster = Backbone.Collection.extend({
 	initialize: function(){
 //		While conversation started, program should keep messaging only with 
 //		selected manager
@@ -115,8 +115,8 @@ JabberClient.Roster = Backbone.Collection.extend({
 				if (old_val === null){
 					return new_val;
 				}
-				var new_status = _.indexOf(JabberClient.Contact.Statuses, new_val.get('status')),
-				old_status = _.indexOf(JabberClient.Contact.Statuses, old_val.get('status'));
+				var new_status = _.indexOf(Jschat.Contact.Statuses, new_val.get('status')),
+				old_status = _.indexOf(Jschat.Contact.Statuses, old_val.get('status'));
 				
 				if (new_status >= old_status){
 					return new_val;
@@ -126,11 +126,11 @@ JabberClient.Roster = Backbone.Collection.extend({
 			}, this.manager);
 		}
 	},
-	model: JabberClient.Contact
+	model: Jschat.Contact
 });
 
 //Static method to create rosters from XMPP stanzas
-JabberClient.Roster.serializeRoster = function(roster){
+Jschat.Roster.serializeRoster = function(roster){
 	res = [];
 	$(roster).find('item').each(function(index, el){
 		if ($(el).attr('subscription') === 'both'){
@@ -151,7 +151,7 @@ JabberClient.Roster.serializeRoster = function(roster){
 //Message can automatically detect direction by calling
 //`message.incoming()`
 
-JabberClient.Message = Backbone.Model.extend({
+Jschat.Message = Backbone.Model.extend({
 	incoming: function(){
 		var to = Strophe.getBareJidFromJid(this.to),
 		myjid = Strophe.getBareJidFromJid(this.myjid);
@@ -170,8 +170,8 @@ JabberClient.Message = Backbone.Model.extend({
 	}
 });
 
-JabberClient.ChatLog = Backbone.Collection.extend({
-	model: JabberClient.Message
+Jschat.ChatLog = Backbone.Collection.extend({
+	model: Jschat.Message
 });
 
 //
@@ -179,12 +179,12 @@ JabberClient.ChatLog = Backbone.Collection.extend({
 //=====
 //
 //Template for chat history
-JabberClient.message_template = Handlebars.compile('<div class="message {{#incoming }}in{{/incoming}}{{^incoming }}out{{/incoming}}">'+
+Jschat.message_template = Handlebars.compile('<div class="message {{#incoming }}in{{/incoming}}{{^incoming }}out{{/incoming}}">'+
 		'<div class="nick">{{#incoming }}{{ from }}{{/incoming}}{{^incoming }}You:{{/incoming}}</div>'+
 		'<div class="text">{{ text }}</div></div>');
 //Template for welcome message
-JabberClient.welcome_template = Handlebars.compile('Name: {{ name }}, Email: {{ email }}');
-	JabberClient.viewstates = {
+Jschat.welcome_template = Handlebars.compile('Name: {{ name }}, Email: {{ email }}');
+	Jschat.viewstates = {
 		offline: 0,
 		connecting: 1,
 		online: 2
@@ -195,9 +195,9 @@ JabberClient.welcome_template = Handlebars.compile('Name: {{ name }}, Email: {{ 
 //
 //Main view in module. It handles everything user action in chat:
 //Opening chat, sending messages, closing chat
-JabberClient.ChatView = Backbone.View.extend({
+Jschat.ChatView = Backbone.View.extend({
 	initialize: function(){
-		this.status = JabberClient.viewstates.offline; // Default status
+		this.status = Jschat.viewstates.offline; // Default status
 		this.send_on_enter = true;
 		this.msgValid = false; // Require both filled Name and text before send message
 		
@@ -254,14 +254,14 @@ JabberClient.ChatView = Backbone.View.extend({
 	},
 	setStatus: function(new_status){
 		switch(new_status){
-		case JabberClient.viewstates.offline:
-			this.status = JabberClient.viewstates.offline;
+		case Jschat.viewstates.offline:
+			this.status = Jschat.viewstates.offline;
 			break;
-		case JabberClient.viewstates.connecting:
-			this.status = JabberClient.viewstates.connecting;
+		case Jschat.viewstates.connecting:
+			this.status = Jschat.viewstates.connecting;
 			break;
-		case JabberClient.viewstates.online:
-			this.status = JabberClient.viewstates.online;
+		case Jschat.viewstates.online:
+			this.status = Jschat.viewstates.online;
 			break;
 		}
 		this.trigger('change:status');
@@ -269,7 +269,7 @@ JabberClient.ChatView = Backbone.View.extend({
 	sendMsg: function(ev){
 		ev.preventDefault();
 		// check if form is valid
-		if (this.status === JabberClient.viewstates.online && this.msgValid) {
+		if (this.status === Jschat.viewstates.online && this.msgValid) {
 			this.trigger('send:message', this.el.find('textarea').val());
 			this.clear();
 		}
@@ -280,19 +280,19 @@ JabberClient.ChatView = Backbone.View.extend({
 	},
 	onStatusChange: function(){
 		switch(this.status){
-		case JabberClient.viewstates.online:
+		case Jschat.viewstates.online:
 			if (this.msgValid) {
 				this.el.find('#id_send').removeAttr('disabled').removeClass('disabled');
 			}
 			break;
-		case JabberClient.viewstates.offline:
+		case Jschat.viewstates.offline:
 			this.el.find('#id_send').attr('disabled', 'disabled').addClass('disabled');
 			break;
 		}			
 	},
 	onMsgValidChange: function(){
 		if (this.msgValid) {
-			if(this.status === JabberClient.viewstates.online) {
+			if(this.status === Jschat.viewstates.online) {
 				this.el.find('#id_send').removeAttr('disabled').removeClass('disabled');
 			}
 		} else {
@@ -304,7 +304,7 @@ JabberClient.ChatView = Backbone.View.extend({
 			this.el.find('#online-messages').show(200);
 		}
 		var chat =  this.el.find('#online-message-list');
-		chat.append(JabberClient.message_template(message.toJSON()));
+		chat.append(Jschat.message_template(message.toJSON()));
 		chat.scrollTop(chat[0].scrollHeight);
 	}
 });
@@ -324,7 +324,7 @@ JabberClient = function(options) {
 //Xmpp class implementation
 //-------------------------
  
-_.extend(JabberClient.prototype, JabberClient.JsmvcCallback, Backbone.Events, {
+_.extend(JabberClient.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 //	Default options can be overriden in constructor:
 //	
 //	`chat = new JabberClient({'jid': 'me@jabber.org})`
@@ -336,9 +336,9 @@ _.extend(JabberClient.prototype, JabberClient.JsmvcCallback, Backbone.Events, {
 	},
 	initialize: function(){
 		this.connection = new Strophe.Connection(this.options.bosh_service);
-		// this.roster = new JabberClient.Roster();
-		// this.chatlog = new JabberClient.ChatLog();
-		// this.view = new JabberClient.ChatView({
+		// this.roster = new Jschat.Roster();
+		// this.chatlog = new Jschat.ChatLog();
+		// this.view = new Jschat.ChatView({
 		// 	el: $('#'+this.options.view_el_id)
 		// });
 		// this._welcomeSent = false;
@@ -386,9 +386,9 @@ _.extend(JabberClient.prototype, JabberClient.JsmvcCallback, Backbone.Events, {
 	onRoster: function(roster){
 		// this.connection.send($pres());
 		// this.trigger('ui:ready');
-		// this.view.setStatus(JabberClient.viewstates.online);
+		// this.view.setStatus(Jschat.viewstates.online);
 		// 
-		// var items = JabberClient.Roster.serializeRoster(roster);
+		// var items = Jschat.Roster.serializeRoster(roster);
 		// 
 		// for (var i=0; i<items.length; i++) {
 		// 	this.roster.add(items[i]);
@@ -429,7 +429,7 @@ _.extend(JabberClient.prototype, JabberClient.JsmvcCallback, Backbone.Events, {
 		// 	this.sendWelcome();
 		// }
 		// if (typeof(message) === 'string'){
-		// 	var msg = new JabberClient.Message({
+		// 	var msg = new Jschat.Message({
 		// 		text: message,
 		// 		from: this.options.jid,
 		// 		to: this.roster.manager.get('jid'),
@@ -437,7 +437,7 @@ _.extend(JabberClient.prototype, JabberClient.JsmvcCallback, Backbone.Events, {
 		// 		dt: new Date()
 		// 	});
 		// } else {
-		// 	var msg = new JabberClient.Message(message);
+		// 	var msg = new Jschat.Message(message);
 		// }
 		// msg.send(this.connection);
 		// if (!msg.get('hidden')){
@@ -446,12 +446,12 @@ _.extend(JabberClient.prototype, JabberClient.JsmvcCallback, Backbone.Events, {
 	},
 //	Prepare and render userinfo
 	getUserinfo: function(){
-		// return JabberClient.welcome_template(this.view.getUserinfo());
+		// return Jschat.welcome_template(this.view.getUserinfo());
 	},
 //	Handler for incoming messages
 	onMessage: function(message){
 		console.log('on message'+message);
-		// var msg = new JabberClient.Message({
+		// var msg = new Jschat.Message({
 		// 	text: $(message).find('body').text(),
 		// 	from: $(message).attr('from'),
 		// 	to: $(message).attr('to'),
