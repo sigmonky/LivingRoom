@@ -370,8 +370,8 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/components/ICanHaz.js" type="text/javascript"></script>
 	
 	<!-- Strophe core and plugins  !-->
-	<script src="application/libs/strophe/md5.js" type="text/javascript"></script>
-	<script src="application/libs/strophe/base64.js" type="text/javascript"></script>
+	<!-- <script src="application/libs/strophe/md5.js" type="text/javascript"></script>
+	<script src="application/libs/strophe/base64.js" type="text/javascript"></script> -->
 	
 	<script src="application/libs/strophe/strophe.js" type="text/javascript"></script>
 	<!-- // <script src="application/libs/strophe/strophe.roster.js" type="text/javascript"></script>
