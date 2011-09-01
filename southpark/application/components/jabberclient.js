@@ -349,8 +349,8 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		if (this.options.autoConnect){
 			this.connect();
 		}
-		this.chatlog.bind('add', this.callback('onMessageAdd'));
-		this.view.bind('send:message', this.callback('sendMessage'));
+		// this.chatlog.bind('add', this.callback('onMessageAdd'));
+		// this.view.bind('send:message', this.callback('sendMessage'));
 	},
 	connect: function(){
 		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
