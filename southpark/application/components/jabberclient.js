@@ -149,9 +149,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onConnect ')
 		
 		// request roster
-		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
-		this.trigger('ui:roster');
+		// var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
+		// this.connection.sendIQ(roster_iq, this.callback('onRoster'));
+		// this.trigger('ui:roster');
 		// add handlers
 		this.joinRoom(RoomJid);
 		
@@ -232,7 +232,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 //	Handler for incoming messages
 	onMessage: function(message){
 		console.log('onMessage ')
-		
 		// var msg = new Jabber.Message({
 		// 	text: $(message).find('body').text(),
 		// 	from: $(message).attr('from'),
