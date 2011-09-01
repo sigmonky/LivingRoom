@@ -337,7 +337,7 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 	initialize: function(){
 		this.connection = new Strophe.Connection(this.options.bosh_service);
 		// this.roster = new Jschat.Roster();
-		// this.chatlog = new Jschat.ChatLog();
+		this.chatlog = new Jschat.ChatLog();
 		// this.view = new Jschat.ChatView({
 		// 	el: $('#'+this.options.view_el_id)
 		// });
@@ -451,14 +451,14 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 //	Handler for incoming messages
 	onMessage: function(message){
 		console.log('on message'+message);
-		var msg = new Jschat.Message({
-			text: $(message).find('body').text(),
-			from: $(message).attr('from'),
-			to: $(message).attr('to'),
-			incoming: true,
-			dt: new Date()
-		});
-		this.chatlog.add(msg);
+		// var msg = new Jschat.Message({
+		// 	text: $(message).find('body').text(),
+		// 	from: $(message).attr('from'),
+		// 	to: $(message).attr('to'),
+		// 	incoming: true,
+		// 	dt: new Date()
+		// });
+		// this.chatlog.add(msg);
 		return true;
 	},
 //	Only trigger view event
