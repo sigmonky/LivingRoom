@@ -108,11 +108,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.bind('connected', this.onConnect);
 		
-		this.joinRoom(RoomJid)
-		
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 
 	},
 	
@@ -123,6 +118,11 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onConnect: function(){
 		console.log('onConnect ')
+		this.joinRoom(RoomJid)
+		
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
 	
 	},
 	
