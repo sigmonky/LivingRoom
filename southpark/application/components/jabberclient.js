@@ -90,7 +90,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	initialize: function(){
 		this.connection = new Strophe.Connection(this.options.bosh_service);
 
-		this._welcomeSent = false;
+	//	this._welcomeSent = false;
 //	    this.connection.rawInput = function (data) { console.log('RECV: ' + data); };
 //	    this.connection.rawOutput = function (data) { console.log('SEND: ' + data); };
 //		listen events
@@ -98,6 +98,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connect();
 	},
 	connect: function(){
+		console.log('connect ');
+		
 		this.connection.connect(this.options.jid, this.options.password, this.callback('onConnectChange'));
 		this.trigger('ui:connect');
 	},
@@ -112,6 +114,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		}
 	},
 	onConnect: function(){
+		console.log('on onConnect');
+		
 		// request roster
 		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
 		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
