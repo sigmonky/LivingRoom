@@ -11,9 +11,9 @@ var TweetEntry = Backbone.Model.extend({
 
 /*https://async.fi/2011/07/backbone-js-automagic-syncing-of-collections-and-models/ */
 
-models.TweetCollection = Backbone.Collection.extend({
-    model: models.TweetEntry
-});
+// models.TweetCollection = Backbone.Collection.extend({
+//     model: models.TweetEntry
+// });
 
 /*var TweetCollection = Backbone.Collection.extend({
   model: TweetModel,

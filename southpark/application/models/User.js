@@ -11,9 +11,9 @@ var RoomRoster = Backbone.Model.extend({
   }
 });
 
-models.RoomRosterCollection = Backbone.Collection.extend({
-    model: models.RoomRoster
-});
+// models.RoomRosterCollection = Backbone.Collection.extend({
+//     model: models.RoomRoster
+// });
 
 var FriendRoster = Backbone.Model.extend({
 	//   defaults: {

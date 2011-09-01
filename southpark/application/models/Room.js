@@ -13,6 +13,6 @@ var Room = Backbone.Model.extend({
 });
 
 
-models.RoomCollection = Backbone.Collection.extend({
-    model: models.Room
-});
+// models.RoomCollection = Backbone.Collection.extend({
+//     model: models.Room
+// });
