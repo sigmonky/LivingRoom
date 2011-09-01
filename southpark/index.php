@@ -395,15 +395,15 @@ if ($facebook_user_profile['id'] != "") {
 	
 	<script>
 	
-    // var server = false, models;
-    // if (typeof exports !== 'undefined') {
-    //     _ = require('underscore')._;
-    //     Backbone = require('backbone');
-    //     models = exports;
-    //     server = true;
-    // } else {
-    //     models = this.models = {};
-    // }
+    var server = false, models;
+    if (typeof exports !== 'undefined') {
+        _ = require('underscore')._;
+        Backbone = require('backbone');
+        models = exports;
+        server = true;
+    } else {
+        models = this.Jabber = {};
+    }
     // 
     // models.ChatRoomModel = Backbone.Model.extend({
     //     initialize: function() {
