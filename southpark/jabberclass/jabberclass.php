@@ -1,8 +1,5 @@
 <?php
-/**
- * FirePHP for debugging
- */
-include 'firephp/fb.php';
+
 
 // set your Jabber server hostname, username, and password here
 define('JABBER_SERVER','logoslogic.com');
