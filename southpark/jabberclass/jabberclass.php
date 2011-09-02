@@ -4,6 +4,10 @@
  */
 include '../firephp/fb.php';
 
+// Including original "Jabber Client Library" - class
+require_once(dirname(__FILE__).'/jabber.php');
+
+
 // set your Jabber server hostname, username, and password here
 define('JABBER_SERVER','logoslogic.com');
 define('JABBER_USERNAME','isaacueca');
@@ -83,8 +87,7 @@ class AddVcard
 
 /******************************************************************************************************/
 
-// Including original "Jabber Client Library" - class
-require_once(dirname(__FILE__).'/jabber.php');
+
 
 /******************************************************************************************************/
 
@@ -94,8 +97,9 @@ class CommandJabber extends Jabber
 {
 	var $AddUserDialogID=0;
 	var $NewUserName, $NewUserPass, $debug;
-//	$this->firePhp = FirePHP::getInstance(true);
-//	$this->firePhp->setEnabled(true);
+	
+	$this->firePhp = FirePHP::getInstance(true);
+	$this->firePhp->setEnabled(true);
 	
 	
 	function debug($msg, $label = null) {
