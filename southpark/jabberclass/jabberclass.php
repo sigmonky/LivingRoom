@@ -93,7 +93,7 @@ require_once(dirname(__FILE__).'/jabber.php');
 class CommandJabber extends Jabber
 {
 	var $AddUserDialogID=0;
-	var $NewUserName, $NewUserPass;
+	var $NewUserName, $NewUserPass, $debug;
 //	$this->firePhp = FirePHP::getInstance(true);
 //	$this->firePhp->setEnabled(true);
 	
