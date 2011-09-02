@@ -53,6 +53,8 @@ class AddVcard
 
 	function AddVcard(&$jab,$name,$pass,$nickname, $fullname,$role)
 	{
+		$this->debug($nickname, 'AddVcard');
+		
 		$this->jab = &$jab;
 		$this->jab->NewUserName = $name;
 		$this->jab->NewUserPass = $pass;
