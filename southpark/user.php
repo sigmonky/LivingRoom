@@ -139,32 +139,32 @@ class User {
 		// // If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
 		// 
 		// 
-		$AddVcardErrorCode = 14000;
-		
-		$jab = new CommandJabber($display_debug_info);
-		
-		$this->debug('', 'new AddVcard');
-		
-		//function AddVcard(&$jab,$name,$pass,$nickname, $fullname,$role)
-		$avcard = new AddVcard($jab,$this->facebook_id,$this->password,$this->facebook_id,$this->facebook_name);
-	
-		$jab->set_handler("connected",$avcard,"handleConnected");
-		$jab->set_handler("authenticated",$avcard,"handleAuthenticated");
-		
-		if ($jab->connect(JABBER_SERVER))
-		{
-			$this->debug('', 'new AddVcard connect');
-			
-			$this->debug($avcard, 'AddVcard -');
-			
-			$AddVcardErrorCode=14001;
-			$jab->execute(CBK_FREQ,RUN_TIME);
-			
-			$this->generateSessionAttachment();
-			
-		}
-		
-		$jab->disconnect();
+		// $AddVcardErrorCode = 14000;
+		// 
+		// $jab = new CommandJabber($display_debug_info);
+		// 
+		// $this->debug('', 'new AddVcard');
+		// 
+		// //function AddVcard(&$jab,$name,$pass,$nickname, $fullname,$role)
+		// $avcard = new AddVcard($jab,$this->facebook_id,$this->password,$this->facebook_id,$this->facebook_name);
+		// 	
+		// $jab->set_handler("connected",$avcard,"handleConnected");
+		// $jab->set_handler("authenticated",$avcard,"handleAuthenticated");
+		// 
+		// if ($jab->connect(JABBER_SERVER))
+		// {
+		// 	$this->debug('', 'new AddVcard connect');
+		// 	
+		// 	$this->debug($avcard, 'AddVcard -');
+		// 	
+		// 	$AddVcardErrorCode=14001;
+		// 	$jab->execute(CBK_FREQ,RUN_TIME);
+		// 	
+		// 	$this->generateSessionAttachment();
+		// 	
+		// }
+		// 
+		// $jab->disconnect();
 		
 		unset($jab,$avcard);
 	}
