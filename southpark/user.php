@@ -128,7 +128,7 @@ class User {
 			$jab->execute(CBK_FREQ,RUN_TIME);
 			
 		}
-		$jab->addvcard_request($this->facebook_id, $this->password);
+	//	$jab->addvcard_request($this->facebook_id, $this->password);
 		$jab->disconnect();
 
 		

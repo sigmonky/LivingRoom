@@ -155,10 +155,14 @@ class CommandJabber extends Jabber
 	{
 		global $AddUserErrorCode;
 		$AddUserErrorCode=12007;
+		$this->debug($AddUserErrorCode, '_on_adduser_getresult AddUserErrorCode');
+		
 		if ($this->_node($packet,array('iq','@','type'))=='result')
 		{
 			if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
 			$AddUserErrorCode=0;
+			$this->debug($AddUserErrorCode, '_on_adduser_getresult 2 AddUserErrorCode');
+			
 		}
 
 		$this->terminated = true;
