@@ -23,6 +23,7 @@ var ChatView = Backbone.View.extend({
 			var chatEntry = {};
 			chatEntry.jid = message.get('jid');
 			chatEntry.text = message.get('text');
+			chatEntry.fbid = message.get('facebook_id');
             var chatMsg = new ChatMessageView({ model: chatEntry });
             messageList.append(chatMsg.render().el);
         });
@@ -48,14 +49,15 @@ var ChatView = Backbone.View.extend({
 			
 			// var message = new Jabber.Message({jid:'111', text:'cueca'});
 			// this.collection.add(message);
-			var msg = new models.ChatEntry({
-				text: message,
-			//	from: $(message).attr('from'),
-				to: remoteJid,
-				incoming: true,
-				dt: new Date()
-			});
-			this.collection.add(msg);
+			
+			// var msg = new models.ChatEntry({
+			// 	text: message,
+			// //	from: $(message).attr('from'),
+			// 	to: remoteJid,
+			// 	incoming: true,
+			// 	dt: new Date()
+			// });
+			// this.collection.add(msg);
 			
 		}else{
 			location.href= MyFacebookUser.loginUrl
