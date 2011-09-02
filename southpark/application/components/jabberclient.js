@@ -247,7 +247,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		 });
 		
 		console.log('onmessage from = '+from);
-		
+
 		console.log('onmessage to = '+to);
 		 this.chatViews[RoomJid].collection.add(msg);
 		
