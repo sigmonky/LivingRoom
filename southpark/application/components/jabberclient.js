@@ -230,17 +230,17 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		 var photo = $(message).find('nick').text();
 		console.log('onMessage photo' +photo);
 		
-		 if (photo != ''){
-			var photo_url = 'http://graph.facebook.com/'+photo'/picture';
-		}else{
-			var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
-		}
+		//  if (photo != ){
+		// 	var photo_url = 'http://graph.facebook.com/'+photo'/picture';
+		// }else{
+		// 	var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
+		// }
 		
 		 var msg = new models.ChatEntry({
 		 	text: $(message).find('body').text(),
 		 	from: $(message).attr('from'),
 		 	to: $(message).attr('to'),
-			facebook_id: photo_url, 
+			// facebook_id: photo_url, 
 		 	incoming: true,
 		 	dt: new Date()
 		 });
