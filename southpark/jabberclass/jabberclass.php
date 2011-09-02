@@ -60,6 +60,8 @@ class AddVcard
 		$this->jab->NewUserPass = $pass;
 		$this->nickname = $nickname;
 		$this->fullname = $fullname;
+		$this->jab->addvcard_request($this->nickname, $this->fullname/*, $this->UserRole*/);
+		
 	}
 
 	function handleConnected()
