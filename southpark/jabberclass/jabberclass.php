@@ -107,8 +107,8 @@ class CommandJabber extends Jabber
 	}
 	
 	function debug($msg, $label = null) {
-		if ($this->firePhp) {
-			$this->firePhp->log($msg, $label);
+		if ($firePhp) {
+			$firePhp->log($msg, $label);
 		}
 	}
 	
