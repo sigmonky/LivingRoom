@@ -2,11 +2,7 @@
 /**
  * FirePHP for debugging
  */
-include '../firephp/fb.php';
-
-// Including original "Jabber Client Library" - class
-require_once(dirname(__FILE__).'/jabber.php');
-
+// include '../firephp/fb.php';
 
 // set your Jabber server hostname, username, and password here
 define('JABBER_SERVER','logoslogic.com');
@@ -87,7 +83,8 @@ class AddVcard
 
 /******************************************************************************************************/
 
-
+// Including original "Jabber Client Library" - class
+require_once(dirname(__FILE__).'/jabber.php');
 
 /******************************************************************************************************/
 
@@ -95,20 +92,15 @@ class AddVcard
 
 class CommandJabber extends Jabber
 {
-	var $firePhp = null;
 	var $AddUserDialogID=0;
-	var $NewUserName, $NewUserPass, $debug;
+	var $NewUserName, $NewUserPass;
+//	$this->firePhp = FirePHP::getInstance(true);
+//	$this->firePhp->setEnabled(true);
 	
-
-	
-	function __construct() {
-    	$firePhp = FirePHP::getInstance(true);
-		$firePhp->setEnabled(true);
-	}
 	
 	function debug($msg, $label = null) {
-		if ($firePhp) {
-			$firePhp->log($msg, $label);
+		if ($this->firePhp) {
+			$this->firePhp->log($msg, $label);
 		}
 	}
 	
@@ -166,7 +158,7 @@ class CommandJabber extends Jabber
 
 	function _on_adduser_getresult(&$packet)
 	{
-		$this->debug('', '_on_adduser_getresult');
+		$this->debug('', '_on_adduser_initanswer');
 		
 		global $AddUserErrorCode;
 		$AddUserErrorCode=12007;
