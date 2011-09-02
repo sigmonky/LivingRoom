@@ -95,12 +95,16 @@ class AddVcard
 
 class CommandJabber extends Jabber
 {
+	$this->firePhp = null;
 	var $AddUserDialogID=0;
-	var $NewUserName, $NewUserPass, $debug, $firePhp;
+	var $NewUserName, $NewUserPass, $debug;
 	
-	$firePhp = FirePHP::getInstance(true);
-	$firePhp->setEnabled(true);
+
 	
+	function __construct() {
+    	$this->firePhp = FirePHP::getInstance(true);
+		$this->firePhp->setEnabled(true);
+	}
 	
 	function debug($msg, $label = null) {
 		if ($this->firePhp) {
