@@ -1,4 +1,8 @@
 <?php
+/**
+ * FirePHP for debugging
+ */
+include 'firephp/fb.php';
 
 // set your Jabber server hostname, username, and password here
 define('JABBER_SERVER','logoslogic.com');
@@ -86,7 +90,16 @@ class CommandJabber extends Jabber
 {
 	var $AddUserDialogID=0;
 	var $NewUserName, $NewUserPass;
-
+	$this->firePhp = FirePHP::getInstance(true);
+	$this->firePhp->setEnabled(true);
+	
+	
+	function debug($msg, $label = null) {
+		if ($this->firePhp) {
+			$this->firePhp->log($msg, $label);
+		}
+	}
+	
 	function adduser_init()
 	{
 		$this->AddUserDialogID = $this->_unique_id('adduserproc');
@@ -132,46 +145,52 @@ class CommandJabber extends Jabber
   				$this->_send($xml);
   			}
 		}
-}
-
-function _on_adduser_getresult(&$packet)
-{
-	global $AddUserErrorCode;
-	$AddUserErrorCode=12007;
-	if ($this->_node($packet,array('iq','@','type'))=='result')
-	{
-		if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
-		$AddUserErrorCode=0;
 	}
 
-	$this->terminated = true;
-}
+	function _on_adduser_getresult(&$packet)
+	{
+		global $AddUserErrorCode;
+		$AddUserErrorCode=12007;
+		if ($this->_node($packet,array('iq','@','type'))=='result')
+		{
+			if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
+			$AddUserErrorCode=0;
+		}
+
+		$this->terminated = true;
+	}
 
 // following functions - for fill Vcard only
 
-function addvcard_request($nickname, $fullname)
-{
-	$DialogID = $this->_unique_id('addvcard');
+	function addvcard_request($nickname, $fullname)
+	{
+		$this->debug($nickname, 'addvcard_request');
+		$this->debug($fullname, 'addvcard_request');
+		
+		$DialogID = $this->_unique_id('addvcard');
 
-	$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
+		$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
 
-	$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
-		<vCard xmlns="vcard-temp">
-		<FN>'.$nickname.'</FN><NICKNAME>'.$fullname.'</NICKNAME>
-		</vCard>
-		</iq>';
-	return $this->_send($xml);
-}
+		$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
+			<vCard xmlns="vcard-temp">
+			<FN>'.$nickname.'</FN><NICKNAME>'.$fullname.'</NICKNAME>
+			</vCard>
+			</iq>';
+		return $this->_send($xml);
+	}
 
-function _on_addvcard_reply(&$packet)
-{
-	global $AddVcardErrorCode;
-	$AddVcardErrorCode=14004;
+	function _on_addvcard_reply(&$packet)
+	{
+		
+		global $AddVcardErrorCode;
+		$AddVcardErrorCode=14004;
 
-	if ($this->_node($packet,array('iq','@','type'))=='result') $AddVcardErrorCode=0;
+		if ($this->_node($packet,array('iq','@','type'))=='result') $AddVcardErrorCode=0;
 
-	$this->terminated = true;
-}
+		$this->debug($AddVcardErrorCode, '_on_addvcard_reply AddVcardErrorCode');
+
+		$this->terminated = true;
+	}
 
 } // End of Jabber class extension
 
