@@ -138,8 +138,12 @@ class User {
 		
 		// // If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
 		// 
+		// 
 		$AddVcardErrorCode = 14000;
+		
 		$jab = new CommandJabber($display_debug_info);
+		
+		$this->debug('', 'new AddVcard');
 		
 		//function AddVcard(&$jab,$name,$pass,$nickname, $fullname,$role)
 		$avcard = new AddVcard($jab,$this->facebook_id,$this->password,$this->facebook_id,$this->facebook_name);
@@ -149,6 +153,8 @@ class User {
 		
 		if ($jab->connect(JABBER_SERVER))
 		{
+			$this->debug('', 'new AddVcard connect');
+			
 			$this->debug($avcard, 'AddVcard -');
 			
 			$AddVcardErrorCode=14001;
