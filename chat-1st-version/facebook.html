@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<title>permadi.com | Facebook Graph API Application Example</title>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function()
+  {
+    FB.Event.subscribe('auth.statusChange', onFacebookStatusChange);
+    FB.init({
+      appId  : '185799971471968',
+      status : true, // check login status
+      cookie : true, // enable cookies to allow the server to access the session
+      xfbml  : true  // parse XFBML
+    });
+
+   FB.getLoginStatus(onFacebookInitialLoginStatus);
+
+  };
+
+  (function() {
+    var e = document.createElement('script');
+    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+  }());
+
+  function facebookLogin()
+  {
+    FB.login(onFacebookLoginStatus, {perms:'read_stream,publish_stream'});
+  }
+
+  /*
+   * Callback function for FB.getLoginStatus
+   */
+  function onFacebookInitialLoginStatus(response)
+  {
+    alert("onFacebookLoginStatus(), "
+      + "\nresponse.status="+response.status
+      +" \nresponse.session="+response.session
+      +" \nresponse.perms="+response.perms);
+    if (response.status=="connected" && response.session)
+    {
+      alert("You are all set.");
+      var loginButtonDiv=document.getElementById("fb-login-button-div");
+      loginButtonDiv.style.display="none";
+	  var contentDiv=document.getElementById("user-is-authenticated");
+	  contentDiv.innerHTML="User has been authenticated.  The application is ready to use.";
+    }
+    else
+    {
+      facebookLogin();
+    }
+  }
+
+  /*
+   * Callback function for 'auth.statusChange' event.
+   */
+  function onFacebookStatusChange(response)
+  {
+    alert("onFacebookStatusChange(), "
+      + "\nresponse.status="+response.status
+      +" \nresponse.session="+response.session
+      +" \nresponse.perms="+response.perms);
+  }
+
+  /*
+   * Callback function for FB.login
+   */
+  function onFacebookLoginStatus(response)
+  {
+    alert("onFacebookLoginStatus(), "
+      + "\nresponse.status="+response.status
+      +" \nresponse.session="+response.session
+      +" \nresponse.perms="+response.perms);
+     if (response.status=="connected" && response.session)
+    {
+      alert("You are all set.");
+      var loginButtonDiv=document.getElementById("fb-login-button-div");
+      loginButtonDiv.style.display="none";
+	  var contentDiv=document.getElementById("user-is-authenticated");
+	  contentDiv.innerHTML="User has been authenticated.  The application is ready to use.";
+    }
+    else
+    {
+      alert("Please login to enjoy this application.");
+    }
+
+  }
+</script>
+<div id="fb-login-button-div">
+Please login to enjoy all the features of this application:
+<fb:login-button show-faces="false" perms="read_stream,publish_stream"></fb:login-button>
+</div>
+<div id="user-is-authenticated">
+</div>
+<p>
+
+This is a bare-bone demonstration of how to do authentication in an IFrame application, using Facebook Graph API.
+<br>The JavaScript popup windows are not error popups.  They are to help you see the flow of the authentication process.</br>
+<br>The write-up for this example can be read here:
+<br><a target="_blank" href="http://www.permadi.com/blog/2010/11/facebook-open-graph-api-authenticating-in-iframe-applications">http://www.permadi.com/blog/2010/11/facebook-open-graph-api-authenticating-in-iframe-applications</a>
+</div>
+</html>

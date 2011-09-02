@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>MTVN Chat</title>
+	<link rel="stylesheet" href="css/sencha-touch.css" type="text/css">
+	<link rel="stylesheet" href="css/chat2.css" type="text/css">
+</head>
+<body>
+	<div id="pre-loading-mask"></div>
+
+	<div id="fb-root"></div>
+	<script type="text/javascript">
+	    window.fbAsyncInit = function() {
+		 //   FB.Event.subscribe('auth.statusChange', onFacebookStatusChange);
+		    FB.init({
+		      appId  : '185799971471968',
+		      status : true, // check login status
+		      cookie : true, // enable cookies to allow the server to access the session
+		      xfbml  : true  // parse XFBML
+		    });	
+	    };
+	    (function() {
+	        var e = document.createElement('script');
+	        e.type = 'text/javascript';
+	        e.src = document.location.protocol +
+	            '//connect.facebook.net/en_US/all.js';
+	        e.async = true;
+	        document.getElementById('fb-root').appendChild(e);
+	    }());
+		
+	
+	</script>
+	
+	<script type="text/javascript" src="sencha-touch.js"></script>
+	
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/lib/App.Util.js"></script>
+	<script type="text/javascript" src="js/lib/App.util.Strophe.js"></script>
+	
+	<script type="text/javascript" src="js/strophe.js"></script>
+	<script type="text/javascript" src="js/strophe.vcard.js"></script>
+	
+	<script type="text/javascript" src="js/lib/facebook.js"></script>
+
+	<script type="text/javascript" src="js/models/Model.ChatMessage.js"></script>
+	<script type="text/javascript" src="js/models/Model.Config.js"></script>
+	<script type="text/javascript" src="js/models/Model.Facebook.js"></script>
+	
+	<script type="text/javascript" src="js/stores/Store.Chat.js"></script>
+	<script type="text/javascript" src="js/stores/Store.Config.js"></script>
+	<script type="text/javascript" src="js/stores/Store.Facebook.js"></script>
+	<script type="text/javascript" src="js/stores/Store.Roster.js"></script>
+	
+	<script type="text/javascript" src="js/controllers/Controller.Chat.js"></script>
+	<script type="text/javascript" src="js/controllers/Controller.Config.js"></script>
+	<script type="text/javascript" src="js/controllers/Controller.Viewport.js"></script>
+	<script type="text/javascript" src="js/controllers/Controller.Connection.js"></script>
+	
+	<script type="text/javascript" src="js/views/View.Config.js"></script>
+	<script type="text/javascript" src="js/views/View.Viewport.js"></script>
+	<script type="text/javascript" src="js/views/View.GroupChat.js"></script>
+	
+
+</body>
+</html>
