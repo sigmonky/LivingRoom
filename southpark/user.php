@@ -144,8 +144,6 @@ class User {
 
 				$AddVcardErrorCode=14001;
 				$jab->execute(CBK_FREQ,RUN_TIME);
-				$this->generateSessionAttachment();
-				
 			}
 
 			$jab->disconnect();
@@ -161,6 +159,7 @@ class User {
 			
 			
 			
+	//		$this->generateSessionAttachment();
 			
 		}
 
