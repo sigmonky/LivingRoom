@@ -2,7 +2,7 @@
 /**
  * FirePHP for debugging
  */
-// include '../firephp/fb.php';
+include 'firephp/fb.php';
 
 // set your Jabber server hostname, username, and password here
 define('JABBER_SERVER','logoslogic.com');
@@ -53,15 +53,11 @@ class AddVcard
 
 	function AddVcard(&$jab,$name,$pass,$nickname, $fullname,$role)
 	{
-		$this->debug($nickname, 'AddVcard');
-		
 		$this->jab = &$jab;
 		$this->jab->NewUserName = $name;
 		$this->jab->NewUserPass = $pass;
 		$this->nickname = $nickname;
 		$this->fullname = $fullname;
-		$this->jab->addvcard_request($this->nickname, $this->fullname/*, $this->UserRole*/);
-		
 	}
 
 	function handleConnected()
@@ -94,21 +90,9 @@ class CommandJabber extends Jabber
 {
 	var $AddUserDialogID=0;
 	var $NewUserName, $NewUserPass;
-//	$this->firePhp = FirePHP::getInstance(true);
-//	$this->firePhp->setEnabled(true);
-	
-	
-	function debug($msg, $label = null) {
-		if ($this->firePhp) {
-			$this->firePhp->log($msg, $label);
-		}
-	}
-	
+
 	function adduser_init()
 	{
-		
-		$this->debug('', 'adduser_init');
-		
 		$this->AddUserDialogID = $this->_unique_id('adduserproc');
 
 		$this->_set_iq_handler('_on_adduser_initanswer',$this->AddUserDialogID);
@@ -121,8 +105,6 @@ class CommandJabber extends Jabber
 
 	function _on_adduser_initanswer(&$packet)
 	{
-		$this->debug('', '_on_adduser_initanswer');
-		
 		global $AddUserErrorCode;
 		$AddUserErrorCode=12004;
 		if ($this->_node($packet,array('iq','@','type'))=='result') // if isn't an error response
@@ -158,18 +140,12 @@ class CommandJabber extends Jabber
 
 	function _on_adduser_getresult(&$packet)
 	{
-		$this->debug('', '_on_adduser_initanswer');
-		
 		global $AddUserErrorCode;
 		$AddUserErrorCode=12007;
-		$this->debug($AddUserErrorCode, '_on_adduser_getresult AddUserErrorCode');
-		
 		if ($this->_node($packet,array('iq','@','type'))=='result')
 		{
 			if ($this->_node($packet,array('iq','#','command','0','@','status'))=='completed');
 			$AddUserErrorCode=0;
-			$this->debug($AddUserErrorCode, '_on_adduser_getresult 2 AddUserErrorCode');
-			
 		}
 
 		$this->terminated = true;
@@ -179,9 +155,6 @@ class CommandJabber extends Jabber
 
 	function addvcard_request($nickname, $fullname)
 	{
-		$this->debug($nickname, 'addvcard_request');
-		$this->debug($fullname, 'addvcard_request');
-		
 		$DialogID = $this->_unique_id('addvcard');
 
 		$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
@@ -196,13 +169,10 @@ class CommandJabber extends Jabber
 
 	function _on_addvcard_reply(&$packet)
 	{
-		
 		global $AddVcardErrorCode;
 		$AddVcardErrorCode=14004;
 
 		if ($this->_node($packet,array('iq','@','type'))=='result') $AddVcardErrorCode=0;
-
-		$this->debug($AddVcardErrorCode, '_on_addvcard_reply AddVcardErrorCode');
 
 		$this->terminated = true;
 	}

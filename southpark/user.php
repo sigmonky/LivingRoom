@@ -109,8 +109,6 @@ class User {
 	
 	public function generateJabberUser(){
 		
-		$this->debug('', 'generateJabberUser');
-		
 		$display_debug_info = false;
 		$AddUserErrorCode = 12000;
 		 
@@ -126,48 +124,35 @@ class User {
 		{
 			$AddUserErrorCode=12001;
 			$jab->execute(CBK_FREQ,RUN_TIME);
+			$this->generateSessionAttachment();
 			
 		}
-	//	$jab->addvcard_request($this->facebook_id, $this->password);
+
 		$jab->disconnect();
 
+		unset($jab,$addmsg);
 		
 		/* Set a property of VCard in order to verify user is authenticated. SET NICKNAME as equal to FULL NAME
 		Only authenticated users should have the right to setup VCARD property*/
 		
 		// // If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
 		// 
-		// 
 		// $AddVcardErrorCode = 14000;
-		// 
 		// $jab = new CommandJabber($display_debug_info);
+		// $avcard = new AddVcard($jab,$UserLogin,$UserPass,$nickname,$fullname);
 		// 
-		// $this->debug('', 'new AddVcard');
-		// 
-		// //function AddVcard(&$jab,$name,$pass,$nickname, $fullname,$role)
-		// $avcard = new AddVcard($jab,$this->facebook_id,$this->password,$this->facebook_id,$this->facebook_name);
-		// 	
 		// $jab->set_handler("connected",$avcard,"handleConnected");
 		// $jab->set_handler("authenticated",$avcard,"handleAuthenticated");
 		// 
 		// if ($jab->connect(JABBER_SERVER))
 		// {
-		// 	$this->debug('', 'new AddVcard connect');
-		// 	
-		// 	$this->debug($avcard, 'AddVcard -');
-		// 	
-		// 	$AddVcardErrorCode=14001;
-		// 	$jab->execute(CBK_FREQ,RUN_TIME);
-		// 	
-		// 	
-		// 	
+		// $AddVcardErrorCode=14001;
+		// $jab->execute(CBK_FREQ,RUN_TIME);
 		// }
 		// 
 		// $jab->disconnect();
-		unset($jab,$avcard);
-		
-		$this->generateSessionAttachment();
-		
+		// 
+		// unset($jab,$avcard);
 	}
 	
 	public function generateSessionAttachment($isAnonymous = false){
