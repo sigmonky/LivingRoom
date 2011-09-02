@@ -128,10 +128,9 @@ class User {
 			$jab->execute(CBK_FREQ,RUN_TIME);
 			
 		}
-		// $jab->addvcard_request($this->facebook_id, $this->password);
+		$jab->addvcard_request($this->facebook_id, $this->password);
 		$jab->disconnect();
 
-		unset($jab,$addmsg);
 		
 		/* Set a property of VCard in order to verify user is authenticated. SET NICKNAME as equal to FULL NAME
 		Only authenticated users should have the right to setup VCARD property*/
@@ -160,13 +159,15 @@ class User {
 		// 	$AddVcardErrorCode=14001;
 		// 	$jab->execute(CBK_FREQ,RUN_TIME);
 		// 	
-		// 	$this->generateSessionAttachment();
+		// 	
 		// 	
 		// }
 		// 
 		// $jab->disconnect();
-		
 		unset($jab,$avcard);
+		
+		$this->generateSessionAttachment();
+		
 	}
 	
 	public function generateSessionAttachment($isAnonymous = false){
