@@ -109,6 +109,8 @@ class User {
 	
 	public function generateJabberUser(){
 		
+		$this->debug('', 'generateJabberUser');
+		
 		$display_debug_info = false;
 		$AddUserErrorCode = 12000;
 		 
