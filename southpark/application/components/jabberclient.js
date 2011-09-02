@@ -228,6 +228,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		/* Nickname is Equal to FB Photo ID */
 		 var photo = $(message).find('nick').text();
+		console.log('onMessage photo' +photo);
+		
 		 if (photo != ''){
 			var photo_url = 'http://graph.facebook.com/'+photo'/picture';
 		}else{

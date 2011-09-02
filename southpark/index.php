@@ -432,7 +432,6 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/views/ChatMessageView.js" type="text/javascript"></script>
 	<script src="application/views/ChatView.js" type="text/javascript"></script>
 	<script src="application/views/FriendRosterView.js" type="text/javascript"></script>
-	<script src="application/views/RoomView.js" type="text/javascript"></script>
 	<script src="application/views/PaneView.js" type="text/javascript"></script>
 	<script src="application/views/HeaderView.js" type="text/javascript"></script>
 	<script src="application/views/FriendChatView.js" type="text/javascript"></script>
