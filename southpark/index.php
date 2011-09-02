@@ -104,7 +104,7 @@ if ($facebook_user_profile['id'] != "") {
 			<input type="submit" class="message_send_button" value="Tweet">
 			<div id="tweet_count"></div>
 		</script>
-		
+
 
 		
 		<script id="user" type="text/x-handlebars-template">
@@ -156,15 +156,6 @@ if ($facebook_user_profile['id'] != "") {
 			</div>
 		</script>
 
-		
-		<script id="chat_message" type="text/x-handlebars-template">
-			<div class="chat_message{{#from}} {{from}}{{/from}}">
-				<span class="chat_name">{{ jid }}</span>
-				<img src="{{ fbid }}" />
-				<span class="chat_text">{{{ text }}}</span>
-			</div>
-		</script>
-		
 		<script id="muc_dialog" type="text/html">
 			<div>
 				<label>Room:</label><input type="text" id="muc_room"/>
@@ -182,6 +173,24 @@ if ($facebook_user_profile['id'] != "") {
 			</div>
 			<div class="clearfix"></div>
 		</script>
+		
+		
+		
+		
+		<script id="chat_message" type="text/x-handlebars-template">
+			<div class="chat_message{{#from}} {{from}}{{/from}}">
+				<div class="thumb">
+					<img src="{{ fbid }}" width="48" height="48" />
+				</div>
+				<div class="details">
+		
+					<span class="chat_name">{{ jid }}</span>
+					<span class="chat_text">{{{ text }}}</span>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</script>
+		
 		
 	</head>
 	
