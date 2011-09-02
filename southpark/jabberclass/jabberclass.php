@@ -106,6 +106,9 @@ class CommandJabber extends Jabber
 	
 	function adduser_init()
 	{
+		
+		$this->debug('', 'adduser_init');
+		
 		$this->AddUserDialogID = $this->_unique_id('adduserproc');
 
 		$this->_set_iq_handler('_on_adduser_initanswer',$this->AddUserDialogID);
@@ -118,6 +121,8 @@ class CommandJabber extends Jabber
 
 	function _on_adduser_initanswer(&$packet)
 	{
+		$this->debug('', '_on_adduser_initanswer');
+		
 		global $AddUserErrorCode;
 		$AddUserErrorCode=12004;
 		if ($this->_node($packet,array('iq','@','type'))=='result') // if isn't an error response
@@ -153,6 +158,8 @@ class CommandJabber extends Jabber
 
 	function _on_adduser_getresult(&$packet)
 	{
+		$this->debug('', '_on_adduser_getresult');
+		
 		global $AddUserErrorCode;
 		$AddUserErrorCode=12007;
 		$this->debug($AddUserErrorCode, '_on_adduser_getresult AddUserErrorCode');
