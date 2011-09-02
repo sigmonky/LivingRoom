@@ -269,6 +269,53 @@ width:530px;
 
 }
 
+
+.chat-row { 
+	margin: 0;
+	margin-top: 12px;
+	border-bottom: 1px solid rgba(136,136,136, 0.3);	
+}
+
+.chat-row .thumb {
+	float: left;
+	margin-left: 15px;
+}
+.chat-row .details {
+	margin: 0 15px 12px 75px;
+}
+
+.chat-row .avatar {
+	outline: 1px inset rgba(207,207,207,0.5);
+	outline-offset: 1px; 
+}
+.chat-row .details .date {
+	color: #888;
+	font-size: 12px;
+	text-align: right;
+	line-height: 22px;
+	padding: 0 15px 3px 0;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.chat-row .details .tweet-user {
+	color:#ffcc00;
+	font-size:1.1em;
+}
+
+.chat-row .details .date span {
+	float: left;
+}
+
+.chat-row .details p {
+	margin: 0;
+	padding: 0px 0px;
+	width: 607px;
+}
+
+
+
+
 .row { 
 	margin: 0;
 	margin-top: 12px;
@@ -293,7 +340,7 @@ width:530px;
 	line-height: 22px;
 	padding: 0 15px 3px 0;
 	white-space: nowrap;
-		overflow: hidden;
+	overflow: hidden;
 }
 
 .row .details .tweet-user {
@@ -309,7 +356,6 @@ width:530px;
 	margin: 0;
 	padding: 0px 0px;
 	width: 607px;
-	
 }
 
 .roster_user {

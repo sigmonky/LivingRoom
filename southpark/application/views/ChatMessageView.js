@@ -1,6 +1,6 @@
 var ChatMessageView = Backbone.View.extend({
 	template: $('#chat_message'),
-	className: 'row',
+	className: 'chat-row',
 	
     initialize: function (options) {
         _.bindAll(this, 'render');
