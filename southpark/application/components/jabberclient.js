@@ -241,12 +241,14 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		 	from: $(message).attr('from'),
 		 	to: $(message).attr('to'),
 			facebook_id: photo_url, 
+			facebook_id: photo_url, 
 		 	incoming: true,
 		 	dt: new Date()
 		 });
 		
-
+		console.log('onmessage from = '+from);
 		
+		console.log('onmessage to = '+to);
 		 this.chatViews[RoomJid].collection.add(msg);
 		
 		 return true;
