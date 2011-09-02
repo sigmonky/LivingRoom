@@ -98,8 +98,8 @@ class CommandJabber extends Jabber
 	var $AddUserDialogID=0;
 	var $NewUserName, $NewUserPass, $debug;
 	
-	$this->firePhp = FirePHP::getInstance(true);
-	$this->firePhp->setEnabled(true);
+	$firePhp = FirePHP::getInstance(true);
+	$firePhp->setEnabled(true);
 	
 	
 	function debug($msg, $label = null) {
