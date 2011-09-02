@@ -47,14 +47,13 @@ class AddMessenger
 class AddVcard
 {
 
-	function AddVcard(&$jab,$name,$pass,$firstn,$lastn,$patro,$sex,$role)
+	function AddVcard(&$jab,$name,$pass,$nickname, $fullname,$role)
 	{
 		$this->jab = &$jab;
 		$this->jab->NewUserName = $name;
 		$this->jab->NewUserPass = $pass;
-		$this->GivenName = $firstn;
-		$this->FamilyName = $lastn;
-		$this->MiddleName = $patro;
+		$this->nickname = $nickname;
+		$this->fullname = $fullname;
 	}
 
 	function handleConnected()
@@ -68,7 +67,7 @@ class AddVcard
 	{
 		global $AddVcardErrorCode;
 		$AddVcardErrorCode=14003;
-		$this->jab->addvcard_request($this->GivenName, $this->FamilyName, $this->MiddleName, $this->UserRole);
+		$this->jab->addvcard_request($this->nickname, $this->fullname/*, $this->UserRole*/);
 	}
 
 } // End of AddVcard class
@@ -149,7 +148,7 @@ function _on_adduser_getresult(&$packet)
 
 // following functions - for fill Vcard only
 
-function addvcard_request($GivenName, $FamilyName, $MiddleName)
+function addvcard_request($nickname, $fullname)
 {
 	$DialogID = $this->_unique_id('addvcard');
 
@@ -157,7 +156,7 @@ function addvcard_request($GivenName, $FamilyName, $MiddleName)
 
 	$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
 		<vCard xmlns="vcard-temp">
-		<N><FAMILY>'.$FamilyName.'</FAMILY><GIVEN>'.$GivenName.'</GIVEN><MIDDLE>'.$MiddleName.'</MIDDLE></N>
+		<FN>'.$nickname.'</FN><NICKNAME>'.$fullname.'</NICKNAME>
 		</vCard>
 		</iq>';
 	return $this->_send($xml);
