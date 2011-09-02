@@ -168,19 +168,19 @@ class CommandJabber extends Jabber
 
 	function addvcard_request($nickname, $fullname)
 	{
-		// $this->debug($nickname, 'addvcard_request');
-		// $this->debug($fullname, 'addvcard_request');
-		// 
-		// $DialogID = $this->_unique_id('addvcard');
-		// 
-		// $this->_set_iq_handler('_on_addvcard_reply',$DialogID);
-		// 
-		// $xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
-		// 	<vCard xmlns="vcard-temp">
-		// 	<FN>'.$nickname.'</FN><NICKNAME>'.$fullname.'</NICKNAME>
-		// 	</vCard>
-		// 	</iq>';
-		// return $this->_send($xml);
+		$this->debug($nickname, 'addvcard_request');
+		$this->debug($fullname, 'addvcard_request');
+		
+		$DialogID = $this->_unique_id('addvcard');
+
+		$this->_set_iq_handler('_on_addvcard_reply',$DialogID);
+
+		$xml = '<iq from="'.($this->jid).'" id="'.$DialogID.'" type="set">
+			<vCard xmlns="vcard-temp">
+			<FN>'.$nickname.'</FN><NICKNAME>'.$fullname.'</NICKNAME>
+			</vCard>
+			</iq>';
+		return $this->_send($xml);
 	}
 
 	function _on_addvcard_reply(&$packet)
