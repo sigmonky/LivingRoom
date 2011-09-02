@@ -231,7 +231,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onMessage photo' +photo);
 		
 		 if (photo !== ""){
-			var photo_url = 'http://graph.facebook.com/'+photo'/picture';
+			var photo_url = 'http://graph.facebook.com/'+photo+'/picture';
 		}else{
 			var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
 		}
