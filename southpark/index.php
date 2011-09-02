@@ -175,20 +175,15 @@ if ($facebook_user_profile['id'] != "") {
 		</script>
 		
 		
-		
-		
 		<script id="chat_message" type="text/x-handlebars-template">
-			<div class="chat_message{{#from}} {{from}}{{/from}}">
 				<div class="thumb">
-					<img src="{{ fbid }}" width="48" height="48" />
+					<img src="{{ fbid }}" width="48" height="48"  class="avatar" />
 				</div>
 				<div class="details">
-		
 					<span class="chat_name">{{ jid }}</span>
 					<span class="chat_text">{{{ text }}}</span>
 				</div>
 				<div class="clearfix"></div>
-			</div>
 		</script>
 		
 		
