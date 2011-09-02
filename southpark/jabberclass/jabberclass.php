@@ -90,8 +90,8 @@ class CommandJabber extends Jabber
 {
 	var $AddUserDialogID=0;
 	var $NewUserName, $NewUserPass;
-	$this->firePhp = FirePHP::getInstance(true);
-	$this->firePhp->setEnabled(true);
+//	$this->firePhp = FirePHP::getInstance(true);
+//	$this->firePhp->setEnabled(true);
 	
 	
 	function debug($msg, $label = null) {
@@ -164,8 +164,8 @@ class CommandJabber extends Jabber
 
 	function addvcard_request($nickname, $fullname)
 	{
-		$this->debug($nickname, 'addvcard_request');
-		$this->debug($fullname, 'addvcard_request');
+		//$this->debug($nickname, 'addvcard_request');
+		//$this->debug($fullname, 'addvcard_request');
 		
 		$DialogID = $this->_unique_id('addvcard');
 
@@ -187,7 +187,7 @@ class CommandJabber extends Jabber
 
 		if ($this->_node($packet,array('iq','@','type'))=='result') $AddVcardErrorCode=0;
 
-		$this->debug($AddVcardErrorCode, '_on_addvcard_reply AddVcardErrorCode');
+	//	$this->debug($AddVcardErrorCode, '_on_addvcard_reply AddVcardErrorCode');
 
 		$this->terminated = true;
 	}
