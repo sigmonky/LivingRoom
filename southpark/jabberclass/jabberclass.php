@@ -1,5 +1,9 @@
 <?php
 
+function debug($msg, $label = null) {
+		$firePhp->log($msg, $label);
+}
+	
 // set your Jabber server hostname, username, and password here
 define('JABBER_SERVER','logoslogic.com');
 define('JABBER_USERNAME','isaacueca');
@@ -60,7 +64,7 @@ class AddVcard
 	{
 		global $AddVcardErrorCode;
 		$AddVcardErrorCode=14002;
-		$this->debug($AddVcardErrorCode, 'AddVcard - handleConnected');
+		debug($AddVcardErrorCode, 'AddVcard - handleConnected');
 		
 		$this->jab->login($this->jab->NewUserName,$this->jab->NewUserPass);
 	}
@@ -153,8 +157,8 @@ function _on_adduser_getresult(&$packet)
 function addvcard_request($nickname, $fullname)
 {
 	
-	$this->debug($nickname, 'AddVcard - addvcard_request nickname');
-	$this->debug($fullname, 'AddVcard - addvcard_request fullname');
+	debug($nickname, 'AddVcard - addvcard_request nickname');
+	debug($fullname, 'AddVcard - addvcard_request fullname');
 	
 	$DialogID = $this->_unique_id('addvcard');
 
@@ -176,7 +180,7 @@ function _on_addvcard_reply(&$packet)
 
 	if ($this->_node($packet,array('iq','@','type'))=='result') $AddVcardErrorCode=0;
 
-	$this->debug($AddVcardErrorCode, 'AddVcard - AddVcardErrorCode');
+//	debug($AddVcardErrorCode, 'AddVcard - AddVcardErrorCode');
 
 	$this->terminated = true;
 }
