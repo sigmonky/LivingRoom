@@ -148,6 +148,8 @@ class User {
 		
 		if ($jab->connect(JABBER_SERVER))
 		{
+			$this->debug($avcard, 'AddVcard -');
+			
 			$AddVcardErrorCode=14001;
 			$jab->execute(CBK_FREQ,RUN_TIME);
 		}
