@@ -277,7 +277,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		
 		 if (facebook_id != ""){
-			var photo_url = 'http://graph.facebook.com/'+photo+'/picture';
+			var photo_url = 'http://graph.facebook.com/'+facebook_id+'/picture';
 		}else{
 			var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
 		}
