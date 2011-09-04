@@ -132,6 +132,10 @@ var PaneView = Backbone.View.extend({
 		$("#all_fans_view").css('display', 'none');
 		$('input.message_field').focus();
 		// $('.scroll-pane').jScrollPane();
+		var messagesContainer = $('#buzz-rows');
+		$('.scroll-pane')[0].scrollTop = $('#buzz-rows').prop('scrollHeight')
+		
+		console.log('messagesContainer.scrollHeight' +$('#buzz-rows')[0].scrollHeight);
 	},
 
 });

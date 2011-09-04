@@ -1,6 +1,6 @@
 var BuzzMainView = Backbone.View.extend({
 	events: {
-        'click .getFeed': 'getFeed'
+        'click .getFeed': 'getFeedLoop'
      },
 	template: $('#tweetMainView'),
 	
@@ -8,12 +8,19 @@ var BuzzMainView = Backbone.View.extend({
 	  _.bindAll(this, 'render');
 	  $("#rows").html('');
 	  this.tweetsCollection = new TweetCollection( null, { view: this });
+	  // this.tweetsCollection2 = new TweetCollection2( {model:this.tweetsCollection, view: this });
 	  this.tweetsCollection.bind("refresh", this.render);
 		this.getFeed();
-    
 	},
-	render: function() {
+	
+	getFeedLoop: function(){
+		console.log('getFeedLoop');
 		
+		this.tweetsCollection.fetch();
+	},
+	
+	render: function() {
+		console.log('buzz render');
 		// var $rows = $("#buzz-rows");
 		// this.tweetsCollection.fetch()
 		// var num = this.tweetsCollection.length;	    
@@ -26,6 +33,8 @@ var BuzzMainView = Backbone.View.extend({
 		// });
 		// 
 		var $rows = $("#buzz-rows");
+		$rows.html("");
+		console.log('collection lenght' +this.tweetsCollection.length);
 		
 		this.tweetsCollection.each(function (tweetEntry) {
 			// console.log('tweetEntry '+tweetEntry.screen_name);
@@ -81,44 +90,17 @@ var BuzzMainView = Backbone.View.extend({
 		
 		var messagesContainer = $('#buzz-rows');
 		console.log('messagesContainer.scrollHeight' +$('#buzz-rows')[0].scrollHeight);
-		
-//	$('#buzz-rows').scrollTop = $('#buzz-rows').prop('scrollHeight');
 		$('.scroll-pane')[0].scrollTop = $('#buzz-rows').prop('scrollHeight')
 		
-		//messagesContainer.hide();
 		return this;
 	}, 
 	
 	addTweet: function(tweetModel){
-	//	console.log('addTweet '+tweetModel.user);
-	//     var existing_model_uris = this.tweetsCollection.map(function(model) {
-	//             return model.get('id');
-	//     });
-	// 
-	var existing_model_uris = this.tweetsCollection.get('models').map(function(model) {
-		console.log('map ')
-        return model.get('id');
-    });
-       
-		var tweet_id = tweetModel.id;
-		console.log('tweet_id  ')
-		
-		if(existing_model_uris.indexOf(tweet_id) == -1) {
-			this.tweetsCollection.add(tweetModel);
-        }
-		else{
-			console.log('already exists ')
-		}
-
 		this.tweetsCollection.add(tweetModel);
-
-		
 	},
 	
 	getFeed: function(){
 		console.log('getFeed');
-		 var url = 'http://tweetriver.com/camilarc/south-park-test.json?';
-	//	var url = 'service/south-park-test.json';
 		var that = this;
 		this.tweetsCollection.fetch();
 		// $.ajax({
