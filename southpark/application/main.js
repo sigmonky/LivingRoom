@@ -108,6 +108,38 @@ function dateStringPastTense(date_input)
         return "over 1000 years ago";
 }
 
+
+function emoticons(text){
+    // The base URL of all our smilies
+    var url = "http://www.domain.it/images/smilies/";
+
+    // A regex alternation that looks for all of them (be careful to use escapes
+    // where necessary)
+    var searchFor = /:D|:-D|:\)|:-\)|;\)|';-\)|:\(|:-\(|:o|:\?|8-\)|:x|:P/gi;
+
+    // A map mapping each smiley to its image
+    var map = {
+        ":)"  : 'smile.png', // Capped version of the next
+        ":P"  : 'tongue.png',   // Capped version of the next
+    };
+
+    // Do the replacements
+    text = text.replace(searchFor, function(match) {
+        var rep;
+
+        // Look up this match to see if we have an image for it
+        rep = map[match];
+
+        // If we do, return an `img` tag using that smiley icon; if not, there's
+        // a mis-match between our `searchFor` regex and our map of
+        // smilies, but handle it gracefully by returning the match unchanged.
+        return rep ? '<img src="images/emoticons/' + url + rep + '" class="emoticons" />' : match;
+    });
+
+    return (text);
+}
+
+
 // 
 // function log() {
 //   if (typeof console == 'undefined') {  

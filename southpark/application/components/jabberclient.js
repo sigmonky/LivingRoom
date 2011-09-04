@@ -281,8 +281,11 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onMessage photo facebook_id' +facebook_id);
 		
 		
+		var messageSrc = $(message).find('body').text();
+		var formattedMsg = emoticons(messageSrc);
+		
 		 var msg = new models.ChatEntry({
-		 	text: $(message).find('body').text(),
+		 	text: formattedMsg,
 		 	from: user_nick,
 		 	to: $(message).attr('to'),
 			facebook_id: facebook_id, 
