@@ -105,7 +105,9 @@ if ($facebook_user_profile['id'] != "") {
 			<div id="tweet_count"></div>
 		</script>
 
-
+		<script id="tweetMainView" type="text/x-handlebars-template">
+		<div class="getFeed" style="background:red; position:absolute; top:15px; right:15px">Refresh Feed </div>
+		</script>
 		
 		<script id="user" type="text/x-handlebars-template">
 			<li class="roster_user view-menu" id="roster_{{ uid }}" data-jid="{{ uid }}">
@@ -165,11 +167,14 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<script type="text/x-handlebars-template" id="tweet-template">
 			<div class="thumb">
-			   <a href="http://twitter.com/#!/{{user.screen_name}}" class="tweet-user"><img src="{{user.profile_image_url}}" class="avatar" width="48" height="48" alt=""/></a>
+			   <a href="http://twitter.com/#!/{{screen_name}}" class="tweet-user"><img src="{{profile_image_url}}" class="avatar" width="48" height="48" alt=""/></a>
 			</div>
 			<div class="details">
-			   <p>{{text}}</p>
-			   <div class="date"><span><a href="http://twitter.com/#!/{{user.screen_name}}" class="tweet-user">{{user.screen_name}}</a></span></div>
+			   <p>{{user_text}}</p>
+			   <div class="date">
+					<span>{{created_at}}</span><br/>
+					<span><a href="http://twitter.com/#!/{{screen_name}}" class="tweet-user">{{screen_name}}</a></span>
+				</div>
 			</div>
 			<div class="clearfix"></div>
 		</script>
@@ -257,8 +262,8 @@ if ($facebook_user_profile['id'] != "") {
 		<div class="pane-section" id="buzz_view">
 			<div class="main_panel">
 				<div class="scroll-pane">
-					<div id="rows-content"  style="height:2500px">
-						<div id="rows"></div>
+					<div id="rows-content"  style="">
+						<div id="buzz_main_panel"><div id="buzz-rows"></div></div>
 					</div>
 				</div>
 			</div>
@@ -364,6 +369,8 @@ if ($facebook_user_profile['id'] != "") {
 	<script type="text/javascript" src="application/libs/jquery/jquery-ui.js"></script>
 	
 	<script type="text/javascript" src="application/libs/jquery/jquery.scrollabletab.js"></script>
+	
+	<script type="text/javascript" src="application/libs/jquery/jquery.timeago.js"></script>
 
 	<!-- the mousewheel plugin -->
 	<script type="text/javascript" src="application/libs/jquery/jquery.mousewheel.js"></script>
@@ -437,6 +444,7 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/views/ChatMessageView.js" type="text/javascript"></script>
 	<script src="application/views/ChatView.js" type="text/javascript"></script>
 	<script src="application/views/FriendRosterView.js" type="text/javascript"></script>
+	
 	<script src="application/views/PaneView.js" type="text/javascript"></script>
 	<script src="application/views/HeaderView.js" type="text/javascript"></script>
 	<script src="application/views/FriendChatView.js" type="text/javascript"></script>

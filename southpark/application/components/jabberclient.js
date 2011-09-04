@@ -126,11 +126,19 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	joinRoom: function(){
 		console.log('join Room');
+		
+		//* IF MY FACEBOOK ID */
 		var facebook_user_id = MyFacebookUser.id;
 		var facebook_name = MyFacebookUser.name;
+		
+		//* OTHERWISE JOIN AS GUEST */
+		if (facebook_user_id == ''){
+			var nickname = 'guest_'+Math.floor(Math.random()*9999);
+		}else{
+			facebook_name = facebook_name.replace(/ /g,"_")
+			var nickname = facebook_name+'-'+facebook_user_id;
+		}
 		console.log('join Room facebook_name'+facebook_name);
-		facebook_name = facebook_name.replace(/ /g,"_")
-		var nickname = facebook_name+'-'+facebook_user_id;
 		this.connection.muc.join(RoomJid, nickname);
 	},
 	

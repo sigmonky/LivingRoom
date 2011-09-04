@@ -21,8 +21,8 @@ var BuzzTweetInputView = Backbone.View.extend({
 	
 	},
 	render: function() {
-		// var template = Handlebars.compile(this.template.html());
-		// $(this.el).html(template(this.model));
-		// return this;
+		var template = Handlebars.compile(this.template.html());
+		$(this.el).html(template(this.model));
+		return this;
 	}
 });

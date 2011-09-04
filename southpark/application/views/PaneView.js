@@ -68,9 +68,13 @@ var PaneView = Backbone.View.extend({
 		
 		
 		/* Buzz View Begin */
-	// 	var twitter_message_panel = $("#twitter_message_panel");
-	// 	var mainBuzzView = new BuzzTweetInputView(this.model);
-	// //	$(mainBuzzView.render().el).prependTo(twitter_message_panel);
+		var twitter_message_panel = $("#twitter_message_panel");
+		var mainBuzzTweetView = new BuzzTweetInputView();
+		//$(mainBuzzTweetView.render().el).prependTo(twitter_message_panel);
+		
+		var buzz_main_panel = $("#buzz_main_panel");
+		var mainBuzzView = new BuzzMainView(this.model);
+		$(mainBuzzView.render().el).prependTo(buzz_main_panel);
 	// 	
 	// 	var url = 'http://tweetriver.com/camilarc/south-park-test.json?';
 	// 	
@@ -117,9 +121,9 @@ var PaneView = Backbone.View.extend({
 		$("#friends_view").css({'display': 'block', 'height': '100%'});
 		$("#buzz_view").css('display', 'none');
 		$("#all_fans_view").css('display', 'none');
-		if (isLoggedIn == true){
-			 $('.friends-scroll-pane').jScrollPane();
-		}	
+		// if (isLoggedIn == true){
+		// 	 $('.friends-scroll-pane').jScrollPane();
+		// }	
 	},
 
 	renderBuzz: function() {
@@ -127,7 +131,7 @@ var PaneView = Backbone.View.extend({
 		$("#friends_view").css('display', 'none');
 		$("#all_fans_view").css('display', 'none');
 		$('input.message_field').focus();
-		$('.scroll-pane').jScrollPane();
+		// $('.scroll-pane').jScrollPane();
 	},
 
 });

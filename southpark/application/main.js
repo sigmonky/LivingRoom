@@ -60,18 +60,53 @@ function onResult(iq) {
 	log('Response from jabber.org took ' + elapsed + 'ms.');
 }
 
+/*
+ * produces textual output ex '5 hours ago' from string formatted:
+ * alert( dateStringPastTense('2007-08-20 10:34:01 pm') );
+ * alert( dateStringPastTense('2009-02-20 14:34:23'   ) );
+ * alert( dateStringPastTense('08/20/2008 11:29:43 pm') );
+ * alert( dateStringPastTense('08/20/2008 23:29:55'   ) );
+ */
+function dateStringPastTense(date_input)
+{
+        var dtpieces = date_input.split(" ");
+        var dpieces_his = dtpieces[1].split(":");
+        var dpieces_ymd = dtpieces[0].split("-");
+        if (dpieces_ymd == dtpieces[0])
+        {
+                var dpieces_mdy = dtpieces[0].split("/");
+                dpieces_ymd[0] = dpieces_mdy[2];
+                dpieces_ymd[1] = dpieces_mdy[0];
+                dpieces_ymd[2] = dpieces_mdy[1];
+        }
+        if (dtpieces[2] && dtpieces[2].toLowerCase()=='pm')
+        {
+                dpieces_his[0]=dpieces_his[0]*1 + 12;
+        }
+        dpieces_ymd[1]-=1;
+        
+        var d = new Date();
+        d.setFullYear( dpieces_ymd[0], dpieces_ymd[1], dpieces_ymd[2] );
+        d.setHours   ( dpieces_his[0], dpieces_his[1], dpieces_his[2] );
+        
+        var sec = (new Date()).getTime() - d.getTime();
+        sec/=1000;
 
-
-	function stripslashes(str) 
-	{
-	    str = str.replace(/\\'/g,'\'');
-	    str = str.replace(/\\"/g,'"');
-	    str = str.replace(/\\\\/g,'\\');
-	    str = str.replace(/\\0/g,'\0');
-	    return str;
-	}
-
-
+        if (sec <0) 
+        {
+            return "in future";
+        }
+        var string_def = {'second':60,'minute':60,'hour':24,'day':30,'month':12,'year':1000};
+        for(def in string_def)
+        {
+                if (sec < string_def[def])
+                { 
+                        return sec + " " + def + (sec>1? "s" : "")+ " ago";
+                }
+                sec= Math.floor( sec/string_def[def] );
+        }
+        return "over 1000 years ago";
+}
 
 // 
 // function log() {
