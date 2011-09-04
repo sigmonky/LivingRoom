@@ -264,14 +264,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var user_nick  = full_nickname.split('-')[0];
 		var facebook_id  = full_nickname.split('-')[1];
 		
-		posn = user_nick.indexOf("_"); 
-		while (posn > -1)                                  //while there is a %20 
-		     { user_nick = user_nick.substring(0,posn) + " " + user_nick.substring(posn+1); 
-		       posn = posn.indexOf("_");              //find next %20 
-		}
-		
-		
-		
+		user_nick=user_nick.replace(/-/g," ");
 		
 		
 		console.log('onMessage photo from' +from);
