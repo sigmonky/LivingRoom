@@ -170,7 +170,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.connection.muc.message(room, 'nickxx', body);
 	},
 	
-
 	// 
 	// onConnect: function(){
 	// 	console.log('onConnect ')
@@ -201,7 +200,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onContactPresence: function(presence){
 		console.log('onContactPresence ')
-		
 		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
 		// 	contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
 		// if (contact) {
@@ -265,10 +263,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var full_nickname = from.substring(pos,from.length);
 		var user_nick  = full_nickname.split('_')[0];
 		
-		var  posn = user_nick.indexOf("\20");
+		var  posn = user_nick.indexOf("20");
 		while (posn > -1){ 
 		   user_nick = user_nick.substring(0,posn) + " " + user_nick.substring(posn+3); 
-	       posn = user_nick.indexOf("\20");
+	       posn = user_nick.indexOf("20");
 	     }; 
 	 
 		var facebook_id  = full_nickname.split('_')[1];
