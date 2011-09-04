@@ -129,8 +129,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var facebook_user_id = MyFacebookUser.id;
 		var facebook_name = MyFacebookUser.name;
 		console.log('join Room facebook_name'+facebook_name);
-		
-		var nickname = facebook_name+'_'+facebook_user_id;
+		facebook_name = facebook_name.replace(/ /g,"_")
+		var nickname = facebook_name+'-'+facebook_user_id;
 		this.connection.muc.join(RoomJid, nickname);
 	},
 	
@@ -261,15 +261,11 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var pos = from.indexOf('/') + 1;
 		//console.log('pos '+pos);
 		var full_nickname = from.substring(pos,from.length);
-		var user_nick  = full_nickname.split('_')[0];
+		var user_nick  = full_nickname.split('-')[0];
+		user_nick = user_nick.replace("_"," ")
 		
-		var  posn = user_nick.indexOf("20");
-		while (posn > -1){ 
-		   user_nick = user_nick.substring(0,posn) + " " + user_nick.substring(posn+2); 
-	       posn = user_nick.indexOf("20");
-	     }; 
-	 
-		var facebook_id  = full_nickname.split('_')[1];
+		var facebook_id  = full_nickname.split('-')[1];
+		
 		
 		
 		console.log('onMessage photo from' +from);
