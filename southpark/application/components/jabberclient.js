@@ -143,7 +143,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var text = document.createTextNode(facebook_user_id);
 		vCardEl.appendChild(text);
 
-		this.connection.muc.set(this.callback('onSetVcard'), vCardEl, Attacher.JID);
+		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl, Attacher.JID);
 	   // set: function(handler_cb, vCardEl, jid) {
 
 
