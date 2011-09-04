@@ -23,12 +23,12 @@ var ChatView = Backbone.View.extend({
 			var photo_url = 'http://graph.facebook.com/'+ message.get('facebook_id')+'/picture';
 	
 			var chatEntry = {};
-			chatEntry.nickname = message.get('from');
+			chatEntry.nickname = message.get('nickname');
 			chatEntry.text = message.get('text');
 			chatEntry.photo_url = photo_url;
 			
-			console.log('chatView render' +message.get('photo_url'));
-			console.log('chatView render' +message.get('from'));
+			console.log('chatView render photo_url' +message.get('photo_url'));
+			console.log('chatView render nick' +message.get('nickname'));
 			
             var chatMsg = new ChatMessageView({ model: chatEntry });
             messageList.append(chatMsg.render().el);
