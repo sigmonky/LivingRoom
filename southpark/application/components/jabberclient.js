@@ -239,7 +239,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 				text: message,
 				from: '',
 				to: to,
-				facebook_id: '', 
+				photo_url: '', 
 				incoming: false,
 				dt: new Date()
 			});
@@ -279,6 +279,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		//  if (facebook_id){
 		// 	var photo_url = 'http://graph.facebook.com/'+facebook_id+'/picture';
 		// }
+		if (facebook_id == ''){
+			facebook_id = '0';
+		}
 		
 		console.log('onMessage photo photo_url' +facebook_id);
 		
