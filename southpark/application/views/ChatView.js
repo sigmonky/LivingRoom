@@ -28,11 +28,11 @@ var ChatView = Backbone.View.extend({
 			}
 			
 			console.log('chatView render photo_url' +photo_url);
-			console.log('chatView render nick' +message.get('nickname'));
+			console.log('chatView render nick' +message.get('from'));
 			
 			var chatEntry = {};
 			chatEntry.text = message.get('text');
-			chatEntry.nickname = message.get('nickname');
+			chatEntry.nickname = message.get('from');
 			chatEntry.photo_url = message.get('photo_url');;
 			
 
