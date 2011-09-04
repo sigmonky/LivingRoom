@@ -181,7 +181,7 @@ if ($facebook_user_profile['id'] != "") {
 				</div>
 				<div class="details">
 					<span class="chat_text">{{{ text }}}</span>
-					<span class="facebook-user">{{ from }}</span>
+					<span class="facebook-user">{{ nickname }}</span>
 				</div>
 				<div class="clearfix"></div>
 		</script>
