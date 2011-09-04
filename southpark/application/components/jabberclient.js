@@ -265,7 +265,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		var  posn = user_nick.indexOf("20");
 		while (posn > -1){ 
-		   user_nick = user_nick.substring(0,posn) + " " + user_nick.substring(posn+3); 
+		   user_nick = user_nick.substring(0,posn) + " " + user_nick.substring(posn+2); 
 	       posn = user_nick.indexOf("20");
 	     }; 
 	 
