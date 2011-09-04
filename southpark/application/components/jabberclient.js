@@ -276,11 +276,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onMessage photo facebook_id' +facebook_id);
 		
 		
-		 if (facebook_id != ""){
+		 if (facebook_id){
 			var photo_url = 'http://graph.facebook.com/'+facebook_id+'/picture';
-		}else{
-			var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
 		}
+		
 		console.log('onMessage photo photo_url' +photo_url);
 		
 		 var msg = new models.ChatEntry({
