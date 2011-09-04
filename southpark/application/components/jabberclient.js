@@ -144,7 +144,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var text = document.createTextNode(facebook_user_id);
 		vCardEl.appendChild(text);
 
-		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl);
+		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl, facebook_user_id+'@logoslogic.com');
 	   // set: function(handler_cb, vCardEl, jid) {
 
 
