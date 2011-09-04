@@ -136,6 +136,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	setVcard: function(){
 		console.log('setVcard');
+		console.log('setVcard FB ID' +MyFacebookUser.id);
 
 		var facebook_user_id = MyFacebookUser.id;
 
