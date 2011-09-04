@@ -239,7 +239,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 				text: message,
 				from: '',
 				to: to,
-				photo_url: '', 
+				facebook_id: '', 
 				incoming: false,
 				dt: new Date()
 			});
@@ -276,17 +276,17 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onMessage photo facebook_id' +facebook_id);
 		
 		
-		 if (facebook_id){
-			var photo_url = 'http://graph.facebook.com/'+facebook_id+'/picture';
-		}
+		//  if (facebook_id){
+		// 	var photo_url = 'http://graph.facebook.com/'+facebook_id+'/picture';
+		// }
 		
-		console.log('onMessage photo photo_url' +photo_url);
+		console.log('onMessage photo photo_url' +facebook_id);
 		
 		 var msg = new models.ChatEntry({
 		 	text: $(message).find('body').text(),
 		 	from: user_nick,
 		 	to: $(message).attr('to'),
-			photo_url: photo_url, 
+			facebook_id: facebook_id, 
 		 	incoming: true,
 		 	dt: new Date()
 		 });
