@@ -21,12 +21,8 @@ var ChatView = Backbone.View.extend({
         messageList.empty();
         this.collection.each(function (message) {
 	
-			 if (message.get('facebook_id') != "0"){
-				var photo_url = 'http://graph.facebook.com/'+message.get('facebook_id')+'/picture';
-			}else{
-				var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
-			}
-			
+			var photo_url = 'http://graph.facebook.com/'+message.get('facebook_id')+'/picture';
+		
 			console.log('chatView render photo_url' +photo_url);
 			console.log('chatView render nick' +message.get('from'));
 			
