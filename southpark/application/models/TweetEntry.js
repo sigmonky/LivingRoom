@@ -15,24 +15,13 @@ TweetCollection = Backbone.Collection.extend({
   model: TweetEntry,
   value: null,
   // url: function(){ return "http://tweetriver.com/camilarc/south-park-test.json?callback=?"}
-  url: function(){ return "http://localhost/LivingRoom/southpark/service/south-park-test.json"}
+  url: function(){ return "http://www.logoslogic.com/chat/LivingRoom/southpark/service/south-park-test.json"}
 });
 
-TweetCollection2 = Backbone.Model.extend({
-	url: "http://localhost/LivingRoom/southpark/service/south-park-test.json",
+
 	/*http://stackoverflow.com/questions/5963324/polling-a-collection-with-backbone-js */
 	/*http://stackoverflow.com/questions/5427038/backbone-js-updating-of-models-in-a-collection */
-    defaults: {
-        models: new TweetCollection()
-    },
-    parse: function(data) {
 
-    },
-    initialize: function() {
-        _.bindAll(this, 'parse');
-        this.fetch();
-    }
-});
 
 /*	 */
 
