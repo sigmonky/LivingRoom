@@ -276,11 +276,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('onMessage photo facebook_id' +facebook_id);
 		
 		
-		 if (facebook_id == ""){
-			facebook_id = "0";
-		}
-		
-		
 		 var msg = new models.ChatEntry({
 		 	text: $(message).find('body').text(),
 		 	from: user_nick,
