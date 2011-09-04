@@ -239,6 +239,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 				text: message,
 				from: '',
 				to: to,
+				photo_url: '', 
 				incoming: false,
 				dt: new Date()
 			});
