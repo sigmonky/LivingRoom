@@ -128,8 +128,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		console.log('join Room');
 		var facebook_user_id = MyFacebookUser.id;
 		var facebook_name = MyFacebookUser.name;
+		console.log('join Room facebook_name'+facebook_name);
 		
-		var nickname = facebook_name+'_'+Math.floor(Math.random()*1111001)+'_'+facebook_user_id;
+		var nickname = facebook_name+'_'+facebook_user_id;
 		this.connection.muc.join(RoomJid, nickname);
 	},
 	
