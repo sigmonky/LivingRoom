@@ -280,7 +280,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 			facebook_id = "0";
 		}
 		
-		console.log('onMessage photo photo_url' +photo_url);
 		
 		 var msg = new models.ChatEntry({
 		 	text: $(message).find('body').text(),
