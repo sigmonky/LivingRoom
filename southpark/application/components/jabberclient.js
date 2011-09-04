@@ -263,7 +263,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		//console.log('pos '+pos);
 		var full_nickname = from.substring(pos,from.length);
 		var user_nick  = full_nickname.split('_')[0];
-		user_nick = stripslashes(user_nick);
+		user_nick = unescape(user_nick);
 		user_nick  = user_nick.replace('20','');
 		
 		var facebook_id  = full_nickname.split('_')[1];
