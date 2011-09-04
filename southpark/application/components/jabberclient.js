@@ -117,6 +117,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	onConnect: function(){
 		// console.log('onConnect join Room'+this.joinRoom() );
 		this.joinRoom();
+		this.setVcard();
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
 		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
@@ -125,9 +126,31 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	joinRoom: function(){
 		console.log('join Room');
-		
 		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
 		this.connection.muc.join(RoomJid, nickname);
+	},
+	
+	onSetVcard: function(){
+		console.log('onSetVcard')
+	},
+	
+	setVcard: function(){
+		console.log('setVcard');
+
+		var facebook_user_id = MyFacebookUser.id;
+
+		var vCardEl = document.createElement('nickname');
+		var text = document.createTextNode(facebook_user_id);
+		vCardEl.appendChild(text);
+
+		this.connection.muc.set(this.callback('onSetVcard'), vCardEl, Attacher.JID);
+	   // set: function(handler_cb, vCardEl, jid) {
+
+
+		// var iq = App.util.Strophe.buildIq("set", App.util.Strophe.connection.jid, App.util.Strophe.username, vCardEl);
+		//         App.util.Strophe.connection.sendIQ(iq.tree(), App.util.Strophe.setVcardCallBack, null);
+		// 
+		// 	    console.log('setVcard 2');
 	},
 	
 	roomPresenceHandler : function(obj){
