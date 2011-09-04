@@ -60,30 +60,18 @@ function onResult(iq) {
 	log('Response from jabber.org took ' + elapsed + 'ms.');
 }
 
-function unescape($string)
-{
 
-$search = array("\\x00", "\\n", "\\r", "\\\x1a");
 
-$replace = array("\x00","\n", "\r", "\x1a");
+	function stripslashes(str) 
+	{
+	    str = str.replace(/\\'/g,'\'');
+	    str = str.replace(/\\"/g,'"');
+	    str = str.replace(/\\\\/g,'\\');
+	    str = str.replace(/\\0/g,'\0');
+	    return str;
+	}
 
-$retString = str_replace($search, $replace, $string);
 
-$search = array("\'", '\\'.'"');
-
-$replace = array(  "'", '"',);
-
-$retString = str_replace($search, $replace, $retString);
-
-$search = array("\\\\");
-
-$replace = array( "\\");
-
-$retString = str_replace($search, $replace, $retString);
-
-return $retString
-
-}
 
 // 
 // function log() {
