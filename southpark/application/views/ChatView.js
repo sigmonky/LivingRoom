@@ -20,15 +20,16 @@ var ChatView = Backbone.View.extend({
 		//console.log('message list'+$(this.el).find('.chat_messages'));
         messageList.empty();
         this.collection.each(function (message) {
-			var photo_url = 'http://graph.facebook.com/'+ message.get('facebook_id')+'/picture';
-	
+			//var photo_url = 'http://graph.facebook.com/'+ message.get('facebook_id')+'/picture';
+			console.log('chatView render photo_url' +message.get('photo_url'));
+			console.log('chatView render nick' +message.get('nickname'));
+			
 			var chatEntry = {};
 			chatEntry.nickname = message.get('nickname');
 			chatEntry.text = message.get('text');
-			chatEntry.photo_url = photo_url;
+			chatEntry.photo_url = message.get('photo_url');;
 			
-			console.log('chatView render photo_url' +message.get('photo_url'));
-			console.log('chatView render nick' +message.get('nickname'));
+
 			
             var chatMsg = new ChatMessageView({ model: chatEntry });
             messageList.append(chatMsg.render().el);
