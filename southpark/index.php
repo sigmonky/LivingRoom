@@ -180,8 +180,8 @@ if ($facebook_user_profile['id'] != "") {
 					<img src="{{ photo_url }}" width="48" height="48"  class="avatar" />
 				</div>
 				<div class="details">
-					<span class="chat_text">{{{ text }}}</span>
-					<span class="facebook-user">{{ nickname }}</span>
+					<p>{{{ text }}}</p>
+					<div class="facebook-user">{{ nickname }}</div>
 				</div>
 				<div class="clearfix"></div>
 		</script>
