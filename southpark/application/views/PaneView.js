@@ -68,35 +68,35 @@ var PaneView = Backbone.View.extend({
 		
 		
 		/* Buzz View Begin */
-		var twitter_message_panel = $("#twitter_message_panel");
-		var mainBuzzView = new BuzzTweetInputView(this.model);
-	//	$(mainBuzzView.render().el).prependTo(twitter_message_panel);
-		
-		var url = 'http://tweetriver.com/camilarc/south-park-test.json?';
-		
-		$.ajax({
-		    type: "GET",
-		    url: url,
-		    dataType: "jsonp",
-		    success: function(json) {
-					// clear 
-					$("#rows").html('');
-					if (json && json.length > 0) {
-						var $rows = $("#rows");
-						_.each(json, function(item) {
-							var rowView = new BuzzView({model: item});
-							$(rowView.render().el).prependTo($rows);
-						});
-					} else {
-						$("#rows").html('<div class="row"><div class="thumb"></div><div class="details">There is no tweet at this location.</div><div>');
-					}
-					//$('#load').fadeOut('fast');
-			}
-					// 
-					// $("#load").remove();
-					// $("#rows-content").append('<span id="load">Loading....</span>');
-					// $("#load").fadeIn();		    
-		});
+	// 	var twitter_message_panel = $("#twitter_message_panel");
+	// 	var mainBuzzView = new BuzzTweetInputView(this.model);
+	// //	$(mainBuzzView.render().el).prependTo(twitter_message_panel);
+	// 	
+	// 	var url = 'http://tweetriver.com/camilarc/south-park-test.json?';
+	// 	
+	// 	$.ajax({
+	// 	    type: "GET",
+	// 	    url: url,
+	// 	    dataType: "jsonp",
+	// 	    success: function(json) {
+	// 				// clear 
+	// 				$("#rows").html('');
+	// 				if (json && json.length > 0) {
+	// 					var $rows = $("#rows");
+	// 					_.each(json, function(item) {
+	// 						var rowView = new BuzzView({model: item});
+	// 						$(rowView.render().el).prependTo($rows);
+	// 					});
+	// 				} else {
+	// 					$("#rows").html('<div class="row"><div class="thumb"></div><div class="details">There is no tweet at this location.</div><div>');
+	// 				}
+	// 				//$('#load').fadeOut('fast');
+	// 		}
+	// 				// 
+	// 				// $("#load").remove();
+	// 				// $("#rows-content").append('<span id="load">Loading....</span>');
+	// 				// $("#load").fadeIn();		    
+	// 	});
 		
 		/* Buzz View End */
 		
