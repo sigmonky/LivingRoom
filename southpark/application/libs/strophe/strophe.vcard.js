@@ -51,6 +51,7 @@ Strophe.addConnectionPlugin('vcard', {
         Set an entity's vCard.
     */
     set: function(handler_cb, vCardEl, jid) {
+		console.log('set VCARD' +jid);
         var iq = buildIq("set", this._connection.jid, jid, vCardEl);
         this._connection.sendIQ(iq.tree(), handler_cb, null);
     }

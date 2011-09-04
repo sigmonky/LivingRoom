@@ -110,7 +110,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	onMessage: function(msg){
-		console.log('onmessage');
+	//	console.log('onmessage');
 	},
 	
 	
