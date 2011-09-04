@@ -80,8 +80,8 @@ function stripslashes (str) {
         case '':
             return '';
         default:
-            return n1;        }
-    });
+            return n1;        
+		}
 }
 
 // 
