@@ -265,7 +265,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		posn = user_nick.indexOf("_"); 
 		while (posn > -1)                                  //while there is a %20 
 		     { user_nick = user_nick.substring(0,posn) + " " + user_nick.substring(posn+1); 
-		       posn = yourname.indexOf("_");              //find next %20 
+		       posn = posn.indexOf("_");              //find next %20 
 		}; 
 		
 		
