@@ -20,13 +20,19 @@ var ChatView = Backbone.View.extend({
 		//console.log('message list'+$(this.el).find('.chat_messages'));
         messageList.empty();
         this.collection.each(function (message) {
-			//var photo_url = 'http://graph.facebook.com/'+ message.get('facebook_id')+'/picture';
-			console.log('chatView render photo_url' +message.get('photo_url'));
+	
+			 if (message.get('facebook_id') != "0"){
+				var photo_url = 'http://graph.facebook.com/'+message.get('facebook_id')+'/picture';
+			}else{
+				var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
+			}
+			
+			console.log('chatView render photo_url' +photo_url);
 			console.log('chatView render nick' +message.get('nickname'));
 			
 			var chatEntry = {};
-			chatEntry.nickname = message.get('nickname');
 			chatEntry.text = message.get('text');
+			chatEntry.nickname = message.get('nickname');
 			chatEntry.photo_url = message.get('photo_url');;
 			
 
