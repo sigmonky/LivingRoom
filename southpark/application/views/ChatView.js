@@ -21,9 +21,9 @@ var ChatView = Backbone.View.extend({
         messageList.empty();
         this.collection.each(function (message) {
 			var chatEntry = {};
-			chatEntry.jid = message.get('jid');
+			chatEntry.nickname = message.get('from');
 			chatEntry.text = message.get('text');
-			chatEntry.fbid = message.get('facebook_id');
+			chatEntry.photo_url = message.get('photo_url');
             var chatMsg = new ChatMessageView({ model: chatEntry });
             messageList.append(chatMsg.render().el);
         });

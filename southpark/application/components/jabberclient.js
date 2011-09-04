@@ -288,8 +288,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		 	text: $(message).find('body').text(),
 		 	from: user_nick,
 		 	to: $(message).attr('to'),
-			facebook_id: photo_url, 
-			facebook_id: photo_url, 
+			photo_url: photo_url, 
 		 	incoming: true,
 		 	dt: new Date()
 		 });
