@@ -247,7 +247,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 //	Handler for incoming messages
 	onMessage: function(message){
 		
-		console.log('onMessage ')
+		//console.log('onMessage ')
 		
 		/* Nickname is Equal to FB Photo ID */
 		 var photo = $(message).find('nick').text();
@@ -269,9 +269,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		 	dt: new Date()
 		 });
 		
-		console.log('onmessage from = '+$(message).attr('from'));
-
-		console.log('onmessage to = '+$(message).attr('to'));
+		//console.log('onmessage from = '+$(message).attr('from'));
+		///console.log('onmessage to = '+$(message).attr('to'));
+		
 		 this.chatViews[RoomJid].collection.add(msg);
 		
 		 return true;
