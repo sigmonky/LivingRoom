@@ -126,7 +126,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	joinRoom: function(){
 		console.log('join Room');
-		var nickname = 'guest_'+Math.floor(Math.random()*1111001);
+		var facebook_user_id = MyFacebookUser.id;
+		var facebook_name = MyFacebookUser.name;
+		
+		var nickname = facebook_name+'_'+Math.floor(Math.random()*1111001)+'_'+facebook_user_id;
 		this.connection.muc.join(RoomJid, nickname);
 	},
 	
@@ -254,7 +257,22 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		 var photo = $(message).find('nick').text();
 		console.log('onMessage photo' +photo);
 		
-		 if (photo !== ""){
+		var from = $(message).attr('from');
+		var full_nickname = from.substring(0, from.indexOf('/'));
+		var user_nick  = full_nickname.split('_')[0];
+		var facebook_id  = full_nickname.split('_')[2];
+		
+		
+		console.log('onMessage photo from' +from);
+		console.log('onMessage photo full_nickname' +full_nickname);
+		console.log('onMessage photo user_nick' +user_nick);
+		console.log('onMessage photo facebook_id' +facebook_id);
+		
+		
+		var facebook_id = from.substring()
+		
+		
+		 if (facebook_id !== ""){
 			var photo_url = 'http://graph.facebook.com/'+photo+'/picture';
 		}else{
 			var photo_url = 'http://www.logoslogic.com/chat/LivingRoom/southpark/images/no_user.png';
@@ -262,7 +280,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		 var msg = new models.ChatEntry({
 		 	text: $(message).find('body').text(),
-		 	from: $(message).attr('from'),
+		 	from: user_nick,
 		 	to: $(message).attr('to'),
 			facebook_id: photo_url, 
 			facebook_id: photo_url, 
