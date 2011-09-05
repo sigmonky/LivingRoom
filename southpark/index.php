@@ -233,6 +233,10 @@ if ($facebook_user_profile['id'] != "") {
 		
 		// echo 'twitterObj'.$twitterObj;
 		 print_r($token);
+		
+		echo '$token->oauth_token '.$token->oauth_token;
+		echo '$token->oauth_token_secret '.$token->oauth_token_secret;
+		
 		 // print_r($token->oauth_token_);
 		// echo 'session 2'.$_SESSION['ots'];
 	}
