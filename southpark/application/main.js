@@ -119,8 +119,13 @@ function emoticons(text){
 
     // A map mapping each smiley to its image
     var map = {
-        ":)"  : 'smile.png', // Capped version of the next
-        ":P"  : 'tongue.png',   // Capped version of the next
+        ":)"  : 'smile.png',
+        ":P"  : 'tongue.png',
+		":(" : 'frown.png',
+		";)" : 'wink.png',
+		":*" : 'kiss.png',
+		"8|" : 'sunglasses_1.png'
+		
     };
 
     // Do the replacements
