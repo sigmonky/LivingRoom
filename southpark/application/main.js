@@ -123,8 +123,8 @@ function emoticons(text){
         ":P"  : 'tongue.png',
 		":(" : 'frown.png',
 		";)" : 'wink.png',
-		":*" : 'kiss.png',
-		"8|" : 'sunglasses_1.png'
+		":\*" : 'kiss.png',
+		"8\|" : 'sunglasses_1.png'
 		
     };
 
