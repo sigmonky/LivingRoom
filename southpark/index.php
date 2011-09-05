@@ -17,6 +17,25 @@ if ($facebook_user_profile['id'] != "") {
 	$user = new User();
 }
 
+session_start();
+
+include 'twitter/lib/EpiCurl.php';
+include 'twitter/lib/EpiOAuth.php';
+include 'twitter/lib/EpiTwitter.php';
+include 'twitter/lib/secret.php';
+
+$oauth_token = $_GET['oauth_token'];
+
+if ($oauth_token != ''){
+	$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
+	$twitterObj->setToken($_GET['oauth_token']);
+	$token = $twitterObj->getAccessToken();
+	$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
+	$_SESSION['ot'] = $token->oauth_token;
+	$_SESSION['ots'] = $token->oauth_token_secret;
+	echo 'session'.$_SESSION['ots'];
+}
+
 ?>
 
 <!DOCTYPE html>
