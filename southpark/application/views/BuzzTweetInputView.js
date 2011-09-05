@@ -21,7 +21,7 @@ var BuzzTweetInputView = Backbone.View.extend({
 		var dataString = 'tweet='+ message;  
 		$.ajax({
 		  type: 'POST',
-		  url: 'http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/post',
+		  url: 'http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/post.php',
 		  data: dataString,
 		  success: function(){
 			console.log('tweet message posted');
