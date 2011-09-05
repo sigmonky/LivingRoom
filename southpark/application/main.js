@@ -111,7 +111,7 @@ function dateStringPastTense(date_input)
 
 function emoticons(text){
     // The base URL of all our smilies
-    var url = "http://www.domain.it/images/smilies/";
+    var url = "images/emoticons/";
 
     // A regex alternation that looks for all of them (be careful to use escapes
     // where necessary)
@@ -133,7 +133,7 @@ function emoticons(text){
         // If we do, return an `img` tag using that smiley icon; if not, there's
         // a mis-match between our `searchFor` regex and our map of
         // smilies, but handle it gracefully by returning the match unchanged.
-        return rep ? '<img src="images/emoticons/' + url + rep + '" class="emoticons" />' : match;
+        return rep ? '<img src="' + url + rep + '" class="emoticons" />' : match;
     });
 
     return (text);
