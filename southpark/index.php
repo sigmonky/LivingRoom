@@ -101,7 +101,7 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<script id="tweet_message_view" type="text/x-handlebars-template">
 			<input class="tweet_input message_field" id="input_tweet" type="text" />
-			<input type="submit" class="message_send_button" value="Tweet">
+			<input type="submit" class="tweet_message_send_button" value="Tweet">
 			<div id="tweet_count"></div>
 		</script>
 
