@@ -21,10 +21,15 @@ var BuzzTweetInputView = Backbone.View.extend({
 		var dataString = 'tweet='+ message;  
 		$.ajax({
 		  type: 'POST',
-		  url: 'http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/post.php',
+		   url: 'http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/post.php',
+		  // url: 'http://localhost/LivingRoom/southpark/twitter/post.php',
 		  data: dataString,
-		  success: function(){
-			console.log('tweet message posted');
+		  success: function(data){
+			//console.log('sendTweetMessage data '+data.status);
+			if (data.status == 'not_connected'){
+				// window.location = 'http://localhost/LivingRoom/southpark/twitter/index.php';
+				 window.location = 'http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/index.php';
+			}
 		  },
 		});
 	},
