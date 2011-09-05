@@ -114,7 +114,8 @@ var PaneView = Backbone.View.extend({
 		$("#friends_view").css('display', 'none');
 		$('input.message_field').focus();
 
-        
+        var messagesContainer = $('.chat_body');
+		$(messagesContainer)[0].scrollTop = $(messagesContainer)[0].scrollHeight;
 	},
 	
 	renderMyFriends: function() {
