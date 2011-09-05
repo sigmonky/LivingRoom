@@ -233,7 +233,7 @@ if ($facebook_user_profile['id'] != "") {
 		
 		echo 'twitterObj'.$twitterObj;
 		echo 'token'.$token;
-		echo '$token->oauth_token'.$$token->oauth_token;
+		echo '$token->oauth_token'.$token->oauth_token;
 		
 		echo 'session 2'.$_SESSION['ots'];
 	}
