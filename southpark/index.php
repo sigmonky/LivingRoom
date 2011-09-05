@@ -236,6 +236,12 @@ if ($facebook_user_profile['id'] != "") {
 		
 		echo '$token->oauth_token '.$token->oauth_token;
 		echo '$token->oauth_token_secret '.$token->oauth_token_secret;
+		echo '<br>';
+		echo '<br>';
+		echo 'session1 '.$_SESSION['ot'];
+		echo '<br>';
+		
+		echo 'session 2'.$_SESSION['ot'];
 		
 		 // print_r($token->oauth_token_);
 		// echo 'session 2'.$_SESSION['ots'];
