@@ -20,15 +20,10 @@ $oauth_token = $_GET['oauth_token'];
 		$twitterObj->setToken($_GET['oauth_token']);
 		$token = $twitterObj->getAccessToken();
 		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
-		if(isset($_SESSION['ot'])){
-			echo $_SESSION['ot'];
-		}else{
-			$_SESSION['ot'] = $token->oauth_token;
-			$_SESSION['ots'] = $token->oauth_token_secret;
-			echo $_SESSION['ot'];
-			 echo $_SESSION['ots'];
-		}
-
+		$_SESSION['ot'] = $token->oauth_token;
+		$_SESSION['ots'] = $token->oauth_token_secret;
+		echo $_SESSION['ot'];
+		echo $_SESSION['ots'];
 		
 		//header('Location:http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz');
 		// echo "<pre>200 OK</pre>";
