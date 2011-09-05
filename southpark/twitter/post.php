@@ -8,8 +8,8 @@ include 'lib/EpiTwitter.php';
 include 'lib/secret.php';
 
 	if ($_SESSION['ot'] == ''){
-		header('Cache-Control: no-cache, must-revalidate');
-	  	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+		// header('Cache-Control: no-cache, must-revalidate');
+		// 	  	header('Expires: Mon, 26 Jul 2222 05:00:00 GMT');
 	  	header('Content-type: application/json');
 		echo "{\"status\": \"not_connected\"}";
 	}
@@ -24,8 +24,8 @@ include 'lib/secret.php';
 		//$username = $twitterInfo->screen_name;
 		$update_status = $twitterObj->post_statusesUpdate(array('status' => $msg));
 		$temp = $update_status->response;
-		header('Cache-Control: no-cache, must-revalidate');
-	  	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+		// header('Cache-Control: no-cache, must-revalidate');
+		// 	  	header('Expires: Mon, 26 Jul 2222 05:00:00 GMT');
 	  	header('Content-type: application/json');
 		echo "{\"status\": \"posted\"}";
 	}
