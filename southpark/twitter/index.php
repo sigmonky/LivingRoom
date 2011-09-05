@@ -17,7 +17,7 @@ $oauth_token = $_GET['oauth_token'];
      } 
 	else
 	{
-	$twitterObj->setToken($_GET['oauth_token']);
+		$twitterObj->setToken($_GET['oauth_token']);
 		$token = $twitterObj->getAccessToken();
 		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
 		$_SESSION['ot'] = $token->oauth_token;
