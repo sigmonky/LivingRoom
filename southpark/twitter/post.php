@@ -7,6 +7,10 @@ include 'lib/EpiOAuth.php';
 include 'lib/EpiTwitter.php';
 include 'lib/secret.php';
 
+if ($_SESSION['ot'] == ''){
+	header('location: http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/index.php')
+}
+
 $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $msg = $_REQUEST['tweet'];
 $twitterObj->setToken($_SESSION['ot'], $_SESSION['ots']);
