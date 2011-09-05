@@ -1,21 +1,21 @@
 <?php
 
 // include_once "fbmain.php";
-// include_once "user.php";
-// require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
-// require_once(dirname(__FILE__)."/xmppprebind.php");
-// 
-// /* Creates Session Attachment based on Anonymous or FB authenticated user */
-// 
-// if ($facebook_user_profile['id'] != "") {
-// 	//Connect Facebook Authenticated User
-// 	$user = new User($facebook_user_profile['id']);
-// 	$facebook_id = $user->facebook_id;
-// 	$facebook_name = $user->facebook_user_profile['name'];
-// }else{
-// 	//Connect Anonymous User
-// 	$user = new User();
-// }
+include_once "user.php";
+require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
+require_once(dirname(__FILE__)."/xmppprebind.php");
+
+/* Creates Session Attachment based on Anonymous or FB authenticated user */
+
+if ($facebook_user_profile['id'] != "") {
+	//Connect Facebook Authenticated User
+	$user = new User($facebook_user_profile['id']);
+	$facebook_id = $user->facebook_id;
+	$facebook_name = $user->facebook_user_profile['name'];
+}else{
+	//Connect Anonymous User
+	$user = new User();
+}
 
 ?>
 
