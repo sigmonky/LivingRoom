@@ -9,13 +9,8 @@ include 'lib/secret.php';
 
 $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $oauth_token = $_GET['oauth_token'];
-	if($oauth_token == '')
-  	  { 
-	  	$url = $twitterObj->getAuthorizationUrl();
-		echo 'Authenticating to Twitter...';
-		echo "<script text=\"text/javascript\">window.location = '$url'; </script>";
-     } 
-	else
+
+	if(isset($_SESSION['ot'])){
 	{
 		$twitterObj->setToken($_GET['oauth_token']);
 		$token = $twitterObj->getAccessToken();
@@ -27,7 +22,11 @@ $oauth_token = $_GET['oauth_token'];
 	//	echo "<script text=\"text/javascript\">window.location = 'http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz'; </script>";
 		header('Location:http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz');
 		// echo "<pre>200 OK</pre>";
-     } 
+     } else{
+	  	$url = $twitterObj->getAuthorizationUrl();
+		echo 'Authenticating to Twitter...';
+		echo "<script text=\"text/javascript\">window.location = '$url'; </script>";
+}
 
 
 ?> 
