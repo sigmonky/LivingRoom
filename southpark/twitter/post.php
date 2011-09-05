@@ -7,14 +7,11 @@ include 'lib/EpiOAuth.php';
 include 'lib/EpiTwitter.php';
 include 'lib/secret.php';
 
-echo "session =". $_SESSION['ot'];
-
 	if ($_SESSION['ot'] == ''){
-		// header('Cache-Control: no-cache, must-revalidate');
-		// 	  	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
-		// 	  	header('Content-type: application/json');
-		// echo "{\"status\": \"posted\"}";
-		echo "session2 =". $_SESSION['ot'];
+		header('Cache-Control: no-cache, must-revalidate');
+	  	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+	  	header('Content-type: application/json');
+		echo "{\"status\": \"not_connected\"}";
 	}
 	else{
 		$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
