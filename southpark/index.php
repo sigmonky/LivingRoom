@@ -232,8 +232,8 @@ if ($facebook_user_profile['id'] != "") {
 		$_SESSION['ots'] = $token->oauth_token_secret;
 		
 		// echo 'twitterObj'.$twitterObj;
-		 print $token;
-		 print $token->oauth_token;
+		 print_r($token);
+		 // print_r($token->oauth_token_);
 		// echo 'session 2'.$_SESSION['ots'];
 	}
 
