@@ -11,7 +11,8 @@ include 'lib/secret.php';
 		header('Cache-Control: no-cache, must-revalidate');
 	  	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	  	header('Content-type: application/json');
-		echo "{\"status\": \"not_connected\"}";
+		echo "{\"status\": \"posted\"}";
+		echo "{\"session\": \". $_SESSION['ot']."}";
 	}
 	else{
 		$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
