@@ -25,6 +25,9 @@ $oauth_token = $_GET['oauth_token'];
 		// echo $_SESSION['ot'];
 		// echo $_SESSION['ots'];
 		echo 'connected';
+		echo '$token->oauth_token'.$token->oauth_token;
+		echo '<br>';
+		print_r($token);
 		//header('Location:http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz');
 		// echo "<pre>200 OK</pre>";
      } 
