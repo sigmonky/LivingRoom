@@ -11,6 +11,7 @@ $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $oauth_token = $_GET['oauth_token'];
 
 	if(isset($_SESSION['ot'])){
+		echo $_SESSION['ot'];
 		$twitterObj->setToken($_GET['oauth_token']);
 		$token = $twitterObj->getAccessToken();
 		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
