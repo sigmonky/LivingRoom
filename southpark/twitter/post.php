@@ -7,13 +7,7 @@ include 'lib/EpiOAuth.php';
 include 'lib/EpiTwitter.php';
 include 'lib/secret.php';
 
-	if(!isset($_SESSION['ot'])){
-		// header('Cache-Control: no-cache, must-revalidate');
-		// 	  	header('Expires: Mon, 26 Jul 2222 05:00:00 GMT');
-	  	header('Content-type: application/json');
-		echo "{\"status\": \"not_connected\"}";
-	}
-	else{
+	if(isset($_SESSION['ot'])){
 		$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 		$msg = $_REQUEST['tweet'];
 		$twitterObj->setToken($_SESSION['ot'], $_SESSION['ots']);
@@ -28,5 +22,12 @@ include 'lib/secret.php';
 		// 	  	header('Expires: Mon, 26 Jul 2222 05:00:00 GMT');
 	  	header('Content-type: application/json');
 		echo "{\"status\": \"posted\"}";
+
+	}
+	else{
+		// header('Cache-Control: no-cache, must-revalidate');
+		// header('Expires: Mon, 26 Jul 2222 05:00:00 GMT');
+	  	header('Content-type: application/json');
+		echo "{\"status\": \"not_connected\"}";
 	}
 ?> 
