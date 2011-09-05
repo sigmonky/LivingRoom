@@ -1,6 +1,6 @@
 <?php
 
-// include_once "fbmain.php";
+include_once "fbmain.php";
 include_once "user.php";
 require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
 require_once(dirname(__FILE__)."/xmppprebind.php");
