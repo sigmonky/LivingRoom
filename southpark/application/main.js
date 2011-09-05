@@ -115,7 +115,7 @@ function emoticons(text){
 
     // A regex alternation that looks for all of them (be careful to use escapes
     // where necessary)
-    var searchFor = /:D|:-D|:\)|:-\)|;\)|';-\)|:\(|:-\(|:o|:\?|8-\)|:x|:P/gi;
+    var searchFor = /:D|:-D|:\)|:-\)|;\)|';-\)|:\(|:-\(|:o|:\?|8-\)|:x|:P|:*/gi;
 
     // A map mapping each smiley to its image
     var map = {
@@ -123,8 +123,7 @@ function emoticons(text){
         ":P"  : 'tongue.png',
 		":(" : 'frown.png',
 		";)" : 'wink.png',
-		":\*" : 'kiss.png',
-		"8\|" : 'sunglasses_1.png'
+		":*" : 'kiss.png',
 		
     };
 
