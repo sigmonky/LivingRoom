@@ -10,7 +10,7 @@ include 'lib/secret.php';
 	if(isset($_SESSION['ot'])){
 		$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 		$msg = $_REQUEST['tweet'];
-		$twitterObj->setToken($_SESSION['ot'], $_SESSION['ots']);
+		$twitterObj->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
 		//echo '1 - '.$_SESSION['ot'];
 		//echo '2 -'.$_SESSION['ots'];
 		$twitterInfo= $twitterObj->get_accountVerify_credentials();
