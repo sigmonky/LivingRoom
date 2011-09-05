@@ -70,7 +70,25 @@ var PaneView = Backbone.View.extend({
 		/* Buzz View Begin */
 		var twitter_message_panel = $("#twitter_message_panel");
 		var mainBuzzTweetView = new BuzzTweetInputView();
-		//$(mainBuzzTweetView.render().el).prependTo(twitter_message_panel);
+		$(mainBuzzTweetView.render().el).prependTo(twitter_message_panel);
+		
+		$("input#input_tweet").keyup(function(){
+			console.log('keyup')
+			var box=$(this).val();
+			var main = box.length *100;
+			var value= (main / 140);
+			var count= 140 - box.length;
+
+			if(box.length <= 140){
+				$('#tweet_count').html(count);
+			}
+			else
+			{
+				alert('Character Limit Exceeded!');
+				return false;
+			}
+		});
+		
 		
 		var buzz_main_panel = $("#buzz_main_panel");
 		var mainBuzzView = new BuzzMainView(this.model);

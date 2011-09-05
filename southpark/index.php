@@ -268,8 +268,8 @@ if ($facebook_user_profile['id'] != "") {
 				</div>
 			</div>
 			<div id="twitter_message_panel" class="bottom_panel">
-				<input class="tweet_input message_field" id="input_tweet" type="text" />
-				<input type="submit" class="message_send_button" value="Tweet">
+				<!-- <input class="tweet_input message_field" id="input_tweet" type="text" />
+				<input type="submit" class="message_send_button" value="Tweet"> -->
 				<div id="tweet_count"></div>
 			</div>
 			<div class="clearfix"></div>

@@ -373,6 +373,8 @@ cursor:pointer;
 
 }
 
+.tweet_message_send_button{margin-top:25px; margin-left:25px;}
+
 .invite-friends-btn {padding:18px 10px;  text-align:center; border-top:4px solid #000; cursor:pointer; background:#4d4d4d; color:#ffcc01}
 
 .invite-friends-btn  a{color:#ffcc01}
