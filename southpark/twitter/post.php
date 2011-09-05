@@ -7,7 +7,7 @@ include 'lib/EpiOAuth.php';
 include 'lib/EpiTwitter.php';
 include 'lib/secret.php';
 
-	if(isset($_SESSION['ot'])){
+	if(isset($_SESSION['oauth_token'])){
 		$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 		$msg = $_REQUEST['tweet'];
 		$twitterObj->setToken($_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
