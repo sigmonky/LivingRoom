@@ -24,6 +24,8 @@ include 'twitter/lib/EpiOAuth.php';
 include 'twitter/lib/EpiTwitter.php';
 include 'twitter/lib/secret.php';
 
+/*Twitter Auth */
+
 $oauth_token = $_GET['oauth_token'];
 
 if ($oauth_token != ''){
@@ -33,7 +35,7 @@ if ($oauth_token != ''){
 	$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
 	$_SESSION['ot'] = $token->oauth_token;
 	$_SESSION['ots'] = $token->oauth_token_secret;
-	echo 'session'.$_SESSION['ots'];
+	//echo 'session'.$_SESSION['ots'];
 }
 
 ?>
