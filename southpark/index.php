@@ -1,21 +1,21 @@
 <?php
 
-include_once "fbmain.php";
-include_once "user.php";
-require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
-require_once(dirname(__FILE__)."/xmppprebind.php");
-
-/* Creates Session Attachment based on Anonymous or FB authenticated user */
-
-if ($facebook_user_profile['id'] != "") {
-	//Connect Facebook Authenticated User
-	$user = new User($facebook_user_profile['id']);
-	$facebook_id = $user->facebook_id;
-	$facebook_name = $user->facebook_user_profile['name'];
-}else{
-	//Connect Anonymous User
-	$user = new User();
-}
+// include_once "fbmain.php";
+// include_once "user.php";
+// require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
+// require_once(dirname(__FILE__)."/xmppprebind.php");
+// 
+// /* Creates Session Attachment based on Anonymous or FB authenticated user */
+// 
+// if ($facebook_user_profile['id'] != "") {
+// 	//Connect Facebook Authenticated User
+// 	$user = new User($facebook_user_profile['id']);
+// 	$facebook_id = $user->facebook_id;
+// 	$facebook_name = $user->facebook_user_profile['name'];
+// }else{
+// 	//Connect Anonymous User
+// 	$user = new User();
+// }
 
 ?>
 
@@ -212,40 +212,40 @@ if ($facebook_user_profile['id'] != "") {
 	<!-- Facebook SDK End -->
 	<?php
 	
-	session_start();
-
-	include 'twitter/lib/EpiCurl.php';
-	include 'twitter/lib/EpiOAuth.php';
-	include 'twitter/lib/EpiTwitter.php';
-	include 'twitter/lib/secret.php';
-
-	/*Twitter Auth */
-
-	$oauth_token = $_GET['oauth_token'];
-
-	if ($oauth_token != ''){
-		$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
-		$twitterObj->setToken($_GET['oauth_token']);
-		$token = $twitterObj->getAccessToken();
-		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
-		$_SESSION['ot'] = $token->oauth_token;
-		$_SESSION['ots'] = $token->oauth_token_secret;
-		
-		// echo 'twitterObj'.$twitterObj;
-		 print_r($token);
-		
-		echo '$token->oauth_token '.$token->oauth_token;
-		echo '$token->oauth_token_secret '.$token->oauth_token_secret;
-		echo '<br>';
-		echo '<br>';
-		echo 'session1 '.$_SESSION['ot'];
-		echo '<br>';
-		
-		echo 'session 2'.$_SESSION['ot'];
-		
-		 // print_r($token->oauth_token_);
-		// echo 'session 2'.$_SESSION['ots'];
-	}
+	// session_start();
+	// 
+	// include 'twitter/lib/EpiCurl.php';
+	// include 'twitter/lib/EpiOAuth.php';
+	// include 'twitter/lib/EpiTwitter.php';
+	// include 'twitter/lib/secret.php';
+	// 
+	// /*Twitter Auth */
+	// 
+	// $oauth_token = $_GET['oauth_token'];
+	// 
+	// if ($oauth_token != ''){
+	// 	$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
+	// 	$twitterObj->setToken($_GET['oauth_token']);
+	// 	$token = $twitterObj->getAccessToken();
+	// 	$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
+	// 	$_SESSION['ot'] = $token->oauth_token;
+	// 	$_SESSION['ots'] = $token->oauth_token_secret;
+	// 	
+	// 	// echo 'twitterObj'.$twitterObj;
+	// 	 print_r($token);
+	// 	
+	// 	echo '$token->oauth_token '.$token->oauth_token;
+	// 	echo '$token->oauth_token_secret '.$token->oauth_token_secret;
+	// 	echo '<br>';
+	// 	echo '<br>';
+	// 	echo 'session1 '.$_SESSION['ot'];
+	// 	echo '<br>';
+	// 	
+	// 	echo 'session 2'.$_SESSION['ot'];
+	// 	
+	// 	 // print_r($token->oauth_token_);
+	// 	// echo 'session 2'.$_SESSION['ots'];
+	// }
 
 	?>
 	
