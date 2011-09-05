@@ -7,7 +7,7 @@ include 'lib/EpiOAuth.php';
 include 'lib/EpiTwitter.php';
 include 'lib/secret.php';
 
-	if ($_SESSION['ot'] == ''){
+	if(!isset($_SESSION['ot'])){
 		// header('Cache-Control: no-cache, must-revalidate');
 		// 	  	header('Expires: Mon, 26 Jul 2222 05:00:00 GMT');
 	  	header('Content-type: application/json');
