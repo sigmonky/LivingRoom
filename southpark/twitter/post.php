@@ -18,10 +18,8 @@ $twitterInfo= $twitterObj->get_accountVerify_credentials();
 $twitterInfo->response;
 $username = $twitterInfo->screen_name;
 
-
 $update_status = $twitterObj->post_statusesUpdate(array('status' => $msg));
 $temp = $update_status->response;
 echo "<pre>200 OK</pre>";
-
 //print_r($temp);
 ?> 
