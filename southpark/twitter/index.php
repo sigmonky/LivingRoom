@@ -22,9 +22,11 @@ $oauth_token = $_GET['oauth_token'];
 		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
 		$_SESSION['ot'] = $token->oauth_token;
 		$_SESSION['ots'] = $token->oauth_token_secret;
-		echo $_SESSION['ot'];
-		echo $_SESSION['ots'];
-		// header('Location:http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz');
+		// echo $_SESSION['ot'];
+		// echo $_SESSION['ots'];
+		echo "<script text=\"text/javascript\">window.location = 'http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz'; </script>";
+		
+		//header('Location:http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz');
 		// echo "<pre>200 OK</pre>";
      } 
 
