@@ -35,7 +35,7 @@ if ($oauth_token != ''){
 	$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
 	$_SESSION['ot'] = $token->oauth_token;
 	$_SESSION['ots'] = $token->oauth_token_secret;
-	//echo 'session'.$_SESSION['ots'];
+	echo 'session'.$_SESSION['ots'];
 }
 
 ?>
@@ -229,11 +229,11 @@ if ($oauth_token != ''){
                     oauth: true,
 			});
 	</script>
-	
+	<div style="color:#FFF">
 	<!-- Facebook SDK End -->
-	
+	<?php 	echo 'session'.$_SESSION['ots'];?>
+	</div>
 	<div id="body_wrapper">
-
 		<!-- Main Menu Begin -->
 	 	<div id="header_view">
 		<div class="top_panel">
