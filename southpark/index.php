@@ -364,13 +364,11 @@ if ($facebook_user_profile['id'] != "") {
 
 	var FriendsWhoInstalledApp = {
 		data: [
-			{"uid":"527305423","name":"Isaac Da Silva","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"618523003","name":"Raphael Cordero","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"788994656","name":"Flora Gillon","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"679733001","name":"Wagner Az","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"556531140","name":"Julio Cezar Cruz","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
-			{"uid":"isaacueca3","name":"Isaac 3","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
-			{"uid":"isaacueca","name":"Isaac 1","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			{"uid":"isaacueca3","name":"Isaac PTS","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			
 		]
 	}
