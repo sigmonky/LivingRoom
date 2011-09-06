@@ -436,7 +436,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	//	Handler for incoming messages
 	onPrivateMessage: function(message){
 		
-		//console.log('onMessage ')
+		console.log('onPrivateMessage ')
 		
 		/* Nickname is Equal to FB Photo ID */
 
