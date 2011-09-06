@@ -219,7 +219,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 						console.log('subscribeFriends add data.jid '+data.jid);
 						
 			var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
-		    // this.connection.sendIQ(iq);
+		    this.connection.send(iq);
 		    // 
 		    var subscribe = $pres({to: data.jid, "type": "subscribe"});
 		    this.connection.send(subscribe);
