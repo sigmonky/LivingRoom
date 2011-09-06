@@ -221,6 +221,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	subscribeFriends: function(){
+		var that = this;
 		_.each(FriendsWhoInstalledApp.data, function(friend){
 			var data = {};
 			data.jid = friend.uid+'@logoslogic.com';
