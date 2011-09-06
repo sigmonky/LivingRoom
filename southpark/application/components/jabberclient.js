@@ -163,6 +163,7 @@ Jabber.Xmpp = function(options) {
 //-------------------------
  
 _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
+	connection:null,
 
 	initialize: function(){
 		
