@@ -47,7 +47,7 @@ var FriendChatView = Backbone.View.extend({
 		console.log('send message to remoteJid' +remoteJid);
 		var message = $(this.el).find('.chat_input').val();
 		console.log('send message ' +message);
-		this.trigger('send:message', message, remoteJid);
+		this.trigger('send:message', message, remoteJid, 'private');
 
     }, 
 

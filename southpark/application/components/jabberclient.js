@@ -368,9 +368,10 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
     	// }
 	},
 //	`sendMessage` used for send all messages 
-	sendMessage: function(message, to){
+	sendMessage: function(message, to, type){
 
 		console.log('send message');
+		
 		
 		if (typeof(message) === 'string'){
 			var msg = new models.ChatEntry({
@@ -384,7 +385,12 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		} else {
 			var msg = new models.ChatEntry(message);
 		}
-		msg.send(this.connection);
+		if (type == 'private'){
+			msg.send(this.connection, 'private');
+			
+		}else{
+			msg.send(this.connection);
+		}
 
 	},
 
