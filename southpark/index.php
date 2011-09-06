@@ -372,7 +372,7 @@ if ($facebook_user_profile['id'] != "") {
 	}
 
 	// var RoomJid = '<?=$user->roomJid?>@conference.logoslogic.com';
-	var RoomJid = 'southpark100@conference.logoslogic.com';
+	var RoomJid = 'southpark101@conference.logoslogic.com';
 	
 	
 	var MyFacebookUser = {
