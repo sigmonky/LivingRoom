@@ -28,8 +28,6 @@ var FriendChatView = Backbone.View.extend({
 			chatEntry.nickname = message.get('from');
 			chatEntry.photo_url = photo_url;
 			
-
-			
             var chatMsg = new ChatMessageView({ model: chatEntry });
             messageList.append(chatMsg.render().el);
         });
@@ -48,6 +46,17 @@ var FriendChatView = Backbone.View.extend({
 		var message = $(this.el).find('.chat_input').val();
 		console.log('send message ' +message);
 		this.trigger('send:message', message, remoteJid, 'private');
+		
+		 var msg = new models.ChatEntry({
+		 	text: message,
+		 	from: MyFacebookUser.name,
+		 	to: '',
+			facebook_id: MyFacebookUser.id, 
+		 	incoming: true,
+		 	dt: new Date()
+		 });
+		
+		this.addMessage(msg);
 
     }, 
 
