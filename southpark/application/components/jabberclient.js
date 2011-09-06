@@ -241,7 +241,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	getFriends: function(){
 		console.log('getFriends');
 		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-		this.connection.send(roster_iq, this.callback('onRoster'));
+		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
 		//this.trigger('ui:roster');
 		// add handlers
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
