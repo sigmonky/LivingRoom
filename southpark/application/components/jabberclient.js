@@ -440,12 +440,12 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		/* Nickname is Equal to FB Photo ID */
 
-		// var from = $(message).attr('from');
-		// 
-		// var facebook_id  = from.substring(0, from.indexOf('@'));
-		// 
-		// console.log('onMessage photo from' +from);
-		// console.log('onMessage photo facebook_id' +facebook_id);
+		var from = $(message).attr('from');
+		
+		var facebook_id  = from.substring(0, from.indexOf('@'));
+		
+		console.log('onMessage photo from' +from);
+		console.log('onMessage photo facebook_id' +facebook_id);
 		// 
 		// var messageSrc = $(message).find('body').text();
 		// var formattedMsg = emoticons(messageSrc);
