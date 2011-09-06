@@ -391,7 +391,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	//	Handler for incoming messages
 	onGroupMessage: function(message){
 		
-		//console.log('onMessage ')
+		console.log('onGroupMessage ')
 		
 		/* Nickname is Equal to FB Photo ID */
 		var photo = $(message).find('nick').text();

@@ -7,15 +7,38 @@ var FriendChatView = Backbone.View.extend({
 	initialize: function (options) {
         // 
         //this.jid = options.jid;
-         _.bindAll(this, 'sendMessage');
         $('input#message_field').focusin(function () {});
+        _.bindAll(this, "render", 'sendMessage', 'addMessage');
+        this.collection.bind("add", this.render);
         _.bindAll(this, 'render');
     }, 
 
 	render: function() {
 		var template = Handlebars.compile(this.template.html());
 		$(this.el).html(template(this.model));
-        return this;
+		var messageList = $(this.el).find('.chat_messages');
+		//console.log('message list'+$(this.el).find('.chat_messages'));
+        messageList.empty();
+        this.collection.each(function (message) {
+	
+			var photo_url = 'http://graph.facebook.com/'+message.get('facebook_id')+'/picture';
+		
+			console.log('chatView render photo_url' +photo_url);
+			console.log('chatView render nick' +message.get('from'));
+			
+			var chatEntry = {};
+			chatEntry.text = message.get('text');
+			chatEntry.nickname = message.get('from');
+			chatEntry.photo_url = photo_url;
+			
+
+			
+            var chatMsg = new ChatMessageView({ model: chatEntry });
+            messageList.append(chatMsg.render().el);
+        });
+		
+		var messagesContainer = $(this.el).find('.chat_body');
+		$(messagesContainer)[0].scrollTop = $(messagesContainer)[0].scrollHeight;
     }, 
 
 	sendMessage: function () {
