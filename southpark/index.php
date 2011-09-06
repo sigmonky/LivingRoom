@@ -50,6 +50,9 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<script id="chat_window" type="text/x-handlebars-template">
 			<div id="chat_body_{{ jid }}" class="friend_chat_body">
+			<div class="chat_body">
+						<div class="chat_messages"></div>
+			</div>
 			</div>
 			<div class="friend_bottom_panel">
 				<input class="chat_input message_field" id="input_{{ jid }}" type="text" />
