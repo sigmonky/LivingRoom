@@ -444,20 +444,22 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		var facebook_id  = from.substring(0, from.indexOf('@'));
 		
-		console.log('onMessage photo from' +from);
-		console.log('onMessage photo facebook_id' +facebook_id);
+		console.log('onPrivateMessage photo from' +from);
+		console.log('onMesonPrivateMessagesage photo facebook_id' +facebook_id);
 		// 
-		// var messageSrc = $(message).find('body').text();
-		// var formattedMsg = emoticons(messageSrc);
-		// 
-		//  var msg = new models.ChatEntry({
-		//  	text: formattedMsg,
-		//  	from: 'fromuser',
-		//  	to: $(message).attr('to'),
-		// 	facebook_id: facebook_id, 
-		//  	incoming: true,
-		//  	dt: new Date()
-		//  });
+		var messageSrc = $(message).find('body').text();
+		var formattedMsg = emoticons(messageSrc);
+		
+		console.log('onPrivateMessage msg' +messageSrc);
+
+		 var msg = new models.ChatEntry({
+		 	text: formattedMsg,
+		 	from: from,
+		 	to: '',
+			facebook_id: facebook_id, 
+		 	incoming: true,
+		 	dt: new Date()
+		 });
 		// 
 		// //console.log('onmessage from = '+$(message).attr('from'));
 		// ///console.log('onmessage to = '+$(message).attr('to'));
