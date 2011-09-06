@@ -83,6 +83,7 @@ var FriendRosterView = Backbone.View.extend({
 			$(friendView.render().el).appendTo(chat_area);	
 			
 			window.chat.chatViews[id] = friendView;
+			window.chat.addView(id);
 			
 		}
 		$('input.message_field').focus();
