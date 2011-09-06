@@ -62,7 +62,6 @@ var FriendChatView = Backbone.View.extend({
 
 	addMessage: function(chatEntryModel){
 		
-		console.log('send message ' +message);
 		
         var chatMsg = new ChatMessageView({ model: chatEntryModel });
 		this.collection.add(chatMsg);
