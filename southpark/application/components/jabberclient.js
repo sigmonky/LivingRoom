@@ -105,7 +105,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	addView: function(jid){
-	//	this.chatViews[jid].bind('send:message', this.callback('sendMessage'));
+		this.chatViews[jid].bind('send:message', this.callback('sendMessage'));
 		
 	},
 	
