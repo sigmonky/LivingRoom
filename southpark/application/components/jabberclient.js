@@ -464,7 +464,11 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		// //console.log('onmessage from = '+$(message).attr('from'));
 		// ///console.log('onmessage to = '+$(message).attr('to'));
 		// 
-		//  this.chatViews[facebook_id].collection.add(msg);
+			for (chat in this.chatViews){
+				console.log('chat view '+chat);
+			}
+		
+		  this.chatViews[facebook_id].collection.add(msg);
 		
 		 return true;
 	},
