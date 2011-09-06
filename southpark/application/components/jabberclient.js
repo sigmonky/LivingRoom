@@ -221,15 +221,15 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 				console.log('subscribeFriends add friend '+friend.name);
 				console.log('subscribeFriends add friend '+friend.uid);
 				
-				// var data = {};
-				// data.jid = friend.uid;
-				// data.name = friend.name;
-				// 
-				// var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
-				// 			    this.connection.sendIQ(iq);
-				// 
-				// 			    var subscribe = $pres({to: data.jid, "type": "subscribe"});
-				// 			    this.connection.send(subscribe);
+				var data = {};
+				data.jid = friend.uid+'@logoslogic.com';
+				data.name = friend.name;
+				
+				var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
+			    this.connection.sendIQ(iq);
+
+			    var subscribe = $pres({to: data.jid, "type": "subscribe"});
+			    this.connection.send(subscribe);
 			})
 
 	},
