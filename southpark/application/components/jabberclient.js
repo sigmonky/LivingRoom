@@ -167,26 +167,26 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 
 	initialize: function(){
 		
-		var BOSH_SERVICE = '/http-bind';
-		this.connection = new Strophe.Connection(BOSH_SERVICE);
-		
-		// Strophe.log = function (lvl, msg) { log(msg); };
-		this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.callback('onConnect'));
-		
-		this.connection.rawInput = function (data) {
-				log('RECV: ' + data);
-			};
-		
-			this.connection.rawOutput = function (data) {
-				log('SENT: ' + data);
-			};
-		
-		// send disco#info to jabber.org
-		var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-		
-		this.connection.send(iq);
-		
-		this.roster = new Jabber.Roster();
+		// var BOSH_SERVICE = '/http-bind';
+		// this.connection = new Strophe.Connection(BOSH_SERVICE);
+		// 
+		// // Strophe.log = function (lvl, msg) { log(msg); };
+		// this.connection.attach(Attacher.JID, Attacher.SID, Attacher.RID, this.callback('onConnect'));
+		// 
+		// this.connection.rawInput = function (data) {
+		// 		log('RECV: ' + data);
+		// 	};
+		// 
+		// 	this.connection.rawOutput = function (data) {
+		// 		log('SENT: ' + data);
+		// 	};
+		// 
+		// // send disco#info to jabber.org
+		// var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
+		// 
+		// this.connection.send(iq);
+		// 
+		// this.roster = new Jabber.Roster();
 		
 		// this.bind('connected', this.onConnect);
 		this.chatViews = new Array();

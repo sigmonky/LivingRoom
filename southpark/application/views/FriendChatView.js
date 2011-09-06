@@ -42,8 +42,8 @@ var FriendChatView = Backbone.View.extend({
     }, 
 
 	sendMessage: function () {
-		console.log('send message');
-		var remoteJid = this.model.uid+'@logoslogic.com';
+		console.log('send message this model = ' +this.model.jid);
+		var remoteJid = this.model.jid+'@logoslogic.com';
 		console.log('send message to remoteJid' +remoteJid);
 		var message = $(this.el).find('.chat_input').val();
 		console.log('send message ' +message);
