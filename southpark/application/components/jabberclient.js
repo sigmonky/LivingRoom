@@ -207,7 +207,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		// console.log('onConnect join Room'+this.joinRoom() );
 		this.joinRoom();
 		this.setVcard();
-	
+		this.subscribeFriends();
+		this.getFriends();
 	
 		console.log('subscribeFriends');
 		var that = this;
