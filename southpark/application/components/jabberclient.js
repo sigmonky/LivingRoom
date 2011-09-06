@@ -214,7 +214,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var that = this;
 
 		
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		// this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onPrivateMessage'), null, 'message', 'chat');
 		this.connection.addHandler(this.callback('onGroupMessage'), null, 'message', 'groupchat');
 		return true;
@@ -318,6 +318,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	// },
 	
 	onRoster: function(roster){
+		console.log('onRoster ')
+		
 		 this.connection.send($pres());
 		// this.trigger('ui:ready');
 		// this.view.setStatus(Jabber.viewstates.online);
