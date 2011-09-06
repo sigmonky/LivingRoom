@@ -5,12 +5,10 @@ var FriendChatView = Backbone.View.extend({
 	template: $('#chat_window'),
 
 	initialize: function (options) {
-        // 
+        _.bindAll(this, "render", 'sendMessage', 'addMessage');
         //this.jid = options.jid;
         $('input#message_field').focusin(function () {});
-        _.bindAll(this, "render", 'sendMessage', 'addMessage');
         this.collection.bind("add", this.render);
-        _.bindAll(this, 'render');
     }, 
 
 	render: function() {
@@ -50,6 +48,13 @@ var FriendChatView = Backbone.View.extend({
 		this.trigger('send:message', message, remoteJid);
 
     }, 
+
+	addMessage: function(chatEntryModel){
+        var chatMsg = new ChatMessageView({ model: chatEntry });
+		this.collection.add(chatMsg);
+		//         $('#chat_list').append(view.render().el);
+		//         $('#chat_list')[0].scrollTop = $('#chat_list')[0].scrollHeight;
+	}
 
 	
 });
