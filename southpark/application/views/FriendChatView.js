@@ -56,19 +56,19 @@ var FriendChatView = Backbone.View.extend({
 		 	dt: new Date()
 		 });
 		
-		this.addMessage(msg);
+		this.collection.add(msg);
 
     }, 
 
 	addMessage: function(chatEntryModel){
 		
-		var chatEntry = {};
-		chatEntry.text = chatEntryModel.get('text');
-		chatEntry.nickname = MyFacebookUser.name;
-		chatEntry.facebook_id = MyFacebookUser.id;
-		
-        var chatMsg = new ChatMessageView({ model: chatEntry });
-		this.collection.add(chatMsg);
+		// var chatEntry = {};
+		// chatEntry.text = chatEntryModel.get('text');
+		// chatEntry.nickname = MyFacebookUser.name;
+		// chatEntry.facebook_id = MyFacebookUser.id;
+		// 
+		//         var chatMsg = new ChatMessageView({ model: chatEntry });
+		// this.collection.add(chatMsg);
 		//         $('#chat_list').append(view.render().el);
 		//         $('#chat_list')[0].scrollTop = $('#chat_list')[0].scrollHeight;
 	}
