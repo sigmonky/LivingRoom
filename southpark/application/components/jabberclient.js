@@ -209,35 +209,35 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.setVcard();
 	
 	
-		console.log('subscribeFriends');
-		_.each(FriendsWhoInstalledApp.data, function(friend){
-			var data = {};
-			data.jid = friend.uid+'@logoslogic.com';
-			data.name = friend.name;
-			
-						console.log('subscribeFriends add data.name '+data.name );
-						console.log('subscribeFriends add data.jid '+data.jid);
-						var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
-
-					//	this.connection.send(iq);
-						console.log('test ');
-						
-			// var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
-			// 		    this.connection.send(iq);
-		    // // 
-		    // var subscribe = $pres({to: data.jid, "type": "subscribe"});
-		    // this.connection.send(subscribe);
-		})
+		// console.log('subscribeFriends');
+		// // _.each(FriendsWhoInstalledApp.data, function(friend){
+		// // 	var data = {};
+		// // 	data.jid = friend.uid+'@logoslogic.com';
+		// // 	data.name = friend.name;
+		// // 	
+		// // 				console.log('subscribeFriends add data.name '+data.name );
+		// // 				console.log('subscribeFriends add data.jid '+data.jid);
+		// // 				var iq = $iq({to: 'jabber.org',	type: 'get',id: 'disco-1'}).c('query', {xmlns: Strophe.NS.DISCO_INFO}).tree()
+		// // 
+		// // 				this.connection.send(iq);
+		// // 				console.log('test ');
+		// // 				
+		// // 	// var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
+		// // 	// 		    this.connection.send(iq);
+		// //     // // 
+		// //     // var subscribe = $pres({to: data.jid, "type": "subscribe"});
+		// //     // this.connection.send(subscribe);
+		// // })
 	
 	
 		// 	
 		// 	
-		// console.log('getFriends');
-		// var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-		// this.connection.send(roster_iq, this.callback('onRoster'));
-		// //this.trigger('ui:roster');
-		// // add handlers
-		// this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		console.log('getFriends');
+		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
+		this.connection.send(roster_iq, this.callback('onRoster'));
+		//this.trigger('ui:roster');
+		// add handlers
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		
 		
 		
