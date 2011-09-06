@@ -6,14 +6,13 @@ var FriendChatView = Backbone.View.extend({
 
 	initialize: function (options) {
         _.bindAll(this, "render", 'sendMessage', 'addMessage');
-        //this.jid = options.jid;
-        $('input#message_field').focusin(function () {});
         this.collection.bind("add", this.render);
     }, 
 
 	render: function() {
 		var template = Handlebars.compile(this.template.html());
 		$(this.el).html(template(this.model));
+		
 		var messageList = $(this.el).find('.chat_messages');
 		//console.log('message list'+$(this.el).find('.chat_messages'));
         messageList.empty();
@@ -37,16 +36,21 @@ var FriendChatView = Backbone.View.extend({
 		
 		var messagesContainer = $(this.el).find('.chat_body');
 		$(messagesContainer)[0].scrollTop = $(messagesContainer)[0].scrollHeight;
+		
+		
+        return this;
     }, 
 
 	sendMessage: function () {
-		console.log('send message');
+	//	console.log('send message');
 		var remoteJid = $(this.el).find('.message_field').attr('id').split('_')[1];
-		console.log('send message to remoteJid = ' +remoteJid);
-		var message = $(this.el).find('.chat_input').val();
-		console.log('send message ' +message);
-		this.trigger('send:message', message, remoteJid);
-
+	//	console.log('send message to remoteJid' +remoteJid);
+		var message = $(this.el).find('.muc_input').val();
+		if (isLoggedIn == true){
+			JabberClient.send_muc_message(remoteJid, message)
+		}else{
+			location.href= MyFacebookUser.loginUrl
+		}
     }, 
 
 	addMessage: function(chatEntryModel){
