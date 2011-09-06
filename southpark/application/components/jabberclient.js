@@ -227,8 +227,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 			data.jid = friend.uid+'@logoslogic.com';
 			data.name = friend.name;
 			
-			console.log('subscribeFriends add data.name '+data.name );
-			console.log('subscribeFriends add data.jid '+data.jid);
+			// console.log('subscribeFriends add data.name '+data.name );
+			// console.log('subscribeFriends add data.jid '+data.jid);
 
 			var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
 			that.connection.send(iq);
