@@ -366,6 +366,7 @@ if ($facebook_user_profile['id'] != "") {
 			{"uid":"788994656","name":"Flora Gillon","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"679733001","name":"Wagner Az","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"556531140","name":"Julio Cezar Cruz","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			{"uid":"isaacueca3","name":"Isaac 3","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			
 		]
 	}
@@ -389,7 +390,7 @@ if ($facebook_user_profile['id'] != "") {
 		isLoggedIn = true;
 	}
 	
-//	isLoggedIn = true;
+	isLoggedIn = true;
 	
 	
 	</script>

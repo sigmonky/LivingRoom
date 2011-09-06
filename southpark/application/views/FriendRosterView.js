@@ -46,7 +46,7 @@ var FriendRosterView = Backbone.View.extend({
 		e.preventDefault();
 	 	e.stopPropagation();
 		var tabAlreadyExists = false;
-		
+		//console.log('this '+this.model.get('id'))
 		var id = $(this.el).find('.start-chat').attr('id').split('-')[2];
 	//	console.log('startChat id ' +id);
 		$('#friend-chat-message-panel').hide();
@@ -65,7 +65,7 @@ var FriendRosterView = Backbone.View.extend({
 			}
 		}
 		
-		if (tabAlreadyExists != true){
+		if (!tabAlreadyExists){
 			this.addedTabs.push(id);
 			var friend = {};
 			friend.jid = id;
@@ -73,7 +73,7 @@ var FriendRosterView = Backbone.View.extend({
 			/* Add New Chat View */
 			var friendView = new FriendChatView({model: friend});
 			
-			$('#chat-area').tabs('add', '#chat-' + id, id);
+			$('#chat-area').tabs('add', '#chat-' + id, this.model.name);
 			$('.ui-widget-header').css('border-bottom','1px solid #6a6a6a' )
 			var chat_area = $('#chat-' + id);
 			$(friendView.render().el).appendTo(chat_area);	

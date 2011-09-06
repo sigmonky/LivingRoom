@@ -105,7 +105,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	},
 	
 	addView: function(jid){
-		this.chatViews[jid].bind('send:message', this.callback('sendMessage'));
+	//	this.chatViews[jid].bind('send:message', this.callback('sendMessage'));
 		
 	},
 	
@@ -119,8 +119,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		this.joinRoom();
 		this.setVcard();
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+		this.connection.addHandler(this.callback('onPrivateMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onGroupMessage'), null, 'message', 'groupchat');
 		return true;
 	},
 	
@@ -256,13 +256,13 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 
 	},
 
-//	Handler for incoming messages
-	onMessage: function(message){
+	//	Handler for incoming messages
+	onGroupMessage: function(message){
 		
 		//console.log('onMessage ')
 		
 		/* Nickname is Equal to FB Photo ID */
-		 var photo = $(message).find('nick').text();
+		var photo = $(message).find('nick').text();
 		console.log('onMessage photo' +photo);
 		
 		var from = $(message).attr('from');
@@ -273,7 +273,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var facebook_id  = full_nickname.split('-')[1];
 		
 		user_nick=user_nick.replace(/_/g," ");
-		
 		
 		console.log('onMessage photo from' +from);
 		console.log('onMessage photo full_nickname' +full_nickname);
@@ -300,6 +299,47 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		 return true;
 	},
+	
+	
+	//	Handler for incoming messages
+	onPrivateMessage: function(message){
+		
+		//console.log('onMessage ')
+		
+		/* Nickname is Equal to FB Photo ID */
+
+		var from = $(message).attr('from');
+		
+		var facebook_id  = from.substring(0, from.indexOf('@'));
+		
+		console.log('onMessage photo from' +from);
+		console.log('onMessage photo facebook_id' +facebook_id);
+		
+		var messageSrc = $(message).find('body').text();
+		var formattedMsg = emoticons(messageSrc);
+		
+		 var msg = new models.ChatEntry({
+		 	text: formattedMsg,
+		 	from: 'fromuser',
+		 	to: $(message).attr('to'),
+			facebook_id: facebook_id, 
+		 	incoming: true,
+		 	dt: new Date()
+		 });
+		
+		//console.log('onmessage from = '+$(message).attr('from'));
+		///console.log('onmessage to = '+$(message).attr('to'));
+		
+		 this.chatViews[facebook_id].collection.add(msg);
+		
+		 return true;
+	},
+	
+	
+	
+	
+	
+	
 //	Only trigger view event
 	onMessageAdd: function(message){
 		this.view.trigger('add:message', message);
