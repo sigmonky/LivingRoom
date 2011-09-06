@@ -206,8 +206,38 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		// console.log('onConnect join Room'+this.joinRoom() );
 		this.joinRoom();
 		this.setVcard();
-		this.subscribeFriends();
-		this.getFriends();
+	
+	
+		console.log('subscribeFriends');
+		_.each(FriendsWhoInstalledApp.data, function(friend){
+			var data = {};
+			data.jid = friend.uid+'@logoslogic.com';
+			data.name = friend.name;
+			
+						console.log('subscribeFriends add data.name '+data.name );
+						console.log('subscribeFriends add data.jid '+data.jid);
+						
+			var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
+		    // this.connection.sendIQ(iq);
+		    // 
+		    var subscribe = $pres({to: data.jid, "type": "subscribe"});
+		    this.connection.send(subscribe);
+		})
+	
+	
+	
+	
+		console.log('getFriends');
+		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
+		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
+		//this.trigger('ui:roster');
+		// add handlers
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		
+		
+		
+		
+		
 		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
 		this.connection.addHandler(this.callback('onPrivateMessage'), null, 'message', 'chat');
 		this.connection.addHandler(this.callback('onGroupMessage'), null, 'message', 'groupchat');
@@ -217,9 +247,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	subscribeFriends: function(){
 			console.log('subscribeFriends');
 			_.each(FriendsWhoInstalledApp.data, function(friend){
-				
-	
-				
 				var data = {};
 				data.jid = friend.uid+'@logoslogic.com';
 				data.name = friend.name;
