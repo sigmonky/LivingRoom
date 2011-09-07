@@ -197,12 +197,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	addView: function(jid){
 		this.chatViews[jid].bind('send:message', this.callback('sendMessage'));
 	},
-	
-	onMessage: function(msg){
-	//	console.log('onmessage');
-	},
-	
-	
+
+
 	onConnect: function(){
 		// console.log('onConnect join Room'+this.joinRoom() );
 		this.joinRoom();
@@ -281,42 +277,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		vCardEl.appendChild(text);
 
 		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl, facebook_user_id+'@logoslogic.com');
-	   // set: function(handler_cb, vCardEl, jid) {
 
+	},
 
-		// var iq = App.util.Strophe.buildIq("set", App.util.Strophe.connection.jid, App.util.Strophe.username, vCardEl);
-		//         App.util.Strophe.connection.sendIQ(iq.tree(), App.util.Strophe.setVcardCallBack, null);
-		// 
-		// 	    console.log('setVcard 2');
-	},
-	
-	roomPresenceHandler : function(obj){
-		console.log('room presence handler '+obj)
-	},
-	
-	roomMessageHandler : function(obj){
-		console.log('room roomMessageHandler '+obj)
-	},
-	
-	send_muc_message: function (room, body) {
-		this.connection.muc.message(room, 'nickxx', body);
-	},
-	
-	// 
-	// onConnect: function(){
-	// 	console.log('onConnect ')
-	// 	
-	// 	// request roster
-	// 	var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-	// 	this.connection.sendIQ(roster_iq, this.callback('onRoster'));
-	// 	this.trigger('ui:roster');
-	// 	// add handlers
-	// 	this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-	// 	this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-	// 	this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
-	// 	
-	// },
-	
 	onRoster: function(roster){
 		console.log('onRoster ')
 		
@@ -352,21 +315,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 
 		return true;
 	},
-//	Public method, use it directly if you set `{autoChat: false}`
-	sendWelcome: function(){
-    	// if (!this._welcomeSent) {
-    	// 	var userinfo = this.getUserinfo();
-    	// 	this.roster.freezeManager();
-    	// 	this._welcomeSent = true;
-    	// 	this.sendMessage({
-    	// 		text: userinfo,
-    	// 		from: this.options.jid,
-    	// 		to: this.roster.manager.get('jid'),
-    	// 		hidden: true,
-    	// 		dt: new Date()
-    	// 	});
-    	// }
-	},
+
 //	`sendMessage` used for send all messages 
 	sendMessage: function(message, to, type){
 

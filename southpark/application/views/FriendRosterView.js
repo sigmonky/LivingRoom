@@ -74,9 +74,7 @@ var FriendRosterView = Backbone.View.extend({
 		    var chatCollection = new models.ChatCollection();
 			var friendView = new FriendChatView({collection: chatCollection, model: friend});
 			
-			
 			$('#chat-area').tabs('add', '#chat-' + id, this.model.name);
-			
 			
 			$('.ui-widget-header').css('border-bottom','1px solid #6a6a6a' )
 			var chat_area = $('#chat-' + id);
