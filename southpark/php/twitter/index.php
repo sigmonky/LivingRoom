@@ -9,29 +9,29 @@ include '../../config.php';
 
 $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $oauth_token = $_GET['oauth_token'];
-echo 'base_url'.BASE_URL;
-	// if($oauth_token == '')
-	//   	  { 
-	//   	$url = $twitterObj->getAuthorizationUrl();
-	// 	echo 'Authenticating to Twitter...';
-	// 	echo "<script text=\"text/javascript\">window.location = '$url'; </script>";
-	//      } 
-	// else
-	// {
-	// 	$twitterObj->setToken($_GET['oauth_token']);
-	// 	$token = $twitterObj->getAccessToken();
-	// 	$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
-	// 	$_SESSION['oauth_token'] = $token->oauth_token;
-	// 	$_SESSION['oauth_token_secret'] = $token->oauth_token_secret;
-	// 	// echo $_SESSION['ot'];
-	// 	// echo $_SESSION['ots'];
-	// 	// echo 'connected';
-	// 	// echo '$token->oauth_token'.$token->oauth_token;
-	// 	// echo '<br>';
-	// 	// print_r($token);
-	// 	header("Location:".BASE_URL."/index.php#buzz");
-	// 	// echo "<pre>200 OK</pre>";
-	//      } 
+
+	if($oauth_token == '')
+	  	  { 
+	  	$url = $twitterObj->getAuthorizationUrl();
+		echo 'Authenticating to Twitter...';
+		echo "<script text=\"text/javascript\">window.location = '$url'; </script>";
+	     } 
+	else
+	{
+		$twitterObj->setToken($_GET['oauth_token']);
+		$token = $twitterObj->getAccessToken();
+		$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
+		$_SESSION['oauth_token'] = $token->oauth_token;
+		$_SESSION['oauth_token_secret'] = $token->oauth_token_secret;
+		// echo $_SESSION['ot'];
+		// echo $_SESSION['ots'];
+		// echo 'connected';
+		// echo '$token->oauth_token'.$token->oauth_token;
+		// echo '<br>';
+		// print_r($token);
+		header("Location:".BASE_URL."../../index.php#buzz");
+		// echo "<pre>200 OK</pre>";
+	     } 
 
 
 ?> 
