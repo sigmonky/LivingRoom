@@ -21,14 +21,14 @@ var BuzzTweetInputView = Backbone.View.extend({
 		var dataString = 'tweet='+ message;  
 		$.ajax({
 		  type: 'POST',
-		   url: Application.baseUrl+'/twitter/post.php',
+		   url: Application.baseUrl+'twitter/post.php',
 		  // url: 'http://localhost/LivingRoom/southpark/twitter/post.php',
 		  data: dataString,
 		  success: function(data){
 			console.log('sendTweetMessage data '+data.status);
 			if (data.status == 'not_connected'){
 				// window.location = 'http://localhost/LivingRoom/southpark/twitter/index.php';
-				 window.location = Application.baseUrl+'/twitter/index.php';
+				 window.location = Application.baseUrl+'twitter/index.php';
 			}
 		  },
 		});
