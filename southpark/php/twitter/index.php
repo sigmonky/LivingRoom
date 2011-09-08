@@ -5,8 +5,7 @@ session_start();
 include 'lib/EpiCurl.php';
 include 'lib/EpiOAuth.php';
 include 'lib/EpiTwitter.php';
-include 'lib/secret.php';
-include '../../config.php'
+include '../../config.php';
 
 $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $oauth_token = $_GET['oauth_token'];

@@ -4,16 +4,12 @@ function getBaseUrl()
 {
     // output: /myproject/index.php
     $currentPath = $_SERVER['PHP_SELF'];
-
     // output: Array ( [dirname] => /myproject [basename] => index.php [extension] => php [filename] => index )
     $pathInfo = pathinfo($currentPath);
-
     // output: localhost
     $hostName = $_SERVER['HTTP_HOST'];
-
     // output: http://
     $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
-
     // return: http://localhost/myproject/
     return $protocol.$hostName.$pathInfo['dirname']."/";
 }
@@ -34,5 +30,9 @@ define('CBK_FREQ',1); // fire a callback event every second
 $fbconfig['appid' ]     = "103751443062683";
 $fbconfig['secret']     = "9bcab286a9813b84f1bc5043c22c9b13";
 $fbconfig['baseurl']    = BASE_URL."/index.php";
+
+//Twitter Application
+$consumer_key = 'oKUhWQf1CK1VRaaCgRSw';
+$consumer_secret = 'KDdgkDU6U4c7ttVdlrJ10E8k5cdTsmIkkl5RHt640';
 
 ?>
