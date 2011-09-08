@@ -6,9 +6,11 @@ include 'lib/EpiCurl.php';
 include 'lib/EpiOAuth.php';
 include 'lib/EpiTwitter.php';
 include 'lib/secret.php';
+include '../../config.php'
 
 $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $oauth_token = $_GET['oauth_token'];
+
 	if($oauth_token == '')
   	  { 
 	  	$url = $twitterObj->getAuthorizationUrl();
@@ -28,7 +30,7 @@ $oauth_token = $_GET['oauth_token'];
 		// echo '$token->oauth_token'.$token->oauth_token;
 		// echo '<br>';
 		// print_r($token);
-		header('Location:http://www.logoslogic.com/chat/LivingRoom/southpark/index.php#buzz');
+		header("Location:".BASE_URL."/index.php#buzz");
 		// echo "<pre>200 OK</pre>";
      } 
 

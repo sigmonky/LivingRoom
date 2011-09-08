@@ -188,7 +188,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.roster = new Jabber.Roster();
 		
-		// this.bind('connected', this.onConnect);
+		this.bind('connected', this.onConnect);
 		this.chatViews = new Array();
 
 
@@ -220,7 +220,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var that = this;
 		_.each(FriendsWhoInstalledApp.data, function(friend){
 			var data = {};
-			data.jid = friend.uid+'@logoslogic.com';
+			data.jid = friend.uid+'@'+Application.domain;
 			data.name = friend.name;
 			
 			// console.log('subscribeFriends add data.name '+data.name );
@@ -276,7 +276,7 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var text = document.createTextNode(facebook_user_id);
 		vCardEl.appendChild(text);
 
-		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl, facebook_user_id+'@logoslogic.com');
+		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl, facebook_user_id+'@'+Application.domain);
 
 	},
 
@@ -297,8 +297,8 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	onContactPresence: function(presence){
 		console.log('onContactPresence from '+$(presence).attr('from'));
-		var from = Strophe.getBareJidFromJid($(presence).attr('from')),
-			contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
+		var from = Strophe.getBareJidFromJid($(presence).attr('from'));
+		var contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
 		if (contact) {
 			contact.updatePrecense(presence);
 		}

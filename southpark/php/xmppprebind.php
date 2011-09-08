@@ -9,12 +9,13 @@
 /**
  * FirePHP for debugging
  */
-include 'firephp/fb.php';
+include_once dirname(__FILE__)."/firephp/fb.php";
 
 /**
  * PEAR Auth_SASL
  */
-require 'auth/sasl.php';
+include_once dirname(__FILE__)."/auth/sasl.php";
+
 
 /**
  * XMPP Library for connecting to jabber server & receiving sid and rid
@@ -378,7 +379,7 @@ class XmppPrebind {
 	 */
 	
 	private function buildAnonymous(Auth_SASL_Common $auth) {
-		$this->debug($buildAnonymous, 'buildAnonymous');
+		//$this->debug($buildAnonymous, 'buildAnonymous');
 
 		$domDocument = $this->buildBody();
 		$body = self::getBodyFromDomDocument($domDocument);

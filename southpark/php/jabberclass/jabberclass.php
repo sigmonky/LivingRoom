@@ -1,12 +1,11 @@
 <?php
 
+/******************************************************************************************************/
 
-// set your Jabber server hostname, username, and password here
-define('JABBER_SERVER','logoslogic.com');
-define('JABBER_USERNAME','isaacueca');
-define('JABBER_PASSWORD','cigano');
-define('RUN_TIME',5); // set a maximum run time of 5 seconds
-define('CBK_FREQ',1); // fire a callback event every second
+// Including original "Jabber Client Library" - class
+require_once(dirname(__FILE__).'/jabber.php');
+
+/******************************************************************************************************/
 
 // This class handles events fired by the first call of CommandJabber client class (to create a user);
 
@@ -74,12 +73,7 @@ class AddVcard
 
 } // End of AddVcard class
 
-/******************************************************************************************************/
 
-// Including original "Jabber Client Library" - class
-require_once(dirname(__FILE__).'/jabber.php');
-
-/******************************************************************************************************/
 
 // This is extension to basic Jabber class
 
