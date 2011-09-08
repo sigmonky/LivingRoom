@@ -9,7 +9,7 @@ include '../../config.php';
 
 $twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
 $oauth_token = $_GET['oauth_token'];
-echo 'base_url'=BASE_URL;
+echo 'base_url'.BASE_URL;
 	// if($oauth_token == '')
 	//   	  { 
 	//   	$url = $twitterObj->getAuthorizationUrl();
