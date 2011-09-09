@@ -214,9 +214,9 @@ $AddUserErrorCode = 12000;
 
 
 
-$UserLogin=$_POST['username']; 
+// $UserLogin=$_POST['username']; 
 
-
+$UserLogin = 'test';
 
 
 

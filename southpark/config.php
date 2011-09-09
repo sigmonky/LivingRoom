@@ -19,10 +19,17 @@ $base_url = getBaseUrl();
 define("BASE_URL", $base_url);
 
 //Jabber Server
-define('BOSH_URL','http://www.logoslogic.com/http-bind');
-define('JABBER_SERVER','logoslogic.com');
-define('JABBER_USERNAME','isaacueca');
-define('JABBER_PASSWORD','cigano');
+// define('BOSH_URL','http://www.logoslogic.com/http-bind');
+// define('JABBER_SERVER','logoslogic.com');
+// define('JABBER_USERNAME','isaacueca');
+// define('JABBER_PASSWORD','cigano');
+
+define('BOSH_URL','http://www.mtvnmob.com/http-bind');
+define('JABBER_SERVER','mtvnmob.com');
+
+define('JABBER_USERNAME','mobadmin');
+define('JABBER_PASSWORD','ziltoid');
+
 define('RUN_TIME',5); // set a maximum run time of 5 seconds
 define('CBK_FREQ',1); // fire a callback event every second
 
