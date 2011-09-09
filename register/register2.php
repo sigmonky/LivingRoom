@@ -2,13 +2,13 @@
 
 // set your Jabber server hostname, username, and password here
 
-// define('JABBER_SERVER','logoslogic.com');
-// define('JABBER_USERNAME','isaacueca');
-// define('JABBER_PASSWORD','cigano');
+define('JABBER_SERVER','logoslogic.com');
+define('JABBER_USERNAME','isaacueca');
+define('JABBER_PASSWORD','cigano');
 
-define('JABBER_SERVER','mtvnmob.com');
-define('JABBER_USERNAME','mobadmin');
-define('JABBER_PASSWORD','ziltoid');
+// define('JABBER_SERVER','mtvnmob.com');
+// define('JABBER_USERNAME','mobadmin');
+// define('JABBER_PASSWORD','ziltoid');
 
 
 
@@ -237,12 +237,6 @@ $pass = md5($token);
 
 $UserPass=$pass;
 
-
-//*Other Facebook User Information with POST request */
-
-//$FirstName='Philip'; 
-//$LastName='J.'; 
-//$Patronymic='Ivanovich :)';
 
 $jab = new CommandJabber($display_debug_info);
 $addmsg = new AddMessenger($jab,$UserLogin,$UserPass);
