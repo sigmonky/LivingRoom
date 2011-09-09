@@ -1,9 +1,16 @@
 <?php
 
 // set your Jabber server hostname, username, and password here
-define('JABBER_SERVER','logoslogic.com');
-define('JABBER_USERNAME','isaacueca');
-define('JABBER_PASSWORD','cigano');
+
+// define('JABBER_SERVER','logoslogic.com');
+// define('JABBER_USERNAME','isaacueca');
+// define('JABBER_PASSWORD','cigano');
+
+define('JABBER_SERVER','mtvnmob.com');
+define('JABBER_USERNAME','mobadmin');
+define('JABBER_PASSWORD','ziltoid');
+
+
 
 define('RUN_TIME',5); // set a maximum run time of 5 seconds
 define('CBK_FREQ',1); // fire a callback event every second
