@@ -1,5 +1,8 @@
 <?php
 
+require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
+require_once(dirname(__FILE__)."/xmppprebind.php");
+
 /**
  * Start XMPP User Obj based on Facebook User ID
  * Creates XMPP user
@@ -29,13 +32,13 @@ class User {
         $this->curl = curl_init();
 		$this->firePhp = FirePHP::getInstance(true);
 		$this->firePhp->setEnabled(true);
-		$this->debug($token, '__construct');
+		//$this->debug($token, '__construct');
 		if ($facebook_id != NULL){
 			$this->debug($facebook_id, '__construct nao eh nulo');
 			$this->facebook_id = $facebook_id;
 			$this->generateUserPassword();
 		}else{
-			$this->debug($token, '__construct eh nulo -');
+			//$this->debug($token, '__construct eh nulo -');
 			$isAnonymous = true;
 			$this->generateSessionAttachment($isAnonymous);
 		}
@@ -46,27 +49,7 @@ class User {
      * Get FB User ID
      */
     public function getFBUser() {    
-		// $fields = array(
-		// 	'access_token'=>urlencode($this->facebook_token),
-		// );
-		// 
-		// $url = "https://graph.facebook.com/me?access_token=".$this->facebook_token;
-		// 
-		// curl_setopt($this->curl,CURLOPT_URL, $url);
-		// curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10);
-		// curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
-		// foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-		// 	rtrim($fields_string,'&');
-		// 	//open connection 
-		//         	$response = curl_exec($this->curl);
-		// if ($response){
-		//         	$result_obj = json_decode($response);
-		// 	$facebook_id = $result_obj->id;
-		// 	$facebook_name = $result_obj->name;
-		// 	$this->facebook_id = $facebook_id;
-		// 	$this->facebook_name = $facebook_name;
-		// 	$this->generateUserPassword();
-		// }
+
 		$this->shutdown();
     }
 
@@ -131,32 +114,10 @@ class User {
 		$jab->disconnect();
 
 		unset($jab,$addmsg);
-		
-		/* Set a property of VCard in order to verify user is authenticated. SET NICKNAME as equal to FULL NAME
-		Only authenticated users should have the right to setup VCARD property*/
-		
-		// // If AddUserErrorCode is 0, we can try to fill user's Vcard, using brand new credentials :)
-		// 
-		// $AddVcardErrorCode = 14000;
-		// $jab = new CommandJabber($display_debug_info);
-		// $avcard = new AddVcard($jab,$UserLogin,$UserPass,$nickname,$fullname);
-		// 
-		// $jab->set_handler("connected",$avcard,"handleConnected");
-		// $jab->set_handler("authenticated",$avcard,"handleAuthenticated");
-		// 
-		// if ($jab->connect(JABBER_SERVER))
-		// {
-		// $AddVcardErrorCode=14001;
-		// $jab->execute(CBK_FREQ,RUN_TIME);
-		// }
-		// 
-		// $jab->disconnect();
-		// 
-		// unset($jab,$avcard);
 	}
 	
 	public function generateSessionAttachment($isAnonymous = false){
-		$xmppPrebind = new XmppPrebind('logoslogic.com', 'http://www.logoslogic.com/http-bind/', '', false, true);
+		$xmppPrebind = new XmppPrebind(JABBER_SERVER, BOSH_URL, '', false, true);
 		if ($isAnonymous != true){
 			$xmppPrebind->connect($this->facebook_id, $this->password);
 		}else{
@@ -165,42 +126,9 @@ class User {
 		$xmppPrebind->auth();
 		$sessionInfo = $xmppPrebind->getSessionInfo(); // array containing sid, rid and jid
 		$this->sessionInfo = $sessionInfo;
-		$this->getAvailableRoomJidFromRoomProxyService();
+		// $this->getAvailableRoomJidFromRoomProxyService();
 	}
 
-	public function getAvailableRoomJidFromRoomProxyService(){
-		
-		/* Fetch Available Room from Ejabberd */
-		/*extended disco info has muc#roominfo_occupants 
-		http://xmpp.org/extensions/xep-0045.html#example-8*/
-		
-		$ch = curl_init();
-		$url = "http://www.logoslogic.com/chat/LivingRoom/southpark/service/room_proxy.json";
-		curl_setopt($ch,CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			//open connection 
-		$response = curl_exec($ch);
-		
-		if ($response){
-		    $result_obj = json_decode($response);
-			$roomJid = $result_obj[0]->jid;
-			$this->roomJid = $roomJid;
-		}else{
-			/* A problem Happenned. Using Backup room */
-			$this->roomJid = 'backup_room_JID';
-			/* Admin Notification Email */
-			$to = "isaac.dasilva@mtvncontractor.com";
-			$subject = "Room Proxy Problem";
-			$message = "There was a problem with the room Proxy at ".date("Y-m-d H:i:s");
-			$from = "southpark@southpark.com";
-			$headers = "From:" . $from;
-			mail($to,$subject,$message,$headers);
-		}
-		
-		curl_close($ch);
-		
-	}
 
 }
 

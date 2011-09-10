@@ -15,7 +15,6 @@ TweetEntry = Backbone.Model.extend({
 //   model: TweetEntry,
 //   value: null,
 //   // url: function(){ return "http://tweetriver.com/camilarc/south-park-test.json?callback=?"}
-//   // url: function(){ return "http://www.logoslogic.com/chat/LivingRoom/southpark/service/south-park-test.json"}
 //   // url: function(){ return "http://localhost/LivingRoom/southpark/service/south-park-test.json"}
 //   url: function(){ return "service/tweet-river-redirect.php"}
 // 

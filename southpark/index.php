@@ -1,9 +1,8 @@
 <?php
 
-include_once "fbmain.php";
-include_once "user.php";
-require_once(dirname(__FILE__)."/jabberclass/jabberclass.php");
-require_once(dirname(__FILE__)."/xmppprebind.php");
+include_once "config.php";
+include_once "php/fbmain.php";
+include_once "php/user-class.php";
 
 /* Creates Session Attachment based on Anonymous or FB authenticated user */
 
@@ -34,22 +33,23 @@ if ($facebook_user_profile['id'] != "") {
 		
 		<link href="styles/global.css" rel="stylesheet" type="text/css" />
 		<link type="text/css" href="styles/jquery.jscrollpane.css" rel="stylesheet" media="all" /> 
-		 <link rel="stylesheet" href="styles/jquery-ui.css">
+		<link rel="stylesheet" href="styles/jquery-ui.css">
 	
 		<!-- <link type="text/css" href="styles/ui-lightness/jquery-ui-1.7.2.custom.css" rel="stylesheet" />
 		<link type="text/css" href="styles/sh/sh_style.css" rel="stylesheet" /> -->
 	
 		<!-- XMPP Bootstrap from XMPP Session Attachment and Facebook !-->
 		
-		<script>
-		Jabber = {};
-		</script>
+
 		
 		
 		<!-- Mustache.js / Handlebars.js templates  -->
 		
 		<script id="chat_window" type="text/x-handlebars-template">
 			<div id="chat_body_{{ jid }}" class="friend_chat_body">
+				<div class="chat_body">
+							<div class="chat_messages"></div>
+				</div>
 			</div>
 			<div class="friend_bottom_panel">
 				<input class="chat_input message_field" id="input_{{ jid }}" type="text" />
@@ -195,13 +195,12 @@ if ($facebook_user_profile['id'] != "") {
 	</head>
 	
 	<body>
-		
 	<!-- Facebook SDK Begin -->
 		
 	<div id="fb-root"></div>
 	<script src="http://connect.facebook.net/en_US/all.js"></script>
 	<script type="text/javascript">
-            FB.init({ appId: '103751443062683', 
+            FB.init({ appId: '<?=$fbconfig['appid' ]?>', 
                     status: true, 
                     cookie: true,
                     xfbml: true,
@@ -210,45 +209,7 @@ if ($facebook_user_profile['id'] != "") {
 	</script>
 	<div style="color:#FFF">
 	<!-- Facebook SDK End -->
-	<?php
-	
-	// session_start();
-	// 
-	// include 'twitter/lib/EpiCurl.php';
-	// include 'twitter/lib/EpiOAuth.php';
-	// include 'twitter/lib/EpiTwitter.php';
-	// include 'twitter/lib/secret.php';
-	// 
-	// /*Twitter Auth */
-	// 
-	// $oauth_token = $_GET['oauth_token'];
-	// 
-	// if ($oauth_token != ''){
-	// 	$twitterObj = new EpiTwitter($consumer_key, $consumer_secret);
-	// 	$twitterObj->setToken($_GET['oauth_token']);
-	// 	$token = $twitterObj->getAccessToken();
-	// 	$twitterObj->setToken($token->oauth_token, $token->oauth_token_secret);	  	
-	// 	$_SESSION['ot'] = $token->oauth_token;
-	// 	$_SESSION['ots'] = $token->oauth_token_secret;
-	// 	
-	// 	// echo 'twitterObj'.$twitterObj;
-	// 	 print_r($token);
-	// 	
-	// 	echo '$token->oauth_token '.$token->oauth_token;
-	// 	echo '$token->oauth_token_secret '.$token->oauth_token_secret;
-	// 	echo '<br>';
-	// 	echo '<br>';
-	// 	echo 'session1 '.$_SESSION['ot'];
-	// 	echo '<br>';
-	// 	
-	// 	echo 'session 2'.$_SESSION['ot'];
-	// 	
-	// 	 // print_r($token->oauth_token_);
-	// 	// echo 'session 2'.$_SESSION['ots'];
-	// }
 
-	?>
-	
 	</div>
 	<div id="body_wrapper">
 		<!-- Main Menu Begin -->
@@ -306,8 +267,6 @@ if ($facebook_user_profile['id'] != "") {
 				</div>
 			</div>
 			<div id="twitter_message_panel" class="bottom_panel">
-				<!-- <input class="tweet_input message_field" id="input_tweet" type="text" />
-				<input type="submit" class="message_send_button" value="Tweet"> -->
 				<div id="tweet_count"></div>
 			</div>
 			<div class="clearfix"></div>
@@ -316,14 +275,6 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Buzz View End -->
 	
 		</div>
-	
-		<!--<section id="roster">
-		</section>
-
-		<section id="chats">
-			<ul></ul>
-		</section> -->
-		
 		
 		<span id="load" style="display: none; ">loading...</span>					
 		
@@ -345,7 +296,16 @@ if ($facebook_user_profile['id'] != "") {
 		<!-- Log Debug Console End -->
 	
 	</div>
+	
 	<script>
+	
+	Jabber = {};
+	
+	Application = {
+		baseUrl: '<?php echo BASE_URL?>',
+		boshUrl: '<?php echo BOSH_URL?>',
+		domain: '<?php echo JABBER_SERVER?>',
+	}
 	
 	var isLoggedIn = false;
 	
@@ -354,25 +314,27 @@ if ($facebook_user_profile['id'] != "") {
 		SID: '<?=$user->sessionInfo['sid']?>',
 		RID: '<?=$user->sessionInfo['rid']?>'
 	};
+	
 	// 
 	// var FriendsWhoInstalledApp = {
 	// 	data: <?php print json_encode($fqlResult); ?>
 	// }
 
+
+	// For Debug 
 	var FriendsWhoInstalledApp = {
 		data: [
-			{"uid":"527305423","name":"Isaac Da Silva","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"618523003","name":"Raphael Cordero","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"788994656","name":"Flora Gillon","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"679733001","name":"Wagner Az","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			{"uid":"556531140","name":"Julio Cezar Cruz","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
+			{"uid":"isaacueca3","name":"Isaac PTS","pic_square":"http:\/\/profile.ak.fbcdn.net\/hprofile-ak-snc4\/27460_527305423_9254_q.jpg"},
 			
 		]
 	}
 
 	// var RoomJid = '<?=$user->roomJid?>@conference.logoslogic.com';
-	var RoomJid = 'southpark100@conference.logoslogic.com';
-	
+	var RoomJid = 'southpark101@conference.logoslogic.com';
 	
 	var MyFacebookUser = {
 		id: '<?=$facebook_user_profile['id']?>',
@@ -380,24 +342,17 @@ if ($facebook_user_profile['id'] != "") {
 		loginUrl: '<?=$loginUrl?>',
 	}
 	
-	 // var MyFacebookUser = {
-	 // 	id: '100001502348575',
-	 // 	name: 'Isaac s',
-	 // }
-	
 	if (MyFacebookUser.id != ''){
 		isLoggedIn = true;
 	}
 	
-//	isLoggedIn = true;
-	
+	// isLoggedIn = true;
 	
 	</script>
 	
 
 	<!-- LAB.js Asynchronous Script Loading -->
 	<!-- http://addyosmani.com/blog/building-spas-jquerys-best-friends/ -->
-	
 	
 	<!-- JQuery core and plugins !-->
 	
@@ -440,8 +395,6 @@ if ($facebook_user_profile['id'] != "") {
 	<script src="application/libs/underscore.js"></script> 
 	<script src="application/libs/backbone-min.js"></script>
 	
-
-	
 	<!-- Backbone Models !-->
 	
 	<script>
@@ -455,19 +408,10 @@ if ($facebook_user_profile['id'] != "") {
     } else {
         models = this.models = {};
     }
-    // 
-    // models.ChatRoomModel = Backbone.Model.extend({
-    //     initialize: function() {
-    //         this.chats = new models.ChatCollection();
-    //         this.users = new models.RoomRosterCollection();
-    //     }
-    // });
 
 	</script>
 
-	
 	<!-- Startup Script !-->
-	
 	
 	<script src="application/models/ChatEntry.js" type="text/javascript"></script>
 	<script src="application/models/Room.js" type="text/javascript"></script>
@@ -494,25 +438,6 @@ if ($facebook_user_profile['id'] != "") {
 
 	
 	<script src="application/components/jabberclient.js" type="text/javascript"></script>
-	
-	<script>
-	
-	// var StropheConfig = {
-	// 
-	// // Settings
-	// 	boshUrl: 'http://www.logoslogic.com/http-bind',
-	// 
-	// // Implemented event handlers
-	// 	subscriptionRequested: JabberClient.subscription_requested,
-	// 	chatReceived: JabberClient.on_chat_message,
-	// 	rosterChanged: JabberClient.update_roster,
-	// 
-	// // Not implemented in UI
-	// 	handleMucMessage: JabberClient.handle_muc_message,
-	// 	chatStateReceived: JabberClient.chat_state_received
-	// };
-
-	</script>
 	
 	<script src="application/controllers/MainController.js" type="text/javascript"></script>
 	<!-- Jabber/XMPP Client  !-->

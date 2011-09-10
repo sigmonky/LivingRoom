@@ -1,14 +1,15 @@
 <?php
-    //facebook application
-    $fbconfig['appid' ]     = "103751443062683";
-    $fbconfig['secret']     = "9bcab286a9813b84f1bc5043c22c9b13";
-    $fbconfig['baseurl']    = "http://www.logoslogic.com/chat/LivingRoom/southpark/index.php"; 
-    //
+
+	require_once dirname(__FILE__)."/../config.php";
+
     if (isset($_GET['request_ids'])){
         //user comes from invitation
         //track them if you need
     }
-    
+
+	$facebook_user_profile = '';
+    $fqlResult = '';
+
     $facebook_user =  null; //facebook user uid
     try{
         include_once dirname(__FILE__)."/facebook/facebook.php";

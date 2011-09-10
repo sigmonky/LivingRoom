@@ -216,6 +216,10 @@ color:#FFF;
 .chat_body{background:url(../images/main_panel_back.png) repeat-x;
 height:316px; overflow-y:scroll; width:750px; color:#FFF;}
 
+/* Friend Chat Window */
+.friend_chat_body .chat_body{background:url(../images/main_panel_back.png) repeat-x;
+height:316px; overflow-y:scroll; width:530px; color:#FFF;}
+
 .bottom_panel{
 background:url(../images/bottom_panel_back.png) repeat-x;
 height:69px;

@@ -60,6 +60,93 @@ Jabber.JsmvcCallback = {
 	}
 };
 
+
+//Contact model
+//--------------
+//Presence updated with `updatePrecense`. While updating,
+//program selects best status from `Jabber.Contact.Statuses`
+Jabber.Contact = Backbone.Model.extend({
+	updatePrecense: function(presence){
+		var status;
+		if ($(presence).attr('type')) {
+			status =  $(presence).attr('type');
+		} else {
+			if ($(presence).find('show').length) {
+				status = $(presence).find('show').text();
+			} else {
+				status = 'available';
+			}
+		}
+		if (_.indexOf(Jabber.Contact.Statuses, status) > _.indexOf(Jabber.Contact.Statuses, this.status)) {
+			this.set({status: status});
+		}
+	}
+});
+
+Jabber.Contact.Statuses = ['unavailable', 'xa', 'dnd', 'away', 'available', 'chat'];
+
+//Roster model
+//-------------
+//
+//It has special method to hold information about 
+//started conversation, current manager and so on.
+
+Jabber.Roster = Backbone.Collection.extend({
+	initialize: function(){
+//		While conversation started, program should keep messaging only with 
+//		selected manager
+		this._freezeManager = false;
+		this.manager = null;
+		this.bind('change:status', function(contact, new_status){
+			this.updateManager();
+		});
+		this.bind('add', function(){
+			this.updateManager();
+		});
+//		all of the object's function properties will be bound to ``this``.
+		_.bindAll(this); 
+	},
+//	public method
+	freezeManager: function(){
+		this._freezeManager = true;
+	},
+	updateManager: function(){
+		if (!this._freezeManager) {
+			this.manager = this.reduce(function(old_val, new_val){
+				// First available:
+				if (old_val === null){
+					return new_val;
+				}
+				var new_status = _.indexOf(Jabber.Contact.Statuses, new_val.get('status')),
+				old_status = _.indexOf(Jabber.Contact.Statuses, old_val.get('status'));
+				
+				if (new_status >= old_status){
+					return new_val;
+				} else {
+					return old_val;
+				}
+			}, this.manager);
+		}
+	},
+	model: Jabber.Contact
+});
+
+//Static method to create rosters from XMPP stanzas
+Jabber.Roster.serializeRoster = function(roster){
+	res = [];
+	$(roster).find('item').each(function(index, el){
+		if ($(el).attr('subscription') === 'both'){
+			res.push({
+				jid: $(el).attr('jid'),
+				bare_jid: Strophe.getBareJidFromJid($(el).attr('jid')),
+				name: $(el).attr('name'),
+				status: 'unavailable'
+			});
+		};
+	});
+	return res;
+};
+
 //
 //Main class
 //==========
@@ -76,6 +163,7 @@ Jabber.Xmpp = function(options) {
 //-------------------------
  
 _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
+	connection:null,
 
 	initialize: function(){
 		
@@ -98,7 +186,9 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		this.connection.send(iq);
 		
-		// this.bind('connected', this.onConnect);
+		this.roster = new Jabber.Roster();
+		
+		this.bind('connected', this.onConnect);
 		this.chatViews = new Array();
 
 
@@ -106,23 +196,53 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 	
 	addView: function(jid){
 		this.chatViews[jid].bind('send:message', this.callback('sendMessage'));
-		
 	},
-	
-	onMessage: function(msg){
-	//	console.log('onmessage');
-	},
-	
-	
+
+
 	onConnect: function(){
 		// console.log('onConnect join Room'+this.joinRoom() );
 		this.joinRoom();
 		this.setVcard();
-		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-		this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
+		this.subscribeFriends();
+		this.getFriends();
+	
+		console.log('subscribeFriends');
+		var that = this;
+
+		
+		// this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+		this.connection.addHandler(this.callback('onPrivateMessage'), null, 'message', 'chat');
+		this.connection.addHandler(this.callback('onGroupMessage'), null, 'message', 'groupchat');
 		return true;
 	},
+	
+	subscribeFriends: function(){
+		var that = this;
+		_.each(FriendsWhoInstalledApp.data, function(friend){
+			var data = {};
+			data.jid = friend.uid+'@'+Application.domain;
+			data.name = friend.name;
+			
+			// console.log('subscribeFriends add data.name '+data.name );
+			// console.log('subscribeFriends add data.jid '+data.jid);
+
+			var iq = $iq({type: "set"}).c("query", {xmlns: "jabber:iq:roster"}).c("item", data);
+			that.connection.send(iq);
+		    var subscribe = $pres({to: data.jid, "type": "subscribe"});
+		    that.connection.send(subscribe);
+		})
+
+	},
+	
+	getFriends: function(){
+		console.log('getFriends');
+		var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
+		this.connection.sendIQ(roster_iq, this.callback('onRoster'));
+		//this.trigger('ui:roster');
+		// add handlers
+		this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
+	},
+	
 	
 	joinRoom: function(){
 		console.log('join Room');
@@ -156,89 +276,51 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var text = document.createTextNode(facebook_user_id);
 		vCardEl.appendChild(text);
 
-		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl, facebook_user_id+'@logoslogic.com');
-	   // set: function(handler_cb, vCardEl, jid) {
+		this.connection.vcard.set(this.callback('onSetVcard'), vCardEl, facebook_user_id+'@'+Application.domain);
 
+	},
 
-		// var iq = App.util.Strophe.buildIq("set", App.util.Strophe.connection.jid, App.util.Strophe.username, vCardEl);
-		//         App.util.Strophe.connection.sendIQ(iq.tree(), App.util.Strophe.setVcardCallBack, null);
-		// 
-		// 	    console.log('setVcard 2');
-	},
-	
-	roomPresenceHandler : function(obj){
-		console.log('room presence handler '+obj)
-	},
-	
-	roomMessageHandler : function(obj){
-		console.log('room roomMessageHandler '+obj)
-	},
-	
-	send_muc_message: function (room, body) {
-		this.connection.muc.message(room, 'nickxx', body);
-	},
-	
-	// 
-	// onConnect: function(){
-	// 	console.log('onConnect ')
-	// 	
-	// 	// request roster
-	// 	var roster_iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
-	// 	this.connection.sendIQ(roster_iq, this.callback('onRoster'));
-	// 	this.trigger('ui:roster');
-	// 	// add handlers
-	// 	this.connection.addHandler(this.callback('onContactPresence'), null, 'presence');
-	// 	this.connection.addHandler(this.callback('onMessage'), null, 'message', 'chat');
-	// 	this.connection.addHandler(this.callback('onMessage'), null, 'message', 'groupchat');
-	// 	
-	// },
-	
 	onRoster: function(roster){
-		// this.connection.send($pres());
+		console.log('onRoster ')
+		
+		 this.connection.send($pres());
 		// this.trigger('ui:ready');
 		// this.view.setStatus(Jabber.viewstates.online);
 		// 
-		// var items = Jabber.Roster.serializeRoster(roster);
-		// 
-		// for (var i=0; i<items.length; i++) {
-		// 	this.roster.add(items[i]);
-		// }
-		// return true;
+		var items = Jabber.Roster.serializeRoster(roster);
+		
+		for (var i=0; i<items.length; i++) {
+			this.roster.add(items[i]);
+		}
+		return true;
 	},
 	
 	onContactPresence: function(presence){
-		console.log('onContactPresence ')
-		// var from = Strophe.getBareJidFromJid($(presence).attr('from')),
-		// 	contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
-		// if (contact) {
-		// 	contact.updatePrecense(presence);
-		// }
-		//         if(this.options.autoChat){
-		//         	_.delay(function(self){
-		//         		self.sendWelcome();
-		//         	}, '2000', this);
-		//         }
-		// return true;
+		console.log('onContactPresence from '+$(presence).attr('from'));
+		var from = Strophe.getBareJidFromJid($(presence).attr('from'));
+		var contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
+		if (contact) {
+			contact.updatePrecense(presence);
+		}
+
+        var ptype = $(presence).attr('type');
+
+		console.log('onContactPresence presence type '+ptype);
+
+        if (ptype === 'subscribe') {
+            // populate pending_subscriber
+            this.connection.send($pres({to: from, "type": "subscribed"}));
+            this.connection.send($pres({to: from,"type": "subscribe"}));
+        }
+
+		return true;
 	},
-//	Public method, use it directly if you set `{autoChat: false}`
-	sendWelcome: function(){
-    	// if (!this._welcomeSent) {
-    	// 	var userinfo = this.getUserinfo();
-    	// 	this.roster.freezeManager();
-    	// 	this._welcomeSent = true;
-    	// 	this.sendMessage({
-    	// 		text: userinfo,
-    	// 		from: this.options.jid,
-    	// 		to: this.roster.manager.get('jid'),
-    	// 		hidden: true,
-    	// 		dt: new Date()
-    	// 	});
-    	// }
-	},
+
 //	`sendMessage` used for send all messages 
-	sendMessage: function(message, to){
+	sendMessage: function(message, to, type){
 
 		console.log('send message');
+		
 		
 		if (typeof(message) === 'string'){
 			var msg = new models.ChatEntry({
@@ -252,17 +334,22 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		} else {
 			var msg = new models.ChatEntry(message);
 		}
-		msg.send(this.connection);
+		if (type == 'private'){
+			msg.send(this.connection, 'private');
+			
+		}else{
+			msg.send(this.connection);
+		}
 
 	},
 
-//	Handler for incoming messages
-	onMessage: function(message){
+	//	Handler for incoming messages
+	onGroupMessage: function(message){
 		
-		//console.log('onMessage ')
+		console.log('onGroupMessage ')
 		
 		/* Nickname is Equal to FB Photo ID */
-		 var photo = $(message).find('nick').text();
+		var photo = $(message).find('nick').text();
 		console.log('onMessage photo' +photo);
 		
 		var from = $(message).attr('from');
@@ -273,7 +360,6 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		var facebook_id  = full_nickname.split('-')[1];
 		
 		user_nick=user_nick.replace(/_/g," ");
-		
 		
 		console.log('onMessage photo from' +from);
 		console.log('onMessage photo full_nickname' +full_nickname);
@@ -300,6 +386,49 @@ _.extend(Jabber.Xmpp.prototype, Jabber.JsmvcCallback, Backbone.Events, {
 		
 		 return true;
 	},
+	
+	
+	//	Handler for incoming messages
+	onPrivateMessage: function(message){
+		
+		console.log('onPrivateMessage ')
+		
+		/* Nickname is Equal to FB Photo ID */
+
+		var from = $(message).attr('from');
+		
+		var facebook_id  = from.substring(0, from.indexOf('@'));
+		
+		console.log('onPrivateMessage photo from' +from);
+		console.log('onMesonPrivateMessagesage photo facebook_id' +facebook_id);
+		// 
+		var messageSrc = $(message).find('body').text();
+		var formattedMsg = emoticons(messageSrc);
+		
+		console.log('onPrivateMessage msg' +messageSrc);
+
+		 var msg = new models.ChatEntry({
+		 	text: formattedMsg,
+		 	from: from,
+		 	to: '',
+			facebook_id: facebook_id, 
+		 	incoming: true,
+		 	dt: new Date()
+		 });
+		// 
+		// //console.log('onmessage from = '+$(message).attr('from'));
+		// ///console.log('onmessage to = '+$(message).attr('to'));
+		// 
+			// for (chat in this.chatViews){
+			// 	console.log('chat view '+chat);
+			// }
+		
+		  this.chatViews[facebook_id].collection.add(msg);
+		
+		 return true;
+	},
+
+	
 //	Only trigger view event
 	onMessageAdd: function(message){
 		this.view.trigger('add:message', message);

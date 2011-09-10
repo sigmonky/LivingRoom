@@ -4,8 +4,6 @@ var BuzzTweetInputView = Backbone.View.extend({
      },
 	template: $('#tweet_message_view'),
 	initialize: function() {
-
-			
 	  _.bindAll(this, 'render');
 	
 	},
@@ -21,14 +19,14 @@ var BuzzTweetInputView = Backbone.View.extend({
 		var dataString = 'tweet='+ message;  
 		$.ajax({
 		  type: 'POST',
-		   url: 'http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/post.php',
+		   url: Application.baseUrl+'php/twitter/post.php',
 		  // url: 'http://localhost/LivingRoom/southpark/twitter/post.php',
 		  data: dataString,
 		  success: function(data){
 			console.log('sendTweetMessage data '+data.status);
 			if (data.status == 'not_connected'){
 				// window.location = 'http://localhost/LivingRoom/southpark/twitter/index.php';
-				 window.location = 'http://www.logoslogic.com/chat/LivingRoom/southpark/twitter/index.php';
+				 window.location = Application.baseUrl+'php/twitter/index.php';
 			}
 		  },
 		});

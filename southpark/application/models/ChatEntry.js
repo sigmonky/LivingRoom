@@ -25,13 +25,21 @@ models.ChatEntry = Backbone.Model.extend({
 			return false;
 		}
 	},
-	send: function(connection){
-		connection.send($msg({
-			to: this.get('to'),
-			"type": 'groupchat'
-		}).c('body').t(this.get('text')));
+	send: function(connection, type){
+		if (type == 'private'){
+			connection.send($msg({
+				to: this.get('to'),
+				"type": 'chat'
+			}).c('body').t(this.get('text')));
+		}else{
+			connection.send($msg({
+				to: this.get('to'),
+				"type": 'groupchat'
+			}).c('body').t(this.get('text')));
+		}
 		return this;
-	}
+	}, 
+	
 });
 
 models.ChatCollection = Backbone.Collection.extend({

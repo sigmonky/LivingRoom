@@ -1,9 +1,16 @@
 <?php
 
 // set your Jabber server hostname, username, and password here
+
 define('JABBER_SERVER','logoslogic.com');
 define('JABBER_USERNAME','isaacueca');
 define('JABBER_PASSWORD','cigano');
+
+// define('JABBER_SERVER','mtvnmob.com');
+// define('JABBER_USERNAME','mobadmin');
+// define('JABBER_PASSWORD','ziltoid');
+
+
 
 define('RUN_TIME',5); // set a maximum run time of 5 seconds
 define('CBK_FREQ',1); // fire a callback event every second
@@ -214,9 +221,9 @@ $AddUserErrorCode = 12000;
 
 
 
-$UserLogin=$_POST['username']; 
+// $UserLogin=$_POST['username']; 
 
-
+$UserLogin = 'test';
 
 
 
@@ -230,12 +237,6 @@ $pass = md5($token);
 
 $UserPass=$pass;
 
-
-//*Other Facebook User Information with POST request */
-
-//$FirstName='Philip'; 
-//$LastName='J.'; 
-//$Patronymic='Ivanovich :)';
 
 $jab = new CommandJabber($display_debug_info);
 $addmsg = new AddMessenger($jab,$UserLogin,$UserPass);
