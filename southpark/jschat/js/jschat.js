@@ -396,6 +396,9 @@ _.extend(Jschat.Xmpp.prototype, Jschat.JsmvcCallback, Backbone.Events, {
 		return true;
 	},
 	onContactPresence: function(presence){
+		var from1 = $(presence).attr('from');
+        var nick = Strophe.getResourceFromJid(from1);
+		var ptype = $(presence).attr('type');
 		var from = Strophe.getBareJidFromJid($(presence).attr('from')),
 			contact = this.roster.detect(function(c){return c.get('bare_jid') === from;});
 		if (contact) {
